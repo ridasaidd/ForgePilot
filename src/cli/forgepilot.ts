@@ -8,6 +8,7 @@ Usage:
 Options:
   --help      Show this help message
   --version   Show version
+  --init-db   Initialize the SQLite database and run pending migrations
 
 Environment:
   ForgePilot follows an environment-centric architecture.
@@ -15,16 +16,17 @@ Environment:
   The environment owns truth. Agents own no truth.
 `;
 
-function main(): void {
+async function main(): Promise<void> {
   const argv = process.argv.slice(2).filter((arg) => arg !== "--");
-  const { values } = parseArgs({
+  const { values, positionals } = parseArgs({
     args: argv,
     options: {
       help: { type: "boolean", short: "h" },
       version: { type: "boolean", short: "v" },
+      "init-db": { type: "boolean" },
     },
     strict: true,
-    allowPositionals: false,
+    allowPositionals: true,
   });
 
   if (values.help) {
@@ -34,6 +36,15 @@ function main(): void {
 
   if (values.version) {
     console.log("forgepilot v0.1.0");
+    return;
+  }
+
+  if (values["init-db"] || positionals.includes("init-db")) {
+    const { initAndMigrate } = await import("../db/migrate.js");
+    initAndMigrate();
+    const { closeDb } = await import("../db/client.js");
+    closeDb();
+    console.log("Database initialized successfully.");
     return;
   }
 
