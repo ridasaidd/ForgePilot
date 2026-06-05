@@ -6,7 +6,8 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "test": "node --experimental-test-module-mocks --import tsx --test tests/*.test.ts",
-    "fp": "tsx src/cli/forgepilot.ts --"
+    "fp": "tsx src/cli/forgepilot.ts --",
+    "build:audit-prompt": "node scripts/build-audit-prompt.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
