@@ -1,3 +1,6 @@
 date,packet_id,task_type,packet_template,implementation_model,audit_model,result,first_pass_success,fix_attempts,escalated,escalated_to,audit_accepted,human_accepted,clarification_required,clarification_count,clarification_resolved,root_cause_level,root_cause_reason,duration_minutes,notes
-2026-06-05,FP-META-000,metrics,METRICS_V1,DeepSeek,Qwen,SUCCESS,YES,0,NO,,YES,YES,NO,0,YES,,,,"Initial manual metrics collection created"
+2026-06-05,FP-META-000,metrics,METRICS_V1,DeepSeek-V4-Pro-High,Qwen-3.7-Max,SUCCESS,YES,0,NO,,YES,YES,NO,0,YES,,,,"Initial manual metrics collection created"
+2026-06-05,FP-000,scaffold,SCAFFOLD_V1,DeepSeek-V4-Pro-High,Qwen-3.7-Max,SUCCESS,NO,1,NO,,YES,YES,NO,0,YES,EXECUTOR,"Verification failures not detected before submission",,"Accepted after one fix: typecheck and CLI help repaired"
+2026-06-05,FP-001,sqlite_foundation,SQLITE_FOUNDATION_V1,DeepSeek-V4-Pro-High,Qwen-3.7-Max,SUCCESS,YES,0,NO,,YES,YES,NO,0,YES,NONE,,,"Accepted on first pass; DB verified via better-sqlite3 because sqlite3 CLI unavailable"
+2026-06-05,FP-002,core_schema,CORE_SCHEMA_V1,DeepSeek-V4-Pro-High,Qwen-3.7-Max,FAILED,NO,0,NO,,NO,NO,NO,0,YES,HUMAN,"Branched from FP-000 instead of FP-001; foundation rewritten",,"Rejected audit"
 2026-06-05,FP-META-001,workflow_tooling,AUDIT_PROMPT_BUILDER_V1,DeepSeek-V4-Pro-High,Qwen-3.7-Max,SUCCESS,YES,0,NO,,YES,YES,NO,0,YES,NONE,,,"Accepted first pass; audit prompt generation automated"
