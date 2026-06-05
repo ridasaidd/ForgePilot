@@ -1,6 +1,3 @@
--- ForgePilot V1 Schema
--- Current state representation as of FP-001
-
 CREATE TABLE IF NOT EXISTS events (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   event_type TEXT NOT NULL,
