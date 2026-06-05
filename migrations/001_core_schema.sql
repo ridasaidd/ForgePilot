@@ -1,13 +1,3 @@
--- ForgePilot Schema
--- Current state representation as of FP-002-V3
--- Includes FP-001 (events) + FP-002-V3 core schema tables
-
-CREATE TABLE IF NOT EXISTS events (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  event_type TEXT NOT NULL,
-  created_at TEXT NOT NULL DEFAULT (datetime('now'))
-);
-
 CREATE TABLE IF NOT EXISTS phases (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT NOT NULL,

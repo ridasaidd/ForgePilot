@@ -1,0 +1,5 @@
+ M src/db/schema.sql
+ M tests/smoke.test.ts
+?? migrations/001_core_schema.sql
+?? packets/FP-002-V3.md
+?? runs/FP-002-V3/

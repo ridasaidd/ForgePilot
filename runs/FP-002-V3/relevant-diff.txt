@@ -1,0 +1,207 @@
+diff --git a/src/db/schema.sql b/src/db/schema.sql
+index 12dc4a6..0502f03 100644
+--- a/src/db/schema.sql
++++ b/src/db/schema.sql
+@@ -1,8 +1,97 @@
+--- ForgePilot V1 Schema
+--- Current state representation as of FP-001
++-- ForgePilot Schema
++-- Current state representation as of FP-002-V3
++-- Includes FP-001 (events) + FP-002-V3 core schema tables
+ 
+ CREATE TABLE IF NOT EXISTS events (
+   id INTEGER PRIMARY KEY AUTOINCREMENT,
+   event_type TEXT NOT NULL,
+   created_at TEXT NOT NULL DEFAULT (datetime('now'))
+ );
++
++CREATE TABLE IF NOT EXISTS phases (
++  id INTEGER PRIMARY KEY AUTOINCREMENT,
++  name TEXT NOT NULL,
++  status TEXT NOT NULL DEFAULT 'pending',
++  created_at TEXT NOT NULL DEFAULT (datetime('now')),
++  updated_at TEXT NOT NULL DEFAULT (datetime('now'))
++);
++
++CREATE TABLE IF NOT EXISTS steps (
++  id INTEGER PRIMARY KEY AUTOINCREMENT,
++  phase_id INTEGER NOT NULL REFERENCES phases(id),
++  name TEXT NOT NULL,
++  status TEXT NOT NULL DEFAULT 'pending',
++  created_at TEXT NOT NULL DEFAULT (datetime('now')),
++  updated_at TEXT NOT NULL DEFAULT (datetime('now'))
++);
++
++CREATE TABLE IF NOT EXISTS tasks (
++  id INTEGER PRIMARY KEY AUTOINCREMENT,
++  step_id INTEGER NOT NULL REFERENCES steps(id),
++  name TEXT NOT NULL,
++  status TEXT NOT NULL DEFAULT 'pending',
++  created_at TEXT NOT NULL DEFAULT (datetime('now')),
++  updated_at TEXT NOT NULL DEFAULT (datetime('now'))
++);
++
++CREATE TABLE IF NOT EXISTS packets (
++  id INTEGER PRIMARY KEY AUTOINCREMENT,
++  task_id INTEGER NOT NULL REFERENCES tasks(id),
++  packet_type TEXT NOT NULL,
++  status TEXT NOT NULL DEFAULT 'pending',
++  created_at TEXT NOT NULL DEFAULT (datetime('now')),
++  updated_at TEXT NOT NULL DEFAULT (datetime('now'))
++);
++
++CREATE TABLE IF NOT EXISTS clarifications (
++  id INTEGER PRIMARY KEY AUTOINCREMENT,
++  packet_id INTEGER NOT NULL REFERENCES packets(id),
++  question TEXT NOT NULL,
++  answer TEXT,
++  status TEXT NOT NULL DEFAULT 'pending',
++  created_at TEXT NOT NULL DEFAULT (datetime('now')),
++  resolved_at TEXT
++);
++
++CREATE TABLE IF NOT EXISTS executions (
++  id INTEGER PRIMARY KEY AUTOINCREMENT,
++  packet_id INTEGER NOT NULL REFERENCES packets(id),
++  executor_model TEXT NOT NULL,
++  result TEXT,
++  created_at TEXT NOT NULL DEFAULT (datetime('now')),
++  completed_at TEXT
++);
++
++CREATE TABLE IF NOT EXISTS audits (
++  id INTEGER PRIMARY KEY AUTOINCREMENT,
++  execution_id INTEGER NOT NULL REFERENCES executions(id),
++  auditor_model TEXT NOT NULL,
++  status TEXT NOT NULL DEFAULT 'pending',
++  root_cause_level TEXT,
++  root_cause_reason TEXT,
++  created_at TEXT NOT NULL DEFAULT (datetime('now'))
++);
++
++CREATE TABLE IF NOT EXISTS leases (
++  id INTEGER PRIMARY KEY AUTOINCREMENT,
++  task_id INTEGER NOT NULL REFERENCES tasks(id),
++  worker_id TEXT NOT NULL,
++  leased_at TEXT NOT NULL DEFAULT (datetime('now')),
++  expires_at TEXT NOT NULL
++);
++
++CREATE TABLE IF NOT EXISTS routing_decisions (
++  id INTEGER PRIMARY KEY AUTOINCREMENT,
++  packet_id INTEGER NOT NULL REFERENCES packets(id),
++  chosen_model TEXT NOT NULL,
++  reason TEXT NOT NULL,
++  created_at TEXT NOT NULL DEFAULT (datetime('now'))
++);
++
++CREATE TABLE IF NOT EXISTS model_metrics (
++  id INTEGER PRIMARY KEY AUTOINCREMENT,
++  model_name TEXT NOT NULL,
++  task_type TEXT NOT NULL,
++  success_rate REAL NOT NULL DEFAULT 0.0,
++  created_at TEXT NOT NULL DEFAULT (datetime('now'))
++);
+diff --git a/tests/smoke.test.ts b/tests/smoke.test.ts
+index b7f57d1..5961988 100644
+--- a/tests/smoke.test.ts
++++ b/tests/smoke.test.ts
+@@ -95,14 +95,16 @@ describe("Database migration", () => {
+     assert.equal(rows.length, 1, "Migration should only be recorded once");
+   });
+ 
+-  it("should not create any forbidden workflow tables", () => {
++  it("should create all required core schema tables", () => {
+     closeDb();
+-    const dbPath = path.join(testDir, "forbidden-tables-test.db");
++    const dbPath = path.join(testDir, "schema-tables-test.db");
+     initDb(dbPath);
+     migrate();
+     const db = getDb();
+ 
+-    const forbidden = [
++    const required = [
++      "events",
++      "_migrations",
+       "phases",
+       "steps",
+       "tasks",
+@@ -120,6 +122,25 @@ describe("Database migration", () => {
+       .all()
+       .map((r: unknown) => (r as { name: string }).name);
+ 
++    for (const name of required) {
++      assert.ok(
++        tables.includes(name),
++        `Required table "${name}" should exist`
++      );
++    }
++
++    const forbidden = [
++      "packet_metrics",
++      "packet_templates",
++      "workflow_runs",
++      "agents",
++      "memories",
++      "embeddings",
++      "vector_indexes",
++      "dashboards",
++      "reports",
++    ];
++
+     for (const name of forbidden) {
+       assert.ok(
+         !tables.includes(name),
+@@ -127,4 +148,52 @@ describe("Database migration", () => {
+       );
+     }
+   });
++
++  it("should have correct foreign keys on core schema tables", () => {
++    closeDb();
++    const dbPath = path.join(testDir, "foreign-keys-test.db");
++    initDb(dbPath);
++    migrate();
++    const db = getDb();
++
++    const foreignKeys = db
++      .prepare("SELECT * FROM pragma_foreign_key_list('steps')")
++      .all() as { table: string; from: string; to: string }[];
++    assert.ok(foreignKeys.some((fk) => fk.table === "phases" && fk.from === "phase_id" && fk.to === "id"));
++
++    const taskFks = db
++      .prepare("SELECT * FROM pragma_foreign_key_list('tasks')")
++      .all() as { table: string; from: string; to: string }[];
++    assert.ok(taskFks.some((fk) => fk.table === "steps" && fk.from === "step_id" && fk.to === "id"));
++
++    const packetFks = db
++      .prepare("SELECT * FROM pragma_foreign_key_list('packets')")
++      .all() as { table: string; from: string; to: string }[];
++    assert.ok(packetFks.some((fk) => fk.table === "tasks" && fk.from === "task_id" && fk.to === "id"));
++
++    const clarFks = db
++      .prepare("SELECT * FROM pragma_foreign_key_list('clarifications')")
++      .all() as { table: string; from: string; to: string }[];
++    assert.ok(clarFks.some((fk) => fk.table === "packets" && fk.from === "packet_id" && fk.to === "id"));
++
++    const execFks = db
++      .prepare("SELECT * FROM pragma_foreign_key_list('executions')")
++      .all() as { table: string; from: string; to: string }[];
++    assert.ok(execFks.some((fk) => fk.table === "packets" && fk.from === "packet_id" && fk.to === "id"));
++
++    const auditFks = db
++      .prepare("SELECT * FROM pragma_foreign_key_list('audits')")
++      .all() as { table: string; from: string; to: string }[];
++    assert.ok(auditFks.some((fk) => fk.table === "executions" && fk.from === "execution_id" && fk.to === "id"));
++
++    const leaseFks = db
++      .prepare("SELECT * FROM pragma_foreign_key_list('leases')")
++      .all() as { table: string; from: string; to: string }[];
++    assert.ok(leaseFks.some((fk) => fk.table === "tasks" && fk.from === "task_id" && fk.to === "id"));
++
++    const routeFks = db
++      .prepare("SELECT * FROM pragma_foreign_key_list('routing_decisions')")
++      .all() as { table: string; from: string; to: string }[];
++    assert.ok(routeFks.some((fk) => fk.table === "packets" && fk.from === "packet_id" && fk.to === "id"));
++  });
+ });

@@ -95,14 +95,16 @@ describe("Database migration", () => {
     assert.equal(rows.length, 1, "Migration should only be recorded once");
   });
 
-  it("should not create any forbidden workflow tables", () => {
+  it("should create all required core schema tables", () => {
     closeDb();
-    const dbPath = path.join(testDir, "forbidden-tables-test.db");
+    const dbPath = path.join(testDir, "schema-tables-test.db");
     initDb(dbPath);
     migrate();
     const db = getDb();
 
-    const forbidden = [
+    const required = [
+      "events",
+      "_migrations",
       "phases",
       "steps",
       "tasks",
@@ -120,11 +122,78 @@ describe("Database migration", () => {
       .all()
       .map((r: unknown) => (r as { name: string }).name);
 
+    for (const name of required) {
+      assert.ok(
+        tables.includes(name),
+        `Required table "${name}" should exist`
+      );
+    }
+
+    const forbidden = [
+      "packet_metrics",
+      "packet_templates",
+      "workflow_runs",
+      "agents",
+      "memories",
+      "embeddings",
+      "vector_indexes",
+      "dashboards",
+      "reports",
+    ];
+
     for (const name of forbidden) {
       assert.ok(
         !tables.includes(name),
         `Forbidden table "${name}" should not exist`
       );
     }
+  });
+
+  it("should have correct foreign keys on core schema tables", () => {
+    closeDb();
+    const dbPath = path.join(testDir, "foreign-keys-test.db");
+    initDb(dbPath);
+    migrate();
+    const db = getDb();
+
+    const foreignKeys = db
+      .prepare("SELECT * FROM pragma_foreign_key_list('steps')")
+      .all() as { table: string; from: string; to: string }[];
+    assert.ok(foreignKeys.some((fk) => fk.table === "phases" && fk.from === "phase_id" && fk.to === "id"));
+
+    const taskFks = db
+      .prepare("SELECT * FROM pragma_foreign_key_list('tasks')")
+      .all() as { table: string; from: string; to: string }[];
+    assert.ok(taskFks.some((fk) => fk.table === "steps" && fk.from === "step_id" && fk.to === "id"));
+
+    const packetFks = db
+      .prepare("SELECT * FROM pragma_foreign_key_list('packets')")
+      .all() as { table: string; from: string; to: string }[];
+    assert.ok(packetFks.some((fk) => fk.table === "tasks" && fk.from === "task_id" && fk.to === "id"));
+
+    const clarFks = db
+      .prepare("SELECT * FROM pragma_foreign_key_list('clarifications')")
+      .all() as { table: string; from: string; to: string }[];
+    assert.ok(clarFks.some((fk) => fk.table === "packets" && fk.from === "packet_id" && fk.to === "id"));
+
+    const execFks = db
+      .prepare("SELECT * FROM pragma_foreign_key_list('executions')")
+      .all() as { table: string; from: string; to: string }[];
+    assert.ok(execFks.some((fk) => fk.table === "packets" && fk.from === "packet_id" && fk.to === "id"));
+
+    const auditFks = db
+      .prepare("SELECT * FROM pragma_foreign_key_list('audits')")
+      .all() as { table: string; from: string; to: string }[];
+    assert.ok(auditFks.some((fk) => fk.table === "executions" && fk.from === "execution_id" && fk.to === "id"));
+
+    const leaseFks = db
+      .prepare("SELECT * FROM pragma_foreign_key_list('leases')")
+      .all() as { table: string; from: string; to: string }[];
+    assert.ok(leaseFks.some((fk) => fk.table === "tasks" && fk.from === "task_id" && fk.to === "id"));
+
+    const routeFks = db
+      .prepare("SELECT * FROM pragma_foreign_key_list('routing_decisions')")
+      .all() as { table: string; from: string; to: string }[];
+    assert.ok(routeFks.some((fk) => fk.table === "packets" && fk.from === "packet_id" && fk.to === "id"));
   });
 });
