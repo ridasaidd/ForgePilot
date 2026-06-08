@@ -13,6 +13,7 @@ Options:
   --init-db             Initialize the SQLite database and run pending migrations
   --build-audit-prompt <id>     Build audit prompt for a packet run
   --build-execution-prompt <id> Build execution prompt for a packet
+  --prompt-baselines    Print project name and available prompt baseline files
 
 Environment:
   ForgePilot follows an environment-centric architecture.
@@ -166,6 +167,7 @@ async function main(): Promise<void> {
       "init-db": { type: "boolean" },
       "build-audit-prompt": { type: "string" },
       "build-execution-prompt": { type: "string" },
+      "prompt-baselines": { type: "boolean" },
     },
     strict: true,
     allowPositionals: true,
@@ -207,6 +209,13 @@ async function main(): Promise<void> {
       process.exit(1);
     }
     await buildAuditPrompt(packetId);
+    return;
+  }
+
+  if (values["prompt-baselines"] || positionals[0] === "prompt-baselines") {
+    console.log("ForgePilot");
+    console.log("Executor Baseline: prompts/executor-baseline-v1.md");
+    console.log("Auditor Baseline: prompts/auditor-baseline-v1.md");
     return;
   }
 

@@ -1,0 +1,4 @@
+ M src/cli/forgepilot.ts
+ M tests/smoke.test.ts
+?? packets/FP-EVAL-001.md
+?? runs/FP-EVAL-001/

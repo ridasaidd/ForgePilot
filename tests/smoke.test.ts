@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import os from "node:os";
+import { execSync } from "node:child_process";
 import { initDb, getDb, closeDb } from "../src/db/client.js";
 import { migrate } from "../src/db/migrate.js";
 
@@ -195,5 +196,23 @@ describe("Database migration", () => {
       .prepare("SELECT * FROM pragma_foreign_key_list('routing_decisions')")
       .all() as { table: string; from: string; to: string }[];
     assert.ok(routeFks.some((fk) => fk.table === "packets" && fk.from === "packet_id" && fk.to === "id"));
+  });
+});
+
+describe("CLI prompt-baselines", () => {
+  it("should print ForgePilot and prompt baseline file paths", () => {
+    const output = execSync("pnpm fp -- prompt-baselines", {
+      encoding: "utf-8",
+      cwd: process.cwd(),
+    });
+    assert.ok(output.includes("ForgePilot"), "Output should include ForgePilot");
+    assert.ok(
+      output.includes("Executor Baseline: prompts/executor-baseline-v1.md"),
+      "Output should include Executor Baseline path"
+    );
+    assert.ok(
+      output.includes("Auditor Baseline: prompts/auditor-baseline-v1.md"),
+      "Output should include Auditor Baseline path"
+    );
   });
 });

@@ -1,0 +1,52 @@
+$ pnpm typecheck
+
+> forgepilot@0.1.0 typecheck /home/ridasaidd/forgepilot
+> tsc --noEmit
+
+No output (exit code 0) — typecheck passed.
+
+---
+
+$ pnpm test
+
+> forgepilot@0.1.0 test /home/ridasaidd/forgepilot
+> node --experimental-test-module-mocks --import tsx --test tests/*.test.ts
+
+▶ ForgePilot
+  ✔ should have a working test harness (0.779377ms)
+  ✔ should confirm environment-centric architecture principle (0.283781ms)
+✔ ForgePilot (2.018852ms)
+▶ Database client
+  ✔ should initialize the database and create the data directory (31.401034ms)
+  ✔ should throw when getDb is called before initDb (0.88986ms)
+✔ Database client (32.786473ms)
+▶ Database migration
+  ✔ should create the events table via migration (37.022458ms)
+  ✔ should be idempotent (running migrate twice does not fail) (54.393083ms)
+  ✔ should create all required core schema tables (53.131052ms)
+  ✔ should have correct foreign keys on core schema tables (55.021589ms)
+✔ Database migration (200.247686ms)
+▶ CLI prompt-baselines
+  ✔ should print ForgePilot and prompt baseline file paths (1051.251733ms)
+✔ CLI prompt-baselines (1051.556773ms)
+ℹ tests 9
+ℹ suites 4
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1770.80805
+---TEST_EXIT: 0
+
+---
+
+$ pnpm fp -- prompt-baselines
+
+> forgepilot@0.1.0 fp /home/ridasaidd/forgepilot
+> tsx src/cli/forgepilot.ts -- "prompt-baselines"
+
+ForgePilot
+Executor Baseline: prompts/executor-baseline-v1.md
+Auditor Baseline: prompts/auditor-baseline-v1.md
+---PROMPT_EXIT: 0

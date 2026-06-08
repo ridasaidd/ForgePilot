@@ -1,0 +1,68 @@
+diff --git a/src/cli/forgepilot.ts b/src/cli/forgepilot.ts
+index 5d5cc57..f334b0c 100644
+--- a/src/cli/forgepilot.ts
++++ b/src/cli/forgepilot.ts
+@@ -13,6 +13,7 @@ Options:
+   --init-db             Initialize the SQLite database and run pending migrations
+   --build-audit-prompt <id>     Build audit prompt for a packet run
+   --build-execution-prompt <id> Build execution prompt for a packet
++  --prompt-baselines    Print project name and available prompt baseline files
+ 
+ Environment:
+   ForgePilot follows an environment-centric architecture.
+@@ -166,6 +167,7 @@ async function main(): Promise<void> {
+       "init-db": { type: "boolean" },
+       "build-audit-prompt": { type: "string" },
+       "build-execution-prompt": { type: "string" },
++      "prompt-baselines": { type: "boolean" },
+     },
+     strict: true,
+     allowPositionals: true,
+@@ -210,6 +212,13 @@ async function main(): Promise<void> {
+     return;
+   }
+ 
++  if (values["prompt-baselines"] || positionals[0] === "prompt-baselines") {
++    console.log("ForgePilot");
++    console.log("Executor Baseline: prompts/executor-baseline-v1.md");
++    console.log("Auditor Baseline: prompts/auditor-baseline-v1.md");
++    return;
++  }
++
+   console.log("ForgePilot CLI — use --help for usage information.");
+ }
+ 
+diff --git a/tests/smoke.test.ts b/tests/smoke.test.ts
+index 5961988..a422ae5 100644
+--- a/tests/smoke.test.ts
++++ b/tests/smoke.test.ts
+@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
+ import fs from "node:fs";
+ import path from "node:path";
+ import os from "node:os";
++import { execSync } from "node:child_process";
+ import { initDb, getDb, closeDb } from "../src/db/client.js";
+ import { migrate } from "../src/db/migrate.js";
+ 
+@@ -197,3 +198,21 @@ describe("Database migration", () => {
+     assert.ok(routeFks.some((fk) => fk.table === "packets" && fk.from === "packet_id" && fk.to === "id"));
+   });
+ });
++
++describe("CLI prompt-baselines", () => {
++  it("should print ForgePilot and prompt baseline file paths", () => {
++    const output = execSync("pnpm fp -- prompt-baselines", {
++      encoding: "utf-8",
++      cwd: process.cwd(),
++    });
++    assert.ok(output.includes("ForgePilot"), "Output should include ForgePilot");
++    assert.ok(
++      output.includes("Executor Baseline: prompts/executor-baseline-v1.md"),
++      "Output should include Executor Baseline path"
++    );
++    assert.ok(
++      output.includes("Auditor Baseline: prompts/auditor-baseline-v1.md"),
++      "Output should include Auditor Baseline path"
++    );
++  });
++});
