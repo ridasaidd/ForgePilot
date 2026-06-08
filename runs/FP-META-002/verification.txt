@@ -1,0 +1,14 @@
+$ pnpm typecheck
+> tsc --noEmit
+(exit 0)
+
+$ pnpm test
+> node --experimental-test-module-mocks --import tsx --test tests/*.test.ts
+  ForgePilot (1.790443ms) - 2 passed
+  Database client (34.763597ms) - 2 passed
+  Database migration (215.317105ms) - 4 passed
+  tests 8, pass 8, fail 0
+(exit 0)
+
+$ test -f prompts/executor-baseline-v1.md && echo "PASS" || echo "FAIL"
+PASS
