@@ -1,0 +1,27 @@
+$ pnpm typecheck
+> tsc --noEmit
+(exit 0)
+
+$ pnpm test
+> node --experimental-test-module-mocks --import tsx --test tests/*.test.ts
+  ForgePilot (1.925278ms) - 2 passed
+  Database client (40.830186ms) - 2 passed
+  Database migration (193.486185ms) - 4 passed
+  tests 8, pass 8, fail 0
+(exit 0)
+
+$ pnpm fp -- init-db
+Database initialized successfully.
+(exit 0)
+
+$ test -f runs/FP-003/executor-result.md && echo "PASS" || echo "FAIL"
+PASS
+
+$ test -f runs/FP-003/verification.txt && echo "PASS" || echo "FAIL"
+PASS
+
+$ test -f runs/FP-003/audit-prompt.md && echo "PASS" || echo "FAIL"
+PASS
+
+$ grep -q "\x7B\x7B" runs/FP-003/audit-prompt.md && echo "FAIL" || echo "PASS"
+PASS
