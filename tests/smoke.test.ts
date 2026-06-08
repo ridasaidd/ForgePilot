@@ -216,3 +216,80 @@ describe("CLI prompt-baselines", () => {
     );
   });
 });
+
+describe("Packet metrics", () => {
+  let metricsDbPath: string;
+
+  before(() => {
+    metricsDbPath = path.join(testDir, "metrics-test.db");
+    initDb(metricsDbPath);
+    migrate();
+  });
+
+  after(() => {
+    closeDb();
+  });
+
+  it("should return zero counts when no packets exist", async () => {
+    const { getPacketMetrics } = await import("../src/db/metrics.js");
+    const metrics = getPacketMetrics();
+    assert.equal(metrics.total, 0, "Total should be 0");
+    assert.equal(metrics.successful, 0, "Successful should be 0");
+    assert.equal(metrics.failed, 0, "Failed should be 0");
+  });
+
+  it("should count completed and failed packets correctly", () => {
+    const db = getDb();
+    db.exec("INSERT INTO phases (id, name, status) VALUES (1, 'test-phase', 'pending')");
+    db.exec("INSERT INTO steps (id, phase_id, name, status) VALUES (1, 1, 'test-step', 'pending')");
+    db.exec("INSERT INTO tasks (id, step_id, name, status) VALUES (1, 1, 'test-task', 'pending')");
+    db.exec("INSERT INTO packets (id, task_id, packet_type, status) VALUES (1, 1, 'eval', 'completed')");
+    db.exec("INSERT INTO packets (id, task_id, packet_type, status) VALUES (2, 1, 'eval', 'failed')");
+    db.exec("INSERT INTO packets (id, task_id, packet_type, status) VALUES (3, 1, 'eval', 'pending')");
+    db.exec("INSERT INTO packets (id, task_id, packet_type, status) VALUES (4, 1, 'eval', 'completed')");
+
+    const metrics = db
+      .prepare(
+        `SELECT
+          (SELECT COUNT(*) FROM packets) as total,
+          (SELECT COUNT(*) FROM packets WHERE status = 'completed') as successful,
+          (SELECT COUNT(*) FROM packets WHERE status = 'failed') as failed`
+      )
+      .get() as { total: number; successful: number; failed: number };
+
+    assert.equal(metrics.total, 4, "Total should be 4");
+    assert.equal(metrics.successful, 2, "Successful should be 2");
+    assert.equal(metrics.failed, 1, "Failed should be 1");
+  });
+
+  it("CLI packet-metrics should print all three labels", () => {
+    const output = execSync("pnpm fp -- packet-metrics", {
+      encoding: "utf-8",
+      cwd: process.cwd(),
+    });
+    assert.ok(output.includes("Total packets"), "Output should include Total packets");
+    assert.ok(output.includes("Successful packets"), "Output should include Successful packets");
+    assert.ok(output.includes("Failed packets"), "Output should include Failed packets");
+  });
+
+  it("CLI packet-metrics should succeed with zero counts on empty db", () => {
+    closeDb();
+    const emptyDbPath = path.join(testDir, "empty-metrics-test.db");
+    initDb(emptyDbPath);
+    migrate();
+    const db = getDb();
+
+    const metrics = db
+      .prepare(
+        `SELECT
+          (SELECT COUNT(*) FROM packets) as total,
+          (SELECT COUNT(*) FROM packets WHERE status = 'completed') as successful,
+          (SELECT COUNT(*) FROM packets WHERE status = 'failed') as failed`
+      )
+      .get() as { total: number; successful: number; failed: number };
+
+    assert.equal(metrics.total, 0);
+    assert.equal(metrics.successful, 0);
+    assert.equal(metrics.failed, 0);
+  });
+});

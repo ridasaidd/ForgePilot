@@ -1,0 +1,44 @@
+$ tsc --noEmit
+---
+$ node --experimental-test-module-mocks --import tsx --test tests/*.test.ts
+$ tsx src/cli/forgepilot.ts -- -- prompt-baselines
+▶ ForgePilot
+  ✔ should have a working test harness (0.687413ms)
+  ✔ should confirm environment-centric architecture principle (0.222391ms)
+✔ ForgePilot (1.642052ms)
+▶ Database client
+  ✔ should initialize the database and create the data directory (28.1913ms)
+  ✔ should throw when getDb is called before initDb (0.675581ms)
+✔ Database client (29.127271ms)
+▶ Database migration
+  ✔ should create the events table via migration (35.108623ms)
+  ✔ should be idempotent (running migrate twice does not fail) (51.797408ms)
+  ✔ should create all required core schema tables (51.707648ms)
+  ✔ should have correct foreign keys on core schema tables (52.595527ms)
+✔ Database migration (191.819247ms)
+▶ CLI prompt-baselines
+  ✔ should print ForgePilot and prompt baseline file paths (925.385144ms)
+✔ CLI prompt-baselines (925.624647ms)
+$ tsx src/cli/forgepilot.ts -- -- packet-metrics
+▶ Packet metrics
+  ✔ should return zero counts when no packets exist (38.87864ms)
+  ✔ should count completed and failed packets correctly (1.068677ms)
+  ✔ CLI packet-metrics should print all three labels (1015.092275ms)
+  ✔ CLI packet-metrics should succeed with zero counts on empty db (52.337561ms)
+✔ Packet metrics (1168.586703ms)
+ℹ tests 13
+ℹ suites 5
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2595.923201
+---
+$ tsx src/cli/forgepilot.ts -- -- init-db
+Database initialized successfully.
+---
+$ tsx src/cli/forgepilot.ts -- -- packet-metrics
+Total packets: 0
+Successful packets: 0
+Failed packets: 0
