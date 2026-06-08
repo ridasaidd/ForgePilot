@@ -11,7 +11,8 @@ Options:
   --help                Show this help message
   --version             Show version
   --init-db             Initialize the SQLite database and run pending migrations
-  --build-audit-prompt <id>  Build audit prompt for a packet run
+  --build-audit-prompt <id>     Build audit prompt for a packet run
+  --build-execution-prompt <id> Build execution prompt for a packet
 
 Environment:
   ForgePilot follows an environment-centric architecture.
@@ -36,6 +37,60 @@ async function fileExists(p: string): Promise<boolean> {
 function extractTitle(content: string, fallback: string): string {
   const match = content.match(/^#\s+(.+)$/m);
   return match ? match[1].trim() : fallback;
+}
+
+async function buildExecutionPrompt(packetId: string): Promise<void> {
+  const packetPath = resolve(`packets/${packetId}.md`);
+  const runsDir = resolve(`runs/${packetId}`);
+  const outPath = resolve(runsDir, "execution-prompt.md");
+  const baselinePath = resolve("prompts/executor-baseline-v1.md");
+
+  if (!(await fileExists(packetPath))) {
+    process.stderr.write(`ERROR: packet not found: ${packetPath}\n`);
+    process.exit(1);
+  }
+
+  if (!(await fileExists(baselinePath))) {
+    process.stderr.write(`ERROR: baseline not found: ${baselinePath}\n`);
+    process.exit(1);
+  }
+
+  const [packetContent, baselineContent] = await Promise.all([
+    readFile(packetPath, "utf-8"),
+    readFile(baselinePath, "utf-8"),
+  ]);
+
+  const taskTitle = extractTitle(packetContent, packetId);
+
+  let output = baselineContent
+    .replace(/\{\{TASK_ID\}\}/g, packetId)
+    .replace(/\{\{TASK_TITLE\}\}/g, taskTitle)
+    .replace(/\{\{ORIGINAL_PACKET\}\}/g, packetContent.trim());
+
+  for (const placeholder of TEMPLATE_PLACEHOLDERS) {
+    const unreplaced = output.includes(placeholder);
+    if (unreplaced) {
+      process.stderr.write(`ERROR: unreplaced placeholder in baseline: ${placeholder}\n`);
+      process.exit(1);
+    }
+  }
+
+  const header = `# Execution Prompt — {{PACKET_ID}}\n\n## Target Packet\n\npackets/{{PACKET_ID}}.md\n\n## Packet Content\n\n{{PACKET_CONTENT}}\n\n---\n\n`;
+
+  output = header + output.trim();
+  output = output
+    .replace(/\{\{PACKET_ID\}\}/g, packetId)
+    .replace(/\{\{PACKET_CONTENT\}\}/g, packetContent.trim());
+
+  const unresolved = output.match(/\{\{[A-Z_]+\}\}/g);
+  if (unresolved) {
+    process.stderr.write(`ERROR: unresolved placeholders: ${unresolved.join(", ")}\n`);
+    process.exit(1);
+  }
+
+  await mkdir(runsDir, { recursive: true });
+  await writeFile(outPath, output, "utf-8");
+  process.stderr.write(`Execution prompt written to ${outPath}\n`);
 }
 
 async function buildAuditPrompt(packetId: string): Promise<void> {
@@ -110,6 +165,7 @@ async function main(): Promise<void> {
       version: { type: "boolean", short: "v" },
       "init-db": { type: "boolean" },
       "build-audit-prompt": { type: "string" },
+      "build-execution-prompt": { type: "string" },
     },
     strict: true,
     allowPositionals: true,
@@ -131,6 +187,16 @@ async function main(): Promise<void> {
     const { closeDb } = await import("../db/client.js");
     closeDb();
     console.log("Database initialized successfully.");
+    return;
+  }
+
+  if (values["build-execution-prompt"] || positionals[0] === "build-execution-prompt") {
+    const packetId = values["build-execution-prompt"] || positionals[1];
+    if (!packetId) {
+      console.error("Usage: pnpm fp -- build-execution-prompt <PACKET_ID>");
+      process.exit(1);
+    }
+    await buildExecutionPrompt(packetId);
     return;
   }
 

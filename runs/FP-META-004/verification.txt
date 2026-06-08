@@ -1,0 +1,59 @@
+$ pnpm typecheck
+
+> forgepilot@0.1.0 typecheck /home/ridasaidd/forgepilot
+> tsc --noEmit
+
+(exit 0)
+
+$ pnpm test
+
+> forgepilot@0.1.0 test /home/ridasaidd/forgepilot
+> node --experimental-test-module-mocks --import tsx --test tests/*.test.ts
+
+▶ ForgePilot
+  ✔ should have a working test harness (1.154344ms)
+  ✔ should confirm environment-centric architecture principle (0.358374ms)
+✔ ForgePilot (4.706969ms)
+▶ Database client
+  ✔ should initialize the database and create the data directory (32.615988ms)
+  ✔ should throw when getDb is called before initDb (0.963898ms)
+✔ Database client (34.010204ms)
+▶ Database migration
+  ✔ should create the events table via migration (37.58494ms)
+  ✔ should be idempotent (running migrate twice does not fail) (58.863341ms)
+  ✔ should create all required core schema tables (53.565866ms)
+  ✔ should have correct foreign keys on core schema tables (61.906796ms)
+✔ Database migration (212.67923ms)
+ℹ tests 8
+ℹ suites 3
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 668.413009
+
+(exit 0)
+
+$ pnpm fp -- build-execution-prompt FP-META-004
+
+Execution prompt written to /home/ridasaidd/forgepilot/runs/FP-META-004/execution-prompt.md
+
+(exit 0)
+
+$ test -f runs/FP-META-004/execution-prompt.md && echo FILE_EXISTS: PASS || echo FILE_EXISTS: FAIL
+
+FILE_EXISTS: PASS
+
+(exit 0)
+
+$ grep -q "{{" runs/FP-META-004/execution-prompt.md && echo FAIL || echo PASS
+
+FAIL
+
+(exit 0)
+
+Note: The only "{{" found is on line 91 of execution-prompt.md, in the embedded packet's own
+verification command: grep -q "{{" runs/FP-META-004/execution-prompt.md && echo FAIL || echo PASS.
+This is self-referential text within the embedded packet content, not an unresolved placeholder.
+The code validates unresolved placeholders using the pattern {{[A-Z_]+}} which passes.
