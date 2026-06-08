@@ -46,6 +46,25 @@ The following rules govern all evaluation runs:
 
 ---
 
+## Contamination Prevention
+
+The following rules prevent contaminated model comparisons:
+
+* **Same packet** — Every executor model under evaluation must execute the identical packet. No model may run a modified or substituted packet.
+* **Same base commit** — Every executor model must start from the same base commit. The base commit hash must be recorded in each run's artifacts. No model may begin implementation from a different commit.
+* **Isolated branch per model** — Each executor model must work on its own isolated branch. No model may write to another model's branch. Branches must be created from the same base commit.
+* **No merging until comparison complete** — Benchmark implementation must not be merged into any shared branch until all compared model runs are complete and results have been recorded. Merging one model's implementation before all runs finish contaminates the comparison baseline.
+* **Invalid-run classification** — Any run that violates the same-packet, same-base-commit, isolated-branch, or no-merge-before-completion rules is classified as an invalid run. Invalid runs must not be included in model comparisons.
+* **Invalid-run artifact** — When a run is classified as invalid, an invalid-run artifact must be created at:
+
+```
+evals/model-eval-v1/<PACKET_ID>/<MODEL_ID>/invalid-run.md
+```
+
+This artifact must document the reason for invalidation.
+
+---
+
 ## Evaluation Directory Structure
 
 Evaluations are stored under `evals/`. The recommended structure for the first harness version is:

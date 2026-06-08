@@ -34,3 +34,20 @@ This isolates run artifacts per model per packet, enabling fair and auditable co
 4. Run the audit prompt for each evaluation run using the same auditor model.
 5. Record measured variables for each run.
 6. Compare results across models.
+
+## Contamination Prevention
+
+The following rules must be followed to ensure fair model comparisons:
+
+* **Same packet** — Every executor model must execute the identical packet. No substitutions or modifications are permitted.
+* **Same base commit** — Every executor model must start from the same base commit. Record the base commit hash in each run's artifacts.
+* **Isolated branch per model** — Each executor model must work on its own isolated branch, created from the same base commit. No model may write to another model's branch.
+* **No merging until comparison complete** — Do not merge any benchmark implementation into a shared branch until all compared model runs are complete and results are recorded.
+* **Invalid-run classification** — Any run violating the same-packet, same-base-commit, isolated-branch, or no-merge rules is classified as invalid and must not be included in comparisons.
+* **Invalid-run artifact** — Invalid runs must produce an artifact at:
+
+```
+evals/model-eval-v1/<PACKET_ID>/<MODEL_ID>/invalid-run.md
+```
+
+This artifact must document the reason for invalidation.

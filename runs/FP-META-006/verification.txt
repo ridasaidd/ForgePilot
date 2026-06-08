@@ -1,0 +1,18 @@
+$ pnpm typecheck
+> tsc --noEmit
+(exit 0)
+
+$ pnpm test
+> node --experimental-test-module-mocks --import tsx --test tests/*.test.ts
+  ForgePilot (1.749905ms) - 2 passed
+  Database client (31.722775ms) - 2 passed
+  Database migration (200.143411ms) - 4 passed
+  CLI prompt-baselines (949.427061ms) - 1 passed
+  tests 9, pass 9, fail 0
+(exit 0)
+
+$ test -f docs/model-evaluation-harness.md && echo "PASS" || echo "FAIL"
+PASS
+
+$ test -f evals/model-eval-v1/README.md && echo "PASS" || echo "FAIL"
+PASS
