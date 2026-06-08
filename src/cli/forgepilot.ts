@@ -13,6 +13,7 @@ Options:
   --init-db             Initialize the SQLite database and run pending migrations
   --build-audit-prompt <id>     Build audit prompt for a packet run
   --build-execution-prompt <id> Build execution prompt for a packet
+  --packet-metrics      Print summary of packet execution metrics
   --prompt-baselines    Print project name and available prompt baseline files
 
 Environment:
@@ -167,6 +168,7 @@ async function main(): Promise<void> {
       "init-db": { type: "boolean" },
       "build-audit-prompt": { type: "string" },
       "build-execution-prompt": { type: "string" },
+      "packet-metrics": { type: "boolean" },
       "prompt-baselines": { type: "boolean" },
     },
     strict: true,
@@ -209,6 +211,19 @@ async function main(): Promise<void> {
       process.exit(1);
     }
     await buildAuditPrompt(packetId);
+    return;
+  }
+
+  if (values["packet-metrics"] || positionals[0] === "packet-metrics") {
+    const { initAndMigrate } = await import("../db/migrate.js");
+    initAndMigrate();
+    const { getPacketMetrics } = await import("../db/metrics.js");
+    const { closeDb } = await import("../db/client.js");
+    const metrics = getPacketMetrics();
+    closeDb();
+    console.log(`Total packets: ${metrics.total}`);
+    console.log(`Successful packets: ${metrics.successful}`);
+    console.log(`Failed packets: ${metrics.failed}`);
     return;
   }
 
