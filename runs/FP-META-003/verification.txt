@@ -1,0 +1,37 @@
+$ pnpm typecheck
+
+> forgepilot@0.1.0 typecheck /home/ridasaidd/forgepilot
+> tsc --noEmit
+
+(no output — passed)
+
+$ pnpm test
+
+> forgepilot@0.1.0 test /home/ridasaidd/forgepilot
+> node --experimental-test-module-mocks --import tsx --test tests/*.test.ts
+
+▶ ForgePilot
+  ✔ should have a working test harness (0.686747ms)
+  ✔ should confirm environment-centric architecture principle (0.176928ms)
+✔ ForgePilot (1.639423ms)
+▶ Database client
+  ✔ should initialize the database and create the data directory (31.971ms)
+  ✔ should throw when getDb is called before initDb (0.772859ms)
+✔ Database client (33.049714ms)
+▶ Database migration
+  ✔ should create the events table via migration (39.118807ms)
+  ✔ should be idempotent (running migrate twice does not fail) (54.224485ms)
+  ✔ should create all required core schema tables (52.158392ms)
+  ✔ should have correct foreign keys on core schema tables (52.569025ms)
+✔ Database migration (198.654566ms)
+ℹ tests 8
+ℹ suites 3
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 551.040576
+
+$ test -f prompts/auditor-baseline-v1.md
+=> EXISTS
