@@ -18,6 +18,7 @@ evals/model-eval-v1/
       audit-result.md             # Auditor's determination and findings
       git-status.txt              # Git status at time of run
       relevant-diff.txt           # Diff of changes made during run
+      metrics.json                # Structured metrics artifact for this run
 ```
 
 ## Per-Model Run Storage
@@ -26,11 +27,55 @@ Each model's evaluation run is stored under `evals/model-eval-v1/<PACKET_ID>/<MO
 
 This isolates run artifacts per model per packet, enabling fair and auditable comparisons.
 
+## Metrics Artifact
+
+Every evaluation run must produce a structured metrics artifact. The metrics artifact is stored at two locations:
+
+1. **Run artifact** — `runs/<PACKET_ID>/metrics.json`
+2. **Evaluation artifact** — `evals/model-eval-v1/<PACKET_ID>/<MODEL_NAME>/metrics.json`
+
+The evaluation artifact is a copy of the run artifact, placed in the per-model evaluation directory after the run completes.
+
+### Required Schema
+
+The metrics artifact must contain exactly the following fields:
+
+```json
+{
+  "packet_id": "",
+  "model_id": "",
+  "base_commit": "",
+  "run_branch": "",
+  "audit_result": "",
+  "comparison_outcome": null,
+  "first_pass_success": null,
+  "fix_attempts": null,
+  "human_intervention": null,
+  "root_cause": null,
+  "ambiguity_discovered": null,
+  "execution_duration_seconds": null,
+  "prompt_tokens": null,
+  "completion_tokens": null,
+  "reasoning_tokens": null,
+  "total_tokens": null,
+  "estimated_cost": null,
+  "notes": ""
+}
+```
+
+### Field Rules
+
+* **Unavailable values** — Any field whose value is not available at the time of recording must be set to `null`.
+* **Per-model-run ownership** — Each metrics artifact is generated per model run. One metrics artifact corresponds to one executor model executing one packet.
+* **comparison_outcome** — This field remains `null` during individual executor runs. It is populated after comparison completion, when results from multiple models are compared.
+* **String fields** — `packet_id`, `model_id`, `base_commit`, `run_branch`, `audit_result`, and `notes` are string fields. Empty strings are used when the value is not yet determined.
+* **Schema is normative** — Executors must use the schema exactly as specified. No fields may be added, removed, or renamed.
+
 ## How to Use
 
 1. Select a benchmark packet to evaluate against.
 2. For each executor model under evaluation, run the model evaluation run prompt (`prompts/model-eval-run-v1.md`) targeting the benchmark packet.
-3. After completion, copy the generated run artifacts from `runs/<PACKET_ID>/` into `evals/model-eval-v1/<PACKET_ID>/<MODEL_NAME>/`.
+3. After completion, copy the generated run artifacts from `runs/<PACKET_ID>/` into `evals/model-eval-v1/<PACKET_ID>/<MODEL_NAME>/`, including the `metrics.json` artifact.
 4. Run the audit prompt for each evaluation run using the same auditor model.
 5. Record measured variables for each run.
 6. Compare results across models.

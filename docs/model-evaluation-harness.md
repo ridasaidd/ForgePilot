@@ -34,6 +34,56 @@ The following variables are recorded per evaluation run:
 
 ---
 
+## Metrics Artifact
+
+Every evaluation run must produce a structured metrics artifact. The metrics artifact ensures that evaluation data is preserved in a standardized format for later aggregation and analysis.
+
+### Artifact Locations
+
+The metrics artifact must be generated at two locations:
+
+1. **Run artifact** — `runs/<PACKET_ID>/metrics.json`
+2. **Evaluation artifact** — `evals/model-eval-v1/<PACKET_ID>/<MODEL_NAME>/metrics.json`
+
+The evaluation artifact is a copy of the run artifact, placed in the per-model evaluation directory after the run completes.
+
+### Required Schema
+
+The metrics artifact must contain exactly the following fields:
+
+```json
+{
+  "packet_id": "",
+  "model_id": "",
+  "base_commit": "",
+  "run_branch": "",
+  "audit_result": "",
+  "comparison_outcome": null,
+  "first_pass_success": null,
+  "fix_attempts": null,
+  "human_intervention": null,
+  "root_cause": null,
+  "ambiguity_discovered": null,
+  "execution_duration_seconds": null,
+  "prompt_tokens": null,
+  "completion_tokens": null,
+  "reasoning_tokens": null,
+  "total_tokens": null,
+  "estimated_cost": null,
+  "notes": ""
+}
+```
+
+### Field Rules
+
+* **Unavailable values** — Any field whose value is not available at the time of recording must be set to `null`.
+* **Per-model-run ownership** — Each metrics artifact is generated per model run. One metrics artifact corresponds to one executor model executing one packet.
+* **comparison_outcome** — This field remains `null` during individual executor runs. It is populated after comparison completion, when results from multiple models are compared.
+* **String fields** — `packet_id`, `model_id`, `base_commit`, `run_branch`, `audit_result`, and `notes` are string fields. Empty strings are used when the value is not yet determined.
+* **Schema is normative** — Executors must use the schema exactly as specified. No fields may be added, removed, or renamed.
+
+---
+
 ## Comparison Rubric
 
 Every model comparison must evaluate and record these five dimensions:
@@ -96,6 +146,7 @@ evals/
         audit-result.md
         git-status.txt
         relevant-diff.txt
+        metrics.json
 ```
 
 Per-model run storage isolates each model's run artifacts under `evals/model-eval-v1/<PACKET_ID>/<MODEL_NAME>/`. This preserves a complete record of each evaluation run for comparison and audit.
