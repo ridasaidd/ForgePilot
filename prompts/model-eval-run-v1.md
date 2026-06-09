@@ -26,6 +26,42 @@ After completing the implementation, produce these run artifacts under `runs/<PA
 1. **executor-result.md** — Structured summary of status, files changed, verification results, and a short result summary.
 2. **verification.txt** — Raw output of all verification commands run.
 3. **audit-prompt.md** — A filled audit prompt assembled from the packet, executor result, verification output, git status, and git diff, containing no unresolved template placeholders.
+4. **metrics.json** — Structured metrics artifact containing evaluation run data.
+
+#### Metrics Artifact Schema
+
+The `metrics.json` artifact must contain exactly the following fields:
+
+```json
+{
+  "packet_id": "",
+  "model_id": "",
+  "base_commit": "",
+  "run_branch": "",
+  "audit_result": "",
+  "comparison_outcome": null,
+  "first_pass_success": null,
+  "fix_attempts": null,
+  "human_intervention": null,
+  "root_cause": null,
+  "ambiguity_discovered": null,
+  "execution_duration_seconds": null,
+  "prompt_tokens": null,
+  "completion_tokens": null,
+  "reasoning_tokens": null,
+  "total_tokens": null,
+  "estimated_cost": null,
+  "notes": ""
+}
+```
+
+#### Metrics Artifact Rules
+
+* **Unavailable values** — Any field whose value is not available at the time of recording must be set to `null`.
+* **Per-model-run ownership** — Each metrics artifact is generated per model run. One metrics artifact corresponds to one executor model executing one packet.
+* **comparison_outcome** — This field remains `null` during individual executor runs. It is populated after comparison completion, when results from multiple models are compared.
+* **String fields** — `packet_id`, `model_id`, `base_commit`, `run_branch`, `audit_result`, and `notes` are string fields. Empty strings are used when the value is not yet determined.
+* **Schema is normative** — The schema must be used exactly as specified. No fields may be added, removed, or renamed.
 
 ### Scope Discipline
 
@@ -42,7 +78,7 @@ Do not:
 
 ### Post-Execution
 
-After completing the evaluation run, copy the run artifacts from `runs/<PACKET_ID>/` into the evaluation directory under `evals/model-eval-v1/<PACKET_ID>/<MODEL_NAME>/` using the model name assigned to this evaluation run.
+After completing the evaluation run, copy the run artifacts from `runs/<PACKET_ID>/` into the evaluation directory under `evals/model-eval-v1/<PACKET_ID>/<MODEL_NAME>/` using the model name assigned to this evaluation run. This includes the `metrics.json` artifact.
 
 ### Behavioral Guidance
 

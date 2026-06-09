@@ -1,0 +1,47 @@
+$ pnpm typecheck
+$ tsc --noEmit
+
+$ pnpm test
+$ node --experimental-test-module-mocks --import tsx --test tests/*.test.ts
+$ tsx src/cli/forgepilot.ts -- -- prompt-baselines
+▶ ForgePilot
+  ✔ should have a working test harness (0.699692ms)
+  ✔ should confirm environment-centric architecture principle (0.199798ms)
+✔ ForgePilot (1.663294ms)
+▶ Database client
+  ✔ should initialize the database and create the data directory (29.72255ms)
+  ✔ should throw when getDb is called before initDb (0.649432ms)
+✔ Database client (30.678986ms)
+▶ Database migration
+  ✔ should create the events table via migration (35.22255ms)
+  ✔ should be idempotent (running migrate twice does not fail) (49.782784ms)
+  ✔ should create all required core schema tables (49.839729ms)
+  ✔ should have correct foreign keys on core schema tables (50.07675ms)
+✔ Database migration (185.51367ms)
+▶ CLI prompt-baselines
+  ✔ should print ForgePilot and prompt baseline file paths (918.882375ms)
+✔ CLI prompt-baselines (919.1761ms)
+$ tsx src/cli/forgepilot.ts -- -- packet-metrics
+▶ Packet metrics
+  ✔ should return zero counts when no packets exist (40.890716ms)
+  ✔ should count completed and failed packets correctly (0.786156ms)
+  ✔ CLI packet-metrics should print all three labels (1025.841736ms)
+  ✔ CLI packet-metrics should succeed with zero counts on empty db (53.217003ms)
+✔ Packet metrics (1183.02424ms)
+ℹ tests 13
+ℹ suites 5
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2606.895063
+
+$ test -f docs/model-evaluation-harness.md
+PASS: docs/model-evaluation-harness.md exists
+
+$ test -f evals/model-eval-v1/README.md
+PASS: evals/model-eval-v1/README.md exists
+
+$ test -f prompts/model-eval-run-v1.md
+PASS: prompts/model-eval-run-v1.md exists
