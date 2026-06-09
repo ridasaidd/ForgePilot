@@ -135,6 +135,44 @@ After all phases complete, the same populated `metrics.json` artifact must be co
 evals/model-eval-v1/<PACKET_ID>/<MODEL_NAME>/metrics.json
 ```
 
+#### Comparison Outcome Standards
+
+The `comparison_outcome` field in `metrics.json` records the result of model comparison for a given benchmark packet. Only the following values are permitted:
+
+##### Allowed Values
+
+| Value | Definition |
+|-------|-----------|
+| `WINNER` | Assigned to the model selected as the strongest implementation for a benchmark packet. |
+| `RUNNER_UP` | Assigned to a valid implementation that was not selected as the winner. |
+| `TIE` | Assigned when multiple implementations are judged equivalent and no winner is selected. |
+| `INVALID` | Assigned when a run is excluded from comparison due to failure, corruption, missing artifacts, audit rejection, or inability to complete evaluation. |
+
+No other values are permitted for `comparison_outcome`.
+
+##### Ownership
+
+* Executors never populate `comparison_outcome`.
+* Auditors never populate `comparison_outcome`.
+* The comparison phase is solely responsible for populating `comparison_outcome`.
+
+##### Recording Rules
+
+* Exactly one winner may exist per benchmark unless a tie is declared.
+* Multiple models may receive `TIE`.
+* Multiple models may receive `RUNNER_UP`.
+* `INVALID` runs are excluded from winner selection.
+* `comparison_outcome` remains `null` until comparison completion.
+
+##### Metrics Update Rules
+
+* The comparison phase updates the existing `metrics.json` artifact in place.
+* The comparison result must be written to:
+    * `runs/<PACKET_ID>/metrics.json`
+    * `evals/model-eval-v1/<PACKET_ID>/<MODEL_NAME>/metrics.json`
+* Comparison outcomes must not be inferred from branch names, packet names, or model names.
+* Comparison outcomes must be determined from documented comparison results.
+
 ### Scope Discipline
 
 Do not:
