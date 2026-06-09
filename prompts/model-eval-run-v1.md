@@ -173,6 +173,71 @@ No other values are permitted for `comparison_outcome`.
 * Comparison outcomes must not be inferred from branch names, packet names, or model names.
 * Comparison outcomes must be determined from documented comparison results.
 
+#### Metrics Field Recording Standards
+
+The following standards define how outcome and quality fields in `metrics.json` must be recorded. These standards ensure consistent recording across benchmark packets, auditors, and comparison runs.
+
+##### first_pass_success
+
+Record `true` only when the executor's first submitted implementation satisfies all acceptance criteria and is accepted without requiring a fix run.
+
+Record `false` when the executor requires one or more fix attempts before acceptance or rejection.
+
+Record `null` when the result is not yet known.
+
+##### fix_attempts
+
+Record `0` when the implementation is accepted on the first attempt.
+
+Increment by `1` for each requested correction after the first executor result.
+
+Record `null` when the result is not yet known.
+
+##### human_intervention
+
+Record `true` when a human manually changes files, repairs artifacts, rewrites outputs, resolves ambiguity for the executor, or gives corrective implementation guidance during the run.
+
+Record `false` when the run completes without human correction or manual repair.
+
+Record `null` when the result is not yet known.
+
+##### ambiguity_discovered
+
+Record `true` when the packet allows more than one reasonable interpretation, causes divergent model behavior, requires clarification, or contains underspecified terms that affect implementation or comparison.
+
+Record `false` when no meaningful ambiguity is discovered.
+
+Record `null` when the result is not yet known.
+
+##### escalation_occurrence
+
+Record `true` when the run requires frontier review, human arbitration, invalid-run handling, auditor escalation, or model escalation.
+
+Record `false` when no escalation occurs.
+
+Record `null` when the result is not yet known.
+
+##### root_cause
+
+Record `NONE` for accepted runs with no failure.
+
+For failed, rejected, invalid, or escalated runs, record one of:
+
+* `ENVIRONMENT` — When local setup, dependencies, test environment, filesystem, network, or tooling caused the issue.
+* `PACKET` — When unclear, incorrect, incomplete, contradictory, or underspecified packet requirements caused the issue.
+* `EXECUTOR` — When the executor model failed to follow clear instructions, violated constraints, produced incorrect work, or omitted required deliverables.
+* `AUDITOR` — When the auditor made an incorrect judgment, missed evidence, or applied inconsistent criteria.
+* `HUMAN` — When human operator error contaminated, interrupted, misdirected, or manually altered the run in a way that affected validity.
+
+Record `null` when the result is not yet known.
+
+##### Recording Standards Examples
+
+* FP-EVAL-002 discovered packet ambiguity around the meaning of "Successful packets"; this should record `ambiguity_discovered: true` and `root_cause: PACKET`.
+* A run that requires manually copying missing evaluation artifacts should record `human_intervention: true`.
+* A run accepted on first submission with no repair should record `first_pass_success: true` and `fix_attempts: 0`.
+* A run requiring frontier review should record `escalation_occurrence: true`.
+
 ### Scope Discipline
 
 Do not:
