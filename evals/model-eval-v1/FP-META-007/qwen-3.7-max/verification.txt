@@ -1,0 +1,44 @@
+$ pnpm typecheck
+> tsc --noEmit
+(exit 0)
+
+$ pnpm test
+> node --experimental-test-module-mocks --import tsx --test tests/*.test.ts
+▶ ForgePilot
+  ✔ should have a working test harness (3.215751ms)
+  ✔ should confirm environment-centric architecture principle (1.410069ms)
+✔ ForgePilot (5.850517ms)
+▶ Database client
+  ✔ should initialize the database and create the data directory (36.47004ms)
+  ✔ should throw when getDb is called before initDb (0.781026ms)
+✔ Database client (40.767654ms)
+▶ Database migration
+  ✔ should create the events table via migration (38.369669ms)
+  ✔ should be idempotent (running migrate twice does not fail) (58.990825ms)
+  ✔ should create all required core schema tables (56.990545ms)
+  ✔ should have correct foreign keys on core schema tables (56.073054ms)
+✔ Database migration (211.00943ms)
+▶ CLI prompt-baselines
+  ✔ should print ForgePilot and prompt baseline file paths (982.422608ms)
+✔ CLI prompt-baselines (982.694926ms)
+▶ Packet metrics
+  ✔ should return zero counts when no packets exist (39.583551ms)
+  ✔ should count completed and failed packets correctly (0.848507ms)
+  ✔ CLI packet-metrics should print all three labels (954.989448ms)
+  ✔ CLI packet-metrics should succeed with zero counts on empty db (55.419678ms)
+✔ Packet metrics (1112.519921ms)
+ℹ tests 13
+ℹ suites 5
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2782.613528
+(exit 0)
+
+$ test -f docs/model-evaluation-harness.md && echo "PASS" || echo "FAIL"
+PASS
+
+$ test -f evals/model-eval-v1/README.md && echo "PASS" || echo "FAIL"
+PASS
