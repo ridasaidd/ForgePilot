@@ -35,6 +35,47 @@ This isolates run artifacts per model per packet, enabling fair and auditable co
 5. Record measured variables for each run.
 6. Compare results across models.
 
+## Packet Quality Checklist
+
+Before using a benchmark packet for model evaluation, verify the following.
+
+### Status/Value Semantics
+
+* Every status label used in the packet (e.g., "successful", "failed", "completed") must be defined explicitly.
+* If a status label maps to a database value, enum, or programmatic constant, that mapping must be stated in the packet.
+* No packet may rely on executor inference of undocumented status or value mappings.
+
+### Ambiguity Review
+
+The packet author must perform an ambiguity review before executor runs begin:
+
+* Identify every qualitative term in the packet (status labels, outcome descriptions, state transitions).
+* Confirm each term traces to a concrete programmatic artifact or an explicit definition.
+* Verify that no term can be interpreted in more than one way by a reasonable executor.
+* Document any disambiguations made during the review in the packet itself.
+
+### Required Packet Sections
+
+Every FP-EVAL benchmark packet must include:
+
+1. **Explicit domain vocabulary** — All domain-specific terms defined unambiguously.
+2. **Required status/value mappings** — Every status value used in metrics documented with its programmatic mapping.
+3. **Allowed interpretation boundaries** — Which interpretations are allowed and which are prohibited for each requirement.
+4. **Constraint adherence checklist** — All implementation constraints enumerated as independently verifiable acceptance criteria.
+5. **Comparison rubric reference** — Comparison must record correctness, constraint adherence, invasiveness, test quality, and ambiguity discovered.
+
+### Comparison Record Requirements
+
+Every model comparison must document these five dimensions with reasoning:
+
+1. **Correctness** — Whether each model satisfied all stated requirements.
+2. **Constraint adherence** — Whether each model respected all implementation constraints.
+3. **Invasiveness** — How much each model modified beyond the minimum necessary.
+4. **Test quality** — Whether each model's tests are well-structured and cover acceptance criteria.
+5. **Ambiguity discovered** — Any packet ambiguities that led to divergent model interpretations.
+
+---
+
 ## Contamination Prevention
 
 The following rules must be followed to ensure fair model comparisons:

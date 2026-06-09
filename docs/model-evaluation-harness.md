@@ -34,6 +34,20 @@ The following variables are recorded per evaluation run:
 
 ---
 
+## Comparison Rubric
+
+Every model comparison must evaluate and record these five dimensions:
+
+1. **Correctness** — Did the executor satisfy all stated requirements and acceptance criteria? Verified against the auditor's determination.
+2. **Constraint adherence** — Did the executor respect all implementation constraints? Verified by diff inspection for prohibited changes.
+3. **Invasiveness** — How much did the executor modify beyond the minimum necessary? Measured by file count, diff size, and whether existing modules were modified unnecessarily.
+4. **Test quality** — Are the executor's tests well-structured, do they cover stated requirements, and do they avoid coupling to implementation details?
+5. **Ambiguity discovered** — Did the packet contain ambiguous or underspecified requirements that led to divergent interpretations? Documented to improve future packet quality.
+
+Comparisons must record which dimensions favored each model with supporting reasoning.
+
+---
+
 ## Evaluation Rules
 
 The following rules govern all evaluation runs:
@@ -85,6 +99,42 @@ evals/
 ```
 
 Per-model run storage isolates each model's run artifacts under `evals/model-eval-v1/<PACKET_ID>/<MODEL_NAME>/`. This preserves a complete record of each evaluation run for comparison and audit.
+
+---
+
+## Packet Quality Requirements
+
+Future FP-EVAL benchmark packets must include the following to eliminate ambiguity and enable fair comparisons.
+
+### Explicit Domain Vocabulary
+
+Packets must define all domain-specific terms used in requirements and acceptance criteria. Qualitative labels such as "successful", "failed", "valid", or "clean" must be defined unambiguously. If a term maps to a programmatic value (database column, enum, constant), that mapping must be stated explicitly.
+
+### Required Status/Value Mappings
+
+Any status value used in success or failure metrics must be documented in the packet. If "successful" corresponds to a specific `packets.status` value, the packet must state which value or values constitute success. Packets must not rely on executor inference of undocumented mappings.
+
+### Allowed Interpretation Boundaries
+
+Packets must specify which interpretations are allowed and which are prohibited. If a requirement allows multiple valid approaches, those approaches must be enumerated or bounded. If a requirement has exactly one valid interpretation, that must be stated.
+
+### Constraint Adherence Checklist
+
+Every packet must include a constraint adherence checklist in its acceptance criteria. Each constraint must be independently verifiable. Example items:
+
+- No schema changes.
+- No migrations added.
+- Only allowed files modified.
+- No routing logic added.
+- No provider logic added.
+
+### Comparison Rubric Fields
+
+Every FP-EVAL packet must require the comparison record to include all five comparison rubric dimensions: correctness, constraint adherence, invasiveness, test quality, and ambiguity discovered.
+
+### Ambiguity Review
+
+Before executor runs begin, the packet author must perform an ambiguity review. Every status label, value mapping, and qualitative term must be traceable to a concrete programmatic artifact or an explicit definition. The review must confirm that no term can be interpreted in more than one way by a reasonable executor. Any disambiguations must be recorded in the packet itself.
 
 ---
 
