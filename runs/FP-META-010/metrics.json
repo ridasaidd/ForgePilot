@@ -1,0 +1,23 @@
+{
+  "packet_id": "FP-META-010",
+  "packet_category": "",
+  "model_id": "qwen-3.7-max",
+  "auditor_model": "",
+  "base_commit": "5646e88db7ff0a348990f54e786cdf5c35ed15c5",
+  "run_branch": "eval/fp-meta-010/qwen-3.7-max",
+  "audit_result": "",
+  "comparison_outcome": null,
+  "first_pass_success": null,
+  "fix_attempts": null,
+  "human_intervention": null,
+  "root_cause": null,
+  "ambiguity_discovered": null,
+  "escalation_occurrence": null,
+  "execution_duration_seconds": null,
+  "prompt_tokens": null,
+  "completion_tokens": null,
+  "reasoning_tokens": null,
+  "total_tokens": null,
+  "estimated_cost": null,
+  "notes": ""
+}

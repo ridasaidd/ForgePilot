@@ -71,6 +71,69 @@ The `metrics.json` artifact must contain exactly the following fields:
 * **comparison_outcome** — This field remains `null` during individual executor runs. It is populated after comparison completion, when results from multiple models are compared.
 * **String fields** — `packet_id`, `packet_category`, `model_id`, `auditor_model`, `base_commit`, `run_branch`, `audit_result`, and `notes` are string fields. Empty strings are used when the value is not yet determined.
 * **Schema is normative** — The schema must be used exactly as specified. No fields may be added, removed, or renamed.
+* **In-place updates** — `metrics.json` is updated in place as evaluation phases complete. The same artifact accumulates values across phases rather than being replaced.
+* **No guessing** — If a value cannot be reliably determined, it must remain `null` or `""` according to its field type rather than being guessed.
+
+#### Metrics Population Procedure
+
+The `metrics.json` artifact is populated incrementally across four lifecycle phases. Each phase owns a specific set of fields.
+
+##### Phase 1: Executor Run Start
+
+The following fields are populated when the executor run begins:
+
+* `packet_id`
+* `packet_category`
+* `model_id`
+* `base_commit`
+* `run_branch`
+
+If unavailable, string fields use `""`.
+
+##### Phase 2: Executor Run Completion
+
+The following fields are populated when the executor run finishes:
+
+* `execution_duration_seconds`
+* `prompt_tokens`
+* `completion_tokens`
+* `reasoning_tokens`
+* `total_tokens`
+* `estimated_cost`
+* `notes`
+
+Unavailable number fields use `null`. Token and cost fields may remain `null` when provider usage data is unavailable.
+
+##### Phase 3: Audit Completion
+
+The following fields are populated after audit completion:
+
+* `auditor_model`
+* `audit_result`
+* `first_pass_success`
+* `fix_attempts`
+* `human_intervention`
+* `root_cause`
+* `ambiguity_discovered`
+* `escalation_occurrence`
+
+Unavailable boolean or numeric fields use `null`. Unavailable string fields use `""`.
+
+##### Phase 4: Comparison Completion
+
+The following field is populated after comparison completion:
+
+* `comparison_outcome`
+
+`comparison_outcome` remains `null` until the model comparison is complete.
+
+##### Evaluation Artifact Copy
+
+After all phases complete, the same populated `metrics.json` artifact must be copied into:
+
+```text
+evals/model-eval-v1/<PACKET_ID>/<MODEL_NAME>/metrics.json
+```
 
 ### Scope Discipline
 
