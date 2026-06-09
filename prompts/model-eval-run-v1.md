@@ -35,7 +35,9 @@ The `metrics.json` artifact must contain exactly the following fields:
 ```json
 {
   "packet_id": "",
+  "packet_category": "",
   "model_id": "",
+  "auditor_model": "",
   "base_commit": "",
   "run_branch": "",
   "audit_result": "",
@@ -45,6 +47,7 @@ The `metrics.json` artifact must contain exactly the following fields:
   "human_intervention": null,
   "root_cause": null,
   "ambiguity_discovered": null,
+  "escalation_occurrence": null,
   "execution_duration_seconds": null,
   "prompt_tokens": null,
   "completion_tokens": null,
@@ -55,12 +58,18 @@ The `metrics.json` artifact must contain exactly the following fields:
 }
 ```
 
+#### Field Meanings
+
+* **packet_category** — Records the task category used for future routing analysis.
+* **auditor_model** — Records which model or human audited the run.
+* **escalation_occurrence** — Records whether the run required escalation or frontier review.
+
 #### Metrics Artifact Rules
 
 * **Unavailable values** — Any field whose value is not available at the time of recording must be set to `null`.
 * **Per-model-run ownership** — Each metrics artifact is generated per model run. One metrics artifact corresponds to one executor model executing one packet.
 * **comparison_outcome** — This field remains `null` during individual executor runs. It is populated after comparison completion, when results from multiple models are compared.
-* **String fields** — `packet_id`, `model_id`, `base_commit`, `run_branch`, `audit_result`, and `notes` are string fields. Empty strings are used when the value is not yet determined.
+* **String fields** — `packet_id`, `packet_category`, `model_id`, `auditor_model`, `base_commit`, `run_branch`, `audit_result`, and `notes` are string fields. Empty strings are used when the value is not yet determined.
 * **Schema is normative** — The schema must be used exactly as specified. No fields may be added, removed, or renamed.
 
 ### Scope Discipline
