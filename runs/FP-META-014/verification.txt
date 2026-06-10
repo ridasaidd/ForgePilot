@@ -1,0 +1,46 @@
+$ pnpm typecheck
+$ tsc --noEmit
+
+$ pnpm test
+$ node --experimental-test-module-mocks --import tsx --test tests/*.test.ts
+$ tsx src/cli/forgepilot.ts -- -- prompt-baselines
+▶ ForgePilot
+  ✔ should have a working test harness (0.672136ms)
+  ✔ should confirm environment-centric architecture principle (0.196057ms)
+✔ ForgePilot (1.571626ms)
+▶ Database client
+  ✔ should initialize the database and create the data directory (32.012982ms)
+  ✔ should throw when getDb is called before initDb (0.675043ms)
+✔ Database client (32.972546ms)
+▶ Database migration
+  ✔ should create the events table via migration (35.387661ms)
+  ✔ should be idempotent (running migrate twice does not fail) (50.730821ms)
+  ✔ should create all required core schema tables (51.13201ms)
+  ✔ should have correct foreign keys on core schema tables (51.605644ms)
+✔ Database migration (189.416271ms)
+▶ CLI prompt-baselines
+  ✔ should print ForgePilot and prompt baseline file paths (923.486857ms)
+✔ CLI prompt-baselines (923.78573ms)
+$ tsx src/cli/forgepilot.ts -- -- packet-metrics
+▶ Packet metrics
+  ✔ should return zero counts when no packets exist (42.748803ms)
+  ✔ should count completed and failed packets correctly (0.734951ms)
+  ✔ CLI packet-metrics should print all three labels (991.674821ms)
+  ✔ CLI packet-metrics should succeed with zero counts on empty db (56.230816ms)
+✔ Packet metrics (1156.564143ms)
+ℹ tests 13
+ℹ suites 5
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2583.418786
+
+$ test -f docs/metrics-trust-and-validation.md
+PASS: docs/metrics-trust-and-validation.md exists
+
+$ git diff --stat HEAD -- docs/model-evaluation-harness.md docs/metrics-trust-and-validation.md
+ docs/metrics-trust-and-validation.md | 287 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ docs/model-evaluation-harness.md     |  18 ++++
+ 2 files changed, 305 insertions(+)
