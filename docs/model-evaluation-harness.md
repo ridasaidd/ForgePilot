@@ -364,6 +364,24 @@ Before executor runs begin, the packet author must perform an ambiguity review. 
 
 ---
 
+## Metrics Trust and Validation
+
+All metrics records are subject to trust, validation, and admission standards. These standards govern whether a metrics record is safe to use as evidence in observatory outputs.
+
+See `docs/metrics-trust-and-validation.md` for:
+
+- Trust Tier definitions (TIER_0 through TIER_3)
+- Validation State definitions (VALID, INVALID, INCOMPLETE, DEFERRED)
+- Admission State definitions (NOT_EVALUATED, REJECTED, PENDING, ADMITTED, QUARANTINED)
+- Provenance completeness requirements
+- Admission rules and admission rules matrix
+- TIER_1 resolution policy
+- Demotion path from ADMITTED to QUARANTINED
+- Historical data policy
+- Signal vs evidence distinction
+
+---
+
 ## Constraints
 
 * This harness defines methodology only. It does not add model routing.
