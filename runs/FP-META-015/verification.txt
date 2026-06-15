@@ -1,0 +1,55 @@
+$ pnpm typecheck
+$ tsc --noEmit
+
+$ pnpm test
+$ node --experimental-test-module-mocks --import tsx --test tests/*.test.ts
+$ tsx src/cli/forgepilot.ts -- -- prompt-baselines
+▶ ForgePilot
+  ✔ should have a working test harness (0.750803ms)
+  ✔ should confirm environment-centric architecture principle (0.236817ms)
+✔ ForgePilot (1.801869ms)
+▶ Database client
+  ✔ should initialize the database and create the data directory (29.240993ms)
+  ✔ should throw when getDb is called before initDb (0.638802ms)
+✔ Database client (30.159039ms)
+▶ Database migration
+  ✔ should create the events table via migration (36.796546ms)
+  ✔ should be idempotent (running migrate twice does not fail) (73.797315ms)
+  ✔ should create all required core schema tables (56.16317ms)
+  ✔ should have correct foreign keys on core schema tables (56.290023ms)
+✔ Database migration (224.613253ms)
+▶ CLI prompt-baselines
+  ✔ should print ForgePilot and prompt baseline file paths (1006.239623ms)
+✔ CLI prompt-baselines (1006.589015ms)
+$ tsx src/cli/forgepilot.ts -- -- packet-metrics
+▶ Packet metrics
+  ✔ should return zero counts when no packets exist (39.28279ms)
+  ✔ should count completed and failed packets correctly (0.781767ms)
+  ✔ CLI packet-metrics should print all three labels (1012.565663ms)
+  ✔ CLI packet-metrics should succeed with zero counts on empty db (54.546062ms)
+✔ Packet metrics (1169.870865ms)
+ℹ tests 13
+ℹ suites 5
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2868.891514
+
+$ test -f README.md
+PASS: README.md exists
+
+$ test -f PRINCIPLES.md
+PASS: PRINCIPLES.md exists
+
+$ test -f docs/metrics-trust-and-validation.md
+PASS: docs/metrics-trust-and-validation.md exists
+
+$ test -f packets/FP-META-015.md
+PASS: packets/FP-META-015.md exists
+
+$ git diff --stat HEAD -- docs/telemetry-authority-and-field-ownership.md docs/model-evaluation-harness.md
+ docs/model-evaluation-harness.md                |  12 ++++
+ docs/telemetry-authority-and-field-ownership.md | 289 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 301 insertions(+)
