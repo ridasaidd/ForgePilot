@@ -382,6 +382,22 @@ See `docs/metrics-trust-and-validation.md` for:
 
 ---
 
+## Telemetry Authority and Field Ownership
+
+All metrics fields are subject to field authority and ownership standards. These standards govern which system, lifecycle phase, or actor is authorized to write each field.
+
+See `docs/telemetry-authority-and-field-ownership.md` for:
+
+- Field Authority, Field Owner, Field Source, and Field Writer definitions
+- Authority classes (EXECUTOR, AUDITOR, COMPARISON_PHASE, INFRASTRUCTURE, OPENCODE_TELEMETRY, HUMAN_OPERATOR, DERIVED, UNKNOWN)
+- Field ownership matrix for all metrics fields
+- OpenCode telemetry classification and trust
+- Rules for unknown/unavailable values
+- Rules for conflicting values
+- Rules for derived fields
+
+---
+
 ## Constraints
 
 * This harness defines methodology only. It does not add model routing.
