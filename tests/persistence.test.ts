@@ -42,6 +42,14 @@ function ensurePrerequisiteData() {
   db.exec("INSERT OR IGNORE INTO tasks (id, step_id, name, status) VALUES (1, 1, 'default-task', 'pending')");
 }
 
+import {
+  ingestOpenCodeTelemetry,
+  getExecutionTelemetry,
+  getPacketTelemetry,
+  type IngestTelemetryParams,
+} from "../src/db/telemetry.js";
+import { parseOpenCodeTelemetryFile } from "../src/telemetry/opencode.js";
+
 describe("FP-004: SQLite Metrics Persistence", () => {
   describe("Migration", () => {
     it("should be idempotent (running migrate twice does not fail)", () => {
@@ -811,6 +819,750 @@ describe("FP-004: SQLite Metrics Persistence", () => {
       for (const code of codes) {
         assert.ok(validCodes.includes(code.error_code));
       }
+    });
+  });
+});
+
+describe("FP-005: OpenCode Telemetry Ingestion", () => {
+  describe("Telemetry artifact parsing", () => {
+    it("should parse a complete OpenCode telemetry artifact file successfully", () => {
+      const fixturePath = path.resolve("tests/fixtures/opencode-telemetry-complete.json");
+      const result = parseOpenCodeTelemetryFile(fixturePath);
+
+      assert.ok(result.parsed, "Parse should succeed");
+      assert.ok(result.artifact, "Artifact should be returned");
+      assert.equal(result.error, null);
+
+      const a = result.artifact!;
+      assert.equal(a.session_id, "session-abc123-def456");
+      assert.equal(a.provider, "openrouter");
+      assert.equal(a.model, "deepseek-v4-pro");
+      assert.equal(a.model_variant, "high");
+      assert.equal(a.input_tokens, 15000);
+      assert.equal(a.output_tokens, 8000);
+      assert.equal(a.reasoning_tokens, 3200);
+      assert.equal(a.cache_read_tokens, 500);
+      assert.equal(a.cache_write_tokens, 1200);
+      assert.equal(a.cost, 0.452);
+      assert.equal(a.created_at, "2026-06-15T10:00:00Z");
+      assert.equal(a.updated_at, "2026-06-15T10:12:30Z");
+      assert.equal(a.duration_ms, 750000);
+    });
+
+    it("should handle missing telemetry fields as null", () => {
+      const fixturePath = path.resolve("tests/fixtures/opencode-telemetry-missing-fields.json");
+      const result = parseOpenCodeTelemetryFile(fixturePath);
+
+      assert.ok(result.parsed, "Parse should succeed");
+      assert.ok(result.artifact, "Artifact should be returned");
+
+      const a = result.artifact!;
+      assert.equal(a.session_id, "session-partial");
+      assert.equal(a.provider, "openrouter");
+      assert.equal(a.model, "deepseek-v4");
+      assert.equal(a.model_variant, null, "model_variant should be null when missing");
+      assert.equal(a.input_tokens, 5000);
+      assert.equal(a.output_tokens, null, "output_tokens should be null when missing");
+      assert.equal(a.reasoning_tokens, null, "reasoning_tokens should be null when missing");
+      assert.equal(a.cache_read_tokens, null, "cache_read_tokens should be null when missing");
+      assert.equal(a.cache_write_tokens, null, "cache_write_tokens should be null when missing");
+      assert.equal(a.cost, null, "cost should be null when missing");
+      assert.equal(a.updated_at, null, "updated_at should be null when missing");
+      assert.equal(a.duration_ms, null, "duration_ms should be null when missing");
+    });
+
+    it("should fail on invalid JSON artifact", () => {
+      const fixturePath = path.resolve("tests/fixtures/opencode-telemetry-invalid.json");
+      const result = parseOpenCodeTelemetryFile(fixturePath);
+
+      assert.equal(result.parsed, false);
+      assert.equal(result.artifact, null);
+      assert.ok(result.error, "Should have an error message");
+    });
+
+    it("should parse a messages-based OpenCode export (real shape)", () => {
+      const fixturePath = path.resolve("tests/fixtures/opencode-telemetry-messages.json");
+      const result = parseOpenCodeTelemetryFile(fixturePath);
+
+      assert.ok(result.parsed, "Parse should succeed");
+      assert.ok(result.artifact, "Artifact should be returned");
+
+      const a = result.artifact!;
+      assert.equal(a.session_id, "session-opencode-real-abc123");
+      assert.equal(a.provider, "openrouter");
+      assert.equal(a.model, "deepseek-v4-pro");
+      assert.equal(a.model_variant, "high");
+
+      assert.equal(a.input_tokens, 15000, "Should aggregate input_tokens across messages");
+      assert.equal(a.output_tokens, 8000, "Should aggregate output_tokens across messages");
+      assert.equal(a.reasoning_tokens, 3200, "Should aggregate reasoning_tokens across messages");
+      assert.equal(a.cache_read_tokens, 500, "Should aggregate cache_read_tokens across messages");
+      assert.equal(a.cache_write_tokens, 1200, "Should aggregate cache_write_tokens across messages");
+      assert.equal(a.cost, 0.452);
+      assert.equal(a.created_at, "2026-06-15T10:00:00Z");
+      assert.equal(a.updated_at, "2026-06-15T10:12:30Z");
+      assert.equal(a.duration_ms, null, "duration_ms not present in messages fixture");
+    });
+
+    it("should parse a top-level summary export with alternate field names", () => {
+      const fixturePath = path.resolve("tests/fixtures/opencode-telemetry-summary.json");
+      const result = parseOpenCodeTelemetryFile(fixturePath);
+
+      assert.ok(result.parsed, "Parse should succeed");
+      assert.ok(result.artifact, "Artifact should be returned");
+
+      const a = result.artifact!;
+      assert.equal(a.session_id, "session-top-level-summary-xyz");
+      assert.equal(a.provider, "openrouter");
+      assert.equal(a.model, "deepseek-v4");
+      assert.equal(a.model_variant, null, "variant not present in summary fixture");
+
+      assert.equal(a.input_tokens, 12000, "Should extract from usage.input");
+      assert.equal(a.output_tokens, 5500, "Should extract from usage.output");
+      assert.equal(a.reasoning_tokens, 2100, "Should extract from usage.reasoning");
+      assert.equal(a.cache_read_tokens, 400, "Should extract from usage.cache_read");
+      assert.equal(a.cache_write_tokens, 900, "Should extract from usage.cache_write");
+
+      assert.equal(a.cost, 0.315, "Should extract from cost.total_cost");
+      assert.equal(a.created_at, "2026-06-14T09:30:00Z");
+      assert.equal(a.updated_at, "2026-06-14T09:45:00Z");
+      assert.equal(a.duration_ms, 900000, "Should extract from duration field");
+    });
+  });
+
+  describe("Telemetry table migration", () => {
+    it("should create packet_execution_telemetry table with required columns", () => {
+      const dbPath = path.join(testDir, "telemetry-table.db");
+      setupDb(dbPath);
+      const db = getDb();
+
+      const tables = db
+        .prepare("SELECT name FROM sqlite_master WHERE type = 'table'")
+        .all()
+        .map((r: unknown) => (r as { name: string }).name);
+      assert.ok(tables.includes("packet_execution_telemetry"), "packet_execution_telemetry table should exist");
+
+      const columns = db
+        .prepare("PRAGMA table_info(packet_execution_telemetry)")
+        .all()
+        .map((r: unknown) => (r as { name: string }).name);
+
+      const required = [
+        "telemetry_id", "execution_id", "packet_id", "source",
+        "telemetry_artifact_path", "opencode_session_id", "provider",
+        "model", "model_variant", "input_tokens", "output_tokens",
+        "reasoning_tokens", "cache_read_tokens", "cache_write_tokens",
+        "cost", "session_created_at", "session_updated_at", "duration_ms",
+        "ingestion_mode", "mapping_confidence", "trust_tier",
+        "validation_state", "admission_state", "recorded_at",
+      ];
+      for (const col of required) {
+        assert.ok(columns.includes(col), `packet_execution_telemetry.${col} should exist`);
+      }
+    });
+  });
+
+  describe("Telemetry ingestion", () => {
+    it("should successfully ingest telemetry from a complete artifact", () => {
+      const dbPath = path.join(testDir, "telemetry-ingest-complete.db");
+      setupDb(dbPath);
+
+      const packet = recordPacketIntent({
+        title: "FP-005 Complete Telemetry",
+        packet_path: "packets/FP-005.md",
+        packet_hash: "hash-telemetry-1",
+      });
+
+      const execution = createExecutionAttempt({
+        packet_id: packet.id,
+        attempt_number: 1,
+        trace_id: "trace-telemetry-001",
+      });
+
+      const fixturePath = path.resolve("tests/fixtures/opencode-telemetry-complete.json");
+      const result = ingestOpenCodeTelemetry({
+        packet_id: packet.id,
+        execution_id: execution.execution_id,
+        telemetry_artifact_path: fixturePath,
+        ingestion_mode: "DIRECT_ARTIFACT",
+      });
+
+      assert.ok(result.ingested, "Ingestion should succeed");
+      assert.ok(result.telemetry, "Telemetry record should be returned");
+      assert.equal(result.error, null);
+
+      const t = result.telemetry!;
+      assert.equal(t.execution_id, execution.execution_id);
+      assert.equal(t.packet_id, packet.id);
+      assert.equal(t.source, "OPENCODE_TELEMETRY");
+      assert.equal(t.telemetry_artifact_path, fixturePath);
+      assert.equal(t.opencode_session_id, "session-abc123-def456");
+      assert.equal(t.provider, "openrouter");
+      assert.equal(t.model, "deepseek-v4-pro");
+      assert.equal(t.model_variant, "high");
+      assert.equal(t.input_tokens, 15000);
+      assert.equal(t.output_tokens, 8000);
+      assert.equal(t.reasoning_tokens, 3200);
+      assert.equal(t.cache_read_tokens, 500);
+      assert.equal(t.cache_write_tokens, 1200);
+      assert.equal(t.cost, 0.452);
+      assert.equal(t.session_created_at, "2026-06-15T10:00:00Z");
+      assert.equal(t.session_updated_at, "2026-06-15T10:12:30Z");
+      assert.equal(t.duration_ms, 750000);
+      assert.equal(t.ingestion_mode, "DIRECT_ARTIFACT");
+      assert.equal(t.mapping_confidence, "EXPLICIT");
+      assert.equal(t.trust_tier, "TIER_2_VERIFIED_ARTIFACT");
+      assert.equal(t.validation_state, "VALID");
+      assert.equal(t.admission_state, "PENDING");
+    });
+
+    it("should persist missing fields as null", () => {
+      const dbPath = path.join(testDir, "telemetry-missing-fields.db");
+      setupDb(dbPath);
+
+      const packet = recordPacketIntent({
+        title: "FP-005 Missing Fields",
+        packet_path: "packets/FP-005.md",
+        packet_hash: "hash-telemetry-2",
+      });
+
+      const execution = createExecutionAttempt({
+        packet_id: packet.id,
+        attempt_number: 1,
+      });
+
+      const fixturePath = path.resolve("tests/fixtures/opencode-telemetry-missing-fields.json");
+      const result = ingestOpenCodeTelemetry({
+        packet_id: packet.id,
+        execution_id: execution.execution_id,
+        telemetry_artifact_path: fixturePath,
+        ingestion_mode: "DIRECT_ARTIFACT",
+      });
+
+      assert.ok(result.ingested, "Ingestion should succeed");
+      const t = result.telemetry!;
+
+      assert.equal(t.model_variant, null, "model_variant should be null");
+      assert.equal(t.output_tokens, null, "output_tokens should be null");
+      assert.equal(t.reasoning_tokens, null, "reasoning_tokens should be null");
+      assert.equal(t.cache_read_tokens, null, "cache_read_tokens should be null");
+      assert.equal(t.cache_write_tokens, null, "cache_write_tokens should be null");
+      assert.equal(t.cost, null, "cost should be null");
+      assert.equal(t.session_updated_at, null, "updated_at should be null");
+      assert.equal(t.duration_ms, null, "duration_ms should be null");
+    });
+
+    it("should require explicit packet_id and execution_id mapping", () => {
+      const dbPath = path.join(testDir, "telemetry-explicit-mapping.db");
+      setupDb(dbPath);
+
+      const result = ingestOpenCodeTelemetry({
+        packet_id: 0,
+        execution_id: 0,
+        telemetry_artifact_path: "nonexistent.json",
+        ingestion_mode: "DIRECT_ARTIFACT",
+      });
+
+      assert.equal(result.ingested, false);
+      assert.ok(result.error, "Should have an error message");
+
+      const packet = recordPacketIntent({
+        title: "FP-005 Mapping Test",
+        packet_path: "packets/FP-005.md",
+        packet_hash: "hash-telemetry-3",
+      });
+
+      const resultNoExec = ingestOpenCodeTelemetry({
+        packet_id: packet.id,
+        execution_id: 99999,
+        telemetry_artifact_path: "nonexistent.json",
+        ingestion_mode: "DIRECT_ARTIFACT",
+      });
+
+      assert.equal(resultNoExec.ingested, false);
+      assert.ok(resultNoExec.error, "Should fail when execution_id does not exist");
+    });
+
+    it("should reject cross-packet mapping (execution from different packet)", () => {
+      const dbPath = path.join(testDir, "telemetry-cross-packet.db");
+      setupDb(dbPath);
+
+      const packetA = recordPacketIntent({
+        title: "Packet A",
+        packet_path: "packets/FP-A.md",
+        packet_hash: "hash-a",
+      });
+
+      const execA = createExecutionAttempt({
+        packet_id: packetA.id,
+        attempt_number: 1,
+        trace_id: "trace-a",
+      });
+
+      const packetB = recordPacketIntent({
+        title: "Packet B",
+        packet_path: "packets/FP-B.md",
+        packet_hash: "hash-b",
+      });
+
+      const fixturePath = path.resolve("tests/fixtures/opencode-telemetry-complete.json");
+      const result = ingestOpenCodeTelemetry({
+        packet_id: packetB.id,
+        execution_id: execA.execution_id,
+        telemetry_artifact_path: fixturePath,
+        ingestion_mode: "DIRECT_ARTIFACT",
+      });
+
+      assert.equal(result.ingested, false, "Should reject cross-packet mapping");
+      assert.ok(result.error, "Should have an error message");
+      assert.match(
+        result.error!,
+        /not found for packet/,
+        "Error should mention packet mismatch"
+      );
+
+      const db = getDb();
+      const telemetryRows = db
+        .prepare("SELECT COUNT(*) as cnt FROM packet_execution_telemetry")
+        .get() as { cnt: number };
+      assert.equal(telemetryRows.cnt, 0, "No telemetry row should be inserted");
+    });
+
+    it("should label retroactive ingestion correctly", () => {
+      const dbPath = path.join(testDir, "telemetry-retroactive.db");
+      setupDb(dbPath);
+
+      const packet = recordPacketIntent({
+        title: "FP-005 Retroactive Test",
+        packet_path: "packets/FP-005.md",
+        packet_hash: "hash-telemetry-4",
+      });
+
+      const execution = createExecutionAttempt({
+        packet_id: packet.id,
+        attempt_number: 1,
+      });
+
+      const fixturePath = path.resolve("tests/fixtures/opencode-telemetry-complete.json");
+      const result = ingestOpenCodeTelemetry({
+        packet_id: packet.id,
+        execution_id: execution.execution_id,
+        telemetry_artifact_path: fixturePath,
+        ingestion_mode: "RETROACTIVE_ARTIFACT",
+      });
+
+      assert.ok(result.ingested, "Retroactive ingestion should succeed");
+      assert.equal(result.telemetry!.ingestion_mode, "RETROACTIVE_ARTIFACT");
+      assert.equal(result.telemetry!.mapping_confidence, "EXPLICIT");
+      assert.equal(result.telemetry!.trust_tier, "TIER_2_VERIFIED_ARTIFACT");
+      assert.equal(result.telemetry!.admission_state, "PENDING", "Should not auto-admit telemetry");
+    });
+
+    it("should record source as OPENCODE_TELEMETRY", () => {
+      const dbPath = path.join(testDir, "telemetry-source.db");
+      setupDb(dbPath);
+
+      const packet = recordPacketIntent({
+        title: "FP-005 Source Test",
+        packet_path: "packets/FP-005.md",
+        packet_hash: "hash-telemetry-5",
+      });
+
+      const execution = createExecutionAttempt({
+        packet_id: packet.id,
+        attempt_number: 1,
+      });
+
+      const fixturePath = path.resolve("tests/fixtures/opencode-telemetry-complete.json");
+      const result = ingestOpenCodeTelemetry({
+        packet_id: packet.id,
+        execution_id: execution.execution_id,
+        telemetry_artifact_path: fixturePath,
+        ingestion_mode: "DIRECT_ARTIFACT",
+      });
+
+      assert.equal(result.telemetry!.source, "OPENCODE_TELEMETRY");
+    });
+
+    it("should not require network access (local file parsing only)", () => {
+      const dbPath = path.join(testDir, "telemetry-no-network.db");
+      setupDb(dbPath);
+
+      const packet = recordPacketIntent({
+        title: "FP-005 No Network",
+        packet_path: "packets/FP-005.md",
+        packet_hash: "hash-telemetry-6",
+      });
+
+      const execution = createExecutionAttempt({
+        packet_id: packet.id,
+        attempt_number: 1,
+      });
+
+      const fixturePath = path.resolve("tests/fixtures/opencode-telemetry-complete.json");
+      const result = ingestOpenCodeTelemetry({
+        packet_id: packet.id,
+        execution_id: execution.execution_id,
+        telemetry_artifact_path: fixturePath,
+        ingestion_mode: "DIRECT_ARTIFACT",
+      });
+
+      assert.ok(result.ingested, "Local file ingestion should work without network");
+    });
+
+    it("should allow retrieving telemetry by execution_id", () => {
+      const dbPath = path.join(testDir, "telemetry-retrieve-by-exec.db");
+      setupDb(dbPath);
+
+      const packet = recordPacketIntent({
+        title: "FP-005 Retrieve Test",
+        packet_path: "packets/FP-005.md",
+        packet_hash: "hash-telemetry-7",
+      });
+
+      const execution = createExecutionAttempt({
+        packet_id: packet.id,
+        attempt_number: 1,
+      });
+
+      const fixturePath = path.resolve("tests/fixtures/opencode-telemetry-complete.json");
+      ingestOpenCodeTelemetry({
+        packet_id: packet.id,
+        execution_id: execution.execution_id,
+        telemetry_artifact_path: fixturePath,
+        ingestion_mode: "DIRECT_ARTIFACT",
+      });
+
+      const telemetry = getExecutionTelemetry(execution.execution_id);
+      assert.equal(telemetry.length, 1);
+      assert.equal(telemetry[0].opencode_session_id, "session-abc123-def456");
+    });
+
+    it("should allow retrieving telemetry by packet_id", () => {
+      const dbPath = path.join(testDir, "telemetry-retrieve-by-pkt.db");
+      setupDb(dbPath);
+
+      const packet = recordPacketIntent({
+        title: "FP-005 Packet Retrieve",
+        packet_path: "packets/FP-005.md",
+        packet_hash: "hash-telemetry-8",
+      });
+
+      const execution = createExecutionAttempt({
+        packet_id: packet.id,
+        attempt_number: 1,
+      });
+
+      const fixturePath = path.resolve("tests/fixtures/opencode-telemetry-complete.json");
+      ingestOpenCodeTelemetry({
+        packet_id: packet.id,
+        execution_id: execution.execution_id,
+        telemetry_artifact_path: fixturePath,
+        ingestion_mode: "DIRECT_ARTIFACT",
+      });
+
+      const telemetry = getPacketTelemetry(packet.id);
+      assert.equal(telemetry.length, 1);
+      assert.equal(telemetry[0].source, "OPENCODE_TELEMETRY");
+    });
+
+    it("should not admit telemetry automatically", () => {
+      const dbPath = path.join(testDir, "telemetry-no-auto-admit.db");
+      setupDb(dbPath);
+
+      const packet = recordPacketIntent({
+        title: "FP-005 No Auto Admit",
+        packet_path: "packets/FP-005.md",
+        packet_hash: "hash-telemetry-9",
+      });
+
+      const execution = createExecutionAttempt({
+        packet_id: packet.id,
+        attempt_number: 1,
+      });
+
+      const fixturePath = path.resolve("tests/fixtures/opencode-telemetry-complete.json");
+      const result = ingestOpenCodeTelemetry({
+        packet_id: packet.id,
+        execution_id: execution.execution_id,
+        telemetry_artifact_path: fixturePath,
+        ingestion_mode: "DIRECT_ARTIFACT",
+      });
+
+      assert.equal(result.telemetry!.admission_state, "PENDING", "Telemetry must not be automatically admitted");
+    });
+
+    it("should ingest telemetry from a messages-based OpenCode export", () => {
+      const dbPath = path.join(testDir, "telemetry-messages.db");
+      setupDb(dbPath);
+
+      const packet = recordPacketIntent({
+        title: "FP-005 Messages Test",
+        packet_path: "packets/FP-005.md",
+        packet_hash: "hash-telemetry-10",
+      });
+
+      const execution = createExecutionAttempt({
+        packet_id: packet.id,
+        attempt_number: 1,
+        trace_id: "trace-messages-001",
+      });
+
+      const fixturePath = path.resolve("tests/fixtures/opencode-telemetry-messages.json");
+      const result = ingestOpenCodeTelemetry({
+        packet_id: packet.id,
+        execution_id: execution.execution_id,
+        telemetry_artifact_path: fixturePath,
+        ingestion_mode: "DIRECT_ARTIFACT",
+      });
+
+      assert.ok(result.ingested, "Messages-based ingestion should succeed");
+      const t = result.telemetry!;
+      assert.equal(t.opencode_session_id, "session-opencode-real-abc123");
+      assert.equal(t.provider, "openrouter");
+      assert.equal(t.model, "deepseek-v4-pro");
+      assert.equal(t.model_variant, "high");
+      assert.equal(t.input_tokens, 15000);
+      assert.equal(t.output_tokens, 8000);
+      assert.equal(t.reasoning_tokens, 3200);
+      assert.equal(t.cache_read_tokens, 500);
+      assert.equal(t.cache_write_tokens, 1200);
+      assert.equal(t.cost, 0.452);
+      assert.equal(t.session_created_at, "2026-06-15T10:00:00Z");
+      assert.equal(t.session_updated_at, "2026-06-15T10:12:30Z");
+      assert.equal(t.duration_ms, null, "duration_ms not present in messages fixture");
+      assert.equal(t.source, "OPENCODE_TELEMETRY");
+      assert.equal(t.admission_state, "PENDING");
+    });
+
+    it("should resolve packet by title and packet_path for string identifiers", () => {
+      const dbPath = path.join(testDir, "telemetry-packet-lookup.db");
+      setupDb(dbPath);
+      const db = getDb();
+
+      recordPacketIntent({
+        title: "FP-004 SQLite Persistence",
+        packet_path: "packets/FP-004.md",
+        packet_hash: "hash-fp004",
+      });
+
+      const byPath = db
+        .prepare("SELECT id FROM packets WHERE packet_path = ?")
+        .get("packets/FP-004.md") as { id: number } | undefined;
+      assert.ok(byPath, "Should find packet by packet_path");
+      assert.ok(byPath.id > 0);
+
+      const byTitle = db
+        .prepare("SELECT id FROM packets WHERE title LIKE ?")
+        .get("%FP-004%") as { id: number } | undefined;
+      assert.ok(byTitle, "Should find packet by title LIKE");
+      assert.equal(byTitle.id, byPath.id);
+
+      const byIdStr = db
+        .prepare(
+          "SELECT id FROM packets WHERE packet_path = ? OR packet_path LIKE ? OR title = ? OR title LIKE ?"
+        )
+        .get("packets/FP-004.md", "%FP-004%", "FP-004", "%FP-004%") as { id: number } | undefined;
+      assert.ok(byIdStr, "Should find packet matching FP-004 string");
+    });
+  });
+
+  describe("FP-004 persistence behavior preservation", () => {
+    it("should still record packet intent after FP-005 migration", () => {
+      const dbPath = path.join(testDir, "fp005-preserve-intent.db");
+      setupDb(dbPath);
+
+      const packet = recordPacketIntent({
+        title: "FP-005 Compat Test",
+        packet_path: "packets/FP-TEST.md",
+        packet_hash: "hash-fp005",
+      });
+
+      assert.ok(packet.id > 0);
+      assert.equal(packet.title, "FP-005 Compat Test");
+    });
+
+    it("should still append lifecycle events after FP-005 migration", () => {
+      const dbPath = path.join(testDir, "fp005-preserve-lifecycle.db");
+      setupDb(dbPath);
+
+      const packet = recordPacketIntent({
+        title: "FP-005 Lifecycle Test",
+        packet_path: "packets/FP-TEST.md",
+        packet_hash: "hash-fp005-lc",
+      });
+
+      const event = appendLifecycleEvent({
+        packet_id: packet.id,
+        event_type: "PACKET_CREATED",
+        lifecycle_state: "CREATED",
+        source: "forgepilot",
+        actor: "cli",
+        reason: "Packet created",
+      });
+
+      assert.equal(event.lifecycle_state, "CREATED");
+
+      const events = getPacketLifecycleEvents(packet.id);
+      assert.equal(events.length, 1);
+    });
+
+    it("should still create and manage execution attempts after FP-005 migration", () => {
+      const dbPath = path.join(testDir, "fp005-preserve-exec.db");
+      setupDb(dbPath);
+
+      const packet = recordPacketIntent({
+        title: "FP-005 Exec Test",
+        packet_path: "packets/FP-TEST.md",
+        packet_hash: "hash-fp005-exec",
+      });
+
+      const execution = createExecutionAttempt({
+        packet_id: packet.id,
+        attempt_number: 1,
+        trace_id: "trace-fp005",
+      });
+
+      assert.equal(execution.execution_state, "RUNNING");
+
+      const succeeded = markExecutionSucceeded(execution.execution_id);
+      assert.equal(succeeded.execution_state, "SUCCEEDED");
+
+      const executions = getPacketExecutions(packet.id);
+      assert.equal(executions.length, 1);
+      assert.equal(executions[0].execution_state, "SUCCEEDED");
+    });
+
+    it("should still derive current packet state from lifecycle events after FP-005 migration", () => {
+      const dbPath = path.join(testDir, "fp005-preserve-state.db");
+      setupDb(dbPath);
+
+      const packet = recordPacketIntent({
+        title: "FP-005 State Test",
+        packet_path: "packets/FP-TEST.md",
+        packet_hash: "hash-fp005-state",
+      });
+
+      appendLifecycleEvent({
+        packet_id: packet.id,
+        event_type: "PACKET_CREATED",
+        lifecycle_state: "CREATED",
+        source: "forgepilot",
+        actor: "cli",
+        reason: "Created",
+      });
+
+      appendLifecycleEvent({
+        packet_id: packet.id,
+        event_type: "PACKET_ADMITTED",
+        lifecycle_state: "ADMITTED",
+        source: "auditor",
+        actor: "model",
+        reason: "Admitted",
+      });
+
+      const state = getCurrentPacketState(packet.id);
+      assert.equal(state!.current_state, "ADMITTED");
+    });
+
+    it("should still support multiple execution attempts after FP-005 migration", () => {
+      const dbPath = path.join(testDir, "fp005-preserve-multi-exec.db");
+      setupDb(dbPath);
+
+      const packet = recordPacketIntent({
+        title: "FP-005 Multi Exec",
+        packet_path: "packets/FP-TEST.md",
+        packet_hash: "hash-fp005-multi",
+      });
+
+      const attempt1 = createExecutionAttempt({
+        packet_id: packet.id,
+        attempt_number: 1,
+      });
+      markExecutionFailed({
+        execution_id: attempt1.execution_id,
+        error_code: "EXECUTOR_FAILED",
+      });
+
+      const attempt2 = createExecutionAttempt({
+        packet_id: packet.id,
+        attempt_number: 2,
+      });
+      markExecutionSucceeded(attempt2.execution_id);
+
+      const executions = getPacketExecutions(packet.id);
+      assert.equal(executions.length, 2);
+      assert.equal(executions[0].execution_state, "FAILED");
+      assert.equal(executions[1].execution_state, "SUCCEEDED");
+    });
+
+    it("should still have stable and queryable error codes after FP-005 migration", () => {
+      const dbPath = path.join(testDir, "fp005-preserve-errors.db");
+      setupDb(dbPath);
+      const db = getDb();
+
+      const packet = recordPacketIntent({
+        title: "FP-005 Error Test",
+        packet_path: "packets/FP-TEST.md",
+        packet_hash: "hash-fp005-err",
+      });
+
+      const execution = createExecutionAttempt({
+        packet_id: packet.id,
+        attempt_number: 1,
+      });
+      markExecutionFailed({
+        execution_id: execution.execution_id,
+        error_code: "PROVIDER_TIMEOUT",
+        error_message: "Timeout occurred",
+      });
+
+      const results = db
+        .prepare("SELECT * FROM packet_executions WHERE error_code = 'PROVIDER_TIMEOUT'")
+        .all() as { error_code: string }[];
+      assert.equal(results.length, 1);
+      assert.equal(results[0].error_code, "PROVIDER_TIMEOUT");
+    });
+  });
+
+  describe("Migration idempotence", () => {
+    it("should be idempotent after FP-005 migration", () => {
+      const dbPath = path.join(testDir, "idempotent-fp005.db");
+      closeDb();
+      initDb(dbPath);
+      migrate();
+      migrate();
+      migrate();
+
+      const db = getDb();
+      const rows = db
+        .prepare("SELECT name FROM _migrations WHERE name = '003_fp005_telemetry.sql'")
+        .all() as { name: string }[];
+      assert.equal(rows.length, 1, "Migration 003 should only be recorded once");
+
+      const tables = db
+        .prepare("SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'packet_execution_telemetry'")
+        .all() as { name: string }[];
+      assert.equal(tables.length, 1, "packet_execution_telemetry table should exist");
+    });
+
+    it("should not break existing FP-004 tables after FP-005 migration", () => {
+      const dbPath = path.join(testDir, "idempotent-all-tables.db");
+      closeDb();
+      initDb(dbPath);
+      migrate();
+      migrate();
+
+      const db = getDb();
+      const tables = db
+        .prepare("SELECT name FROM sqlite_master WHERE type = 'table'")
+        .all()
+        .map((r: unknown) => (r as { name: string }).name);
+
+      assert.ok(tables.includes("packets"), "packets table should exist");
+      assert.ok(tables.includes("packet_lifecycle_events"), "packet_lifecycle_events table should exist");
+      assert.ok(tables.includes("packet_executions"), "packet_executions table should exist");
+      assert.ok(tables.includes("packet_execution_telemetry"), "packet_execution_telemetry table should exist");
     });
   });
 });

@@ -1,0 +1,23 @@
+{
+  "packet_id": "FP-005",
+  "packet_category": "telemetry",
+  "model_id": "deepseek-v4-pro-high",
+  "auditor_model": "",
+  "base_commit": "",
+  "run_branch": "eval/fp-005/deepseek-v4-pro-high",
+  "audit_result": "NOT_YET_AUDITED",
+  "comparison_outcome": null,
+  "first_pass_success": null,
+  "fix_attempts": null,
+  "human_intervention": null,
+  "root_cause": null,
+  "ambiguity_discovered": null,
+  "escalation_occurrence": null,
+  "execution_duration_seconds": null,
+  "prompt_tokens": null,
+  "completion_tokens": null,
+  "reasoning_tokens": null,
+  "total_tokens": null,
+  "estimated_cost": null,
+  "notes": "FP-005 final: (1) CLI --packet-id accepts strings (FP-004) resolved via DB. (2) Parser handles real export shapes (messages aggregation, alt field names). (3) Cross-packet pair validation: execution_id must belong to packet_id. typecheck PASS. tests 65/65 PASS. init-db idempotent. Cross-packet mismatch rejected via CLI."
+}
