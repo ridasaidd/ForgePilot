@@ -1,0 +1,52 @@
+=== FP-009 Verification (post-audit-fix) ===
+
+1. pnpm typecheck
+   Result: PASS (zero errors, clean exit code 0)
+
+2. pnpm test
+   Result: PASS (158 tests, 0 failures)
+   FP-009 tests: 46 tests (includes regression test for re-admission after invalidation)
+   FP-008 tests: 28 tests (all preserved)
+   FP-004/FP-005/smoke tests: 84 tests (all preserved)
+
+3. pnpm fp -- init-db (first run)
+   Result: PASS ("Database initialized successfully.")
+
+4. pnpm fp -- init-db (second run)
+   Result: PASS ("Database initialized successfully.")
+   Idempotent - migration not re-applied.
+
+=== Audit Fix: RF-1 (deriveEvidenceEligibility re-admission bug) ===
+
+[FIXED] deriveEvidenceEligibility now continues past defeated admissions
+  to check for later re-admissions. Previously returned ineligible
+  immediately on first defeated admission without checking later admissions.
+
+Regression test: admission A1 → invalidation I1 defeats A1 → admission A2 → eligible via A2.
+
+=== FP-009 Required Behaviors Verified ===
+
+[PASS] Evidence admission events can be persisted.
+[PASS] Admission review requests can be persisted.
+[PASS] Admission invalidation events can be persisted.
+[PASS] Admission invalidation requires a review request.
+[PASS] Evidence eligibility is derived from the event chain.
+[PASS] Observation rows are not mutated when admitted.
+[PASS] Observation rows are not mutated when admission is invalidated.
+[PASS] Mutable evidence-state fields are not added to observation tables.
+[PASS] Valid admission with no defeating invalidation makes observation eligible.
+[PASS] Later valid invalidation makes observation ineligible.
+[PASS] NO_ACTION review outcomes do not defeat admission.
+[PASS] Invalid or provenance-incomplete admission events do not grant eligibility.
+
+=== Acceptance Criteria Verified ===
+
+[PASS] Append-only persistence for admission events.
+[PASS] Append-only persistence for review requests.
+[PASS] Append-only persistence for invalidation events.
+[PASS] Evidence eligibility computed from events, not stored on observations.
+[PASS] FP-008 observation tables remain immutable for evidentiary status.
+[PASS] No is_evidence, evidence_status, or equivalent fields on observation rows.
+[PASS] Tests cover admission, review, invalidation, and derived eligibility.
+[PASS] Existing tests continue to pass.
+[PASS] No routing, dashboards, aggregation, or model-selection behavior.

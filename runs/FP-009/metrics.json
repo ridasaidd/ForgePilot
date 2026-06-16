@@ -1,0 +1,65 @@
+{
+  "packet": "FP-009",
+  "type": "implementation",
+  "status": "complete",
+  "timestamp": "2026-06-16T20:29:40Z",
+  "audit_fix_rf1": "deriveEvidenceEligibility now continues past defeated admissions for re-admission check",
+  "tests": {
+    "total": 158,
+    "passed": 158,
+    "failed": 0,
+    "fp009_specific": 46
+  },
+  "typecheck": {
+    "passed": true,
+    "errors": 0
+  },
+  "init_db": {
+    "idempotent": true,
+    "migrations_applied": [
+      "000_initial.sql",
+      "001_core_schema.sql",
+      "002_fp004_persistence.sql",
+      "003_fp005_telemetry.sql",
+      "004_fp008_classification.sql",
+      "004_fp008_classification_outcome.sql",
+      "005_fp009_evidence_admission.sql"
+    ]
+  },
+  "tables_created": [
+    "evidence_admission_events",
+    "admission_review_requests",
+    "admission_invalidation_events"
+  ],
+  "files_created": [
+    "migrations/005_fp009_evidence_admission.sql",
+    "src/db/evidence.ts",
+    "tests/fp009.test.ts"
+  ],
+  "invariants_preserved": [
+    "FP-008 observation immutability",
+    "FP-008 PENDING default",
+    "FP-008 ADMITTED rejection",
+    "FP-004 lifecycle events",
+    "FP-004 execution attempts",
+    "FP-005 telemetry ingestion",
+    "FP-005 telemetry retrieval"
+  ],
+  "hard_constraints_met": [
+    "preserve append-only observation behavior",
+    "do not mutate packet classification observations",
+    "do not mutate model outcome observations",
+    "do not add mutable evidence state fields",
+    "evidence eligibility derived from valid event chain",
+    "admission is not automatic",
+    "tests passing does not imply admission",
+    "audit accepted does not automatically imply admission",
+    "no routing implemented",
+    "no scoring implemented",
+    "no aggregation implemented",
+    "no dashboards implemented",
+    "no reports implemented",
+    "no model selection implemented"
+  ],
+  "duration_ms": 8475
+}
