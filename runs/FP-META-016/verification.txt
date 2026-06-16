@@ -1,0 +1,58 @@
+$ pnpm typecheck
+$ tsc --noEmit
+
+$ pnpm test
+$ node --experimental-test-module-mocks --import tsx --test tests/*.test.ts
+$ tsx src/cli/forgepilot.ts -- -- prompt-baselines
+▶ ForgePilot
+  ✔ should have a working test harness (0.67834ms)
+  ✔ should confirm environment-centric architecture principle (0.203168ms)
+✔ ForgePilot (1.614848ms)
+▶ Database client
+  ✔ should initialize the database and create the data directory (29.252125ms)
+  ✔ should throw when getDb is called before initDb (0.674099ms)
+✔ Database client (30.190614ms)
+▶ Database migration
+  ✔ should create the events table via migration (37.479479ms)
+  ✔ should be idempotent (running migrate twice does not fail) (52.525066ms)
+  ✔ should create all required core schema tables (52.667861ms)
+  ✔ should have correct foreign keys on core schema tables (54.340895ms)
+✔ Database migration (197.901437ms)
+▶ CLI prompt-baselines
+  ✔ should print ForgePilot and prompt baseline file paths (941.641462ms)
+✔ CLI prompt-baselines (941.928632ms)
+$ tsx src/cli/forgepilot.ts -- -- packet-metrics
+▶ Packet metrics
+  ✔ should return zero counts when no packets exist (45.607907ms)
+  ✔ should count completed and failed packets correctly (1.146677ms)
+  ✔ CLI packet-metrics should print all three labels (1002.22049ms)
+  ✔ CLI packet-metrics should succeed with zero counts on empty db (56.01017ms)
+✔ Packet metrics (1170.024628ms)
+ℹ tests 13
+ℹ suites 5
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2633.178376
+
+$ test -f README.md
+PASS: README.md exists
+
+$ test -f PRINCIPLES.md
+PASS: PRINCIPLES.md exists
+
+$ test -f docs/metrics-trust-and-validation.md
+PASS: docs/metrics-trust-and-validation.md exists
+
+$ test -f docs/telemetry-authority-and-field-ownership.md
+PASS: docs/telemetry-authority-and-field-ownership.md exists
+
+$ test -f packets/FP-META-016.md
+PASS: packets/FP-META-016.md exists
+
+$ git diff --stat HEAD -- docs/persistence-standards.md docs/model-evaluation-harness.md
+ docs/model-evaluation-harness.md | 20 ++++++++++++++++++++
+ docs/persistence-standards.md    | 260 ++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 280 insertions(+)
