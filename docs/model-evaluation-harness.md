@@ -398,6 +398,26 @@ See `docs/telemetry-authority-and-field-ownership.md` for:
 
 ---
 
+## Persistence Standards
+
+All metrics records are subject to persistence standards that govern how records survive over time.
+
+See `docs/persistence-standards.md` for:
+
+- Record identity requirements
+- Record lifecycle states and transition rules
+- Field persistence rules
+- Immutability rules
+- Versioning rules
+- Supersession rules
+- Quarantine persistence rules
+- Deletion policy
+- Provenance persistence requirements
+- Historical data policy
+- Relationship to file-based metrics artifacts
+
+---
+
 ## Constraints
 
 * This harness defines methodology only. It does not add model routing.
