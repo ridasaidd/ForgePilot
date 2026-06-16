@@ -438,6 +438,30 @@ See `docs/task-classification-standards.md` for:
 
 ---
 
+## Model Outcome Recording Standards
+
+All model execution outcomes are subject to outcome recording standards that define independent axes for recording performance, correction history, audit judgments, comparison results, and routing signals.
+
+See `docs/model-outcome-recording-standards.md` for:
+
+- Execution Result definitions (NOT_STARTED, RUNNING, COMPLETED, FAILED, ABORTED)
+- Verification Result definitions (NOT_RUN, PASSED, FAILED, PARTIAL, BLOCKED)
+- Audit Result definitions (NOT_AUDITED, ACCEPTED, REJECTED, ACCEPTED_WITH_NOTES, BLOCKED)
+- First-Pass Success definitions (TRUE, FALSE, UNKNOWN, NOT_APPLICABLE)
+- Correction Count and Correction Type definitions
+- Scope Discipline and Semantic Correctness definitions
+- Invariant Compliance definitions
+- Human Intervention definitions
+- Comparison Outcome definitions (NOT_COMPARED, WIN, LOSS, TIE, ACCEPTED_NOT_SELECTED, REJECTED, INCONCLUSIVE)
+- Non-Blocking Ambiguity definitions
+- Root Cause Level definitions
+- Routing Signal Eligibility definitions
+- Outcome Record Requirements
+- Correction and Revision rules
+- Relationship to Task Classification and Telemetry
+
+---
+
 ## Constraints
 
 * This harness defines methodology only. It does not add model routing.

@@ -507,6 +507,8 @@ These standards complement:
 
 - **Model Evaluation Harness** (`docs/model-evaluation-harness.md`) — Defines evaluation methodology. Task classification provides the `packet_category` field context that allows evaluation results to be compared meaningfully across packets of similar classification.
 
+- **Model Outcome Recording Standards** (`docs/model-outcome-recording-standards.md`) — Defines how model performance on classified packets is recorded. Outcome records must reference task classification observations. A model outcome must not be interpreted without the packet's task classification. Task classification disaggregation rules apply when evaluating model outcomes across different task classes.
+
 ---
 
 ## Constraints
