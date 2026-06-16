@@ -377,4 +377,6 @@ These standards complement:
 
 - **Model Evaluation Harness** (`docs/model-evaluation-harness.md`) — Defines evaluation methodology and metrics artifact schema. Persistence standards ensure that metrics artifacts and their field values survive across lifecycle phases, supersession events, and quarantine actions.
 
+- **Task Classification Standards** (`docs/task-classification-standards.md`) — Defines task class, risk level, constraint strictness, evidence sensitivity, blast radius, skill requirement, audit requirement, challenger requirement, and routing eligibility. Classification observations are subject to the same persistence rules as other observatory records and must be preserved as append-only observations with full provenance.
+
 Field authority and trust tier must be established before persistence rules are applied. A persisted record must preserve the authority, trust, validation, and admission decisions defined by FP-META-014 and FP-META-015 without collapsing them into a single status field.

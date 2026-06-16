@@ -374,3 +374,11 @@ All evidence is signal. Not all signal is evidence.
 
 Low-trust or incomplete records may provide signal.
 Only admitted records provide evidence.
+
+---
+
+## Relationship to Other Standards
+
+These standards complement:
+
+- **Task Classification Standards** (`docs/task-classification-standards.md`) — Defines packet classification axes and classification observation requirements. Classification records are subject to the same provenance, trust, validation, and admission standards defined here. A classification observation must have determinable provenance, trust tier, and validation state before it can be admitted as evidence.

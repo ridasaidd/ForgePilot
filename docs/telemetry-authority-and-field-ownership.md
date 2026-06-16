@@ -369,4 +369,6 @@ These standards complement:
 
 - **Model Evaluation Harness** (`docs/model-evaluation-harness.md`) — Defines evaluation methodology and metrics artifact schema. Field ownership determines which lifecycle phase populates each field in the metrics artifact.
 
+- **Task Classification Standards** (`docs/task-classification-standards.md`) — Defines classification axes for packets including task class, risk level, and audit requirement. Classification records are themselves observations with defined field authority and ownership requirements.
+
 Field authority must be established before trust tier assignment. A field written by a non-authoritative source fails provenance completeness requirements regardless of the value's correctness.
