@@ -1,0 +1,9 @@
+{
+  "session_id": "session-partial",
+  "provider": "openrouter",
+  "model": "deepseek-v4",
+  "usage": {
+    "input_tokens": 5000
+  },
+  "created_at": "2026-06-15T11:00:00Z"
+}

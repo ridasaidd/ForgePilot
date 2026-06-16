@@ -15,6 +15,9 @@ Options:
   --build-execution-prompt <id> Build execution prompt for a packet
   --packet-metrics      Print summary of packet execution metrics
   --prompt-baselines    Print project name and available prompt baseline files
+  --ingest-opencode-telemetry   Ingest OpenCode telemetry from a local artifact file.
+                                 Requires: --packet-id (string, e.g. FP-004) or --packet-db-id (numeric),
+                                           --execution-id, --artifact-path, --mode (direct|retroactive)
 
 Environment:
   ForgePilot follows an environment-centric architecture.
@@ -170,6 +173,12 @@ async function main(): Promise<void> {
       "build-execution-prompt": { type: "string" },
       "packet-metrics": { type: "boolean" },
       "prompt-baselines": { type: "boolean" },
+      "ingest-opencode-telemetry": { type: "boolean" },
+      "packet-id": { type: "string" },
+      "packet-db-id": { type: "string" },
+      "execution-id": { type: "string" },
+      "artifact-path": { type: "string" },
+      "mode": { type: "string" },
     },
     strict: true,
     allowPositionals: true,
@@ -231,6 +240,127 @@ async function main(): Promise<void> {
     console.log("ForgePilot");
     console.log("Executor Baseline: prompts/executor-baseline-v1.md");
     console.log("Auditor Baseline: prompts/auditor-baseline-v1.md");
+    return;
+  }
+
+  if (values["ingest-opencode-telemetry"] || positionals[0] === "ingest-opencode-telemetry") {
+    const packetIdStr = values["packet-id"] as string | undefined;
+    const packetDbIdStr = values["packet-db-id"] as string | undefined;
+    const executionId = values["execution-id"] as string | undefined;
+    const artifactPath = values["artifact-path"] as string | undefined;
+    const mode = values["mode"] as string | undefined;
+
+    if (!packetIdStr && !packetDbIdStr) {
+      console.error("ERROR: --packet-id (e.g. FP-004) or --packet-db-id (numeric) is required");
+      process.exit(1);
+    }
+    if (!executionId) {
+      console.error("ERROR: --execution-id is required");
+      process.exit(1);
+    }
+    if (!artifactPath) {
+      console.error("ERROR: --artifact-path is required");
+      process.exit(1);
+    }
+    if (!mode || (mode !== "direct" && mode !== "retroactive")) {
+      console.error("ERROR: --mode must be 'direct' or 'retroactive'");
+      process.exit(1);
+    }
+
+    const execIdNum = Number(executionId);
+    if (!Number.isInteger(execIdNum) || execIdNum <= 0) {
+      console.error("ERROR: --execution-id must be a positive integer");
+      process.exit(1);
+    }
+
+    const { initAndMigrate } = await import("../db/migrate.js");
+    initAndMigrate();
+
+    const { getDb, closeDb } = await import("../db/client.js");
+    const db = getDb();
+
+    let packetIdNum: number | null = null;
+
+    if (packetDbIdStr) {
+      packetIdNum = Number(packetDbIdStr);
+      if (!Number.isInteger(packetIdNum) || packetIdNum <= 0) {
+        closeDb();
+        console.error("ERROR: --packet-db-id must be a positive integer");
+        process.exit(1);
+      }
+    } else if (packetIdStr) {
+      const rows = db
+        .prepare(
+          "SELECT id FROM packets WHERE packet_path = ? OR packet_path LIKE ? OR title = ? OR title LIKE ?"
+        )
+        .all(
+          `packets/${packetIdStr}.md`,
+          `%${packetIdStr}%`,
+          packetIdStr,
+          `%${packetIdStr}%`
+        ) as { id: number }[];
+
+      if (rows.length === 1) {
+        packetIdNum = rows[0].id;
+      } else if (rows.length > 1) {
+        closeDb();
+        console.error(
+          `ERROR: --packet-id '${packetIdStr}' matched ${rows.length} packets. ` +
+          `Use --packet-db-id with a numeric id instead.`
+        );
+        process.exit(1);
+      } else {
+        closeDb();
+        console.error(
+          `ERROR: No packet found matching '${packetIdStr}'. ` +
+          `Use --packet-db-id with a numeric packet id instead.`
+        );
+        process.exit(1);
+      }
+    }
+
+    if (packetIdNum === null) {
+      closeDb();
+      console.error("ERROR: Could not resolve packet identifier");
+      process.exit(1);
+    }
+
+    const execution = db
+      .prepare("SELECT execution_id FROM packet_executions WHERE execution_id = ?")
+      .get(execIdNum) as { execution_id: number } | undefined;
+
+    if (!execution) {
+      closeDb();
+      console.error(`ERROR: Execution ${execIdNum} not found in database`);
+      process.exit(1);
+    }
+
+    const { ingestOpenCodeTelemetry } = await import("../db/telemetry.js");
+    const ingestionMode = mode === "retroactive" ? "RETROACTIVE_ARTIFACT" : "DIRECT_ARTIFACT";
+
+    const result = ingestOpenCodeTelemetry({
+      packet_id: packetIdNum,
+      execution_id: execIdNum,
+      telemetry_artifact_path: artifactPath,
+      ingestion_mode: ingestionMode,
+    });
+
+    if (!result.ingested || !result.telemetry) {
+      closeDb();
+      console.error(`ERROR: ${result.error ?? "Failed to ingest telemetry"}`);
+      process.exit(1);
+    }
+
+    closeDb();
+    console.log(`Telemetry ingested successfully.`);
+    console.log(`  Telemetry ID: ${result.telemetry.telemetry_id}`);
+    console.log(`  Session ID: ${result.telemetry.opencode_session_id ?? "(null)"}`);
+    console.log(`  Provider: ${result.telemetry.provider ?? "(null)"}`);
+    console.log(`  Model: ${result.telemetry.model ?? "(null)"}`);
+    console.log(`  Ingestion Mode: ${result.telemetry.ingestion_mode}`);
+    console.log(`  Mapping Confidence: ${result.telemetry.mapping_confidence}`);
+    console.log(`  Validation State: ${result.telemetry.validation_state}`);
+    console.log(`  Admission State: ${result.telemetry.admission_state}`);
     return;
   }
 
