@@ -379,4 +379,6 @@ These standards complement:
 
 - **Task Classification Standards** (`docs/task-classification-standards.md`) — Defines task class, risk level, constraint strictness, evidence sensitivity, blast radius, skill requirement, audit requirement, challenger requirement, and routing eligibility. Classification observations are subject to the same persistence rules as other observatory records and must be preserved as append-only observations with full provenance.
 
+- **Model Outcome Recording Standards** (`docs/model-outcome-recording-standards.md`) — Defines outcome axes and correction rules requiring append-only observations. Outcome records must be persisted with full provenance, versioning, and supersession support. Outcome corrections must create new observations without overwriting prior records.
+
 Field authority and trust tier must be established before persistence rules are applied. A persisted record must preserve the authority, trust, validation, and admission decisions defined by FP-META-014 and FP-META-015 without collapsing them into a single status field.

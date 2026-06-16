@@ -382,3 +382,5 @@ Only admitted records provide evidence.
 These standards complement:
 
 - **Task Classification Standards** (`docs/task-classification-standards.md`) — Defines packet classification axes and classification observation requirements. Classification records are subject to the same provenance, trust, validation, and admission standards defined here. A classification observation must have determinable provenance, trust tier, and validation state before it can be admitted as evidence.
+
+- **Model Outcome Recording Standards** (`docs/model-outcome-recording-standards.md`) — Defines outcome axes, controlled vocabularies, correction rules, and routing signal eligibility. Outcome records are subject to the same trust, validation, and admission standards defined here. An outcome record must have a trust tier, validation state, and admission state before its routing signal eligibility can be determined.
