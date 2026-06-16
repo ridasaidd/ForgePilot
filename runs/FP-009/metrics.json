@@ -1,65 +1,84 @@
 {
-  "packet": "FP-009",
-  "type": "implementation",
-  "status": "complete",
-  "timestamp": "2026-06-16T20:29:40Z",
-  "audit_fix_rf1": "deriveEvidenceEligibility now continues past defeated admissions for re-admission check",
-  "tests": {
-    "total": 158,
-    "passed": 158,
-    "failed": 0,
-    "fp009_specific": 46
+  "artifact_results": {
+    "comparison_result": "runs/FP-009/comparison-result.md",
+    "deepseek_audit": "runs/FP-009/audit-deepseek-by-qwen.md",
+    "deepseek_postfix_audit": "runs/FP-009/postfix-audit-deepseek-by-qwen.md",
+    "qwen_audit": "runs/FP-009/audit-qwen-by-deepseek.md",
+    "qwen_postfix_audit": "runs/FP-009/postfix-audit-qwen-by-deepseek.md"
   },
-  "typecheck": {
-    "passed": true,
-    "errors": 0
+  "benchmark_base_branch": "fp-009-benchmark-base",
+  "benchmark_base_commit": "20c8cee",
+  "comparison_outcome": "DEEPSEEK_SELECTED",
+  "comparison_recorded_at": "2026-06-16T21:30:45.026913+00:00",
+  "deepseek": {
+    "audit_commit": "b48c074",
+    "auditor": "Qwen-3.7-Max",
+    "branch": "eval/fp-009/deepseek-v4-pro-high",
+    "execution_commit": "4f2a8bf",
+    "final_result": "ACCEPTED_AFTER_FIX",
+    "fix_commit": "d00645d",
+    "init_db_first": "PASS",
+    "init_db_second": "PASS",
+    "initial_audit_result": "ACCEPTED_WITH_REQUIRED_FIX",
+    "initial_tests_passed": 157,
+    "initial_tests_total": 157,
+    "post_fix_tests_passed": 158,
+    "post_fix_tests_total": 158,
+    "postfix_audit_commit": "9f38a4d",
+    "postfix_audit_result": "ACCEPTED",
+    "required_fix_count": 1,
+    "required_fixes": [
+      "RF-1: readmission eligibility derivation"
+    ],
+    "scope_violations": 0,
+    "selected": true,
+    "typecheck": "PASS"
   },
-  "init_db": {
-    "idempotent": true,
-    "migrations_applied": [
-      "000_initial.sql",
-      "001_core_schema.sql",
-      "002_fp004_persistence.sql",
-      "003_fp005_telemetry.sql",
-      "004_fp008_classification.sql",
-      "004_fp008_classification_outcome.sql",
-      "005_fp009_evidence_admission.sql"
-    ]
+  "final_classification": {
+    "deepseek": "ACCEPTED_AFTER_FIX_SELECTED",
+    "outcome": "DEEPSEEK_SELECTED",
+    "qwen": "ACCEPTED_AFTER_FIX_NOT_SELECTED"
   },
-  "tables_created": [
-    "evidence_admission_events",
-    "admission_review_requests",
-    "admission_invalidation_events"
+  "models_compared": [
+    "DeepSeek-V4-Pro-High",
+    "Qwen-3.7-Max"
   ],
-  "files_created": [
-    "migrations/005_fp009_evidence_admission.sql",
-    "src/db/evidence.ts",
-    "tests/fp009.test.ts"
-  ],
-  "invariants_preserved": [
-    "FP-008 observation immutability",
-    "FP-008 PENDING default",
-    "FP-008 ADMITTED rejection",
-    "FP-004 lifecycle events",
-    "FP-004 execution attempts",
-    "FP-005 telemetry ingestion",
-    "FP-005 telemetry retrieval"
-  ],
-  "hard_constraints_met": [
-    "preserve append-only observation behavior",
-    "do not mutate packet classification observations",
-    "do not mutate model outcome observations",
-    "do not add mutable evidence state fields",
-    "evidence eligibility derived from valid event chain",
-    "admission is not automatic",
-    "tests passing does not imply admission",
-    "audit accepted does not automatically imply admission",
-    "no routing implemented",
-    "no scoring implemented",
-    "no aggregation implemented",
-    "no dashboards implemented",
-    "no reports implemented",
-    "no model selection implemented"
-  ],
-  "duration_ms": 8475
+  "packet_commit": "5d03816",
+  "packet_id": "FP-009",
+  "packet_title": "Evidence Admission Persistence",
+  "qwen": {
+    "audit_commit": "d4df254",
+    "auditor": "DeepSeek-V4-Pro-High",
+    "branch": "eval/fp-009/qwen-3.7-max",
+    "execution_commit": "3c66ef9",
+    "final_result": "ACCEPTED_AFTER_FIX",
+    "fix_commit": "86fa160",
+    "init_db_first": "PASS",
+    "init_db_second": "PASS",
+    "initial_audit_result": "REJECTED_PENDING_REQUIRED_FIX",
+    "initial_tests_passed": 142,
+    "initial_tests_total": 142,
+    "post_fix_tests_passed": 143,
+    "post_fix_tests_total": 143,
+    "postfix_audit_commit": "0927051",
+    "postfix_audit_result": "ACCEPTED",
+    "required_fix_count": 1,
+    "required_fixes": [
+      "RF-1: readmission eligibility derivation"
+    ],
+    "scope_violations": 0,
+    "selected": false,
+    "typecheck": "PASS"
+  },
+  "selected_model": "DeepSeek-V4-Pro-High",
+  "shared_findings": {
+    "both_fixed_successfully": true,
+    "both_initially_missed_readmission_edge_case": true,
+    "cross_model_audit_value": "HIGH",
+    "cross_model_audits_caught_edge_case": true,
+    "edge_case": "A1 admitted -> I1 invalidated A1 -> A2 re-admitted same observation",
+    "post_audit_correction": "SUCCESSFUL",
+    "postfix_audits_accepted": true,
+    "temporal_event_chain_reasoning": "WEAK_INITIAL"
+  }
 }
