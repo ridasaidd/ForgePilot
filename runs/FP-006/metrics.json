@@ -6,7 +6,7 @@
   "base_commit": "e883a48",
   "run_branch": "eval/fp-006/deepseek-v4-pro-high",
   "audit_result": "ACCEPTED",
-  "comparison_outcome": null,
+  "comparison_outcome": "WIN",
   "first_pass_success": true,
   "fix_attempts": 0,
   "human_intervention": false,
@@ -19,5 +19,5 @@
   "reasoning_tokens": null,
   "total_tokens": null,
   "estimated_cost": null,
-  "notes": ""
+  "notes": " Comparison result: DeepSeek selected over Qwen. Both accepted. DeepSeek chosen for cleaner standards discipline and fewer interpretive ambiguities."
 }
