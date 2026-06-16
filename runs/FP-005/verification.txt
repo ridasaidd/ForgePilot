@@ -1,0 +1,27 @@
+FP-005 Verification Results (Final)
+===================================
+
+1. pnpm typecheck
+   Result: PASS (0 errors)
+
+2. pnpm test
+   Result: PASS (65 tests, 0 failures)
+   New: "should reject cross-packet mapping (execution from different packet)"
+
+3. pnpm fp -- init-db (first run)
+   Result: PASS
+
+4. pnpm fp -- init-db (second run)
+   Result: PASS (idempotent)
+
+5. CLI: valid pair (packet A + execution A)
+   Result: SUCCESS — Telemetry ingested
+
+6. CLI: cross-packet mismatch (packet B + execution A)
+   Result: FAIL (exit 1) — "ERROR: Execution 1 not found for packet 2"
+
+7. DB verification: cross-packet test
+   Result: No telemetry row inserted into packet_execution_telemetry
+
+All acceptance criteria met.
+Pair validation: explicit mapping now verified as (execution_id, packet_id) pair.
