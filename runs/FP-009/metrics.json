@@ -3,11 +3,12 @@
   "type": "implementation",
   "status": "complete",
   "timestamp": "2026-06-16T20:29:40Z",
+  "audit_fix_rf1": "deriveEvidenceEligibility now continues past defeated admissions for re-admission check",
   "tests": {
-    "total": 157,
-    "passed": 157,
+    "total": 158,
+    "passed": 158,
     "failed": 0,
-    "fp009_specific": 45
+    "fp009_specific": 46
   },
   "typecheck": {
     "passed": true,

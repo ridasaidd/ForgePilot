@@ -1,6 +1,19 @@
 # FP-009 Executor Result
 
-## Status: Complete
+## Status: Complete (post-audit fix applied)
+
+## Audit Fix: RF-1 — Re-admission after invalidation
+
+**File**: `src/db/evidence.ts:387-425`
+
+**Bug**: `deriveEvidenceEligibility` returned `{ eligible: false }` immediately when the first effective admission was defeated by an invalidation, without checking whether a later valid re-admission existed.
+
+**Fix**: Changed the early `return { eligible: false }` on defeat to track defeat state and `continue` to the next admission. Only returns ineligible when all effective admissions across the chain have been defeated.
+
+**Regression test**: Added test at `tests/fp009.test.ts:832-908` covering:
+1. Valid admission A1 → eligible
+2. Valid invalidation I1 defeats A1 → ineligible
+3. Later valid admission A2 → eligible via A2
 
 ## Summary
 Implemented evidence admission persistence as specified by FP-009. Three append-only tables were added to the SQLite schema with corresponding TypeScript persistence functions. Evidence eligibility is derived from the event chain, never stored as mutable state on observation rows.
@@ -52,4 +65,4 @@ For each admission event (chronological):
 - FP-008 classification/outcome observations unchanged
 - FP-004 lifecycle events, execution attempts preserved
 - FP-005 telemetry ingestion preserved
-- All 157 tests pass (45 new, 112 existing)
+- All 158 tests pass (46 new, 112 existing)

@@ -384,10 +384,16 @@ export function deriveEvidenceEligibility(
     )
     .all(targetObservationType, targetObservationId) as EvidenceAdmissionEvent[];
 
+  let lastEffectiveAdmission: EvidenceAdmissionEvent | null = null;
+  let lastDefeatingInvalidation: AdmissionInvalidationEvent | null = null;
+
   for (const admission of admissions) {
     if (!isAdmissionEffective(admission)) {
       continue;
     }
+
+    lastEffectiveAdmission = admission;
+    lastDefeatingInvalidation = null;
 
     const invalidations = db
       .prepare(
@@ -397,27 +403,28 @@ export function deriveEvidenceEligibility(
       )
       .all(admission.id) as AdmissionInvalidationEvent[];
 
+    let defeated = false;
     for (const invalidation of invalidations) {
       if (isInvalidationDefeating(invalidation)) {
-        return {
-          eligible: false,
-          admission_event: admission,
-          defeating_invalidation: invalidation,
-        };
+        defeated = true;
+        lastDefeatingInvalidation = invalidation;
+        break;
       }
     }
 
-    return {
-      eligible: true,
-      admission_event: admission,
-      defeating_invalidation: null,
-    };
+    if (!defeated) {
+      return {
+        eligible: true,
+        admission_event: admission,
+        defeating_invalidation: null,
+      };
+    }
   }
 
   return {
     eligible: false,
-    admission_event: null,
-    defeating_invalidation: null,
+    admission_event: lastEffectiveAdmission,
+    defeating_invalidation: lastDefeatingInvalidation,
   };
 }
 

@@ -829,6 +829,89 @@ describe("FP-009: Evidence Admission Persistence", () => {
 
       assert.equal(eligibility.eligible, true, "Outcome observation should be eligible with valid admission");
     });
+
+    it("should derive eligibility from a re-admission after invalidation defeats the first admission", () => {
+      const dbPath = path.join(testDir, "derive-readmission.db");
+      setupDb(dbPath);
+
+      const packet = createTestPacket("Re-admission Test");
+      const classification = createValidClassification(packet.id);
+
+      // Step 1: valid admission A1
+      const admission1 = recordEvidenceAdmission({
+        target_observation_type: "classification_observation",
+        target_observation_id: classification.classification_id,
+        admission_decision: "ADMITTED",
+        admission_actor_type: "human_auditor",
+        admission_actor_id: "auditor-1",
+        admission_trust_tier: "TIER_2",
+        validation_state: "VALID",
+        provenance_complete: true,
+        admission_basis: "First admission",
+      });
+
+      // Verify A1 makes observation eligible
+      let eligibility = deriveEvidenceEligibility(
+        "classification_observation",
+        classification.classification_id
+      );
+      assert.equal(eligibility.eligible, true, "A1 should make observation eligible");
+      assert.equal(eligibility.admission_event!.id, admission1.id);
+
+      // Step 2: valid invalidation I1 defeats A1
+      const review1 = recordAdmissionReviewRequest({
+        target_admission_event_id: admission1.id,
+        review_trigger_type: "MANUAL_AUDITOR_FLAG",
+        requested_by_actor_type: "human_auditor",
+        requested_by_actor_id: "auditor-2",
+        review_reason: "Found issues with first admission",
+        validation_state: "VALID",
+        provenance_complete: true,
+      });
+
+      recordAdmissionInvalidation({
+        target_admission_event_id: admission1.id,
+        review_request_id: review1.id,
+        invalidation_decision: "INVALIDATED",
+        invalidated_by_actor_type: "human_auditor",
+        invalidated_by_actor_id: "auditor-2",
+        invalidation_reason: "Provenance gap in first admission",
+        validation_state: "VALID",
+        provenance_complete: true,
+      });
+
+      // Verify A1 is now defeated
+      eligibility = deriveEvidenceEligibility(
+        "classification_observation",
+        classification.classification_id
+      );
+      assert.equal(eligibility.eligible, false, "I1 should defeat A1, making observation ineligible");
+      assert.equal(eligibility.admission_event!.id, admission1.id);
+      assert.ok(eligibility.defeating_invalidation);
+
+      // Step 3: later valid admission A2 (re-admission)
+      const admission2 = recordEvidenceAdmission({
+        target_observation_type: "classification_observation",
+        target_observation_id: classification.classification_id,
+        admission_decision: "ADMITTED",
+        admission_actor_type: "human_auditor",
+        admission_actor_id: "auditor-3",
+        admission_trust_tier: "TIER_2",
+        validation_state: "VALID",
+        provenance_complete: true,
+        admission_basis: "Re-admission after fixing provenance gap",
+      });
+
+      // Step 4: derived eligibility should now be true via A2
+      eligibility = deriveEvidenceEligibility(
+        "classification_observation",
+        classification.classification_id
+      );
+      assert.equal(eligibility.eligible, true, "A2 should make observation eligible again after re-admission");
+      assert.equal(eligibility.admission_event!.id, admission2.id, "Eligibility should come from A2, not A1");
+      assert.equal(eligibility.admission_event!.admission_basis, "Re-admission after fixing provenance gap");
+      assert.equal(eligibility.defeating_invalidation, null, "A2 should not have a defeating invalidation");
+    });
   });
 
   describe("Observation immutability (tests 6, 7)", () => {

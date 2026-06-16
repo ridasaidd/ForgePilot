@@ -1,27 +1,28 @@
-=== FP-009 Verification ===
+=== FP-009 Verification (post-audit-fix) ===
 
 1. pnpm typecheck
    Result: PASS (zero errors, clean exit code 0)
 
 2. pnpm test
-   Result: PASS (157 tests, 0 failures)
-   FP-009 tests: 45 tests covering all 12 required behaviors
+   Result: PASS (158 tests, 0 failures)
+   FP-009 tests: 46 tests (includes regression test for re-admission after invalidation)
    FP-008 tests: 28 tests (all preserved)
    FP-004/FP-005/smoke tests: 84 tests (all preserved)
 
 3. pnpm fp -- init-db (first run)
    Result: PASS ("Database initialized successfully.")
-   Migration 005_fp009_evidence_admission.sql applied.
 
 4. pnpm fp -- init-db (second run)
    Result: PASS ("Database initialized successfully.")
    Idempotent - migration not re-applied.
 
-5. Migration record verification:
-   evidence_admission_events table: EXISTS
-   admission_review_requests table: EXISTS
-   admission_invalidation_events table: EXISTS
-   All columns present and correct per PRAGMA table_info.
+=== Audit Fix: RF-1 (deriveEvidenceEligibility re-admission bug) ===
+
+[FIXED] deriveEvidenceEligibility now continues past defeated admissions
+  to check for later re-admissions. Previously returned ineligible
+  immediately on first defeated admission without checking later admissions.
+
+Regression test: admission A1 → invalidation I1 defeats A1 → admission A2 → eligible via A2.
 
 === FP-009 Required Behaviors Verified ===
 
