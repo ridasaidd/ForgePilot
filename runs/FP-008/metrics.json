@@ -6,7 +6,7 @@
   "base_commit": "c7f7910",
   "run_branch": "eval/fp-008/qwen-3.7-max",
   "audit_result": "ACCEPTED",
-  "comparison_outcome": null,
+  "comparison_outcome": "WIN",
   "first_pass_success": true,
   "fix_attempts": 0,
   "human_intervention": false,
@@ -19,5 +19,5 @@
   "reasoning_tokens": null,
   "total_tokens": null,
   "estimated_cost": null,
-  "notes": "Audit accepted. Qwen implementation passed typecheck, tests, and init-db idempotence. No blocking issues. Non-blocking notes: executor summary slightly overclaimed SQL CHECK coverage for JSON-list fields; validation_state defaults to VALID for default/empty records but admission remains PENDING and trust_tier defaults to TIER_0_UNTRUSTED; no CLI commands were added, which is acceptable because CLI scope was optional."
+  "notes": "Audit accepted. Qwen implementation passed typecheck, tests, and init-db idempotence. No blocking issues. Non-blocking notes: executor summary slightly overclaimed SQL CHECK coverage for JSON-list fields; validation_state defaults to VALID for default/empty records but admission remains PENDING and trust_tier defaults to TIER_0_UNTRUSTED; no CLI commands were added, which is acceptable because CLI scope was optional. Comparison result: Qwen selected over DeepSeek. Both accepted. Qwen chosen for first-pass success, smaller implementation surface, no optional CLI additions, INTEGER correction_count, JSON-string list fields, and no required correction cycle."
 }
