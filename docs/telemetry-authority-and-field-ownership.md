@@ -371,4 +371,6 @@ These standards complement:
 
 - **Task Classification Standards** (`docs/task-classification-standards.md`) — Defines classification axes for packets including task class, risk level, and audit requirement. Classification records are themselves observations with defined field authority and ownership requirements.
 
+- **Model Outcome Recording Standards** (`docs/model-outcome-recording-standards.md`) — Defines outcome axes, correction vocabulary, and routing signal eligibility. Outcome records and telemetry records serve different purposes with different authority. Telemetry must not override audit outcome and audit outcome must not fabricate telemetry. Outcome record fields and telemetry fields must respect field authority boundaries.
+
 Field authority must be established before trust tier assignment. A field written by a non-authoritative source fails provenance completeness requirements regardless of the value's correctness.
