@@ -1,0 +1,45 @@
+$ pnpm typecheck
+$ tsc --noEmit
+
+$ pnpm test
+$ node --experimental-test-module-mocks --import tsx --test tests/*.test.ts
+ℹ tests 65
+ℹ suites 21
+ℹ pass 65
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3774.664988
+
+$ test -f README.md
+PASS: README.md exists
+
+$ test -f PRINCIPLES.md
+PASS: PRINCIPLES.md exists
+
+$ test -f docs/task-classification-standards.md
+PASS: docs/task-classification-standards.md exists
+
+$ test -f docs/metrics-trust-and-validation.md
+PASS: docs/metrics-trust-and-validation.md exists
+
+$ test -f docs/telemetry-authority-and-field-ownership.md
+PASS: docs/telemetry-authority-and-field-ownership.md exists
+
+$ test -f docs/persistence-standards.md
+PASS: docs/persistence-standards.md exists
+
+$ test -f docs/model-evaluation-harness.md
+PASS: docs/model-evaluation-harness.md exists
+
+$ test -f packets/FP-006.md
+PASS: packets/FP-006.md exists
+
+$ git diff --stat HEAD -- docs/task-classification-standards.md docs/metrics-trust-and-validation.md docs/telemetry-authority-and-field-ownership.md docs/persistence-standards.md docs/model-evaluation-harness.md
+ docs/metrics-trust-and-validation.md            |   8 ++
+ docs/model-evaluation-harness.md                |  20 +++
+ docs/persistence-standards.md                   |   2 +
+ docs/task-classification-standards.md           | 395 +++++++++++++++++++++++++++++++++++++++++
+ docs/telemetry-authority-and-field-ownership.md |   2 +
+ 5 files changed, 427 insertions(+)

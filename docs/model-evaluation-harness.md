@@ -418,6 +418,26 @@ See `docs/persistence-standards.md` for:
 
 ---
 
+## Task Classification Standards
+
+All packets are subject to task classification standards that define independent axes for classifying packet work type, risk, constraint strictness, evidence sensitivity, blast radius, skill requirement, audit requirement, challenger requirement, and routing eligibility.
+
+See `docs/task-classification-standards.md` for:
+
+- Task Class definitions (STANDARDS, DOCUMENTATION, PERSISTENCE, SCHEMA, VALIDATION, TELEMETRY, CLI, TESTING, REFACTOR, BUG_FIX, AUDIT, ROUTING, RESEARCH, WORKFLOW, UNKNOWN)
+- Risk Level definitions (LOW, MEDIUM, HIGH, CRITICAL)
+- Constraint Strictness definitions (LOOSE, NORMAL, STRICT, FROZEN)
+- Evidence Sensitivity definitions (NONE, LOW, MEDIUM, HIGH)
+- Expected Blast Radius definitions (SINGLE_FILE, MULTI_FILE_LOCAL, CROSS_MODULE, DATABASE, WORKFLOW, SYSTEMIC)
+- Primary Skill Required definitions
+- Audit Requirement definitions (NONE, LIGHT, STANDARD, STRICT, ADVERSARIAL)
+- Challenger Requirement definitions (NOT_REQUIRED, OPTIONAL, REQUIRED, REQUIRED_DIVERSE)
+- Routing Eligibility definitions (NOT_ELIGIBLE, ELIGIBLE_WITH_HUMAN_REVIEW, ELIGIBLE_FOR_RECOMMENDATION, ELIGIBLE_FOR_AUTOMATED_SELECTION)
+- Classification record requirements and correction rules
+- Routing signal relationship
+
+---
+
 ## Constraints
 
 * This harness defines methodology only. It does not add model routing.
