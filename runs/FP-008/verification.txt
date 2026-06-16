@@ -1,0 +1,20 @@
+$ pnpm typecheck
+$ tsc --noEmit
+
+$ pnpm test
+$ node --experimental-test-module-mocks --import tsx --test tests/*.test.ts
+
+ℹ tests 106
+ℹ suites 33
+ℹ pass 106
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5344.369018
+
+$ pnpm fp -- init-db
+Database initialized successfully.
+
+$ pnpm fp -- init-db
+Database initialized successfully.
