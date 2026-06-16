@@ -1,0 +1,72 @@
+=== FP-004 Verification ===
+
+Command: pnpm typecheck
+Status: PASS
+Output: (no errors)
+
+Command: pnpm test
+Status: PASS (39 tests, 0 failures)
+Test files:
+  - tests/smoke.test.ts (14 tests) - all existing tests pass
+  - tests/persistence.test.ts (25 tests) - all new FP-004 tests pass
+
+Command: pnpm fp -- init-db (run 1)
+Status: PASS
+Output: "Database initialized successfully."
+
+Command: pnpm fp -- init-db (run 2)
+Status: PASS
+Output: "Database initialized successfully."
+
+Command: pnpm fp -- init-db (run 3)
+Status: PASS
+Output: "Database initialized successfully."
+
+Idempotency: CONFIRMED - init-db succeeds on repeated runs.
+
+Command: test -f runs/FP-004/executor-result.md
+Status: PASS
+
+Command: test -f runs/FP-004/verification.txt
+Status: PASS
+
+Command: test -f runs/FP-004/audit-prompt.md
+Status: PASS
+
+Command: test -f runs/FP-004/metrics.json
+Status: PASS
+
+=== Acceptance Criteria ===
+
+[x] SQLite persistence schema implemented
+[x] Packet intent stored separately from lifecycle observations
+[x] Lifecycle events are append-only
+[x] Execution attempts recorded separately from packet lifecycle state
+[x] Multiple execution attempts per packet supported
+[x] execution_id exists as attempt identity
+[x] attempt_number supports retry ordering
+[x] Execution state uses RUNNING, SUCCEEDED, FAILED
+[x] EXECUTION_COMPLETED maps to SUCCEEDED
+[x] error_code is stable and queryable (indexed)
+[x] error_message is separate from error_code
+[x] Current packet state derived from lifecycle events (VIEW)
+[x] Migration/init behavior is idempotent
+[x] Existing tests pass
+[x] New tests cover persistence behavior
+[x] No OpenCode telemetry ingestion implemented
+[x] No model routing, broker behavior, autonomous execution, aggregation, reporting, or routing decisions added
+
+=== Rejection Criteria (all absent) ===
+
+[x] No mutation of packet intent during lifecycle transitions
+[x] No treatment of execution attempts as final packet outcomes
+[x] No use of packet_id alone as execution identity
+[x] No use of COMPLETED instead of SUCCEEDED
+[x] No storage of raw exception strings as error_code
+[x] No packet_current_state as source of truth (it is a VIEW)
+[x] No OpenCode telemetry ingestion
+[x] No provider API logic
+[x] No model routing
+[x] No autonomous execution
+[x] No aggregation or reporting behavior
+[x] No breakage of existing tests
