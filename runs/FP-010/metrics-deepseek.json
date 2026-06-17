@@ -1,0 +1,84 @@
+{
+  "packet_id": "FP-010",
+  "packet_title": "SQLite Evidence Persistence",
+  "branch": "eval/fp-010/deepseek-v4-pro-high",
+  "commit_sha": "c2ff540190cf520602213bdcd52297b38b0373d7",
+  "files_created": [
+    "migrations/006_fp010_evidence_persistence.sql",
+    "src/db/evidence-records.ts",
+    "tests/fp010.test.ts"
+  ],
+  "files_modified_post_correction": [
+    "migrations/006_fp010_evidence_persistence.sql",
+    "src/db/evidence-records.ts",
+    "tests/fp010.test.ts"
+  ],
+  "corrections": [
+    {
+      "issue": "validation_state incorrectly allowed NOT_EVALUATED and used it as default",
+      "fix": "Removed NOT_EVALUATED from CHECK; default changed to INCOMPLETE"
+    },
+    {
+      "issue": "trust_tier incorrectly allowed empty string '' and used it as default",
+      "fix": "Removed '' from CHECK; default changed to TIER_0_UNTRUSTED"
+    },
+    {
+      "issue": "TypeScript validation skipped empty string values due to truthy check",
+      "fix": "Changed `if (params.x)` to `if (params.x !== undefined)`"
+    }
+  ],
+  "typecheck": "PASS",
+  "test_results": {
+    "total": 184,
+    "passed": 184,
+    "failed": 0,
+    "fp010_tests": 28,
+    "fp009_tests_preserved": 45,
+    "fp008_tests_preserved": 35,
+    "other_tests_preserved": 76
+  },
+  "enum_constraints": {
+    "validation_state": {
+      "allowed": ["VALID", "INVALID", "INCOMPLETE", "DEFERRED"],
+      "default": "INCOMPLETE",
+      "enforced_at": ["TypeScript", "SQLite CHECK"]
+    },
+    "trust_tier": {
+      "allowed": ["TIER_0_UNTRUSTED", "TIER_1_SELF_REPORTED", "TIER_2_VERIFIED_ARTIFACT", "TIER_3_REPRODUCIBLE"],
+      "default": "TIER_0_UNTRUSTED",
+      "enforced_at": ["TypeScript", "SQLite CHECK"]
+    },
+    "admission_state": {
+      "allowed": ["NOT_EVALUATED", "REJECTED", "PENDING", "ADMITTED", "QUARANTINED"],
+      "default": "NOT_EVALUATED",
+      "enforced_at": ["TypeScript", "SQLite CHECK"]
+    }
+  },
+  "acceptance_criteria": {
+    "migration_exists": true,
+    "migration_idempotent": true,
+    "evidence_insert": true,
+    "evidence_retrieve_by_packet": true,
+    "evidence_retrieve_by_run": true,
+    "artifact_paths_persisted": true,
+    "existing_tests_pass": true,
+    "new_tests_cover_insert_retrieve": true,
+    "no_routing_ranking_classification_leaderboards_cost": true,
+    "markdown_json_artifacts_preserved": true,
+    "validation_state_restricted_to_four": true,
+    "trust_tier_restricted_to_four_tiers": true,
+    "not_evaluated_rejected_for_validation": true,
+    "empty_trust_tier_rejected": true
+  },
+  "scope_boundaries": {
+    "routing": false,
+    "ranking": false,
+    "cost_optimization": false,
+    "task_classification": false,
+    "admission_policy_logic": false,
+    "dashboards": false,
+    "leaderboards": false,
+    "reports": false
+  },
+  "created_at": "2026-06-17T00:00:00Z"
+}
