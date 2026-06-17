@@ -1,0 +1,131 @@
+FP-011 Verification Results
+==========================
+
+TypeScript TypeCheck:
+  $ pnpm typecheck
+  $ tsc --noEmit
+  (exit 0 — no errors)
+
+Test Results:
+  $ pnpm test
+  $ node --experimental-test-module-mocks --import tsx --test tests/*.test.ts
+
+----------------------------------------
+FP-011: Metrics Validation and Admission Integration
+----------------------------------------
+
+  Migration:
+    [PASS] should be idempotent
+    [PASS] should create evidence_record_validation_events table
+    [PASS] should create evidence_record_admission_events table
+    [PASS] should create indexes on both tables
+
+  Validation — VALID:
+    [PASS] should classify a fully populated evidence record as VALID
+    [PASS] should record VALID validation event without mutating original record
+
+  Validation — INCOMPLETE:
+    [PASS] should classify minimal evidence as INCOMPLETE
+    [PASS] should identify specific missing fields
+    [PASS] should record INCOMPLETE validation event
+
+  Validation — INVALID:
+    [PASS] should classify evidence with malformed artifact paths as INVALID
+    [PASS] should classify evidence with non-array artifact_paths as INVALID
+    [PASS] should classify evidence with VALID but empty required fields as INVALID
+    [PASS] should record INVALID validation event
+
+  Validation — DEFERRED:
+    [PASS] should classify evidence with paths but no results as DEFERRED
+    [PASS] should show which prerequisites are deferred
+    [PASS] should record DEFERRED validation event
+
+  Validation — NOT_EVALUATED rejected:
+    [PASS] should reject NOT_EVALUATED as a validation_state in events
+    [PASS] should reject NOT_EVALUATED in validation via CHECK constraint
+
+  Admission — ADMITTED:
+    [PASS] should evaluate fully valid evidence as ADMITTED
+    [PASS] should record ADMITTED admission event
+    [PASS] should not admit evidence with TIER_0_UNTRUSTED trust
+
+  Admission — REJECTED:
+    [PASS] should evaluate INVALID evidence as REJECTED
+    [PASS] should record REJECTED admission event
+
+  Admission — PENDING:
+    [PASS] should evaluate INCOMPLETE evidence as PENDING
+    [PASS] should evaluate DEFERRED evidence as PENDING
+    [PASS] should record PENDING admission event
+
+  Admission — QUARANTINED:
+    [PASS] should evaluate previously admitted evidence with invalidated validation as QUARANTINED
+    [PASS] should record QUARANTINED admission event
+    [PASS] should support full lifecycle: admit -> invalidate -> quarantine without deleting prior events
+
+  Admission — NOT_EVALUATED accepted:
+    [PASS] should accept NOT_EVALUATED as a valid admission_state in events
+    [PASS] should default admission state to NOT_EVALUATED in evidence records
+
+  Append-Only Behavior:
+    [PASS] should not mutate original evidence record when recording validation events
+    [PASS] should not mutate original evidence record when recording admission events
+    [PASS] should accumulate multiple validation events in order
+    [PASS] should derive current state from latest event, not from original record
+
+  State Axes Independence:
+    [PASS] should keep trust_tier, validation_state, and admission_state as independent axes
+    [PASS] should allow any combination of valid axes states
+
+  Provenance in Validation/Admission Events:
+    [PASS] should track provenance in validation events
+    [PASS] should track provenance in admission events
+
+  Retrieval Functions:
+    [PASS] should retrieve validation events by evidence_record_id
+    [PASS] should retrieve admission events by evidence_record_id
+    [PASS] should retrieve single events by id
+    [PASS] should retrieve single admission events by id
+    [PASS] should return null for non-existent evidence record in state queries
+    [PASS] should return empty arrays for evidence with no events
+
+  Validation Event Record Constraints:
+    [PASS] should require evidence_record_id
+    [PASS] should require evidence record to exist
+    [PASS] should require valid validation_state
+    [PASS] should require valid actor type
+
+  Admission Event Record Constraints:
+    [PASS] should require evidence_record_id
+    [PASS] should require evidence record to exist
+    [PASS] should require valid admission_state
+    [PASS] should require valid trust_tier_at_admission when provided
+
+  Error Cases:
+    [PASS] validateEvidenceRecord throws for non-existent evidence record
+    [PASS] evaluateAdmissionForRecord throws for non-existent evidence record
+
+  Existing Behavior Preservation:
+    [PASS] should not affect FP-004 packet persistence
+    [PASS] should not affect FP-010 evidence_records table
+    [PASS] should have FP-009 and FP-010 tables alongside FP-011 tables
+    [PASS] should not add routing, ranking, or leaderboard functionality
+
+  Acceptance Criteria:
+    [PASS] AC1: Validation logic exists for FP-010 evidence records
+    [PASS] AC2: Admission integration exists for FP-010 evidence records
+    [PASS] AC3: Validation and admission do not mutate original evidence records
+    [PASS] AC4: Trust tier, validation state, and admission state remain independent axes
+    [PASS] AC5: NOT_EVALUATED is not accepted as a validation state
+    [PASS] AC6: NOT_EVALUATED remains valid as an admission state
+    [PASS] AC7-10: All four validation states detectable
+    [PASS] AC11-13: All five admission states detectable
+    [PASS] AC14: Append-only behavior verified
+    [PASS] AC15: Existing FP-004, 5, 8, 9, 10 behavior preserved
+
+----------------------------------------
+Overall Summary
+----------------------------------------
+Tests: 257 total
+Passed: 257
+Failed: 0
