@@ -1,0 +1,420 @@
+=== pnpm typecheck ===
+$ tsc --noEmit
+
+=== pnpm test ===
+$ node --experimental-test-module-mocks --import tsx --test tests/*.test.ts
+▶ FP-008: Classification and Outcome Persistence
+  ▶ Migration
+    ✔ should be idempotent (running migrate twice does not fail) (85.937723ms)
+    ✔ should create all required FP-008 tables (108.052613ms)
+    ✔ should create required columns in packet_classification_observations (109.16692ms)
+    ✔ should create required columns in packet_classification_corrections (115.3572ms)
+    ✔ should create required columns in model_outcome_observations (119.351348ms)
+    ✔ should create required columns in model_outcome_corrections (116.396376ms)
+  ✔ Migration (655.435729ms)
+  ▶ Classification observations
+    ✔ should insert a classification observation with all required fields (112.202911ms)
+    ✔ should support secondary_task_classes as JSON array (121.484127ms)
+    ✔ should default classification observations to non-admitted state (PENDING) (125.998836ms)
+    ✔ should reject explicit ADMITTED for classification observations (118.212356ms)
+  ✔ Classification observations (478.697294ms)
+  ▶ Classification corrections
+    ✔ should insert a classification correction referencing previous observation (112.187689ms)
+    ✔ should not overwrite previous classification observations (122.183004ms)
+  ✔ Classification corrections (234.669252ms)
+  ▶ Model outcome observations
+    ✔ should insert a model outcome observation with required fields (112.395969ms)
+    ✔ should default model outcome observations to non-admitted state (PENDING) (109.882798ms)
+    ✔ should reject explicit ADMITTED for outcome observations (118.161911ms)
+  ✔ Model outcome observations (340.732477ms)
+  ▶ Model outcome corrections
+    ✔ should insert a model outcome correction referencing previous observation (110.027095ms)
+    ✔ should not overwrite previous outcome observations (121.218088ms)
+  ✔ Model outcome corrections (231.462111ms)
+  ▶ Controlled vocabulary enforcement
+    ✔ should reject invalid task_class for classification observations (106.596045ms)
+    ✔ should reject invalid risk_level for classification observations (126.423562ms)
+    ✔ should reject invalid execution_result for outcome observations (110.5496ms)
+    ✔ should reject invalid verification_result for outcome observations (108.683786ms)
+    ✔ should reject invalid audit_result for outcome observations (104.283912ms)
+    ✔ should reject invalid correction_type for outcome observations (137.269662ms)
+    ✔ should reject invalid scope_discipline for outcome observations (109.555387ms)
+    ✔ should reject invalid comparison_outcome for outcome observations (118.1208ms)
+  ✔ Controlled vocabulary enforcement (922.155667ms)
+  ▶ Cross-packet reference rejection
+    ✔ should reject classification correction where previous_classification_id belongs to another packet (118.554285ms)
+    ✔ should reject outcome observation where packet_classification_id belongs to another packet (116.084077ms)
+    ✔ should reject outcome observation where execution_id belongs to another packet (134.568248ms)
+    ✔ should reject outcome observation where telemetry_id belongs to another packet (132.810565ms)
+    ✔ should reject outcome correction where previous_outcome_id belongs to another packet (140.788529ms)
+  ✔ Cross-packet reference rejection (643.280265ms)
+  ▶ Outcome references to classification, execution, and telemetry
+    ✔ should allow outcome observations to reference packet classification observations (104.422395ms)
+    ✔ should allow outcome observations to reference packet executions (104.212004ms)
+    ✔ should allow outcome observations to reference telemetry records when available (111.271051ms)
+  ✔ Outcome references to classification, execution, and telemetry (320.355861ms)
+  ▶ FP-004 persistence behavior preservation
+    ✔ should still record packet intent after FP-008 migration (117.475997ms)
+    ✔ should still append lifecycle events after FP-008 migration (111.295458ms)
+    ✔ should still create and manage execution attempts after FP-008 migration (102.897621ms)
+    ✔ should still derive current packet state from lifecycle events after FP-008 migration (128.974067ms)
+  ✔ FP-004 persistence behavior preservation (461.628024ms)
+  ▶ FP-005 telemetry ingestion preservation
+    ✔ should still ingest telemetry after FP-008 migration (111.736999ms)
+    ✔ should still retrieve telemetry by execution_id after FP-008 migration (126.342876ms)
+  ✔ FP-005 telemetry ingestion preservation (238.671696ms)
+  ▶ Append-only behavior
+    ✔ should preserve classification observations when corrections are added (131.22844ms)
+    ✔ should preserve outcome observations when corrections are added (109.943687ms)
+  ✔ Append-only behavior (241.380276ms)
+✔ FP-008: Classification and Outcome Persistence (4770.849082ms)
+▶ FP-009: Evidence Admission Persistence
+  ▶ Migration
+    ✔ should be idempotent (running migrate twice does not fail) (87.596905ms)
+    ✔ should create all required FP-009 tables (105.498442ms)
+    ✔ should create required columns in evidence_admission_events (102.449414ms)
+    ✔ should create required columns in admission_review_requests (131.752278ms)
+    ✔ should create required columns in admission_invalidation_events (101.583924ms)
+  ✔ Migration (530.045659ms)
+  ▶ Evidence admission events (test 1)
+    ✔ should persist an evidence admission event for a classification observation (119.568369ms)
+    ✔ should persist an evidence admission event for an outcome observation (118.629046ms)
+    ✔ should preserve admission trust tier, validation state, provenance completeness, and actor info (122.714786ms)
+    ✔ should reject invalid admission_decision values (125.257995ms)
+    ✔ should reject invalid target_observation_type values (111.306626ms)
+    ✔ should reject admission targeting a non-existent observation (118.493211ms)
+  ✔ Evidence admission events (test 1) (716.773095ms)
+  ▶ Admission review requests (test 2)
+    ✔ should persist an admission review request (129.556369ms)
+    ✔ should reject review request referencing non-existent admission event (123.70024ms)
+    ✔ should reject invalid review_trigger_type values (136.64262ms)
+  ✔ Admission review requests (test 2) (390.247195ms)
+  ▶ Admission invalidation events (test 3)
+    ✔ should persist an admission invalidation event (124.680676ms)
+    ✔ should reject invalid invalidation_decision values (106.883269ms)
+    ✔ should preserve invalidation trust tier, validation state, provenance completeness, and actor info (130.124708ms)
+  ✔ Admission invalidation events (test 3) (361.983896ms)
+  ▶ Invalidation requires review request (test 4)
+    ✔ should reject invalidation without a valid review request reference (118.11254ms)
+    ✔ should reject invalidation where review request references a different admission event (123.978151ms)
+  ✔ Invalidation requires review request (test 4) (242.337786ms)
+  ▶ Derived evidence eligibility (tests 5, 9, 10, 11, 12)
+    ✔ should derive eligibility from a valid admission with no defeating invalidation (test 5, 9) (108.937492ms)
+    ✔ should make observation ineligible when a valid invalidation defeats the admission (test 10) (115.312495ms)
+    ✔ should make observation ineligible when QUARANTINED invalidation defeats admission (115.104938ms)
+    ✔ should NOT make observation ineligible when NO_ACTION review outcome does not defeat admission (test 11) (119.279125ms)
+    ✔ should NOT make observation ineligible when DEFERRED review outcome does not defeat admission (113.85363ms)
+    ✔ should not grant eligibility for invalid admission events (test 12 - invalid validation_state) (111.873001ms)
+    ✔ should not grant eligibility for provenance-incomplete admission events (test 12 - provenance) (108.960641ms)
+    ✔ should not grant eligibility for REJECTED admission decisions (105.694703ms)
+    ✔ should not grant eligibility for PENDING admission decisions (111.266459ms)
+    ✔ should not be eligible for observations with no admission events (102.545359ms)
+    ✔ should derive eligibility for outcome observations (113.90952ms)
+    ✔ should derive eligibility from a re-admission after invalidation defeats the first admission (99.533053ms)
+  ✔ Derived evidence eligibility (tests 5, 9, 10, 11, 12) (1327.324779ms)
+  ▶ Observation immutability (tests 6, 7)
+    ✔ should not mutate classification observation rows when admitted (test 6) (110.19906ms)
+    ✔ should not mutate outcome observation rows when admitted (test 6) (101.272995ms)
+    ✔ should not mutate classification observation rows when admission is invalidated (test 7) (115.749092ms)
+    ✔ should not mutate outcome observation rows when admission is invalidated (test 7) (115.868019ms)
+  ✔ Observation immutability (tests 6, 7) (443.478152ms)
+  ▶ No mutable evidence-state fields on observation tables (test 8)
+    ✔ should not add is_evidence or evidence_status columns to packet_classification_observations (106.441395ms)
+    ✔ should not add is_evidence or evidence_status columns to model_outcome_observations (123.117975ms)
+  ✔ No mutable evidence-state fields on observation tables (test 8) (229.861818ms)
+  ▶ FP-008 observation persistence preservation
+    ✔ should still insert and retrieve classification observations after FP-009 migration (112.933918ms)
+    ✔ should still insert and retrieve outcome observations after FP-009 migration (123.435386ms)
+    ✔ should still default observations to PENDING admission_state (122.712102ms)
+  ✔ FP-008 observation persistence preservation (359.499132ms)
+  ▶ FP-004 persistence behavior preservation
+    ✔ should still record packet intent after FP-009 migration (122.955474ms)
+    ✔ should still append lifecycle events after FP-009 migration (121.713722ms)
+    ✔ should still derive current packet state after FP-009 migration (90.099929ms)
+  ✔ FP-004 persistence behavior preservation (336.146175ms)
+  ▶ FP-005 telemetry preservation
+    ✔ should still ingest telemetry after FP-009 migration (113.122957ms)
+    ✔ should still retrieve telemetry by execution_id after FP-009 migration (96.236615ms)
+  ✔ FP-005 telemetry preservation (209.664075ms)
+  ▶ Admission event query functions
+    ✔ should retrieve admission events by observation type and id (106.951751ms)
+    ✔ should retrieve admission event by id (130.949252ms)
+    ✔ should retrieve review requests by admission event id (113.380904ms)
+    ✔ should retrieve invalidation events by admission event id (118.777677ms)
+  ✔ Admission event query functions (470.419068ms)
+  ▶ Append-only behavior
+    ✔ should preserve admission events (no mutation of existing records) (123.393404ms)
+    ✔ should preserve review requests (no mutation of existing records) (116.238856ms)
+    ✔ should preserve invalidation events (no mutation of existing records) (118.768306ms)
+  ✔ Append-only behavior (358.66555ms)
+✔ FP-009: Evidence Admission Persistence (5978.391046ms)
+▶ FP-010: SQLite Evidence Persistence
+  ▶ Migration
+    ✔ should be idempotent (running migrate twice does not fail) (82.925251ms)
+    ✔ should create evidence_records table with required columns (114.565137ms)
+    ✔ should create indexes on evidence_records (109.667185ms)
+  ✔ Migration (307.990746ms)
+  ▶ Evidence record insertion
+    ✔ should insert an evidence record with all fields (115.323496ms)
+    ✔ should apply default values when optional fields are omitted (112.62349ms)
+    ✔ should require packet_id to be valid (99.466941ms)
+    ✔ should require run_id to be non-empty (119.404756ms)
+    ✔ should require packet to exist in database (131.790556ms)
+    ✔ should enforce unique packet_id + run_id combination (115.939428ms)
+  ✔ Evidence record insertion (695.380656ms)
+  ▶ State axis constraints
+    ✔ should accept all valid trust_tier values (110.966641ms)
+    ✔ should reject invalid trust_tier values (119.318755ms)
+    ✔ should reject empty string trust_tier (109.785537ms)
+    ✔ should accept all valid validation_state values (117.773852ms)
+    ✔ should reject invalid validation_state values (119.675907ms)
+    ✔ should reject NOT_EVALUATED for validation_state (belongs to admission_state only) (114.671878ms)
+    ✔ should accept all valid admission_state values (116.128541ms)
+    ✔ should reject invalid admission_state values (119.044475ms)
+    ✔ should keep trust_tier, validation_state, and admission_state as separate axes (96.667675ms)
+  ✔ State axis constraints (1025.082715ms)
+  ▶ Evidence retrieval
+    ✔ should retrieve evidence records by packet_id (109.852223ms)
+    ✔ should retrieve evidence records by run_id (127.994317ms)
+    ✔ should retrieve single evidence record by evidence_id (107.980816ms)
+    ✔ should return undefined for non-existent evidence_id (120.454654ms)
+    ✔ should return empty array for packet with no evidence (116.389913ms)
+    ✔ should return empty array for non-existent run_id (113.460349ms)
+  ✔ Evidence retrieval (696.658723ms)
+  ▶ Artifact paths persistence
+    ✔ should persist and retrieve artifact paths as JSON array (120.31395ms)
+    ✔ should handle empty artifact paths array (116.046632ms)
+    ✔ should default artifact_paths to empty array when not provided (109.470535ms)
+  ✔ Artifact paths persistence (346.17249ms)
+  ▶ Provenance preservation
+    ✔ should preserve all provenance fields for traceability (108.022392ms)
+  ✔ Provenance preservation (108.210745ms)
+  ▶ Existing behavior preservation
+    ✔ should not affect existing packet operations (134.519841ms)
+    ✔ should not affect existing evidence_admission_events table (120.776083ms)
+  ✔ Existing behavior preservation (255.602835ms)
+✔ FP-010: SQLite Evidence Persistence (3436.161383ms)
+▶ FP-011: Metrics Validation and Admission Integration
+  ▶ Migration
+    ✔ should be idempotent (running migrate twice does not fail) (79.20092ms)
+    ✔ should create evidence_record_validation_events table (127.847075ms)
+    ✔ should create evidence_record_admission_events table (118.958289ms)
+    ✔ should create indexes on validation and admission event tables (112.061725ms)
+  ✔ Migration (439.068981ms)
+  ▶ Validation: VALID outcome
+    ✔ should classify a complete evidence record as VALID (122.094596ms)
+    ✔ should record a VALID validation event (117.312867ms)
+  ✔ Validation: VALID outcome (239.939948ms)
+  ▶ Validation: INCOMPLETE outcome
+    ✔ should classify a record with missing model_id as INCOMPLETE (114.06917ms)
+    ✔ should record an INCOMPLETE validation event (126.566675ms)
+  ✔ Validation: INCOMPLETE outcome (241.05583ms)
+  ▶ Validation: INVALID outcome
+    ✔ should classify a record with malformed artifact_paths JSON as INVALID (105.594202ms)
+    ✔ should classify a record with invalid trust_tier as INVALID (108.57747ms)
+    ✔ should reject NOT_EVALUATED as a validation_state on evidence records (103.197087ms)
+    ✔ should record an INVALID validation event (109.378033ms)
+  ✔ Validation: INVALID outcome (427.234334ms)
+  ▶ Validation: DEFERRED outcome
+    ✔ should classify a record as DEFERRED when prerequisite data is unavailable (105.741925ms)
+    ✔ should record a DEFERRED validation event (131.751908ms)
+  ✔ Validation: DEFERRED outcome (237.755243ms)
+  ▶ Admission: ADMITTED outcome
+    ✔ should admit a valid evidence record with sufficient trust tier (114.626212ms)
+    ✔ should reject admission when validation outcome is not VALID (126.467563ms)
+    ✔ should reject admission when trust_tier is TIER_0_UNTRUSTED (131.233477ms)
+  ✔ Admission: ADMITTED outcome (372.643661ms)
+  ▶ Admission: REJECTED outcome
+    ✔ should reject an invalid evidence record (128.172782ms)
+  ✔ Admission: REJECTED outcome (128.374987ms)
+  ▶ Admission: PENDING outcome
+    ✔ should mark a record as PENDING when review is required (121.864964ms)
+  ✔ Admission: PENDING outcome (122.069966ms)
+  ▶ Admission: QUARANTINED outcome
+    ✔ should quarantine a previously admitted record (112.005187ms)
+  ✔ Admission: QUARANTINED outcome (112.249967ms)
+  ▶ Admission: NOT_EVALUATED state
+    ✔ should remain NOT_EVALUATED when no admission evaluation has been performed (103.603832ms)
+    ✔ should accept NOT_EVALUATED as a valid admission outcome (129.969095ms)
+  ✔ Admission: NOT_EVALUATED state (233.861744ms)
+  ▶ State axis independence
+    ✔ should preserve trust_tier, validation_state, and admission_state as independent axes (118.152133ms)
+    ✔ should not collapse state axes into a single status field (122.903252ms)
+  ✔ State axis independence (241.327703ms)
+  ▶ NOT_EVALUATED validation state rejection
+    ✔ should not accept NOT_EVALUATED as a validation_state value (116.345135ms)
+    ✔ should accept NOT_EVALUATED as an admission_state value (109.551387ms)
+  ✔ NOT_EVALUATED validation state rejection (226.112394ms)
+  ▶ Append-only behavior
+    ✔ should not mutate original evidence record when validation event is recorded (110.08604ms)
+    ✔ should not mutate original evidence record when admission event is recorded (89.998169ms)
+    ✔ should preserve validation event history (append-only) (117.300126ms)
+    ✔ should preserve admission event history (append-only) (116.758232ms)
+    ✔ should allow quarantine after admission without deleting prior records (120.498007ms)
+  ✔ Append-only behavior (555.517358ms)
+  ▶ Derived state
+    ✔ should derive current validation outcome from latest validation event (116.352858ms)
+    ✔ should derive current admission outcome from latest admission event (100.194689ms)
+    ✔ should derive admitted status correctly (114.695583ms)
+    ✔ should derive quarantined status correctly (108.92164ms)
+    ✔ should throw when deriving state for non-existent evidence record (73.856074ms)
+  ✔ Derived state (514.599071ms)
+  ▶ Provenance preservation in evaluation events
+    ✔ should preserve evaluator provenance in validation events (85.656462ms)
+    ✔ should preserve evaluator provenance in admission events (116.971956ms)
+  ✔ Provenance preservation in evaluation events (202.943254ms)
+  ▶ Validation event query functions
+    ✔ should retrieve validation events by evidence_id (108.360431ms)
+    ✔ should retrieve latest validation event (86.669786ms)
+    ✔ should return null for latest validation event when none exist (113.860261ms)
+  ✔ Validation event query functions (309.206387ms)
+  ▶ Admission event query functions
+    ✔ should retrieve admission events by evidence_id (109.304644ms)
+    ✔ should retrieve latest admission event (108.537229ms)
+  ✔ Admission event query functions (220.223654ms)
+  ▶ Invalid input rejection
+    ✔ should reject validation for non-existent evidence record (113.775ms)
+    ✔ should reject admission for non-existent evidence record (114.644731ms)
+    ✔ should reject invalid evaluator_actor_type for validation (118.075948ms)
+    ✔ should reject invalid admission_outcome values (102.585248ms)
+  ✔ Invalid input rejection (449.424282ms)
+  ▶ FP-010 evidence persistence preservation
+    ✔ should still insert and retrieve evidence records after FP-011 migration (101.335533ms)
+    ✔ should not affect evidence_records table structure (98.786361ms)
+    ✔ should preserve evidence record retrieval by packet_id (88.160318ms)
+  ✔ FP-010 evidence persistence preservation (288.565511ms)
+  ▶ FP-009 evidence admission preservation
+    ✔ should still record evidence admission events for observations (82.407005ms)
+    ✔ should still derive evidence eligibility for observations (99.69887ms)
+  ✔ FP-009 evidence admission preservation (182.346451ms)
+  ▶ FP-008 classification and outcome preservation
+    ✔ should still record classification observations (108.89764ms)
+    ✔ should still record outcome observations (111.738296ms)
+  ✔ FP-008 classification and outcome preservation (220.823363ms)
+  ▶ FP-004 and FP-005 behavior preservation
+    ✔ should still record packet intent (100.154318ms)
+    ✔ should still append lifecycle events (98.028205ms)
+    ✔ should still derive current packet state (111.213847ms)
+    ✔ should still ingest telemetry (113.142513ms)
+  ✔ FP-004 and FP-005 behavior preservation (422.851368ms)
+  ▶ No routing, ranking, or dashboard features
+    ✔ should not create routing, ranking, or dashboard tables (99.74437ms)
+  ✔ No routing, ranking, or dashboard features (99.879649ms)
+✔ FP-011: Metrics Validation and Admission Integration (6490.469168ms)
+▶ FP-004: SQLite Metrics Persistence
+  ▶ Migration
+    ✔ should be idempotent (running migrate twice does not fail) (70.625118ms)
+    ✔ should create packet_lifecycle_events table with required columns (97.496367ms)
+    ✔ should create packet_executions table with required columns (117.481868ms)
+    ✔ should create packet_current_state view (111.474349ms)
+    ✔ should add FP-004 columns to existing packets table (118.03791ms)
+  ✔ Migration (516.28218ms)
+  ▶ Packet intent
+    ✔ should record packet intent with title, path, and hash (123.752389ms)
+    ✔ should preserve existing packet columns when recording intent (115.431942ms)
+  ✔ Packet intent (239.612779ms)
+  ▶ Lifecycle events
+    ✔ should append lifecycle events to a packet (120.827565ms)
+    ✔ should be append-only (events cannot be mutated after creation) (117.391274ms)
+    ✔ should reference execution attempts via execution_id (104.75686ms)
+  ✔ Lifecycle events (343.383927ms)
+  ▶ Execution attempts
+    ✔ should create an execution attempt with RUNNING state by default (103.79063ms)
+    ✔ should mark execution as SUCCEEDED (131.825001ms)
+    ✔ should mark execution as FAILED with stable error_code and separate error_message (118.093689ms)
+    ✔ should support multiple execution attempts per packet (116.623194ms)
+    ✔ should enforce unique attempt_number per packet (124.859677ms)
+  ✔ Execution attempts (595.633267ms)
+  ▶ EXECUTION_COMPLETED maps to SUCCEEDED
+    ✔ should map EXECUTION_COMPLETED lifecycle event to SUCCEEDED execution state (92.73849ms)
+    ✔ should not use COMPLETED as an execution state (115.407515ms)
+  ✔ EXECUTION_COMPLETED maps to SUCCEEDED (208.368304ms)
+  ▶ Error handling
+    ✔ should keep error_code stable and queryable (108.972178ms)
+    ✔ should store error_message separately from error_code (116.551915ms)
+  ✔ Error handling (225.729224ms)
+  ▶ Current packet state derivation
+    ✔ should derive current state from lifecycle events (121.202902ms)
+    ✔ should return null state for packet with no lifecycle events (120.220597ms)
+    ✔ should preserve full lifecycle event history (101.607017ms)
+    ✔ should have packet_current_state as a view, not a source of truth table (115.953687ms)
+  ✔ Current packet state derivation (459.409188ms)
+  ▶ Existing behavior preservation
+    ✔ should preserve existing packets table columns and foreign keys (110.818102ms)
+    ✔ should allow existing packet-metrics queries to work (91.603776ms)
+  ✔ Existing behavior preservation (202.664973ms)
+  ▶ Valid error_code values
+    ✔ should accept all FP-004 valid error_code values (86.577322ms)
+  ✔ Valid error_code values (86.873658ms)
+✔ FP-004: SQLite Metrics Persistence (2879.22366ms)
+▶ FP-005: OpenCode Telemetry Ingestion
+  ▶ Telemetry artifact parsing
+    ✔ should parse a complete OpenCode telemetry artifact file successfully (1.003824ms)
+    ✔ should handle missing telemetry fields as null (0.400059ms)
+    ✔ should fail on invalid JSON artifact (0.276781ms)
+    ✔ should parse a messages-based OpenCode export (real shape) (0.372059ms)
+    ✔ should parse a top-level summary export with alternate field names (0.539709ms)
+  ✔ Telemetry artifact parsing (2.90249ms)
+  ▶ Telemetry table migration
+    ✔ should create packet_execution_telemetry table with required columns (120.102355ms)
+  ✔ Telemetry table migration (120.289245ms)
+  ▶ Telemetry ingestion
+    ✔ should successfully ingest telemetry from a complete artifact (108.61923ms)
+    ✔ should persist missing fields as null (87.439312ms)
+    ✔ should require explicit packet_id and execution_id mapping (99.428441ms)
+    ✔ should reject cross-packet mapping (execution from different packet) (110.770824ms)
+    ✔ should label retroactive ingestion correctly (123.305626ms)
+    ✔ should record source as OPENCODE_TELEMETRY (115.809945ms)
+    ✔ should not require network access (local file parsing only) (112.37445ms)
+    ✔ should allow retrieving telemetry by execution_id (117.231865ms)
+    ✔ should allow retrieving telemetry by packet_id (95.823704ms)
+    ✔ should not admit telemetry automatically (107.91552ms)
+    ✔ should ingest telemetry from a messages-based OpenCode export (112.467376ms)
+    ✔ should resolve packet by title and packet_path for string identifiers (91.901446ms)
+  ✔ Telemetry ingestion (1284.066452ms)
+  ▶ FP-004 persistence behavior preservation
+    ✔ should still record packet intent after FP-005 migration (83.91689ms)
+    ✔ should still append lifecycle events after FP-005 migration (111.327385ms)
+    ✔ should still create and manage execution attempts after FP-005 migration (109.564221ms)
+    ✔ should still derive current packet state from lifecycle events after FP-005 migration (108.883084ms)
+    ✔ should still support multiple execution attempts after FP-005 migration (91.403386ms)
+    ✔ should still have stable and queryable error codes after FP-005 migration (110.356412ms)
+  ✔ FP-004 persistence behavior preservation (615.999105ms)
+  ▶ Migration idempotence
+    ✔ should be idempotent after FP-005 migration (111.672518ms)
+    ✔ should not break existing FP-004 tables after FP-005 migration (112.088503ms)
+  ✔ Migration idempotence (224.001338ms)
+✔ FP-005: OpenCode Telemetry Ingestion (2247.729968ms)
+$ tsx src/cli/forgepilot.ts -- -- prompt-baselines
+▶ ForgePilot
+  ✔ should have a working test harness (0.673728ms)
+  ✔ should confirm environment-centric architecture principle (0.200243ms)
+✔ ForgePilot (1.605904ms)
+▶ Database client
+  ✔ should initialize the database and create the data directory (50.963546ms)
+  ✔ should throw when getDb is called before initDb (0.72658ms)
+✔ Database client (52.008704ms)
+▶ Database migration
+  ✔ should create the events table via migration (85.974465ms)
+  ✔ should be idempotent (running migrate twice does not fail) (111.057789ms)
+  ✔ should create all required core schema tables (107.197272ms)
+  ✔ should have correct foreign keys on core schema tables (124.83314ms)
+✔ Database migration (429.782099ms)
+▶ CLI prompt-baselines
+  ✔ should print ForgePilot and prompt baseline file paths (939.988277ms)
+✔ CLI prompt-baselines (940.313354ms)
+$ tsx src/cli/forgepilot.ts -- -- packet-metrics
+▶ Packet metrics
+  ✔ should return zero counts when no packets exist (49.707368ms)
+  ✔ should count completed and failed packets correctly (0.718803ms)
+  ✔ CLI packet-metrics should print all three labels (1013.172457ms)
+  ✔ CLI packet-metrics should succeed with zero counts on empty db (115.622129ms)
+✔ Packet metrics (1298.245269ms)
+ℹ tests 247
+ℹ suites 79
+ℹ pass 247
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10932.361291
