@@ -1,0 +1,50 @@
+FP-010 Verification Results
+===========================
+
+Typecheck: PASS
+  Command: pnpm typecheck
+  Result: tsc --noEmit completed with no errors
+
+Tests: PASS
+  Command: pnpm test
+  Result: 188 tests passed, 0 failed, 0 cancelled, 0 skipped
+  FP-010 specific: 24 tests passed
+
+Migration Idempotence: PASS
+  Migration 006_fp010_evidence_persistence.sql runs twice without error
+  Migration recorded exactly once in _migrations table
+
+Evidence Insert: PASS
+  Evidence records insert with all required fields
+  Default values applied correctly (TIER_0_UNTRUSTED, INCOMPLETE, NOT_EVALUATED)
+  Invalid state values rejected at application layer
+  Unique packet_id + run_id constraint enforced
+
+Evidence Retrieve: PASS
+  Retrieval by packet_id returns correct records
+  Retrieval by run_id returns correct records
+  Retrieval by evidence_id returns single record
+  Artifact paths persist and parse correctly as JSON arrays
+
+State Axis Separation: PASS
+  trust_tier, validation_state, and admission_state remain separate columns
+  Each axis accepts only its defined enum values
+  Each axis has its own independent default
+  Empty string values rejected at application layer (correction applied)
+  NOT_EVALUATED rejected for validation_state (axis separation enforced)
+
+Existing Behavior Preservation: PASS
+  All FP-004 persistence tests pass
+  All FP-005 telemetry tests pass
+  All FP-008 classification/outcome tests pass
+  All FP-009 evidence admission tests pass
+  No existing tables modified or removed
+
+Scope Compliance: PASS
+  No routing logic added
+  No model ranking logic added
+  No cost optimization added
+  No task classification added
+  No admission policy logic added
+  No dashboards, reports, or leaderboards added
+  Existing markdown and JSON artifacts preserved
