@@ -1,0 +1,232 @@
+{
+  "packet_id": "FP-META-013",
+  "reviewed_packets": ["FP-010", "FP-011", "FP-012"],
+  "models": [
+    {
+      "model_id": "deepseek-v4-pro-high",
+      "provider": "deepseek",
+      "observed_in_packets": ["FP-010", "FP-011", "FP-012"],
+      "execution_role": "executor",
+      "comparison_selected_in": ["FP-011", "FP-012"],
+      "comparison_not_selected_in": ["FP-010"]
+    },
+    {
+      "model_id": "qwen-3.7-max",
+      "provider": "qwen",
+      "observed_in_packets": ["FP-010", "FP-011", "FP-012"],
+      "execution_role": "executor",
+      "comparison_selected_in": ["FP-010"],
+      "comparison_not_selected_in": ["FP-011", "FP-012"]
+    }
+  ],
+  "observations": [
+    {
+      "packet_range": ["FP-010", "FP-011", "FP-012"],
+      "models_involved": ["deepseek-v4-pro-high", "qwen-3.7-max"],
+      "observation_type": "audit_acceptance",
+      "evidence_basis": "6 primary cross-model audit verdicts (5 ACCEPTED, 1 ACCEPTED_WITH_NOTES for FP-012 Qwen); 1 post-fix audit confirming resolution (FP-012 DeepSeek); 7 total audit artifacts; 0 REJECTED verdicts across all audits",
+      "confidence": "high",
+      "directly_observed": true,
+      "summary": "Both models produced accepted implementations for all three reviewed packets."
+    },
+    {
+      "packet_range": ["FP-010", "FP-011", "FP-012"],
+      "models_involved": ["deepseek-v4-pro-high", "qwen-3.7-max"],
+      "observation_type": "correction_need",
+      "evidence_basis": "metrics.json fix_attempts fields and executor result correction sections for all 3 packets record corrections by both models",
+      "confidence": "high",
+      "directly_observed": true,
+      "summary": "Both models required corrections in all three packets. Neither achieved first-pass success in any packet."
+    },
+    {
+      "packet_range": ["FP-010"],
+      "models_involved": ["deepseek-v4-pro-high"],
+      "observation_type": "correction_burden",
+      "evidence_basis": "metrics-deepseek.json: 3 corrections (NOT_EVALUATED default, empty trust_tier default, truthy-check bug)",
+      "confidence": "high",
+      "directly_observed": true,
+      "summary": "DeepSeek required 3 corrections in FP-010: two enum default errors and one truthy-check validation bug."
+    },
+    {
+      "packet_range": ["FP-010"],
+      "models_involved": ["qwen-3.7-max"],
+      "observation_type": "correction_burden",
+      "evidence_basis": "metrics-qwen.json: 1 correction (truthy-check bug); executor-result-qwen.md lines 65-68",
+      "confidence": "high",
+      "directly_observed": true,
+      "summary": "Qwen required 1 correction in FP-010: same truthy-check validation bug as DeepSeek."
+    },
+    {
+      "packet_range": ["FP-010"],
+      "models_involved": ["deepseek-v4-pro-high", "qwen-3.7-max"],
+      "observation_type": "schema_fidelity",
+      "evidence_basis": "comparison-result.md: DeepSeek used text packet_id, Qwen used integer FK referencing packets(id)",
+      "confidence": "high",
+      "directly_observed": true,
+      "summary": "Schema design diverged: DeepSeek used human-readable text packet_id, Qwen used integer foreign key. Comparison selected Qwen on relational integration fitness."
+    },
+    {
+      "packet_range": ["FP-011"],
+      "models_involved": ["deepseek-v4-pro-high"],
+      "observation_type": "correction_burden",
+      "evidence_basis": "metrics.json: fix_attempts=1; admission evaluation returned outcomes in validation_state, caught pre-commit",
+      "confidence": "high",
+      "directly_observed": true,
+      "summary": "DeepSeek required 1 correction in FP-011: admission/validation type conflation, caught before commit."
+    },
+    {
+      "packet_range": ["FP-011"],
+      "models_involved": ["qwen-3.7-max"],
+      "observation_type": "correction_burden",
+      "evidence_basis": "metrics.json: fix_attempts=2; comparison-result.md notes dead code cleanup and event naming documentation; observed cost $2.61",
+      "confidence": "high",
+      "directly_observed": true,
+      "summary": "Qwen required 2 corrections in FP-011: dead code cleanup and event naming documentation. Observed execution cost $2.61 USD."
+    },
+    {
+      "packet_range": ["FP-011"],
+      "models_involved": ["deepseek-v4-pro-high"],
+      "observation_type": "vocabulary_fidelity",
+      "evidence_basis": "comparison-result.md: DeepSeek used validation_state/admission_state matching packet vocabulary",
+      "confidence": "high",
+      "directly_observed": true,
+      "summary": "DeepSeek used packet vocabulary directly in event table columns."
+    },
+    {
+      "packet_range": ["FP-011"],
+      "models_involved": ["qwen-3.7-max"],
+      "observation_type": "vocabulary_fidelity",
+      "evidence_basis": "executor-result-qwen.md lines 38-43: used validation_outcome/admission_outcome naming",
+      "confidence": "high",
+      "directly_observed": true,
+      "summary": "Qwen used alternative validation_outcome/admission_outcome naming distinct from packet vocabulary."
+    },
+    {
+      "packet_range": ["FP-011"],
+      "models_involved": ["deepseek-v4-pro-high"],
+      "observation_type": "schema_integration",
+      "evidence_basis": "executor-result-deepseek.md: updated src/db/schema.sql with canonical FP-011 definitions",
+      "confidence": "high",
+      "directly_observed": true,
+      "summary": "DeepSeek updated the canonical schema file alongside the migration."
+    },
+    {
+      "packet_range": ["FP-011"],
+      "models_involved": ["qwen-3.7-max"],
+      "observation_type": "schema_integration",
+      "evidence_basis": "comparison-result.md: Qwen did not update src/db/schema.sql",
+      "confidence": "high",
+      "directly_observed": true,
+      "summary": "Qwen did not update the canonical schema file."
+    },
+    {
+      "packet_range": ["FP-011"],
+      "models_involved": ["qwen-3.7-max"],
+      "observation_type": "cost",
+      "evidence_basis": "metrics.json: observed_cost_usd=2.61",
+      "confidence": "high",
+      "directly_observed": true,
+      "summary": "Qwen FP-011 execution incurred $2.61 USD in observed cost. No comparable cost data exists for DeepSeek FP-011."
+    },
+    {
+      "packet_range": ["FP-012"],
+      "models_involved": ["deepseek-v4-pro-high"],
+      "observation_type": "correction_burden",
+      "evidence_basis": "postfix-audit-qwen-by-deepseek.md: 1 post-audit fix for defect carry-forward in comparison correction; initial verdict ACCEPTED_WITH_NOTES, post-fix ACCEPTED",
+      "confidence": "high",
+      "directly_observed": true,
+      "summary": "DeepSeek required 1 post-audit correction in FP-012 for comparison correction defect carry-forward."
+    },
+    {
+      "packet_range": ["FP-012"],
+      "models_involved": ["qwen-3.7-max"],
+      "observation_type": "correction_burden",
+      "evidence_basis": "audit-deepseek-by-qwen.md: extensive correction adding explicit FK columns, model_identity, correction tables in migration 009; verdict ACCEPTED_WITH_NOTES",
+      "confidence": "high",
+      "directly_observed": true,
+      "summary": "Qwen required extensive corrections in FP-012. Initial implementation used looser design; added 8 FK columns, model_identity, and 2 correction tables in migration 009."
+    },
+    {
+      "packet_range": ["FP-012"],
+      "models_involved": ["qwen-3.7-max"],
+      "observation_type": "implementation_fidelity",
+      "evidence_basis": "audit-deepseek-by-qwen.md Note 1: getLatestTaskClassification and getLatestModelComparison return latest event row without merging corrections",
+      "confidence": "high",
+      "directly_observed": true,
+      "summary": "Qwen's getLatest* functions do not merge correction data. Consumers needing effective corrected state must manually compose corrections. Design gap identified by audit."
+    },
+    {
+      "packet_range": ["FP-012"],
+      "models_involved": ["deepseek-v4-pro-high"],
+      "observation_type": "implementation_fidelity",
+      "evidence_basis": "audit-qwen-by-deepseek.md: self-referencing correction rows carry forward compared identifiers; initial defect carry-forward bug, fixed to carry forward prevEvent values",
+      "confidence": "high",
+      "directly_observed": true,
+      "summary": "DeepSeek used self-referencing correction rows in event tables. Correction carry-forward now preserves all compared identifiers and defect fields."
+    },
+    {
+      "packet_range": ["FP-011", "FP-012"],
+      "models_involved": ["qwen-3.7-max"],
+      "observation_type": "test_volume",
+      "evidence_basis": "FP-011: 57 tests (vs DeepSeek 40); FP-012: 107 tests (vs DeepSeek ~70)",
+      "confidence": "high",
+      "directly_observed": true,
+      "summary": "Qwen consistently wrote more tests than DeepSeek in FP-011 and FP-012. In FP-010, DeepSeek wrote more (28 vs 24)."
+    },
+    {
+      "packet_range": ["FP-011", "FP-012"],
+      "models_involved": ["deepseek-v4-pro-high"],
+      "observation_type": "schema_integration",
+      "evidence_basis": "metrics-deepseek.json files_modified includes schema.sql in FP-011 and FP-012; Qwen modified schema.sql only in FP-012",
+      "confidence": "medium",
+      "directly_observed": false,
+      "summary": "DeepSeek showed a pattern of updating canonical schema across multiple packets. Limited inference from 3 packets."
+    },
+    {
+      "packet_range": ["FP-011", "FP-012"],
+      "models_involved": ["deepseek-v4-pro-high"],
+      "observation_type": "vocabulary_fidelity",
+      "evidence_basis": "FP-011 direct vocabulary use; FP-012 self-referencing correction model matches packet append-only language; Qwen naming divergence in FP-011",
+      "confidence": "medium",
+      "directly_observed": false,
+      "summary": "DeepSeek showed a pattern of matching packet vocabulary more directly. Limited inference from 2 packets where vocabulary was material."
+    },
+    {
+      "packet_range": ["FP-010", "FP-011", "FP-012"],
+      "models_involved": ["deepseek-v4-pro-high", "qwen-3.7-max"],
+      "observation_type": "scope_discipline",
+      "evidence_basis": "All 6 primary cross-model audits and the 1 post-fix audit (7 total audit artifacts) confirmed no routing, ranking, cost optimization, leaderboards, dashboards, reports, or automatic model selection added",
+      "confidence": "high",
+      "directly_observed": true,
+      "summary": "Both models preserved out-of-scope boundaries in all three packets with no violations found by any audit."
+    },
+    {
+      "packet_range": ["FP-010", "FP-011"],
+      "models_involved": ["deepseek-v4-pro-high", "qwen-3.7-max"],
+      "observation_type": "state_axis_preservation",
+      "evidence_basis": "FP-010 and FP-011 audits confirm trust_tier, validation_state, admission_state remain independent axes; tests verify no collapsed status field",
+      "confidence": "high",
+      "directly_observed": true,
+      "summary": "Both models preserved the three-axis state model (trust, validation, admission) without collapsing them into a single status field."
+    }
+  ],
+  "limitations": [
+    "Only 3 packets reviewed. No inference generalizes beyond FP-010, FP-011, FP-012.",
+    "All 3 packets were PERSISTENCE-type tasks. No CLI, BUGFIX, REFACTOR, or ARCHITECTURE tasks were observed.",
+    "Cost data recorded only for Qwen FP-011 ($2.61). No cost comparison possible.",
+    "Each model audited the other. No independent auditor. Audit quality may interact with executor performance.",
+    "No evidence records were independently reproduced.",
+    "All evidence carries trust_tier TIER_0_UNTRUSTED or TIER_1_SELF_REPORTED. No evidence has been admitted through FP-011 pathways.",
+    "Correction classification subjectivity. Some corrections may be equivalently design refinements under different criteria.",
+    "Selection basis varied by packet (schema_integration_quality, packet_vocabulary_and_schema_alignment, COMPOSITE). No consistent selection basis across packets."
+  ],
+  "non_decisions": [
+    "No global model ranking is created.",
+    "No routing policy or automatic model selection is established.",
+    "No provider recommendation is made.",
+    "No cost optimization rule is derived from the single cost data point.",
+    "No leaderboard or aggregate scoring is produced.",
+    "No dashboard or report logic is added.",
+    "No workflow orchestration changes are implied."
+  ]
+}
