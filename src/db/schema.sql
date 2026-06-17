@@ -153,3 +153,35 @@ LEFT JOIN (
     ROW_NUMBER() OVER (PARTITION BY packet_id ORDER BY created_at DESC, event_id DESC) AS rn
   FROM packet_lifecycle_events
 ) le ON p.id = le.packet_id AND le.rn = 1;
+
+-- FP-011: Append-only validation evaluation events
+CREATE TABLE IF NOT EXISTS evidence_record_validation_events (
+  id                     INTEGER PRIMARY KEY AUTOINCREMENT,
+  evidence_record_id     INTEGER NOT NULL REFERENCES evidence_records(evidence_id),
+  validation_state       TEXT NOT NULL
+                         CHECK (validation_state IN ('VALID', 'INVALID', 'INCOMPLETE', 'DEFERRED')),
+  validation_actor_type  TEXT NOT NULL DEFAULT 'system'
+                         CHECK (validation_actor_type IN ('automated_validator', 'human_auditor', 'model_reviewer', 'system')),
+  validation_actor_id    TEXT NOT NULL DEFAULT '',
+  validation_reason      TEXT NOT NULL DEFAULT '',
+  validation_details     TEXT NOT NULL DEFAULT '{}',
+  provenance_complete    INTEGER NOT NULL DEFAULT 1,
+  created_at             TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+-- FP-011: Append-only admission evaluation events
+CREATE TABLE IF NOT EXISTS evidence_record_admission_events (
+  id                     INTEGER PRIMARY KEY AUTOINCREMENT,
+  evidence_record_id     INTEGER NOT NULL REFERENCES evidence_records(evidence_id),
+  admission_state        TEXT NOT NULL
+                         CHECK (admission_state IN ('NOT_EVALUATED', 'REJECTED', 'PENDING', 'ADMITTED', 'QUARANTINED')),
+  admission_actor_type   TEXT NOT NULL DEFAULT 'system'
+                         CHECK (admission_actor_type IN ('automated_validator', 'human_auditor', 'model_reviewer', 'system')),
+  admission_actor_id     TEXT NOT NULL DEFAULT '',
+  admission_reason       TEXT NOT NULL DEFAULT '',
+  trust_tier_at_admission TEXT NOT NULL DEFAULT 'TIER_0_UNTRUSTED'
+                         CHECK (trust_tier_at_admission IN ('TIER_0_UNTRUSTED', 'TIER_1_SELF_REPORTED',
+                                'TIER_2_VERIFIED_ARTIFACT', 'TIER_3_REPRODUCIBLE')),
+  provenance_complete    INTEGER NOT NULL DEFAULT 1,
+  created_at             TEXT NOT NULL DEFAULT (datetime('now'))
+);

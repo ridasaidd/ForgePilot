@@ -1,0 +1,68 @@
+{
+  "packet_id": "FP-011",
+  "packet_title": "Metrics Validation and Admission Integration",
+  "benchmark_base_commit": "288769b",
+  "comparison_status": "COMPLETE",
+  "comparison_outcome": "DEEPSEEK_SELECTED",
+  "winner": "deepseek-v4-pro-high",
+  "models": {
+    "deepseek-v4-pro-high": {
+      "branch": "eval/fp-011/deepseek-v4-pro-high",
+      "executor_commit": "65bfb2f",
+      "audit_commit": "2a3059a",
+      "auditor": "qwen-3.7-max",
+      "audit_verdict": "ACCEPTED",
+      "typecheck": "PASS",
+      "tests": {
+        "total": 257,
+        "passed": 257,
+        "failed": 0,
+        "fp011_tests": 40
+      },
+      "accepted": true,
+      "selected": true,
+      "first_pass_success": false,
+      "fix_attempts": 1,
+      "notes": "Initial admission evaluation returned admission outcomes in validation_state; corrected before commit."
+    },
+    "qwen-3.7-max": {
+      "branch": "eval/fp-011/qwen-3.7-max",
+      "executor_commit": "737d21f",
+      "audit_commit": "f4c0de3",
+      "auditor": "deepseek-v4-pro-high",
+      "audit_verdict": "ACCEPTED",
+      "typecheck": "PASS",
+      "tests": {
+        "total": 247,
+        "passed": 247,
+        "failed": 0,
+        "fp011_tests": 57
+      },
+      "accepted": true,
+      "selected": false,
+      "first_pass_success": false,
+      "fix_attempts": 2,
+      "observed_cost_usd": 2.61,
+      "notes": "Valid independent design using validation_outcome/admission_outcome event naming; not selected due to lower packet vocabulary alignment and no canonical schema update."
+    }
+  },
+  "decision_basis": {
+    "primary_factor": "packet_vocabulary_and_schema_alignment",
+    "reason": "DeepSeek directly uses validation_state/admission_state vocabulary and updates the canonical schema while preserving append-only event behavior.",
+    "both_accepted": true,
+    "both_preserved_scope": true,
+    "both_preserved_state_axes": true
+  },
+  "scope_boundaries": {
+    "routing": false,
+    "model_ranking": false,
+    "cost_optimization": false,
+    "task_classification": false,
+    "dashboards": false,
+    "reports": false,
+    "leaderboards": false,
+    "local_model_benchmarking": false,
+    "model_recommendation": false,
+    "model_comparison_matrices": false
+  }
+}
