@@ -7,8 +7,8 @@ pnpm typecheck:
 
 pnpm test:
   Command: node --experimental-test-module-mocks --import tsx --test tests/*.test.ts
-  Tests: 343
-  Passed: 343
+  Tests: 344
+  Passed: 344
   Failed: 0
   Result: PASSED
 
@@ -77,6 +77,7 @@ FP-012-specific test coverage:
   - No out-of-scope tables added: PASSED
   - No routing columns on FP-012 tables: PASSED
   - Correction preserves compared identifiers in latest derivation: PASSED
+  - Correction preserves model_a/b_defects when not explicitly replaced: PASSED
   - All 19 acceptance criteria verified: PASSED
 
 Correction (round 2):
@@ -84,3 +85,8 @@ Correction (round 2):
     execution_b_id, evidence_a_id, evidence_b_id, model_a_id, model_b_id,
     model_a_role, model_b_role from previous event
   - src/db/schema.sql updated with canonical FP-012 table definitions and indexes
+
+Post-Audit Correction:
+  - recordModelComparisonCorrection now carries forward prevEvent.model_a_defects
+    and prevEvent.model_b_defects when params.model_{a,b}_defects are not provided,
+    preventing defect loss in corrected comparisons

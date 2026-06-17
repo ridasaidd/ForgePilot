@@ -6,7 +6,7 @@
 
 ## Status
 - **Execution:** SUCCEEDED
-- **Verification:** PASSED (pnpm typecheck, pnpm test — 343/343 tests)
+- **Verification:** PASSED (pnpm typecheck, pnpm test — 344/344 tests)
 
 ## Implementation Summary
 
@@ -37,6 +37,5 @@
 - FP-004, FP-005, FP-008, FP-009, FP-010, and FP-011 behaviors are fully preserved
 - All out-of-scope items (model routing, ranking, etc.) are excluded
 
-### Correction Round 2
-- `recordModelComparisonCorrection` now carries forward `execution_a_id`, `execution_b_id`, `evidence_a_id`, `evidence_b_id`, `model_a_id`, `model_b_id`, `model_a_role`, `model_b_role` from the previous comparison event, so `getLatestComparison()` returns a complete record
-- `src/db/schema.sql` updated with canonical FP-012 table DDL and indexes
+### Post-Audit Correction
+- `recordModelComparisonCorrection` now carries forward `prevEvent.model_a_defects` and `prevEvent.model_b_defects` when defects are not explicitly provided, instead of defaulting to `[]`. This prevents a correction from silently erasing known defects from the latest derived comparison.

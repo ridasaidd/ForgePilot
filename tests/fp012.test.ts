@@ -1084,6 +1084,58 @@ describe("FP-012: Task Classification and Model Comparison Protocol", () => {
       assert.equal(latest!.model_b_admission_state, "REJECTED", "model_b_admission_state should be preserved");
       assert.equal(latest!.correction_of, original.id);
     });
+
+    it("should preserve model_a_defects and model_b_defects when not explicitly replaced in correction", () => {
+      const dbPath = path.join(testDir, "comp-correction-preserve-defects.db");
+      setupDb(dbPath);
+      const packet = createTestPacket("Correction Preserve Defects");
+
+      const original = recordModelComparison({
+        packet_id: packet.id,
+        comparison_outcome: "MODEL_A_SELECTED",
+        comparison_basis: "CORRECTNESS",
+        model_a_id: "deepseek",
+        model_b_id: "qwen",
+        model_a_role: "executor",
+        model_b_role: "executor",
+        model_a_defects: [],
+        model_b_defects: ["Incomplete scope handling", "Incorrect error handling"],
+      });
+
+      // Apply a correction that only changes the comparison basis — defects should carry forward
+      recordModelComparisonCorrection({
+        previous_comparison_id: original.id,
+        packet_id: packet.id,
+        comparison_basis: "SCOPE_DISCIPLINE",
+        correction_reason: "Re-evaluated basis",
+        corrected_by: "reviewer",
+      });
+
+      const latest = getLatestComparison(packet.id);
+      assert.ok(latest);
+      assert.equal(latest!.comparison_basis, "SCOPE_DISCIPLINE", "Correction basis should be applied");
+      assert.deepEqual(parseComparisonDefects(latest!, "a"), [], "model_a_defects should be preserved as []");
+      assert.deepEqual(parseComparisonDefects(latest!, "b"), [
+        "Incomplete scope handling",
+        "Incorrect error handling",
+      ], "model_b_defects should be preserved");
+
+      // Now apply a second correction that explicitly replaces model_b_defects
+      recordModelComparisonCorrection({
+        previous_comparison_id: latest!.id,
+        packet_id: packet.id,
+        model_b_defects: ["Only one defect after review"],
+        correction_reason: "Narrowed defects after further investigation",
+        corrected_by: "reviewer",
+      });
+
+      const latest2 = getLatestComparison(packet.id);
+      assert.ok(latest2);
+      assert.deepEqual(parseComparisonDefects(latest2!, "a"), [], "model_a_defects should remain preserved");
+      assert.deepEqual(parseComparisonDefects(latest2!, "b"), [
+        "Only one defect after review",
+      ], "model_b_defects should reflect explicit correction");
+    });
   });
 
   describe("Model comparison controlled vocabulary enforcement", () => {
