@@ -1,0 +1,58 @@
+{
+  "packet": "FP-011",
+  "description": "Metrics Validation and Admission Integration",
+  "branch": "eval/fp-011/deepseek-v4-pro-high",
+  "model": "deepseek-v4-pro",
+  "timestamp": "2026-06-17T00:00:00Z",
+  "verification": {
+    "typecheck": "passed",
+    "total_tests": 257,
+    "passed": 257,
+    "failed": 0,
+    "fp011_tests": 40,
+    "fp011_suites": 17
+  },
+  "implementation": {
+    "files_created": [
+      "migrations/007_fp011_validation_admission.sql",
+      "src/db/validation-admission.ts",
+      "tests/fp011.test.ts",
+      "runs/FP-011/executor-result.md",
+      "runs/FP-011/verification.txt",
+      "runs/FP-011/metrics.json"
+    ],
+    "files_modified": [
+      "src/db/schema.sql"
+    ],
+    "lines_added": 1200,
+    "design": "append-only event tables for validation and admission evaluation with separate ValidationResult and AdmissionEvaluationResult types"
+  },
+  "acceptance_criteria": {
+    "AC1_validation_logic_exists": true,
+    "AC2_admission_integration_exists": true,
+    "AC3_no_mutation_of_original_records": true,
+    "AC4_independent_state_axes": true,
+    "AC5_not_evaluated_rejected_for_validation": true,
+    "AC6_not_evaluated_valid_for_admission": true,
+    "AC7_valid_detectable": true,
+    "AC8_incomplete_detectable": true,
+    "AC9_invalid_detectable": true,
+    "AC10_deferred_detectable": true,
+    "AC11_admitted_derivable": true,
+    "AC12_rejected_derivable": true,
+    "AC13_quarantine_represented": true,
+    "AC14_append_only_behavior_verified": true,
+    "AC15_existing_behavior_preserved": true
+  },
+  "out_of_scope_not_added": [
+    "model_routing",
+    "model_ranking",
+    "task_classification",
+    "leaderboards",
+    "dashboards",
+    "reports",
+    "cost_optimization",
+    "model_recommendation",
+    "model_comparison_matrices"
+  ]
+}
