@@ -1,0 +1,74 @@
+{
+  "packet_id": "FP-010",
+  "packet_title": "SQLite Evidence Persistence",
+  "execution_model": "qwen3.7-max",
+  "execution_provider": "opencode",
+  "verification": {
+    "typecheck": "PASS",
+    "tests": "PASS",
+    "total_tests": 188,
+    "passed": 188,
+    "failed": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "fp010_tests": {
+    "total": 24,
+    "passed": 24,
+    "failed": 0
+  },
+  "correction": {
+    "description": "Fixed truthy-check validation to use !== undefined instead of truthy check",
+    "tests_added": 2,
+    "files_modified": ["src/db/evidence-records.ts", "tests/fp010.test.ts"]
+  },
+  "files_changed": {
+    "added": [
+      "migrations/006_fp010_evidence_persistence.sql",
+      "src/db/evidence-records.ts",
+      "tests/fp010.test.ts"
+    ],
+    "modified": [],
+    "removed": []
+  },
+  "schema_changes": {
+    "tables_added": ["evidence_records"],
+    "indexes_added": [
+      "idx_evidence_packet_id",
+      "idx_evidence_run_id",
+      "idx_evidence_model_id",
+      "idx_evidence_packet_run"
+    ],
+    "tables_modified": [],
+    "tables_removed": []
+  },
+  "scope_boundaries": {
+    "routing": false,
+    "model_ranking": false,
+    "cost_optimization": false,
+    "task_classification": false,
+    "admission_policy": false,
+    "dashboards": false,
+    "reports": false,
+    "leaderboards": false
+  },
+  "state_axes": {
+    "trust_tier": {
+      "values": ["TIER_0_UNTRUSTED", "TIER_1_SELF_REPORTED", "TIER_2_VERIFIED_ARTIFACT", "TIER_3_REPRODUCIBLE"],
+      "default": "TIER_0_UNTRUSTED"
+    },
+    "validation_state": {
+      "values": ["VALID", "INVALID", "INCOMPLETE", "DEFERRED"],
+      "default": "INCOMPLETE"
+    },
+    "admission_state": {
+      "values": ["NOT_EVALUATED", "REJECTED", "PENDING", "ADMITTED", "QUARANTINED"],
+      "default": "NOT_EVALUATED"
+    }
+  },
+  "artifacts": [
+    "runs/FP-010/executor-result.md",
+    "runs/FP-010/verification.txt",
+    "runs/FP-010/metrics.json"
+  ]
+}
