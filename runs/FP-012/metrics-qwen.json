@@ -1,0 +1,57 @@
+{
+  "packet": "FP-012",
+  "title": "Task Classification and Model Comparison Protocol",
+  "executor_model": "qwen3.7-max",
+  "execution_result": "SUCCESS",
+  "verification_result": "PASSED",
+  "typecheck_result": "PASSED",
+  "total_tests": 375,
+  "tests_passed": 375,
+  "tests_failed": 0,
+  "fp012_tests": 107,
+  "acceptance_criteria": {
+    "total": 19,
+    "passed": 19,
+    "failed": 0
+  },
+  "files_created": [
+    "migrations/008_fp012_task_classification_comparison.sql",
+    "migrations/009_fp012_correction.sql",
+    "src/db/task-classification.ts",
+    "src/db/model-comparison.ts",
+    "tests/fp012.test.ts",
+    "runs/FP-012/executor-result.md",
+    "runs/FP-012/verification.txt",
+    "runs/FP-012/metrics.json"
+  ],
+  "files_modified": [
+    "src/db/schema.sql"
+  ],
+  "tables_added": [
+    "fp012_task_classification_events",
+    "fp012_model_comparison_events",
+    "fp012_task_classification_corrections",
+    "fp012_model_comparison_corrections"
+  ],
+  "tables_modified": [],
+  "columns_added": [
+    "fp012_task_classification_events.model_identity",
+    "fp012_model_comparison_events.execution_a_id",
+    "fp012_model_comparison_events.execution_b_id",
+    "fp012_model_comparison_events.evidence_a_id",
+    "fp012_model_comparison_events.evidence_b_id",
+    "fp012_model_comparison_events.model_a_id",
+    "fp012_model_comparison_events.model_b_id",
+    "fp012_model_comparison_events.model_a_role",
+    "fp012_model_comparison_events.model_b_role"
+  ],
+  "scope_violations": [],
+  "preserved_packets": [
+    "FP-004",
+    "FP-005",
+    "FP-008",
+    "FP-009",
+    "FP-010",
+    "FP-011"
+  ]
+}

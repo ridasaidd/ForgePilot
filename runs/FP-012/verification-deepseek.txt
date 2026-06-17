@@ -1,0 +1,92 @@
+FP-012 Verification
+==================
+
+pnpm typecheck:
+  Command: tsc --noEmit
+  Result: PASSED (0 errors)
+
+pnpm test:
+  Command: node --experimental-test-module-mocks --import tsx --test tests/*.test.ts
+  Tests: 344
+  Passed: 344
+  Failed: 0
+  Result: PASSED
+
+FP-012-specific test coverage:
+  - Migration idempotence: PASSED
+  - fp012_task_classification_events table creation: PASSED
+  - fp012_model_comparison_events table creation: PASSED
+  - All required columns present: PASSED
+  - All required indexes present: PASSED
+  - Task classification insert (all axes): PASSED
+  - All task_class vocabulary values: PASSED
+  - All risk_level vocabulary values: PASSED
+  - All blast_radius vocabulary values: PASSED
+  - All evidence_sensitivity vocabulary values: PASSED
+  - All audit_requirement vocabulary values: PASSED
+  - All comparison_requirement vocabulary values: PASSED
+  - All classification_source vocabulary values: PASSED
+  - Model identity storage: PASSED
+  - Classification append-only (correction does not mutate original): PASSED
+  - Multiple corrections in sequence: PASSED
+  - getLatestTaskClassification derivation: PASSED
+  - getTaskClassificationEvent by id: PASSED
+  - Empty history for packet with no classifications: PASSED
+  - Invalid task_class rejected: PASSED
+  - Invalid risk_level rejected: PASSED
+  - Invalid blast_radius rejected: PASSED
+  - Invalid evidence_sensitivity rejected: PASSED
+  - Invalid audit_requirement rejected: PASSED
+  - Invalid comparison_requirement rejected: PASSED
+  - Invalid classification_source rejected: PASSED
+  - Invalid correction vocabulary rejected: PASSED
+  - Cross-packet classification correction rejected: PASSED
+  - Model comparison insert (all fields): PASSED
+  - All comparison_outcome vocabulary values: PASSED
+  - All comparison_basis vocabulary values: PASSED
+  - Evidence record references: PASSED
+  - Defects stored as JSON arrays: PASSED
+  - Admission states at comparison time: PASSED
+  - Default admission states to NOT_EVALUATED: PASSED
+  - Comparison append-only (correction does not mutate original): PASSED
+  - Multiple comparison corrections in sequence: PASSED
+  - getLatestComparison derivation: PASSED
+  - getComparisonEvent by id: PASSED
+  - Empty history for packet with no comparisons: PASSED
+  - Invalid comparison_outcome rejected: PASSED
+  - Invalid comparison_basis rejected: PASSED
+  - Invalid model_a_admission_state rejected: PASSED
+  - Invalid model_b_admission_state rejected: PASSED
+  - Invalid comparison correction vocabulary rejected: PASSED
+  - Cross-packet execution_a_id rejected: PASSED
+  - Cross-packet execution_b_id rejected: PASSED
+  - Cross-packet evidence_a_id rejected: PASSED
+  - Cross-packet evidence_b_id rejected: PASSED
+  - Cross-packet comparison correction rejected: PASSED
+  - Admission state recorded at comparison time: PASSED
+  - Comparison does not mutate evidence records: PASSED
+  - Comparison does not mutate packet intent: PASSED
+  - Comparison does not mutate validation events: PASSED
+  - Comparison does not mutate admission events: PASSED
+  - FP-004 behavior preserved: PASSED
+  - FP-005 behavior preserved: PASSED
+  - FP-008 behavior preserved: PASSED
+  - FP-009 behavior preserved: PASSED
+  - FP-010 behavior preserved: PASSED
+  - FP-011 behavior preserved: PASSED
+  - No out-of-scope tables added: PASSED
+  - No routing columns on FP-012 tables: PASSED
+  - Correction preserves compared identifiers in latest derivation: PASSED
+  - Correction preserves model_a/b_defects when not explicitly replaced: PASSED
+  - All 19 acceptance criteria verified: PASSED
+
+Correction (round 2):
+  - recordModelComparisonCorrection now carries forward execution_a_id,
+    execution_b_id, evidence_a_id, evidence_b_id, model_a_id, model_b_id,
+    model_a_role, model_b_role from previous event
+  - src/db/schema.sql updated with canonical FP-012 table definitions and indexes
+
+Post-Audit Correction:
+  - recordModelComparisonCorrection now carries forward prevEvent.model_a_defects
+    and prevEvent.model_b_defects when params.model_{a,b}_defects are not provided,
+    preventing defect loss in corrected comparisons
