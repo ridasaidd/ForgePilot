@@ -1,0 +1,200 @@
+{
+  "packet_id": "FP-META-013",
+  "reviewed_packets": ["FP-010", "FP-011", "FP-012"],
+  "models": [
+    {
+      "model_id": "qwen-3.7-max",
+      "packets_executed": ["FP-010", "FP-011", "FP-012"],
+      "accepted": true,
+      "selected_packets": ["FP-010"]
+    },
+    {
+      "model_id": "deepseek-v4-pro-high",
+      "packets_executed": ["FP-010", "FP-011", "FP-012"],
+      "accepted": true,
+      "selected_packets": ["FP-011", "FP-012"]
+    }
+  ],
+  "observations": [
+    {
+      "id": "OBS-001",
+      "packet": "FP-010",
+      "models": ["qwen-3.7-max", "deepseek-v4-pro-high"],
+      "type": "comparison_outcome",
+      "description": "Qwen selected for FP-010 based on schema integration quality. Qwen modeled packet_id as INTEGER FK to packets(id), which was more relationally consistent with ForgePilot's existing SQLite design.",
+      "evidence_basis": "runs/FP-010/comparison-result.md, runs/FP-010/metrics.json",
+      "confidence": "high",
+      "directly_observed": true
+    },
+    {
+      "id": "OBS-002",
+      "packet": "FP-011",
+      "models": ["qwen-3.7-max", "deepseek-v4-pro-high"],
+      "type": "comparison_outcome",
+      "description": "DeepSeek selected for FP-011 based on packet vocabulary and schema alignment. DeepSeek used validation_state/admission_state vocabulary directly matching the packet and updated the canonical schema.sql.",
+      "evidence_basis": "runs/FP-011/comparison-result.md, runs/FP-011/metrics.json",
+      "confidence": "high",
+      "directly_observed": true
+    },
+    {
+      "id": "OBS-003",
+      "packet": "FP-012",
+      "models": ["qwen-3.7-max", "deepseek-v4-pro-high"],
+      "type": "comparison_outcome",
+      "description": "DeepSeek selected for FP-012 based on evidence-first and schema-bound requirements. DeepSeek used explicit relational columns, canonical schema integration, and narrower correction delta.",
+      "evidence_basis": "runs/FP-012/comparison-result.md, runs/FP-012/postfix-audit-qwen-by-deepseek.md",
+      "confidence": "high",
+      "directly_observed": true
+    },
+    {
+      "id": "OBS-004",
+      "packet": "FP-010",
+      "models": ["deepseek-v4-pro-high"],
+      "type": "correction_burden",
+      "description": "DeepSeek required 3 corrections on FP-010: validation_state allowed NOT_EVALUATED, trust_tier allowed empty string, TypeScript validation used truthy check instead of !== undefined.",
+      "evidence_basis": "runs/FP-010/metrics-deepseek.json, runs/FP-010/verification-deepseek.txt",
+      "confidence": "high",
+      "directly_observed": true
+    },
+    {
+      "id": "OBS-005",
+      "packet": "FP-010",
+      "models": ["qwen-3.7-max"],
+      "type": "correction_burden",
+      "description": "Qwen self-corrected 1 truthy-check validation bug on FP-010, adding 2 tests. Fewer corrections than DeepSeek on this packet.",
+      "evidence_basis": "runs/FP-010/executor-result.md, runs/FP-010/metrics-qwen.json",
+      "confidence": "high",
+      "directly_observed": true
+    },
+    {
+      "id": "OBS-006",
+      "packet": "FP-011",
+      "models": ["deepseek-v4-pro-high"],
+      "type": "correction_burden",
+      "description": "DeepSeek had 1 fix attempt on FP-011: initial admission evaluation returned admission outcomes in a validation_state field. Corrected by separating result types.",
+      "evidence_basis": "runs/FP-011/metrics.json, runs/FP-011/comparison-result.md",
+      "confidence": "high",
+      "directly_observed": true
+    },
+    {
+      "id": "OBS-007",
+      "packet": "FP-011",
+      "models": ["qwen-3.7-max"],
+      "type": "correction_burden",
+      "description": "Qwen had 2 fix attempts on FP-011 and incurred observed cost of $2.61 USD. Used validation_outcome/admission_outcome naming instead of packet's direct vocabulary.",
+      "evidence_basis": "runs/FP-011/metrics.json, runs/FP-011/metrics-qwen.json",
+      "confidence": "high",
+      "directly_observed": true
+    },
+    {
+      "id": "OBS-008",
+      "packet": "FP-012",
+      "models": ["qwen-3.7-max"],
+      "type": "correction_burden",
+      "description": "Qwen required a larger correction pass on FP-012: initial JSON-array-centered design had weaker relational guarantees. Correction added explicit columns, model_identity, correction tables, and a second migration.",
+      "evidence_basis": "runs/FP-012/comparison-result.md, runs/FP-012/audit-deepseek-by-qwen.md",
+      "confidence": "high",
+      "directly_observed": true
+    },
+    {
+      "id": "OBS-009",
+      "packet": "FP-012",
+      "models": ["deepseek-v4-pro-high"],
+      "type": "correction_burden",
+      "description": "DeepSeek had 1 narrow post-audit correction on FP-012: recordModelComparisonCorrection did not carry forward model_a_defects and model_b_defects. Fix was 2 lines changed, 1 regression test added.",
+      "evidence_basis": "runs/FP-012/postfix-audit-qwen-by-deepseek.md, runs/FP-012/audit-qwen-by-deepseek.md",
+      "confidence": "high",
+      "directly_observed": true
+    },
+    {
+      "id": "OBS-010",
+      "packet": ["FP-010", "FP-011", "FP-012"],
+      "models": ["qwen-3.7-max", "deepseek-v4-pro-high"],
+      "type": "scope_discipline",
+      "description": "Both models maintained scope discipline across all three packets. No audit found routing, ranking, leaderboards, dashboards, reports, cost optimization, or other forbidden behavior.",
+      "evidence_basis": "All audit artifacts in runs/FP-010/, runs/FP-011/, runs/FP-012/",
+      "confidence": "high",
+      "directly_observed": true
+    },
+    {
+      "id": "OBS-011",
+      "packet": ["FP-010", "FP-011", "FP-012"],
+      "models": ["qwen-3.7-max", "deepseek-v4-pro-high"],
+      "type": "acceptance",
+      "description": "Both models achieved accepted audit status on all three packets. No implementation was rejected.",
+      "evidence_basis": "All comparison-result.md and audit artifacts",
+      "confidence": "high",
+      "directly_observed": true
+    },
+    {
+      "id": "OBS-012",
+      "packet": ["FP-010", "FP-011", "FP-012"],
+      "models": ["qwen-3.7-max", "deepseek-v4-pro-high"],
+      "type": "test_count_vs_selection",
+      "description": "Higher test counts did not correlate with selection. FP-010: DeepSeek had more tests (28 vs 24) but Qwen selected. FP-011: Qwen had more tests (57 vs 40) but DeepSeek selected. FP-012: Qwen had more tests (375 vs 344) but DeepSeek selected.",
+      "evidence_basis": "All metrics*.json and verification*.txt artifacts",
+      "confidence": "high",
+      "directly_observed": true
+    },
+    {
+      "id": "OBS-013",
+      "packet": ["FP-010", "FP-011", "FP-012"],
+      "models": ["qwen-3.7-max", "deepseek-v4-pro-high"],
+      "type": "schema_alignment_pattern",
+      "description": "In all three packets, the selected implementation was the one that more closely integrated with ForgePilot's existing SQLite relational model and matched packet vocabulary.",
+      "evidence_basis": "All comparison-result.md artifacts",
+      "confidence": "medium",
+      "directly_observed": false
+    },
+    {
+      "id": "OBS-014",
+      "packet": ["FP-010", "FP-011", "FP-012"],
+      "models": ["qwen-3.7-max", "deepseek-v4-pro-high"],
+      "type": "correction_profile_pattern",
+      "description": "DeepSeek required more corrections on the simpler persistence task (FP-010: 3 issues) but fewer on complex protocol tasks (FP-011: 1, FP-012: 1 narrow fix). Qwen required fewer corrections on FP-010 (1) but more on complex tasks (FP-011: 2, FP-012: large correction pass).",
+      "evidence_basis": "All executor-result and metrics artifacts",
+      "confidence": "low-medium",
+      "directly_observed": false
+    },
+    {
+      "id": "OBS-015",
+      "packet": "FP-012",
+      "models": ["qwen-3.7-max"],
+      "type": "design_gap",
+      "description": "Qwen's getLatestTaskClassification() and getLatestModelComparison() return the latest event row but do not merge correction data. After corrections are recorded, these functions still return the original uncorrected event. Identified as a design gap, not an AC violation.",
+      "evidence_basis": "runs/FP-012/audit-deepseek-by-qwen.md (Note 1)",
+      "confidence": "high",
+      "directly_observed": true
+    },
+    {
+      "id": "OBS-016",
+      "packet": "FP-011",
+      "models": ["qwen-3.7-max"],
+      "type": "cost_observation",
+      "description": "Qwen FP-011 execution incurred observed cost of $2.61 USD. This is the only explicit cost observation recorded across all three packets.",
+      "evidence_basis": "runs/FP-011/metrics.json (qwen-3.7-max.observed_cost_usd)",
+      "confidence": "high",
+      "directly_observed": true
+    }
+  ],
+  "limitations": [
+    "Only 3 packets reviewed (FP-010, FP-011, FP-012). Patterns may not generalize.",
+    "Only 2 models compared (Qwen 3.7 Max, DeepSeek V4 Pro High).",
+    "All 3 packets are schema-bound persistence tasks. No coverage of CLI, refactoring, bugfix, or documentation-only tasks.",
+    "Single execution per model per packet. No repeated executions to measure consistency or variance.",
+    "Cost data is sparse. Only 1 explicit cost observation ($2.61 for Qwen on FP-011).",
+    "Cross-model audit: each model audited the other. Audit quality may reflect auditor model interpretation.",
+    "Correction circumstances differ (self-discovered vs audit-identified, pre-commit vs post-audit). Direct correction burden comparison is limited.",
+    "Eval-comparison packets (FP-META-010, FP-META-011, FP-META-012) are separate evidence and not conflated with this review."
+  ],
+  "non_decisions": [
+    "This review does not establish a global model ranking.",
+    "This review does not establish a routing policy.",
+    "This review does not establish a provider recommendation.",
+    "This review does not establish a cost optimization rule.",
+    "This review does not establish an automatic model-selection signal.",
+    "This review does not establish a leaderboard result.",
+    "This review does not establish a preference for one model across all task types.",
+    "Observed patterns are limited to the reviewed packets and must not be extrapolated beyond the evidence."
+  ]
+}
