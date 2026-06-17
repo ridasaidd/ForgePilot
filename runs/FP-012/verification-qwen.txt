@@ -1,0 +1,42 @@
+FP-012 Verification Results (Corrected)
+========================================
+
+Typecheck: PASS
+  pnpm typecheck — 0 errors
+
+Tests: PASS
+  pnpm test — 375 tests, 375 pass, 0 fail, 0 cancelled, 0 skipped
+  Duration: ~18s
+
+FP-012 Test Suite: 107 tests across 20 describe blocks
+  - Migration: 7 tests (idempotence, table creation, indexes, foreign keys)
+  - Task Classification Persistence: 18 tests (insert, all vocabularies, invalid rejection)
+  - Task Classification Append-Only: 2 tests (accumulation, no mutation)
+  - Task Classification Queries: 6 tests (history, latest, empty, by-id)
+  - Model Comparison Persistence: 9 tests (insert, all vocabularies, invalid rejection)
+  - Model Comparison Append-Only: 2 tests (accumulation, no mutation)
+  - Model Comparison Queries: 6 tests (history, latest, empty, by-id)
+  - Comparison Evidence Admission State: 3 tests (explicit states, all valid states, references)
+  - Comparison Does Not Mutate Evidence: 6 tests (evidence records, packet intent, FP-008, FP-009, FP-011)
+  - Comparison Records Reference Evidence: 3 tests (explicit admission, QUARANTINED, NOT_EVALUATED)
+  - Existing Behavior Preservation: 7 tests (FP-004, FP-008, FP-009, FP-010, FP-011, coexistence)
+  - No Routing/Ranking: 2 tests (no forbidden tables, no forbidden columns)
+  - JSON Parsing Helpers: 2 tests (empty arrays, populated arrays)
+  - SQLite CHECK Constraints: 3 tests (task_class, outcome, basis at DB level)
+  - Integration: 2 tests (classify+compare, full lifecycle)
+  - Acceptance Criteria Summary: 8 tests (AC1-AC6, AC12, AC13)
+  - schema.sql includes FP-012 tables: 3 tests (classification, comparison, corrections)
+  - Classification model_identity persistence: 3 tests (provided, default, multi)
+  - Task Classification Corrections: 4 tests (record, non-existent, cross-packet, no-mutate)
+  - Comparison explicit columns: 8 tests (persist, defaults, cross-packet exec/evidence, non-existent)
+  - Model Comparison Corrections: 8 tests (record, preserve IDs, preserve defects, replace defects, non-existent, cross-packet, no-mutate, latest+history)
+  - FP-012 Correction Prior Behavior Preservation: 6 tests (FP-004, FP-008, FP-009, FP-010, FP-011, coexistence)
+
+All prior test suites pass unchanged:
+  - FP-008: 42 tests PASS
+  - FP-009: 40 tests PASS
+  - FP-010: 22 tests PASS
+  - FP-011: 52 tests PASS
+  - FP-004: 22 tests PASS
+  - FP-005: 17 tests PASS
+  - Smoke: 14 tests PASS
