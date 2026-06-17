@@ -1,0 +1,71 @@
+{
+  "packet_id": "FP-010",
+  "packet_title": "SQLite Evidence Persistence",
+  "benchmark_base_commit": "c2ff540",
+  "comparison_status": "COMPLETE",
+  "comparison_outcome": "QWEN_SELECTED",
+  "winner": "qwen-3.7-max",
+  "models": {
+    "deepseek-v4-pro-high": {
+      "branch": "eval/fp-010/deepseek-v4-pro-high",
+      "executor_commit": "6268129",
+      "audit_commit": "83380a6",
+      "auditor": "qwen-3.7-max",
+      "audit_verdict": "ACCEPTED",
+      "typecheck": "PASS",
+      "tests": {
+        "total": 184,
+        "passed": 184,
+        "failed": 0,
+        "fp010_tests": 28
+      },
+      "accepted": true,
+      "selected": false
+    },
+    "qwen-3.7-max": {
+      "branch": "eval/fp-010/qwen-3.7-max",
+      "executor_commit": "d73108c",
+      "audit_commit": "dc47ba5",
+      "auditor": "deepseek-v4-pro-high",
+      "audit_verdict": "ACCEPTED",
+      "typecheck": "PASS",
+      "tests": {
+        "total": 188,
+        "passed": 188,
+        "failed": 0,
+        "fp010_tests": 24
+      },
+      "accepted": true,
+      "selected": true
+    }
+  },
+  "decision_basis": {
+    "primary_factor": "schema_integration_quality",
+    "reason": "Qwen references the canonical packets table using packet_id INTEGER REFERENCES packets(id), which better fits the existing SQLite model.",
+    "both_accepted": true,
+    "both_preserved_scope": true,
+    "both_preserved_state_axes": true
+  },
+  "scope_boundaries": {
+    "routing": false,
+    "model_ranking": false,
+    "cost_optimization": false,
+    "task_classification": false,
+    "admission_policy_logic": false,
+    "dashboards": false,
+    "reports": false,
+    "leaderboards": false
+  },
+  "artifacts": {
+    "comparison_result": "runs/FP-010/comparison-result.md",
+    "deepseek_executor_result": "runs/FP-010/executor-result-deepseek.md",
+    "deepseek_verification": "runs/FP-010/verification-deepseek.txt",
+    "deepseek_metrics": "runs/FP-010/metrics-deepseek.json",
+    "deepseek_audit": "runs/FP-010/audit-qwen-by-deepseek.md",
+    "qwen_executor_result": "runs/FP-010/executor-result-qwen.md",
+    "qwen_verification": "runs/FP-010/verification-qwen.txt",
+    "qwen_metrics": "runs/FP-010/metrics-qwen.json",
+    "qwen_audit": "runs/FP-010/audit-deepseek-by-qwen.md"
+  },
+  "created_at": "2026-06-17T00:00:00Z"
+}

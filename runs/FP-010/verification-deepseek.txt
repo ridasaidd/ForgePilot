@@ -1,0 +1,42 @@
+=== FP-010 Verification (post-correction) ===
+
+1. pnpm typecheck
+   Result: PASS (zero errors, clean exit code 0)
+
+2. pnpm test
+   Result: PASS (184 tests, 0 failures)
+   FP-010 tests: 28 tests (includes 2 new rejection tests)
+   FP-009 tests: 45 tests (all preserved)
+   FP-008 tests: 35 tests (all preserved)
+   FP-004/FP-005/smoke tests: 76 tests (all preserved)
+
+3. Correction Applied:
+   [FIXED] validation_state no longer allows NOT_EVALUATED
+   [FIXED] validation_state default changed from NOT_EVALUATED to INCOMPLETE
+   [FIXED] trust_tier no longer allows empty string ''
+   [FIXED] trust_tier default changed from '' to TIER_0_UNTRUSTED
+   [FIXED] TypeScript validation uses !== undefined to catch empty string values
+   [FIXED] Added rejection test for NOT_EVALUATED as validation_state
+   [FIXED] Added rejection test for empty trust_tier
+
+4. Enum Constraints Enforced (TypeScript + SQLite):
+   validation_state: VALID | INVALID | INCOMPLETE | DEFERRED
+   trust_tier: TIER_0_UNTRUSTED | TIER_1_SELF_REPORTED | TIER_2_VERIFIED_ARTIFACT | TIER_3_REPRODUCIBLE
+   admission_state: NOT_EVALUATED | REJECTED | PENDING | ADMITTED | QUARANTINED
+
+=== Acceptance Criteria Verified ===
+
+[PASS] SQLite migration for evidence persistence exists
+[PASS] Migration is idempotent
+[PASS] Evidence records can be inserted
+[PASS] Evidence records can be retrieved by packet ID
+[PASS] Evidence records can be retrieved by run ID
+[PASS] Artifact paths can be persisted and retrieved
+[PASS] Existing tests continue to pass (all 184 pass)
+[PASS] New tests cover evidence insertion and retrieval (28 tests)
+[PASS] No routing, ranking, task classification, leaderboards, or cost optimization
+[PASS] Existing markdown and JSON artifacts preserved
+[PASS] validation_state restricts to VALID/INVALID/INCOMPLETE/DEFERRED
+[PASS] trust_tier restricts to TIER_0..TIER_3 (no empty string)
+[PASS] NOT_EVALUATED rejected as validation_state
+[PASS] Empty trust_tier rejected
