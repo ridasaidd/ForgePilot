@@ -1,0 +1,126 @@
+FP-MCP-003 Verification
+
+Date: 2026-06-18
+
+ForgePilot repository:
+/home/ridasaidd/forgepilot
+
+Branch:
+main
+
+Commit:
+df2accb
+
+Working tree:
+clean
+
+Files added:
+packets/FP-MCP-003.md
+docs/chatgpt-mcp-compliance-boundary.md
+
+Local verification:
+
+pnpm typecheck:
+PASS
+
+pnpm test:
+PASS
+
+Scope verification:
+
+No MCP tools added:
+PASS
+
+No shell execution added:
+PASS
+
+No OpenCode execution added:
+PASS
+
+No write tools added:
+PASS
+
+No Git mutation added:
+PASS
+
+No SQLite mutation added:
+PASS
+
+No bridge runtime behavior changed:
+PASS
+
+Document verification:
+
+Compliance boundary document added:
+PASS
+
+Preserves FP-MCP-001 generic-command-runner prohibition:
+PASS
+
+Preserves FP-MCP-002 read-only discovery boundary:
+PASS
+
+Defines read-only tool rules:
+PASS
+
+Defines write/execution-capable tool rules:
+PASS
+
+Defines explicit user approval requirements:
+PASS
+
+Defines secret-handling rules:
+PASS
+
+Defines safe logging rules:
+PASS
+
+Defines forbidden tool shapes:
+PASS
+
+Defines platform safety boundaries:
+PASS
+
+Defines future OpenCode execution constraints:
+PASS
+
+ChatGPT MCP connector verification:
+
+forgepilot_status:
+PASS
+
+Observed:
+branch: main
+commit: df2accb
+workingTreeClean: true
+
+forgepilot_list_packets:
+PASS
+
+Observed:
+packets/FP-MCP-003.md present
+
+forgepilot_read_file:
+PASS
+
+Observed:
+docs/chatgpt-mcp-compliance-boundary.md readable
+
+forgepilot_get_opencode_status:
+PASS
+
+Observed:
+opencodeExecutionEnabled: false
+liveOpenCodeChecked: false
+statusSource: static ForgePilot-safe configuration
+
+Conclusion:
+
+FP-MCP-003 satisfies the compliance-boundary documentation scope.
+
+The current MCP bridge remains read-only.
+
+The OpenCode status discovery tool remains constrained and execution-disabled.
+
+Result:
+PASS
