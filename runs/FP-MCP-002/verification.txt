@@ -1,0 +1,170 @@
+FP-MCP-002 Verification
+
+Date: 2026-06-18
+
+ForgePilot repository:
+/home/ridasaidd/forgepilot
+
+ForgePilot branch:
+main
+
+ForgePilot commit:
+a191b76
+
+ForgePilot working tree:
+clean
+
+Bridge repository:
+/home/ridasaidd/forgepilot-chatgpt-mcp
+
+Bridge branch:
+feature/oauth-auth0
+
+Bridge commit:
+520073b Add OpenCode status discovery tool
+
+Bridge service:
+forgepilot-chatgpt-mcp-oauth.service
+
+Service status:
+active (running)
+
+Observed service command:
+/home/ridasaidd/.nvm/versions/node/v24.4.1/bin/node /home/ridasaidd/forgepilot-chatgpt-mcp/dist/server.js
+
+Build/test status:
+pnpm build: PASS
+pnpm test: PASS or no additional output beyond build, as reported by user before connector verification
+
+ChatGPT MCP connector verification:
+
+forgepilot_get_opencode_status visible:
+PASS
+forgepilot_get_opencode_status callable:
+PASS
+forgepilot_get_opencode_status accepts no input:
+PASS
+forgepilot_get_opencode_status returned constrained JSON:
+PASS
+
+Observed response:
+
+{
+"opencodeDiscoveryConfigured": true,
+"opencodeExecutionEnabled": false,
+"executorStationLabel": "local-opencode",
+"endpointLabel": "configured",
+"boundaryVersion": "FP-MCP-001",
+"boundaryDocument": "docs/opencode-executor-boundary.md",
+"supportedRunModes": [
+"DESIGN_ONLY"
+],
+"allowedModels": [
+"deepseek-v4-pro-high",
+"qwen-3.7-max"
+],
+"statusSource": "static ForgePilot-safe configuration",
+"liveOpenCodeChecked": false,
+"executionDisabledReason": "FP-MCP-002 is read-only discovery only. Executor start tools are not implemented."
+}
+
+Execution disabled:
+PASS
+
+Observed:
+opencodeExecutionEnabled: false
+
+Live OpenCode not checked:
+PASS
+
+Observed:
+liveOpenCodeChecked: false
+
+Static safe source:
+PASS
+
+Observed:
+statusSource: static ForgePilot-safe configuration
+
+Boundary document referenced:
+PASS
+
+Observed:
+boundaryDocument: docs/opencode-executor-boundary.md
+
+Existing read-only tool forgepilot_status works:
+PASS
+
+Observed:
+repo: ForgePilot
+repoPath: /home/ridasaidd/forgepilot
+branch: main
+commit: a191b76
+workingTreeClean: true
+
+Existing read-only tool forgepilot_list_packets works:
+PASS
+
+Observed:
+packets/FP-MCP-002.md present
+
+Existing read-only tool forgepilot_list_runs works:
+PASS
+
+Observed:
+runs listed successfully; runs/FP-MCP-002 not yet present before artifact recording
+
+Existing read-only tool forgepilot_read_file works:
+PASS
+
+Observed:
+packets/FP-MCP-002.md readable
+docs/opencode-executor-boundary.md readable
+
+Forbidden capability checks:
+
+Shell execution exposed:
+PASS — not exposed
+
+OpenCode execution exposed:
+PASS — not exposed
+
+Generic command runner exposed:
+PASS — not exposed
+
+Arbitrary prompt tool exposed:
+PASS — not exposed
+
+Arbitrary filesystem read exposed:
+PASS — not exposed
+
+Filesystem mutation exposed:
+PASS — not exposed
+
+Git mutation exposed:
+PASS — not exposed
+
+SQLite mutation exposed:
+PASS — not exposed
+
+Environment variable exposure:
+PASS — not exposed
+
+Secret exposure:
+PASS — not exposed
+
+Process inspection:
+PASS — not exposed
+
+Conclusion:
+
+FP-MCP-002 satisfies the read-only discovery scope.
+
+The new tool is visible through the ChatGPT MCP connector and returns constrained status only.
+
+The tool reports OpenCode execution as disabled.
+
+The existing read-only ForgePilot MCP tools continue to work.
+
+Result:
+PASS
