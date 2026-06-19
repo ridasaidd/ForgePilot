@@ -1,0 +1,179 @@
+FP-MCP-024 Verification
+
+Date:
+2026-06-19
+
+ForgePilot repository:
+/home/ridasaidd/forgepilot
+
+ForgePilot branch:
+main
+
+Packet commit:
+9008c9e
+
+Implementation commit:
+45e8b62
+
+Working tree after implementation commit:
+clean
+
+Runner location:
+runner/
+
+Runtime:
+Node.js built-in HTTP server, dependency-free
+
+Files added:
+runner/server.mjs
+runner/README.md
+runner/test-runner.mjs
+
+Build requirement:
+No separate build required for dependency-free .mjs runner skeleton.
+
+Test command:
+FORGEPILOT_RUNNER_TOKEN=test-token node runner/test-runner.mjs
+
+Observed test output:
+runner skeleton tests PASS
+
+Test result:
+PASS
+
+Endpoint verification:
+
+GET /runner/health:
+PASS
+
+GET /runner/capabilities requires auth:
+PASS
+
+GET /runner/capabilities succeeds with bearer token:
+PASS
+
+GET /runner/capabilities returns runnerProtocolVersion forgepilot-runner-v1:
+PASS
+
+GET /runner/capabilities reports executionEnabled false:
+PASS
+
+GET /runner/capabilities reports opencodeHarnessReachable false:
+PASS
+
+POST /runner/validate-request requires auth:
+PASS
+
+POST /runner/validate-request rejects unsafe request artifact path:
+PASS
+
+POST /runner/validate-request rejects execution-shaped fields:
+PASS
+
+POST /runner/start-run returns hard rejection:
+PASS
+
+POST /runner/start-run returns 501:
+PASS
+
+POST /runner/start-run reports EXECUTION_NOT_IMPLEMENTED:
+PASS
+
+POST /runner/start-run reports executionStarted false:
+PASS
+
+Safety verification:
+
+Runner skeleton exists in documented location:
+PASS
+
+Protected endpoints require bearer authentication:
+PASS
+
+Missing bearer token fails closed:
+PASS
+
+Invalid or missing execution fields do not trigger execution:
+PASS
+
+Capabilities endpoint does not start OpenCode:
+PASS
+
+Validate-request endpoint does not start OpenCode:
+PASS
+
+Validate-request endpoint does not write artifacts:
+PASS
+
+Validate-request endpoint does not mutate request artifact:
+PASS
+
+Validate-request endpoint rejects unsafe paths:
+PASS
+
+Validate-request endpoint rejects execution-shaped fields:
+PASS
+
+Start-run endpoint is hard-rejecting:
+PASS
+
+No OpenCode CLI invocation added:
+PASS
+
+No OpenCode API invocation added:
+PASS
+
+No shell execution added:
+PASS
+
+No model provider call added:
+PASS
+
+No background worker added:
+PASS
+
+No job queue added:
+PASS
+
+No execution artifact writing added:
+PASS
+
+No request artifact mutation added:
+PASS
+
+No Git mutation added:
+PASS
+
+No SQLite mutation added:
+PASS
+
+No staging MCP bridge code changed:
+PASS
+
+Protocol/boundary verification:
+
+runnerProtocolVersion forgepilot-runner-v1:
+PASS
+
+runnerHostRole dev-execution-plane:
+PASS
+
+executionEnabled defaults false:
+PASS
+
+opencodeHarnessReachable false:
+PASS
+
+supportedOperations limited to capabilities and validate-request:
+PASS
+
+Conclusion:
+
+FP-MCP-024 implemented a dependency-free, authenticated, non-executing private dev runner skeleton.
+
+The skeleton exposes capabilities and validation foundations while preserving the no-execution boundary.
+
+No OpenCode execution occurred.
+
+Result:
+PASS
