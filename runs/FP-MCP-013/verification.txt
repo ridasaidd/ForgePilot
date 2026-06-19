@@ -1,0 +1,143 @@
+FP-MCP-013 Verification
+
+Date:
+2026-06-19
+
+ForgePilot repository:
+/home/ridasaidd/forgepilot
+
+ForgePilot branch:
+main
+
+ForgePilot packet commit:
+db61c85
+
+Working tree after packet commit:
+clean
+
+Files added:
+packets/FP-MCP-013.md
+
+Scope verification:
+
+Boundary-only packet:
+PASS
+
+No MCP discovery tool added:
+PASS
+
+No remote runner endpoint added:
+PASS
+
+No OpenCode API call added:
+PASS
+
+No OpenCode CLI call added:
+PASS
+
+No shell execution added:
+PASS
+
+No model policy update added:
+PASS
+
+No model allowlist mutation added:
+PASS
+
+No execution-start behavior added:
+PASS
+
+No artifact creation added:
+PASS
+
+No Git mutation added:
+PASS
+
+No SQLite mutation added:
+PASS
+
+No runtime behavior changed:
+PASS
+
+Document verification:
+
+Capability discovery defined as observation:
+PASS
+
+discoveredModels != allowedModels documented:
+PASS
+
+Bridge capabilities documented:
+PASS
+
+Runner capabilities documented:
+PASS
+
+OpenCode capabilities documented:
+PASS
+
+Policy capabilities documented:
+PASS
+
+Safe fields documented:
+PASS
+
+Forbidden fields documented:
+PASS
+
+Discovery source precedence documented:
+PASS
+
+Runner reachability behavior documented:
+PASS
+
+Staleness handling documented:
+PASS
+
+Remote discovery boundary documented:
+PASS
+
+OpenCode API discovery constraints documented:
+PASS
+
+CLI discovery constraints documented:
+PASS
+
+Static fallback behavior documented:
+PASS
+
+Failure reason codes documented:
+PASS
+
+Structured output requirement documented:
+PASS
+
+Future tool annotation requirement documented:
+PASS
+
+Logging restrictions documented:
+PASS
+
+Policy mutation forbidden:
+PASS
+
+ChatGPT MCP connector verification:
+
+forgepilot_status:
+PASS
+
+Observed:
+branch: main
+commit: db61c85
+workingTreeClean: true
+gitStatusShort: ""
+
+Conclusion:
+
+FP-MCP-013 defines OpenCode capability discovery boundaries without adding discovery tooling, remote runner endpoints, OpenCode API/CLI calls, shell execution, or policy mutation.
+
+No runtime behavior was changed.
+
+Result:
+PASS
+
