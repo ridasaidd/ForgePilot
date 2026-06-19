@@ -1,0 +1,175 @@
+FP-MCP-023 Verification
+
+Date:
+2026-06-19
+
+ForgePilot repository:
+/home/ridasaidd/forgepilot
+
+ForgePilot branch:
+main
+
+ForgePilot packet commit:
+ae0d3f9
+
+Working tree after packet commit:
+clean
+
+Files added:
+packets/FP-MCP-023.md
+
+Scope verification:
+
+Boundary-only packet:
+PASS
+
+No runner service implementation code added:
+PASS
+
+No staging MCP bridge implementation code added:
+PASS
+
+No OpenCode execution added:
+PASS
+
+No OpenCode CLI invocation added:
+PASS
+
+No OpenCode API invocation added:
+PASS
+
+No shell execution added:
+PASS
+
+No systemd units added:
+PASS
+
+No network firewall changes added:
+PASS
+
+No artifact-writing implementation added:
+PASS
+
+No Git mutation added:
+PASS
+
+No SQLite mutation added:
+PASS
+
+No background workers added:
+PASS
+
+No runtime behavior changed:
+PASS
+
+Document verification:
+
+Runner service role documented:
+PASS
+
+Deployment boundary documented:
+PASS
+
+Network boundary documented:
+PASS
+
+Authentication boundary documented:
+PASS
+
+Protocol version documented:
+PASS
+
+Allowed endpoints documented:
+PASS
+
+Forbidden endpoints documented:
+PASS
+
+Capabilities endpoint behavior documented:
+PASS
+
+Validate-request endpoint behavior documented:
+PASS
+
+Start-run endpoint behavior documented:
+PASS
+
+Runner execution enablement documented:
+PASS
+
+OpenCode harness boundary documented:
+PASS
+
+Repository boundary documented:
+PASS
+
+Artifact directory boundary documented:
+PASS
+
+Required artifacts documented:
+PASS
+
+Execution state artifact documented:
+PASS
+
+Command log artifact documented:
+PASS
+
+Terminal output artifact documented:
+PASS
+
+Status endpoint documented:
+PASS
+
+Artifact list endpoint documented:
+PASS
+
+Artifact read endpoint documented:
+PASS
+
+Concurrency boundary documented:
+PASS
+
+Timeout boundary documented:
+PASS
+
+Process isolation boundary documented:
+PASS
+
+Model provider credential boundary documented:
+PASS
+
+Runner run id format documented:
+PASS
+
+State/idempotency behavior documented:
+PASS
+
+Logging boundary documented:
+PASS
+
+Reason codes documented:
+PASS
+
+Trust boundary documented:
+PASS
+
+ChatGPT MCP connector verification:
+
+forgepilot_status:
+PASS
+
+Observed:
+branch: main
+commit: ae0d3f9
+workingTreeClean: true
+gitStatusShort: ""
+
+Conclusion:
+
+FP-MCP-023 defines the private dev runner service boundary without adding runner implementation, OpenCode execution, shell execution, artifact-writing behavior, Git mutation, or SQLite mutation.
+
+No runtime behavior was changed.
+
+Result:
+PASS
