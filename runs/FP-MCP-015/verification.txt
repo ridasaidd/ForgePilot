@@ -1,0 +1,224 @@
+FP-MCP-015 Verification
+
+Date:
+2026-06-19
+
+ForgePilot repository:
+/home/ridasaidd/forgepilot
+
+ForgePilot branch:
+main
+
+ForgePilot packet commit:
+1fe2ae8
+
+Bridge repository:
+/home/ridasaidd/forgepilot-chatgpt-mcp
+
+Bridge branch:
+feature/oauth-auth0
+
+Bridge implementation commit:
+3249828
+
+Bridge implementation commit message:
+Add remote runner request validation tool
+
+Build and test:
+
+pnpm build:
+PASS
+
+pnpm test:
+PASS
+
+Service restart:
+PASS
+
+Actions refresh:
+PASS
+
+Tool discovery:
+
+forgepilot_validate_remote_runner_request:
+VISIBLE
+
+Known request artifact validation test:
+
+Tool:
+forgepilot_validate_remote_runner_request
+
+Input:
+packetId: FP-MCP-007
+requestId: REQ-20260619T084312145Z-a9960bd6
+
+Observed:
+eligible: false
+executionEnabled: false
+executionStarted: false
+runnerContacted: false
+packetExists: true
+requestExists: true
+requestArtifactValid: true
+modelAllowed: true
+runModeAllowed: true
+workingTreeClean: true
+baseCommitMatches: false
+safeArtifactDir: true
+currentCommit: 1fe2ae8
+requestBaseCommit: 87c4a44
+modelId: qwen-3.7-max
+runMode: DESIGN_ONLY
+reasons:
+- BASE_COMMIT_MISMATCH
+
+Expected:
+Request artifact is structurally valid but ineligible because base commit does not match current repository commit.
+
+Result:
+PASS
+
+Invalid request id validation test:
+
+Tool:
+forgepilot_validate_remote_runner_request
+
+Input:
+packetId: FP-MCP-007
+requestId: REQ-INVALID
+
+Observed:
+eligible: false
+runnerContacted: false
+executionEnabled: false
+executionStarted: false
+reasons:
+- INVALID_REQUEST_ID
+
+Result:
+PASS
+
+Structured output verification:
+
+Tool output returned structured data:
+PASS
+
+Readable text fallback preserved:
+PASS
+
+Output schema declared:
+PASS
+
+Authority verification:
+
+Tool is read-only:
+PASS
+
+No remote runner call added:
+PASS
+
+No OpenCode execution added:
+PASS
+
+No OpenCode CLI invocation added:
+PASS
+
+No OpenCode API invocation added:
+PASS
+
+No shell execution tool added:
+PASS
+
+No arbitrary prompt execution added:
+PASS
+
+No arbitrary command execution added:
+PASS
+
+No model policy mutation added:
+PASS
+
+No model allowlist mutation added:
+PASS
+
+No request artifact creation added:
+PASS
+
+No request artifact mutation added:
+PASS
+
+No run artifact creation added:
+PASS
+
+No Git mutation added:
+PASS
+
+No SQLite mutation added:
+PASS
+
+No background worker added:
+PASS
+
+No autonomous execution added:
+PASS
+
+Validation boundary verification:
+
+Accepts only packetId and requestId:
+PASS
+
+Does not accept approval:
+PASS
+
+Does not accept raw prompt:
+PASS
+
+Does not accept raw command:
+PASS
+
+Does not accept raw path:
+PASS
+
+Reads request artifact from derived safe path:
+PASS
+
+Validates request artifact schema:
+PASS
+
+Validates packet/request id match:
+PASS
+
+Validates model allowlist:
+PASS
+
+Validates run-mode allowlist:
+PASS
+
+Validates repository cleanliness:
+PASS
+
+Validates base commit match:
+PASS
+
+Validates safe artifact directory:
+PASS
+
+Always reports executionEnabled false:
+PASS
+
+Always reports executionStarted false:
+PASS
+
+Always reports runnerContacted false:
+PASS
+
+Conclusion:
+
+FP-MCP-015 adds safe read-only validation for future remote-runner handoff eligibility.
+
+The tool is visible, structured, and working.
+
+No execution authority was added.
+
+Result:
+PASS
