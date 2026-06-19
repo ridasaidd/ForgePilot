@@ -1,0 +1,147 @@
+FP-MCP-008 Verification
+
+Date:
+2026-06-19
+
+ForgePilot repository:
+/home/ridasaidd/forgepilot
+
+ForgePilot branch:
+main
+
+ForgePilot packet commit:
+e38fdb8
+
+Working tree after packet commit:
+clean
+
+Files added:
+packets/FP-MCP-008.md
+
+Scope verification:
+
+Documentation-only packet:
+PASS
+
+No MCP tools added:
+PASS
+
+No MCP tools removed:
+PASS
+
+No bridge code changed:
+PASS
+
+No runtime behavior changed:
+PASS
+
+No OpenCode execution added:
+PASS
+
+No OpenCode CLI invocation added:
+PASS
+
+No OpenCode API invocation added:
+PASS
+
+No shell execution added:
+PASS
+
+No arbitrary prompt execution added:
+PASS
+
+No artifact creation added:
+PASS
+
+No write tools added:
+PASS
+
+No Git mutation added:
+PASS
+
+No SQLite mutation added:
+PASS
+
+Document verification:
+
+Output schema standards documented:
+PASS
+
+structuredContent usage documented:
+PASS
+
+content fallback usage documented:
+PASS
+
+_meta usage constrained:
+PASS
+
+Authority preservation documented:
+PASS
+
+Existing tool output fields documented:
+PASS
+
+Stable reason code usage documented:
+PASS
+
+Compatibility requirements documented:
+PASS
+
+Safety restrictions documented:
+PASS
+
+Failure output requirements documented:
+PASS
+
+Logging restrictions preserved:
+PASS
+
+Future implementation packet identified:
+PASS
+
+Existing tool coverage:
+
+forgepilot_status output fields:
+PASS
+
+forgepilot_get_opencode_status output fields:
+PASS
+
+forgepilot_list_packets output fields:
+PASS
+
+forgepilot_list_runs output fields:
+PASS
+
+forgepilot_read_file output fields:
+PASS
+
+forgepilot_validate_opencode_run_request output fields:
+PASS
+
+forgepilot_create_opencode_run_request output fields:
+PASS
+
+ChatGPT MCP connector verification:
+
+forgepilot_status:
+PASS
+
+Observed:
+branch: main
+commit: e38fdb8
+workingTreeClean: true
+gitStatusShort: ""
+
+Conclusion:
+
+FP-MCP-008 satisfies the MCP output schema standards documentation scope.
+
+The packet defines standards for addressing OpenAI's output schema recommendation without changing tool authority.
+
+No runtime behavior was changed.
+
+Result:
+PASS
+
