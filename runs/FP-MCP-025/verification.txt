@@ -1,0 +1,219 @@
+FP-MCP-025 Verification
+
+Date:
+2026-06-19
+
+ForgePilot repository:
+/home/ridasaidd/forgepilot
+
+ForgePilot branch:
+main
+
+Packet commit:
+387cee2
+
+Implementation commit:
+ad6b9c3
+
+Working tree after implementation commit:
+clean
+
+Service unit path:
+runner/systemd/forgepilot-runner.service
+
+Installed user service path:
+/home/ridasaidd/.config/systemd/user/forgepilot-runner.service
+
+Environment file path:
+/home/ridasaidd/.config/forgepilot-runner.env
+
+Token:
+<redacted>
+
+Node path:
+/home/ridasaidd/.nvm/versions/node/v24.4.1/bin/node
+
+Service command:
+/home/ridasaidd/.nvm/versions/node/v24.4.1/bin/node /home/ridasaidd/forgepilot/runner/server.mjs
+
+Service enable/start:
+
+systemctl --user daemon-reload:
+PASS
+
+systemctl --user enable --now forgepilot-runner.service:
+PASS
+
+Initial service status:
+status=127 when ExecStart used /usr/bin/env node
+
+Correction:
+Pinned ExecStart to /home/ridasaidd/.nvm/versions/node/v24.4.1/bin/node
+
+Corrected service health:
+PASS
+
+Health endpoint:
+
+Command:
+curl -sS http://127.0.0.1:8791/runner/health
+
+Observed:
+ok
+
+Result:
+PASS
+
+Capabilities auth success:
+
+Command:
+curl -sS -H "Authorization: Bearer $FORGEPILOT_RUNNER_TOKEN" http://127.0.0.1:8791/runner/capabilities
+
+Observed:
+runnerConfigured: true
+runnerHostRole: dev-execution-plane
+runnerVersion: 0.1.0-fp-mcp-024
+runnerProtocolVersion: forgepilot-runner-v1
+executionEnabled: false
+opencodeHarnessConfigured: false
+opencodeHarnessReachable: false
+supportedOperations:
+- capabilities
+- validate-request
+supportedRunModes:
+- DESIGN_ONLY
+allowedModels:
+- deepseek-v4-pro-high
+- qwen-3.7-max
+reasons:
+- EXECUTION_DISABLED
+
+Result:
+PASS
+
+Capabilities auth failure:
+
+Command:
+curl -sS -i http://127.0.0.1:8791/runner/capabilities
+
+Observed:
+HTTP/1.1 401 Unauthorized
+RUNNER_AUTH_FAILED
+
+Result:
+PASS
+
+Start-run hard rejection:
+
+Command:
+curl -sS -i -X POST -H "Authorization: Bearer $FORGEPILOT_RUNNER_TOKEN" -H "Content-Type: application/json" --data '{}' http://127.0.0.1:8791/runner/start-run
+
+Observed:
+HTTP/1.1 501 Not Implemented
+accepted: false
+executionStarted: false
+runnerProtocolVersion: forgepilot-runner-v1
+boundaryVersion: FP-MCP-024
+reason:
+- EXECUTION_NOT_IMPLEMENTED
+
+Result:
+PASS
+
+Localhost bind:
+
+Command:
+ss -ltnp | grep 8791
+
+Observed:
+127.0.0.1:8791
+
+Not observed:
+0.0.0.0:8791
+
+Result:
+PASS
+
+Safety verification:
+
+Service unit added:
+PASS
+
+Service documentation added:
+PASS
+
+Service runs runner skeleton only:
+PASS
+
+Service binds to 127.0.0.1:
+PASS
+
+Service uses port 8791:
+PASS
+
+Service sets FORGEPILOT_RUNNER_EXECUTION_ENABLED=false:
+PASS
+
+Service token not committed:
+PASS
+
+Environment file path documented:
+PASS
+
+Service can be enabled with systemctl --user:
+PASS
+
+Service can be started with systemctl --user:
+PASS
+
+Health endpoint returns ok:
+PASS
+
+Capabilities endpoint requires authentication:
+PASS
+
+Capabilities endpoint succeeds with bearer token:
+PASS
+
+Capabilities reports execution disabled:
+PASS
+
+Start-run remains hard-rejecting:
+PASS
+
+No OpenCode execution added:
+PASS
+
+No OpenCode CLI invocation added:
+PASS
+
+No OpenCode API invocation added:
+PASS
+
+No shell execution endpoint added:
+PASS
+
+No public exposure added:
+PASS
+
+No tunnel added:
+PASS
+
+No provider credentials committed:
+PASS
+
+No artifact-writing execution behavior added:
+PASS
+
+No Git mutation added:
+PASS
+
+No SQLite mutation added:
+PASS
+
+Conclusion:
+
+FP-MCP-025 adds a durable user-level service for the private dev runner skeleton while preserving the non-execution and localhost-only boundaries.
+
+Result:
+PASS
