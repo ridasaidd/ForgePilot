@@ -1,0 +1,219 @@
+FP-MCP-022 Verification
+
+Date:
+2026-06-19
+
+ForgePilot repository:
+/home/ridasaidd/forgepilot
+
+ForgePilot branch:
+main
+
+ForgePilot packet commit:
+325d4e1
+
+Working tree after packet commit:
+clean
+
+Bridge repository:
+/home/ridasaidd/forgepilot-chatgpt-mcp
+
+Bridge branch:
+feature/oauth-auth0
+
+Bridge implementation commit:
+a861366
+
+Bridge implementation commit message:
+Add remote runner start tool
+
+Build and test:
+
+pnpm build:
+PASS
+
+pnpm test:
+PASS
+
+Service restart:
+PASS
+
+Actions/tool visibility:
+
+forgepilot_start_remote_runner_request:
+VISIBLE
+
+ChatGPT confirmation behavior:
+
+Confirmation window displayed:
+PASS
+
+Reason:
+Tool is execution-adjacent and marked readOnlyHint false, idempotentHint false, openWorldHint true.
+
+Approval failure test:
+
+Tool:
+forgepilot_start_remote_runner_request
+
+Input:
+packetId: FP-MCP-007
+requestId: REQ-20260619T084312145Z-a9960bd6
+approval: WRONG_APPROVAL
+
+Observed:
+started: false
+accepted: false
+approvalAccepted: false
+runnerConfigured: false
+runnerContacted: false
+startEndpointContacted: false
+executionStarted: false
+requestArtifactPath: null
+requestArtifactSha256: null
+baseCommit: null
+runnerRunId: null
+artifactDir: null
+runnerProtocolVersion: null
+boundaryVersion: FP-MCP-022
+localValidationPassed: false
+remoteValidationPassed: false
+preStartStateRecorded: false
+postStartStateRecorded: false
+reasons:
+- APPROVAL_REQUIRED
+
+Expected:
+Wrong approval prevents all later gates.
+
+Result:
+PASS
+
+Correct approval, unsafe environment test:
+
+Tool:
+forgepilot_start_remote_runner_request
+
+Input:
+packetId: FP-MCP-007
+requestId: REQ-20260619T084312145Z-a9960bd6
+approval: START_REMOTE_RUNNER_REQUEST
+
+Observed:
+started: false
+accepted: false
+approvalAccepted: true
+runnerConfigured: false
+runnerContacted: false
+startEndpointContacted: false
+executionStarted: false
+requestArtifactPath: runs/FP-MCP-007/opencode-requests/REQ-20260619T084312145Z-a9960bd6.json
+requestArtifactSha256: d6ceb2e10f58eb43b85bc485efeec5870db758837eb62d9181788860dacae90d
+baseCommit: 325d4e1
+runnerRunId: null
+artifactDir: runs/FP-MCP-007/qwen-3.7-max-DESIGN_ONLY/
+runnerProtocolVersion: null
+boundaryVersion: FP-MCP-022
+localValidationPassed: false
+remoteValidationPassed: false
+preStartStateRecorded: false
+postStartStateRecorded: false
+reasons:
+- RUNNER_UNCONFIGURED
+- BASE_COMMIT_MISMATCH
+
+Expected:
+Correct approval alone is insufficient. Runner unconfigured and stale request artifact prevent runner contact and execution start.
+
+Result:
+PASS
+
+Safety verification:
+
+Tool accepts only packetId, requestId, approval:
+PASS
+
+Tool requires exact approval token:
+PASS
+
+Wrong approval prevents local validation:
+PASS
+
+Wrong approval prevents runner contact:
+PASS
+
+Wrong approval prevents start endpoint contact:
+PASS
+
+Wrong approval prevents state artifact writing:
+PASS
+
+Correct approval alone is insufficient:
+PASS
+
+Local validation failure prevents runner contact:
+PASS
+
+Unconfigured runner prevents runner contact:
+PASS
+
+Stale request artifact prevents start:
+PASS
+
+Tool does not contact /runner/start-run in tested states:
+PASS
+
+Tool does not start OpenCode:
+PASS
+
+Tool does not call OpenCode CLI from staging:
+PASS
+
+Tool does not call OpenCode API from staging:
+PASS
+
+Tool does not execute shell commands from staging:
+PASS
+
+Tool does not mutate request artifact:
+PASS
+
+Tool does not mutate Git:
+PASS
+
+Tool does not mutate SQLite:
+PASS
+
+Tool does not expose secrets:
+PASS
+
+Tool returns structured output:
+PASS
+
+Tool preserves readable JSON fallback:
+PASS
+
+Metadata verification:
+
+Tool is not read-only:
+PASS
+
+Tool is non-destructive:
+PASS
+
+Tool is not idempotent:
+PASS
+
+Tool is open-world:
+PASS
+
+Conclusion:
+
+FP-MCP-022 adds a guarded remote runner start tool that fails closed in the current unconfigured/stale-request environment.
+
+The tool is visible, confirmation-gated, structured, and correctly prevents start without exact approval and complete validation.
+
+No OpenCode execution occurred.
+
+Result:
+PASS
