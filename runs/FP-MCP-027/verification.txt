@@ -1,0 +1,114 @@
+FP-MCP-027 Verification
+
+Date:
+2026-06-19
+
+Packet:
+FP-MCP-027 — Fresh Request Remote Validation
+
+Verification result:
+BLOCKED
+
+Blocker:
+REQUEST_ARTIFACT_COMMIT_LIFECYCLE_CONTRADICTION
+
+Observed local validation result:
+
+eligible: false
+workingTreeClean: true
+requestArtifactValid: true
+modelAllowed: true
+runModeAllowed: true
+safeArtifactDir: true
+baseCommitMatches: false
+currentCommit: 2ae7666
+requestBaseCommit: 10b92ae
+reasons:
+- BASE_COMMIT_MISMATCH
+
+Observed remote runner endpoint validation result:
+
+valid: false
+runnerConfigured: true
+runnerContacted: false
+runnerAccepted: false
+executionEnabled: false
+executionStarted: false
+baseCommitMatches: false
+reasons:
+- BASE_COMMIT_MISMATCH
+
+Interpretation:
+
+The request artifact was created correctly and committed correctly.
+
+Validation failed because committing the request artifact advanced HEAD.
+
+The request artifact's base commit records the commit where the request was created.
+The repository HEAD now points to the commit where the request artifact was admitted.
+
+These are different lifecycle moments.
+
+Current validator incorrectly treats them as the same required commit.
+
+Contradiction:
+
+A request artifact created at clean commit A cannot be both:
+
+1. committed into the repository, producing commit B
+2. later validated with strict baseCommit == current HEAD
+
+After commit, the request artifact's baseCommit necessarily points to the parent commit, not the current commit.
+
+Safety result:
+
+OpenCode started:
+NO
+
+OpenCode CLI invoked:
+NO
+
+OpenCode API invoked:
+NO
+
+Shell executed through runner:
+NO
+
+Runner public exposure added:
+NO
+
+Runner execution enabled:
+NO
+
+Guarded start tool tested:
+NO
+
+Reason guarded start was not tested:
+Local pre-validation failed. Testing start would not provide useful execution-boundary evidence.
+
+Recommended follow-up:
+
+Create FP-MCP-028 to fix request artifact lifecycle semantics.
+
+Preferred fix:
+Add separate lifecycle fields:
+
+- creationCommit
+- artifactCommit
+
+Validation should then be able to check:
+
+- request created from clean commit
+- artifact admitted in current history
+- artifact immutable since creation
+- working tree clean
+
+Conclusion:
+
+FP-MCP-027 produced valuable negative evidence.
+
+The packet should be recorded as BLOCKED rather than forced green.
+
+Result:
+BLOCKED_BY_LIFECYCLE_CONTRADICTION
+
