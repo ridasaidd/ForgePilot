@@ -1,0 +1,173 @@
+FP-MCP-009 Verification
+
+Date:
+2026-06-19
+
+ForgePilot repository:
+/home/ridasaidd/forgepilot
+
+ForgePilot branch:
+main
+
+ForgePilot packet commit:
+f15383e
+
+Bridge repository:
+/home/ridasaidd/forgepilot-chatgpt-mcp
+
+Bridge branch:
+feature/oauth-auth0
+
+Bridge implementation commit:
+21fd463
+
+Bridge implementation commit message:
+Add MCP structured tool outputs
+
+Bridge build and test:
+
+pnpm build:
+PASS
+
+pnpm test:
+PASS
+
+Service restart:
+
+forgepilot-chatgpt-mcp-oauth.service:
+active (running)
+
+Actions refresh:
+
+OpenAI Actions refreshed:
+PASS
+
+Output schema warning:
+
+Before FP-MCP-009:
+Output schema recommended
+
+After FP-MCP-009:
+warning gone
+
+Result:
+PASS
+
+Scope verification:
+
+No new MCP tools added:
+PASS
+
+No MCP tools removed:
+PASS
+
+Existing tools remain available:
+PASS
+
+Tool output schemas added:
+PASS
+
+structuredContent added:
+PASS
+
+Readable text fallback preserved:
+PASS
+
+Input schemas not broadened:
+PASS
+
+Path allowlists not broadened:
+PASS
+
+Validation rules not weakened:
+PASS
+
+Approval rules not weakened:
+PASS
+
+Sanitized logging preserved:
+PASS
+
+No OpenCode execution added:
+PASS
+
+No OpenCode CLI invocation added:
+PASS
+
+No OpenCode API invocation added:
+PASS
+
+No shell execution added:
+PASS
+
+No arbitrary prompt execution added:
+PASS
+
+No Git mutation added:
+PASS
+
+No SQLite mutation added:
+PASS
+
+Tool coverage:
+
+forgepilot_status:
+PASS
+
+forgepilot_get_opencode_status:
+PASS
+
+forgepilot_list_packets:
+PASS
+
+forgepilot_list_runs:
+PASS
+
+forgepilot_validate_opencode_run_request:
+PASS
+
+forgepilot_create_opencode_run_request:
+PASS
+
+forgepilot_read_file:
+PASS
+
+Authority preservation:
+
+Read-only tools remain read-only:
+PASS
+
+Request artifact tool remains write-capable but non-destructive:
+PASS
+
+Request artifact tool remains non-executing:
+PASS
+
+executionEnabled remains false where applicable:
+PASS
+
+executionStarted remains false where applicable:
+PASS
+
+Compatibility:
+
+Human-readable JSON text content remains present:
+PASS
+
+Machine-readable structuredContent added:
+PASS
+
+OpenAI Actions accepts output schemas:
+PASS
+
+Conclusion:
+
+FP-MCP-009 implements MCP structured tool outputs according to FP-MCP-008.
+
+The OpenAI Actions output schema recommendation warning is gone.
+
+No authority boundary was expanded.
+
+Result:
+PASS
+
