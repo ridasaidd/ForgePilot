@@ -1,0 +1,18 @@
+[Unit]
+Description=ForgePilot Private Dev Runner Skeleton
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/ridasaidd/forgepilot
+Environment=FORGEPILOT_REPO=/home/ridasaidd/forgepilot
+Environment=FORGEPILOT_RUNNER_HOST=127.0.0.1
+Environment=FORGEPILOT_RUNNER_PORT=8791
+Environment=FORGEPILOT_RUNNER_EXECUTION_ENABLED=false
+EnvironmentFile=%h/.config/forgepilot-runner.env
+ExecStart=/home/ridasaidd/.nvm/versions/node/v24.4.1/bin/node /home/ridasaidd/forgepilot/runner/server.mjs
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
