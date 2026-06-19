@@ -1,0 +1,157 @@
+FP-MCP-021 Verification
+
+Date:
+2026-06-19
+
+ForgePilot repository:
+/home/ridasaidd/forgepilot
+
+ForgePilot branch:
+main
+
+ForgePilot packet commit:
+8e6aac6
+
+Working tree after packet commit:
+clean
+
+Files added:
+packets/FP-MCP-021.md
+
+Scope verification:
+
+Boundary-only packet:
+PASS
+
+No MCP start tool implementation added:
+PASS
+
+No runner implementation code added:
+PASS
+
+No OpenCode execution added:
+PASS
+
+No OpenCode CLI invocation added:
+PASS
+
+No OpenCode API invocation added:
+PASS
+
+No shell execution added:
+PASS
+
+No arbitrary HTTP proxying added:
+PASS
+
+No artifact-writing implementation added:
+PASS
+
+No Git mutation added:
+PASS
+
+No SQLite mutation added:
+PASS
+
+No background workers added:
+PASS
+
+No automatic retries added:
+PASS
+
+No runtime behavior changed:
+PASS
+
+Document verification:
+
+Future start tool name documented:
+PASS
+
+Required input schema documented:
+PASS
+
+Exact approval token documented:
+PASS
+
+Required gate order documented:
+PASS
+
+Local validation gate documented:
+PASS
+
+Remote validation gate documented:
+PASS
+
+Runner configuration gate documented:
+PASS
+
+Runner authentication requirements documented:
+PASS
+
+Request artifact digest requirement documented:
+PASS
+
+Start endpoint documented:
+PASS
+
+Start request shape documented:
+PASS
+
+Forbidden request fields documented:
+PASS
+
+Expected success response documented:
+PASS
+
+Expected rejection response documented:
+PASS
+
+Pre-start state artifact documented:
+PASS
+
+Post-start state artifact documented:
+PASS
+
+Request artifact mutation boundary documented:
+PASS
+
+Timeout boundary documented:
+PASS
+
+Idempotency boundary documented:
+PASS
+
+Duplicate start boundary documented:
+PASS
+
+Output schema documented:
+PASS
+
+Logging boundary documented:
+PASS
+
+Reason codes documented:
+PASS
+
+Trust boundary documented:
+PASS
+
+ChatGPT MCP connector verification:
+
+forgepilot_status:
+PASS
+
+Observed:
+branch: main
+commit: 8e6aac6
+workingTreeClean: true
+gitStatusShort: ""
+
+Conclusion:
+
+FP-MCP-021 defines the remote runner start tool boundary without adding a start tool, runner implementation, OpenCode execution, shell execution, artifact-writing behavior, Git mutation, or SQLite mutation.
+
+No runtime behavior was changed.
+
+Result:
+PASS
