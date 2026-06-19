@@ -1,0 +1,319 @@
+FP-MCP-007 Verification
+
+Date:
+2026-06-19
+
+ForgePilot repository:
+/home/ridasaidd/forgepilot
+
+ForgePilot branch:
+main
+
+ForgePilot packet commit:
+87c4a44
+
+Bridge repository:
+/home/ridasaidd/forgepilot-chatgpt-mcp
+
+Bridge branch:
+feature/oauth-auth0
+
+Tool added:
+forgepilot_create_opencode_run_request
+
+Bridge build and test:
+
+pnpm build:
+PASS
+
+pnpm test:
+PASS
+
+Service restart:
+
+forgepilot-chatgpt-mcp-oauth.service:
+active (running)
+
+Action refresh observation:
+
+The new tool became available after rebuilding the bridge, restarting the service, refreshing Actions, waiting for propagation, and rediscovering with a narrower query.
+
+Observed pattern:
+add tool, rebuild bridge, restart bridge service, refresh Actions, wait for propagation, rediscover with a narrower query if needed.
+
+Tool shape verification:
+
+Write-capable artifact tool:
+PASS
+
+Marked read-only:
+PASS — no, correctly not read-only
+
+Non-destructive:
+PASS
+
+Closed-world:
+PASS
+
+Accepts packetId:
+PASS
+
+Accepts modelId:
+PASS
+
+Accepts runMode:
+PASS
+
+Accepts approval:
+PASS
+
+Accepts shell command:
+PASS — not supported
+
+Accepts arbitrary prompt:
+PASS — not supported
+
+Accepts arbitrary path:
+PASS — not supported
+
+Accepts Git arguments:
+PASS — not supported
+
+Accepts SQL:
+PASS — not supported
+
+Execution boundary verification:
+
+Starts OpenCode:
+PASS — no
+
+Calls OpenCode CLI:
+PASS — no
+
+Calls OpenCode API:
+PASS — no
+
+Executes shell commands:
+PASS — no
+
+Mutates Git:
+PASS — no
+
+Mutates SQLite:
+PASS — no
+
+Exposes secrets:
+PASS — no
+
+Exposes environment variables:
+PASS — no
+
+Required response fields:
+
+created:
+PASS
+
+valid:
+PASS
+
+executionEnabled:
+PASS
+
+executionStarted:
+PASS
+
+requiresApproval:
+PASS
+
+approvalAccepted:
+PASS
+
+requestId:
+PASS
+
+requestArtifactPath:
+PASS
+
+packetId:
+PASS
+
+modelId:
+PASS
+
+runMode:
+PASS
+
+baseCommit:
+PASS
+
+boundaryVersion:
+PASS
+
+statusSource:
+PASS
+
+reasons:
+PASS
+
+Missing approval test:
+
+Input:
+packetId: FP-MCP-007
+modelId: qwen-3.7-max
+runMode: DESIGN_ONLY
+approval: NO
+
+Observed:
+created: false
+valid: true
+executionEnabled: false
+executionStarted: false
+approvalAccepted: false
+reasons: APPROVAL_REQUIRED
+
+Result:
+PASS
+
+Unknown packet test:
+
+Input:
+packetId: FP-MCP-999
+modelId: qwen-3.7-max
+runMode: DESIGN_ONLY
+approval: CREATE_REQUEST_ARTIFACT
+
+Observed:
+created: false
+valid: false
+executionEnabled: false
+executionStarted: false
+reasons: UNKNOWN_PACKET
+
+Result:
+PASS
+
+Disallowed model test:
+
+Input:
+packetId: FP-MCP-007
+modelId: glm-5
+runMode: DESIGN_ONLY
+approval: CREATE_REQUEST_ARTIFACT
+
+Observed:
+created: false
+valid: false
+executionEnabled: false
+executionStarted: false
+reasons: DISALLOWED_MODEL
+
+Result:
+PASS
+
+Disallowed run mode test:
+
+Input:
+packetId: FP-MCP-007
+modelId: qwen-3.7-max
+runMode: EXECUTE_PACKET
+approval: CREATE_REQUEST_ARTIFACT
+
+Observed:
+created: false
+valid: false
+executionEnabled: false
+executionStarted: false
+reasons: DISALLOWED_RUN_MODE
+
+Result:
+PASS
+
+Approved valid request test:
+
+Input:
+packetId: FP-MCP-007
+modelId: qwen-3.7-max
+runMode: DESIGN_ONLY
+approval: CREATE_REQUEST_ARTIFACT
+
+Observed:
+created: true
+valid: true
+executionEnabled: false
+executionStarted: false
+requestId: REQ-20260619T084312145Z-a9960bd6
+requestArtifactPath: runs/FP-MCP-007/opencode-requests/REQ-20260619T084312145Z-a9960bd6.json
+reasons: []
+
+Result:
+PASS
+
+Created request artifact:
+
+runs/FP-MCP-007/opencode-requests/REQ-20260619T084312145Z-a9960bd6.json
+
+Artifact read verification:
+
+forgepilot_read_file:
+PASS
+
+Observed artifact fields:
+schemaVersion: FP-MCP-007
+createdBy: chatgpt-mcp
+packetId: FP-MCP-007
+modelId: qwen-3.7-max
+runMode: DESIGN_ONLY
+approvalScope: request-artifact-only
+executionEnabled: false
+executionStarted: false
+boundaryVersion: FP-MCP-007
+validationBoundary: FP-MCP-006
+status: REQUEST_RECORDED
+
+Dirty tree guardrail:
+
+Repeated approved create call after artifact creation:
+created: false
+valid: false
+reasons: DIRTY_WORKING_TREE
+
+Result:
+PASS
+
+Existing tool compatibility:
+
+forgepilot_status:
+PASS
+
+forgepilot_get_opencode_status:
+PASS
+
+forgepilot_list_packets:
+PASS
+
+forgepilot_list_runs:
+PASS
+
+forgepilot_read_file:
+PASS
+
+forgepilot_validate_opencode_run_request:
+PASS
+
+Conclusion:
+
+FP-MCP-007 satisfies the OpenCode run request artifact tool scope.
+
+The MCP bridge now exposes a write-capable but non-executing request artifact tool.
+
+The tool creates durable request artifacts only after validation and explicit approval.
+
+The tool does not execute OpenCode.
+
+The tool does not execute shell commands.
+
+The tool does not mutate Git or SQLite.
+
+Result:
+PASS
+
