@@ -1,0 +1,145 @@
+FP-MCP-019 Verification
+
+Date:
+2026-06-19
+
+ForgePilot repository:
+/home/ridasaidd/forgepilot
+
+ForgePilot branch:
+main
+
+ForgePilot packet commit:
+1ceed44
+
+Working tree after packet commit:
+clean
+
+Files added:
+packets/FP-MCP-019.md
+
+Scope verification:
+
+Contract-only packet:
+PASS
+
+No runner implementation code added:
+PASS
+
+No MCP tool implementation code added:
+PASS
+
+No OpenCode execution added:
+PASS
+
+No OpenCode CLI invocation added:
+PASS
+
+No OpenCode API invocation added:
+PASS
+
+No shell execution added:
+PASS
+
+No arbitrary HTTP proxying added:
+PASS
+
+No background workers added:
+PASS
+
+No artifact-writing implementation added:
+PASS
+
+No Git mutation added:
+PASS
+
+No SQLite mutation added:
+PASS
+
+No runtime behavior changed:
+PASS
+
+Document verification:
+
+Private runner API topology documented:
+PASS
+
+Base URL derivation documented:
+PASS
+
+Authentication requirements documented:
+PASS
+
+Protocol version documented:
+PASS
+
+Required endpoints documented:
+PASS
+
+Capabilities endpoint contract documented:
+PASS
+
+Validate-request endpoint contract documented:
+PASS
+
+Start-run endpoint contract documented:
+PASS
+
+Run-status endpoint contract documented:
+PASS
+
+Artifact-list endpoint contract documented:
+PASS
+
+Artifact-read endpoint contract documented:
+PASS
+
+Runner run id format documented:
+PASS
+
+Request artifact digest requirement documented:
+PASS
+
+Base commit requirement documented:
+PASS
+
+Idempotency requirements documented:
+PASS
+
+Timeout requirements documented:
+PASS
+
+No raw proxy rule documented:
+PASS
+
+Logging boundary documented:
+PASS
+
+Reason code standard documented:
+PASS
+
+Version compatibility rule documented:
+PASS
+
+Open-world boundary documented:
+PASS
+
+ChatGPT MCP connector verification:
+
+forgepilot_status:
+PASS
+
+Observed:
+branch: main
+commit: 1ceed44
+workingTreeClean: true
+gitStatusShort: ""
+
+Conclusion:
+
+FP-MCP-019 defines the private remote runner API contract without adding runner implementation, MCP tool implementation, OpenCode execution, shell execution, arbitrary HTTP proxying, artifact writing, Git mutation, or SQLite mutation.
+
+No runtime behavior was changed.
+
+Result:
+PASS
