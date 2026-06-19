@@ -1,0 +1,206 @@
+FP-MCP-020 Verification
+
+Date:
+2026-06-19
+
+ForgePilot repository:
+/home/ridasaidd/forgepilot
+
+ForgePilot branch:
+main
+
+ForgePilot packet commit:
+e8f137d
+
+Working tree after packet commit:
+clean
+
+Bridge repository:
+/home/ridasaidd/forgepilot-chatgpt-mcp
+
+Bridge branch:
+feature/oauth-auth0
+
+Bridge implementation commit:
+d48bd09
+
+Bridge implementation commit message:
+Add remote runner validation endpoint client
+
+Build and test:
+
+pnpm build:
+PASS
+
+pnpm test:
+PASS
+
+Service restart:
+PASS
+
+Actions/tool visibility:
+
+forgepilot_validate_remote_runner_endpoint_request:
+VISIBLE
+
+Live tool invocation:
+
+Tool:
+forgepilot_validate_remote_runner_endpoint_request
+
+Input:
+packetId: FP-MCP-007
+requestId: REQ-20260619T084312145Z-a9960bd6
+
+Observed:
+valid: false
+runnerConfigured: false
+runnerContacted: false
+runnerAccepted: false
+executionEnabled: false
+executionStarted: false
+packetId: FP-MCP-007
+requestId: REQ-20260619T084312145Z-a9960bd6
+requestArtifactPath: runs/FP-MCP-007/opencode-requests/REQ-20260619T084312145Z-a9960bd6.json
+requestArtifactSha256: d6ceb2e10f58eb43b85bc485efeec5870db758837eb62d9181788860dacae90d
+baseCommit: e8f137d
+runnerProtocolVersion: null
+boundaryVersion: FP-MCP-020
+statusSource: ForgePilot local pre-validation policy
+checkedAt: 2026-06-19T13:20:19.559Z
+packetExists: true
+requestExists: true
+requestArtifactValid: true
+modelAllowed: true
+runModeAllowed: true
+workingTreeClean: true
+baseCommitMatches: false
+safeArtifactDir: true
+reasons:
+- RUNNER_UNCONFIGURED
+- BASE_COMMIT_MISMATCH
+
+Expected:
+Unconfigured runner and stale request artifact should prevent runner contact.
+
+Result:
+PASS
+
+Local pre-validation verification:
+
+Request artifact path derived from packetId/requestId:
+PASS
+
+Request artifact read safely:
+PASS
+
+Request artifact SHA-256 digest computed:
+PASS
+
+Request artifact structural validation:
+PASS
+
+Model allowlist checked:
+PASS
+
+Run mode allowlist checked:
+PASS
+
+Working tree checked:
+PASS
+
+Base commit mismatch detected:
+PASS
+
+Runner unconfigured detected:
+PASS
+
+Runner contact prevented:
+PASS
+
+Safety verification:
+
+Tool accepts only packetId and requestId:
+PASS
+
+Tool accepts no approval token:
+PASS
+
+Tool accepts no arbitrary URL:
+PASS
+
+Tool accepts no raw HTTP body:
+PASS
+
+Tool accepts no prompt:
+PASS
+
+Tool accepts no command:
+PASS
+
+Tool contacts no runner when local validation fails:
+PASS
+
+Tool contacts no runner when runner is unconfigured:
+PASS
+
+Tool does not call /runner/start-run:
+PASS
+
+Tool does not start OpenCode:
+PASS
+
+Tool does not call OpenCode CLI:
+PASS
+
+Tool does not call OpenCode API:
+PASS
+
+Tool does not execute shell commands:
+PASS
+
+Tool does not create execution artifacts:
+PASS
+
+Tool does not mutate request artifacts:
+PASS
+
+Tool does not mutate Git:
+PASS
+
+Tool does not mutate SQLite:
+PASS
+
+Tool does not expose secrets:
+PASS
+
+Tool returns executionEnabled false:
+PASS
+
+Tool returns executionStarted false:
+PASS
+
+Metadata verification:
+
+Tool is read-only:
+PASS
+
+Tool is non-destructive:
+PASS
+
+Tool is idempotent:
+PASS
+
+Tool is open-world:
+PASS
+
+Conclusion:
+
+FP-MCP-020 adds safe staging-side validation against the remote runner validate-request contract.
+
+The tool is visible, callable, structured, and correctly prevents runner contact when the runner is unconfigured or local validation fails.
+
+No execution authority was added.
+
+Result:
+PASS
