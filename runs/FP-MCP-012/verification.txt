@@ -1,0 +1,134 @@
+FP-MCP-012 Verification
+
+Date:
+2026-06-19
+
+ForgePilot repository:
+/home/ridasaidd/forgepilot
+
+ForgePilot branch:
+main
+
+ForgePilot packet commit:
+55881f6
+
+Working tree after packet commit:
+clean
+
+Files added:
+packets/FP-MCP-012.md
+
+Scope verification:
+
+Boundary-only packet:
+PASS
+
+No remote runner HTTP endpoint added:
+PASS
+
+No runner service added:
+PASS
+
+No MCP execution-start tool added:
+PASS
+
+No OpenCode execution added:
+PASS
+
+No OpenCode CLI invocation added:
+PASS
+
+No OpenCode API invocation added:
+PASS
+
+No shell execution added:
+PASS
+
+No raw network proxying added:
+PASS
+
+No generic tunnel added:
+PASS
+
+No background worker added:
+PASS
+
+No artifact synchronization added:
+PASS
+
+No Git mutation added:
+PASS
+
+No SQLite mutation added:
+PASS
+
+No runtime behavior changed:
+PASS
+
+Document verification:
+
+Staging/control-plane role documented:
+PASS
+
+Dev/execution-plane role documented:
+PASS
+
+Raw OpenCode proxying forbidden:
+PASS
+
+Raw shell proxying forbidden:
+PASS
+
+Generic network tunneling forbidden:
+PASS
+
+ForgePilot-shaped runner API concept documented:
+PASS
+
+Capability discovery boundary documented:
+PASS
+
+Request artifact handoff boundary documented:
+PASS
+
+Runner authentication requirements documented:
+PASS
+
+Runner network exposure restrictions documented:
+PASS
+
+Artifact ownership rules documented:
+PASS
+
+Failure and timeout behavior documented:
+PASS
+
+Logging restrictions documented:
+PASS
+
+Trust boundary documented:
+PASS
+
+Future packet ordering documented:
+PASS
+
+ChatGPT MCP connector verification:
+
+forgepilot_status:
+PASS
+
+Observed:
+branch: main
+commit: 55881f6
+workingTreeClean: true
+gitStatusShort: ""
+
+Conclusion:
+
+FP-MCP-012 defines the remote OpenCode runner boundary without adding remote execution, network proxying, runner endpoints, or shell authority.
+
+No runtime behavior was changed.
+
+Result:
+PASS
+
