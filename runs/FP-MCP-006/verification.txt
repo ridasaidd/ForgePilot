@@ -1,0 +1,291 @@
+FP-MCP-006 Verification
+
+Date:
+2026-06-19
+
+ForgePilot repository:
+/home/ridasaidd/forgepilot
+
+ForgePilot branch:
+main
+
+ForgePilot packet commit:
+5fed31f
+
+Bridge repository:
+/home/ridasaidd/forgepilot-chatgpt-mcp
+
+Bridge branch:
+feature/oauth-auth0
+
+Bridge implementation commit:
+961f90c
+
+Tool added:
+forgepilot_validate_opencode_run_request
+
+Bridge build and test:
+
+pnpm build:
+PASS
+
+pnpm test:
+PASS
+
+Service restart:
+
+forgepilot-chatgpt-mcp-oauth.service:
+active (running)
+
+Action refresh observation:
+
+The Actions UI showed the new tool after manual refresh.
+
+The current conversation runtime initially still exposed only five tools through the full resource list.
+
+A narrower OpenCode tool query later exposed the new tool without starting a new chat session.
+
+Observed pattern:
+add tool, rebuild bridge, restart bridge service, refresh Actions, wait for propagation, rediscover with a narrower query if needed.
+
+Tool shape verification:
+
+Read-only tool:
+PASS
+
+Accepts packetId:
+PASS
+
+Accepts modelId:
+PASS
+
+Accepts runMode:
+PASS
+
+Accepts shell command:
+PASS — not supported
+
+Accepts arbitrary prompt:
+PASS — not supported
+
+Accepts arbitrary path:
+PASS — not supported
+
+Accepts Git arguments:
+PASS — not supported
+
+Accepts SQL:
+PASS — not supported
+
+Execution boundary verification:
+
+Starts OpenCode:
+PASS — no
+
+Calls OpenCode CLI:
+PASS — no
+
+Calls OpenCode API:
+PASS — no
+
+Creates artifacts:
+PASS — no
+
+Writes files:
+PASS — no
+
+Mutates Git:
+PASS — no
+
+Mutates SQLite:
+PASS — no
+
+Exposes secrets:
+PASS — no
+
+Exposes environment variables:
+PASS — no
+
+Required response fields:
+
+valid:
+PASS
+
+executionEnabled:
+PASS
+
+requiresApproval:
+PASS
+
+packetExists:
+PASS
+
+modelAllowed:
+PASS
+
+runModeAllowed:
+PASS
+
+workingTreeClean:
+PASS
+
+baseCommit:
+PASS
+
+wouldUseArtifactDir:
+PASS
+
+boundaryVersion:
+PASS
+
+statusSource:
+PASS
+
+reasons:
+PASS
+
+Valid request test:
+
+Input:
+packetId: FP-MCP-006
+modelId: qwen-3.7-max
+runMode: DESIGN_ONLY
+
+Observed:
+valid: true
+executionEnabled: false
+requiresApproval: true
+packetExists: true
+modelAllowed: true
+runModeAllowed: true
+workingTreeClean: true
+baseCommit: 5fed31f
+wouldUseArtifactDir: runs/FP-MCP-006/qwen-3.7-max-DESIGN_ONLY/
+boundaryVersion: FP-MCP-006
+statusSource: ForgePilot validation-only policy
+reasons: []
+
+Result:
+PASS
+
+Unknown packet test:
+
+Input:
+packetId: FP-MCP-999
+modelId: qwen-3.7-max
+runMode: DESIGN_ONLY
+
+Observed:
+valid: false
+packetExists: false
+reasons: UNKNOWN_PACKET
+executionEnabled: false
+
+Result:
+PASS
+
+Disallowed model test:
+
+Input:
+packetId: FP-MCP-006
+modelId: glm-5
+runMode: DESIGN_ONLY
+
+Observed:
+valid: false
+modelAllowed: false
+reasons: DISALLOWED_MODEL
+executionEnabled: false
+
+Result:
+PASS
+
+Disallowed run mode test:
+
+Input:
+packetId: FP-MCP-006
+modelId: qwen-3.7-max
+runMode: EXECUTE_PACKET
+
+Observed:
+valid: false
+runModeAllowed: false
+reasons: DISALLOWED_RUN_MODE
+executionEnabled: false
+
+Result:
+PASS
+
+Allowed model validation:
+
+deepseek-v4-pro-high:
+Configured as allowed
+
+qwen-3.7-max:
+Configured as allowed
+
+Allowed run mode validation:
+
+DESIGN_ONLY:
+Configured as allowed
+
+Execution disabled rule:
+
+executionEnabled: false:
+PASS
+
+Approval rule:
+
+requiresApproval: true:
+PASS
+
+Artifact directory rule:
+
+Derived from validated structured fields:
+PASS
+
+Directory created:
+PASS — no
+
+Logging requirement:
+
+Tool is wrapped by runLoggedTool:
+PASS
+
+Sanitized invocation logging:
+PASS
+
+Existing tool compatibility:
+
+forgepilot_status:
+PASS — existing tool remains available
+
+forgepilot_get_opencode_status:
+PASS — existing tool remains available
+
+forgepilot_list_packets:
+PASS — existing tool remains available
+
+forgepilot_list_runs:
+PASS — existing tool remains available
+
+forgepilot_read_file:
+PASS — existing tool remains available
+
+Conclusion:
+
+FP-MCP-006 satisfies the OpenCode run request validation tool scope.
+
+The MCP bridge now exposes a read-only validation tool for ForgePilot-scoped OpenCode run requests.
+
+The tool validates structured requests only.
+
+The tool does not execute OpenCode.
+
+The tool does not create artifacts.
+
+The tool does not mutate files, Git, or SQLite.
+
+Result:
+PASS
+
