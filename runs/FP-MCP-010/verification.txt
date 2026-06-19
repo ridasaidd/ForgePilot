@@ -1,0 +1,175 @@
+FP-MCP-010 Verification
+
+Date:
+2026-06-19
+
+ForgePilot repository:
+/home/ridasaidd/forgepilot
+
+ForgePilot branch:
+main
+
+ForgePilot packet commit:
+3ea75d5
+
+Bridge repository:
+/home/ridasaidd/forgepilot-chatgpt-mcp
+
+Bridge branch:
+feature/oauth-auth0
+
+Bridge implementation commit:
+db317c9
+
+Bridge implementation commit message:
+Add OpenCode request artifact read tools
+
+Build and test:
+
+pnpm build:
+PASS
+
+pnpm test:
+PASS
+
+Service restart:
+PASS
+
+Actions refresh:
+PASS
+
+Tool discovery:
+
+forgepilot_list_opencode_run_requests:
+VISIBLE
+
+forgepilot_read_opencode_run_request:
+VISIBLE
+
+List request artifact test:
+
+Tool:
+forgepilot_list_opencode_run_requests
+
+Input:
+packetId: FP-MCP-007
+limit: 20
+
+Observed:
+packetId: FP-MCP-007
+path: runs/FP-MCP-007/opencode-requests
+count: 1
+requests:
+- REQ-20260619T084312145Z-a9960bd6.json
+
+Result:
+PASS
+
+Read request artifact test:
+
+Tool:
+forgepilot_read_opencode_run_request
+
+Input:
+packetId: FP-MCP-007
+requestId: REQ-20260619T084312145Z-a9960bd6
+
+Observed:
+packetId: FP-MCP-007
+requestId: REQ-20260619T084312145Z-a9960bd6
+requestArtifactPath: runs/FP-MCP-007/opencode-requests/REQ-20260619T084312145Z-a9960bd6.json
+
+Artifact fields observed:
+schemaVersion: FP-MCP-007
+modelId: qwen-3.7-max
+runMode: DESIGN_ONLY
+executionEnabled: false
+executionStarted: false
+status: REQUEST_RECORDED
+
+Result:
+PASS
+
+Structured output verification:
+
+List result returned structured data:
+PASS
+
+Read result returned structured data:
+PASS
+
+Readable text fallback preserved:
+PASS
+
+Output schemas declared:
+PASS
+
+Authority verification:
+
+No OpenCode execution added:
+PASS
+
+No OpenCode CLI invocation added:
+PASS
+
+No OpenCode API invocation added:
+PASS
+
+No shell execution tool added:
+PASS
+
+No arbitrary prompt execution added:
+PASS
+
+No arbitrary file read added:
+PASS
+
+No arbitrary file write added:
+PASS
+
+No request artifact creation added:
+PASS
+
+No request artifact mutation added:
+PASS
+
+No artifact deletion added:
+PASS
+
+No Git mutation added:
+PASS
+
+No SQLite mutation added:
+PASS
+
+Safety verification:
+
+Raw path input not accepted:
+PASS
+
+Packet id based request directory derivation:
+PASS
+
+Request id based artifact path derivation:
+PASS
+
+Reads restricted to runs/<packetId>/opencode-requests/:
+PASS
+
+Read-only annotations:
+PASS
+
+Sanitized logging preserved:
+PASS
+
+Conclusion:
+
+FP-MCP-010 adds safe, read-only inspection of OpenCode request artifacts.
+
+The tools are visible, structured, and working.
+
+No execution authority was added.
+
+Result:
+PASS
+
