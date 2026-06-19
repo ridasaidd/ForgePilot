@@ -1,0 +1,140 @@
+FP-MCP-011 Verification
+
+Date:
+2026-06-19
+
+ForgePilot repository:
+/home/ridasaidd/forgepilot
+
+ForgePilot branch:
+main
+
+ForgePilot packet commit:
+51d6a40
+
+Working tree after packet commit:
+clean
+
+Files added:
+packets/FP-MCP-011.md
+
+Scope verification:
+
+Boundary-only packet:
+PASS
+
+No MCP execution-start tool added:
+PASS
+
+No OpenCode execution added:
+PASS
+
+No OpenCode CLI invocation added:
+PASS
+
+No OpenCode API invocation added:
+PASS
+
+No shell execution added:
+PASS
+
+No background execution added:
+PASS
+
+No worker daemon added:
+PASS
+
+No prompt submission added:
+PASS
+
+No terminal streaming added:
+PASS
+
+No arbitrary command execution added:
+PASS
+
+No Git mutation added:
+PASS
+
+No SQLite mutation added:
+PASS
+
+No runtime behavior changed:
+PASS
+
+Document verification:
+
+Execution-start prerequisites documented:
+PASS
+
+Request artifact prerequisite documented:
+PASS
+
+Exact approval token requirement documented:
+PASS
+
+Raw prompt input forbidden:
+PASS
+
+Raw command input forbidden:
+PASS
+
+Raw path input forbidden:
+PASS
+
+Request artifact validation requirements documented:
+PASS
+
+Repository cleanliness requirements documented:
+PASS
+
+Base commit matching requirement documented:
+PASS
+
+Model allowlist requirement documented:
+PASS
+
+Run-mode allowlist requirement documented:
+PASS
+
+Artifact directory derivation documented:
+PASS
+
+Execution state artifact requirement documented:
+PASS
+
+Terminal output capture requirement documented:
+PASS
+
+Required post-run artifacts documented:
+PASS
+
+Failure reason codes documented:
+PASS
+
+Logging restrictions documented:
+PASS
+
+Future execution tool annotation requirements documented:
+PASS
+
+ChatGPT MCP connector verification:
+
+forgepilot_status:
+PASS
+
+Observed:
+branch: main
+commit: 51d6a40
+workingTreeClean: true
+gitStatusShort: ""
+
+Conclusion:
+
+FP-MCP-011 defines the OpenCode execution-start boundary without adding execution authority.
+
+No runtime behavior was changed.
+
+Result:
+PASS
+
