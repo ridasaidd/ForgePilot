@@ -1,0 +1,178 @@
+FP-MCP-014 Verification
+
+Date:
+2026-06-19
+
+ForgePilot repository:
+/home/ridasaidd/forgepilot
+
+ForgePilot branch:
+main
+
+ForgePilot packet commit:
+bddc86c
+
+Bridge repository:
+/home/ridasaidd/forgepilot-chatgpt-mcp
+
+Bridge branch:
+feature/oauth-auth0
+
+Bridge implementation commit:
+6ae32ec
+
+Bridge implementation commit message:
+Add OpenCode capability discovery tool
+
+Build and test:
+
+pnpm build:
+PASS
+
+pnpm test:
+PASS
+
+Service restart:
+PASS
+
+Actions refresh:
+PASS
+
+Tool discovery:
+
+forgepilot_get_opencode_capabilities:
+VISIBLE
+
+Tool invocation:
+
+Tool:
+forgepilot_get_opencode_capabilities
+
+Observed:
+bridgeHostRole: staging-control-plane
+runnerHostRole: dev-execution-plane
+runnerReachable: false
+opencodeHarnessConfigured: true
+opencodeHarnessReachable: false
+executionEnabled: false
+supportedOperations:
+- request-artifact-create
+- request-artifact-list
+- request-artifact-read
+- request-validation
+- static-capability-discovery
+supportedRunModes:
+- DESIGN_ONLY
+discoveredModels:
+- deepseek-v4-pro-high
+- qwen-3.7-max
+allowedModels:
+- deepseek-v4-pro-high
+- qwen-3.7-max
+blockedModels: []
+statusSource: static ForgePilot capability policy
+boundaryVersion: FP-MCP-014
+liveRunnerChecked: false
+liveOpenCodeChecked: false
+reasons:
+- LIVE_RUNNER_NOT_CHECKED
+- LIVE_OPENCODE_NOT_CHECKED
+- EXECUTION_DISABLED
+
+Result:
+PASS
+
+Structured output verification:
+
+Tool output returned structured data:
+PASS
+
+Readable text fallback preserved:
+PASS
+
+Output schema declared:
+PASS
+
+Authority verification:
+
+Tool is read-only:
+PASS
+
+No OpenCode execution added:
+PASS
+
+No OpenCode CLI invocation added:
+PASS
+
+No OpenCode API invocation added:
+PASS
+
+No remote runner API invocation added:
+PASS
+
+No shell execution tool added:
+PASS
+
+No arbitrary prompt execution added:
+PASS
+
+No arbitrary command execution added:
+PASS
+
+No model policy mutation added:
+PASS
+
+No model allowlist mutation added:
+PASS
+
+No request artifact creation added:
+PASS
+
+No run artifact creation added:
+PASS
+
+No Git mutation added:
+PASS
+
+No SQLite mutation added:
+PASS
+
+No background worker added:
+PASS
+
+No autonomous execution added:
+PASS
+
+Capability boundary verification:
+
+discoveredModels field present:
+PASS
+
+allowedModels field present:
+PASS
+
+discoveredModels and allowedModels remain separate fields:
+PASS
+
+executionEnabled is false:
+PASS
+
+liveRunnerChecked is false:
+PASS
+
+liveOpenCodeChecked is false:
+PASS
+
+statusSource identifies static policy:
+PASS
+
+Conclusion:
+
+FP-MCP-014 adds safe read-only capability discovery through MCP.
+
+The tool is visible, structured, and working.
+
+No execution authority was added.
+
+Result:
+PASS
