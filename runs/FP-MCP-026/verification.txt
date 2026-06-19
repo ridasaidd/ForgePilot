@@ -1,0 +1,226 @@
+FP-MCP-026 Verification
+
+Date:
+2026-06-19
+
+ForgePilot repository:
+/home/ridasaidd/forgepilot
+
+ForgePilot branch:
+main
+
+Packet commit:
+5d01bfc
+
+Working tree before verification artifact creation:
+clean
+
+Local branch state before verification artifact creation:
+ahead of origin/main by 1 commit
+
+Unpushed local commit:
+ad6b9c3 Add FP-MCP-025 runner service unit
+
+Topology:
+
+ChatGPT:
+https://forgepilot-mcp.byteforge.se/mcp
+
+pistaging Apache proxy:
+ProxyPass / http://100.80.45.13:8790/
+ProxyPassReverse / http://100.80.45.13:8790/
+
+rpsrv MCP bridge:
+forgepilot-chatgpt-mcp-oauth.service
+/home/ridasaidd/.nvm/versions/node/v24.4.1/bin/node /home/ridasaidd/forgepilot-chatgpt-mcp/dist/server.js
+
+rpsrv private runner:
+forgepilot-runner.service
+http://127.0.0.1:8791
+
+Bridge wiring method:
+systemd user service environment override on rpsrv
+
+Bridge environment:
+FORGEPILOT_REMOTE_RUNNER_BASE_URL=http://127.0.0.1:8791
+FORGEPILOT_REMOTE_RUNNER_TOKEN=<redacted>
+
+Secret handling:
+PASS
+Token configured outside Git.
+
+Runner service status:
+active running
+
+Runner health:
+ok
+
+Runner localhost bind:
+
+Command:
+ss -ltnp | grep 8791
+
+Observed:
+127.0.0.1:8791
+
+Not observed:
+0.0.0.0:8791
+
+Result:
+PASS
+
+MCP remote runner status:
+
+Tool:
+forgepilot_get_remote_runner_status
+
+Observed:
+runnerConfigured: true
+runnerReachable: true
+runnerEndpointLabel: configured
+runnerVersion: 0.1.0-fp-mcp-024
+runnerProtocolVersion: forgepilot-runner-v1
+executionEnabled: false
+liveRunnerChecked: true
+supportedOperations:
+- capabilities
+- validate-request
+supportedRunModes:
+- DESIGN_ONLY
+allowedModels:
+- deepseek-v4-pro-high
+- qwen-3.7-max
+reasons: []
+
+Result:
+PASS
+
+Remote validate endpoint test:
+
+Tool:
+forgepilot_validate_remote_runner_endpoint_request
+
+Input:
+packetId: FP-MCP-007
+requestId: REQ-20260619T084312145Z-a9960bd6
+
+Observed:
+valid: false
+runnerConfigured: true
+runnerContacted: false
+runnerAccepted: false
+executionEnabled: false
+executionStarted: false
+packetExists: true
+requestExists: true
+requestArtifactValid: true
+modelAllowed: true
+runModeAllowed: true
+workingTreeClean: true
+baseCommitMatches: false
+safeArtifactDir: true
+reasons:
+- BASE_COMMIT_MISMATCH
+
+Result:
+PASS
+
+Interpretation:
+The stale historical request failed local pre-validation before runner contact.
+
+Guarded start tool test:
+
+Tool:
+forgepilot_start_remote_runner_request
+
+Input:
+packetId: FP-MCP-007
+requestId: REQ-20260619T084312145Z-a9960bd6
+approval: START_REMOTE_RUNNER_REQUEST
+
+Observed:
+started: false
+accepted: false
+approvalAccepted: true
+runnerConfigured: true
+runnerContacted: false
+startEndpointContacted: false
+executionStarted: false
+localValidationPassed: false
+remoteValidationPassed: false
+preStartStateRecorded: false
+postStartStateRecorded: false
+reasons:
+- BASE_COMMIT_MISMATCH
+
+Result:
+PASS
+
+Interpretation:
+The bridge is wired to the runner, but the guarded start tool still fails closed for stale request artifacts and does not contact /runner/start-run.
+
+Safety verification:
+
+Runner service remains active:
+PASS
+
+Runner remains localhost-only:
+PASS
+
+Bridge service can reach runner capabilities:
+PASS
+
+Runner protocol version is forgepilot-runner-v1:
+PASS
+
+Runner execution remains disabled:
+PASS
+
+Remote validate endpoint does not start execution:
+PASS
+
+Stale request rejected:
+PASS
+
+Guarded start tool remains non-executing:
+PASS
+
+Start endpoint not contacted for stale request:
+PASS
+
+OpenCode not started:
+PASS
+
+No OpenCode CLI invocation added:
+PASS
+
+No OpenCode API invocation added:
+PASS
+
+No shell execution endpoint added:
+PASS
+
+No public runner exposure added:
+PASS
+
+No tunnel added:
+PASS
+
+No provider credentials committed:
+PASS
+
+No token committed:
+PASS
+
+No new MCP tool added:
+PASS
+
+No new runner endpoint added:
+PASS
+
+Conclusion:
+
+FP-MCP-026 successfully wires the staging MCP bridge to the private dev runner skeleton through localhost on rpsrv while preserving the non-execution boundary.
+
+Result:
+PASS
