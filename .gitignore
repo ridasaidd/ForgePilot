@@ -24,3 +24,9 @@ temp/
 test-results/
 runtime/
 artifacts/
+
+# Local ForgePilot runner secrets
+forgepilot-runner.env
+.env.forgepilot-runner
+runner/.env
+runner/*.env
