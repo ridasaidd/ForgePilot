@@ -1,0 +1,142 @@
+FP-MCP-016 Verification
+
+Date:
+2026-06-19
+
+ForgePilot repository:
+/home/ridasaidd/forgepilot
+
+ForgePilot branch:
+main
+
+ForgePilot packet commit:
+a7dbfa0
+
+Working tree after packet commit:
+clean
+
+Files added:
+packets/FP-MCP-016.md
+
+Scope verification:
+
+Boundary-only packet:
+PASS
+
+No MCP runner-start tool added:
+PASS
+
+No remote runner contact added:
+PASS
+
+No remote runner HTTP call added:
+PASS
+
+No OpenCode execution added:
+PASS
+
+No OpenCode CLI invocation added:
+PASS
+
+No OpenCode API invocation added:
+PASS
+
+No shell execution added:
+PASS
+
+No background worker added:
+PASS
+
+No runner service code added:
+PASS
+
+No artifact-writing implementation added:
+PASS
+
+No Git mutation added:
+PASS
+
+No SQLite mutation added:
+PASS
+
+No runtime behavior changed:
+PASS
+
+Document verification:
+
+Remote runner start prerequisites documented:
+PASS
+
+Exact approval token requirement documented:
+PASS
+
+Required validation gate documented:
+PASS
+
+Base commit requirement documented:
+PASS
+
+Execution-enabled policy documented:
+PASS
+
+Staging-to-dev request shape documented:
+PASS
+
+Forbidden request fields documented:
+PASS
+
+Request artifact digest requirement documented:
+PASS
+
+Pre-contact state artifact requirement documented:
+PASS
+
+Post-contact state artifact requirement documented:
+PASS
+
+Remote runner response shape documented:
+PASS
+
+Timeout boundary documented:
+PASS
+
+Retry boundary documented:
+PASS
+
+Idempotency boundary documented:
+PASS
+
+Failure reason codes documented:
+PASS
+
+Logging restrictions documented:
+PASS
+
+Artifact requirements documented:
+PASS
+
+Trust boundary documented:
+PASS
+
+Bridge size/refactor note documented:
+PASS
+
+ChatGPT MCP connector verification:
+
+forgepilot_status:
+PASS
+
+Observed:
+branch: main
+commit: a7dbfa0
+workingTreeClean: true
+gitStatusShort: ""
+
+Conclusion:
+
+FP-MCP-016 defines the remote runner start boundary without adding runner contact, execution authority, OpenCode API/CLI calls, shell execution, or artifact-writing behavior.
+
+No runtime behavior was changed.
+
+Result:
+PASS
