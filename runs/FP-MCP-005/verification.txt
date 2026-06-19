@@ -1,0 +1,132 @@
+FP-MCP-005 Verification
+
+Date:
+2026-06-19
+
+ForgePilot repository:
+/home/ridasaidd/forgepilot
+
+Branch:
+main
+
+Commit:
+52ff110
+
+Working tree:
+clean
+
+Files added:
+packets/FP-MCP-005.md
+
+Local verification:
+
+pnpm typecheck:
+PASS
+
+pnpm test:
+PASS
+
+Scope verification:
+
+Documentation-only packet:
+PASS
+
+No MCP tools added:
+PASS
+
+No OpenCode execution added:
+PASS
+
+No shell execution added:
+PASS
+
+No arbitrary prompt execution added:
+PASS
+
+No write tools added:
+PASS
+
+No Git mutation added:
+PASS
+
+No SQLite mutation added:
+PASS
+
+No bridge runtime behavior changed:
+PASS
+
+Document verification:
+
+OpenCode run request fields defined:
+PASS
+
+Packet id rules defined:
+PASS
+
+Model id rules defined:
+PASS
+
+Run mode rules defined:
+PASS
+
+DESIGN_ONLY mode defined:
+PASS
+
+Working tree rules defined:
+PASS
+
+Artifact directory rules defined:
+PASS
+
+Approval rules defined:
+PASS
+
+Execution-disabled behavior defined:
+PASS
+
+Future validation-only tool shape defined:
+PASS
+
+Future request-artifact tool shape defined:
+PASS
+
+Future execution tool shape constrained:
+PASS
+
+Lifecycle states defined:
+PASS
+
+Failure classifications defined:
+PASS
+
+Evidence boundary defined:
+PASS
+
+ChatGPT MCP connector verification:
+
+forgepilot_status:
+PASS
+
+Observed:
+branch: main
+commit: 52ff110
+workingTreeClean: true
+gitStatusShort: ""
+
+forgepilot_list_packets:
+PASS
+
+Observed:
+packets/FP-MCP-005.md present
+
+Conclusion:
+
+FP-MCP-005 satisfies the OpenCode run request boundary documentation scope.
+
+The current MCP bridge remains read-only.
+
+No execution-capable behavior was introduced.
+
+Result:
+PASS
+
