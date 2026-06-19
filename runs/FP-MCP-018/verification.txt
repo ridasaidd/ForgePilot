@@ -1,0 +1,159 @@
+FP-MCP-018 Verification
+
+Date:
+2026-06-19
+
+ForgePilot repository:
+/home/ridasaidd/forgepilot
+
+ForgePilot branch:
+main
+
+ForgePilot packet commit:
+fa7bd7f
+
+Working tree after packet commit:
+clean
+
+Bridge repository:
+/home/ridasaidd/forgepilot-chatgpt-mcp
+
+Bridge branch:
+feature/oauth-auth0
+
+Bridge implementation commit:
+6cd57a5
+
+Bridge implementation commit message:
+Add remote runner status tool
+
+Build and test:
+
+pnpm build:
+PASS
+
+pnpm test:
+PASS
+
+Service restart:
+PASS
+
+Observed service state:
+Active: active (running)
+ForgePilot MCP bridge listening on http://0.0.0.0:8790/mcp
+
+Actions/tool visibility:
+
+forgepilot_get_remote_runner_status:
+VISIBLE
+
+Live tool invocation:
+
+Tool:
+forgepilot_get_remote_runner_status
+
+Observed:
+bridgeHostRole: staging-control-plane
+runnerHostRole: dev-execution-plane
+runnerConfigured: false
+runnerReachable: false
+runnerEndpointLabel: not-configured
+runnerVersion: null
+runnerProtocolVersion: null
+executionEnabled: false
+liveRunnerChecked: false
+statusSource: local environment configuration
+boundaryVersion: FP-MCP-018
+checkedAt: 2026-06-19T13:03:38.331Z
+supportedOperations: []
+supportedRunModes:
+- DESIGN_ONLY
+allowedModels:
+- deepseek-v4-pro-high
+- qwen-3.7-max
+reasons:
+- RUNNER_UNCONFIGURED
+
+Expected:
+No configured runner should produce RUNNER_UNCONFIGURED, runnerConfigured false, runnerReachable false, and executionEnabled false.
+
+Result:
+PASS
+
+Metadata verification:
+
+Tool is read-only:
+PASS
+
+Tool is non-destructive:
+PASS
+
+Tool is idempotent:
+PASS
+
+Tool is open-world:
+PASS
+
+Open-world annotation reason:
+The tool may contact a configured private/dev runner capabilities endpoint outside the ChatGPT/account boundary.
+
+Safety verification:
+
+Tool accepts no user input:
+PASS
+
+Tool does not accept arbitrary URL:
+PASS
+
+Tool may contact only configured /runner/capabilities endpoint:
+PASS
+
+Tool does not start OpenCode:
+PASS
+
+Tool does not call OpenCode CLI:
+PASS
+
+Tool does not call OpenCode API:
+PASS
+
+Tool does not create runner jobs:
+PASS
+
+Tool does not create execution artifacts:
+PASS
+
+Tool does not mutate request artifacts:
+PASS
+
+Tool does not mutate Git:
+PASS
+
+Tool does not mutate SQLite:
+PASS
+
+Tool does not transmit raw prompt:
+PASS
+
+Tool does not transmit raw command:
+PASS
+
+Tool does not expose runner URL:
+PASS
+
+Tool does not expose runner token:
+PASS
+
+Tool returns executionEnabled false:
+PASS
+
+Conclusion:
+
+FP-MCP-018 adds safe read-only remote runner status discovery.
+
+The tool is visible, callable, structured, and currently reports the expected unconfigured state.
+
+No execution authority was added.
+
+Result:
+PASS
