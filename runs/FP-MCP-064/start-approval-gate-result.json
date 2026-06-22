@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "FP-MCP-064",
+  "artifactType": "start-approval-evidence-gate-result",
+  "packetId": "FP-MCP-064",
+  "bridgeCommit": "44592b0",
+  "forgePilotCommitBeforeArtifactRecording": "3512a64",
+  "canonicalRequest": {
+    "packetId": "FP-MCP-036",
+    "requestId": "REQ-20260622T144553300Z-fbbe8d82",
+    "modelId": "qwen-3.7-max",
+    "runMode": "DESIGN_ONLY"
+  },
+  "missingApprovalIdProbe": {
+    "boundaryVersion": "FP-MCP-064",
+    "humanApprovalEvidenceEvaluated": true,
+    "humanApprovalEvidenceGatePassed": false,
+    "humanApprovalEvidenceId": null,
+    "humanApprovalEvidencePath": null,
+    "humanApprovalEvidenceValid": false,
+    "humanApprovalEvidenceUsableForExecution": false,
+    "approvalValidationEvaluated": false,
+    "approvalEvidenceValid": false,
+    "approvalValid": false,
+    "approvalUsableForExecution": false,
+    "approvalCreated": false,
+    "approvalMutated": false,
+    "humanApprovalRecorded": false,
+    "started": false,
+    "accepted": false,
+    "runnerContacted": false,
+    "startEndpointContacted": false,
+    "executionStarted": false,
+    "opencodeStarted": false,
+    "reasons": [
+      "HUMAN_APPROVAL_EVIDENCE_MISSING",
+      "START_REQUEST_HUMAN_APPROVAL_EVIDENCE_GATE_BLOCKED"
+    ]
+  },
+  "invalidApprovalIdProbe": {
+    "boundaryVersion": "FP-MCP-064",
+    "humanApprovalEvidenceEvaluated": true,
+    "humanApprovalEvidenceGatePassed": false,
+    "humanApprovalEvidenceId": "APPROVAL-20260622T225539362Z-cb42d99f",
+    "humanApprovalEvidencePath": "runs/FP-MCP-036/approvals/APPROVAL-20260622T225539362Z-cb42d99f.json",
+    "humanApprovalEvidenceValid": false,
+    "humanApprovalEvidenceUsableForExecution": false,
+    "humanApprovalEvidenceReasons": [
+      "APPROVAL_EVIDENCE_ARTIFACT_MISSING",
+      "APPROVAL_ARTIFACT_MISSING"
+    ],
+    "approvalValidationEvaluated": true,
+    "approvalEvidenceValid": false,
+    "approvalValid": false,
+    "approvalUsableForExecution": false,
+    "approvalCreated": false,
+    "approvalMutated": false,
+    "humanApprovalRecorded": false,
+    "started": false,
+    "accepted": false,
+    "runnerContacted": false,
+    "startEndpointContacted": false,
+    "executionStarted": false,
+    "opencodeStarted": false,
+    "reasons": [
+      "START_REQUEST_HUMAN_APPROVAL_EVIDENCE_GATE_BLOCKED",
+      "HUMAN_APPROVAL_EVIDENCE_INVALID",
+      "HUMAN_APPROVAL_EVIDENCE_NOT_USABLE_FOR_EXECUTION",
+      "APPROVAL_EVIDENCE_ARTIFACT_MISSING",
+      "APPROVAL_ARTIFACT_MISSING"
+    ]
+  },
+  "preservedEvidenceGates": {
+    "localValidationPassed": true,
+    "preStartEvidenceEvaluated": true,
+    "preStartEvidenceComplete": true,
+    "preStartEvidenceValid": true,
+    "stateSnapshotEvaluated": true,
+    "stateSnapshotComplete": true,
+    "stateSnapshotValid": true
+  },
+  "safety": {
+    "executionStarted": false,
+    "startEndpointContacted": false,
+    "opencodeStarted": false,
+    "runnerContacted": false,
+    "humanApprovalRecorded": false,
+    "approvalUsableForExecution": false
+  },
+  "result": "PASS"
+}

@@ -1,0 +1,73 @@
+FP-MCP-064 Verification
+
+Repository: ForgePilot
+Branch: main
+Commit observed before artifact recording: 3512a64
+Working tree clean before artifact generation: true
+
+Repository: forgepilot-chatgpt-mcp
+Branch: feature/oauth-auth0
+Bridge commit: 44592b0
+Bridge message: Enforce human approval evidence gate on start requests
+
+Verification probes:
+
+1. Start request without approvalId
+   boundaryVersion: FP-MCP-064
+   humanApprovalEvidenceEvaluated: true
+   humanApprovalEvidenceGatePassed: false
+   approvalValidationEvaluated: false
+   approvalEvidenceValid: false
+   approvalUsableForExecution: false
+   humanApprovalRecorded: false
+   started: false
+   accepted: false
+   runnerContacted: false
+   startEndpointContacted: false
+   executionStarted: false
+   opencodeStarted: false
+   reasons include:
+     HUMAN_APPROVAL_EVIDENCE_MISSING
+     START_REQUEST_HUMAN_APPROVAL_EVIDENCE_GATE_BLOCKED
+
+2. Start request with invalid/missing approvalId
+   approvalId: APPROVAL-20260622T225539362Z-cb42d99f
+   boundaryVersion: FP-MCP-064
+   humanApprovalEvidenceEvaluated: true
+   humanApprovalEvidenceGatePassed: false
+   humanApprovalEvidenceValid: false
+   humanApprovalEvidenceUsableForExecution: false
+   approvalValidationEvaluated: true
+   approvalEvidenceValid: false
+   approvalUsableForExecution: false
+   approvalCreated: false
+   approvalMutated: false
+   humanApprovalRecorded: false
+   started: false
+   accepted: false
+   runnerContacted: false
+   startEndpointContacted: false
+   executionStarted: false
+   opencodeStarted: false
+   reasons include:
+     START_REQUEST_HUMAN_APPROVAL_EVIDENCE_GATE_BLOCKED
+     HUMAN_APPROVAL_EVIDENCE_INVALID
+     HUMAN_APPROVAL_EVIDENCE_NOT_USABLE_FOR_EXECUTION
+     APPROVAL_EVIDENCE_ARTIFACT_MISSING
+     APPROVAL_ARTIFACT_MISSING
+
+Preserved evidence gates:
+  localValidationPassed: true
+  preStartEvidenceEvaluated: true
+  preStartEvidenceComplete: true
+  preStartEvidenceValid: true
+  stateSnapshotEvaluated: true
+  stateSnapshotComplete: true
+  stateSnapshotValid: true
+
+Final status check:
+  ForgePilot commit: 3512a64
+  workingTreeClean: true
+
+Conclusion:
+  PASS. Start request path now enforces human approval evidence gate and blocks missing or unusable approval evidence before runner start boundary.
