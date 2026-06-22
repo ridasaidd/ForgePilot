@@ -1,0 +1,16 @@
+{
+  "fixture": true,
+  "fixturePacketId": "FP-MCP-062",
+  "fixturePurpose": "negative-human-approval-evidence-revalidation",
+  "fixtureName": "missing-required-fields",
+  "expectedValid": false,
+  "expectedUsableForExecution": false,
+  "expectedReasons": [
+    "APPROVAL_EVIDENCE_SCHEMA_INVALID",
+    "APPROVAL_SCOPE_MISSING",
+    "APPROVAL_TEXT_MISSING"
+  ],
+  "reasons": [
+    "NEGATIVE_FIXTURE_NOT_REAL_APPROVAL"
+  ]
+}

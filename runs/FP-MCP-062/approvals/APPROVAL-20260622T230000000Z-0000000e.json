@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "FP-MCP-059",
+  "boundaryVersion": "FP-MCP-059",
+  "artifactVersion": "human-approval-evidence-v1",
+  "artifactType": "HUMAN_APPROVAL_EVIDENCE",
+  "approvalId": "APPROVAL-20260622T230000000Z-0000000e",
+  "approvalState": "QUARANTINED",
+  "approvalKind": "EXECUTION_ENABLEMENT",
+  "approvedAction": "ALLOW_ONE_GUARDED_REMOTE_RUNNER_EXECUTION_ATTEMPT",
+  "createdAt": "2099-01-01T00:00:00.000Z",
+  "approvedAt": "2099-01-01T00:00:00.000Z",
+  "expiresAt": "2099-01-01T00:20:00.000Z",
+  "scope": {
+    "packetId": "FP-MCP-036",
+    "requestId": "REQ-20260622T144553300Z-fbbe8d82",
+    "modelId": "qwen-3.7-max",
+    "runMode": "DESIGN_ONLY",
+    "repoCommit": "40b53dc",
+    "branch": "main"
+  },
+  "approvalText": "APPROVE_FORGEPILOT_START packet=FP-MCP-036 request=REQ-20260622T144553300Z-fbbe8d82 model=qwen-3.7-max mode=DESIGN_ONLY baseCommit=40b53dc",
+  "preconditions": {
+    "executionEnablementStatusEvaluated": true,
+    "executionAllowedNowBeforeApproval": false,
+    "contractComplete": true,
+    "dryRunEvidencePresent": true,
+    "dryRunVerified": true,
+    "repoClean": true,
+    "runnerExecutionCapabilityPresent": true,
+    "opencodeBoundarySatisfied": true,
+    "secretBoundarySatisfied": true,
+    "networkBoundarySatisfied": true,
+    "disablePathDefined": true,
+    "auditAdmissionPathDefined": true
+  },
+  "singleUse": true,
+  "revokedAt": null,
+  "consumedAt": null,
+  "quarantinedAt": "2099-01-01T00:05:00.000Z",
+  "fixture": true,
+  "fixturePacketId": "FP-MCP-062",
+  "fixturePurpose": "negative-human-approval-evidence-revalidation",
+  "fixtureName": "quarantined-approval-evidence",
+  "expectedValid": false,
+  "expectedUsableForExecution": false,
+  "expectedReasons": [
+    "APPROVAL_QUARANTINED"
+  ],
+  "reasons": [
+    "NEGATIVE_FIXTURE_NOT_REAL_APPROVAL"
+  ]
+}
