@@ -1,0 +1,57 @@
+FP-MCP-046 verification
+
+Result: PASS
+
+Verified state:
+- ForgePilot repo: main
+- ForgePilot commit: 66c2b46
+- ForgePilot working tree: clean
+- MCP bridge branch: feature/oauth-auth0
+- MCP bridge implementation commit: 39d7df2
+
+Verification command path:
+- forgepilot_validate_execution_preflight
+
+Probe input:
+- packetId: FP-MCP-036
+- requestId: REQ-20260622T144553300Z-fbbe8d82
+
+Observed output:
+- boundaryVersion: FP-MCP-046
+- preflightEligible: false
+- executionPermitted: false
+- executionStarted: false
+- opencodeContacted: false
+- runnerContacted: true
+- runnerExecutionEnabled: false
+- opencodeExecutionEnabled: false
+- disableSwitchStatusEvaluated: true
+- disableSwitchActive: true
+- effectiveDisableReason: EXECUTION_DISABLED_GLOBAL
+- effectiveDisableScope: GLOBAL
+
+Observed gates:
+- requestArtifact: PASSED
+- lifecycle: PASSED
+- packet: PASSED
+- model: PASSED
+- runMode: PASSED
+- runnerIdentity: PASSED
+- runnerCapability: PASSED
+- disableSwitch: BLOCKED
+- executionEnablement: FAILED
+- opencodeBoundary: PASSED
+- artifactRecording: NOT_EVALUATED
+- secretsBoundary: PASSED
+- networkExposure: PASSED
+
+Observed reasons:
+- EXECUTION_DISABLED_GLOBAL
+- EXECUTION_DISABLED
+- RUNNER_EXECUTION_DISABLED
+- OPENCODE_EXECUTION_DISABLED
+- DISABLE_SWITCH_ACTIVE
+- EXECUTION_NOT_ALLOWED
+
+Verification conclusion:
+PASS. FP-MCP-046 successfully enforces the disable switch as a guarded execution preflight gate. The preflight path records disableSwitch: BLOCKED while preserving all non-execution boundaries.
