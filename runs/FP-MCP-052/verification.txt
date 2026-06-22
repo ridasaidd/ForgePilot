@@ -1,0 +1,68 @@
+FP-MCP-052 Verification
+
+Checked at: 2026-06-22T19:01:38.356278Z
+
+Result: PASS
+
+Repository state after dry-run evidence artifact commit:
+
+repo: ForgePilot
+branch: main
+commit: 1ab47e1
+workingTreeClean: true
+
+MCP bridge implementation:
+
+repo: forgepilot-chatgpt-mcp
+branch: feature/oauth-auth0
+commit: 45fedda
+message: Add pre-start evidence dry-run recorder
+
+Recorded pre-start evidence artifact:
+
+runs/FP-MCP-036/pre-start-evidence/REQ-20260622T144553300Z-fbbe8d82.json
+
+Validator result after artifact was committed:
+
+schemaVersion: FP-MCP-051
+preStartEvidenceEvaluated: true
+preStartEvidenceComplete: true
+preStartEvidenceValid: true
+executionPermitted: false
+executionStarted: false
+startEndpointContacted: false
+opencodeStarted: false
+runnerContactedForStart: false
+requestArtifactValid: true
+preflightEvaluated: true
+disableSwitchEvaluated: true
+disableSwitchActive: true
+approvalObserved: true
+approvalAccepted: true
+artifactHashesPresent: true
+artifactHashesConsistent: true
+preStartEvidenceArtifactPresent: true
+missingEvidence: []
+inconsistentEvidence: []
+
+Blocking state remains expected:
+
+effectiveDisableReason: EXECUTION_DISABLED_GLOBAL
+effectiveDisableScope: GLOBAL
+
+Reasons:
+
+EXECUTION_DISABLED
+START_ENDPOINT_NOT_CONTACTED
+OPENCODE_NOT_STARTED
+EXECUTION_DISABLED_GLOBAL
+RUNNER_EXECUTION_DISABLED
+OPENCODE_EXECUTION_DISABLED
+DISABLE_SWITCH_ACTIVE
+EXECUTION_NOT_ALLOWED
+
+Verification conclusion:
+
+FP-MCP-052 PASS.
+
+The dry-run recorder successfully recorded pre-start evidence without contacting the runner start endpoint, without starting OpenCode, and without enabling execution.
