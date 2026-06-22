@@ -1,0 +1,93 @@
+FP-MCP-060 verification
+=======================
+
+Packet:
+FP-MCP-060 — Human Approval Evidence Validation Alignment
+
+Repository verification:
+repo: ForgePilot
+branch: main
+commit: 1198668
+workingTreeClean: true
+packetReadable: true
+packetPath: packets/FP-MCP-060.md
+
+Validator probe:
+tool: forgepilot_validate_human_approval_record
+packetId: FP-MCP-060
+approvalId: APPROVAL-20260622T000000000Z-00000000
+expected request: REQ-20260622T144553300Z-fbbe8d82
+expected model: qwen-3.7-max
+expected runMode: DESIGN_ONLY
+expected repoCommit: 40b53dc
+expected branch: main
+
+Observed validator result:
+schemaVersion: FP-MCP-041
+boundaryVersion: FP-MCP-041
+approvalValidationEvaluated: true
+approvalValid: false
+approvalUsableForExecution: false
+approvalCreated: false
+approvalMutated: false
+humanApprovalRecorded: false
+executionAllowedNow: false
+executionStarted: false
+startEndpointContacted: false
+opencodeStarted: false
+reason: APPROVAL_ARTIFACT_MISSING
+
+Observed check highlights:
+pathSafe: true
+artifactExists: false
+jsonValid: false
+scopePresent: false
+scopeMatchesExpected: false
+secretBoundaryValid: true
+artifactCommitted: false
+
+Disable switch verification:
+schemaVersion: FP-MCP-044
+disableSwitchStatusEvaluated: true
+disableSwitchDefined: true
+disableSwitchActive: true
+executionAllowedNow: false
+executionStarted: false
+startEndpointContacted: false
+opencodeStarted: false
+runnerExecutionEnabled: false
+opencodeExecutionEnabled: false
+globalDisableActive: true
+effectiveDisableReason: EXECUTION_DISABLED_GLOBAL
+effectiveDisableScope: GLOBAL
+
+Acceptance checks:
+[PASS] FP-MCP-060 packet committed and readable.
+[PASS] Existing human approval validator found.
+[PASS] Missing approval artifact fails closed.
+[PASS] approvalValid remains false.
+[PASS] approvalUsableForExecution remains false.
+[PASS] approvalCreated remains false.
+[PASS] approvalMutated remains false.
+[PASS] humanApprovalRecorded remains false.
+[PASS] executionAllowedNow remains false.
+[PASS] executionStarted remains false.
+[PASS] startEndpointContacted remains false.
+[PASS] opencodeStarted remains false.
+[PASS] disable switch remains active.
+[PASS] runnerExecutionEnabled remains false.
+[PASS] opencodeExecutionEnabled remains false.
+[PASS] FP-MCP-041 to FP-MCP-059 alignment gap identified.
+
+Alignment result:
+validatorSafety: PASS
+contractAlignment: PARTIAL
+executionReadiness: BLOCKED
+startPathHumanApprovalGateReady: false
+
+Final result:
+PASS
+
+No execution enabled.
+Runner start endpoint not contacted.
+OpenCode not started.
