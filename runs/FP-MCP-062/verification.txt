@@ -1,0 +1,54 @@
+FP-MCP-062 Verification
+
+Result: PASS
+
+ForgePilot commit: 63e9dc4
+ForgePilot workingTreeClean: true
+MCP bridge commit: f92d76d
+
+Validated fixture count: 14
+All negative fixtures rejected: true
+All fixtures reported approvalEvidenceValid: false
+All fixtures reported approvalValid: false
+All fixtures reported approvalUsableForExecution: false
+All fixtures reported approvalCreated: false
+All fixtures reported approvalMutated: false
+All fixtures reported humanApprovalRecorded: false
+All fixtures reported executionAllowedNow: false
+All fixtures reported executionStarted: false
+All fixtures reported startEndpointContacted: false
+All fixtures reported opencodeStarted: false
+
+Validator output lineage observed:
+schemaVersion: FP-MCP-061
+validatorBoundaryVersion: FP-MCP-061
+approvalEvidenceContractVersion: FP-MCP-059
+legacyApprovalRecordBoundaryRecognized: FP-MCP-041
+
+Safety boundary observed after validation:
+disableSwitchActive: true
+executionAllowedNow: false
+executionStarted: false
+startEndpointContacted: false
+opencodeStarted: false
+runnerExecutionEnabled: false
+opencodeExecutionEnabled: false
+effectiveDisableReason: EXECUTION_DISABLED_GLOBAL
+
+Fixture rejection summary:
+- APPROVAL-20260622T230000000Z-00000001 (missing-required-fields): rejected; reasons=APPROVAL_EVIDENCE_SCHEMA_INVALID, APPROVAL_SCHEMA_VERSION_INVALID, APPROVAL_EVIDENCE_TYPE_INVALID, APPROVAL_ARTIFACT_TYPE_INVALID, APPROVAL_STATE_INVALID, APPROVAL_KIND_INVALID, APPROVED_ACTION_INVALID, APPROVAL_SCOPE_TOO_BROAD, APPROVAL_SCOPE_MISMATCH, APPROVAL_BASE_COMMIT_BINDING_INVALID, APPROVAL_COMMIT_BINDING_INVALID, APPROVAL_REQUEST_BINDING_INVALID, APPROVAL_MODEL_BINDING_INVALID, APPROVAL_RUN_MODE_BINDING_INVALID, APPROVAL_TEXT_MISSING, APPROVAL_PRECONDITIONS_MISSING, APPROVAL_CREATED_AT_INVALID, APPROVAL_EXPIRES_AT_INVALID, APPROVAL_EXPIRATION_INVALID, APPROVAL_SINGLE_USE_INVALID, APPROVAL_REVOKED, APPROVAL_CONSUMED
+- APPROVAL-20260622T230000000Z-00000002 (invalid-approval-state): rejected; reasons=APPROVAL_STATE_INVALID
+- APPROVAL-20260622T230000000Z-00000003 (expired-approval): rejected; reasons=APPROVAL_EXPIRED
+- APPROVAL-20260622T230000000Z-00000004 (revoked-approval): rejected; reasons=APPROVAL_STATE_NOT_RECORDED, APPROVAL_REVOKED
+- APPROVAL-20260622T230000000Z-00000005 (consumed-approval): rejected; reasons=APPROVAL_STATE_NOT_RECORDED, APPROVAL_CONSUMED
+- APPROVAL-20260622T230000000Z-00000006 (wrong-request-scope): rejected; reasons=APPROVAL_SCOPE_MISMATCH, APPROVAL_REQUEST_BINDING_INVALID
+- APPROVAL-20260622T230000000Z-00000007 (scope-too-broad): rejected; reasons=APPROVAL_SCOPE_TOO_BROAD, APPROVAL_SCOPE_MISMATCH, APPROVAL_BASE_COMMIT_BINDING_INVALID, APPROVAL_COMMIT_BINDING_INVALID, APPROVAL_REQUEST_BINDING_INVALID
+- APPROVAL-20260622T230000000Z-00000008 (wrong-model): rejected; reasons=APPROVAL_SCOPE_MISMATCH, APPROVAL_MODEL_BINDING_INVALID
+- APPROVAL-20260622T230000000Z-00000009 (wrong-run-mode): rejected; reasons=APPROVAL_SCOPE_MISMATCH, APPROVAL_RUN_MODE_BINDING_INVALID
+- APPROVAL-20260622T230000000Z-0000000a (wrong-commit): rejected; reasons=APPROVAL_SCOPE_MISMATCH, APPROVAL_BASE_COMMIT_BINDING_INVALID, APPROVAL_COMMIT_BINDING_INVALID
+- APPROVAL-20260622T230000000Z-0000000b (secret-boundary-violation): rejected; reasons=APPROVAL_SECRET_BOUNDARY_VIOLATION
+- APPROVAL-20260622T230000000Z-0000000c (lifetime-exceeds-limit): rejected; reasons=APPROVAL_LIFETIME_TOO_LONG
+- APPROVAL-20260622T230000000Z-0000000d (missing-canonical-approval-text): rejected; reasons=APPROVAL_TEXT_MISSING
+- APPROVAL-20260622T230000000Z-0000000e (quarantined-approval-evidence): rejected; reasons=APPROVAL_STATE_NOT_RECORDED, APPROVAL_QUARANTINED
+
+No execution enabled. Runner start endpoint not contacted. OpenCode not started.
