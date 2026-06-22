@@ -1,0 +1,27 @@
+FP-MCP-049 verification
+
+Result: PASS
+
+Checks:
+- FP-MCP-049 packet exists: PASS
+- MCP bridge patch committed: PASS
+- boundaryVersion FP-MCP-049 observed: PASS
+- valid request artifact remains accepted by local validation: PASS
+- valid request artifact still blocked by disable switch: PASS
+- missing request artifact rejected: PASS
+- malformed request id rejected: PASS
+- START_REQUEST_ARTIFACT_REJECTED observed: PASS
+- START_REQUEST_ARTIFACT_MISSING observed: PASS
+- UNKNOWN_REQUEST observed for missing request artifact: PASS
+- INVALID_REQUEST_ID observed for malformed request id: PASS
+- runnerContacted false for all start probes: PASS
+- startEndpointContacted false for all start probes: PASS
+- executionStarted false for all start probes: PASS
+
+Final state:
+executionStarted=false
+startEndpointContacted=false
+runnerContacted=false
+disableSwitchActive=true
+effectiveDisableReason=EXECUTION_DISABLED_GLOBAL
+effectiveDisableScope=GLOBAL

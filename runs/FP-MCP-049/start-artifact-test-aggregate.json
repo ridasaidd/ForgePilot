@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "FP-MCP-049",
+  "packetId": "FP-MCP-049",
+  "bridgeCommit": "9b9ad5c",
+  "forgePilotCommitAtProbe": "46c1452",
+  "startArtifactValidationEvaluated": true,
+  "fixtureCount": 3,
+  "validArtifactControlPassed": true,
+  "invalidArtifactsRejected": true,
+  "missingArtifactRejected": true,
+  "malformedRequestIdRejected": true,
+  "disableSwitchPrecedencePreserved": true,
+  "allStartEndpointContactsFalse": true,
+  "allExecutionStartedFalse": true,
+  "allRunnerContactsFalse": true,
+  "boundaryVersionObserved": "FP-MCP-049",
+  "requiredReasonsObserved": [
+    "START_REQUEST_BLOCKED_BY_DISABLE_SWITCH",
+    "START_REQUEST_ARTIFACT_REJECTED",
+    "START_REQUEST_ARTIFACT_MISSING",
+    "UNKNOWN_REQUEST",
+    "INVALID_REQUEST_ID"
+  ],
+  "fixtures": [
+    "runs/FP-MCP-049/start-artifact-fixtures/01-valid-artifact-disabled-start.json",
+    "runs/FP-MCP-049/start-artifact-fixtures/02-missing-request-artifact.json",
+    "runs/FP-MCP-049/start-artifact-fixtures/03-malformed-request-id.json"
+  ],
+  "executionBoundary": {
+    "started": false,
+    "accepted": false,
+    "runnerContacted": false,
+    "startEndpointContacted": false,
+    "executionStarted": false,
+    "opencodeStarted": false
+  },
+  "result": "PASS"
+}
