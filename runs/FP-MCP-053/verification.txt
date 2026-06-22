@@ -1,0 +1,108 @@
+FP-MCP-053 Verification
+
+Packet:
+FP-MCP-053 — Start Request Evidence Gate Enforcement
+
+Result:
+PASS
+
+Bridge implementation commit:
+e436e7e Enforce pre-start evidence gate on start requests
+
+ForgePilot verification base:
+repo: ForgePilot
+branch: main
+commit: 4e0b601
+workingTreeClean: true
+
+Verification probes:
+
+1. Valid pre-start evidence request
+
+Input:
+packetId = FP-MCP-036
+requestId = REQ-20260622T144553300Z-fbbe8d82
+approval = START_REMOTE_RUNNER_REQUEST
+
+Expected:
+- Start path evaluates pre-start evidence.
+- Evidence gate passes.
+- Global disable switch still blocks execution.
+- Runner start endpoint is not contacted.
+- OpenCode is not started.
+
+Observed:
+boundaryVersion = FP-MCP-053
+approvalAccepted = true
+localValidationPassed = true
+preStartEvidenceEvaluated = true
+preStartEvidenceComplete = true
+preStartEvidenceValid = true
+preStartEvidenceMissingEvidence = []
+preStartEvidenceInconsistentEvidence = []
+started = false
+accepted = false
+runnerContacted = false
+startEndpointContacted = false
+executionStarted = false
+
+PASS
+
+2. Invalid / missing pre-start evidence request
+
+Input:
+packetId = FP-MCP-049
+requestId = REQ-20260622T180500000Z-00000000
+approval = START_REMOTE_RUNNER_REQUEST
+
+Expected:
+- Start path evaluates pre-start evidence.
+- Evidence gate blocks the request.
+- START_REQUEST_EVIDENCE_GATE_BLOCKED is present.
+- Runner start endpoint is not contacted.
+- OpenCode is not started.
+
+Observed:
+boundaryVersion = FP-MCP-053
+approvalAccepted = true
+localValidationPassed = false
+preStartEvidenceEvaluated = true
+preStartEvidenceComplete = false
+preStartEvidenceValid = false
+preStartEvidenceMissingEvidence includes:
+  - request-artifact
+  - request-artifact-validation
+  - pre-start-evidence-artifact
+  - start-approval-observation
+  - request-artifact-hash
+reasons include:
+  - START_REQUEST_EVIDENCE_GATE_BLOCKED
+  - PRE_START_EVIDENCE_INCOMPLETE
+  - PRE_START_EVIDENCE_INVALID
+started = false
+accepted = false
+runnerContacted = false
+startEndpointContacted = false
+executionStarted = false
+
+PASS
+
+Execution boundary verification:
+
+Observed:
+disableSwitchActive = true
+effectiveDisableReason = EXECUTION_DISABLED_GLOBAL
+effectiveDisableScope = GLOBAL
+started = false
+accepted = false
+runnerContacted = false
+startEndpointContacted = false
+executionStarted = false
+
+PASS
+
+Overall:
+FP-MCP-053 is verified. The start request path now enforces the pre-start evidence gate while preserving the global execution disable boundary.
+
+Checked at:
+2026-06-22T19:17:20.506931Z
