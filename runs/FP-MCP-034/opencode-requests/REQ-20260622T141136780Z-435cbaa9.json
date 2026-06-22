@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "FP-MCP-007",
+  "requestId": "REQ-20260622T141136780Z-435cbaa9",
+  "createdAt": "2026-06-22T14:11:36.781Z",
+  "createdBy": "chatgpt-mcp",
+  "packetId": "FP-MCP-034",
+  "modelId": "qwen-3.7-max",
+  "runMode": "DESIGN_ONLY",
+  "approval": "CREATE_REQUEST_ARTIFACT",
+  "approvalScope": "request-artifact-only",
+  "executionEnabled": false,
+  "executionStarted": false,
+  "baseCommit": "db092c9",
+  "artifactDir": "runs/FP-MCP-034/qwen-3.7-max-DESIGN_ONLY/",
+  "requestArtifactPath": "runs/FP-MCP-034/opencode-requests/REQ-20260622T141136780Z-435cbaa9.json",
+  "boundaryVersion": "FP-MCP-007",
+  "validationBoundary": "FP-MCP-006",
+  "status": "REQUEST_RECORDED"
+}
