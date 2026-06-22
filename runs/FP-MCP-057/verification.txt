@@ -1,0 +1,140 @@
+# FP-MCP-057 Verification
+
+## Verification status
+
+PASS
+
+## Packet
+
+`FP-MCP-057 — Start Request State Snapshot Gate Enforcement`
+
+## Verified repositories
+
+ForgePilot:
+
+```text
+repo: ForgePilot
+branch: main
+commit: 5957b82
+workingTreeClean: true
+```
+
+MCP bridge:
+
+```text
+repo: forgepilot-chatgpt-mcp
+branch: feature/oauth-auth0
+commit: 461ec75
+```
+
+## Checks
+
+### 1. Valid snapshot evidence request
+
+Command path:
+
+`forgepilot_start_remote_runner_request`
+
+Input:
+
+```json
+{
+  "packetId": "FP-MCP-036",
+  "requestId": "REQ-20260622T144553300Z-fbbe8d82",
+  "approval": "START_REMOTE_RUNNER_REQUEST"
+}
+```
+
+Observed:
+
+```text
+boundaryVersion: FP-MCP-057
+localValidationPassed: true
+preStartEvidenceValid: true
+stateSnapshotEvaluated: true
+stateSnapshotComplete: true
+stateSnapshotValid: true
+stateSnapshotAttemptId: ATTEMPT-20260622T204309900Z-25e7442b
+stateSnapshotMissingEvidence: []
+stateSnapshotInconsistentEvidence: []
+runnerContacted: false
+startEndpointContacted: false
+executionStarted: false
+```
+
+Result: PASS
+
+### 2. Missing/invalid snapshot evidence request
+
+Command path:
+
+`forgepilot_start_remote_runner_request`
+
+Input:
+
+```json
+{
+  "packetId": "FP-MCP-049",
+  "requestId": "REQ-20260622T180500000Z-00000000",
+  "approval": "START_REMOTE_RUNNER_REQUEST"
+}
+```
+
+Observed:
+
+```text
+boundaryVersion: FP-MCP-057
+localValidationPassed: false
+preStartEvidenceValid: false
+stateSnapshotEvaluated: true
+stateSnapshotComplete: false
+stateSnapshotValid: false
+stateSnapshotAttemptId: null
+```
+
+Required blocking reasons observed:
+
+```text
+START_REQUEST_STATE_SNAPSHOT_GATE_BLOCKED
+STATE_SNAPSHOT_INCOMPLETE
+STATE_SNAPSHOT_INVALID
+PRE_START_STATE_SNAPSHOT_MISSING
+POST_START_STATE_SNAPSHOT_MISSING
+```
+
+Result: PASS
+
+### 3. Execution boundary
+
+Observed for both probes:
+
+```text
+started: false
+accepted: false
+runnerContacted: false
+startEndpointContacted: false
+executionStarted: false
+```
+
+Result: PASS
+
+### 4. Global disable precedence
+
+Observed:
+
+```text
+START_REQUEST_BLOCKED_BY_DISABLE_SWITCH
+EXECUTION_DISABLED_GLOBAL
+RUNNER_EXECUTION_DISABLED
+OPENCODE_EXECUTION_DISABLED
+DISABLE_SWITCH_ACTIVE
+EXECUTION_NOT_ALLOWED
+```
+
+Result: PASS
+
+## Final result
+
+FP-MCP-057 satisfies the packet requirements.
+
+The start path now enforces valid start state snapshot evidence without contacting the runner start endpoint, starting OpenCode, or enabling execution.
