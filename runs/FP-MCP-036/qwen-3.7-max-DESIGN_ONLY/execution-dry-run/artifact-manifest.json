@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "FP-MCP-036",
+  "artifactType": "artifact-manifest",
+  "dryRun": true,
+  "packetId": "FP-MCP-036",
+  "requestId": "REQ-20260622T144553300Z-fbbe8d82",
+  "executionStarted": false,
+  "artifacts": [
+    {
+      "path": "runs/FP-MCP-036/qwen-3.7-max-DESIGN_ONLY/execution-dry-run/preflight-result.json",
+      "sha256": "c46ff56c07686cc62cd9303b2444609759eccd0a2eec80f9d69517b81b54c050",
+      "required": true
+    },
+    {
+      "path": "runs/FP-MCP-036/qwen-3.7-max-DESIGN_ONLY/execution-dry-run/start-request.json",
+      "sha256": "5ab13308ac97c894b768eb0b92797373d6562e07864f0dff3ae4783b4dc0a191",
+      "required": true
+    },
+    {
+      "path": "runs/FP-MCP-036/qwen-3.7-max-DESIGN_ONLY/execution-dry-run/runner-acceptance.json",
+      "sha256": "3f53470e73b801e0ef806666fe2244d0463b0c2fc27905444f029ad78cf64676",
+      "required": true
+    }
+  ],
+  "manifestSelfHashRecordedInToolOutput": true,
+  "createdAt": "2026-06-22T14:48:33.142Z",
+  "reasons": [
+    "EXECUTION_DISABLED"
+  ]
+}

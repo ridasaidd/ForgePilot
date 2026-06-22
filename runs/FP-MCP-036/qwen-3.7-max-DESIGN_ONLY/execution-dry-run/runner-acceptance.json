@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "FP-MCP-036",
+  "artifactType": "runner-acceptance",
+  "dryRun": true,
+  "runnerContactedForStart": false,
+  "accepted": false,
+  "executionStarted": false,
+  "runnerRunId": null,
+  "packetId": "FP-MCP-036",
+  "requestId": "REQ-20260622T144553300Z-fbbe8d82",
+  "runnerProtocolVersion": "forgepilot-runner-v1",
+  "runnerVersion": "0.1.0-fp-mcp-024",
+  "checkedAt": "2026-06-22T14:48:33.142Z",
+  "reasons": [
+    "EXECUTION_DISABLED"
+  ]
+}

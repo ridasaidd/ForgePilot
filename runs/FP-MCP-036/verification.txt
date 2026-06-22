@@ -1,0 +1,106 @@
+FP-MCP-036 Verification
+
+Result: PASS
+
+Packet:
+- FP-MCP-036 — Non-Executing Execution Artifact Dry-Run
+
+ForgePilot commits:
+- Packet commit: 40b53dc
+- Request artifact commit: a8637dc
+- Verification base commit: a8637dc
+
+MCP bridge implementation commit:
+- 76599f3
+
+Request artifact:
+- requestId: REQ-20260622T144553300Z-fbbe8d82
+- path: runs/FP-MCP-036/opencode-requests/REQ-20260622T144553300Z-fbbe8d82.json
+- sha256: 30625d20703ff164f7e9eaabbd37e612cb869bd17482d34703f045166a05c6b4
+
+Tool:
+- forgepilot_record_execution_artifact_dry_run
+
+Observed dry-run result:
+- schemaVersion: FP-MCP-036
+- dryRunRecorded: true
+- executionPermitted: false
+- executionStarted: false
+- startEndpointContacted: false
+- opencodeStarted: false
+- negativeArtifactsAbsent: true
+- checkedAt: 2026-06-22T14:48:33.142Z
+- reasons:
+  - EXECUTION_DISABLED
+
+Artifact directory:
+- runs/FP-MCP-036/qwen-3.7-max-DESIGN_ONLY/execution-dry-run/
+
+Artifacts written:
+- preflight-result.json
+- start-request.json
+- runner-acceptance.json
+- artifact-manifest.json
+
+Artifact hashes:
+- preflight-result.json: c46ff56c07686cc62cd9303b2444609759eccd0a2eec80f9d69517b81b54c050
+- start-request.json: 5ab13308ac97c894b768eb0b92797373d6562e07864f0dff3ae4783b4dc0a191
+- runner-acceptance.json: 3f53470e73b801e0ef806666fe2244d0463b0c2fc27905444f029ad78cf64676
+- artifact-manifest.json: ab8656c29096403feb60a7e5b01f35b74c6e7e0f5e6f391e0d23c2d313f85616
+
+Manifest note:
+- The persisted manifest records child artifact hashes for preflight-result.json, start-request.json, and runner-acceptance.json.
+- The artifact-manifest.json self-hash is recorded in the dry-run tool output rather than embedded inside the manifest because self-hashing a file inside itself is circular.
+
+Core artifact checks:
+- preflight-result.json:
+  - preflightEligible: false
+  - executionPermitted: false
+  - executionStarted: false
+  - reason: EXECUTION_DISABLED
+- start-request.json:
+  - dryRun: true
+  - submittedToRunner: false
+  - reason: EXECUTION_DISABLED
+- runner-acceptance.json:
+  - dryRun: true
+  - runnerContactedForStart: false
+  - accepted: false
+  - executionStarted: false
+  - runnerRunId: null
+  - reason: EXECUTION_DISABLED
+
+Expected absent artifacts:
+- execution-start.json
+- stdout.txt
+- stderr.txt
+- execution-result.json
+- execution-failure.json
+
+Negative artifact check:
+- negativeArtifactsAbsent: true
+
+Safety confirmation:
+- OpenCode started: NO
+- OpenCode CLI invoked: NO
+- OpenCode API invoked: NO
+- Runner execution enabled: NO
+- Runner start endpoint contacted: NO
+- Shell executed through runner: NO
+- Secrets committed: NO
+- Runner publicly exposed: NO
+
+Scope confirmation:
+- Execution was not enabled.
+- /runner/start-run was not called.
+- Guarded start MCP tool was not called.
+- OpenCode was not started.
+- Model providers were not contacted.
+- Runner shell execution was not added.
+- SQLite was not mutated.
+- Routing was not changed.
+- Private runner exposure was not changed.
+- No secrets were committed.
+
+Final classification:
+PASS
