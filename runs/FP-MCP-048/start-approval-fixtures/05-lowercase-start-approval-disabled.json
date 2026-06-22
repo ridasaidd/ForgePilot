@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "FP-MCP-048",
+  "packetId": "FP-MCP-036",
+  "requestId": "REQ-20260622T144553300Z-fbbe8d82",
+  "started": false,
+  "accepted": false,
+  "runnerConfigured": true,
+  "runnerContacted": false,
+  "startEndpointContacted": false,
+  "executionStarted": false,
+  "disableSwitchStatusEvaluated": true,
+  "disableSwitchActive": true,
+  "effectiveDisableReason": "EXECUTION_DISABLED_GLOBAL",
+  "effectiveDisableScope": "GLOBAL",
+  "boundaryVersion": "FP-MCP-048",
+  "statusSource": "ForgePilot remote-runner start policy with disable-switch and approval enforcement",
+  "caseId": "lowercase-start-approval-disabled",
+  "approvalInput": "start_remote_runner_request",
+  "approvalAccepted": false,
+  "expectedReasons": [
+    "START_REQUEST_BLOCKED_BY_DISABLE_SWITCH",
+    "START_APPROVAL_REJECTED",
+    "APPROVAL_REQUIRED"
+  ],
+  "reasons": [
+    "START_REQUEST_BLOCKED_BY_DISABLE_SWITCH",
+    "EXECUTION_DISABLED_GLOBAL",
+    "RUNNER_EXECUTION_DISABLED",
+    "OPENCODE_EXECUTION_DISABLED",
+    "DISABLE_SWITCH_ACTIVE",
+    "EXECUTION_NOT_ALLOWED",
+    "START_APPROVAL_REJECTED",
+    "APPROVAL_REQUIRED"
+  ],
+  "observedAt": "2026-06-22T17:57:15.381Z"
+}

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "FP-MCP-048",
+  "packetId": "FP-MCP-048",
+  "testSubject": "forgepilot_start_remote_runner_request",
+  "bridgeCommit": "0b85c28",
+  "forgePilotCommitAtPacket": "e33c357",
+  "requestProbe": {
+    "packetId": "FP-MCP-036",
+    "requestId": "REQ-20260622T144553300Z-fbbe8d82",
+    "modelId": "qwen-3.7-max",
+    "runMode": "DESIGN_ONLY"
+  },
+  "fixtureCount": 5,
+  "fixturesCreated": true,
+  "allFixturesObserved": true,
+  "allFixturesBlockedByDisableSwitch": true,
+  "allFixturesStartEndpointNotContacted": true,
+  "allFixturesExecutionStartedFalse": true,
+  "validApprovalStillBlocked": true,
+  "negativeApprovalsRejected": true,
+  "negativeApprovalFixtureCount": 4,
+  "disableSwitchPrecedencePreserved": true,
+  "executionAllowedNow": false,
+  "executionStarted": false,
+  "startEndpointContacted": false,
+  "opencodeStarted": false,
+  "runnerContactedForStart": false,
+  "expectedCommonReasons": [
+    "START_REQUEST_BLOCKED_BY_DISABLE_SWITCH",
+    "EXECUTION_DISABLED_GLOBAL",
+    "DISABLE_SWITCH_ACTIVE",
+    "EXECUTION_NOT_ALLOWED"
+  ],
+  "expectedNegativeApprovalReasons": [
+    "START_APPROVAL_REJECTED",
+    "APPROVAL_REQUIRED"
+  ],
+  "fixtures": [
+    "01-valid-start-approval-disabled.json",
+    "02-wrong-approval-disabled.json",
+    "03-empty-approval-disabled.json",
+    "04-create-request-approval-disabled.json",
+    "05-lowercase-start-approval-disabled.json"
+  ]
+}

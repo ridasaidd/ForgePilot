@@ -1,0 +1,44 @@
+FP-MCP-048 Verification
+
+Result: PASS
+
+Verified behavior:
+- Valid start approval remains blocked by the disable switch.
+- Invalid start approvals are now observable as rejected input.
+- All negative approval cases report approvalAccepted=false.
+- All negative approval cases include START_APPROVAL_REJECTED.
+- All negative approval cases include APPROVAL_REQUIRED.
+- Disable-switch precedence is preserved.
+- No start endpoint was contacted.
+- No runner start occurred.
+- No OpenCode execution started.
+
+Observed bridge commit:
+0b85c28 Record rejected start approvals before disabled start
+
+Observed ForgePilot packet commit:
+e33c357 Add FP-MCP-048 start request negative approval tests
+
+Common required state:
+started=false
+accepted=false
+runnerContacted=false
+startEndpointContacted=false
+executionStarted=false
+disableSwitchStatusEvaluated=true
+disableSwitchActive=true
+effectiveDisableReason=EXECUTION_DISABLED_GLOBAL
+effectiveDisableScope=GLOBAL
+boundaryVersion=FP-MCP-048
+
+Fixture count:
+5
+
+Negative approval fixture count:
+4
+
+Aggregate artifact:
+runs/FP-MCP-048/start-approval-test-aggregate.json
+
+Verdict:
+FP-MCP-048 satisfies its acceptance criteria and preserves the non-execution boundary.
