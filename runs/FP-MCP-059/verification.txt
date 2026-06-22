@@ -1,0 +1,144 @@
+FP-MCP-059 — Verification
+
+Verification date: 2026-06-22
+Verification class: MCP-observed repository and safety-boundary verification
+
+Packet:
+  FP-MCP-059 — Human Approval Evidence Contract
+
+Expected result:
+  Documentation/contract only.
+  No execution enabled.
+  Runner start endpoint not contacted.
+  OpenCode not started.
+
+1. ForgePilot repository status
+
+Tool:
+  forgepilot_status
+
+Observed:
+  repo: ForgePilot
+  repoPath: /home/ridasaidd/forgepilot
+  branch: main
+  commit: fb95fcb
+  workingTreeClean: true
+  gitStatusShort: ""
+
+Result:
+  PASS
+
+2. OpenCode boundary status
+
+Tool:
+  forgepilot_get_opencode_status
+
+Observed:
+  opencodeDiscoveryConfigured: true
+  opencodeExecutionEnabled: false
+  executorStationLabel: local-opencode
+  endpointLabel: configured
+  boundaryVersion: FP-MCP-001
+  boundaryDocument: docs/opencode-executor-boundary.md
+  supportedRunModes:
+    - DESIGN_ONLY
+  allowedModels:
+    - deepseek-v4-pro-high
+    - qwen-3.7-max
+  statusSource: static ForgePilot-safe configuration
+  liveOpenCodeChecked: false
+  executionDisabledReason: FP-MCP-002 is read-only discovery only. Executor start tools are not implemented.
+
+Result:
+  PASS
+
+3. Execution disable switch status
+
+Tool:
+  forgepilot_get_execution_disable_switch_status
+
+Input:
+  packetId: FP-MCP-059
+  runMode: DESIGN_ONLY
+
+Observed:
+  schemaVersion: FP-MCP-044
+  packetId: FP-MCP-059
+  runMode: DESIGN_ONLY
+  disableSwitchStatusEvaluated: true
+  disableSwitchDefined: true
+  disableSwitchActive: true
+  executionAllowedNow: false
+  executionStarted: false
+  startEndpointContacted: false
+  opencodeStarted: false
+  runnerExecutionEnabled: false
+  opencodeExecutionEnabled: false
+  globalDisableActive: true
+  packetDisableActive: false
+  requestDisableActive: false
+  modelDisableActive: false
+  runModeDisableActive: false
+  operatorDisableActive: false
+  effectiveDisableReason: EXECUTION_DISABLED_GLOBAL
+  effectiveDisableScope: GLOBAL
+  precedenceApplied:
+    - GLOBAL
+    - OPERATOR
+    - PACKET
+    - REQUEST
+    - MODEL
+    - RUN_MODE
+  checkedAt: 2026-06-22T21:53:12.054Z
+  statusSource: ForgePilot execution disable switch status policy
+  boundaryVersion: FP-MCP-044
+  reasons:
+    - EXECUTION_DISABLED_GLOBAL
+    - RUNNER_EXECUTION_DISABLED
+    - OPENCODE_EXECUTION_DISABLED
+    - DISABLE_SWITCH_ACTIVE
+    - EXECUTION_NOT_ALLOWED
+
+Result:
+  PASS
+
+4. Packet acceptance checks
+
+Expected packet content:
+  canonical approval string: APPROVE_FORGEPILOT_START packet=<packetId> request=<requestId> model=<modelId> mode=<runMode> baseCommit=<baseCommitSha>
+  required scope: packetId, requestId, modelId, runMode, baseCommitSha
+  allowed run mode: DESIGN_ONLY
+  approval source: authenticated human operator only
+  maximum approval lifetime: 30 minutes
+  invalid approval cases: defined
+  single-use behavior: defined
+  revocation/quarantine behavior: defined
+  relationship to disable switch: defined
+  relationship to pre-start evidence: defined
+  relationship to state snapshots: defined
+  non-goals include no execution, no runner start endpoint contact, no OpenCode start
+
+Result:
+  PASS
+
+5. Safety conclusion
+
+Observed final safety state:
+  executionEnabled: false
+  opencodeExecutionEnabled: false
+  runnerExecutionEnabled: false
+  executionAllowedNow: false
+  executionStarted: false
+  startEndpointContacted: false
+  opencodeStarted: false
+  disableSwitchActive: true
+  effectiveDisableReason: EXECUTION_DISABLED_GLOBAL
+
+Result:
+  PASS
+
+Final result:
+  FP-MCP-059 verification PASS.
+
+Next recommended packet:
+  FP-MCP-060 — Human Approval Evidence Validation Tool
