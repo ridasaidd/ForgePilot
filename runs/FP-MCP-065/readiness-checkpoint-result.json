@@ -1,0 +1,151 @@
+{
+  "schemaVersion": "FP-MCP-065",
+  "artifactType": "human-approval-evidence-readiness-checkpoint-result",
+  "packetId": "FP-MCP-065",
+  "repo": {
+    "name": "ForgePilot",
+    "branch": "main",
+    "commit": "8680bd4",
+    "workingTreeCleanBeforeArtifacts": true
+  },
+  "checkpointRecorded": true,
+  "approvalEvidenceReadinessCheckpointRecorded": true,
+  "approvalEvidenceContractDefined": true,
+  "approvalEvidenceValidatorAligned": true,
+  "approvalEvidenceValidatorHardened": true,
+  "negativeApprovalEvidenceRejected": true,
+  "approvalEvidenceDryRunFixtureRecorderDefined": true,
+  "startRequestApprovalEvidenceGateEnforced": true,
+  "realHumanApprovalEvidenceRecorderDefined": false,
+  "realHumanApprovalEvidenceRecorded": false,
+  "humanApprovalRecorded": false,
+  "executionAllowedNow": false,
+  "executionStarted": false,
+  "startEndpointContacted": false,
+  "opencodeStarted": false,
+  "opencodeStatus": {
+    "opencodeExecutionEnabled": false,
+    "supportedRunModes": [
+      "DESIGN_ONLY"
+    ],
+    "allowedModels": [
+      "deepseek-v4-pro-high",
+      "qwen-3.7-max"
+    ],
+    "liveOpenCodeChecked": false
+  },
+  "disableSwitchStatus": {
+    "disableSwitchStatusEvaluated": true,
+    "disableSwitchActive": true,
+    "runnerExecutionEnabled": false,
+    "opencodeExecutionEnabled": false,
+    "effectiveDisableReason": "EXECUTION_DISABLED_GLOBAL",
+    "effectiveDisableScope": "GLOBAL"
+  },
+  "missingApprovalStartProbe": {
+    "boundaryVersion": "FP-MCP-064",
+    "localValidationPassed": true,
+    "preStartEvidenceValid": true,
+    "stateSnapshotValid": true,
+    "humanApprovalEvidenceEvaluated": true,
+    "humanApprovalEvidenceGatePassed": false,
+    "humanApprovalEvidenceId": null,
+    "approvalValidationEvaluated": false,
+    "humanApprovalRecorded": false,
+    "started": false,
+    "accepted": false,
+    "runnerContacted": false,
+    "startEndpointContacted": false,
+    "executionStarted": false,
+    "opencodeStarted": false,
+    "reasons": [
+      "HUMAN_APPROVAL_EVIDENCE_MISSING",
+      "START_REQUEST_HUMAN_APPROVAL_EVIDENCE_GATE_BLOCKED"
+    ]
+  },
+  "invalidApprovalStartProbe": {
+    "boundaryVersion": "FP-MCP-064",
+    "localValidationPassed": true,
+    "preStartEvidenceValid": true,
+    "stateSnapshotValid": true,
+    "humanApprovalEvidenceEvaluated": true,
+    "humanApprovalEvidenceGatePassed": false,
+    "humanApprovalEvidenceId": "APPROVAL-20260622T225539362Z-cb42d99f",
+    "approvalValidationEvaluated": true,
+    "approvalEvidenceValid": false,
+    "approvalUsableForExecution": false,
+    "humanApprovalRecorded": false,
+    "started": false,
+    "accepted": false,
+    "runnerContacted": false,
+    "startEndpointContacted": false,
+    "executionStarted": false,
+    "opencodeStarted": false,
+    "reasons": [
+      "START_REQUEST_HUMAN_APPROVAL_EVIDENCE_GATE_BLOCKED",
+      "HUMAN_APPROVAL_EVIDENCE_INVALID",
+      "HUMAN_APPROVAL_EVIDENCE_NOT_USABLE_FOR_EXECUTION",
+      "APPROVAL_EVIDENCE_ARTIFACT_MISSING",
+      "APPROVAL_ARTIFACT_MISSING"
+    ]
+  },
+  "committedFixtureValidation": {
+    "schemaVersion": "FP-MCP-061",
+    "validatorBoundaryVersion": "FP-MCP-061",
+    "approvalEvidenceContractVersion": "FP-MCP-059",
+    "approvalValidationEvaluated": true,
+    "approvalEvidenceValid": false,
+    "approvalValid": false,
+    "approvalUsableForExecution": false,
+    "approvalCreated": false,
+    "approvalMutated": false,
+    "humanApprovalRecorded": false,
+    "executionAllowedNow": false,
+    "executionStarted": false,
+    "startEndpointContacted": false,
+    "opencodeStarted": false,
+    "artifactCommitted": true,
+    "reasons": [
+      "APPROVAL_EVIDENCE_TYPE_INVALID",
+      "APPROVAL_ARTIFACT_TYPE_INVALID",
+      "APPROVAL_STATE_NOT_RECORDED",
+      "APPROVAL_SCOPE_MISMATCH",
+      "APPROVAL_REQUEST_BINDING_INVALID",
+      "APPROVAL_TEXT_INVALID",
+      "APPROVAL_EXPIRED",
+      "APPROVAL_QUARANTINED"
+    ]
+  },
+  "remainingBlockers": {
+    "realHumanApprovalEvidenceContractFinalized": false,
+    "realHumanApprovalEvidenceRecorderDefined": false,
+    "singleUseApprovalConsumptionDefined": false,
+    "approvalRevocationPathDefined": false,
+    "approvalExpirationPolicyFullyEnforcedForRealApprovals": false,
+    "approvalAuditAdmissionPathDefinedForRealApprovals": false,
+    "runnerExecutionCapabilityPresent": false,
+    "opencodeBoundarySatisfied": false,
+    "secretBoundarySatisfied": false,
+    "networkBoundarySatisfied": false,
+    "globalDisableSwitchActive": true,
+    "executionAllowedNow": false
+  },
+  "readinessClassification": {
+    "readyToPlanRealHumanApprovalEvidencePhase": true,
+    "readyToExecute": false
+  },
+  "recommendedNextPackets": [
+    "FP-MCP-066 \u2014 Real Human Approval Evidence Contract",
+    "FP-MCP-067 \u2014 Real Human Approval Evidence Recorder",
+    "FP-MCP-068 \u2014 Single-Use Approval Consumption Gate",
+    "FP-MCP-069 \u2014 Human Approval Revocation and Expiration Enforcement",
+    "FP-MCP-070 \u2014 Human Approval Evidence Readiness Recheck"
+  ],
+  "nonAuthorization": {
+    "realApprovalEvidenceCreated": false,
+    "approvalGateSatisfied": false,
+    "executionAuthorized": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false
+  }
+}

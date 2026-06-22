@@ -1,0 +1,120 @@
+FP-MCP-065 Verification
+
+Repository:
+  repo: ForgePilot
+  branch: main
+  commit before artifacts: 8680bd4
+  workingTreeClean before artifacts: true
+
+Packet:
+  packets/FP-MCP-065.md committed: true
+
+Required artifacts prepared:
+  docs/human-approval-evidence-readiness-checkpoint.md
+  runs/FP-MCP-065/executor-result.md
+  runs/FP-MCP-065/verification.txt
+  runs/FP-MCP-065/readiness-checkpoint-result.json
+
+OpenCode status:
+  opencodeDiscoveryConfigured: true
+  opencodeExecutionEnabled: false
+  supportedRunModes: DESIGN_ONLY
+  allowedModels: deepseek-v4-pro-high, qwen-3.7-max
+  liveOpenCodeChecked: false
+
+Disable switch:
+  disableSwitchStatusEvaluated: true
+  disableSwitchDefined: true
+  disableSwitchActive: true
+  executionAllowedNow: false
+  runnerExecutionEnabled: false
+  opencodeExecutionEnabled: false
+  effectiveDisableReason: EXECUTION_DISABLED_GLOBAL
+  effectiveDisableScope: GLOBAL
+
+Start request probe — missing approval id:
+  boundaryVersion: FP-MCP-064
+  localValidationPassed: true
+  preStartEvidenceValid: true
+  stateSnapshotValid: true
+  humanApprovalEvidenceEvaluated: true
+  humanApprovalEvidenceGatePassed: false
+  approvalValidationEvaluated: false
+  humanApprovalRecorded: false
+  started: false
+  accepted: false
+  runnerContacted: false
+  startEndpointContacted: false
+  executionStarted: false
+  opencodeStarted: false
+  observed reasons:
+    HUMAN_APPROVAL_EVIDENCE_MISSING
+    START_REQUEST_HUMAN_APPROVAL_EVIDENCE_GATE_BLOCKED
+
+Start request probe — invalid or missing approval evidence:
+  boundaryVersion: FP-MCP-064
+  localValidationPassed: true
+  preStartEvidenceValid: true
+  stateSnapshotValid: true
+  humanApprovalEvidenceEvaluated: true
+  humanApprovalEvidenceGatePassed: false
+  approvalValidationEvaluated: true
+  approvalEvidenceValid: false
+  approvalUsableForExecution: false
+  humanApprovalRecorded: false
+  started: false
+  accepted: false
+  runnerContacted: false
+  startEndpointContacted: false
+  executionStarted: false
+  opencodeStarted: false
+  observed reasons:
+    START_REQUEST_HUMAN_APPROVAL_EVIDENCE_GATE_BLOCKED
+    HUMAN_APPROVAL_EVIDENCE_INVALID
+    HUMAN_APPROVAL_EVIDENCE_NOT_USABLE_FOR_EXECUTION
+    APPROVAL_EVIDENCE_ARTIFACT_MISSING
+    APPROVAL_ARTIFACT_MISSING
+
+Committed fixture validator probe:
+  schemaVersion: FP-MCP-061
+  validatorBoundaryVersion: FP-MCP-061
+  approvalEvidenceContractVersion: FP-MCP-059
+  approvalValidationEvaluated: true
+  approvalEvidenceValid: false
+  approvalValid: false
+  approvalUsableForExecution: false
+  approvalCreated: false
+  approvalMutated: false
+  humanApprovalRecorded: false
+  executionAllowedNow: false
+  executionStarted: false
+  startEndpointContacted: false
+  opencodeStarted: false
+  artifactCommitted: true
+
+Checkpoint claims:
+  approvalEvidenceReadinessCheckpointRecorded: true
+  approvalEvidenceContractDefined: true
+  approvalEvidenceValidatorAligned: true
+  approvalEvidenceValidatorHardened: true
+  negativeApprovalEvidenceRejected: true
+  approvalEvidenceDryRunFixtureRecorderDefined: true
+  startRequestApprovalEvidenceGateEnforced: true
+  realHumanApprovalEvidenceRecorderDefined: false
+  realHumanApprovalEvidenceRecorded: false
+  humanApprovalRecorded: false
+  executionAllowedNow: false
+  executionStarted: false
+  startEndpointContacted: false
+  opencodeStarted: false
+
+Verdict:
+  PASS
+
+Non-authorization:
+  No real approval evidence created.
+  No real approval recorder created.
+  Human approval gate not satisfied.
+  Execution not enabled.
+  Runner start endpoint not contacted.
+  OpenCode not started.
