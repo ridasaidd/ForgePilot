@@ -1,0 +1,125 @@
+FP-MCP-037 Verification
+
+Result: PASS
+
+Packet:
+- FP-MCP-037 — Dry-Run Artifact Verification Tool
+
+ForgePilot commit:
+- Packet commit: 5fdcb7d
+- Verification base commit: 5fdcb7d
+
+MCP bridge implementation commit:
+- c0d4f65
+
+Tool:
+- forgepilot_verify_execution_artifact_dry_run
+
+Verification target:
+- packetId: FP-MCP-036
+- requestId: REQ-20260622T144553300Z-fbbe8d82
+- modelId: qwen-3.7-max
+- runMode: DESIGN_ONLY
+- artifactDir: runs/FP-MCP-036/qwen-3.7-max-DESIGN_ONLY/execution-dry-run/
+
+Observed verifier result:
+- schemaVersion: FP-MCP-037
+- verified: true
+- requiredArtifactsPresent: true
+- forbiddenArtifactsAbsent: true
+- jsonArtifactsValid: true
+- manifestValid: true
+- manifestHashesValid: true
+- packetRequestConsistent: true
+- dryRunConsistent: true
+- reasonConsistent: true
+- boundaryConsistent: true
+- executionStarted: false
+- startEndpointContacted: false
+- opencodeStarted: false
+- checkedAt: 2026-06-22T15:13:58.118Z
+- reasons:
+  - EXECUTION_DISABLED
+
+Required artifacts:
+- preflight-result.json
+- start-request.json
+- runner-acceptance.json
+- artifact-manifest.json
+
+Required artifact result:
+- missingArtifacts: []
+
+Forbidden artifacts:
+- execution-start.json
+- stdout.txt
+- stderr.txt
+- execution-result.json
+- execution-failure.json
+
+Forbidden artifact result:
+- unexpectedArtifacts: []
+
+Manifest/hash result:
+- hashMismatches: []
+- manifestSelfHash: ab8656c29096403feb60a7e5b01f35b74c6e7e0f5e6f391e0d23c2d313f85616
+
+Artifact hashes:
+- preflight-result.json: c46ff56c07686cc62cd9303b2444609759eccd0a2eec80f9d69517b81b54c050
+- start-request.json: 5ab13308ac97c894b768eb0b92797373d6562e07864f0dff3ae4783b4dc0a191
+- runner-acceptance.json: 3f53470e73b801e0ef806666fe2244d0463b0c2fc27905444f029ad78cf64676
+- artifact-manifest.json: ab8656c29096403feb60a7e5b01f35b74c6e7e0f5e6f391e0d23c2d313f85616
+
+Live ForgePilot state:
+- repo: ForgePilot
+- branch: main
+- commit: 5fdcb7d
+- workingTreeClean: true
+
+Live runner state:
+- runnerConfigured: true
+- runnerReachable: true
+- runnerProtocolVersion: forgepilot-runner-v1
+- runnerVersion: 0.1.0-fp-mcp-024
+- executionEnabled: false
+- supportedOperations:
+  - capabilities
+  - validate-request
+- supportedRunModes:
+  - DESIGN_ONLY
+- allowedModels:
+  - deepseek-v4-pro-high
+  - qwen-3.7-max
+
+OpenCode state:
+- opencodeDiscoveryConfigured: true
+- opencodeExecutionEnabled: false
+- liveOpenCodeChecked: false
+- executionDisabledReason: FP-MCP-002 is read-only discovery only. Executor start tools are not implemented.
+
+Safety confirmation:
+- OpenCode started: NO
+- OpenCode CLI invoked: NO
+- OpenCode API invoked: NO
+- Runner execution enabled: NO
+- Runner start endpoint contacted: NO
+- Shell executed through runner: NO
+- Secrets committed: NO
+- Runner publicly exposed: NO
+- Artifacts mutated by verifier: NO
+
+Scope confirmation:
+- Execution was not enabled.
+- /runner/start-run was not called.
+- Guarded start MCP tool was not called.
+- Dry-run writer tool was not called.
+- OpenCode was not started.
+- Model providers were not contacted.
+- Runner shell execution was not added.
+- SQLite was not mutated.
+- Routing was not changed.
+- Private runner exposure was not changed.
+- No secrets were committed.
+
+Final classification:
+PASS
