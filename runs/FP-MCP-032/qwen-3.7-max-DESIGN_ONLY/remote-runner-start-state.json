@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "FP-MCP-022",
+  "packetId": "FP-MCP-032",
+  "requestId": "REQ-20260622T130913484Z-40c72000",
+  "runnerRunId": null,
+  "runnerContacted": true,
+  "executionStarted": false,
+  "status": "NOT_IMPLEMENTED",
+  "reasons": [
+    "EXECUTION_NOT_IMPLEMENTED"
+  ],
+  "recordedAt": "2026-06-22T13:17:18.544Z"
+}

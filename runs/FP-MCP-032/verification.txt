@@ -1,0 +1,67 @@
+FP-MCP-032 Verification — Runner Start Status Vocabulary Alignment
+
+RESULT: PASS
+
+Verified objective:
+The MCP bridge records the guarded remote-runner start-state artifact with status NOT_IMPLEMENTED, not RUNNER_REJECTED, when the runner returns a structured non-execution response with reason EXECUTION_NOT_IMPLEMENTED.
+
+ForgePilot repository:
+- repoPath: /home/ridasaidd/forgepilot
+- branch: main
+- commit: 867fd34
+- workingTreeClean: true
+
+Known commits:
+- FP-MCP-032 packet commit: 9c99ede
+- FP-MCP-032 request artifact commit: 867fd34
+- MCP bridge implementation commit: <PASTE_BRIDGE_COMMIT_HASH_HERE>
+
+Bridge commit note:
+The available MCP tools do not expose /home/ridasaidd/forgepilot-chatgpt-mcp git status or git log.
+The running bridge behavior confirms the patch is active, but the implementation commit must be filled from the bridge repository.
+
+Precondition checks:
+- Remote runner reachable: true
+- Remote runner configured: true
+- Remote runner protocol: forgepilot-runner-v1
+- Remote runner executionEnabled: false
+- OpenCode execution enabled: false
+- Local validation passed: true
+- Remote validation passed: true
+
+Request:
+- packetId: FP-MCP-032
+- requestId: REQ-20260622T130913484Z-40c72000
+- request artifact path: runs/FP-MCP-032/opencode-requests/REQ-20260622T130913484Z-40c72000.json
+- request artifact sha256: 98b71ef8373e80112562d4ef4d805c44bd35de72a71f8757e1b6e034384d43f5
+- artifactDir: runs/FP-MCP-032/qwen-3.7-max-DESIGN_ONLY/
+
+Guarded start:
+- called exactly once in this verification session
+- approval: START_REMOTE_RUNNER_REQUEST
+- started: false
+- accepted: false
+- runnerContacted: true
+- startEndpointContacted: true
+- executionStarted: false
+- runnerRunId: null
+- localValidationPassed: true
+- remoteValidationPassed: true
+- reasons:
+  - EXECUTION_NOT_IMPLEMENTED
+
+Persisted artifact checked:
+runs/FP-MCP-032/qwen-3.7-max-DESIGN_ONLY/remote-runner-start-state.json
+
+Persisted artifact fields:
+- status: NOT_IMPLEMENTED
+- executionStarted: false
+- runnerRunId: null
+- reasons:
+  - EXECUTION_NOT_IMPLEMENTED
+
+Negative check:
+- status RUNNER_REJECTED was not recorded in the start-state artifact.
+
+Conclusion:
+PASS. FP-MCP-032 vocabulary alignment is verified.
