@@ -1,0 +1,151 @@
+FP-MCP-040 Verification
+
+Result: PASS
+
+Packet:
+- FP-MCP-040 — Human Approval Record Contract
+
+ForgePilot commits:
+- Packet commit: 375429f
+- Approval contract document commit: 7c0dc5c
+- Verification base commit: 7c0dc5c
+
+Artifacts:
+- packets/FP-MCP-040.md
+- docs/human-approval-record-contract.md
+- runs/FP-MCP-040/executor-result.md
+- runs/FP-MCP-040/verification.txt
+
+Contract artifact:
+- docs/human-approval-record-contract.md
+
+Contract areas:
+- approval artifact path rules
+- approval ID format
+- required approval schema
+- approval states
+- approval kind
+- approved action
+- required scope fields
+- approval text requirements
+- precondition requirements
+- expiration rule
+- single-use rule
+- revocation rule
+- commit binding
+- request binding
+- model binding
+- run-mode binding
+- audit requirements
+- secret boundary
+- approval validation requirements
+- invalid approval conditions
+- approval-is-not-execution rule
+
+Current classification:
+- humanApprovalRecordContractDefined: true
+- humanApprovalRecorded: false
+- executionAllowedNow: false
+- runnerExecutionEnabled: false
+- opencodeExecutionEnabled: false
+- executionStarted: false
+
+Current reasons:
+- APPROVAL_CONTRACT_DEFINED_ONLY
+- HUMAN_APPROVAL_NOT_RECORDED
+- RUNNER_EXECUTION_DISABLED
+- OPENCODE_EXECUTION_DISABLED
+
+Observed ForgePilot state:
+- repo: ForgePilot
+- branch: main
+- commit: 7c0dc5c
+- workingTreeClean: true
+
+Observed runner state:
+- runnerConfigured: true
+- runnerReachable: true
+- runnerProtocolVersion: forgepilot-runner-v1
+- runnerVersion: 0.1.0-fp-mcp-024
+- executionEnabled: false
+- supportedOperations:
+  - capabilities
+  - validate-request
+- supportedRunModes:
+  - DESIGN_ONLY
+- allowedModels:
+  - deepseek-v4-pro-high
+  - qwen-3.7-max
+
+Observed OpenCode state:
+- opencodeDiscoveryConfigured: true
+- opencodeExecutionEnabled: false
+- liveOpenCodeChecked: false
+- executionDisabledReason: FP-MCP-002 is read-only discovery only. Executor start tools are not implemented.
+
+Observed execution enablement status:
+- executionEnablementStatusEvaluated: true
+- executionAllowedNow: false
+- humanApprovalRecorded: false
+- runnerExecutionEnabled: false
+- opencodeExecutionEnabled: false
+- executionStarted: false
+- startEndpointContacted: false
+- opencodeStarted: false
+- checkedAt: 2026-06-22T16:01:16.895Z
+
+Safety confirmation:
+- Real approval artifact created: NO
+- Human approval recorded: NO
+- OpenCode started: NO
+- OpenCode CLI invoked: NO
+- OpenCode API invoked: NO
+- Runner execution enabled: NO
+- Runner start endpoint contacted: NO
+- Shell executed through runner: NO
+- Real execution artifacts created: NO
+- Secrets committed: NO
+- Runner publicly exposed: NO
+
+Scope confirmation:
+- No real approval artifact was created.
+- Human approval gate was not satisfied.
+- Execution was not enabled.
+- FORGEPILOT_RUNNER_EXECUTION_ENABLED was not set to true.
+- /runner/start-run was not called.
+- Guarded start MCP tool was not called.
+- Dry-run writer tool was not called.
+- OpenCode was not started.
+- Model providers were not contacted.
+- Runner shell execution was not added.
+- SQLite was not mutated.
+- Routing was not changed.
+- Private runner exposure was not changed.
+- No secrets were committed.
+
+Acceptance result:
+- packet committed: PASS
+- contract document committed: PASS
+- approval schema defined: PASS
+- approval path rules defined: PASS
+- approval states defined: PASS
+- approval scope fields defined: PASS
+- approval text requirements defined: PASS
+- approval expiration rule defined: PASS
+- approval single-use rule defined: PASS
+- approval revocation rule defined: PASS
+- approval commit binding defined: PASS
+- approval request binding defined: PASS
+- approval model/run-mode binding defined: PASS
+- approval audit requirements defined: PASS
+- approval secret boundary defined: PASS
+- approval is not execution: PASS
+- no real approval artifact created: PASS
+- humanApprovalRecorded remains false: PASS
+- executionAllowedNow remains false: PASS
+- runner execution remains disabled: PASS
+- OpenCode execution remains disabled: PASS
+- no execution attempted: PASS
+
+Final classification:
+PASS
