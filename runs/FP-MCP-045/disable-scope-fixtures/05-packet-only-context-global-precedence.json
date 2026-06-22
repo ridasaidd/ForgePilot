@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "FP-MCP-045",
+  "artifactType": "execution-disable-switch-negative-scope-fixture",
+  "packetId": "FP-MCP-045",
+  "fixtureName": "packet-only-context-global-precedence",
+  "purpose": "Observe that supplying scope context to the read-only disable switch status tool does not permit execution and does not override the global disable switch.",
+  "input": {
+    "packetId": "FP-MCP-045"
+  },
+  "expected": {
+    "disableSwitchStatusEvaluated": true,
+    "disableSwitchDefined": true,
+    "disableSwitchActive": true,
+    "executionAllowedNow": false,
+    "executionStarted": false,
+    "startEndpointContacted": false,
+    "opencodeStarted": false,
+    "runnerExecutionEnabled": false,
+    "opencodeExecutionEnabled": false,
+    "effectiveDisableReason": "EXECUTION_DISABLED_GLOBAL",
+    "effectiveDisableScope": "GLOBAL",
+    "requiredReasons": [
+      "EXECUTION_DISABLED_GLOBAL",
+      "RUNNER_EXECUTION_DISABLED",
+      "OPENCODE_EXECUTION_DISABLED",
+      "DISABLE_SWITCH_ACTIVE",
+      "EXECUTION_NOT_ALLOWED"
+    ]
+  },
+  "observed": {
+    "schemaVersion": "FP-MCP-044",
+    "packetId": "FP-MCP-045",
+    "requestId": null,
+    "modelId": null,
+    "runMode": null,
+    "disableSwitchStatusEvaluated": true,
+    "disableSwitchDefined": true,
+    "disableSwitchActive": true,
+    "executionAllowedNow": false,
+    "executionStarted": false,
+    "startEndpointContacted": false,
+    "opencodeStarted": false,
+    "runnerExecutionEnabled": false,
+    "opencodeExecutionEnabled": false,
+    "globalDisableActive": true,
+    "packetDisableActive": false,
+    "requestDisableActive": false,
+    "modelDisableActive": false,
+    "runModeDisableActive": false,
+    "operatorDisableActive": false,
+    "effectiveDisableReason": "EXECUTION_DISABLED_GLOBAL",
+    "effectiveDisableScope": "GLOBAL",
+    "precedenceApplied": [
+      "GLOBAL",
+      "OPERATOR",
+      "PACKET",
+      "REQUEST",
+      "MODEL",
+      "RUN_MODE"
+    ],
+    "statusSource": "ForgePilot execution disable switch status policy",
+    "boundaryVersion": "FP-MCP-044",
+    "reasons": [
+      "EXECUTION_DISABLED_GLOBAL",
+      "RUNNER_EXECUTION_DISABLED",
+      "OPENCODE_EXECUTION_DISABLED",
+      "DISABLE_SWITCH_ACTIVE",
+      "EXECUTION_NOT_ALLOWED"
+    ]
+  },
+  "passed": true
+}

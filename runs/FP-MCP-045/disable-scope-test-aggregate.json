@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "FP-MCP-045",
+  "artifactType": "execution-disable-switch-negative-scope-test-aggregate",
+  "packetId": "FP-MCP-045",
+  "scopeFixtureCount": 5,
+  "scopeFixturesCreated": true,
+  "scopeFixturesEvaluated": true,
+  "allScopeFixturesPassed": true,
+  "globalDisablePrecedenceHeld": true,
+  "allExpectedReasonsPresent": true,
+  "executionAllowedNow": false,
+  "executionStarted": false,
+  "startEndpointContacted": false,
+  "opencodeStarted": false,
+  "runnerExecutionEnabled": false,
+  "opencodeExecutionEnabled": false,
+  "effectiveDisableReason": "EXECUTION_DISABLED_GLOBAL",
+  "effectiveDisableScope": "GLOBAL",
+  "precedenceApplied": [
+    "GLOBAL",
+    "OPERATOR",
+    "PACKET",
+    "REQUEST",
+    "MODEL",
+    "RUN_MODE"
+  ],
+  "fixtureFiles": [
+    "runs/FP-MCP-045/disable-scope-fixtures/01-packet-context-global-precedence.json",
+    "runs/FP-MCP-045/disable-scope-fixtures/02-request-context-global-precedence.json",
+    "runs/FP-MCP-045/disable-scope-fixtures/03-model-context-disallowed-name-global-precedence.json",
+    "runs/FP-MCP-045/disable-scope-fixtures/04-run-mode-context-disallowed-name-global-precedence.json",
+    "runs/FP-MCP-045/disable-scope-fixtures/05-packet-only-context-global-precedence.json"
+  ],
+  "notes": [
+    "FP-MCP-045 did not enable execution.",
+    "FP-MCP-045 did not create approval artifacts.",
+    "FP-MCP-045 did not contact the runner start endpoint.",
+    "FP-MCP-045 did not start OpenCode.",
+    "Non-global scope fields are observed as inactive in the current implementation; global disable remains the effective blocker."
+  ]
+}
