@@ -1,0 +1,91 @@
+FP-MCP-034 Verification
+
+Result: PASS
+
+Packet:
+- FP-MCP-034 — Non-Executing Preflight Validation Tool
+
+ForgePilot commits:
+- Packet commit: db092c9
+- Request artifact commit: 6107a3f
+- Verification base commit: 6107a3f
+
+MCP bridge implementation commit:
+- c7061bc
+
+Request artifact:
+- requestId: REQ-20260622T141136780Z-435cbaa9
+- path: runs/FP-MCP-034/opencode-requests/REQ-20260622T141136780Z-435cbaa9.json
+- sha256: 72cf92e05d5ad82443aa1d2ee3158af47cb71d7e316e3a5d82facf080c21dcff
+
+Tool:
+- forgepilot_validate_execution_preflight
+
+Observed preflight result:
+- schemaVersion: FP-MCP-034
+- preflightEligible: false
+- executionPermitted: false
+- executionStarted: false
+- runnerContacted: true
+- opencodeContacted: false
+- checkedAt: 2026-06-22T14:20:40.460Z
+- reasons:
+  - EXECUTION_DISABLED
+
+Observed gates:
+- requestArtifact: PASSED
+- lifecycle: PASSED
+- packet: PASSED
+- model: PASSED
+- runMode: PASSED
+- runnerIdentity: PASSED
+- runnerCapability: PASSED
+- executionEnablement: FAILED
+- opencodeBoundary: PASSED
+- artifactRecording: NOT_EVALUATED
+- secretsBoundary: PASSED
+- networkExposure: PASSED
+
+Observed provenance:
+- baseCommit: 6107a3f
+- currentCommit: 6107a3f
+- creationCommit: db092c9
+- artifactCommit: 6107a3f
+- modelId: qwen-3.7-max
+- runMode: DESIGN_ONLY
+- runnerProtocolVersion: forgepilot-runner-v1
+- runnerVersion: 0.1.0-fp-mcp-024
+- runnerSupportedOperations:
+  - capabilities
+  - validate-request
+- runnerSupportedRunModes:
+  - DESIGN_ONLY
+- runnerAllowedModels:
+  - deepseek-v4-pro-high
+  - qwen-3.7-max
+- runnerExecutionEnabled: false
+- opencodeExecutionEnabled: false
+
+Safety confirmation:
+- OpenCode started: NO
+- OpenCode CLI invoked: NO
+- OpenCode API invoked: NO
+- Runner execution enabled: NO
+- Runner start endpoint called by preflight tool: NO
+- Shell executed through runner: NO
+- Secrets committed: NO
+- Runner publicly exposed: NO
+
+Scope confirmation:
+- Execution was not enabled.
+- OpenCode was not started.
+- Model providers were not contacted.
+- Runner shell execution was not added.
+- SQLite was not mutated.
+- Routing was not changed.
+- Private runner exposure was not changed.
+- No secrets were committed.
+- Preflight did not call the guarded start endpoint.
+
+Final classification:
+PASS
