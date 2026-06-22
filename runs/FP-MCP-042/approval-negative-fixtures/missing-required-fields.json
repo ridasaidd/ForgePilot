@@ -1,0 +1,16 @@
+{
+  "fixture": true,
+  "fixturePacketId": "FP-MCP-042",
+  "fixtureName": "missing-required-fields",
+  "expectedValid": false,
+  "expectedUsableForExecution": false,
+  "expectedReasons": [
+    "APPROVAL_SCOPE_MISSING",
+    "APPROVAL_TEXT_MISSING",
+    "APPROVAL_PRECONDITIONS_MISSING",
+    "APPROVAL_EXPIRATION_INVALID"
+  ],
+  "schemaVersion": "FP-MCP-040",
+  "artifactType": "human-approval-record",
+  "approvalId": "APPROVAL-20260622T000000001Z-a0000001"
+}

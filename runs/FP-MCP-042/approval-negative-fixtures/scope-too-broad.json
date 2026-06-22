@@ -1,0 +1,50 @@
+{
+  "fixture": true,
+  "fixturePacketId": "FP-MCP-042",
+  "fixtureName": "scope-too-broad",
+  "expectedValid": false,
+  "expectedUsableForExecution": false,
+  "expectedReasons": [
+    "APPROVAL_SCOPE_TOO_BROAD",
+    "APPROVAL_COMMIT_BINDING_INVALID"
+  ],
+  "schemaVersion": "FP-MCP-040",
+  "artifactType": "human-approval-record",
+  "approvalId": "APPROVAL-20260622T000000007Z-a0000007",
+  "approvalState": "RECORDED",
+  "approvalKind": "EXECUTION_ENABLEMENT",
+  "createdAt": "2026-06-22T16:30:00.000Z",
+  "createdBy": {
+    "humanName": "rida said",
+    "humanHandle": "@rida538"
+  },
+  "scope": {
+    "packetId": "FP-MCP-042",
+    "requestId": "*",
+    "modelId": "qwen-3.7-max",
+    "runMode": "DESIGN_ONLY",
+    "repoCommit": "HEAD",
+    "branch": "main"
+  },
+  "approvedAction": "ALLOW_ONE_GUARDED_REMOTE_RUNNER_EXECUTION_ATTEMPT",
+  "approvalText": "I approve one guarded ForgePilot remote runner execution attempt for the scoped packet, request, model, run mode, commit, and branch named in this record.",
+  "preconditions": {
+    "executionEnablementStatusEvaluated": true,
+    "executionAllowedNowBeforeApproval": false,
+    "contractComplete": true,
+    "dryRunEvidencePresent": true,
+    "dryRunVerified": true,
+    "repoClean": true,
+    "runnerExecutionCapabilityPresent": true,
+    "opencodeBoundarySatisfied": true,
+    "secretBoundarySatisfied": true,
+    "networkBoundarySatisfied": true,
+    "disablePathDefined": true,
+    "auditAdmissionPathDefined": true
+  },
+  "singleUse": true,
+  "expiresAt": "2026-06-22T17:20:00.000Z",
+  "revokedAt": null,
+  "consumedAt": null,
+  "reasons": []
+}
