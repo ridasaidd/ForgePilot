@@ -1,0 +1,120 @@
+FP-MCP-042 Verification
+
+Result: PASS
+
+Packet:
+- FP-MCP-042 — Human Approval Negative Fixture Tests
+
+ForgePilot commits:
+- Packet commit: d1e2c4a
+- Negative fixture commit: 3c27101
+- Aggregate validation result commit: 3f329ea
+- Verification base commit: 3f329ea
+
+Validator:
+- tool: forgepilot_validate_human_approval_record
+- validator packet: FP-MCP-041
+- bridge implementation commit: ec02c85
+
+Artifacts:
+- packets/FP-MCP-042.md
+- runs/FP-MCP-042/approval-negative-fixtures/
+- runs/FP-MCP-042/approvals/
+- runs/FP-MCP-042/negative-fixture-validation-result.json
+- runs/FP-MCP-042/executor-result.md
+- runs/FP-MCP-042/verification.txt
+
+Aggregate result:
+- schemaVersion: FP-MCP-042
+- negativeApprovalFixturesCreated: true
+- negativeApprovalFixturesValidated: true
+- fixtureCount: 11
+- allNegativeFixturesRejected: true
+- allExpectedReasonsPresent: true
+- usableApprovalCreated: false
+- humanApprovalRecorded: false
+- executionAllowedNow: false
+- executionStarted: false
+- startEndpointContacted: false
+- opencodeStarted: false
+- approvalCreated: false
+- approvalMutated: false
+
+Fixture outcomes:
+- missing-required-fields: rejected; expected reason present
+- invalid-approval-state: rejected; expected reason present
+- expired-approval: rejected; expected reason present
+- revoked-approval: rejected; expected reason present
+- consumed-approval: rejected; expected reason present
+- scope-mismatch-request: rejected; expected reason present
+- scope-too-broad: rejected; expected reason present
+- wrong-model: rejected; expected reason present
+- wrong-run-mode: rejected; expected reason present
+- wrong-commit: rejected; expected reason present
+- secret-bearing-approval: rejected; expected reason present
+
+Secret fixture note:
+- secret-bearing-approval uses fake test marker only:
+  - OPENAI_API_KEY=fake-test-secret-not-real
+- no real secret was committed
+
+Live ForgePilot state:
+- repo: ForgePilot
+- branch: main
+- commit: 3f329ea
+- workingTreeClean: true
+
+Live runner state:
+- runnerConfigured: true
+- runnerReachable: true
+- runnerProtocolVersion: forgepilot-runner-v1
+- runnerVersion: 0.1.0-fp-mcp-024
+- executionEnabled: false
+- supportedOperations:
+  - capabilities
+  - validate-request
+- supportedRunModes:
+  - DESIGN_ONLY
+- allowedModels:
+  - deepseek-v4-pro-high
+  - qwen-3.7-max
+
+OpenCode state:
+- opencodeDiscoveryConfigured: true
+- opencodeExecutionEnabled: false
+- liveOpenCodeChecked: false
+- executionDisabledReason: FP-MCP-002 is read-only discovery only. Executor start tools are not implemented.
+
+Safety confirmation:
+- Usable approval created: NO
+- Human approval recorded: NO
+- Approval usable for execution: NO
+- OpenCode started: NO
+- OpenCode CLI invoked: NO
+- OpenCode API invoked: NO
+- Runner execution enabled: NO
+- Runner start endpoint contacted: NO
+- Shell executed through runner: NO
+- Real secrets committed: NO
+- Runner publicly exposed: NO
+- Execution artifacts created: NO
+
+Scope confirmation:
+- No valid approval artifact was created.
+- No usable approval was created.
+- Human approval gate was not satisfied.
+- Execution was not enabled.
+- FORGEPILOT_RUNNER_EXECUTION_ENABLED was not set to true.
+- /runner/start-run was not called.
+- Guarded start MCP tool was not called.
+- Dry-run writer tool was not called.
+- OpenCode was not started.
+- Model providers were not contacted.
+- Runner shell execution was not added.
+- SQLite was not mutated.
+- Routing was not changed.
+- Private runner exposure was not changed.
+- No real secrets were committed.
+
+Final classification:
+PASS
