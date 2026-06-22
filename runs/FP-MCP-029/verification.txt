@@ -1,0 +1,219 @@
+FP-MCP-029 Verification
+
+Date:
+2026-06-22
+
+Packet:
+FP-MCP-029 — Guarded Start Non-Execution Verification
+
+Verification result:
+PASS_WITH_OBSERVABILITY_FOLLOWUP
+
+Packet commit:
+16cf814 Add FP-MCP-029 guarded start verification
+
+Request artifact commit:
+82ec7ce Record FP-MCP-029 request artifact
+
+Request id:
+REQ-20260622T112059183Z-2023d0c0
+
+Request artifact path:
+runs/FP-MCP-029/opencode-requests/REQ-20260622T112059183Z-2023d0c0.json
+
+Request artifact SHA-256:
+19628e2d742a9cd5d5735ae2468485bb21c4d26eb560fc98334a9a6738f9a944
+
+Lifecycle evidence:
+
+creationCommit:
+16cf814
+
+artifactCommit:
+82ec7ce
+
+currentCommit:
+82ec7ce
+
+creationCommitExists:
+true
+
+artifactCommitExists:
+true
+
+creationCommitAncestorOfArtifactCommit:
+true
+
+artifactCommitReachableFromHead:
+true
+
+Local validation result:
+
+eligible:
+true
+
+runnerContacted:
+false
+
+requestArtifactValid:
+true
+
+modelAllowed:
+true
+
+runModeAllowed:
+true
+
+workingTreeClean:
+true
+
+baseCommitMatches:
+true
+
+safeArtifactDir:
+true
+
+executionEnabled:
+false
+
+executionStarted:
+false
+
+reasons:
+[]
+
+Remote runner endpoint validation result:
+
+valid:
+true
+
+runnerConfigured:
+true
+
+runnerContacted:
+true
+
+runnerAccepted:
+true
+
+executionEnabled:
+false
+
+executionStarted:
+false
+
+runnerProtocolVersion:
+forgepilot-runner-v1
+
+reasons:
+[]
+
+Guarded start result:
+
+started:
+false
+
+accepted:
+false
+
+approvalAccepted:
+true
+
+runnerConfigured:
+true
+
+runnerContacted:
+true
+
+startEndpointContacted:
+true
+
+executionStarted:
+false
+
+localValidationPassed:
+true
+
+remoteValidationPassed:
+true
+
+preStartStateRecorded:
+true
+
+postStartStateRecorded:
+true
+
+runnerRunId:
+null
+
+runnerProtocolVersion:
+null
+
+reasons:
+- RUNNER_PROTOCOL_ERROR
+- RUNNER_REJECTED_REQUEST
+
+Start state artifact:
+runs/FP-MCP-029/qwen-3.7-max-DESIGN_ONLY/remote-runner-start-state.json
+
+Start state artifact summary:
+
+status:
+RUNNER_REJECTED
+
+runnerContacted:
+true
+
+executionStarted:
+false
+
+runnerRunId:
+null
+
+reasons:
+- RUNNER_PROTOCOL_ERROR
+- RUNNER_REJECTED_REQUEST
+
+Safety confirmation:
+
+OpenCode started:
+NO
+
+OpenCode CLI invoked:
+NO
+
+OpenCode API invoked:
+NO
+
+Runner execution enabled:
+NO
+
+Shell executed through runner:
+NO
+
+Secrets committed:
+NO
+
+Runner publicly exposed:
+NO
+
+Guarded start tool called:
+YES, exactly once
+
+Interpretation:
+
+FP-MCP-029 satisfied the primary safety objective.
+
+The guarded start path was reached only after local and remote validation passed.
+
+The guarded start path did not start execution.
+
+The start endpoint rejection was recorded, and the post-start state artifact confirms executionStarted remained false.
+
+The remaining issue is observability quality: the bridge-level result records RUNNER_PROTOCOL_ERROR and RUNNER_REJECTED_REQUEST instead of preserving a more specific non-execution reason.
+
+Conclusion:
+PASS_WITH_OBSERVABILITY_FOLLOWUP
+
+Recommended follow-up:
+FP-MCP-030 — Guarded Start Rejection Classification

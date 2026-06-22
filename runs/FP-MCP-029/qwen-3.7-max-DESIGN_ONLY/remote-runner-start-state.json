@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "FP-MCP-022",
+  "packetId": "FP-MCP-029",
+  "requestId": "REQ-20260622T112059183Z-2023d0c0",
+  "runnerRunId": null,
+  "runnerContacted": true,
+  "executionStarted": false,
+  "status": "RUNNER_REJECTED",
+  "reasons": [
+    "RUNNER_PROTOCOL_ERROR",
+    "RUNNER_REJECTED_REQUEST"
+  ],
+  "recordedAt": "2026-06-22T11:26:05.406Z"
+}
