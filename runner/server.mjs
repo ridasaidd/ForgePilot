@@ -270,6 +270,75 @@ async function gitObservation(args) {
   return result.stdout.trim();
 }
 
+async function gitSucceeds(args) {
+  try {
+    await execFileAsync("git", args, {
+      cwd: repoRoot,
+      timeout: 5_000,
+      maxBuffer: 1024 * 1024
+    });
+
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function resolveCommitShort(commit) {
+  if (typeof commit !== "string" || commit.trim().length === 0) {
+    return null;
+  }
+
+  try {
+    return await gitObservation([
+      "rev-parse",
+      "--verify",
+      "--short",
+      `${commit}^{commit}`
+    ]);
+  } catch {
+    return null;
+  }
+}
+
+async function commitIsAncestor(ancestorCommit, descendantCommit) {
+  if (ancestorCommit === null || descendantCommit === null) {
+    return false;
+  }
+
+  return await gitSucceeds([
+    "merge-base",
+    "--is-ancestor",
+    ancestorCommit,
+    descendantCommit
+  ]);
+}
+
+async function findArtifactCommit(requestArtifactPath) {
+  if (requestArtifactPath === null) {
+    return null;
+  }
+
+  try {
+    const output = await gitObservation([
+      "log",
+      "--diff-filter=A",
+      "--format=%h",
+      "--",
+      requestArtifactPath
+    ]);
+
+    const [artifactCommit] = output
+      .split("\n")
+      .map((line) => line.trim())
+      .filter((line) => line.length > 0);
+
+    return artifactCommit || null;
+  } catch {
+    return null;
+  }
+}
+
 async function getCurrentCommit() {
   return gitObservation(["rev-parse", "--short", "HEAD"]);
 }
@@ -326,6 +395,14 @@ function baseValidateResult(body, reasons) {
       typeof body.baseCommit === "string"
         ? body.baseCommit
         : null,
+    currentCommit: null,
+    requestBaseCommit: null,
+    creationCommit: null,
+    artifactCommit: null,
+    creationCommitExists: false,
+    artifactCommitExists: false,
+    creationCommitAncestorOfArtifactCommit: false,
+    artifactCommitReachableFromHead: false,
     artifactDir: null,
     modelId: null,
     runMode: null,
@@ -426,10 +503,6 @@ async function validateRequestArtifact(body) {
     reasons.push("REQUEST_ID_MISMATCH");
   }
 
-  if (artifactBaseCommit !== baseCommit) {
-    reasons.push("BASE_COMMIT_MISMATCH");
-  }
-
   if (artifactStatus !== "REQUEST_RECORDED") {
     reasons.push("REQUEST_NOT_RECORDED");
   }
@@ -468,7 +541,7 @@ async function validateRequestArtifact(body) {
     currentCommit = await getCurrentCommit();
     gitStatusShort = await getGitStatusShort();
   } catch {
-    reasons.push("BASE_COMMIT_MISMATCH");
+    reasons.push("CURRENT_COMMIT_UNAVAILABLE");
   }
 
   if (gitStatusShort !== null && gitStatusShort.length > 0) {
@@ -477,6 +550,42 @@ async function validateRequestArtifact(body) {
 
   if (currentCommit !== null && currentCommit !== baseCommit) {
     reasons.push("BASE_COMMIT_MISMATCH");
+  }
+
+  const creationCommit = await resolveCommitShort(artifactBaseCommit);
+  let artifactCommit = await findArtifactCommit(requestArtifactPath);
+  artifactCommit =
+    artifactCommit !== null ? await resolveCommitShort(artifactCommit) : null;
+
+  const creationCommitExists = creationCommit !== null;
+  const artifactCommitExists = artifactCommit !== null;
+  const creationCommitAncestorOfArtifactCommit = await commitIsAncestor(
+    creationCommit,
+    artifactCommit
+  );
+  const artifactCommitReachableFromHead = await commitIsAncestor(
+    artifactCommit,
+    currentCommit
+  );
+
+  if (!creationCommitExists) {
+    reasons.push("CREATION_COMMIT_MISSING");
+  }
+
+  if (!artifactCommitExists) {
+    reasons.push("ARTIFACT_COMMIT_MISSING");
+  }
+
+  if (
+    creationCommitExists &&
+    artifactCommitExists &&
+    !creationCommitAncestorOfArtifactCommit
+  ) {
+    reasons.push("CREATION_COMMIT_NOT_ANCESTOR_OF_ARTIFACT_COMMIT");
+  }
+
+  if (artifactCommitExists && !artifactCommitReachableFromHead) {
+    reasons.push("ARTIFACT_COMMIT_NOT_REACHABLE_FROM_HEAD");
   }
 
   return {
@@ -491,6 +600,14 @@ async function validateRequestArtifact(body) {
     requestArtifactPath,
     requestArtifactSha256,
     baseCommit,
+    currentCommit,
+    requestBaseCommit: artifactBaseCommit,
+    creationCommit,
+    artifactCommit,
+    creationCommitExists,
+    artifactCommitExists,
+    creationCommitAncestorOfArtifactCommit,
+    artifactCommitReachableFromHead,
     artifactDir,
     modelId: artifactModelId,
     runMode: artifactRunMode,
