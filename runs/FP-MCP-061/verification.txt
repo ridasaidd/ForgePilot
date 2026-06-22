@@ -1,0 +1,158 @@
+FP-MCP-061 verification
+=======================
+
+Packet:
+  FP-MCP-061 — Human Approval Evidence Validator Hardening
+
+Bridge repository:
+  /home/ridasaidd/forgepilot-chatgpt-mcp
+
+Bridge branch:
+  feature/oauth-auth0
+
+Bridge commit:
+  f92d76d Harden human approval validator for FP-MCP-061
+
+Verification status:
+  PASS
+
+Validator probe
+---------------
+
+Tool:
+  forgepilot_validate_human_approval_record
+
+Input:
+  packetId: FP-MCP-061
+  approvalId: APPROVAL-20260622T000000000Z-00000000
+  expectedScope.packetId: FP-MCP-036
+  expectedScope.requestId: REQ-20260622T144553300Z-fbbe8d82
+  expectedScope.modelId: qwen-3.7-max
+  expectedScope.runMode: DESIGN_ONLY
+  expectedScope.repoCommit: 40b53dc
+  expectedScope.branch: main
+
+Observed output:
+  schemaVersion: FP-MCP-061
+  validatorBoundaryVersion: FP-MCP-061
+  approvalEvidenceContractVersion: FP-MCP-059
+  legacyApprovalRecordBoundaryRecognized: FP-MCP-041
+  approvalValidationEvaluated: true
+  approvalEvidenceValid: false
+  approvalValid: false
+  approvalUsableForExecution: false
+  approvalCreated: false
+  approvalMutated: false
+  humanApprovalRecorded: false
+  executionAllowedNow: false
+  executionStarted: false
+  startEndpointContacted: false
+  opencodeStarted: false
+  boundaryVersion: FP-MCP-061
+  statusSource: ForgePilot human approval evidence validation aligned with FP-MCP-059
+
+Observed reasons:
+  APPROVAL_EVIDENCE_ARTIFACT_MISSING
+  APPROVAL_ARTIFACT_MISSING
+
+Observed checks:
+  pathSafe: true
+  approvalIdFormatValid: true
+  artifactExists: false
+  jsonValid: false
+  approvalEvidenceSchemaValid: false
+  approvalEvidenceTypeValid: false
+  schemaVersionValid: false
+  artifactTypeValid: false
+  approvalIdValid: true
+  approvalStateValid: false
+  approvalKindValid: false
+  approvedActionValid: false
+  scopePresent: false
+  scopeExact: false
+  scopeMatchesExpected: false
+  packetBindingValid: false
+  requestBindingValid: false
+  modelBindingValid: false
+  runModeBindingValid: false
+  baseCommitBindingValid: false
+  branchBindingValid: true
+  canonicalApprovalTextPresent: false
+  canonicalApprovalTextValid: false
+  approvalTextPresent: false
+  preconditionsPresent: false
+  preconditionsValid: false
+  createdAtValid: false
+  expiresAtValid: false
+  approvalLifetimeValid: false
+  expirationValid: false
+  singleUseValid: false
+  notRevoked: false
+  notConsumed: false
+  notQuarantined: true
+  commitBindingValid: false
+  secretBoundaryValid: true
+  artifactCommitted: false
+
+Disable switch verification
+---------------------------
+
+Tool:
+  forgepilot_get_execution_disable_switch_status
+
+Input:
+  packetId: FP-MCP-061
+  requestId: REQ-20260622T144553300Z-fbbe8d82
+  modelId: qwen-3.7-max
+  runMode: DESIGN_ONLY
+
+Observed output:
+  schemaVersion: FP-MCP-044
+  disableSwitchStatusEvaluated: true
+  disableSwitchDefined: true
+  disableSwitchActive: true
+  executionAllowedNow: false
+  executionStarted: false
+  startEndpointContacted: false
+  opencodeStarted: false
+  runnerExecutionEnabled: false
+  opencodeExecutionEnabled: false
+  globalDisableActive: true
+  effectiveDisableReason: EXECUTION_DISABLED_GLOBAL
+  effectiveDisableScope: GLOBAL
+  boundaryVersion: FP-MCP-044
+
+Observed reasons:
+  EXECUTION_DISABLED_GLOBAL
+  RUNNER_EXECUTION_DISABLED
+  OPENCODE_EXECUTION_DISABLED
+  DISABLE_SWITCH_ACTIVE
+  EXECUTION_NOT_ALLOWED
+
+Acceptance checks
+-----------------
+
+approval validator exists: PASS
+validator reports FP-MCP-061 schema/boundary: PASS
+validator reports FP-MCP-059 approval evidence contract: PASS
+legacy FP-MCP-041 boundary is recognized: PASS
+missing approval evidence fails closed: PASS
+approvalEvidenceValid remains false: PASS
+approvalUsableForExecution remains false: PASS
+approvalCreated remains false: PASS
+approvalMutated remains false: PASS
+humanApprovalRecorded remains false: PASS
+executionAllowedNow remains false: PASS
+executionStarted remains false: PASS
+startEndpointContacted remains false: PASS
+opencodeStarted remains false: PASS
+disable switch remains active: PASS
+runner execution remains disabled: PASS
+OpenCode execution remains disabled: PASS
+
+Conclusion:
+  FP-MCP-061 PASS
+
+No execution enabled.
+Runner start endpoint not contacted.
+OpenCode not started.
