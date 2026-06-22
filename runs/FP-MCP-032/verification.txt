@@ -14,7 +14,7 @@ ForgePilot repository:
 Known commits:
 - FP-MCP-032 packet commit: 9c99ede
 - FP-MCP-032 request artifact commit: 867fd34
-- MCP bridge implementation commit: <PASTE_BRIDGE_COMMIT_HASH_HERE>
+- MCP bridge implementation commit: 30a255b
 
 Bridge commit note:
 The available MCP tools do not expose /home/ridasaidd/forgepilot-chatgpt-mcp git status or git log.

@@ -33,7 +33,7 @@ ForgePilot working tree clean: `true`
 Known FP-MCP-032 packet commit: `9c99ede`  
 Known request artifact commit: `867fd34`
 
-MCP bridge implementation commit: `<PASTE_BRIDGE_COMMIT_HASH_HERE>`
+MCP bridge implementation commit: `30a255b`
 
 Note: The active MCP bridge tools expose ForgePilot repository status, runner status, OpenCode status, validation, start, and file reads. They do not expose `/home/ridasaidd/forgepilot-chatgpt-mcp` git status or commit. The guarded-start behavior confirms the patch is active in the running bridge, but the bridge implementation commit must be filled from the bridge repo with:
 
