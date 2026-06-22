@@ -1,0 +1,92 @@
+FP-MCP-035 Verification
+
+Result: PASS
+
+Packet:
+- FP-MCP-035 — Execution Artifact Contract
+
+ForgePilot commits:
+- Packet commit: 6011bc6
+- Documentation commit: 261e61b
+- Verification base commit: 261e61b
+
+Artifacts:
+- packets/FP-MCP-035.md
+- docs/execution-artifact-contract.md
+- runs/FP-MCP-035/executor-result.md
+- runs/FP-MCP-035/verification.txt
+
+Observed repository state:
+- repo: ForgePilot
+- branch: main
+- commit: 261e61b
+- workingTreeClean: true
+
+Observed runner state:
+- runnerConfigured: true
+- runnerReachable: true
+- runnerProtocolVersion: forgepilot-runner-v1
+- runnerVersion: 0.1.0-fp-mcp-024
+- executionEnabled: false
+- supportedOperations:
+  - capabilities
+  - validate-request
+- supportedRunModes:
+  - DESIGN_ONLY
+- allowedModels:
+  - deepseek-v4-pro-high
+  - qwen-3.7-max
+- reasons: []
+
+Observed OpenCode state:
+- opencodeDiscoveryConfigured: true
+- opencodeExecutionEnabled: false
+- liveOpenCodeChecked: false
+- executionDisabledReason: FP-MCP-002 is read-only discovery only. Executor start tools are not implemented.
+
+Contract coverage:
+- required artifact files: PASS
+- required artifact schemas: PASS
+- artifact lifecycle: PASS
+- minimum artifact sets: PASS
+- artifact state vocabulary: PASS
+- failure stage vocabulary: PASS
+- reason codes: PASS
+- secret handling: PASS
+- stdout/stderr handling: PASS
+- immutability expectations: PASS
+- current non-execution classification: PASS
+
+Required artifact files defined:
+- preflight-result.json
+- start-request.json
+- runner-acceptance.json
+- execution-start.json
+- stdout.txt
+- stderr.txt
+- execution-result.json
+- execution-failure.json
+- artifact-manifest.json
+
+Safety confirmation:
+- OpenCode started: NO
+- OpenCode CLI invoked: NO
+- OpenCode API invoked: NO
+- Runner execution enabled: NO
+- Shell executed through runner: NO
+- Secrets committed: NO
+- Runner publicly exposed: NO
+
+Scope confirmation:
+- Execution was not enabled.
+- OpenCode was not started.
+- Model providers were not contacted.
+- Runner shell execution was not added.
+- SQLite was not mutated.
+- Routing was not changed.
+- Private runner exposure was not changed.
+- No secrets were committed.
+- Artifact contract definition was not treated as execution authorization.
+
+Final classification:
+PASS
