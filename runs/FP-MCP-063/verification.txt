@@ -1,0 +1,80 @@
+FP-MCP-063 Verification
+
+Packet:
+FP-MCP-063 — Human Approval Evidence Dry-Run Fixture Recorder
+
+Status:
+PASS
+
+Verified repository state:
+ForgePilot branch: main
+ForgePilot commit: 90a8757
+ForgePilot workingTreeClean: true
+
+MCP bridge state:
+branch: feature/oauth-auth0
+commit: 28ba148
+
+Verified tool:
+forgepilot_record_human_approval_evidence_dry_run_fixture
+
+Recorder result:
+fixtureRecorderEvaluated: true
+dryRunFixtureRecorded: true
+dryRunFixtureValidated: true
+dryRunFixtureAlreadyExists: false
+dryRunFixturePath: runs/FP-MCP-063/approvals/APPROVAL-20260622T225539362Z-cb42d99f.json
+dryRunFixtureApprovalId: APPROVAL-20260622T225539362Z-cb42d99f
+dryRunFixtureSha256: f7f7755f8919106641db30c3e200f3893d870db9d08a646be5867c51eb313616
+
+Post-commit validator result:
+schemaVersion: FP-MCP-061
+validatorBoundaryVersion: FP-MCP-061
+approvalEvidenceContractVersion: FP-MCP-059
+legacyApprovalRecordBoundaryRecognized: FP-MCP-041
+approvalValidationEvaluated: true
+approvalEvidenceValid: false
+approvalValid: false
+approvalUsableForExecution: false
+approvalCreated: false
+approvalMutated: false
+humanApprovalRecorded: false
+executionAllowedNow: false
+executionStarted: false
+startEndpointContacted: false
+opencodeStarted: false
+artifactCommitted: true
+
+Post-commit rejection reasons:
+APPROVAL_EVIDENCE_TYPE_INVALID
+APPROVAL_ARTIFACT_TYPE_INVALID
+APPROVAL_STATE_NOT_RECORDED
+APPROVAL_SCOPE_MISMATCH
+APPROVAL_REQUEST_BINDING_INVALID
+APPROVAL_TEXT_INVALID
+APPROVAL_QUARANTINED
+
+Safety boundary:
+disableSwitchStatusEvaluated: true
+disableSwitchDefined: true
+disableSwitchActive: true
+executionAllowedNow: false
+executionStarted: false
+startEndpointContacted: false
+opencodeStarted: false
+runnerExecutionEnabled: false
+opencodeExecutionEnabled: false
+globalDisableActive: true
+effectiveDisableReason: EXECUTION_DISABLED_GLOBAL
+effectiveDisableScope: GLOBAL
+
+Conclusion:
+FP-MCP-063 PASS.
+
+The dry-run fixture recorder creates an approval-shaped fixture artifact only.
+It does not create real approval evidence.
+It does not make approval usable for execution.
+It does not mark human approval as recorded.
+It does not enable execution.
+It does not contact the runner start endpoint.
+It does not start OpenCode.
