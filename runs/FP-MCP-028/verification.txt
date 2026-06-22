@@ -1,0 +1,124 @@
+FP-MCP-028 Verification
+
+Date:
+2026-06-22
+
+Packet:
+FP-MCP-028 — Request Artifact Commit Lifecycle Fix
+
+Verification result:
+PASS
+
+Main ForgePilot runner commit:
+6171dc9 Fix runner request artifact lifecycle validation
+
+MCP bridge commit:
+f8e4146 Fix request artifact lifecycle validation
+
+Request artifact used:
+runs/FP-MCP-027/opencode-requests/REQ-20260619T212214986Z-a283929e.json
+
+Request id:
+REQ-20260619T212214986Z-a283929e
+
+Lifecycle evidence:
+
+creationCommit:
+10b92ae
+
+artifactCommit:
+2ae7666
+
+currentCommit:
+6171dc9
+
+creationCommitExists:
+true
+
+artifactCommitExists:
+true
+
+creationCommitAncestorOfArtifactCommit:
+true
+
+artifactCommitReachableFromHead:
+true
+
+Local validation result:
+
+eligible:
+true
+
+workingTreeClean:
+true
+
+baseCommitMatches:
+true
+
+runnerContacted:
+false
+
+executionEnabled:
+false
+
+executionStarted:
+false
+
+reasons:
+[]
+
+Remote runner endpoint validation result:
+
+valid:
+true
+
+runnerConfigured:
+true
+
+runnerContacted:
+true
+
+runnerAccepted:
+true
+
+executionEnabled:
+false
+
+executionStarted:
+false
+
+runnerProtocolVersion:
+forgepilot-runner-v1
+
+reasons:
+[]
+
+Safety confirmation:
+
+OpenCode started:
+NO
+
+OpenCode CLI invoked:
+NO
+
+OpenCode API invoked:
+NO
+
+Runner execution enabled:
+NO
+
+Guarded start tool called:
+NO
+
+Shell executed through runner:
+NO
+
+Secrets committed:
+NO
+
+Conclusion:
+
+FP-MCP-028 corrected the request artifact lifecycle contradiction by separating creation commit, artifact admission commit, and current validation commit.
+
+Result:
+PASS
