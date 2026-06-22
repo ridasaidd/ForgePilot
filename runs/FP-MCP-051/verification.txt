@@ -1,0 +1,71 @@
+FP-MCP-051 verification
+
+Result: PASS
+
+Repository state before artifact recording:
+- ForgePilot branch: main
+- ForgePilot commit observed before MCP bridge verification: 056683b
+- ForgePilot working tree: clean
+
+MCP bridge implementation:
+- Repository: forgepilot-chatgpt-mcp
+- Branch: feature/oauth-auth0
+- Commit: 43dda6d
+- Commit message: Add pre-start evidence validation tool
+
+Tool verified:
+- forgepilot_validate_pre_start_evidence
+
+Probe:
+- packetId: FP-MCP-036
+- requestId: REQ-20260622T144553300Z-fbbe8d82
+
+Observed:
+- schemaVersion: FP-MCP-051
+- preStartEvidenceEvaluated: true
+- preStartEvidenceComplete: false
+- preStartEvidenceValid: false
+- executionPermitted: false
+- executionStarted: false
+- startEndpointContacted: false
+- opencodeStarted: false
+- runnerContactedForStart: false
+- requestArtifactValid: true
+- preflightEvaluated: true
+- disableSwitchEvaluated: true
+- disableSwitchActive: true
+- approvalObserved: false
+- approvalAccepted: false
+- artifactHashesPresent: false
+- artifactHashesConsistent: false
+- preStartEvidenceArtifactPresent: false
+- effectiveDisableReason: EXECUTION_DISABLED_GLOBAL
+- effectiveDisableScope: GLOBAL
+- boundaryVersion: FP-MCP-051
+
+Missing evidence:
+- pre-start-evidence-artifact
+- start-approval-observation
+- request-artifact-hash
+
+Reasons:
+- EXECUTION_DISABLED
+- START_ENDPOINT_NOT_CONTACTED
+- OPENCODE_NOT_STARTED
+- EXECUTION_DISABLED_GLOBAL
+- RUNNER_EXECUTION_DISABLED
+- OPENCODE_EXECUTION_DISABLED
+- DISABLE_SWITCH_ACTIVE
+- EXECUTION_NOT_ALLOWED
+- PRE_START_EVIDENCE_INCOMPLETE
+- START_APPROVAL_NOT_OBSERVED
+- ARTIFACT_HASH_MISSING
+- PRE_START_EVIDENCE_INVALID
+
+Non-execution boundary confirmed:
+- No evidence creation performed by validator.
+- Runner start endpoint was not contacted.
+- OpenCode was not started.
+- Execution was not permitted.
+
+Conclusion: PASS
