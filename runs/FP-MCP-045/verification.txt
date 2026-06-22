@@ -1,0 +1,54 @@
+FP-MCP-045 verification
+
+RESULT: PASS
+
+Verified repository state:
+repo: ForgePilot
+branch: main
+commit: 1c071f9
+workingTreeClean: true
+
+Verified fixture evidence:
+- runs/FP-MCP-045/disable-scope-fixtures/01-packet-context-global-precedence.json
+- runs/FP-MCP-045/disable-scope-fixtures/02-request-context-global-precedence.json
+- runs/FP-MCP-045/disable-scope-fixtures/03-model-context-disallowed-name-global-precedence.json
+- runs/FP-MCP-045/disable-scope-fixtures/04-run-mode-context-disallowed-name-global-precedence.json
+- runs/FP-MCP-045/disable-scope-fixtures/05-packet-only-context-global-precedence.json
+- runs/FP-MCP-045/disable-scope-fixtures/README.md
+- runs/FP-MCP-045/disable-scope-test-aggregate.json
+
+Final disable switch probe:
+schemaVersion: FP-MCP-044
+packetId: FP-MCP-045
+requestId: REQ-20260622T171210000Z-00000001
+modelId: deepseek-v4-pro-high
+runMode: DESIGN_ONLY
+disableSwitchStatusEvaluated: true
+disableSwitchDefined: true
+disableSwitchActive: true
+executionAllowedNow: false
+executionStarted: false
+startEndpointContacted: false
+opencodeStarted: false
+runnerExecutionEnabled: false
+opencodeExecutionEnabled: false
+globalDisableActive: true
+effectiveDisableReason: EXECUTION_DISABLED_GLOBAL
+effectiveDisableScope: GLOBAL
+reasons:
+- EXECUTION_DISABLED_GLOBAL
+- RUNNER_EXECUTION_DISABLED
+- OPENCODE_EXECUTION_DISABLED
+- DISABLE_SWITCH_ACTIVE
+- EXECUTION_NOT_ALLOWED
+
+Boundary assertions:
+executionAllowedNow: false
+executionStarted: false
+startEndpointContacted: false
+opencodeStarted: false
+runnerExecutionEnabled: false
+opencodeExecutionEnabled: false
+
+Conclusion:
+FP-MCP-045 passed. Scoped disable-switch context did not override the active global disable switch. Execution remains disabled.
