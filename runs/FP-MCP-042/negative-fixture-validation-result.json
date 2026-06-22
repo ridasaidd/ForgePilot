@@ -1,0 +1,301 @@
+{
+  "schemaVersion": "FP-MCP-042",
+  "negativeApprovalFixturesCreated": true,
+  "negativeApprovalFixturesValidated": true,
+  "fixtureCount": 11,
+  "allNegativeFixturesRejected": true,
+  "allExpectedReasonsPresent": true,
+  "usableApprovalCreated": false,
+  "humanApprovalRecorded": false,
+  "executionAllowedNow": false,
+  "executionStarted": false,
+  "startEndpointContacted": false,
+  "opencodeStarted": false,
+  "approvalCreated": false,
+  "approvalMutated": false,
+  "expectedScope": {
+    "packetId": "FP-MCP-042",
+    "requestId": "REQ-FP-MCP-042-NEGATIVE-FIXTURE",
+    "modelId": "qwen-3.7-max",
+    "runMode": "DESIGN_ONLY",
+    "repoCommit": "d1e2c4a",
+    "branch": "main"
+  },
+  "fixtureCommit": "3c27101",
+  "validatorBoundaryVersion": "FP-MCP-041",
+  "statusSource": "ForgePilot human approval negative fixture validation",
+  "results": [
+    {
+      "fixtureName": "missing-required-fields",
+      "approvalId": "APPROVAL-20260622T000000001Z-a0000001",
+      "checkedAt": "2026-06-22T16:31:39.879Z",
+      "approvalValid": false,
+      "approvalUsableForExecution": false,
+      "approvalCreated": false,
+      "approvalMutated": false,
+      "humanApprovalRecorded": false,
+      "executionAllowedNow": false,
+      "executionStarted": false,
+      "startEndpointContacted": false,
+      "opencodeStarted": false,
+      "expectedReasons": [
+        "APPROVAL_SCOPE_MISSING",
+        "APPROVAL_TEXT_MISSING",
+        "APPROVAL_PRECONDITIONS_MISSING",
+        "APPROVAL_EXPIRATION_INVALID"
+      ],
+      "actualReasons": [
+        "APPROVAL_STATE_INVALID",
+        "APPROVAL_KIND_INVALID",
+        "APPROVED_ACTION_INVALID",
+        "APPROVAL_SCOPE_MISSING",
+        "APPROVAL_SCOPE_TOO_BROAD",
+        "APPROVAL_SCOPE_MISMATCH",
+        "APPROVAL_COMMIT_BINDING_INVALID",
+        "APPROVAL_REQUEST_BINDING_INVALID",
+        "APPROVAL_MODEL_BINDING_INVALID",
+        "APPROVAL_RUN_MODE_BINDING_INVALID",
+        "APPROVAL_BRANCH_BINDING_INVALID",
+        "APPROVAL_TEXT_MISSING",
+        "APPROVAL_PRECONDITIONS_MISSING",
+        "APPROVAL_EXPIRATION_INVALID",
+        "APPROVAL_SINGLE_USE_INVALID",
+        "APPROVAL_REVOKED",
+        "APPROVAL_CONSUMED"
+      ],
+      "expectedReasonPresent": true
+    },
+    {
+      "fixtureName": "invalid-approval-state",
+      "approvalId": "APPROVAL-20260622T000000002Z-a0000002",
+      "checkedAt": "2026-06-22T16:31:47.051Z",
+      "approvalValid": false,
+      "approvalUsableForExecution": false,
+      "approvalCreated": false,
+      "approvalMutated": false,
+      "humanApprovalRecorded": false,
+      "executionAllowedNow": false,
+      "executionStarted": false,
+      "startEndpointContacted": false,
+      "opencodeStarted": false,
+      "expectedReasons": [
+        "APPROVAL_STATE_INVALID"
+      ],
+      "actualReasons": [
+        "APPROVAL_STATE_INVALID"
+      ],
+      "expectedReasonPresent": true
+    },
+    {
+      "fixtureName": "expired-approval",
+      "approvalId": "APPROVAL-20260622T000000003Z-a0000003",
+      "checkedAt": "2026-06-22T16:32:05.315Z",
+      "approvalValid": false,
+      "approvalUsableForExecution": false,
+      "approvalCreated": false,
+      "approvalMutated": false,
+      "humanApprovalRecorded": false,
+      "executionAllowedNow": false,
+      "executionStarted": false,
+      "startEndpointContacted": false,
+      "opencodeStarted": false,
+      "expectedReasons": [
+        "APPROVAL_EXPIRED"
+      ],
+      "actualReasons": [
+        "APPROVAL_EXPIRED"
+      ],
+      "expectedReasonPresent": true
+    },
+    {
+      "fixtureName": "revoked-approval",
+      "approvalId": "APPROVAL-20260622T000000004Z-a0000004",
+      "checkedAt": "2026-06-22T16:32:16.032Z",
+      "approvalValid": false,
+      "approvalUsableForExecution": false,
+      "approvalCreated": false,
+      "approvalMutated": false,
+      "humanApprovalRecorded": false,
+      "executionAllowedNow": false,
+      "executionStarted": false,
+      "startEndpointContacted": false,
+      "opencodeStarted": false,
+      "expectedReasons": [
+        "APPROVAL_REVOKED"
+      ],
+      "actualReasons": [
+        "APPROVAL_STATE_NOT_RECORDED",
+        "APPROVAL_REVOKED"
+      ],
+      "expectedReasonPresent": true
+    },
+    {
+      "fixtureName": "consumed-approval",
+      "approvalId": "APPROVAL-20260622T000000005Z-a0000005",
+      "checkedAt": "2026-06-22T16:32:23.362Z",
+      "approvalValid": false,
+      "approvalUsableForExecution": false,
+      "approvalCreated": false,
+      "approvalMutated": false,
+      "humanApprovalRecorded": false,
+      "executionAllowedNow": false,
+      "executionStarted": false,
+      "startEndpointContacted": false,
+      "opencodeStarted": false,
+      "expectedReasons": [
+        "APPROVAL_CONSUMED"
+      ],
+      "actualReasons": [
+        "APPROVAL_STATE_NOT_RECORDED",
+        "APPROVAL_CONSUMED"
+      ],
+      "expectedReasonPresent": true
+    },
+    {
+      "fixtureName": "scope-mismatch-request",
+      "approvalId": "APPROVAL-20260622T000000006Z-a0000006",
+      "checkedAt": "2026-06-22T16:32:43.870Z",
+      "approvalValid": false,
+      "approvalUsableForExecution": false,
+      "approvalCreated": false,
+      "approvalMutated": false,
+      "humanApprovalRecorded": false,
+      "executionAllowedNow": false,
+      "executionStarted": false,
+      "startEndpointContacted": false,
+      "opencodeStarted": false,
+      "expectedReasons": [
+        "APPROVAL_REQUEST_BINDING_INVALID",
+        "APPROVAL_SCOPE_MISMATCH"
+      ],
+      "actualReasons": [
+        "APPROVAL_SCOPE_MISMATCH",
+        "APPROVAL_REQUEST_BINDING_INVALID"
+      ],
+      "expectedReasonPresent": true
+    },
+    {
+      "fixtureName": "scope-too-broad",
+      "approvalId": "APPROVAL-20260622T000000007Z-a0000007",
+      "checkedAt": "2026-06-22T16:32:51.955Z",
+      "approvalValid": false,
+      "approvalUsableForExecution": false,
+      "approvalCreated": false,
+      "approvalMutated": false,
+      "humanApprovalRecorded": false,
+      "executionAllowedNow": false,
+      "executionStarted": false,
+      "startEndpointContacted": false,
+      "opencodeStarted": false,
+      "expectedReasons": [
+        "APPROVAL_SCOPE_TOO_BROAD",
+        "APPROVAL_COMMIT_BINDING_INVALID"
+      ],
+      "actualReasons": [
+        "APPROVAL_SCOPE_TOO_BROAD",
+        "APPROVAL_SCOPE_MISMATCH",
+        "APPROVAL_COMMIT_BINDING_INVALID",
+        "APPROVAL_REQUEST_BINDING_INVALID"
+      ],
+      "expectedReasonPresent": true
+    },
+    {
+      "fixtureName": "wrong-model",
+      "approvalId": "APPROVAL-20260622T000000008Z-a0000008",
+      "checkedAt": "2026-06-22T16:33:03.546Z",
+      "approvalValid": false,
+      "approvalUsableForExecution": false,
+      "approvalCreated": false,
+      "approvalMutated": false,
+      "humanApprovalRecorded": false,
+      "executionAllowedNow": false,
+      "executionStarted": false,
+      "startEndpointContacted": false,
+      "opencodeStarted": false,
+      "expectedReasons": [
+        "APPROVAL_MODEL_BINDING_INVALID",
+        "APPROVAL_SCOPE_MISMATCH"
+      ],
+      "actualReasons": [
+        "APPROVAL_SCOPE_MISMATCH",
+        "APPROVAL_MODEL_BINDING_INVALID"
+      ],
+      "expectedReasonPresent": true
+    },
+    {
+      "fixtureName": "wrong-run-mode",
+      "approvalId": "APPROVAL-20260622T000000009Z-a0000009",
+      "checkedAt": "2026-06-22T16:33:12.864Z",
+      "approvalValid": false,
+      "approvalUsableForExecution": false,
+      "approvalCreated": false,
+      "approvalMutated": false,
+      "humanApprovalRecorded": false,
+      "executionAllowedNow": false,
+      "executionStarted": false,
+      "startEndpointContacted": false,
+      "opencodeStarted": false,
+      "expectedReasons": [
+        "APPROVAL_RUN_MODE_BINDING_INVALID",
+        "APPROVAL_SCOPE_MISMATCH"
+      ],
+      "actualReasons": [
+        "APPROVAL_SCOPE_MISMATCH",
+        "APPROVAL_RUN_MODE_BINDING_INVALID"
+      ],
+      "expectedReasonPresent": true
+    },
+    {
+      "fixtureName": "wrong-commit",
+      "approvalId": "APPROVAL-20260622T000000010Z-a0000010",
+      "checkedAt": "2026-06-22T16:33:20.384Z",
+      "approvalValid": false,
+      "approvalUsableForExecution": false,
+      "approvalCreated": false,
+      "approvalMutated": false,
+      "humanApprovalRecorded": false,
+      "executionAllowedNow": false,
+      "executionStarted": false,
+      "startEndpointContacted": false,
+      "opencodeStarted": false,
+      "expectedReasons": [
+        "APPROVAL_COMMIT_BINDING_INVALID",
+        "APPROVAL_SCOPE_MISMATCH"
+      ],
+      "actualReasons": [
+        "APPROVAL_SCOPE_MISMATCH",
+        "APPROVAL_COMMIT_BINDING_INVALID"
+      ],
+      "expectedReasonPresent": true
+    },
+    {
+      "fixtureName": "secret-bearing-approval",
+      "approvalId": "APPROVAL-20260622T000000011Z-a0000011",
+      "checkedAt": "2026-06-22T16:33:26.418Z",
+      "approvalValid": false,
+      "approvalUsableForExecution": false,
+      "approvalCreated": false,
+      "approvalMutated": false,
+      "humanApprovalRecorded": false,
+      "executionAllowedNow": false,
+      "executionStarted": false,
+      "startEndpointContacted": false,
+      "opencodeStarted": false,
+      "expectedReasons": [
+        "APPROVAL_SECRET_BOUNDARY_VIOLATION"
+      ],
+      "actualReasons": [
+        "APPROVAL_SECRET_BOUNDARY_VIOLATION"
+      ],
+      "expectedReasonPresent": true
+    }
+  ],
+  "safety": {
+    "realSecretsCommitted": false,
+    "secretBearingFixtureUsesFakeMarkerOnly": true,
+    "runnerExecutionEnabled": false,
+    "opencodeExecutionEnabled": false,
+    "runnerStartEndpointContacted": false,
+    "openCodeStarted": false
+  }
+}
