@@ -1,0 +1,195 @@
+FP-MCP-030 Verification
+
+Date:
+2026-06-22
+
+Packet:
+FP-MCP-030 — Guarded Start Rejection Classification
+
+Verification result:
+PASS
+
+Packet commit:
+21ab4fe Add FP-MCP-030 guarded start rejection classification
+
+MCP bridge implementation commit:
+00c24fa Preserve runner start rejection reasons
+
+Request artifact commit:
+abc3036 Record FP-MCP-030 request artifact
+
+Request id:
+REQ-20260622T121501538Z-52d997e0
+
+Request artifact path:
+runs/FP-MCP-030/opencode-requests/REQ-20260622T121501538Z-52d997e0.json
+
+Request artifact SHA-256:
+870ca9b4947b0448882b69e4e378d95e6d2740831d9826aaa1a1adf45751f969
+
+Lifecycle evidence:
+
+creationCommit:
+21ab4fe
+
+artifactCommit:
+abc3036
+
+currentCommit:
+abc3036
+
+creationCommitExists:
+true
+
+artifactCommitExists:
+true
+
+creationCommitAncestorOfArtifactCommit:
+true
+
+artifactCommitReachableFromHead:
+true
+
+Direct runner validation result:
+
+valid:
+true
+
+accepted:
+true
+
+runnerConfigured:
+true
+
+runnerContacted:
+true
+
+executionEnabled:
+false
+
+executionStarted:
+false
+
+runnerProtocolVersion:
+forgepilot-runner-v1
+
+boundaryVersion:
+FP-MCP-024
+
+reasons:
+[]
+
+Guarded start result:
+
+started:
+false
+
+accepted:
+false
+
+approvalAccepted:
+true
+
+runnerConfigured:
+true
+
+runnerContacted:
+true
+
+startEndpointContacted:
+true
+
+executionStarted:
+false
+
+localValidationPassed:
+true
+
+remoteValidationPassed:
+true
+
+preStartStateRecorded:
+true
+
+postStartStateRecorded:
+true
+
+runnerRunId:
+null
+
+runnerProtocolVersion:
+forgepilot-runner-v1
+
+reasons:
+- EXECUTION_NOT_IMPLEMENTED
+
+Start state artifact:
+runs/FP-MCP-030/qwen-3.7-max-DESIGN_ONLY/remote-runner-start-state.json
+
+Start state artifact summary:
+
+status:
+RUNNER_REJECTED
+
+runnerContacted:
+true
+
+executionStarted:
+false
+
+runnerRunId:
+null
+
+reasons:
+- EXECUTION_NOT_IMPLEMENTED
+
+Classification result:
+
+Before FP-MCP-030:
+RUNNER_PROTOCOL_ERROR and RUNNER_REJECTED_REQUEST were emitted for the structured non-execution response.
+
+After FP-MCP-030:
+EXECUTION_NOT_IMPLEMENTED is preserved as the specific runner non-execution reason.
+
+RUNNER_PROTOCOL_ERROR emitted for structured rejection:
+NO
+
+RUNNER_REJECTED_REQUEST emitted for structured rejection:
+NO
+
+Safety confirmation:
+
+OpenCode started:
+NO
+
+OpenCode CLI invoked:
+NO
+
+OpenCode API invoked:
+NO
+
+Runner execution enabled:
+NO
+
+Shell executed through runner:
+NO
+
+Secrets committed:
+NO
+
+Runner publicly exposed:
+NO
+
+Guarded start tool called:
+YES, exactly once
+
+Conclusion:
+
+FP-MCP-030 satisfied the classification objective.
+
+The bridge now preserves a structured runner non-execution rejection reason without misclassifying the response as a protocol error.
+
+Execution remained disabled and OpenCode was not started.
+
+Result:
+PASS
