@@ -1,0 +1,116 @@
+FP-MCP-041 Verification
+
+Result: PASS
+
+Packet:
+- FP-MCP-041 — Human Approval Record Validation Tool
+
+ForgePilot commit:
+- Packet commit: 53fe260
+- Verification base commit: 53fe260
+
+MCP bridge implementation commit:
+- ec02c85
+
+Tool:
+- forgepilot_validate_human_approval_record
+
+Probe:
+- packetId: FP-MCP-041
+- approvalId: APPROVAL-20260622T000000000Z-abcdef12
+- approvalPath: runs/FP-MCP-041/approvals/APPROVAL-20260622T000000000Z-abcdef12.json
+
+Expected scope:
+- packetId: FP-MCP-041
+- requestId: REQ-20260622T144553300Z-fbbe8d82
+- modelId: qwen-3.7-max
+- runMode: DESIGN_ONLY
+- repoCommit: 53fe260
+- branch: main
+
+Observed validation result:
+- schemaVersion: FP-MCP-041
+- approvalValidationEvaluated: true
+- approvalValid: false
+- approvalUsableForExecution: false
+- approvalCreated: false
+- approvalMutated: false
+- humanApprovalRecorded: false
+- executionAllowedNow: false
+- executionStarted: false
+- startEndpointContacted: false
+- opencodeStarted: false
+- checkedAt: 2026-06-22T16:17:45.729Z
+- reasons:
+  - APPROVAL_ARTIFACT_MISSING
+
+Observed checks:
+- pathSafe: true
+- artifactExists: false
+- secretBoundaryValid: true
+- artifactCommitted: false
+
+Important note:
+- An earlier exploratory probe used an invalid approval suffix and correctly returned APPROVAL_ID_INVALID plus APPROVAL_ARTIFACT_MISSING.
+- The verification probe used a valid-looking missing approval ID to isolate the expected missing-artifact behavior.
+
+Live ForgePilot state:
+- repo: ForgePilot
+- branch: main
+- commit: 53fe260
+- workingTreeClean: true
+
+Live runner state:
+- runnerConfigured: true
+- runnerReachable: true
+- runnerProtocolVersion: forgepilot-runner-v1
+- runnerVersion: 0.1.0-fp-mcp-024
+- executionEnabled: false
+- supportedOperations:
+  - capabilities
+  - validate-request
+- supportedRunModes:
+  - DESIGN_ONLY
+- allowedModels:
+  - deepseek-v4-pro-high
+  - qwen-3.7-max
+
+OpenCode state:
+- opencodeDiscoveryConfigured: true
+- opencodeExecutionEnabled: false
+- liveOpenCodeChecked: false
+- executionDisabledReason: FP-MCP-002 is read-only discovery only. Executor start tools are not implemented.
+
+Safety confirmation:
+- Approval artifact created: NO
+- Approval artifact mutated: NO
+- Human approval recorded: NO
+- OpenCode started: NO
+- OpenCode CLI invoked: NO
+- OpenCode API invoked: NO
+- Runner execution enabled: NO
+- Runner start endpoint contacted: NO
+- Shell executed through runner: NO
+- Secrets committed: NO
+- Runner publicly exposed: NO
+- Execution artifacts created: NO
+
+Scope confirmation:
+- No real approval artifact was created.
+- No approval artifact was mutated.
+- Human approval gate was not satisfied.
+- Execution was not enabled.
+- FORGEPILOT_RUNNER_EXECUTION_ENABLED was not set to true.
+- /runner/start-run was not called.
+- Guarded start MCP tool was not called.
+- Dry-run writer tool was not called.
+- OpenCode was not started.
+- Model providers were not contacted.
+- Runner shell execution was not added.
+- SQLite was not mutated.
+- Routing was not changed.
+- Private runner exposure was not changed.
+- No secrets were committed.
+
+Final classification:
+PASS
