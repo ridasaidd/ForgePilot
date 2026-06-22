@@ -1,0 +1,119 @@
+FP-MCP-038 Verification
+
+Result: PASS
+
+Packet:
+- FP-MCP-038 — Execution Enablement Policy Contract
+
+ForgePilot commits:
+- Packet commit: 981bc69
+- Policy document commit: 07b5776
+- Verification base commit: 07b5776
+
+Artifacts:
+- packets/FP-MCP-038.md
+- docs/execution-enablement-policy.md
+- runs/FP-MCP-038/executor-result.md
+- runs/FP-MCP-038/verification.txt
+
+Policy artifact:
+- docs/execution-enablement-policy.md
+
+Policy model:
+- Contract completeness
+- Dry-run evidence
+- Verification evidence
+- Repository state
+- Runner state
+- OpenCode boundary state
+- Secret boundary
+- Network boundary
+- Human approval
+- Rollback / disable path
+- Audit / admission path
+
+Current classification:
+- executionEnablementPolicyDefined: true
+- executionAllowedNow: false
+- runnerExecutionEnabled: false
+- opencodeExecutionEnabled: false
+- executionStarted: false
+
+Current reasons:
+- EXECUTION_POLICY_DEFINED_ONLY
+- RUNNER_EXECUTION_DISABLED
+- OPENCODE_EXECUTION_DISABLED
+- HUMAN_APPROVAL_NOT_RECORDED
+- RUNNER_EXECUTION_CAPABILITY_NOT_PRESENT
+
+Observed ForgePilot state:
+- repo: ForgePilot
+- branch: main
+- commit: 07b5776
+- workingTreeClean: true
+
+Observed runner state:
+- runnerConfigured: true
+- runnerReachable: true
+- runnerProtocolVersion: forgepilot-runner-v1
+- runnerVersion: 0.1.0-fp-mcp-024
+- executionEnabled: false
+- supportedOperations:
+  - capabilities
+  - validate-request
+- supportedRunModes:
+  - DESIGN_ONLY
+- allowedModels:
+  - deepseek-v4-pro-high
+  - qwen-3.7-max
+
+Observed OpenCode state:
+- opencodeDiscoveryConfigured: true
+- opencodeExecutionEnabled: false
+- liveOpenCodeChecked: false
+- executionDisabledReason: FP-MCP-002 is read-only discovery only. Executor start tools are not implemented.
+
+Safety confirmation:
+- OpenCode started: NO
+- OpenCode CLI invoked: NO
+- OpenCode API invoked: NO
+- Runner execution enabled: NO
+- Runner start endpoint contacted: NO
+- Shell executed through runner: NO
+- Real execution artifacts created: NO
+- Secrets committed: NO
+- Runner publicly exposed: NO
+
+Scope confirmation:
+- Execution was not enabled.
+- FORGEPILOT_RUNNER_EXECUTION_ENABLED was not set to true.
+- /runner/start-run was not called.
+- Guarded start MCP tool was not called.
+- Dry-run writer tool was not called.
+- OpenCode was not started.
+- Model providers were not contacted.
+- Runner shell execution was not added.
+- SQLite was not mutated.
+- Routing was not changed.
+- Private runner exposure was not changed.
+- No secrets were committed.
+
+Acceptance result:
+- packet committed: PASS
+- policy document committed: PASS
+- all required policy gates defined: PASS
+- non-authorization language present: PASS
+- explicit human approval required: PASS
+- runner execution capability required: PASS
+- OpenCode boundary satisfaction required: PASS
+- secret boundary satisfaction required: PASS
+- network boundary satisfaction required: PASS
+- rollback / disable path required: PASS
+- audit / admission path required: PASS
+- current classification executionAllowedNow false: PASS
+- runner execution remains disabled: PASS
+- OpenCode execution remains disabled: PASS
+- no execution attempted: PASS
+
+Final classification:
+PASS
