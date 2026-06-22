@@ -1,0 +1,35 @@
+FP-MCP-047 Verification
+
+Result: PASS
+
+Verified conditions:
+
+- Packet FP-MCP-047 was committed to ForgePilot main before bridge implementation.
+- MCP bridge implementation was committed on feature/oauth-auth0.
+- Bridge commit: f9c4b42 Block start requests with disable switch.
+- Start-request tool returned boundaryVersion FP-MCP-047.
+- started was false.
+- accepted was false.
+- runnerContacted was false.
+- startEndpointContacted was false.
+- executionStarted was false.
+- disableSwitchStatusEvaluated was true.
+- disableSwitchActive was true.
+- effectiveDisableReason was EXECUTION_DISABLED_GLOBAL.
+- effectiveDisableScope was GLOBAL.
+- reasons included START_REQUEST_BLOCKED_BY_DISABLE_SWITCH.
+- localValidationPassed was true, showing the disable switch blocked after local artifact validation rather than because the request artifact was malformed.
+- remoteValidationPassed was false.
+- preStartStateRecorded was false.
+- postStartStateRecorded was false.
+
+Non-execution boundary:
+
+- OpenCode was not started.
+- Runner start endpoint was not contacted.
+- Execution remained disabled.
+- The result was observational and structured.
+
+Final status:
+
+FP-MCP-047 is eligible to record verification artifacts.
