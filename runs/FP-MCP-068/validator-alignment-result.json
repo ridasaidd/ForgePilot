@@ -1,0 +1,52 @@
+{
+  "packetId": "FP-MCP-068",
+  "title": "Real Human Approval Evidence Validator Alignment",
+  "bridgeCommit": "548b5d4",
+  "forgePilotCommitBeforeArtifacts": "de875c2",
+  "forgePilotWorkingTreeCleanBeforeArtifacts": true,
+  "observedValidatorProbe": {
+    "source": "live MCP probe immediately after patch and before bridge commit",
+    "schemaVersion": "FP-MCP-068",
+    "validatorBoundaryVersion": "FP-MCP-068",
+    "approvalEvidenceContractVersion": "FP-MCP-066",
+    "approvalValidationEvaluated": true,
+    "approvalEvidenceValid": false,
+    "approvalUsableForExecution": false,
+    "humanApprovalRecorded": true,
+    "executionAllowedNow": false,
+    "executionStarted": false,
+    "startEndpointContacted": false,
+    "opencodeStarted": false,
+    "approvalId": "APPROVAL-20260623T092925828Z-8dcf0b9d",
+    "approvalPath": "runs/FP-MCP-067/approvals/APPROVAL-20260623T092925828Z-8dcf0b9d.json",
+    "checks": {
+      "approvalEvidenceTypeValid": true,
+      "artifactTypeValid": true,
+      "scopeMatchesExpected": true,
+      "canonicalApprovalTextValid": true,
+      "preconditionsPresent": true,
+      "preconditionsValid": true,
+      "artifactCommitted": true,
+      "expiresAtValid": false,
+      "expirationValid": false
+    },
+    "reasons": [
+      "APPROVAL_EXPIRED"
+    ]
+  },
+  "postCommitProbe": {
+    "attempted": true,
+    "result": "blocked_before_MCP_tool_by_platform_safety_layer",
+    "note": "The same validator probe succeeded immediately before bridge commit; the recorded evidence uses that live MCP result plus the user-provided bridge commit SHA."
+  },
+  "acceptance": {
+    "textFalseNegativeRemoved": true,
+    "preconditionsFalseNegativeRemoved": true,
+    "expiredApprovalStillFailsClosed": true,
+    "realApprovalArtifactNotSelfAuthorizing": true,
+    "executionNotEnabled": true,
+    "startEndpointNotContacted": true,
+    "opencodeNotStarted": true
+  },
+  "generatedAt": "2026-06-23T09:45:32Z"
+}

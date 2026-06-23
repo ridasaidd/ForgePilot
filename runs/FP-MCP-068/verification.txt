@@ -1,0 +1,108 @@
+# FP-MCP-068 — Verification
+
+Generated: 2026-06-23T09:45:32Z
+
+## Repository Status
+
+ForgePilot status after packet commit, before FP-MCP-068 verification artifacts:
+
+```text
+branch: main
+commit: de875c2
+workingTreeClean: true
+```
+
+Bridge commit reported by operator:
+
+```text
+branch: feature/oauth-auth0
+commit: 548b5d4
+```
+
+## Validator Alignment Probe
+
+Target approval artifact:
+
+```text
+runs/FP-MCP-067/approvals/APPROVAL-20260623T092925828Z-8dcf0b9d.json
+```
+
+Expected scope:
+
+```text
+packetId: FP-MCP-036
+requestId: REQ-20260622T144553300Z-fbbe8d82
+modelId: qwen-3.7-max
+runMode: DESIGN_ONLY
+repoCommit: 40b53dc
+branch: main
+```
+
+Observed successful live MCP result after patch:
+
+```text
+schemaVersion: FP-MCP-068
+validatorBoundaryVersion: FP-MCP-068
+approvalEvidenceContractVersion: FP-MCP-066
+approvalValidationEvaluated: true
+approvalEvidenceTypeValid: true
+artifactTypeValid: true
+scopeMatchesExpected: true
+canonicalApprovalTextValid: true
+preconditionsPresent: true
+preconditionsValid: true
+artifactCommitted: true
+humanApprovalRecorded: true
+approvalEvidenceValid: false
+approvalUsableForExecution: false
+```
+
+Remaining rejection reason:
+
+```text
+APPROVAL_EXPIRED
+```
+
+## Removed False Negatives
+
+Before FP-MCP-068, the validator rejected the real approval artifact for:
+
+```text
+APPROVAL_TEXT_INVALID
+APPROVAL_PRECONDITIONS_MISSING
+```
+
+After FP-MCP-068, those reasons are gone.
+
+## Expected Fail-Closed Behavior
+
+The artifact expired at:
+
+```text
+2026-06-23T09:43:00.000Z
+```
+
+The validator checked it after expiration and correctly returned:
+
+```text
+APPROVAL_EXPIRED
+```
+
+## Safety Boundary
+
+The verification did not enable execution.
+
+```text
+executionAllowedNow: false
+executionStarted: false
+startEndpointContacted: false
+opencodeStarted: false
+```
+
+## Post-Commit Probe Note
+
+A post-bridge-commit repeat probe was attempted but blocked by the platform safety layer before reaching the MCP tool. This is recorded as an observation, not hidden. The successful validator evidence was captured immediately before the bridge commit, and the bridge commit was reported by the operator as:
+
+```text
+548b5d4 Align real approval validator for FP-MCP-068
+```
