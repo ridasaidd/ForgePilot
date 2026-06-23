@@ -1,0 +1,71 @@
+FP-MCP-069 verification
+
+Repository status before final artifacts:
+- ForgePilot commit after fresh approval evidence commit: d8c9cab
+- workingTreeClean: true
+
+Fresh approval artifact:
+- approvalId: APPROVAL-20260623T095047127Z-6d1ed2e9
+- path: runs/FP-MCP-069/approvals/APPROVAL-20260623T095047127Z-6d1ed2e9.json
+- expiresAt: 2026-06-23T10:03:00.000Z
+
+Fresh approval pre-commit validation:
+- approvalEvidenceTypeValid: true
+- artifactTypeValid: true
+- scopeMatchesExpected: true
+- canonicalApprovalTextValid: true
+- preconditionsValid: true
+- expirationValid: true
+- artifactCommitted: false
+- approvalEvidenceValid: false
+- approvalUsableForExecution: false
+- reasons:
+  - APPROVAL_EVIDENCE_ARTIFACT_UNCOMMITTED
+  - APPROVAL_ARTIFACT_UNCOMMITTED
+
+Fresh approval post-commit validation:
+- schemaVersion: FP-MCP-068
+- validatorBoundaryVersion: FP-MCP-068
+- approvalEvidenceContractVersion: FP-MCP-066
+- checkedAt: 2026-06-23T09:54:51.781Z
+- approvalEvidenceValid: true
+- approvalValid: true
+- approvalUsableForExecution: true
+- humanApprovalRecorded: true
+- artifactCommitted: true
+- expirationValid: true
+- notConsumed: true
+- notRevoked: true
+- notQuarantined: true
+- executionAllowedNow: false
+- executionStarted: false
+- startEndpointContacted: false
+- opencodeStarted: false
+- reasons: []
+
+Expired approval validation:
+- approvalId: APPROVAL-20260623T092925828Z-8dcf0b9d
+- path: runs/FP-MCP-067/approvals/APPROVAL-20260623T092925828Z-8dcf0b9d.json
+- checkedAt: 2026-06-23T09:55:02.902Z
+- approvalEvidenceValid: false
+- approvalValid: false
+- approvalUsableForExecution: false
+- artifactCommitted: true
+- expirationValid: false
+- reason:
+  - APPROVAL_EXPIRED
+
+Safety boundary:
+- executionAllowedNow: false
+- executionStarted: false
+- startEndpointContacted: false
+- opencodeStarted: false
+- approvalConsumed: false
+
+Acceptance result:
+- expired approval rejected for expiration: PASS
+- fresh approval rejected while uncommitted: PASS
+- fresh approval accepted after commit: PASS
+- validator-derived approval usability observed: PASS
+- recorder did not self-authorize: PASS
+- execution remained disabled: PASS

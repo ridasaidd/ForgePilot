@@ -1,0 +1,138 @@
+{
+  "packetId": "FP-MCP-069",
+  "title": "Human Approval Expiration and Fresh Approval Revalidation",
+  "forgePilotCommitBeforeFinalArtifacts": "d8c9cab",
+  "workingTreeCleanBeforeFinalArtifacts": true,
+  "freshApproval": {
+    "approvalId": "APPROVAL-20260623T095047127Z-6d1ed2e9",
+    "path": "runs/FP-MCP-069/approvals/APPROVAL-20260623T095047127Z-6d1ed2e9.json",
+    "createdByPacket": "FP-MCP-069",
+    "recordedByBoundaryVersion": "FP-MCP-067",
+    "recordedAt": "2026-06-23T09:50:47.109Z",
+    "expiresAt": "2026-06-23T10:03:00.000Z",
+    "recordingResult": {
+      "realHumanApprovalEvidenceRecorded": true,
+      "humanApprovalRecorded": true,
+      "approvalCreated": true,
+      "approvalMutated": false,
+      "approvalUsableForExecution": false,
+      "approvalUsabilityDerivedByRecorder": false,
+      "approvalUsabilityRequiresValidation": true,
+      "approvalConsumed": false,
+      "approvalRevoked": false,
+      "approvalQuarantined": false,
+      "executionAllowedNow": false,
+      "executionStarted": false,
+      "startEndpointContacted": false,
+      "opencodeStarted": false
+    },
+    "preCommitValidation": {
+      "approvalEvidenceTypeValid": true,
+      "artifactTypeValid": true,
+      "scopeMatchesExpected": true,
+      "canonicalApprovalTextValid": true,
+      "preconditionsValid": true,
+      "expirationValid": true,
+      "notConsumed": true,
+      "notRevoked": true,
+      "notQuarantined": true,
+      "artifactCommitted": false,
+      "approvalEvidenceValid": false,
+      "approvalUsableForExecution": false,
+      "reasons": [
+        "APPROVAL_EVIDENCE_ARTIFACT_UNCOMMITTED",
+        "APPROVAL_ARTIFACT_UNCOMMITTED"
+      ]
+    },
+    "postCommitValidation": {
+      "schemaVersion": "FP-MCP-068",
+      "validatorBoundaryVersion": "FP-MCP-068",
+      "approvalEvidenceContractVersion": "FP-MCP-066",
+      "checkedAt": "2026-06-23T09:54:51.781Z",
+      "approvalEvidenceValid": true,
+      "approvalValid": true,
+      "approvalUsableForExecution": true,
+      "humanApprovalRecorded": true,
+      "executionAllowedNow": false,
+      "executionStarted": false,
+      "startEndpointContacted": false,
+      "opencodeStarted": false,
+      "checks": {
+        "approvalEvidenceTypeValid": true,
+        "artifactTypeValid": true,
+        "scopeMatchesExpected": true,
+        "canonicalApprovalTextValid": true,
+        "preconditionsPresent": true,
+        "preconditionsValid": true,
+        "expirationValid": true,
+        "singleUseValid": true,
+        "notRevoked": true,
+        "notConsumed": true,
+        "notQuarantined": true,
+        "commitBindingValid": true,
+        "secretBoundaryValid": true,
+        "artifactCommitted": true
+      },
+      "reasons": []
+    }
+  },
+  "expiredApproval": {
+    "approvalId": "APPROVAL-20260623T092925828Z-8dcf0b9d",
+    "path": "runs/FP-MCP-067/approvals/APPROVAL-20260623T092925828Z-8dcf0b9d.json",
+    "createdByPacket": "FP-MCP-067",
+    "expiresAt": "2026-06-23T09:43:00.000Z",
+    "validation": {
+      "schemaVersion": "FP-MCP-068",
+      "validatorBoundaryVersion": "FP-MCP-068",
+      "approvalEvidenceContractVersion": "FP-MCP-066",
+      "checkedAt": "2026-06-23T09:55:02.902Z",
+      "approvalEvidenceValid": false,
+      "approvalValid": false,
+      "approvalUsableForExecution": false,
+      "humanApprovalRecorded": true,
+      "executionAllowedNow": false,
+      "executionStarted": false,
+      "startEndpointContacted": false,
+      "opencodeStarted": false,
+      "checks": {
+        "approvalEvidenceTypeValid": true,
+        "artifactTypeValid": true,
+        "scopeMatchesExpected": true,
+        "canonicalApprovalTextValid": true,
+        "preconditionsPresent": true,
+        "preconditionsValid": true,
+        "expiresAtValid": false,
+        "expirationValid": false,
+        "artifactCommitted": true
+      },
+      "reasons": [
+        "APPROVAL_EXPIRED"
+      ]
+    }
+  },
+  "scope": {
+    "packetId": "FP-MCP-036",
+    "requestId": "REQ-20260622T144553300Z-fbbe8d82",
+    "modelId": "qwen-3.7-max",
+    "runMode": "DESIGN_ONLY",
+    "repoCommit": "40b53dc",
+    "branch": "main"
+  },
+  "safetyBoundary": {
+    "executionAllowedNow": false,
+    "executionStarted": false,
+    "startEndpointContacted": false,
+    "opencodeStarted": false,
+    "approvalConsumed": false,
+    "approvalRevoked": false,
+    "approvalQuarantined": false
+  },
+  "outcome": {
+    "expiredApprovalRejectedForExpiration": true,
+    "freshApprovalRejectedWhenUncommitted": true,
+    "freshApprovalAcceptedAfterCommit": true,
+    "validatorDerivedFreshApprovalUsability": true,
+    "recorderDidNotSelfAuthorize": true,
+    "executionRemainedDisabled": true
+  }
+}
