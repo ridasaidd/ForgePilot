@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "FP-MCP-067",
+  "boundaryVersion": "FP-MCP-067",
+  "artifactType": "human-approval-evidence",
+  "artifactVersion": "human-approval-evidence-v1",
+  "approvalId": "APPROVAL-20260623T095047127Z-6d1ed2e9",
+  "approvalKind": "EXECUTION_ENABLEMENT",
+  "approvedAction": "ALLOW_ONE_GUARDED_REMOTE_RUNNER_EXECUTION_ATTEMPT",
+  "approvalState": "RECORDED",
+  "fixture": false,
+  "dryRun": false,
+  "humanApprovalRecorded": true,
+  "approvalUsableForExecution": false,
+  "approvalUsabilityDerivedByRecorder": false,
+  "approvalUsabilityRequiresValidation": true,
+  "scope": {
+    "packetId": "FP-MCP-036",
+    "requestId": "REQ-20260622T144553300Z-fbbe8d82",
+    "modelId": "qwen-3.7-max",
+    "runMode": "DESIGN_ONLY",
+    "repoCommit": "40b53dc",
+    "branch": "main"
+  },
+  "canonicalApprovalText": "I approve one guarded ForgePilot remote-runner start attempt for packet FP-MCP-036, request REQ-20260622T144553300Z-fbbe8d82, model qwen-3.7-max, run mode DESIGN_ONLY, repository commit 40b53dc, branch main. This approval is single-use, expires at 2026-06-23T10:03:00.000Z, and does not override the global disable switch or any other ForgePilot safety gate.",
+  "approvalText": "I approve one guarded ForgePilot remote-runner start attempt for packet FP-MCP-036, request REQ-20260622T144553300Z-fbbe8d82, model qwen-3.7-max, run mode DESIGN_ONLY, repository commit 40b53dc, branch main. This approval is single-use, expires at 2026-06-23T10:03:00.000Z, and does not override the global disable switch or any other ForgePilot safety gate.",
+  "approvedBy": {
+    "operatorId": "rida538",
+    "operatorHandle": "@rida538",
+    "operatorEmailHash": null
+  },
+  "createdAt": "2026-06-23T09:50:47.109Z",
+  "expiresAt": "2026-06-23T10:03:00.000Z",
+  "singleUse": true,
+  "consumed": false,
+  "consumedAt": null,
+  "revoked": false,
+  "revokedAt": null,
+  "quarantined": false,
+  "quarantinedAt": null,
+  "preconditions": {
+    "requestArtifactValidated": true,
+    "preStartEvidenceValidated": true,
+    "stateSnapshotValidated": true,
+    "humanApprovalGateRequired": true,
+    "globalDisableSwitchNotOverridden": true
+  },
+  "secretBoundary": {
+    "containsSecrets": false,
+    "secretMaterialRedacted": true
+  },
+  "createdByTool": "forgepilot_record_real_human_approval_evidence",
+  "createdByBoundaryVersion": "FP-MCP-067",
+  "recordedAt": "2026-06-23T09:50:47.109Z",
+  "executionAllowedNow": false,
+  "executionStarted": false,
+  "startEndpointContacted": false,
+  "opencodeStarted": false,
+  "approvalConsumed": false,
+  "notes": [
+    "FP-MCP-069 fresh approval expiration revalidation",
+    "Recorder records approval observation only; approval usability remains validator-derived"
+  ]
+}
