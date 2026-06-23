@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "FP-MCP-066",
+  "packetId": "FP-MCP-066",
+  "boundaryVersion": "FP-MCP-066",
+  "statusSource": "ForgePilot real human approval evidence contract checkpoint",
+  "checkedAt": "2026-06-23T08:53:59.466Z",
+  "repo": {
+    "repo": "ForgePilot",
+    "branch": "main",
+    "commit": "6809736",
+    "workingTreeClean": true
+  },
+  "realHumanApprovalEvidenceContractDefined": true,
+  "contractDocumentPath": "docs/real-human-approval-evidence-contract.md",
+  "realHumanApprovalEvidenceRecorderDefined": false,
+  "realHumanApprovalEvidenceRecorded": false,
+  "humanApprovalRecorded": false,
+  "approvalConsumed": false,
+  "approvalRevocationDefined": false,
+  "approvalExpirationPolicyImplemented": false,
+  "fixtureApprovalEvidenceStillNonAuthorizing": true,
+  "approvalUsableForExecution": false,
+  "executionAllowedNow": false,
+  "executionStarted": false,
+  "startEndpointContacted": false,
+  "opencodeStarted": false,
+  "runnerExecutionEnabled": false,
+  "opencodeExecutionEnabled": false,
+  "globalDisableSwitchActive": true,
+  "opencodeStatus": {
+    "opencodeDiscoveryConfigured": true,
+    "opencodeExecutionEnabled": false,
+    "supportedRunModes": [
+      "DESIGN_ONLY"
+    ],
+    "allowedModels": [
+      "deepseek-v4-pro-high",
+      "qwen-3.7-max"
+    ],
+    "liveOpenCodeChecked": false,
+    "executionDisabledReason": "FP-MCP-002 is read-only discovery only. Executor start tools are not implemented."
+  },
+  "disableSwitchStatus": {
+    "schemaVersion": "FP-MCP-044",
+    "packetId": "FP-MCP-066",
+    "requestId": "REQ-20260622T144553300Z-fbbe8d82",
+    "modelId": "qwen-3.7-max",
+    "runMode": "DESIGN_ONLY",
+    "disableSwitchActive": true,
+    "executionAllowedNow": false,
+    "executionStarted": false,
+    "startEndpointContacted": false,
+    "opencodeStarted": false,
+    "runnerExecutionEnabled": false,
+    "opencodeExecutionEnabled": false,
+    "globalDisableActive": true,
+    "effectiveDisableReason": "EXECUTION_DISABLED_GLOBAL",
+    "effectiveDisableScope": "GLOBAL",
+    "checkedAt": "2026-06-23T08:53:59.466Z",
+    "reasons": [
+      "EXECUTION_DISABLED_GLOBAL",
+      "RUNNER_EXECUTION_DISABLED",
+      "OPENCODE_EXECUTION_DISABLED",
+      "DISABLE_SWITCH_ACTIVE",
+      "EXECUTION_NOT_ALLOWED"
+    ]
+  },
+  "toolSurface": {
+    "humanApprovalRelatedToolsObserved": [
+      "forgepilot_record_human_approval_evidence_dry_run_fixture",
+      "forgepilot_validate_human_approval_record"
+    ],
+    "realHumanApprovalEvidenceRecorderToolObserved": false,
+    "fixtureRecorderStillOnlyRecorderObserved": true
+  },
+  "contractClaims": {
+    "realArtifactType": "human-approval-evidence",
+    "fixtureArtifactType": "human-approval-evidence-dry-run-fixture",
+    "realApprovalMustUseFixtureFalse": true,
+    "realApprovalMustUseDryRunFalse": true,
+    "realApprovalMustUseApprovalStateRecorded": true,
+    "realApprovalMustBindExactPacketRequestModelRunModeCommitBranch": true,
+    "realApprovalMustExpire": true,
+    "realApprovalMustBeSingleUse": true,
+    "realApprovalMustNotContainSecrets": true,
+    "realApprovalArtifactAloneDoesNotAuthorizeExecution": true
+  },
+  "nextRecommendedPackets": [
+    "FP-MCP-067 \u2014 Real Human Approval Evidence Recorder",
+    "FP-MCP-068 \u2014 Single-Use Approval Consumption Gate",
+    "FP-MCP-069 \u2014 Human Approval Revocation and Expiration Enforcement",
+    "FP-MCP-070 \u2014 Real Approval Evidence Negative Fixture Revalidation",
+    "FP-MCP-071 \u2014 Human Approval Evidence Readiness Recheck"
+  ]
+}

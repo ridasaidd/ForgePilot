@@ -1,0 +1,95 @@
+# FP-MCP-066 Verification
+
+## Packet
+
+FP-MCP-066 — Real Human Approval Evidence Contract
+
+## Repository Status
+
+```text
+repo: ForgePilot
+branch: main
+commit: 6809736
+workingTreeClean: true
+```
+
+## OpenCode Status
+
+```text
+opencodeDiscoveryConfigured: true
+opencodeExecutionEnabled: false
+supportedRunModes:
+  - DESIGN_ONLY
+allowedModels:
+  - deepseek-v4-pro-high
+  - qwen-3.7-max
+liveOpenCodeChecked: false
+executionDisabledReason: FP-MCP-002 is read-only discovery only. Executor start tools are not implemented.
+```
+
+## Disable Switch Status
+
+```text
+schemaVersion: FP-MCP-044
+packetId: FP-MCP-066
+requestId: REQ-20260622T144553300Z-fbbe8d82
+modelId: qwen-3.7-max
+runMode: DESIGN_ONLY
+disableSwitchActive: true
+globalDisableActive: true
+executionAllowedNow: false
+executionStarted: false
+startEndpointContacted: false
+opencodeStarted: false
+runnerExecutionEnabled: false
+opencodeExecutionEnabled: false
+effectiveDisableReason: EXECUTION_DISABLED_GLOBAL
+effectiveDisableScope: GLOBAL
+```
+
+Disable switch reasons:
+
+```text
+EXECUTION_DISABLED_GLOBAL
+RUNNER_EXECUTION_DISABLED
+OPENCODE_EXECUTION_DISABLED
+DISABLE_SWITCH_ACTIVE
+EXECUTION_NOT_ALLOWED
+```
+
+## Human Approval Tool Surface
+
+Observed tools:
+
+```text
+forgepilot_record_human_approval_evidence_dry_run_fixture
+forgepilot_validate_human_approval_record
+```
+
+Real human approval recorder observed:
+
+```text
+false
+```
+
+## Verification Result
+
+```text
+realHumanApprovalEvidenceContractDefined: true
+realHumanApprovalEvidenceRecorderDefined: false
+realHumanApprovalEvidenceRecorded: false
+humanApprovalRecorded: false
+approvalConsumed: false
+executionAllowedNow: false
+executionStarted: false
+startEndpointContacted: false
+opencodeStarted: false
+```
+
+## Acceptance
+
+ACCEPTED
+
+FP-MCP-066 satisfies the contract-only boundary.
+
+It defines real human approval evidence without creating it.
