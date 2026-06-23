@@ -1,0 +1,55 @@
+FP-MCP-071 verification
+
+Repository state before final artifact creation:
+- ForgePilot commit after consumption artifact commit: f92a2b7
+- workingTreeClean: true
+
+Bridge verification:
+- Bridge repo: /home/ridasaidd/forgepilot-chatgpt-mcp
+- Bridge commit: 02a5cca Add FP-MCP-071 approval consumptionrecorder
+- Tool discovered: forgepilot_record_human_approval_consumption
+
+Fresh approval evidence:
+- approvalPacketId: FP-MCP-069
+- approvalId: APPROVAL-20260623T111242963Z-78f7e740
+- approval path: runs/FP-MCP-069/approvals/APPROVAL-20260623T111242963Z-78f7e740.json
+- approval was committed before validation and consumption
+
+Approval validation:
+- approvalValidationEvaluated: true
+- approvalEvidenceValid: true
+- approvalValid: true
+- approvalUsableForExecution: true
+- humanApprovalRecorded: true
+- artifactCommitted: true
+- scopeMatchesExpected: true
+- canonicalApprovalTextValid: true
+- expirationValid: true
+- notRevoked: true
+- notConsumed: true
+- notQuarantined: true
+- reasons: []
+
+Consumption recorder result:
+- approvalConsumptionRecorderDefined: true
+- approvalConsumptionRecorded: true
+- approvalConsumed: true
+- approvalMutated: false
+- consumptionId: CONSUMPTION-20260623T111327467Z-0cfc7dee
+- consumptionArtifactPath: runs/FP-MCP-071/approval-consumptions/CONSUMPTION-20260623T111327467Z-0cfc7dee.json
+- consumptionArtifactSha256: 6a51bbf1ec1e82f8205e65908a03e2f3d302242bf3e3a3389e80664d8cc3f24b
+
+Safety verification:
+- disableSwitchStatusEvaluated: true
+- disableSwitchActive: true
+- executionAllowedNow: false
+- executionStarted: false
+- startEndpointContacted: false
+- opencodeStarted: false
+- runnerExecutionEnabled: false
+- opencodeExecutionEnabled: false
+- effectiveDisableReason: EXECUTION_DISABLED_GLOBAL
+- effectiveDisableScope: GLOBAL
+
+Conclusion:
+FP-MCP-071 successfully recorded append-only single-use approval consumption evidence without mutating the approval artifact, without enabling execution, without contacting the runner start endpoint, and without starting OpenCode.
