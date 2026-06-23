@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "FP-MCP-071",
+  "boundaryVersion": "FP-MCP-071",
+  "artifactType": "human-approval-consumption",
+  "artifactVersion": "human-approval-consumption-v1",
+  "consumptionId": "CONSUMPTION-20260623T111327467Z-0cfc7dee",
+  "approvalId": "APPROVAL-20260623T111242963Z-78f7e740",
+  "approvalPacketId": "FP-MCP-069",
+  "approvalPath": "runs/FP-MCP-069/approvals/APPROVAL-20260623T111242963Z-78f7e740.json",
+  "consumptionState": "RECORDED",
+  "consumptionKind": "EXECUTION_ENABLEMENT_SINGLE_USE",
+  "consumedAction": "ALLOW_ONE_GUARDED_REMOTE_RUNNER_EXECUTION_ATTEMPT",
+  "scope": {
+    "packetId": "FP-MCP-036",
+    "requestId": "REQ-20260622T144553300Z-fbbe8d82",
+    "modelId": "qwen-3.7-max",
+    "runMode": "DESIGN_ONLY",
+    "repoCommit": "40b53dc",
+    "branch": "main"
+  },
+  "approvalValidation": {
+    "validatorBoundaryVersion": "FP-MCP-068",
+    "approvalEvidenceContractVersion": "FP-MCP-066",
+    "approvalEvidenceValid": true,
+    "approvalValid": true,
+    "approvalUsableForExecution": true,
+    "humanApprovalRecorded": true,
+    "artifactCommitted": true,
+    "expirationValid": true,
+    "notRevoked": true,
+    "notConsumed": true,
+    "notQuarantined": true,
+    "checkedAt": "2026-06-23T11:13:27.454Z",
+    "reasons": []
+  },
+  "consumedAt": "2026-06-23T11:13:27.442Z",
+  "consumedByTool": "forgepilot_record_human_approval_consumption",
+  "consumedByBoundaryVersion": "FP-MCP-071",
+  "startAttemptId": "ATTEMPT-20260623T111327468Z-8557ead6",
+  "singleUse": true,
+  "approvalConsumed": true,
+  "approvalMutated": false,
+  "executionAllowedNow": false,
+  "executionStarted": false,
+  "startEndpointContacted": false,
+  "opencodeStarted": false,
+  "notes": [
+    "FP-MCP-071 successful consumption recorder probe.",
+    "Append-only consumption evidence only; original approval artifact must remain immutable.",
+    "Execution remains disabled; no runner start endpoint contact and no OpenCode start."
+  ]
+}
