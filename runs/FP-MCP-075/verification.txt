@@ -1,0 +1,69 @@
+FP-MCP-075 Verification
+
+Result: PASS
+
+Repository:
+repo: ForgePilot
+branch: main
+commit: 560ef81
+workingTreeCleanBeforeArtifacts: true
+
+OpenCode:
+opencodeExecutionEnabled: false
+liveOpenCodeChecked: false
+
+Disable switch:
+disableSwitchStatusEvaluated: true
+disableSwitchActive: true
+globalDisableActive: true
+executionAllowedNow: false
+effectiveDisableReason: EXECUTION_DISABLED_GLOBAL
+
+Validator probe:
+boundaryVersion: FP-MCP-072
+approvalConsumed: true
+consumptionEvidencePresent: true
+consumptionEvidenceValid: true
+approvalUsableForExecution: false
+approvalMutated: false
+APPROVAL_CONSUMED: present
+
+Execution preflight probe:
+boundaryVersion: FP-MCP-073
+preflightEligible: false
+humanApprovalEvidenceGatePassed: false
+approvalConsumed: true
+consumptionEvidencePresent: true
+consumptionEvidenceValid: true
+startEndpointContacted: false
+opencodeStarted: false
+APPROVAL_CONSUMED: present
+
+Guarded start path probe:
+boundaryVersion: FP-MCP-074
+started: false
+accepted: false
+approvalAccepted: true
+humanApprovalEvidenceGatePassed: false
+approvalConsumed: true
+consumptionEvidencePresent: true
+consumptionEvidenceValid: true
+startEndpointContacted: false
+opencodeStarted: false
+runnerRunId: null
+APPROVAL_CONSUMED: present
+
+Safety confirmations:
+newApprovalEvidenceCreatedByCheckpoint: false
+newConsumptionEvidenceCreatedByCheckpoint: false
+approvalArtifactMutated: false
+consumptionArtifactMutated: false
+executionAllowedNow: false
+executionStarted: false
+startEndpointContacted: false
+opencodeStarted: false
+runnerRunIdCreated: false
+
+Conclusion:
+FP-MCP-075 succeeds. The human approval consumption and replay-protection layer is ready to checkpoint, while execution remains unauthorized and disabled.
+
