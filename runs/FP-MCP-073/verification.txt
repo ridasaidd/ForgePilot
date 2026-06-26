@@ -1,0 +1,62 @@
+FP-MCP-073 Verification
+
+Result: PASS
+
+Probe:
+forgepilot_validate_execution_preflight
+
+Input:
+{
+  "packetId": "FP-MCP-036",
+  "requestId": "REQ-20260622T144553300Z-fbbe8d82",
+  "approvalId": "APPROVAL-20260623T111242963Z-78f7e740"
+}
+
+Observed:
+schemaVersion: FP-MCP-034
+boundaryVersion: FP-MCP-073
+preflightEligible: false
+executionPermitted: false
+humanApprovalEvidenceEvaluated: true
+humanApprovalEvidenceGatePassed: false
+humanApprovalEvidenceValid: false
+humanApprovalEvidenceUsableForExecution: false
+approvalValidationEvaluated: true
+approvalEvidenceValid: false
+approvalValid: false
+approvalUsableForExecution: false
+approvalConsumed: true
+consumptionEvidenceEvaluated: true
+consumptionEvidencePresent: true
+consumptionEvidenceValid: true
+consumptionEvidenceId: CONSUMPTION-20260623T111327467Z-0cfc7dee
+consumptionEvidencePath: runs/FP-MCP-071/approval-consumptions/CONSUMPTION-20260623T111327467Z-0cfc7dee.json
+approvalCreated: false
+approvalMutated: false
+humanApprovalRecorded: true
+executionAllowedNow: false
+executionStarted: false
+startEndpointContacted: false
+opencodeStarted: false
+
+Required consumed approval reason:
+APPROVAL_CONSUMED — PRESENT
+
+Required independent preflight blockers:
+EXECUTION_PREFLIGHT_HUMAN_APPROVAL_EVIDENCE_GATE_BLOCKED — PRESENT
+HUMAN_APPROVAL_EVIDENCE_NOT_USABLE_FOR_EXECUTION — PRESENT
+gates.humanApprovalEvidence: BLOCKED — PRESENT
+
+Allowed additional blocker:
+APPROVAL_EXPIRED — PRESENT
+
+Safety confirmations:
+No new approval evidence was created by FP-MCP-073.
+No new consumption evidence was created by FP-MCP-073.
+The original approval artifact was not mutated.
+Execution remains disabled.
+The runner start endpoint was not contacted.
+OpenCode was not started.
+
+Conclusion:
+FP-MCP-073 succeeds. Execution preflight now explicitly rejects consumed approval evidence as an independent preflight blocker.
