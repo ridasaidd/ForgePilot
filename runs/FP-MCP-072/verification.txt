@@ -1,0 +1,48 @@
+FP-MCP-072 verification
+
+Packet: FP-MCP-072 — Consumed Approval Validator Enforcement
+
+Validator probe command target:
+  forgepilot_validate_human_approval_record
+
+Input:
+  packetId: FP-MCP-069
+  approvalId: APPROVAL-20260623T111242963Z-78f7e740
+  expectedScope.packetId: FP-MCP-036
+  expectedScope.requestId: REQ-20260622T144553300Z-fbbe8d82
+  expectedScope.modelId: qwen-3.7-max
+  expectedScope.runMode: DESIGN_ONLY
+  expectedScope.repoCommit: 40b53dc
+  expectedScope.branch: main
+
+Observed result:
+  schemaVersion: FP-MCP-072
+  validatorBoundaryVersion: FP-MCP-072
+  approvalEvidenceValid: false
+  approvalValid: false
+  approvalUsableForExecution: false
+  approvalConsumed: true
+  consumptionEvidenceEvaluated: true
+  consumptionEvidencePresent: true
+  consumptionEvidenceValid: true
+  consumptionEvidenceId: CONSUMPTION-20260623T111327467Z-0cfc7dee
+  consumptionEvidencePath: runs/FP-MCP-071/approval-consumptions/CONSUMPTION-20260623T111327467Z-0cfc7dee.json
+  reasons: APPROVAL_EXPIRED, APPROVAL_CONSUMED
+  approvalMutated: false
+  executionAllowedNow: false
+  executionStarted: false
+  startEndpointContacted: false
+  opencodeStarted: false
+
+Expected result:
+  Consumed approval is rejected for future execution use.
+  Existing append-only consumption evidence is evaluated and accepted as valid consumption evidence.
+  Approval artifact is not mutated.
+  Execution remains disabled/not allowed.
+  Runner start endpoint is not contacted.
+  OpenCode is not started.
+
+Verification status: PASS
+
+Notes:
+  The validator also reported APPROVAL_EXPIRED. This does not weaken FP-MCP-072. The required consumed-approval enforcement signal is present: APPROVAL_CONSUMED with approvalConsumed=true and approvalUsableForExecution=false.
