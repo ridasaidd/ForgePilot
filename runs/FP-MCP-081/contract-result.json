@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "FP-MCP-081",
+  "artifactType": "opencode-start-tool-implementation-boundary-result",
+  "packetId": "FP-MCP-081",
+  "repoCommit": "e0d6c58",
+  "repoBranch": "main",
+  "checkedAt": "2026-06-27T01:55:39.143Z",
+  "status": "SUCCESS",
+  "contractOnly": true,
+  "opencodeStartToolBoundaryDefined": true,
+  "requestArtifactContractDefined": true,
+  "startPreflightBoundaryDefined": true,
+  "approvalConsumptionHandoffRequired": true,
+  "controlledStartAttemptBoundaryDefined": true,
+  "telemetryCaptureRequired": true,
+  "failureClassificationRequired": true,
+  "startToolImplementationAuthorized": false,
+  "executionEnablementAuthorized": false,
+  "executionAllowedNow": false,
+  "globalDisableSwitchRelaxed": false,
+  "runnerStartEndpointContacted": false,
+  "opencodeStarted": false,
+  "runnerRunIdCreated": false,
+  "approvalConsumed": false,
+  "newApprovalEvidenceCreated": false,
+  "newConsumptionEvidenceCreated": false,
+  "approvalArtifactMutated": false,
+  "consumptionArtifactMutated": false,
+  "evidenceMutationAllowed": false,
+  "observedState": {
+    "repository": {
+      "branch": "main",
+      "commit": "e0d6c58",
+      "workingTreeClean": true
+    },
+    "opencode": {
+      "opencodeDiscoveryConfigured": true,
+      "opencodeExecutionEnabled": false,
+      "liveOpenCodeChecked": false,
+      "supportedRunModes": [
+        "DESIGN_ONLY"
+      ],
+      "allowedModels": [
+        "deepseek-v4-pro-high",
+        "qwen-3.7-max"
+      ],
+      "executionDisabledReason": "FP-MCP-002 is read-only discovery only. Executor start tools are not implemented."
+    },
+    "remoteRunner": {
+      "runnerConfigured": true,
+      "runnerReachable": true,
+      "executionEnabled": false,
+      "supportedOperations": [
+        "capabilities",
+        "validate-request"
+      ],
+      "supportedRunModes": [
+        "DESIGN_ONLY"
+      ],
+      "runnerVersion": "0.1.0-fp-mcp-024",
+      "runnerProtocolVersion": "forgepilot-runner-v1"
+    },
+    "disableSwitch": {
+      "disableSwitchActive": true,
+      "globalDisableActive": true,
+      "executionAllowedNow": false,
+      "runnerExecutionEnabled": false,
+      "opencodeExecutionEnabled": false,
+      "executionStarted": false,
+      "startEndpointContacted": false,
+      "opencodeStarted": false,
+      "effectiveDisableReason": "EXECUTION_DISABLED_GLOBAL"
+    }
+  },
+  "requiredFutureLayers": [
+    "REQUEST_ARTIFACT_CREATION",
+    "REQUEST_VALIDATION",
+    "START_PREFLIGHT",
+    "APPROVAL_CONSUMPTION_HANDOFF",
+    "CONTROLLED_START_ATTEMPT"
+  ],
+  "nonGoalsObserved": {
+    "startToolImplemented": false,
+    "executionCapableMcpToolAdded": false,
+    "executionEnabled": false,
+    "globalDisableSwitchRelaxed": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "runnerRunIdCreated": false,
+    "approvalConsumed": false,
+    "approvalEvidenceCreated": false,
+    "consumptionEvidenceCreated": false,
+    "evidenceMutated": false,
+    "serverTsRefactored": false
+  }
+}
+

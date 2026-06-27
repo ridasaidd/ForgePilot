@@ -1,0 +1,136 @@
+# FP-MCP-081 Verification
+
+## Verification Result
+
+PASS
+
+## Repository Status
+
+```text
+repo: ForgePilot
+branch: main
+commit: e0d6c58
+workingTreeClean: true
+```
+
+## OpenCode Status
+
+```text
+opencodeDiscoveryConfigured: true
+opencodeExecutionEnabled: false
+executorStationLabel: local-opencode
+endpointLabel: configured
+boundaryVersion: FP-MCP-001
+boundaryDocument: docs/opencode-executor-boundary.md
+supportedRunModes:
+- DESIGN_ONLY
+allowedModels:
+- deepseek-v4-pro-high
+- qwen-3.7-max
+statusSource: static ForgePilot-safe configuration
+liveOpenCodeChecked: false
+executionDisabledReason:
+FP-MCP-002 is read-only discovery only. Executor start tools are not implemented.
+```
+
+## Remote Runner Capability Status
+
+```text
+bridgeHostRole: staging-control-plane
+runnerHostRole: dev-execution-plane
+runnerConfigured: true
+runnerReachable: true
+runnerVersion: 0.1.0-fp-mcp-024
+runnerProtocolVersion: forgepilot-runner-v1
+executionEnabled: false
+supportedOperations:
+- capabilities
+- validate-request
+supportedRunModes:
+- DESIGN_ONLY
+allowedModels:
+- deepseek-v4-pro-high
+- qwen-3.7-max
+```
+
+## Execution Disable Switch Status
+
+```text
+schemaVersion: FP-MCP-044
+packetId: FP-MCP-081
+disableSwitchStatusEvaluated: true
+disableSwitchDefined: true
+disableSwitchActive: true
+executionAllowedNow: false
+executionStarted: false
+startEndpointContacted: false
+opencodeStarted: false
+runnerExecutionEnabled: false
+opencodeExecutionEnabled: false
+globalDisableActive: true
+effectiveDisableReason: EXECUTION_DISABLED_GLOBAL
+effectiveDisableScope: GLOBAL
+reasons:
+- EXECUTION_DISABLED_GLOBAL
+- RUNNER_EXECUTION_DISABLED
+- OPENCODE_EXECUTION_DISABLED
+- DISABLE_SWITCH_ACTIVE
+- EXECUTION_NOT_ALLOWED
+```
+
+## Contract-Only Confirmation
+
+```text
+FP-MCP-081 is contract-only: true
+start tool implemented: false
+execution-capable MCP tool added: false
+```
+
+## Required Verification Checklist
+
+```text
+repository status checked: true
+OpenCode status checked: true
+remote runner capability status checked: true
+execution disable switch status checked: true
+FP-MCP-081 contract-only confirmed: true
+no start tool implemented: true
+execution remains disabled: true
+global disable switch remains active: true
+runner start endpoint contacted: false
+OpenCode started: false
+runnerRunId created: false
+approval consumed: false
+approval evidence created: false
+consumption evidence created: false
+existing approval evidence mutated: false
+existing consumption evidence mutated: false
+```
+
+## Expected Claims
+
+```text
+opencodeStartToolBoundaryDefined: true
+requestArtifactContractDefined: true
+startPreflightBoundaryDefined: true
+approvalConsumptionHandoffRequired: true
+controlledStartAttemptBoundaryDefined: true
+telemetryCaptureRequired: true
+failureClassificationRequired: true
+startToolImplementationAuthorized: false
+executionEnablementAuthorized: false
+executionAllowedNow: false
+globalDisableSwitchRelaxed: false
+runnerStartEndpointContacted: false
+opencodeStarted: false
+runnerRunIdCreated: false
+approvalConsumed: false
+evidenceMutationAllowed: false
+```
+
+## Final Verification
+
+PASS
+
+FP-MCP-081 successfully records the OpenCode start tool implementation boundary without implementing start tooling, enabling execution, contacting the runner start endpoint, starting OpenCode, creating runnerRunId evidence, consuming approval, or mutating evidence.
+
