@@ -1,0 +1,52 @@
+FP-MCP-077 Verification
+
+Result: PASS
+
+Repository:
+repo: ForgePilot
+branch: main
+commit: 7964f15
+workingTreeCleanBeforeArtifacts: true
+
+OpenCode:
+opencodeExecutionEnabled: false
+liveOpenCodeChecked: false
+
+Disable switch:
+disableSwitchStatusEvaluated: true
+disableSwitchActive: true
+globalDisableActive: true
+executionAllowedNow: false
+effectiveDisableReason: EXECUTION_DISABLED_GLOBAL
+
+Existing FP-MCP-071 consumption artifact:
+path: runs/FP-MCP-071/approval-consumptions/CONSUMPTION-20260623T111327467Z-0cfc7dee.json
+schemaVersion: FP-MCP-071
+boundaryVersion: FP-MCP-071
+artifactType: human-approval-consumption
+approvalConsumed: true
+approvalMutated: false
+executionStarted: false
+startEndpointContacted: false
+opencodeStarted: false
+
+Contract result:
+successfulStartConsumptionHandoffContractDefined: true
+freshApprovalConsumptionBoundaryDefined: true
+runnerStartContactMustFollowConsumption: true
+currentConsumedFixtureReclassified: false
+
+Safety confirmations:
+newApprovalEvidenceCreated: false
+newConsumptionEvidenceCreated: false
+approvalArtifactMutated: false
+consumptionArtifactMutated: false
+executionAllowedNow: false
+executionStarted: false
+startEndpointContacted: false
+opencodeStarted: false
+runnerRunIdCreated: false
+
+Conclusion:
+FP-MCP-077 succeeds. The successful-start consumption handoff contract is defined, and existing FP-MCP-071 consumption evidence is not reclassified.
+
