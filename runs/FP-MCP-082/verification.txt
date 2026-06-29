@@ -1,0 +1,151 @@
+# FP-MCP-082 Verification
+
+## Verification Result
+
+BLOCKED_CONTRACT_MISMATCH
+
+## Repository Status
+
+```text
+repo: ForgePilot
+branch: main
+commit: 0f3f756
+workingTreeClean: false
+gitStatusShort: ?? runs/FP-MCP-082/
+```
+
+The dirty working tree is expected after request artifact creation because the request artifact is uncommitted.
+
+## Packet Confirmation
+
+```text
+FP-MCP-081 exists: true
+FP-MCP-082 exists: true
+```
+
+## OpenCode Status
+
+```text
+opencodeDiscoveryConfigured: true
+opencodeExecutionEnabled: false
+liveOpenCodeChecked: false
+supportedRunModes:
+- DESIGN_ONLY
+allowedModels:
+- deepseek-v4-pro-high
+- qwen-3.7-max
+```
+
+## Remote Runner Status
+
+```text
+runnerConfigured: true
+runnerReachable: true
+executionEnabled: false
+supportedOperations:
+- capabilities
+- validate-request
+supportedRunModes:
+- DESIGN_ONLY
+allowedModels:
+- deepseek-v4-pro-high
+- qwen-3.7-max
+```
+
+## Execution Disable Switch Status
+
+```text
+disableSwitchActive: true
+executionAllowedNow: false
+executionStarted: false
+startEndpointContacted: false
+opencodeStarted: false
+runnerExecutionEnabled: false
+opencodeExecutionEnabled: false
+globalDisableActive: true
+effectiveDisableReason: EXECUTION_DISABLED_GLOBAL
+```
+
+## Request Artifact Created
+
+```text
+requestId: REQ-20260629T131053102Z-5f58e3e3
+requestArtifactPath: runs/FP-MCP-082/opencode-requests/REQ-20260629T131053102Z-5f58e3e3.json
+requestArtifactValidJson: true
+```
+
+## Request Artifact Contract Check
+
+```text
+observedSchemaVersion: FP-MCP-007
+expectedSchemaVersion: FP-MCP-082
+observedBoundaryVersion: FP-MCP-007
+expectedBoundaryVersion: FP-MCP-081
+contractSatisfied: false
+```
+
+The artifact is valid and non-executing, but it does not yet satisfy the expanded FP-MCP-082 request artifact contract.
+
+## Remote Runner Request Validation
+
+```text
+eligible: false
+executionEnabled: false
+executionStarted: false
+runnerContacted: false
+packetExists: true
+requestExists: true
+requestArtifactValid: true
+modelAllowed: true
+runModeAllowed: true
+workingTreeClean: false
+baseCommitMatches: false
+artifactCommitExists: false
+reasons:
+- DIRTY_WORKING_TREE
+- ARTIFACT_COMMIT_MISSING
+```
+
+## Required Non-Execution Claims
+
+```text
+opencodeStartRequestArtifactCreated: true
+requestArtifactValid: true
+requestedRunMode: DESIGN_ONLY
+executionAllowedNow: false
+globalDisableActive: true
+runnerExecutionEnabled: false
+opencodeExecutionEnabled: false
+startEndpointContacted: false
+opencodeStarted: false
+runnerRunIdCreated: false
+approvalConsumed: false
+approvalEvidenceCreated: false
+consumptionEvidenceCreated: false
+approvalArtifactMutated: false
+consumptionArtifactMutated: false
+serverTsRefactored: false
+```
+
+## Final Determination
+
+FP-MCP-082 is not complete.
+
+The packet produced a valid observation:
+
+```text
+current create-request tool can create a durable non-executing request artifact
+```
+
+But it also produced a blocking implementation finding:
+
+```text
+current create-request tool still emits FP-MCP-007 artifact shape, not FP-MCP-082 artifact shape
+```
+
+Next required work:
+
+```text
+patch create-request implementation to emit the FP-MCP-082 artifact contract
+```
+

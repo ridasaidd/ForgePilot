@@ -1,0 +1,58 @@
+{
+  "packetId": "FP-MCP-082",
+  "result": "BLOCKED_CONTRACT_MISMATCH",
+  "opencodeStartRequestArtifactCreated": true,
+  "requestId": "REQ-20260629T131053102Z-5f58e3e3",
+  "requestArtifactPath": "runs/FP-MCP-082/opencode-requests/REQ-20260629T131053102Z-5f58e3e3.json",
+  "requestedModelId": "deepseek-v4-pro-high",
+  "requestedRunMode": "DESIGN_ONLY",
+  "requestArtifactValidJson": true,
+  "requestArtifactDurable": true,
+  "requestArtifactSchemaObserved": "FP-MCP-007",
+  "requestArtifactBoundaryObserved": "FP-MCP-007",
+  "expectedSchemaVersion": "FP-MCP-082",
+  "expectedBoundaryVersion": "FP-MCP-081",
+  "contractSatisfied": false,
+  "contractMismatchReasons": [
+    "created artifact uses schemaVersion FP-MCP-007",
+    "created artifact uses boundaryVersion FP-MCP-007",
+    "created artifact does not include artifactType opencode-start-request",
+    "created artifact does not include requestState CREATED_NOT_STARTED",
+    "created artifact does not include the expanded FP-MCP-082 non-execution fields",
+    "remote-runner validation reports artifact commit missing because the request artifact is not committed yet"
+  ],
+  "nonExecutionClaims": {
+    "executionEnablementAuthorized": false,
+    "executionAllowedNow": false,
+    "globalDisableActive": true,
+    "runnerExecutionEnabled": false,
+    "opencodeExecutionEnabled": false,
+    "startEndpointContacted": false,
+    "opencodeStarted": false,
+    "runnerRunIdCreated": false,
+    "approvalConsumed": false,
+    "approvalEvidenceCreated": false,
+    "consumptionEvidenceCreated": false,
+    "serverTsRefactored": false
+  },
+  "observedStatus": {
+    "repoCommit": "0f3f756",
+    "workingTreeClean": false,
+    "gitStatusShort": "?? runs/FP-MCP-082/",
+    "opencodeDiscoveryConfigured": true,
+    "opencodeExecutionEnabled": false,
+    "remoteRunnerReachable": true,
+    "remoteRunnerExecutionEnabled": false,
+    "remoteRunnerSupportedOperations": [
+      "capabilities",
+      "validate-request"
+    ],
+    "remoteRunnerSupportedRunModes": [
+      "DESIGN_ONLY"
+    ],
+    "disableSwitchActive": true,
+    "effectiveDisableReason": "EXECUTION_DISABLED_GLOBAL"
+  },
+  "nextStep": "Patch the create-request implementation so it emits the FP-MCP-082 artifact contract while preserving non-execution behavior."
+}
+

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "FP-MCP-007",
+  "requestId": "REQ-20260629T131053102Z-5f58e3e3",
+  "createdAt": "2026-06-29T13:10:53.102Z",
+  "createdBy": "chatgpt-mcp",
+  "packetId": "FP-MCP-082",
+  "modelId": "deepseek-v4-pro-high",
+  "runMode": "DESIGN_ONLY",
+  "approval": "CREATE_REQUEST_ARTIFACT",
+  "approvalScope": "request-artifact-only",
+  "executionEnabled": false,
+  "executionStarted": false,
+  "baseCommit": "0f3f756",
+  "artifactDir": "runs/FP-MCP-082/deepseek-v4-pro-high-DESIGN_ONLY/",
+  "requestArtifactPath": "runs/FP-MCP-082/opencode-requests/REQ-20260629T131053102Z-5f58e3e3.json",
+  "boundaryVersion": "FP-MCP-007",
+  "validationBoundary": "FP-MCP-006",
+  "status": "REQUEST_RECORDED"
+}
