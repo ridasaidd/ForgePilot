@@ -1,0 +1,33 @@
+FP-MCP-107 verification
+
+Result: PASSED
+
+Recorded manual/local implementation procedure for FP-MCP-106.
+
+Defined:
+
+- target metadata fields
+- expected metadata values
+- supported operations requirement
+- manual patch procedure
+- verification steps
+- safety invariants
+- next implementation action
+
+Safety result:
+
+- no implementation performed by this evidence record
+- no start endpoint implemented
+- no start operation made callable
+- no approval evidence created
+- no approval consumed
+- no execution enabled
+- no global disable switch relaxed
+- no runner start endpoint contacted
+- no OpenCode process started
+- no runner run id created
+- no production behavior changed
+
+Next action:
+
+Patch runner capabilities response with disabled start metadata only.
