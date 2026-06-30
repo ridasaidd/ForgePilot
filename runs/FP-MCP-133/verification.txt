@@ -1,0 +1,59 @@
+FP-MCP-133 verification
+
+Result: PASSED
+
+Packet:
+
+- FP-MCP-133 — Request Target Execution Commit Contract
+
+Packet commit:
+
+- 868e8a8
+
+Defined:
+
+- targetExecutionCommit as the preferred request target field
+- targetExecutionCommit as the exact commit intended for execution
+- approval binding rule against request target
+- provenance fields distinct from target fields
+- target field priority for transitional compatibility
+- legacy fallback reporting
+- guarded-start eligibility requirements
+- current HEAD drift as observation-only
+- FP-MCP-117 legacy fallback interpretation
+- future repair path for passing target binding test
+
+Observed prior evidence incorporated:
+
+- FP-MCP-132 requestTargetExecutionCommit: 034cfdb
+- FP-MCP-132 requestTargetCommitSource: REQUEST_BASE_COMMIT_LEGACY_FALLBACK
+- FP-MCP-132 approvalTargetExecutionCommit: d8684b1
+- FP-MCP-132 approvalTargetCommitSource: APPROVAL_SCOPE_REPO_COMMIT_LEGACY
+- FP-MCP-132 mismatch reason: HUMAN_APPROVAL_EVIDENCE_TARGET_COMMIT_MISMATCH
+
+Reason codes required:
+
+- REQUEST_TARGET_EXECUTION_COMMIT_MISSING
+- REQUEST_TARGET_COMMIT_LEGACY_FALLBACK_USED
+- HUMAN_APPROVAL_EVIDENCE_TARGET_COMMIT_MISMATCH
+- CURRENT_EVALUATION_COMMIT_DIFFERENT_FROM_REQUEST_TARGET
+
+Safety:
+
+- no implementation changed
+- no execution enabled
+- no start made callable
+- no start added to supportedOperations
+- no runner start endpoint contacted
+- no OpenCode started
+- no runner run id created
+- no approval consumed
+- no approval consumption evidence created
+- no approval artifact mutated
+- no request artifact mutated
+- PRESENT_GUARDED not implemented
+- CALLABLE_GUARDED not implemented
+
+Conclusion:
+
+FP-MCP-133 verification passed.
