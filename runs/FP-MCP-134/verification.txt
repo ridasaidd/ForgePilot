@@ -1,0 +1,69 @@
+FP-MCP-134 verification
+
+Result: PASSED
+
+Packet:
+
+- FP-MCP-134 — Target Execution Commit Request Artifact Implementation
+
+Packet commit:
+
+- 74ed46d
+
+Bridge implementation:
+
+- repo: forgepilot-chatgpt-mcp
+- commit: 0a4236e
+- file: src/server.ts
+- change: request artifacts now include targetExecutionCommit and approvedTargetExecutionCommit
+
+Negative observation:
+
+- requestId: REQ-20260630T201607512Z-b14f6109
+- result: did not contain targetExecutionCommit
+- committed as negative observation
+
+Positive verification artifact:
+
+- requestId: REQ-20260630T202005438Z-86d20df4
+- path: runs/FP-MCP-134/opencode-requests/REQ-20260630T202005438Z-86d20df4.json
+- baseCommit: bbf930a
+- targetExecutionCommit: bbf930a
+- approvedTargetExecutionCommit: bbf930a
+
+Verified target fields:
+
+- targetExecutionCommit present
+- approvedTargetExecutionCommit present
+- targetExecutionCommit equals baseCommit for current implementation
+- approvedTargetExecutionCommit equals targetExecutionCommit
+
+Safety:
+
+- executionEnabled: False
+- executionStarted: False
+- opencodeStarted: False
+- startEndpointContacted: False
+- runnerRunId: None
+- globalDisableActive: True
+- runnerExecutionEnabled: False
+- opencodeExecutionEnabled: False
+
+No prohibited actions:
+
+- old FP-MCP-117 request artifacts not mutated
+- FP-MCP-126 approval artifacts not mutated
+- execution not enabled
+- start not made callable
+- start not added to supportedOperations
+- runner start endpoint not contacted
+- OpenCode not started
+- runner run id not created
+- approval not consumed
+- approval consumption evidence not created
+- PRESENT_GUARDED not implemented
+- CALLABLE_GUARDED not implemented
+
+Conclusion:
+
+FP-MCP-134 verification passed.
