@@ -1,0 +1,40 @@
+FP-MCP-104 verification
+
+Result: PASSED
+
+Defined runner start capability contract.
+
+Defined:
+
+- capability advertisement requirements
+- explicit start operation requirement
+- start request input requirements
+- request artifact validation requirements
+- approval evidence validation requirements
+- targetExecutionCommit and evidenceLedgerCommit handling
+- evidence-only descendant rule
+- preflight gate requirement
+- disable switch behavior
+- pre-start evidence requirements
+- post-start evidence requirements
+- start response fields
+- fail-closed behavior
+- safety invariants
+- implementation sequencing
+
+Safety result:
+
+- no start capability implemented
+- no start operation advertised
+- no approval evidence created
+- no approval consumed
+- no execution enabled
+- no global disable switch relaxed
+- no runner start endpoint contacted
+- no OpenCode process started
+- no runner run id created
+- no production behavior changed
+
+Recommended next packet:
+
+FP-MCP-105 — Runner Start Capability Advertisement Only
