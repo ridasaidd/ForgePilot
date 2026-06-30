@@ -1,0 +1,58 @@
+FP-MCP-095 verification
+
+Result: PASSED AS OBSERVATION
+
+Verified post-consumption guarded preflight behavior using the FP-MCP-092 approval id.
+
+Preflight result:
+
+- preflightEligible: false
+- executionPermitted: false
+- executionStarted: false
+- startEndpointContacted: false
+- opencodeStarted: false
+- executionAllowedNow: false
+
+Approval evidence result:
+
+- humanApprovalEvidenceValid: false
+- humanApprovalEvidenceUsableForExecution: false
+- approvalEvidenceValid: false
+- approvalValid: false
+- approvalUsableForExecution: false
+
+Consumption evidence result:
+
+- consumptionEvidenceEvaluated: true
+- consumptionEvidencePresent: true
+- consumptionEvidenceValid: false
+- consumptionEvidenceId: CONSUMPTION-20260630T112907770Z-c3970483
+- approvalConsumed: false
+
+Observed blockers:
+
+- APPROVAL_SCOPE_MISMATCH
+- APPROVAL_BASE_COMMIT_BINDING_INVALID
+- APPROVAL_COMMIT_BINDING_INVALID
+- APPROVAL_REQUEST_BINDING_INVALID
+- APPROVAL_TEXT_INVALID
+- APPROVAL_EXPIRED
+
+Safety result:
+
+- no execution permitted
+- no execution started
+- no runner start endpoint contacted
+- no OpenCode process started
+- no runner run id created
+- global disable switch remained active
+- runner execution remained disabled
+- OpenCode execution remained disabled
+
+Conclusion:
+
+Preflight rejected the consumed approval path safely, but because the approval was expired and commit/scope mismatched, this packet did not isolate the consumed-approval gate.
+
+Next smallest gate:
+
+FP-MCP-096 — Fresh Consumed Approval Preflight Isolation
