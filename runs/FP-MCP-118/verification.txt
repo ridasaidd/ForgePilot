@@ -1,0 +1,112 @@
+FP-MCP-118 verification
+
+Result: PASSED
+
+Packet:
+
+- FP-MCP-118 — Guarded Preflight Report With Approval Evidence Fixture
+
+Fixture:
+
+- approvalId: APPROVAL-20260630T162204620Z-f3b278ed
+- path: runs/FP-MCP-118/approvals/APPROVAL-20260630T162204620Z-f3b278ed.json
+- sha256: 00c814b46a507bdbf1fb9d45d37dd0329e524eccc13d45a20f48d7f50224ae7f
+- fixture commit: 84e9380
+
+Request under test:
+
+- packetId: FP-MCP-117
+- requestId: REQ-20260630T160920008Z-195b9969
+- modelId: deepseek-v4-pro-high
+- runMode: DESIGN_ONLY
+- request artifact sha256: 512a8c2c48e69b22d0e48206c9e9af65aff26d44eefded9b8ca9e6b0b064a454
+
+Fixture creation result:
+
+- fixtureRecorderEvaluated: true
+- dryRunFixtureRecorded: true
+- dryRunFixtureValidated: true
+- approvalEvidenceValid: false
+- approvalValid: false
+- approvalUsableForExecution: false
+- approvalCreated: false
+- approvalMutated: false
+- humanApprovalRecorded: false
+- executionAllowedNow: false
+- executionStarted: false
+- startEndpointContacted: false
+- opencodeStarted: false
+
+Preflight report result:
+
+- guardedStartPreflightEvaluated: true
+- eligibleForFutureGuardedStart: false
+- executionPermitted: false
+- executionStarted: false
+- opencodeStarted: false
+- runnerStartEndpointContacted: false
+- startEndpointContacted: false
+- runnerRunId: null
+- approvalConsumed: false
+- requestArtifactMutated: false
+- startEndpointPresent: true
+- startEndpointState: PRESENT_DISABLED
+- startCapabilityCallable: false
+- executionEnabled: false
+- supportedOperations:
+  - capabilities
+  - validate-request
+
+Good gates preserved:
+
+- repository: PASSED
+- requestArtifact: PASSED
+- commitBinding: PASSED
+- modelAndRunMode: PASSED
+
+Approval gate observation:
+
+- FP-MCP-117 missing approval:
+  - evaluated: false
+  - state: INCOMPLETE
+  - reason: HUMAN_APPROVAL_EVIDENCE_MISSING
+- FP-MCP-118 fixture approval:
+  - evaluated: true
+  - state: DEFERRED
+  - reason: HUMAN_APPROVAL_EVIDENCE_NOT_EVALUATED
+
+Expected remaining blockers:
+
+- disableSwitch: FAILED
+- runnerCapabilityState: FAILED
+- opencodeReadiness: FAILED
+- preStartEvidence: INCOMPLETE
+- stateSnapshotEvidence: INCOMPLETE
+- evidenceLedgerReadiness: DEFERRED
+
+Top-level reasons:
+
+- EXECUTION_DISABLED_GLOBAL
+- RUNNER_EXECUTION_DISABLED
+- OPENCODE_EXECUTION_DISABLED
+- DISABLE_SWITCH_ACTIVE
+- EXECUTION_NOT_ALLOWED
+- START_ENDPOINT_DISABLED
+- START_NOT_CALLABLE
+- EVIDENCE_LEDGER_NOT_READY
+
+Safety:
+
+- no real approval created
+- no approval consumed
+- no execution enabled
+- no start made callable
+- no start added to supportedOperations
+- no runner start endpoint contacted
+- no OpenCode process started
+- no runner run id created
+- no request artifact mutated
+
+Conclusion:
+
+Guarded preflight report with non-authorizing approval fixture verification passed.
