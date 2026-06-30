@@ -1,0 +1,57 @@
+FP-MCP-092 verification
+
+Result: PASSED
+
+Verified scoped real human approval evidence creation observation.
+
+Initial rejected attempt:
+
+- approvalCreated: false
+- reasons included APPROVAL_LIFETIME_TOO_LONG and APPROVAL_TEXT_INVALID
+
+Corrected creation:
+
+- realHumanApprovalEvidenceRecorded: true
+- humanApprovalRecorded: true
+- approvalCreated: true
+- approvalId: APPROVAL-20260630T112307543Z-5f55a9ce
+- approvalArtifactPath: runs/FP-MCP-092/approvals/APPROVAL-20260630T112307543Z-5f55a9ce.json
+- approvalArtifactSha256: d2a88ef7dafbcfed7dbbbd2322cb5e7002ad9dcec885bf10c868388192a4b8de
+
+Validation:
+
+- approvalEvidenceSchemaValid: true
+- approvalEvidenceTypeValid: true
+- artifactTypeValid: true
+- approvalStateValid: true
+- scopeExact: true
+- scopeMatchesExpected: true
+- canonicalApprovalTextValid: true
+- preconditionsValid: true
+- notRevoked: true
+- notConsumed: true
+- notQuarantined: true
+- artifactCommitted: false
+
+Expected remaining validation blockers before committing artifact:
+
+- APPROVAL_EVIDENCE_ARTIFACT_UNCOMMITTED
+- APPROVAL_ARTIFACT_UNCOMMITTED
+
+Safety result:
+
+- approvalConsumed: false
+- executionAllowedNow: false
+- executionStarted: false
+- startEndpointContacted: false
+- opencodeStarted: false
+- disableSwitchActive: true
+- runnerExecutionEnabled: false
+- opencodeExecutionEnabled: false
+- no runner run id created
+
+Conclusion:
+
+Real approval evidence can be created safely as a create-only observation.
+
+The artifact must be committed and revalidated before any future consumption gate can be evaluated.
