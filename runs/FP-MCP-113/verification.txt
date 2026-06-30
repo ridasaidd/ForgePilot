@@ -1,0 +1,83 @@
+FP-MCP-113 verification
+
+Result: PASSED
+
+Implementation:
+
+- repo: ~/forgepilot-chatgpt-mcp
+- branch: feature/oauth-auth0
+- commit: 22e1c12
+- file changed: src/server.ts
+- build: pnpm build / tsc passed
+
+Bridge status:
+
+- runnerReachable: true
+- executionEnabled: false
+- supportedOperations:
+  - capabilities
+  - validate-request
+- startEndpointPresent: true
+- startEndpointState: PRESENT_DISABLED
+- startCapabilityCallable: false
+- startReturnsRunnerRunId: false
+- startDisabledReason: START_ENDPOINT_PRESENT_DISABLED
+- startBlockingReasons:
+  - START_ENDPOINT_DISABLED
+  - START_NOT_CALLABLE
+  - RUNNER_EXECUTION_DISABLED
+  - OPENCODE_EXECUTION_DISABLED
+
+MCP start tool test:
+
+- input packetId: FP-MCP-113
+- input requestId: REGRESSION-CHECK
+- input approval: START_REMOTE_RUNNER_REQUEST
+- boundaryVersion: FP-MCP-113
+- statusSource: MCP bridge disabled-start boundary policy
+- started: false
+- accepted: false
+- runnerContacted: false
+- runnerStartEndpointContacted: false
+- startEndpointContacted: false
+- startEndpointPresent: true
+- startEndpointState: PRESENT_DISABLED
+- startCapabilityCallable: false
+- executionStarted: false
+- opencodeStarted: false
+- executionAllowedNow: false
+- runnerRunId: null
+- approvalConsumed: false
+- approvalConsumptionPath: null
+- preStartEvidenceCreated: false
+- postStartEvidenceCreated: false
+- requestArtifactMutated: false
+
+Reasons:
+
+- START_ENDPOINT_DISABLED
+- START_NOT_CALLABLE
+- EXECUTION_NOT_ALLOWED
+- RUNNER_EXECUTION_DISABLED
+- OPENCODE_EXECUTION_DISABLED
+- INVALID_REQUEST_ID
+
+Notes:
+
+- INVALID_REQUEST_ID is expected because REGRESSION-CHECK was used as a non-real request artifact id.
+- The disabled-start boundary still fired before start endpoint contact.
+
+Safety:
+
+- no execution enabled
+- no start made callable
+- no start added to supportedOperations
+- no runner start endpoint contact during MCP start-tool boundary test
+- no approval consumed
+- no request artifact mutated
+- no OpenCode process started
+- no runner run id created
+
+Conclusion:
+
+MCP start tool boundary alignment passed.
