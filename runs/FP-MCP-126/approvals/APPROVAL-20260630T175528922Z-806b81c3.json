@@ -1,0 +1,41 @@
+{
+  "approvalConsumed": false,
+  "approvalConsumptionCreated": false,
+  "approvalId": "APPROVAL-20260630T175528922Z-806b81c3",
+  "approvalKind": "GUARDED_START_PREFLIGHT_APPROVAL",
+  "approvalState": "VALID",
+  "approvalText": "I approve this ForgePilot guarded start request.",
+  "approvalUsableForExecution": true,
+  "approvedAction": "ALLOW_ONE_GUARDED_REMOTE_RUNNER_EXECUTION_ATTEMPT",
+  "artifactType": "human-approval-evidence",
+  "artifactVersion": "human-approval-evidence-v1",
+  "canonicalApprovalText": "I approve this ForgePilot guarded start request.",
+  "consumedAt": null,
+  "createdAt": "2026-06-30T17:55:28Z",
+  "executionAllowedNow": false,
+  "executionStarted": false,
+  "expiresAt": "2026-06-30T18:25:28Z",
+  "humanApprovalRecorded": true,
+  "opencodeStarted": false,
+  "operator": {
+    "operatorHandle": "rida",
+    "operatorId": "local-operator-rida"
+  },
+  "quarantinedAt": null,
+  "reasons": [],
+  "requestArtifactMutated": false,
+  "revokedAt": null,
+  "runnerRunId": null,
+  "runnerStartEndpointContacted": false,
+  "schemaVersion": "FP-MCP-125",
+  "scope": {
+    "branch": "main",
+    "modelId": "deepseek-v4-pro-high",
+    "packetId": "FP-MCP-117",
+    "repoCommit": "d8684b1",
+    "requestId": "REQ-20260630T160920008Z-195b9969",
+    "runMode": "DESIGN_ONLY"
+  },
+  "singleUse": true,
+  "startEndpointContacted": false
+}
