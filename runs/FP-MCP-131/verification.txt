@@ -1,0 +1,70 @@
+FP-MCP-131 verification
+
+Result: PASSED
+
+Packet:
+
+- FP-MCP-131 — Human Approval Evidence Commit Binding Semantics Contract
+
+Packet commit:
+
+- 57869bd
+
+Decision:
+
+- Option D selected
+- approval binds to approved target execution commit
+
+Rejected:
+
+- current evaluation commit as approval binding target
+- approval artifact creation commit as approval binding target
+- request artifact commit as universal approval binding target
+
+Defined:
+
+- approvedTargetExecutionCommit
+- approval artifact creation commit as provenance
+- current evaluation commit as provenance
+- request artifact commit as candidate target only when explicit or legacy fallback
+- legacy scope.repoCommit compatibility
+- target commit source priority
+- expiration independence
+- future reason code distinction
+
+Required future comparison:
+
+- approval approved target execution commit == request intended target execution commit
+
+Must not require:
+
+- approval.scope.repoCommit == current evaluation HEAD
+
+Legacy compatibility:
+
+- scope.repoCommit is interpreted as approvedTargetExecutionCommit for FP-MCP-126-style artifacts
+
+Reason code clarification:
+
+- HUMAN_APPROVAL_EVIDENCE_TARGET_COMMIT_MISMATCH is failure
+- HUMAN_APPROVAL_EVIDENCE_CURRENT_EVALUATION_COMMIT_DIFFERENT is observation only
+
+Safety:
+
+- no implementation changed
+- no execution enabled
+- no start made callable
+- no start added to supportedOperations
+- no runner start endpoint contacted
+- no OpenCode started
+- no runner run id created
+- no approval consumed
+- no approval consumption evidence created
+- no approval artifact mutated
+- no request artifact mutated
+- PRESENT_GUARDED not implemented
+- CALLABLE_GUARDED not implemented
+
+Conclusion:
+
+FP-MCP-131 verification passed.
