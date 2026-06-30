@@ -1,0 +1,65 @@
+FP-MCP-132 verification
+
+Result: PASSED
+
+Packet:
+
+- FP-MCP-132 — Local Preflight Target Commit Binding Implementation
+
+Implementation:
+
+- local evaluator updated
+- target commit binding implemented
+- current HEAD drift is observation-only
+- ambiguous HUMAN_APPROVAL_EVIDENCE_COMMIT_MISMATCH removed
+- expiration remains independent
+
+humanApprovalEvidence:
+
+- evaluated: true
+- passed: false
+- state: FAILED
+- reasons: ['HUMAN_APPROVAL_EVIDENCE_EXPIRED', 'HUMAN_APPROVAL_EVIDENCE_TARGET_COMMIT_MISMATCH']
+- observations: ['HUMAN_APPROVAL_EVIDENCE_CURRENT_EVALUATION_COMMIT_DIFFERENT']
+- approvalTargetExecutionCommit: d8684b1
+- approvalTargetCommitSource: APPROVAL_SCOPE_REPO_COMMIT_LEGACY
+- requestTargetExecutionCommit: 034cfdb
+- requestTargetCommitSource: REQUEST_BASE_COMMIT_LEGACY_FALLBACK
+- currentEvaluationCommit: 0612f3a
+- currentEvaluationCommitDifferentFromApprovalTarget: true
+
+Safety:
+
+- eligibleForFutureGuardedStart: false
+- executionPermitted: false
+- executionStarted: false
+- opencodeStarted: false
+- runnerStartEndpointContacted: false
+- startEndpointContacted: false
+- runnerRunId: null
+- approvalConsumed: false
+- requestArtifactMutated: false
+- approvalArtifactMutated: false
+
+Remaining blockers:
+
+- disableSwitch: FAILED
+- runnerCapabilityState: FAILED
+- opencodeReadiness: FAILED
+
+Verified:
+
+- local preflight report captured
+- ambiguous current-HEAD mismatch reason removed
+- target commit metadata recorded
+- current evaluation commit difference recorded as observation
+- expiration still evaluated independently
+- runner start endpoint not contacted
+- OpenCode not started
+- approval not consumed
+- approval artifact not mutated
+- request artifact not mutated
+
+Conclusion:
+
+FP-MCP-132 verification passed.
