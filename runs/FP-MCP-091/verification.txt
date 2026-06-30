@@ -1,0 +1,33 @@
+FP-MCP-091 verification
+
+Result: PASSED
+
+Verified real approval evidence contract observation without creating real approval.
+
+Safety result:
+
+- no real approval evidence created
+- approvalCreated: false
+- approvalConsumed: false
+- executionAllowedNow: false
+- executionStarted: false
+- startEndpointContacted: false
+- opencodeStarted: false
+- global disable switch remains active
+- no runner run id created
+- no production MCP behavior changed
+
+Reference evidence read:
+
+- runs/FP-MCP-090/approval-gate-observation.md
+- runs/FP-MCP-090/approvals/APPROVAL-20260630T111656360Z-1eafb0e9.json
+
+Conclusion:
+
+The real approval evidence contract is explicit.
+
+Dry-run approval-shaped evidence remains distinct from real human approval evidence.
+
+Next smallest gate:
+
+FP-MCP-092 — Scoped Real Approval Evidence Creation Observation
