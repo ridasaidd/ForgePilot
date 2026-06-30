@@ -1,0 +1,35 @@
+FP-MCP-109 verification
+
+Result: PASSED
+
+Verified contract-only packet.
+
+Defined:
+
+- start endpoint state model
+- PRESENT_DISABLED semantics
+- future disabled-stub capability metadata
+- supported operations rule
+- request shape
+- fail-closed response shape
+- mandatory side-effect prohibitions
+- auth boundary
+- evidence boundary
+- future implementation verification requirements
+
+Safety:
+
+- no implementation performed
+- no start endpoint implemented
+- no start operation made callable
+- no start operation added to supportedOperations
+- no execution enabled
+- no approval created
+- no approval consumed
+- no runner start endpoint contacted
+- OpenCode not started
+- no runner run id created
+
+Next candidate:
+
+- FP-MCP-110 — Guarded Start Endpoint Disabled Stub Implementation
