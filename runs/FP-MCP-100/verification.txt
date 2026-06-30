@@ -1,0 +1,48 @@
+FP-MCP-100 verification
+
+Result: PARTIAL — PREFLIGHT TOOL CALL NOT OBSERVED
+
+Verified non-starting readiness observations for the FP-MCP-099 request.
+
+Request:
+
+- packetId: FP-MCP-099
+- requestId: REQ-20260630T115752019Z-25b7c1b8
+- modelId: deepseek-v4-pro-high
+- runMode: DESIGN_ONLY
+
+Observed successful checks:
+
+- disable switch status evaluated
+- execution enablement status evaluated
+- local remote-runner handoff validation passed
+- remote runner validate-request passed
+
+Safety result:
+
+- executionAllowedNow: false
+- executionStarted: false
+- startEndpointContacted: false
+- opencodeStarted: false
+- runnerExecutionEnabled: false
+- opencodeExecutionEnabled: false
+- global disable switch active
+- no approval created
+- no approval consumed
+- no runner run id created
+- runner start endpoint not contacted
+- OpenCode not started
+
+Unobserved:
+
+- guarded execution preflight payload
+
+Reason:
+
+- guarded preflight tool call was blocked before reaching ForgePilot
+
+Conclusion:
+
+FP-MCP-100 provides partial readiness evidence.
+
+The FP-MCP-099 request remains valid for validation-only paths, while execution remains blocked.
