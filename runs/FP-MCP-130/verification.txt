@@ -1,0 +1,74 @@
+FP-MCP-130 verification
+
+Result: PASSED
+
+Packet:
+
+- FP-MCP-130 — Local Guarded Preflight Real Approval Evaluation
+
+Packet commit:
+
+- 824323a
+
+Command:
+
+- node ~/forgepilot-chatgpt-mcp/scripts/guarded-preflight-report.mjs --packet-id FP-MCP-117 --request-id REQ-20260630T160920008Z-195b9969 --approval-id APPROVAL-20260630T175528922Z-806b81c3
+
+Artifacts:
+
+- runs/FP-MCP-130/local-preflight-report.json
+- runs/FP-MCP-130/local-preflight-report.md
+
+humanApprovalEvidence:
+
+- evaluated: true
+- passed: false
+- state: FAILED
+- reasons: ['HUMAN_APPROVAL_EVIDENCE_EXPIRED', 'HUMAN_APPROVAL_EVIDENCE_COMMIT_MISMATCH']
+- evidencePath: runs/FP-MCP-126/approvals/APPROVAL-20260630T175528922Z-806b81c3.json
+- evidenceSha256: 482e7c13c3fda729bab0eada110b41199dc576be8a7b4112324f1ae4220a1fdb
+
+evidenceLedgerReadiness:
+
+- evaluated: true
+- passed: false
+- state: DEFERRED
+- reasons: ['HUMANAPPROVALEVIDENCE_NOT_READY']
+
+Remaining blockers:
+
+- disableSwitch: FAILED
+- runnerCapabilityState: FAILED
+- opencodeReadiness: FAILED
+
+Safety fields:
+
+- eligibleForFutureGuardedStart: false
+- executionPermitted: false
+- executionStarted: false
+- opencodeStarted: false
+- runnerStartEndpointContacted: false
+- startEndpointContacted: false
+- runnerRunId: null
+- approvalConsumed: false
+- requestArtifactMutated: false
+- approvalArtifactMutated: false
+
+Verified:
+
+- local preflight script ran
+- JSON report captured
+- humanApprovalEvidence evaluated
+- approval artifact path reported
+- approval artifact sha256 reported
+- safety fields preserved
+- runner start endpoint not contacted
+- OpenCode not started
+- runner run id not created
+- approval not consumed
+- approval artifact not mutated
+- request artifact not mutated
+
+Conclusion:
+
+FP-MCP-130 verification passed.
