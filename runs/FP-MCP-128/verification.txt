@@ -1,0 +1,69 @@
+FP-MCP-128 verification
+
+Result: PASSED
+
+Packet:
+
+- FP-MCP-128 — Local Guarded Preflight Invocation Path Contract
+
+Packet commit:
+
+- 5cdad37
+
+Scope:
+
+- contract-only
+- no implementation changes
+- no bridge changes
+- no runner changes
+- no OpenCode configuration changes
+- no local preflight run
+- no approval artifact created
+- no approval consumed
+
+Contract defines:
+
+- local guarded preflight invocation path definition
+- non-execution boundary
+- allowed CLI invocation form
+- allowed script invocation form
+- allowed internal function reuse form
+- required inputs
+- required output shape
+- required gates
+- required read-only sources
+- runner capability boundary
+- approval evidence boundary
+- expected current test result
+- expected overall safety state
+- Action parity requirements
+- evidence recording requirements
+
+Important invariants:
+
+- local path must not contact /runner/start-run
+- local path must not invoke forgepilot_start_remote_runner_request
+- local path must not start OpenCode
+- local path must not consume approval
+- local path must not mutate approval artifacts
+- local path must not mutate request artifacts
+- passing humanApprovalEvidence remains non-authorizing by itself
+
+Safety:
+
+- no execution enabled
+- no start made callable
+- no start added to supportedOperations
+- no runner start endpoint contacted
+- no OpenCode process started
+- no runner run id created
+- no approval consumed
+- no approval consumption evidence created
+- no approval artifact mutated
+- no request artifact mutated
+- no bridge code changed
+- no runner code changed
+
+Conclusion:
+
+Local guarded preflight invocation path contract verification passed.
