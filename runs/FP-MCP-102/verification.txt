@@ -1,0 +1,47 @@
+FP-MCP-102 verification
+
+Result: PASSED
+
+Verified non-executing OpenCode request artifact creation and validation.
+
+Request:
+
+- packetId: FP-MCP-102
+- requestId: REQ-20260630T123936836Z-a102a576
+- requestArtifactPath: runs/FP-MCP-102/opencode-requests/REQ-20260630T123936836Z-a102a576.json
+- requestArtifactSha256: 2dc51d5689439aa0b0f1e466eaef6cb2338e54cbe73e849d8cbf45049000d0a2
+
+Local validation:
+
+- eligible: true
+- runnerContacted: false
+- requestArtifactValid: true
+- modelAllowed: true
+- runModeAllowed: true
+- safeArtifactDir: true
+- reasons: []
+
+Remote validate-request:
+
+- valid: true
+- runnerConfigured: true
+- runnerContacted: true
+- runnerAccepted: true
+- runnerProtocolVersion: forgepilot-runner-v1
+- reasons: []
+
+Safety:
+
+- executionEnabled: false
+- executionStarted: false
+- opencodeStarted: false
+- executionAllowedNow: false
+- runner start endpoint not contacted
+- OpenCode not started
+- no approval created
+- no approval consumed
+- no runner run id created
+
+Conclusion:
+
+FP-MCP-102 has a valid non-executing OpenCode request artifact and passed validation-only handoff checks.
