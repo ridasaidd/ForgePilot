@@ -1,0 +1,41 @@
+FP-MCP-090 verification
+
+Result: PASSED
+
+Verified human approval evidence gate observation using non-authorizing dry-run fixture tooling.
+
+Dry-run fixture:
+
+- dryRunFixtureRecorded: true
+- dryRunFixtureApprovalId: APPROVAL-20260630T111656360Z-1eafb0e9
+- dryRunFixturePath: runs/FP-MCP-090/approvals/APPROVAL-20260630T111656360Z-1eafb0e9.json
+- dryRunFixtureValidated: true
+
+Approval validation:
+
+- approvalEvidenceValid: false
+- approvalValid: false
+- approvalUsableForExecution: false
+- approvalCreated: false
+- approvalMutated: false
+- humanApprovalRecorded: false
+- approvalConsumed: false
+
+Safety result:
+
+- executionAllowedNow: false
+- executionStarted: false
+- startEndpointContacted: false
+- opencodeStarted: false
+- disableSwitchActive: true
+- runnerExecutionEnabled: false
+- opencodeExecutionEnabled: false
+- no real approval evidence created
+- no approval consumed
+- no runner run id created
+
+Conclusion:
+
+The approval evidence gate can be observed safely with dry-run evidence.
+
+The dry-run fixture remains explicitly invalid and unusable for execution.
