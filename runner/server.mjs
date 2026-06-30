@@ -749,10 +749,34 @@ async function handleValidateRequest(req, res) {
   jsonResponse(res, 200, result);
 }
 
-async function handleStartRun(_req, res) {
+async function handleStartRun(req, res) {
   const operation = "start-run";
   const startedAt = Date.now();
   logOperationStart(operation);
+
+  const auth = requireAuth(req);
+
+  if (!auth.ok) {
+    logOperationEnd(operation, startedAt, false, auth.reason);
+    jsonResponse(res, auth.statusCode, {
+      valid: false,
+      accepted: false,
+      runnerConfigured: runnerToken.length > 0,
+      runnerContacted: true,
+      executionEnabled,
+      executionStarted: false,
+      opencodeStarted: false,
+      runnerRunId: null,
+      startEndpointContacted: true,
+      runnerProtocolVersion: RUNNER_PROTOCOL_VERSION,
+      boundaryVersion: BOUNDARY_VERSION,
+      statusSource: "private dev runner authentication policy",
+      checkedAt: nowIso(),
+      reasons: [auth.reason]
+    });
+    return;
+  }
+
   logOperationEnd(operation, startedAt, false, "START_ENDPOINT_DISABLED");
 
   jsonResponse(res, 403, {
