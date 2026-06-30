@@ -1,0 +1,98 @@
+FP-MCP-122 verification
+
+Result: PASSED
+
+Packet:
+
+- FP-MCP-122 — Guarded Preflight Evidence Ledger Readiness Skeleton
+
+ForgePilot packet commit:
+
+- c970af3
+
+Bridge implementation commits:
+
+- 0b4ddb1 Evaluate guarded preflight evidence ledger readiness
+- c656a7e Align guarded preflight ledger readiness reasons
+
+Build:
+
+- pnpm build: PASS
+- tsc: PASS
+
+Tool visibility:
+
+- forgepilot_get_guarded_start_preflight_report visible in Actions page
+
+Verification input:
+
+- packetId: FP-MCP-117
+- requestId: REQ-20260630T160920008Z-195b9969
+- approvalId: APPROVAL-20260630T162204620Z-f3b278ed
+
+Ledger readiness:
+
+- evaluated: true
+- passed: true
+- state: PASSED
+- reasons: []
+
+Top-level reason consistency:
+
+- EVIDENCE_LEDGER_NOT_READY removed from top-level reasons when ledger readiness passes
+
+Passing gates:
+
+- repository
+- requestArtifact
+- commitBinding
+- modelAndRunMode
+- preStartEvidence
+- stateSnapshotEvidence
+- evidenceLedgerReadiness
+
+Remaining blockers:
+
+- disableSwitch: FAILED
+- runnerCapabilityState: FAILED
+- opencodeReadiness: FAILED
+- humanApprovalEvidence: DEFERRED
+
+Safety fields:
+
+- eligibleForFutureGuardedStart: false
+- executionPermitted: false
+- executionStarted: false
+- opencodeStarted: false
+- runnerStartEndpointContacted: false
+- startEndpointContacted: false
+- runnerRunId: null
+- approvalConsumed: false
+- requestArtifactMutated: false
+
+Runner state:
+
+- startEndpointPresent: true
+- startEndpointState: PRESENT_DISABLED
+- startCapabilityCallable: false
+- executionEnabled: false
+- supportedOperations:
+  - capabilities
+  - validate-request
+
+No prohibited action occurred:
+
+- execution not enabled
+- start not made callable
+- start not added to supportedOperations
+- runner start endpoint not contacted
+- OpenCode not started
+- runner run id not created
+- approval not consumed
+- request artifact not mutated
+- PRESENT_GUARDED not implemented
+- CALLABLE_GUARDED not implemented
+
+Conclusion:
+
+FP-MCP-122 verification passed.
