@@ -1,0 +1,22 @@
+FP-MCP-139 verification
+
+reportPath: /home/ridasaidd/forgepilot/runs/FP-MCP-139/local-preflight-report.json
+gatesObjectShaped: true
+preStartEvidenceObjectValued: true
+humanApprovalEvidenceObjectValued: true
+preStartEvidenceState: PASSED
+preStartEvidencePassed: true
+humanApprovalEvidenceState: PASSED
+humanApprovalEvidencePassed: true
+humanApprovalCommitMismatchRegressed: false
+humanApprovalPacketScopeMismatchRegressed: false
+executionPermitted: false
+executionStarted: false
+opencodeStarted: false
+runnerStartEndpointContacted: false
+startEndpointContacted: false
+approvalConsumed: false
+requestArtifactMutated: false
+
+FAILURES:
+- request artifact must remain valid
