@@ -1,0 +1,72 @@
+FP-MCP-103 verification
+
+Result: PASSED
+
+Observed remote runner capability gap.
+
+Runner status:
+
+- runnerConfigured: true
+- runnerReachable: true
+- runnerVersion: 0.1.0-fp-mcp-024
+- runnerProtocolVersion: forgepilot-runner-v1
+- executionEnabled: false
+- supportedOperations:
+  - capabilities
+  - validate-request
+
+Start capability:
+
+- not advertised
+- not invoked
+- not contacted
+
+OpenCode status:
+
+- opencodeDiscoveryConfigured: true
+- opencodeExecutionEnabled: false
+- liveOpenCodeChecked: false
+- executionDisabledReason: FP-MCP-002 is read-only discovery only. Executor start tools are not implemented.
+
+Execution enablement:
+
+- executionAllowedNow: false
+- executionStarted: false
+- startEndpointContacted: false
+- opencodeStarted: false
+- runnerExecutionEnabled: false
+- opencodeExecutionEnabled: false
+
+Blocking reasons:
+
+- RUNNER_EXECUTION_CAPABILITY_NOT_PRESENT
+- OPENCODE_BOUNDARY_UNSATISFIED
+- SECRET_BOUNDARY_UNSATISFIED
+- NETWORK_BOUNDARY_UNSATISFIED
+- HUMAN_APPROVAL_NOT_RECORDED
+- RUNNER_EXECUTION_DISABLED
+- OPENCODE_EXECUTION_DISABLED
+
+FP-MCP-102 request validation:
+
+- local validation eligible: true
+- remote validate-request valid: true
+- runnerAccepted: true
+- reasons: []
+
+Safety:
+
+- no approval created
+- no approval consumed
+- no execution enabled
+- no runner start endpoint contacted
+- no OpenCode process started
+- no runner run id created
+
+Conclusion:
+
+Validated request artifacts exist, but the runner start capability is still absent.
+
+Recommended next packet:
+
+FP-MCP-104 — Runner Start Capability Contract Definition
