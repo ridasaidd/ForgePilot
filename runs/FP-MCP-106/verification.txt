@@ -1,0 +1,47 @@
+FP-MCP-106 verification
+
+Result: PASSED
+
+Verified non-executing OpenCode request artifact creation and validation.
+
+Request:
+
+- packetId: FP-MCP-106
+- requestId: REQ-20260630T125835152Z-06e854d9
+- requestArtifactPath: runs/FP-MCP-106/opencode-requests/REQ-20260630T125835152Z-06e854d9.json
+- requestArtifactSha256: bd52cfd05c4dc2463e4c24cafb9999b73533cbd1f6ccc39eed388094795c012d
+
+Local validation:
+
+- eligible: true
+- runnerContacted: false
+- requestArtifactValid: true
+- modelAllowed: true
+- runModeAllowed: true
+- safeArtifactDir: true
+- reasons: []
+
+Remote validate-request:
+
+- valid: true
+- runnerConfigured: true
+- runnerContacted: true
+- runnerAccepted: true
+- runnerProtocolVersion: forgepilot-runner-v1
+- reasons: []
+
+Safety:
+
+- executionEnabled: false
+- executionStarted: false
+- opencodeStarted: false
+- executionAllowedNow: false
+- runner start endpoint not contacted
+- OpenCode not started
+- no approval created
+- no approval consumed
+- no runner run id created
+
+Conclusion:
+
+FP-MCP-106 has a valid non-executing OpenCode request artifact and passed validation-only handoff checks.
