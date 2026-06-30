@@ -1,0 +1,38 @@
+FP-MCP-093 verification
+
+Result: PASSED
+
+Verified committed real approval evidence revalidation.
+
+Approval validation:
+
+- approvalEvidenceValid: true
+- approvalValid: true
+- approvalUsableForExecution: true
+- artifactCommitted: true
+- reasons: []
+
+Consumption state:
+
+- approvalConsumed: false
+- consumptionEvidencePresent: false
+- consumptionEvidenceValid: false
+- consumptionEvidenceId: null
+- consumptionEvidencePath: null
+
+Safety result:
+
+- executionAllowedNow: false
+- executionStarted: false
+- startEndpointContacted: false
+- opencodeStarted: false
+- no runner run id created
+- no approval artifact mutation
+
+Conclusion:
+
+Committed real approval evidence validates cleanly while remaining unconsumed and non-executing.
+
+Next smallest gate:
+
+FP-MCP-094 — Approval Consumption Evidence Observation
