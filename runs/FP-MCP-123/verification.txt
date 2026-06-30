@@ -1,0 +1,81 @@
+FP-MCP-123 verification
+
+Result: PASSED
+
+Packet:
+
+- FP-MCP-123 — Human Approval Evidence Preflight Evaluation Contract
+
+Packet commit:
+
+- bcccc55
+
+Scope:
+
+- contract-only
+- no implementation changes
+- no bridge changes
+- no runner changes
+- no OpenCode configuration changes
+
+Contract defines:
+
+- humanApprovalEvidence definition
+- approval evidence versus approval consumption
+- non-authorizing semantics
+- required gate shape
+- allowed gate states
+- required input context
+- approval evidence types
+- missing approval evidence behavior
+- non-authorizing fixture behavior
+- real scoped approval evidence requirements
+- canonical approval text behavior
+- exact scope matching
+- expiration behavior
+- operator identity safety
+- append-only requirement
+- PASSED semantics
+- FAILED semantics
+- INCOMPLETE semantics
+- DEFERRED semantics
+- NOT_EVALUATED semantics
+- missing/incomplete reason codes
+- deferred reason codes
+- failed reason codes
+- current expected DEFERRED behavior
+
+Important invariants:
+
+- approval evidence is not approval consumption
+- approval evidence does not authorize execution by itself
+- approval evidence evaluation must not consume approval
+- approval evidence evaluation must not mutate approval artifacts
+- dry-run fixtures must not pass guarded-start approval readiness
+
+Current expected behavior remains:
+
+- humanApprovalEvidence.evaluated: true
+- humanApprovalEvidence.passed: false
+- humanApprovalEvidence.state: DEFERRED
+- humanApprovalEvidence.reasons:
+  - HUMAN_APPROVAL_EVIDENCE_NOT_EVALUATED
+
+Safety:
+
+- no execution enabled
+- no start made callable
+- no start added to supportedOperations
+- no runner start endpoint contacted
+- no OpenCode process started
+- no runner run id created
+- no real approval created
+- no approval consumed
+- no approval artifact mutated
+- no request artifact mutated
+- no bridge code changed
+- no runner code changed
+
+Conclusion:
+
+Human approval evidence preflight evaluation contract verification passed.
