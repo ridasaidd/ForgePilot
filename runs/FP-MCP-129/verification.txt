@@ -1,0 +1,57 @@
+FP-MCP-129 verification
+
+Result: PASSED
+
+Packet:
+
+- FP-MCP-129 — Local Guarded Preflight Invocation Path Skeleton
+
+Packet commit:
+
+- fbe5239
+
+Implementation:
+
+- repo: forgepilot-chatgpt-mcp
+- commit: 9e94ad9
+- file: scripts/guarded-preflight-report.mjs
+
+Invocation implemented:
+
+- node scripts/guarded-preflight-report.mjs --packet-id <packet> --request-id <request> [--approval-id <approval>]
+
+Checks:
+
+- local script exists
+- script is executable
+- node syntax check passed
+- accepts packet id
+- accepts request id
+- accepts optional approval id
+- emits JSON
+- preserves safety fields
+- does not contact runner start endpoint
+- does not invoke forbidden start request bridge action
+- does not start OpenCode
+- does not consume approval
+- does not mutate approval artifacts
+- does not mutate request artifacts
+- no runner code changed
+- no OpenCode configuration changed
+- no start capability state changed
+
+Safety:
+
+- executionPermitted remains false
+- executionStarted remains false
+- opencodeStarted remains false
+- runnerStartEndpointContacted remains false
+- startEndpointContacted remains false
+- runnerRunId remains null
+- approvalConsumed remains false
+- requestArtifactMutated remains false
+- approvalArtifactMutated remains false
+
+Conclusion:
+
+FP-MCP-129 implementation verification passed.
