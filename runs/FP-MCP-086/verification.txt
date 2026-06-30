@@ -1,0 +1,56 @@
+FP-MCP-086 verification
+
+Result: PASSED
+
+Verified live ForgePilot MCP endpoint validator returns schema-valid structured output on the runner-unconfigured failed path.
+
+Tool:
+
+forgepilot_validate_remote_runner_endpoint_request
+
+Input:
+
+- packetId: FP-MCP-084
+- requestId: REQ-20260630T094727908Z-630a4f0d
+
+Observed output:
+
+- valid: false
+- runnerConfigured: false
+- runnerContacted: false
+- runnerAccepted: false
+- executionEnabled: false
+- executionStarted: false
+- opencodeStarted: false
+- executionAllowedNow: false
+- approvalId: null
+- approvalPacketId: null
+- approvalPath: null
+- packetExists: true
+- requestExists: true
+- requestArtifactValid: true
+- modelAllowed: true
+- runModeAllowed: true
+- workingTreeClean: true
+- baseCommitMatches: true
+- creationCommitExists: true
+- artifactCommitExists: true
+- creationCommitAncestorOfArtifactCommit: true
+- artifactCommitReachableFromHead: true
+- safeArtifactDir: true
+- reasons:
+  - RUNNER_UNCONFIGURED
+
+Observed commits:
+
+- baseCommit: 1244076
+- creationCommit: a413b33
+- artifactCommit: f9b5e3d
+- currentCommit: 1244076
+
+Safety result:
+
+- No execution was started.
+- No approval was consumed.
+- No runner start endpoint was contacted.
+- No OpenCode process was started.
