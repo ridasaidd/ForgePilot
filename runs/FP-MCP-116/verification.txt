@@ -1,0 +1,97 @@
+FP-MCP-116 verification
+
+Result: PASSED
+
+Implementation:
+
+- repo: ~/forgepilot-chatgpt-mcp
+- branch: feature/oauth-auth0
+- commit: 0b134cc
+- file changed: src/server.ts
+- build: pnpm build / tsc passed
+
+Tool:
+
+- forgepilot_get_guarded_start_preflight_report
+
+Tool visibility:
+
+- visible in Actions page
+- loaded by exact tool name through ForgePilot MCP namespace
+
+Test input:
+
+- packetId: FP-MCP-116
+- requestId: REGRESSION-CHECK
+- approvalId: omitted
+
+Observed required fields:
+
+- guardedStartPreflightEvaluated: true
+- eligibleForFutureGuardedStart: false
+- executionPermitted: false
+- executionStarted: false
+- opencodeStarted: false
+- runnerStartEndpointContacted: false
+- startEndpointContacted: false
+- runnerRunId: null
+- approvalConsumed: false
+- requestArtifactMutated: false
+- startEndpointPresent: true
+- startEndpointState: PRESENT_DISABLED
+- startCapabilityCallable: false
+- executionEnabled: false
+- supportedOperations:
+  - capabilities
+  - validate-request
+- boundaryVersion: FP-MCP-116
+- statusSource: ForgePilot guarded start preflight report skeleton
+
+Observed gate keys:
+
+- repository
+- requestArtifact
+- commitBinding
+- modelAndRunMode
+- disableSwitch
+- runnerCapabilityState
+- opencodeReadiness
+- preStartEvidence
+- stateSnapshotEvidence
+- humanApprovalEvidence
+- evidenceLedgerReadiness
+
+Observed reasons:
+
+- INVALID_REQUEST_ID
+- EXECUTION_DISABLED_GLOBAL
+- RUNNER_EXECUTION_DISABLED
+- OPENCODE_EXECUTION_DISABLED
+- DISABLE_SWITCH_ACTIVE
+- EXECUTION_NOT_ALLOWED
+- START_ENDPOINT_DISABLED
+- START_NOT_CALLABLE
+- HUMAN_APPROVAL_EVIDENCE_MISSING
+- EVIDENCE_LEDGER_NOT_READY
+
+Notes:
+
+- INVALID_REQUEST_ID is expected because REGRESSION-CHECK was used as a non-real request artifact id.
+- The disabled runner state was correctly reported as not eligible.
+- The report remained read-only.
+
+Safety:
+
+- no execution enabled
+- no start made callable
+- no start added to supportedOperations
+- no runner start endpoint contacted
+- no approval created
+- no approval consumed
+- no request artifact mutated
+- no OpenCode process started
+- no runner run id created
+
+Conclusion:
+
+Guarded start preflight report skeleton verification passed.
