@@ -1,0 +1,58 @@
+FP-MCP-107 implementation verification
+
+Result: PASSED
+
+Implementation:
+
+- runner/server.mjs patched
+- disabled start capability metadata added to capabilities response
+- supportedOperations preserved as capabilities and validate-request
+- no start endpoint added
+- no start operation made callable
+
+Syntax:
+
+- node --check runner/server.mjs passed
+
+Runtime:
+
+- forgepilot-runner user service restarted
+- service active running
+- authenticated raw capabilities endpoint observed
+
+Required values observed:
+
+- startCapabilityAdvertised: true
+- startCapabilityCallable: false
+- startCapabilityVersion: guarded-start-capability-v0
+- startOperationName: null
+- startRequiresApprovalEvidence: true
+- startRequiresPreflight: true
+- startRequiresDisableSwitchClear: true
+- startRequiresRequestArtifactHash: true
+- startRequiresTargetExecutionCommit: true
+- startRequiresEvidenceLedgerValidation: true
+- startRecordsPreStartState: true
+- startRecordsPostStartState: true
+- startReturnsRunnerRunId: false
+- startDisabledReason: START_CAPABILITY_ADVERTISEMENT_ONLY
+- startBlockingReasons:
+  - START_NOT_CALLABLE
+  - RUNNER_EXECUTION_DISABLED
+  - OPENCODE_EXECUTION_DISABLED
+
+Safety:
+
+- executionEnabled: false
+- opencodeHarnessConfigured: false
+- opencodeHarnessReachable: false
+- supportedOperations remain validation-safe
+- no start endpoint contacted
+- OpenCode not started
+- no approval created
+- no approval consumed
+- no runner run id created
+
+Conclusion:
+
+FP-MCP-106 metadata-only implementation completed successfully through FP-MCP-107 manual procedure.
