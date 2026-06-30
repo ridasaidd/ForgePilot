@@ -1,0 +1,31 @@
+FP-MCP-097 verification
+
+Result: PASSED
+
+Clarified approval commit-binding model.
+
+Defined:
+
+- targetExecutionCommit
+- evidenceLedgerCommit
+- allowedEvidenceOnlyDescendant
+
+Key finding:
+
+Approval evidence should bind to the target execution commit, not necessarily the repository HEAD containing later evidence artifacts.
+
+Current behavior appears to collapse targetExecutionCommit and evidenceLedgerCommit, causing approval to become self-invalidating when approval/consumption evidence is committed in the same repository.
+
+Safety result:
+
+- no approval evidence created
+- no approval consumed
+- no execution enabled
+- no global disable switch relaxed
+- no runner start endpoint contacted
+- no OpenCode process started
+- no runner run id created
+
+Recommended next packet:
+
+FP-MCP-098 — Target Commit Versus Evidence Ledger Preflight Contract
