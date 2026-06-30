@@ -1,0 +1,51 @@
+FP-MCP-083 remote-runner request validation
+
+Result: PASSED
+
+Validated existing FP-MCP-083 OpenCode request artifact using the read-only ForgePilot remote-runner handoff validator.
+
+Request:
+REQ-20260630T092810882Z-001bb36a
+
+Artifact:
+runs/FP-MCP-083/opencode-requests/REQ-20260630T092810882Z-001bb36a.json
+
+Observed validation result:
+- eligible: true
+- requestArtifactValid: true
+- packetExists: true
+- requestExists: true
+- modelAllowed: true
+- runModeAllowed: true
+- workingTreeClean: true
+- baseCommitMatches: true
+- creationCommitExists: true
+- artifactCommitExists: true
+- creationCommitAncestorOfArtifactCommit: true
+- artifactCommitReachableFromHead: true
+- safeArtifactDir: true
+
+Observed commits:
+- currentCommit: 0e381cd
+- requestBaseCommit: a1836e9
+- creationCommit: a1836e9
+- artifactCommit: e16395b
+
+Safety result:
+- executionEnabled: false
+- executionStarted: false
+- runnerContacted: false
+
+Disable switch observation:
+- disableSwitchActive: true
+- executionAllowedNow: false
+- startEndpointContacted: false
+- opencodeStarted: false
+- runnerExecutionEnabled: false
+- opencodeExecutionEnabled: false
+- globalDisableActive: true
+- effectiveDisableReason: EXECUTION_DISABLED_GLOBAL
+
+No execution was started.
+No approval was consumed.
+No runner start endpoint was contacted.
