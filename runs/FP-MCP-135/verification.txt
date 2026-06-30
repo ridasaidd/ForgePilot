@@ -1,0 +1,56 @@
+FP-MCP-135 verification
+
+Result: PASSED
+
+Packet:
+
+- FP-MCP-135 — Matching Approval Evidence For Targeted Request
+
+Packet commit:
+
+- 52e4abf
+
+Approval evidence commit:
+
+- fc8d97c
+
+Request artifact:
+
+- packetId: FP-MCP-134
+- requestId: REQ-20260630T202005438Z-86d20df4
+- targetExecutionCommit: bbf930a
+- approvedTargetExecutionCommit: bbf930a
+
+Approval artifact:
+
+- approvalId: APPROVAL-20260630T202924964Z-65d76e90
+- path: runs/FP-MCP-135/approvals/APPROVAL-20260630T202924964Z-65d76e90.json
+- sha256: cb98c076bd0bffbc2b0c6164bf305426b9bb2740e5951904634341ce0785845d
+- approvedTargetExecutionCommit: bbf930a
+- repoCommit compatibility field: bbf930a
+
+Local preflight:
+
+- report: runs/FP-MCP-135/local-preflight-report.json
+- markdown: runs/FP-MCP-135/local-preflight-report.md
+- humanApprovalEvidence evaluated
+- approval target commit recorded
+- request target commit recorded
+- approval target commit equals request target commit
+
+Safety:
+
+- execution not enabled
+- runner start endpoint not contacted
+- OpenCode not started
+- runner run id not created
+- approval not consumed
+- approval consumption evidence not created
+- request artifact not mutated
+- approval artifact not mutated
+- PRESENT_GUARDED not implemented
+- CALLABLE_GUARDED not implemented
+
+Conclusion:
+
+FP-MCP-135 verification passed.
