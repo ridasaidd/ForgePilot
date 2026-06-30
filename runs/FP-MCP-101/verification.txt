@@ -1,0 +1,33 @@
+FP-MCP-101 verification
+
+Result: PASSED
+
+Documented the FP-MCP-100 guarded preflight MCP tool block.
+
+Defined distinctions between:
+
+- ForgePilot preflight failure
+- ForgePilot preflight blocker
+- MCP/platform transport block
+- local CLI fallback observation
+
+Defined local CLI fallback contract.
+
+Defined required fallback evidence fields.
+
+Defined fallback safety invariants.
+
+Safety result:
+
+- no approval evidence created
+- no approval consumed
+- no execution enabled
+- no global disable switch relaxed
+- no runner start endpoint contacted
+- no OpenCode process started
+- no runner run id created
+- no production behavior changed
+
+Recommended next packet:
+
+FP-MCP-102 — Local Guarded Preflight Fallback Command Implementation
