@@ -1,0 +1,35 @@
+FP-MCP-083 verification
+
+Result: PASSED
+
+Verified live refreshed ForgePilot MCP connector emits the expanded OpenCode request artifact contract.
+
+Request:
+REQ-20260630T092810882Z-001bb36a
+
+Artifact:
+runs/FP-MCP-083/opencode-requests/REQ-20260630T092810882Z-001bb36a.json
+
+Observed durable artifact contract:
+- schemaVersion: FP-MCP-083
+- artifactType: opencode-start-request
+- requestState: CREATED_NOT_STARTED
+- boundaryVersion: FP-MCP-081
+- implementationBoundaryVersion: FP-MCP-083
+- executionAllowedNow: false
+- globalDisableActive: true
+- runnerExecutionEnabled: false
+- opencodeExecutionEnabled: false
+- startEndpointContacted: false
+- opencodeStarted: false
+- runnerRunId: null
+- legacyCompatibility.schemaVersion: FP-MCP-007
+- legacy aliases present: modelId, runMode, baseCommit, artifactDir
+
+Safety result:
+No execution started.
+No runner start endpoint was contacted.
+No OpenCode process was started.
+
+Observation:
+The create response summary returned boundaryVersion FP-MCP-083, while the durable artifact correctly records boundaryVersion FP-MCP-081 and implementationBoundaryVersion FP-MCP-083. The durable artifact is the evidence-bearing contract and passes.
