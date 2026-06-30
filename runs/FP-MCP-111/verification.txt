@@ -1,0 +1,40 @@
+FP-MCP-111 verification
+
+Result: PASSED
+
+Implementation:
+
+- ~/forgepilot-chatgpt-mcp/src/server.ts patched
+- startEndpointPresent added to MCP bridge remote runner status output
+- startEndpointState added to MCP bridge remote runner status output
+
+Build:
+
+- pnpm build passed
+- tsc passed
+
+Runtime:
+
+- forgepilot-chatgpt-mcp service restarted
+- actions refreshed
+
+MCP observation:
+
+- forgepilot_get_remote_runner_status exposed startEndpointPresent: true
+- forgepilot_get_remote_runner_status exposed startEndpointState: PRESENT_DISABLED
+
+Safety:
+
+- executionEnabled: false
+- startCapabilityCallable: false
+- startReturnsRunnerRunId: false
+- supportedOperations remain capabilities and validate-request
+- OpenCode not started
+- no approval created
+- no approval consumed
+- no runner run id created
+- no request artifact mutated
+
+Conclusion:
+
+FP-MCP-111 bridge endpoint state passthrough is implemented and verified.
