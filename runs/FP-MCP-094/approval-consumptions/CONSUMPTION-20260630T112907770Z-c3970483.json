@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "FP-MCP-071",
+  "boundaryVersion": "FP-MCP-071",
+  "artifactType": "human-approval-consumption",
+  "artifactVersion": "human-approval-consumption-v1",
+  "consumptionId": "CONSUMPTION-20260630T112907770Z-c3970483",
+  "approvalId": "APPROVAL-20260630T112307543Z-5f55a9ce",
+  "approvalPacketId": "FP-MCP-092",
+  "approvalPath": "runs/FP-MCP-092/approvals/APPROVAL-20260630T112307543Z-5f55a9ce.json",
+  "consumptionState": "RECORDED",
+  "consumptionKind": "EXECUTION_ENABLEMENT_SINGLE_USE",
+  "consumedAction": "ALLOW_ONE_GUARDED_REMOTE_RUNNER_EXECUTION_ATTEMPT",
+  "scope": {
+    "packetId": "FP-MCP-036",
+    "requestId": "REQ-20260630T094727908Z-630a4f0d",
+    "modelId": "deepseek-v4-pro-high",
+    "runMode": "DESIGN_ONLY",
+    "repoCommit": "dbeded5",
+    "branch": "main"
+  },
+  "approvalValidation": {
+    "validatorBoundaryVersion": "FP-MCP-072",
+    "approvalEvidenceContractVersion": "FP-MCP-066",
+    "approvalEvidenceValid": true,
+    "approvalValid": true,
+    "approvalUsableForExecution": true,
+    "humanApprovalRecorded": true,
+    "artifactCommitted": true,
+    "expirationValid": true,
+    "notRevoked": true,
+    "notConsumed": true,
+    "notQuarantined": true,
+    "checkedAt": "2026-06-30T11:29:07.735Z",
+    "reasons": []
+  },
+  "consumedAt": "2026-06-30T11:29:07.720Z",
+  "consumedByTool": "forgepilot_record_human_approval_consumption",
+  "consumedByBoundaryVersion": "FP-MCP-071",
+  "startAttemptId": "ATTEMPT-20260630T112907778Z-54fdc561",
+  "singleUse": true,
+  "approvalConsumed": true,
+  "approvalMutated": false,
+  "executionAllowedNow": false,
+  "executionStarted": false,
+  "startEndpointContacted": false,
+  "opencodeStarted": false,
+  "notes": [
+    "FP-MCP-094 append-only consumption evidence observation",
+    "Do not mutate approval artifact",
+    "Do not relax disable switch or start execution"
+  ]
+}

@@ -1,0 +1,42 @@
+FP-MCP-094 verification
+
+Result: PASSED
+
+Verified append-only approval consumption evidence observation.
+
+Consumption evidence:
+
+- approvalConsumptionRecorded: true
+- consumptionId: CONSUMPTION-20260630T112907770Z-c3970483
+- consumptionArtifactPath: runs/FP-MCP-094/approval-consumptions/CONSUMPTION-20260630T112907770Z-c3970483.json
+- consumptionArtifactSha256: e8d248ac28ddee88db0ac691d238f5d08acf93cbf96622d44c08a8bc54c657fc
+
+Approval validation before consumption:
+
+- approvalEvidenceValid: true
+- approvalValid: true
+- approvalUsableForExecution: true
+- humanApprovalRecorded: true
+- approvalValidationReasons: []
+
+Append-only safety:
+
+- approvalConsumed: true
+- approvalMutated: false
+- approvalRevoked: false
+- approvalQuarantined: false
+
+Execution safety:
+
+- executionAllowedNow: false
+- executionStarted: false
+- startEndpointContacted: false
+- opencodeStarted: false
+- disableSwitchActive: true
+- runnerExecutionEnabled: false
+- opencodeExecutionEnabled: false
+- no runner run id created
+
+Conclusion:
+
+Approval consumption can be recorded as append-only evidence without mutating approval evidence or starting execution.
