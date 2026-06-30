@@ -1,0 +1,75 @@
+FP-MCP-121 verification
+
+Result: PASSED
+
+Packet:
+
+- FP-MCP-121 — Guarded Preflight Report Evidence Ledger Readiness Contract
+
+Packet commit:
+
+- b176ebc
+
+Scope:
+
+- contract-only
+- no implementation changes
+- no bridge changes
+- no runner changes
+- no OpenCode configuration changes
+
+Contract defines:
+
+- evidenceLedgerReadiness definition
+- non-authorizing semantics
+- required gate shape
+- allowed gate states
+- required input context
+- required ledger observations
+- required artifact properties
+- cross-packet evidence behavior
+- append-only requirement
+- fixture semantics
+- approval evidence levels
+- disable switch independence
+- runner capability independence
+- OpenCode readiness independence
+- PASSED semantics
+- FAILED semantics
+- INCOMPLETE semantics
+- DEFERRED semantics
+- NOT_EVALUATED semantics
+- deferred reason codes
+- incomplete reason codes
+- failed reason codes
+- current expected DEFERRED behavior
+
+Important invariant:
+
+- evidenceLedgerReadiness may become structurally ready in the future, but it must not authorize execution.
+
+Current expected behavior remains:
+
+- evidenceLedgerReadiness.evaluated: true
+- evidenceLedgerReadiness.passed: false
+- evidenceLedgerReadiness.state: DEFERRED
+- evidenceLedgerReadiness.reasons:
+  - EVIDENCE_LEDGER_NOT_READY
+
+Safety:
+
+- no execution enabled
+- no start made callable
+- no start added to supportedOperations
+- no runner start endpoint contacted
+- no OpenCode process started
+- no runner run id created
+- no approval created
+- no approval consumed
+- no request artifact mutated
+- no bridge code changed
+- no runner code changed
+
+Conclusion:
+
+Evidence ledger readiness contract verification passed.
