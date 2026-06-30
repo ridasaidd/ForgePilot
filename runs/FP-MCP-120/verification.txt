@@ -1,0 +1,118 @@
+FP-MCP-120 verification
+
+Result: PASSED
+
+Packet:
+
+- FP-MCP-120 — Guarded Preflight Report With State Snapshot Fixture
+
+State snapshot fixture:
+
+- attemptId: ATTEMPT-20260630T163626827Z-a422b20c
+- commit: 3de49f8
+
+Pre-start snapshot:
+
+- path: runs/FP-MCP-117/start-state-snapshots/REQ-20260630T160920008Z-195b9969/ATTEMPT-20260630T163626827Z-a422b20c/pre-start-state.json
+- sha256: f6d7b0f4d18f522e102cdf8506637d931f7ce715ead4fab79f043cd9f23fc7af
+
+Post-start snapshot:
+
+- path: runs/FP-MCP-117/start-state-snapshots/REQ-20260630T160920008Z-195b9969/ATTEMPT-20260630T163626827Z-a422b20c/post-start-state.json
+- sha256: 3286643db713e048658aa4e8aaace032bbd70f31c2d0faf64153c7ebfbd8f51f
+
+Request under test:
+
+- packetId: FP-MCP-117
+- requestId: REQ-20260630T160920008Z-195b9969
+- modelId: deepseek-v4-pro-high
+- runMode: DESIGN_ONLY
+- request artifact sha256: 512a8c2c48e69b22d0e48206c9e9af65aff26d44eefded9b8ca9e6b0b064a454
+
+Approval id supplied:
+
+- APPROVAL-20260630T162204620Z-f3b278ed
+
+State snapshot recording result:
+
+- dryRunRecorded: true
+- preStartSnapshotRecorded: true
+- postStartSnapshotRecorded: true
+- requestArtifactValid: true
+- preStartEvidenceEvaluated: true
+- preStartEvidenceValid: true
+- disableSwitchActive: true
+- executionPermitted: false
+- executionStarted: false
+- startEndpointContacted: false
+- opencodeStarted: false
+- runnerContactedForStart: false
+
+Preflight report result:
+
+- guardedStartPreflightEvaluated: true
+- eligibleForFutureGuardedStart: false
+- executionPermitted: false
+- executionStarted: false
+- opencodeStarted: false
+- runnerStartEndpointContacted: false
+- startEndpointContacted: false
+- runnerRunId: null
+- approvalConsumed: false
+- requestArtifactMutated: false
+- startEndpointPresent: true
+- startEndpointState: PRESENT_DISABLED
+- startCapabilityCallable: false
+- executionEnabled: false
+- supportedOperations:
+  - capabilities
+  - validate-request
+
+Passing gates:
+
+- repository: PASSED
+- requestArtifact: PASSED
+- commitBinding: PASSED
+- modelAndRunMode: PASSED
+- preStartEvidence: PASSED
+- stateSnapshotEvidence: PASSED
+
+State snapshot gate improvement:
+
+- FP-MCP-119: stateSnapshotEvidence INCOMPLETE
+- FP-MCP-120: stateSnapshotEvidence PASSED
+
+Expected remaining blockers:
+
+- disableSwitch: FAILED
+- runnerCapabilityState: FAILED
+- opencodeReadiness: FAILED
+- humanApprovalEvidence: DEFERRED
+- evidenceLedgerReadiness: DEFERRED
+
+Top-level reasons:
+
+- EXECUTION_DISABLED_GLOBAL
+- RUNNER_EXECUTION_DISABLED
+- OPENCODE_EXECUTION_DISABLED
+- DISABLE_SWITCH_ACTIVE
+- EXECUTION_NOT_ALLOWED
+- START_ENDPOINT_DISABLED
+- START_NOT_CALLABLE
+- EVIDENCE_LEDGER_NOT_READY
+
+Safety:
+
+- no real approval created
+- no approval consumed
+- no execution enabled
+- no start made callable
+- no start added to supportedOperations
+- no runner start endpoint contacted
+- no OpenCode process started
+- no runner run id created
+- no request artifact mutated
+
+Conclusion:
+
+Guarded preflight report with state snapshot fixture verification passed.
