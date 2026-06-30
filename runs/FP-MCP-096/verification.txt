@@ -1,0 +1,72 @@
+FP-MCP-096 verification
+
+Result: PASSED AS OBSERVATION
+
+Fresh approval created:
+
+- approvalId: APPROVAL-20260630T113219604Z-caa515d9
+- approvalArtifactPath: runs/FP-MCP-096/approvals/APPROVAL-20260630T113219604Z-caa515d9.json
+- approvalArtifactSha256: aba4288259c5b54247234051b1773931a84cd10bf300350e388e4b4ab6dae02a
+- repoCommit: 27c8a34
+- expiresAt: 2026-06-30T11:40:00.000Z
+
+Fresh approval validation before consumption:
+
+- approvalEvidenceValid: true
+- approvalValid: true
+- approvalUsableForExecution: true
+- approvalConsumed: false
+- artifactCommitted: true
+- reasons: []
+
+Consumption evidence:
+
+- approvalConsumptionRecorded: true
+- consumptionId: CONSUMPTION-20260630T113305630Z-b6992ea2
+- consumptionArtifactPath: runs/FP-MCP-096/approval-consumptions/CONSUMPTION-20260630T113305630Z-b6992ea2.json
+- consumptionArtifactSha256: ecf7f6e64b6597647279fb3b007e90638934e86c670e439cc02e869170a67d8c
+
+Post-consumption preflight:
+
+- executionPermitted: false
+- executionStarted: false
+- startEndpointContacted: false
+- opencodeStarted: false
+- executionAllowedNow: false
+- approvalEvidenceValid: false
+- approvalValid: false
+- approvalUsableForExecution: false
+- consumptionEvidencePresent: true
+- consumptionEvidenceValid: false
+- approvalConsumed: false
+
+Observed blockers:
+
+- APPROVAL_SCOPE_MISMATCH
+- APPROVAL_BASE_COMMIT_BINDING_INVALID
+- APPROVAL_COMMIT_BINDING_INVALID
+- APPROVAL_REQUEST_BINDING_INVALID
+- APPROVAL_TEXT_INVALID
+
+Not observed:
+
+- APPROVAL_EXPIRED
+
+Safety result:
+
+- no execution permitted
+- no execution started
+- no runner start endpoint contacted
+- no OpenCode process started
+- no runner run id created
+- global disable switch remained active
+- runner execution remained disabled
+- OpenCode execution remained disabled
+
+Conclusion:
+
+The consumed-approval gate was not isolated because committing approval and consumption evidence changed repository HEAD.
+
+Next smallest gate:
+
+FP-MCP-097 — Approval Commit Binding Model Clarification
