@@ -1,0 +1,39 @@
+FP-MCP-098 verification
+
+Result: PASSED
+
+Defined targetExecutionCommit versus evidenceLedgerCommit preflight contract.
+
+Contract decisions:
+
+- approval binds to targetExecutionCommit
+- preflight may run at evidenceLedgerCommit
+- evidenceLedgerCommit must be equal to or an allowed evidence-only descendant of targetExecutionCommit
+- execution must operate against targetExecutionCommit
+- evidenceLedgerCommit must not silently become execution scope
+
+Defined:
+
+- targetExecutionCommit
+- evidenceLedgerCommit
+- evidenceOnlyDelta
+- allowedEvidenceOnlyDescendant
+- required preflight validation phases
+- required future preflight output fields
+- invalidating conditions
+- same-repository evidence rule
+- execution target rule
+
+Safety result:
+
+- no approval evidence created
+- no approval consumed
+- no execution enabled
+- no global disable switch relaxed
+- no runner start endpoint contacted
+- no OpenCode process started
+- no runner run id created
+
+Recommended next packet:
+
+FP-MCP-099 — Target Commit Evidence-Ledger Preflight Field Implementation
