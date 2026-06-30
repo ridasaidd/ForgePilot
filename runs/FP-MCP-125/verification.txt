@@ -1,0 +1,69 @@
+FP-MCP-125 verification
+
+Result: PASSED
+
+Packet:
+
+- FP-MCP-125 — Real Human Approval Evidence Preflight Fixture Contract
+
+Packet commit:
+
+- b7a0622
+
+Scope:
+
+- contract-only
+- no implementation changes
+- no bridge changes
+- no runner changes
+- no OpenCode configuration changes
+- no approval artifact created
+- no approval consumed
+
+Contract defines:
+
+- real-shaped human approval evidence artifact definition
+- current request chain under test
+- required non-execution boundary
+- required artifact path
+- required artifact fields
+- exact scope binding
+- repository commit binding
+- canonical approval text
+- expiration behavior
+- operator identity safety
+- single-use semantics
+- validity fields
+- fixture-marker exclusions
+- create-only semantics
+- preflight evaluation semantics
+- expected overall preflight state
+- future packet sequence
+
+Important invariants:
+
+- approval evidence is not approval consumption
+- approval evidence is not execution authorization
+- passing humanApprovalEvidence does not permit execution by itself
+- creating approval evidence must not consume approval
+- creating approval evidence must not contact the runner start endpoint
+- creating approval evidence must not start OpenCode
+
+Safety:
+
+- no execution enabled
+- no start made callable
+- no start added to supportedOperations
+- no runner start endpoint contacted
+- no OpenCode process started
+- no runner run id created
+- no real approval artifact created
+- no approval consumed
+- no approval artifact mutated
+- no request artifact mutated
+- no bridge code changed
+- no runner code changed
+
+Conclusion:
+
+Real-shaped human approval evidence preflight fixture contract verification passed.
