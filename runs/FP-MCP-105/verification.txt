@@ -1,0 +1,47 @@
+FP-MCP-105 verification
+
+Result: PASSED
+
+Verified non-executing OpenCode request artifact creation and validation.
+
+Request:
+
+- packetId: FP-MCP-105
+- requestId: REQ-20260630T125407939Z-6e8ad285
+- requestArtifactPath: runs/FP-MCP-105/opencode-requests/REQ-20260630T125407939Z-6e8ad285.json
+- requestArtifactSha256: 9f67c1293d580650a7ea3284ca24fc8516ea06d4a7c8e1d88b7e742be48d55f3
+
+Local validation:
+
+- eligible: true
+- runnerContacted: false
+- requestArtifactValid: true
+- modelAllowed: true
+- runModeAllowed: true
+- safeArtifactDir: true
+- reasons: []
+
+Remote validate-request:
+
+- valid: true
+- runnerConfigured: true
+- runnerContacted: true
+- runnerAccepted: true
+- runnerProtocolVersion: forgepilot-runner-v1
+- reasons: []
+
+Safety:
+
+- executionEnabled: false
+- executionStarted: false
+- opencodeStarted: false
+- executionAllowedNow: false
+- runner start endpoint not contacted
+- OpenCode not started
+- no approval created
+- no approval consumed
+- no runner run id created
+
+Conclusion:
+
+FP-MCP-105 has a valid non-executing OpenCode request artifact and passed validation-only handoff checks.
