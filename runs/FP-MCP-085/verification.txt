@@ -1,0 +1,27 @@
+FP-MCP-085 verification
+
+Result: PASSED
+
+A read-only execution readiness inventory was recorded.
+
+Safety result:
+
+- No execution was started.
+- No approval was consumed.
+- No runner start endpoint was contacted.
+- No OpenCode process was started.
+- No production MCP behavior was changed.
+
+Observed next smallest implementation fix:
+
+`forgepilot_validate_remote_runner_endpoint_request` has a failed-path output-schema completeness bug. At least one return path omits required MCP output fields:
+
+- opencodeStarted
+- executionAllowedNow
+- approvalId
+- approvalPacketId
+- approvalPath
+
+Recommended next packet:
+
+FP-MCP-086 — Remote Runner Endpoint Validator Failed-Path Output Completion
