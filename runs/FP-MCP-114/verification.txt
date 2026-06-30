@@ -1,0 +1,42 @@
+FP-MCP-114 verification
+
+Result: PASSED
+
+Artifacts:
+
+- docs/start-capability-transition-contract.md
+- runs/FP-MCP-114/contract-evidence.md
+- runs/FP-MCP-114/verification.txt
+
+Verified contract content:
+
+- transition states are defined
+- valid transitions are defined
+- invalid transitions are defined
+- rollback transitions are defined
+- evidence required for PRESENT_GUARDED is defined
+- evidence required for CALLABLE_GUARDED is defined as future burden of proof only
+- state reporting requirements are defined
+- supported operations rule is defined
+- approval rule is defined
+- request artifact rule is defined
+- OpenCode rule is defined
+- runner run id rule is defined
+- evidence mutation rule is defined
+- unknown state fail-closed behavior is defined
+
+Safety:
+
+- no execution enabled
+- no start made callable
+- no start added to supportedOperations
+- no approval created
+- no approval consumed
+- no request artifact mutated
+- no OpenCode process started
+- no runner run id created
+- no runner start endpoint contacted
+
+Conclusion:
+
+Start capability transition contract verification passed.
