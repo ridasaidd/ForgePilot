@@ -1,0 +1,65 @@
+FP-MCP-127 verification
+
+Result: BLOCKED_BY_PLATFORM_TOOL_SAFETY
+
+Packet:
+
+- FP-MCP-127 — Human Approval Evidence Passing Preflight Test
+
+Packet commit:
+
+- c64284c
+
+Intended preflight input:
+
+- packetId: FP-MCP-117
+- requestId: REQ-20260630T160920008Z-195b9969
+- approvalId: APPROVAL-20260630T175528922Z-806b81c3
+
+Approval artifact:
+
+- packetId: FP-MCP-126
+- approvalId: APPROVAL-20260630T175528922Z-806b81c3
+- path: runs/FP-MCP-126/approvals/APPROVAL-20260630T175528922Z-806b81c3.json
+- sha256: 482e7c13c3fda729bab0eada110b41199dc576be8a7b4112324f1ae4220a1fdb
+
+Observed attempts:
+
+1. forgepilot_get_guarded_start_preflight_report
+   - blocked by OpenAI tool safety checks before reaching MCP bridge
+
+2. forgepilot_read_file
+   - blocked by OpenAI tool safety checks before reaching MCP bridge
+
+Classification:
+
+- BLOCKED_BY_PLATFORM_TOOL_SAFETY
+
+Not observed:
+
+- no guarded preflight report result
+- no humanApprovalEvidence PASS/FAIL result from the ChatGPT Action path
+- no MCP bridge evaluation of the supplied approval artifact through the Action path
+
+Safety:
+
+- execution not enabled
+- start not made callable
+- start not added to supportedOperations
+- runner start endpoint not contacted
+- OpenCode not started
+- runner run id not created
+- approval not consumed
+- approval consumption evidence not created
+- approval artifact not mutated
+- request artifact not mutated
+- PRESENT_GUARDED not implemented
+- CALLABLE_GUARDED not implemented
+
+Conclusion:
+
+FP-MCP-127 verification completed as a platform-boundary result, not as a successful preflight evaluation.
+
+Follow-up required:
+
+- Define a local guarded preflight invocation path not dependent on ChatGPT Action execution.
