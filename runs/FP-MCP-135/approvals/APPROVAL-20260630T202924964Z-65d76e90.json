@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "FP-MCP-125",
+  "artifactType": "human-approval-evidence",
+  "artifactVersion": "human-approval-evidence-v1",
+  "approvalId": "APPROVAL-20260630T202924964Z-65d76e90",
+  "approvalState": "VALID",
+  "approvalKind": "GUARDED_START_PREFLIGHT_APPROVAL",
+  "createdAt": "2026-06-30T20:29:24.995595Z",
+  "expiresAt": "2026-06-30T22:29:24.995595Z",
+  "createdByTool": "manual-contract-artifact",
+  "createdBy": "chatgpt-local-script",
+  "operator": {
+    "operatorId": "operator-rida-local",
+    "operatorHandle": "rida",
+    "operatorEmailHash": null,
+    "rawEmailRecorded": false
+  },
+  "approvalText": "I approve this ForgePilot guarded start request.",
+  "canonicalApprovalText": "I approve this ForgePilot guarded start request.",
+  "approvedAction": "ALLOW_ONE_GUARDED_REMOTE_RUNNER_EXECUTION_ATTEMPT",
+  "scope": {
+    "packetId": "FP-MCP-134",
+    "requestId": "REQ-20260630T202005438Z-86d20df4",
+    "modelId": "deepseek-v4-pro-high",
+    "runMode": "DESIGN_ONLY",
+    "branch": "main",
+    "approvedTargetExecutionCommit": "bbf930a",
+    "repoCommit": "bbf930a"
+  },
+  "provenance": {
+    "approvalArtifactCreationPacket": "FP-MCP-135",
+    "approvalArtifactCreationCommit": null,
+    "recordedAtCommit": null,
+    "targetBindingSource": "REQUEST_TARGET_EXECUTION_COMMIT"
+  },
+  "singleUse": true,
+  "approvalUsableForExecution": true,
+  "approvalUsabilityRequiresValidation": true,
+  "humanApprovalRecorded": true,
+  "consumedAt": null,
+  "approvalConsumed": false,
+  "approvalRevoked": false,
+  "approvalQuarantined": false,
+  "approvalConsumptionCreated": false,
+  "executionAllowedNow": false,
+  "executionStarted": false,
+  "opencodeStarted": false,
+  "startEndpointContacted": false,
+  "runnerStartEndpointContacted": false,
+  "runnerRunId": null,
+  "requestArtifactMutated": false,
+  "approvalArtifactMutated": false,
+  "notes": [
+    "FP-MCP-135 matching approval evidence for FP-MCP-134 targeted request.",
+    "Approval target commit matches request targetExecutionCommit bbf930a.",
+    "This is a create-only evidence artifact and does not authorize execution while disable gates remain active."
+  ]
+}
