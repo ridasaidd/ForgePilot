@@ -642,18 +642,21 @@ function capabilitiesResult() {
     startCapabilityAdvertised: true,
     startCapabilityCallable: false,
     startCapabilityVersion: "guarded-start-capability-v0",
-    startOperationName: null,
+    startOperationName: "start-disabled-stub",
+    startEndpointPresent: true,
+    startEndpointState: "PRESENT_DISABLED",
     startRequiresApprovalEvidence: true,
     startRequiresPreflight: true,
     startRequiresDisableSwitchClear: true,
     startRequiresRequestArtifactHash: true,
     startRequiresTargetExecutionCommit: true,
     startRequiresEvidenceLedgerValidation: true,
-    startRecordsPreStartState: true,
-    startRecordsPostStartState: true,
+    startRecordsPreStartState: false,
+    startRecordsPostStartState: false,
     startReturnsRunnerRunId: false,
-    startDisabledReason: "START_CAPABILITY_ADVERTISEMENT_ONLY",
+    startDisabledReason: "START_ENDPOINT_PRESENT_DISABLED",
     startBlockingReasons: [
+      "START_ENDPOINT_DISABLED",
       "START_NOT_CALLABLE",
       "RUNNER_EXECUTION_DISABLED",
       "OPENCODE_EXECUTION_DISABLED"
@@ -750,16 +753,35 @@ async function handleStartRun(_req, res) {
   const operation = "start-run";
   const startedAt = Date.now();
   logOperationStart(operation);
-  logOperationEnd(operation, startedAt, false, "EXECUTION_NOT_IMPLEMENTED");
+  logOperationEnd(operation, startedAt, false, "START_ENDPOINT_DISABLED");
 
-  jsonResponse(res, 501, {
+  jsonResponse(res, 403, {
+    valid: false,
     accepted: false,
+    executionEnabled: false,
     executionStarted: false,
+    opencodeStarted: false,
+    runnerRunId: null,
+    startEndpointContacted: true,
+    startEndpointState: "PRESENT_DISABLED",
+    startCapabilityCallable: false,
+    executionAllowedNow: false,
+    approvalConsumed: false,
+    approvalConsumptionPath: null,
+    preStartEvidenceCreated: false,
+    postStartEvidenceCreated: false,
+    requestArtifactMutated: false,
     runnerProtocolVersion: RUNNER_PROTOCOL_VERSION,
     boundaryVersion: BOUNDARY_VERSION,
-    statusSource: "private dev runner non-execution policy",
+    statusSource: "private dev runner disabled start stub policy",
     checkedAt: nowIso(),
-    reasons: ["EXECUTION_NOT_IMPLEMENTED"]
+    reasons: [
+      "START_ENDPOINT_DISABLED",
+      "START_NOT_CALLABLE",
+      "EXECUTION_NOT_ALLOWED",
+      "RUNNER_EXECUTION_DISABLED",
+      "OPENCODE_EXECUTION_DISABLED"
+    ]
   });
 }
 
