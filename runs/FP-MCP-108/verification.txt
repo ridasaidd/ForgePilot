@@ -1,0 +1,62 @@
+FP-MCP-108 verification
+
+Result: PASSED
+
+Implementation repository:
+
+- ~/forgepilot-chatgpt-mcp
+
+Implementation file:
+
+- src/server.ts
+
+Verification:
+
+- pnpm test: passed
+- pnpm build: passed
+- tsc: passed
+
+Service:
+
+- forgepilot-chatgpt-mcp restarted
+- actions refreshed
+
+MCP observation:
+
+- forgepilot_get_remote_runner_status exposed disabled start metadata
+
+Required values observed:
+
+- startCapabilityAdvertised: true
+- startCapabilityCallable: false
+- startCapabilityVersion: guarded-start-capability-v0
+- startOperationName: null
+- startRequiresApprovalEvidence: true
+- startRequiresPreflight: true
+- startRequiresDisableSwitchClear: true
+- startRequiresRequestArtifactHash: true
+- startRequiresTargetExecutionCommit: true
+- startRequiresEvidenceLedgerValidation: true
+- startRecordsPreStartState: true
+- startRecordsPostStartState: true
+- startReturnsRunnerRunId: false
+- startDisabledReason: START_CAPABILITY_ADVERTISEMENT_ONLY
+- startBlockingReasons:
+  - START_NOT_CALLABLE
+  - RUNNER_EXECUTION_DISABLED
+  - OPENCODE_EXECUTION_DISABLED
+
+Safety:
+
+- executionEnabled: false
+- supportedOperations remain capabilities and validate-request
+- start remains not callable
+- no runner start endpoint contacted
+- OpenCode not started
+- no approval created
+- no approval consumed
+- no runner run id created
+
+Conclusion:
+
+FP-MCP-108 bridge passthrough is implemented and verified.
