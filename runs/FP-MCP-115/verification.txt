@@ -1,0 +1,53 @@
+FP-MCP-115 verification
+
+Result: PASSED
+
+Artifacts:
+
+- docs/guarded-start-preflight-report-contract.md
+- runs/FP-MCP-115/contract-evidence.md
+- runs/FP-MCP-115/verification.txt
+
+Verified contract content:
+
+- report contract exists
+- required input fields are defined
+- required output fields are defined
+- required safety values are defined
+- gate result model is defined
+- required gates are defined
+- eligibility rule is defined
+- side effect prohibition is defined
+- unknown state rule is defined
+- supported operations rule is defined
+- output shape is defined
+
+Required gates defined:
+
+- Repository State
+- Request Artifact
+- Commit Binding
+- Model And Run Mode
+- Disable Switch
+- Runner Capability State
+- OpenCode Readiness
+- Pre-Start Evidence
+- State Snapshot Evidence
+- Human Approval Evidence
+- Evidence Ledger Readiness
+
+Safety:
+
+- no execution enabled
+- no start made callable
+- no start added to supportedOperations
+- no approval created
+- no approval consumed
+- no request artifact mutated
+- no OpenCode process started
+- no runner run id created
+- no runner start endpoint contacted
+
+Conclusion:
+
+Guarded start preflight report contract verification passed.
