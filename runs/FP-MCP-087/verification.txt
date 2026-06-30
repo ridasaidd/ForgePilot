@@ -1,0 +1,36 @@
+FP-MCP-087 verification
+
+Result: PASSED
+
+Verified live ForgePilot MCP remote runner capability observation.
+
+Observed:
+
+- runnerConfigured: true
+- runnerReachable: true
+- runnerVersion: 0.1.0-fp-mcp-024
+- runnerProtocolVersion: forgepilot-runner-v1
+- executionEnabled: false
+- liveRunnerChecked: true
+- supportedOperations:
+  - capabilities
+  - validate-request
+- supportedRunModes:
+  - DESIGN_ONLY
+- allowedModels:
+  - deepseek-v4-pro-high
+  - qwen-3.7-max
+- reasons: []
+
+Safety result:
+
+- Only the runner capabilities endpoint was contacted.
+- No execution was enabled.
+- No global disable switch was relaxed.
+- No runner start endpoint was contacted.
+- No OpenCode process was started.
+- No approval was consumed.
+
+Recommended next packet:
+
+FP-MCP-088 — Authenticated Remote Runner Validate-Request Observation
