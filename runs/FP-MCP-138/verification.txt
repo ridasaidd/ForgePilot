@@ -1,0 +1,46 @@
+FP-MCP-138 verification
+
+Result: PASSED
+
+Packet:
+
+- FP-MCP-138 — Human Approval Evidence Passing Gate Contract
+
+Observed packet commit:
+
+- 720e7c6
+
+Bridge implementation:
+
+- repo: forgepilot-chatgpt-mcp
+- commit: 232ecc5
+
+Verified:
+
+- server-side approval commit checks bind to request target commit
+- HUMAN_APPROVAL_EVIDENCE_COMMIT_MISMATCH removed from humanApprovalEvidence reasons
+- HUMAN_APPROVAL_EVIDENCE_PACKET_SCOPE_MISMATCH did not regress
+- approvalTargetExecutionCommit is bbf930a
+- requestTargetExecutionCommit is bbf930a
+- target commit binding remains visible and matched
+- current repository commit drift is not a target binding failure
+- gate shape remains normalized
+- safety fields remain non-executing
+- existing start tool registration was not treated as new direct start behavior
+
+Safety:
+
+- execution not enabled
+- runner start endpoint not contacted by local preflight
+- OpenCode not started
+- runner run id not created
+- approval not consumed
+- approval consumption evidence not created
+- request artifact not mutated
+- approval artifact not mutated
+- PRESENT_GUARDED not implemented
+- CALLABLE_GUARDED not implemented
+
+Conclusion:
+
+FP-MCP-138 verification passed.
