@@ -1,0 +1,39 @@
+FP-MCP-084 verification
+
+Result: PASSED
+
+Verified live refreshed ForgePilot MCP connector normalizes the create response summary boundary fields.
+
+Request:
+REQ-20260630T094727908Z-630a4f0d
+
+Artifact:
+runs/FP-MCP-084/opencode-requests/REQ-20260630T094727908Z-630a4f0d.json
+
+Create response summary observed:
+- boundaryVersion: FP-MCP-081
+- implementationBoundaryVersion: FP-MCP-083
+- executionEnabled: false
+- executionStarted: false
+
+Durable artifact observed:
+- schemaVersion: FP-MCP-083
+- artifactType: opencode-start-request
+- requestState: CREATED_NOT_STARTED
+- boundaryVersion: FP-MCP-081
+- implementationBoundaryVersion: FP-MCP-083
+- legacyCompatibility.schemaVersion: FP-MCP-007
+- legacy aliases present: modelId, runMode, baseCommit, artifactDir
+
+Safety result:
+- executionAllowedNow: false
+- globalDisableActive: true
+- runnerExecutionEnabled: false
+- opencodeExecutionEnabled: false
+- startEndpointContacted: false
+- opencodeStarted: false
+- runnerRunId: null
+
+No execution was started.
+No approval was consumed.
+No runner start endpoint was contacted.
