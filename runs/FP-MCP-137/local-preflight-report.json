@@ -1,0 +1,385 @@
+{
+  "guardedStartPreflightEvaluated": true,
+  "eligibleForFutureGuardedStart": false,
+  "executionPermitted": false,
+  "executionStarted": false,
+  "opencodeStarted": false,
+  "runnerStartEndpointContacted": false,
+  "startEndpointContacted": false,
+  "runnerRunId": null,
+  "approvalConsumed": false,
+  "requestArtifactMutated": false,
+  "approvalArtifactMutated": false,
+  "packetId": "FP-MCP-134",
+  "requestId": "REQ-20260630T202005438Z-86d20df4",
+  "approvalId": "APPROVAL-20260630T202924964Z-65d76e90",
+  "localInvocation": true,
+  "invocationPath": "LOCAL_SCRIPT",
+  "runnerConfigured": false,
+  "runnerReachable": false,
+  "runnerStateObserved": false,
+  "startEndpointPresent": true,
+  "startEndpointState": "PRESENT_DISABLED",
+  "startCapabilityCallable": false,
+  "executionEnabled": false,
+  "supportedOperations": [
+    "capabilities",
+    "validate-request"
+  ],
+  "gates": {
+    "repository": {
+      "evaluated": true,
+      "passed": false,
+      "state": "FAILED",
+      "reasons": [
+        "DIRTY_WORKING_TREE"
+      ],
+      "observations": [],
+      "branch": "main",
+      "currentCommit": "fa81744"
+    },
+    "requestArtifact": {
+      "evaluated": true,
+      "passed": true,
+      "state": "PASSED",
+      "reasons": [],
+      "observations": [],
+      "evidencePath": "runs/FP-MCP-134/opencode-requests/REQ-20260630T202005438Z-86d20df4.json",
+      "evidenceSha256": "29ab31f1e7db899539bafb8775b5e08ffdd58d6884afe7d001b24ed210283dcb"
+    },
+    "commitBinding": {
+      "evaluated": true,
+      "passed": true,
+      "state": "PASSED",
+      "reasons": [],
+      "observations": [],
+      "requestBaseCommit": "bbf930a",
+      "currentCommit": "fa81744"
+    },
+    "modelAndRunMode": {
+      "evaluated": true,
+      "passed": true,
+      "state": "PASSED",
+      "reasons": [],
+      "observations": [],
+      "modelId": "deepseek-v4-pro-high",
+      "runMode": "DESIGN_ONLY"
+    },
+    "disableSwitch": {
+      "evaluated": true,
+      "passed": false,
+      "state": "FAILED",
+      "reasons": [
+        "EXECUTION_DISABLED_GLOBAL",
+        "DISABLE_SWITCH_ACTIVE"
+      ],
+      "observations": []
+    },
+    "runnerCapabilityState": {
+      "evaluated": true,
+      "passed": false,
+      "state": "FAILED",
+      "reasons": [
+        "START_ENDPOINT_DISABLED",
+        "START_NOT_CALLABLE",
+        "RUNNER_EXECUTION_DISABLED"
+      ],
+      "observations": []
+    },
+    "opencodeReadiness": {
+      "evaluated": true,
+      "passed": false,
+      "state": "FAILED",
+      "reasons": [
+        "OPENCODE_EXECUTION_DISABLED"
+      ],
+      "observations": []
+    },
+    "preStartEvidence": {
+      "evaluated": true,
+      "passed": false,
+      "state": "INCOMPLETE",
+      "reasons": [
+        "PRE_START_EVIDENCE_MISSING"
+      ],
+      "observations": []
+    },
+    "stateSnapshotEvidence": {
+      "evaluated": true,
+      "passed": false,
+      "state": "INCOMPLETE",
+      "reasons": [
+        "STATE_SNAPSHOT_EVIDENCE_MISSING"
+      ],
+      "observations": []
+    },
+    "humanApprovalEvidence": {
+      "evaluated": true,
+      "passed": true,
+      "state": "PASSED",
+      "reasons": [],
+      "observations": [
+        "HUMAN_APPROVAL_EVIDENCE_CURRENT_EVALUATION_COMMIT_DIFFERENT"
+      ],
+      "evidencePath": "runs/FP-MCP-135/approvals/APPROVAL-20260630T202924964Z-65d76e90.json",
+      "evidenceSha256": "cb98c076bd0bffbc2b0c6164bf305426b9bb2740e5951904634341ce0785845d",
+      "approvalTargetExecutionCommit": "bbf930a",
+      "approvalTargetCommitSource": "APPROVAL_SCOPE_APPROVED_TARGET_EXECUTION_COMMIT",
+      "requestTargetExecutionCommit": "bbf930a",
+      "requestTargetCommitSource": "REQUEST_TARGET_EXECUTION_COMMIT",
+      "currentEvaluationCommit": "fa81744",
+      "currentEvaluationCommitDifferentFromApprovalTarget": true
+    },
+    "evidenceLedgerReadiness": {
+      "evaluated": true,
+      "passed": false,
+      "state": "DEFERRED",
+      "reasons": [
+        "PRESTARTEVIDENCE_NOT_READY",
+        "STATESNAPSHOTEVIDENCE_NOT_READY"
+      ],
+      "observations": []
+    }
+  },
+  "repository": {
+    "name": "repository",
+    "evaluated": true,
+    "passed": false,
+    "state": "FAILED",
+    "reasons": [
+      "DIRTY_WORKING_TREE"
+    ],
+    "branch": "main",
+    "currentCommit": "fa81744"
+  },
+  "requestArtifact": {
+    "name": "requestArtifact",
+    "evaluated": true,
+    "passed": true,
+    "state": "PASSED",
+    "reasons": [],
+    "evidencePath": "runs/FP-MCP-134/opencode-requests/REQ-20260630T202005438Z-86d20df4.json",
+    "evidenceSha256": "29ab31f1e7db899539bafb8775b5e08ffdd58d6884afe7d001b24ed210283dcb"
+  },
+  "commitBinding": {
+    "name": "commitBinding",
+    "evaluated": true,
+    "passed": true,
+    "state": "PASSED",
+    "reasons": [],
+    "requestBaseCommit": "bbf930a",
+    "currentCommit": "fa81744"
+  },
+  "modelAndRunMode": {
+    "name": "modelAndRunMode",
+    "evaluated": true,
+    "passed": true,
+    "state": "PASSED",
+    "reasons": [],
+    "modelId": "deepseek-v4-pro-high",
+    "runMode": "DESIGN_ONLY"
+  },
+  "disableSwitch": {
+    "name": "disableSwitch",
+    "evaluated": true,
+    "passed": false,
+    "state": "FAILED",
+    "reasons": [
+      "EXECUTION_DISABLED_GLOBAL",
+      "DISABLE_SWITCH_ACTIVE"
+    ]
+  },
+  "runnerCapabilityState": {
+    "name": "runnerCapabilityState",
+    "evaluated": true,
+    "passed": false,
+    "state": "FAILED",
+    "reasons": [
+      "START_ENDPOINT_DISABLED",
+      "START_NOT_CALLABLE",
+      "RUNNER_EXECUTION_DISABLED"
+    ]
+  },
+  "opencodeReadiness": {
+    "name": "opencodeReadiness",
+    "evaluated": true,
+    "passed": false,
+    "state": "FAILED",
+    "reasons": [
+      "OPENCODE_EXECUTION_DISABLED"
+    ]
+  },
+  "preStartEvidence": {
+    "name": "preStartEvidence",
+    "evaluated": true,
+    "passed": false,
+    "state": "INCOMPLETE",
+    "reasons": [
+      "PRE_START_EVIDENCE_MISSING"
+    ]
+  },
+  "stateSnapshotEvidence": {
+    "name": "stateSnapshotEvidence",
+    "evaluated": true,
+    "passed": false,
+    "state": "INCOMPLETE",
+    "reasons": [
+      "STATE_SNAPSHOT_EVIDENCE_MISSING"
+    ]
+  },
+  "humanApprovalEvidence": {
+    "name": "humanApprovalEvidence",
+    "evaluated": true,
+    "passed": true,
+    "state": "PASSED",
+    "reasons": [],
+    "observations": [
+      "HUMAN_APPROVAL_EVIDENCE_CURRENT_EVALUATION_COMMIT_DIFFERENT"
+    ],
+    "evidencePath": "runs/FP-MCP-135/approvals/APPROVAL-20260630T202924964Z-65d76e90.json",
+    "evidenceSha256": "cb98c076bd0bffbc2b0c6164bf305426b9bb2740e5951904634341ce0785845d",
+    "approvalTargetExecutionCommit": "bbf930a",
+    "approvalTargetCommitSource": "APPROVAL_SCOPE_APPROVED_TARGET_EXECUTION_COMMIT",
+    "requestTargetExecutionCommit": "bbf930a",
+    "requestTargetCommitSource": "REQUEST_TARGET_EXECUTION_COMMIT",
+    "currentEvaluationCommit": "fa81744",
+    "currentEvaluationCommitDifferentFromApprovalTarget": true
+  },
+  "evidenceLedgerReadiness": {
+    "name": "evidenceLedgerReadiness",
+    "evaluated": true,
+    "passed": false,
+    "state": "DEFERRED",
+    "reasons": [
+      "PRESTARTEVIDENCE_NOT_READY",
+      "STATESNAPSHOTEVIDENCE_NOT_READY"
+    ]
+  },
+  "boundaryVersion": "FP-MCP-129",
+  "statusSource": "ForgePilot local guarded preflight report skeleton",
+  "checkedAt": "2026-06-30T20:53:11.674Z",
+  "reasons": [
+    "EXECUTION_DISABLED_GLOBAL",
+    "DISABLE_SWITCH_ACTIVE",
+    "START_ENDPOINT_DISABLED",
+    "START_NOT_CALLABLE",
+    "RUNNER_EXECUTION_DISABLED",
+    "OPENCODE_EXECUTION_DISABLED"
+  ],
+  "rawGates": [
+    {
+      "name": "repository",
+      "evaluated": true,
+      "passed": false,
+      "state": "FAILED",
+      "reasons": [
+        "DIRTY_WORKING_TREE"
+      ],
+      "branch": "main",
+      "currentCommit": "fa81744"
+    },
+    {
+      "name": "requestArtifact",
+      "evaluated": true,
+      "passed": true,
+      "state": "PASSED",
+      "reasons": [],
+      "evidencePath": "runs/FP-MCP-134/opencode-requests/REQ-20260630T202005438Z-86d20df4.json",
+      "evidenceSha256": "29ab31f1e7db899539bafb8775b5e08ffdd58d6884afe7d001b24ed210283dcb"
+    },
+    {
+      "name": "commitBinding",
+      "evaluated": true,
+      "passed": true,
+      "state": "PASSED",
+      "reasons": [],
+      "requestBaseCommit": "bbf930a",
+      "currentCommit": "fa81744"
+    },
+    {
+      "name": "modelAndRunMode",
+      "evaluated": true,
+      "passed": true,
+      "state": "PASSED",
+      "reasons": [],
+      "modelId": "deepseek-v4-pro-high",
+      "runMode": "DESIGN_ONLY"
+    },
+    {
+      "name": "disableSwitch",
+      "evaluated": true,
+      "passed": false,
+      "state": "FAILED",
+      "reasons": [
+        "EXECUTION_DISABLED_GLOBAL",
+        "DISABLE_SWITCH_ACTIVE"
+      ]
+    },
+    {
+      "name": "runnerCapabilityState",
+      "evaluated": true,
+      "passed": false,
+      "state": "FAILED",
+      "reasons": [
+        "START_ENDPOINT_DISABLED",
+        "START_NOT_CALLABLE",
+        "RUNNER_EXECUTION_DISABLED"
+      ]
+    },
+    {
+      "name": "opencodeReadiness",
+      "evaluated": true,
+      "passed": false,
+      "state": "FAILED",
+      "reasons": [
+        "OPENCODE_EXECUTION_DISABLED"
+      ]
+    },
+    {
+      "name": "preStartEvidence",
+      "evaluated": true,
+      "passed": false,
+      "state": "INCOMPLETE",
+      "reasons": [
+        "PRE_START_EVIDENCE_MISSING"
+      ]
+    },
+    {
+      "name": "stateSnapshotEvidence",
+      "evaluated": true,
+      "passed": false,
+      "state": "INCOMPLETE",
+      "reasons": [
+        "STATE_SNAPSHOT_EVIDENCE_MISSING"
+      ]
+    },
+    {
+      "name": "humanApprovalEvidence",
+      "evaluated": true,
+      "passed": true,
+      "state": "PASSED",
+      "reasons": [],
+      "observations": [
+        "HUMAN_APPROVAL_EVIDENCE_CURRENT_EVALUATION_COMMIT_DIFFERENT"
+      ],
+      "evidencePath": "runs/FP-MCP-135/approvals/APPROVAL-20260630T202924964Z-65d76e90.json",
+      "evidenceSha256": "cb98c076bd0bffbc2b0c6164bf305426b9bb2740e5951904634341ce0785845d",
+      "approvalTargetExecutionCommit": "bbf930a",
+      "approvalTargetCommitSource": "APPROVAL_SCOPE_APPROVED_TARGET_EXECUTION_COMMIT",
+      "requestTargetExecutionCommit": "bbf930a",
+      "requestTargetCommitSource": "REQUEST_TARGET_EXECUTION_COMMIT",
+      "currentEvaluationCommit": "fa81744",
+      "currentEvaluationCommitDifferentFromApprovalTarget": true
+    },
+    {
+      "name": "evidenceLedgerReadiness",
+      "evaluated": true,
+      "passed": false,
+      "state": "DEFERRED",
+      "reasons": [
+        "PRESTARTEVIDENCE_NOT_READY",
+        "STATESNAPSHOTEVIDENCE_NOT_READY"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+FP-MCP-137 verification
+
+Result: PASSED
+
+Packet:
+
+- FP-MCP-137 — Generalize Human Approval Packet Scope Binding
+
+Packet commit:
+
+- fa81744
+
+Bridge implementation:
+
+- repo: forgepilot-chatgpt-mcp
+- commit: e555807
+- file: scripts/guarded-preflight-report.mjs
+
+Verified:
+
+- approval expected packet scope derived from requestData.packetId
+- HUMAN_APPROVAL_EVIDENCE_PACKET_SCOPE_MISMATCH removed for FP-MCP-134 / FP-MCP-135 pair
+- gates remains object-shaped
+- gates.humanApprovalEvidence remains object-valued
+- approvalTargetExecutionCommit is bbf930a
+- requestTargetExecutionCommit is bbf930a
+- target commit binding remains visible and matched
+- safety fields remain non-executing
+
+Safety:
+
+- execution not enabled
+- runner start endpoint not contacted
+- OpenCode not started
+- runner run id not created
+- approval not consumed
+- approval consumption evidence not created
+- request artifact not mutated
+- approval artifact not mutated
+- PRESENT_GUARDED not implemented
+- CALLABLE_GUARDED not implemented
+
+Conclusion:
+
+FP-MCP-137 verification passed.
