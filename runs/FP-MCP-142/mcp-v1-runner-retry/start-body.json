@@ -1,0 +1,8 @@
+{
+  "packetId": "FP-MCP-134",
+  "requestId": "REQ-20260630T202005438Z-86d20df4",
+  "requestArtifactPath": "runs/FP-MCP-134/opencode-requests/REQ-20260630T202005438Z-86d20df4.json",
+  "requestArtifactSha256": "29ab31f1e7db899539bafb8775b5e08ffdd58d6884afe7d001b24ed210283dcb",
+  "baseCommit": "bbf930a",
+  "boundaryVersion": "FP-MCP-V1-RETRY"
+}

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "FP-MCP-142",
+  "artifactType": "runner-pre-start-state",
+  "packetId": "FP-MCP-134",
+  "requestId": "REQ-20260630T202005438Z-86d20df4",
+  "runnerRunId": "RUN-20260701T104040288Z-15e213b9",
+  "executionEnabled": true,
+  "startEndpointContacted": true,
+  "executionStarted": false,
+  "opencodeStarted": false,
+  "recordedAt": "2026-07-01T10:40:40.289Z"
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "FP-MCP-142",
+  "artifactType": "runner-post-start-state",
+  "packetId": "FP-MCP-134",
+  "requestId": "REQ-20260630T202005438Z-86d20df4",
+  "runnerRunId": "RUN-20260701T104040288Z-15e213b9",
+  "executionEnabled": true,
+  "startEndpointContacted": true,
+  "executionStarted": true,
+  "opencodeStarted": true,
+  "opencodePid": 704378,
+  "opencodeBin": "/home/ridasaidd/.nvm/versions/node/v24.4.1/bin/opencode",
+  "stdoutPath": "/home/ridasaidd/forgepilot/runs/FP-MCP-134/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T104040288Z-15e213b9-opencode.stdout.log",
+  "stderrPath": "/home/ridasaidd/forgepilot/runs/FP-MCP-134/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T104040288Z-15e213b9-opencode.stderr.log",
+  "recordedAt": "2026-07-01T10:40:40.291Z"
+}
