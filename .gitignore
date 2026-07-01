@@ -30,3 +30,6 @@ forgepilot-runner.env
 .env.forgepilot-runner
 runner/.env
 runner/*.env
+
+# ForgePilot local task bundles
+.forgepilot/
