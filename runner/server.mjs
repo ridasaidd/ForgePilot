@@ -548,7 +548,12 @@ async function validateRequestArtifact(body) {
     reasons.push("DIRTY_WORKING_TREE");
   }
 
-  if (currentCommit !== null && currentCommit !== baseCommit) {
+  const baseCommitReachableFromHead = await commitIsAncestor(
+    baseCommit,
+    currentCommit
+  );
+
+  if (currentCommit !== null && !baseCommitReachableFromHead) {
     reasons.push("BASE_COMMIT_MISMATCH");
   }
 
@@ -604,6 +609,7 @@ async function validateRequestArtifact(body) {
     requestBaseCommit: artifactBaseCommit,
     creationCommit,
     artifactCommit,
+    baseCommitReachableFromHead,
     creationCommitExists,
     artifactCommitExists,
     creationCommitAncestorOfArtifactCommit,
