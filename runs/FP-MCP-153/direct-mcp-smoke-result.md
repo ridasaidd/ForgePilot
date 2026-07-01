@@ -85,6 +85,27 @@ Expected files:
 - `stderr.log`
 - `status.json`
 
+
+## Earlier Schema-Failure Worker
+
+Before output schema hardening, the first direct call returned an MCP/action schema error to ChatGPT, but the server-side worker had already started and completed successfully.
+
+Worker id:
+
+`WORKER-20260701T201828733Z-2c7e6005`
+
+Result:
+
+- status: `SUCCEEDED`
+- reason: `PROCESS_EXITED_ZERO`
+- stdout: `FP-MCP-153 worker smoke test completed.`
+
+This worker is recorded as part of the negative/diagnostic evidence for the schema issue.
+
+Evidence directory:
+
+`runs/FP-MCP-153/opencode-workers/WORKER-20260701T201828733Z-2c7e6005/`
+
 ## Conclusion
 
 FP-MCP-153 is now verified end-to-end through the actual ChatGPT MCP action surface.

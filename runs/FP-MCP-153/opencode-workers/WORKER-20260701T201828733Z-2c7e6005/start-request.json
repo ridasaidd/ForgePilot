@@ -1,0 +1,25 @@
+{
+  "packetId": "FP-MCP-153",
+  "requestId": null,
+  "targetWorkspaceId": "forgepilot",
+  "workspacePath": "/home/ridasaidd/forgepilot",
+  "promptFile": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/worker-smoke-prompt.md",
+  "promptFileSha256": "905ff2bda33cf984c826538bdebfc4aa7830056abf8596d9e75ca6719244bb04",
+  "title": "FP-MCP-153 direct MCP smoke",
+  "modelId": null,
+  "timeoutSeconds": 120,
+  "executable": "/home/ridasaidd/.nvm/versions/node/v24.4.1/bin/opencode",
+  "args": [
+    "run",
+    "--dir",
+    "/home/ridasaidd/forgepilot",
+    "--file",
+    "/home/ridasaidd/forgepilot/runs/FP-MCP-153/worker-smoke-prompt.md",
+    "--title",
+    "FP-MCP-153 direct MCP smoke",
+    "Implement attached prompt."
+  ],
+  "approvalSource": "CHATGPT_MCP_TOOL_APPROVAL",
+  "approvedToolName": "forgepilot_start_opencode_worker",
+  "requestedAt": "2026-07-01T20:18:28.733Z"
+}
