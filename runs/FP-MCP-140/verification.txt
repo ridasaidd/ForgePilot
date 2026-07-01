@@ -1,0 +1,69 @@
+FP-MCP-140 verification
+
+Outcome:
+OBSERVATION_RECORDED
+
+Important note:
+The state snapshot evidence gate passed, but the existing FP-MCP-135 human approval evidence expired before this preflight observation.
+This is not a target-binding regression and not a scope regression.
+Do not mutate the expired approval artifact.
+
+reportPath: runs/FP-MCP-140/local-preflight-report.json
+
+Gate shape:
+gatesObjectShaped: true
+requestArtifactObjectValued: true
+preStartEvidenceObjectValued: true
+stateSnapshotEvidenceObjectValued: true
+humanApprovalEvidenceObjectValued: true
+
+Gate results:
+requestArtifactState: PASSED
+requestArtifactPassed: true
+preStartEvidenceState: PASSED
+preStartEvidencePassed: true
+stateSnapshotEvidenceState: PASSED
+stateSnapshotEvidencePassed: true
+humanApprovalEvidenceState: FAILED
+humanApprovalEvidencePassed: false
+disableSwitchState: FAILED
+disableSwitchPassed: false
+runnerCapabilityState: FAILED
+runnerCapabilityPassed: false
+opencodeReadinessState: FAILED
+opencodeReadinessPassed: false
+
+Regression checks:
+humanApprovalExpired: true
+humanApprovalCommitMismatchRegressed: false
+humanApprovalPacketScopeMismatchRegressed: false
+
+Safety fields:
+eligibleForFutureGuardedStart: false
+executionPermitted: false
+executionStarted: false
+opencodeStarted: false
+runnerStartEndpointContacted: false
+startEndpointContacted: false
+runnerRunId: null
+approvalConsumed: false
+requestArtifactMutated: false
+
+State snapshot reasons:
+- none
+
+Pre-start reasons:
+- none
+
+Human approval reasons:
+- HUMAN_APPROVAL_EVIDENCE_EXPIRED
+
+Top-level reasons:
+- EXECUTION_DISABLED_GLOBAL
+- DISABLE_SWITCH_ACTIVE
+- START_ENDPOINT_DISABLED
+- START_NOT_CALLABLE
+- RUNNER_EXECUTION_DISABLED
+- OPENCODE_EXECUTION_DISABLED
+
+PASS
