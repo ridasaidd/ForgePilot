@@ -20,6 +20,11 @@ const DEFAULT_PORT = 8791;
 const ALLOWED_MODELS = ["deepseek-v4-pro-high", "qwen-3.7-max"];
 const ALLOWED_RUN_MODES = ["DESIGN_ONLY"];
 
+const WORKSPACE_ALLOWLIST = Object.freeze({
+  forgepilot: "/home/ridasaidd/forgepilot",
+  "forgepilot-chatgpt-mcp": "/home/ridasaidd/forgepilot-chatgpt-mcp"
+});
+
 const repoRoot = process.env.FORGEPILOT_REPO || DEFAULT_REPO;
 const host = process.env.FORGEPILOT_RUNNER_HOST || DEFAULT_HOST;
 const port = Number.parseInt(
@@ -48,6 +53,26 @@ function getOpenCodeModelForModelId(modelId) {
   return typeof configured === "string" && configured.trim().length > 0
     ? configured.trim()
     : null;
+}
+
+function resolveTargetWorkspace(targetWorkspaceId) {
+  if (typeof targetWorkspaceId !== "string") {
+    return null;
+  }
+
+  const trimmed = targetWorkspaceId.trim();
+
+  if (trimmed.length === 0) {
+    return null;
+  }
+
+  const resolved = WORKSPACE_ALLOWLIST[trimmed];
+
+  if (resolved === undefined) {
+    return null;
+  }
+
+  return resolved;
 }
 
 function nowIso() {
@@ -693,6 +718,9 @@ function capabilitiesResult() {
         ],
     supportedRunModes: ALLOWED_RUN_MODES,
     allowedModels: ALLOWED_MODELS,
+    supportedWorkspaces: Object.keys(WORKSPACE_ALLOWLIST),
+    defaultWorkspace: "forgepilot",
+    workspaceRoutingEnabled: true,
     statusSource: executionEnabled
       ? "private dev runner guarded execution policy"
       : "private dev runner static policy",
@@ -866,6 +894,44 @@ async function handleStartRun(req, res) {
     return;
   }
 
+  const requestedTargetWorkspaceId =
+    getStringField(body, "targetWorkspaceId") ?? "forgepilot";
+  const opencodeWorkingDirectory = resolveTargetWorkspace(
+    requestedTargetWorkspaceId
+  );
+
+  if (opencodeWorkingDirectory === null) {
+    logOperationEnd(operation, startedAt, false, "DISALLOWED_WORKSPACE");
+
+    jsonResponse(res, 403, {
+      valid: false,
+      accepted: false,
+      executionEnabled: true,
+      executionStarted: false,
+      opencodeStarted: false,
+      runnerRunId: null,
+      startEndpointContacted: true,
+      startEndpointState: "CALLABLE_GUARDED",
+      startCapabilityCallable: true,
+      executionAllowedNow: false,
+      approvalConsumed: false,
+      approvalConsumptionPath: null,
+      preStartEvidenceCreated: false,
+      preStartEvidencePath: null,
+      postStartEvidenceCreated: false,
+      postStartEvidencePath: null,
+      requestArtifactMutated: false,
+      targetWorkspaceId: requestedTargetWorkspaceId,
+      opencodeWorkingDirectory: null,
+      runnerProtocolVersion: RUNNER_PROTOCOL_VERSION,
+      boundaryVersion: BOUNDARY_VERSION,
+      statusSource: "private dev runner guarded workspace resolution policy",
+      checkedAt: nowIso(),
+      reasons: ["DISALLOWED_WORKSPACE"]
+    });
+    return;
+  }
+
   const validation = await validateRequestArtifact(body);
 
   if (validation.valid !== true) {
@@ -942,6 +1008,8 @@ async function handleStartRun(req, res) {
         startEndpointContacted: true,
         executionStarted: false,
         opencodeStarted: false,
+        targetWorkspaceId: requestedTargetWorkspaceId,
+        opencodeWorkingDirectory,
         recordedAt: nowIso()
       },
       null,
@@ -956,7 +1024,7 @@ async function handleStartRun(req, res) {
   const opencodeArgs = [
     "run",
     "--dir",
-    repoRoot,
+    opencodeWorkingDirectory,
     "--title",
     `ForgePilot ${validation.packetId} ${runnerRunId}`
   ];
@@ -995,6 +1063,8 @@ async function handleStartRun(req, res) {
             opencodeBin,
             opencodeModel,
             opencodeArgs,
+            targetWorkspaceId: requestedTargetWorkspaceId,
+            opencodeWorkingDirectory,
             errorCode: error && typeof error.code === "string" ? error.code : "OPENCODE_SPAWN_ERROR",
             errorMessage: error && typeof error.message === "string" ? error.message : "OpenCode spawn failed",
             stdoutPath,
@@ -1029,6 +1099,8 @@ async function handleStartRun(req, res) {
         opencodeBin,
         opencodeModel,
         opencodeArgs,
+        targetWorkspaceId: requestedTargetWorkspaceId,
+        opencodeWorkingDirectory,
         stdoutPath,
         stderrPath,
         recordedAt: nowIso()
