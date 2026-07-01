@@ -14,7 +14,7 @@ baseCommit: bbf930a
 
 ```text
 httpStatus: 200
-runnerRunId: RUN-20260701T104040288Z-15e213b9
+runnerRunId: RUN-20260701T104705915Z-1190f021
 artifactDir: runs/FP-MCP-134/deepseek-v4-pro-high-DESIGN_ONLY/
 ```
 

@@ -4,7 +4,7 @@
   "executionEnabled": true,
   "executionStarted": true,
   "opencodeStarted": true,
-  "runnerRunId": "RUN-20260701T104040288Z-15e213b9",
+  "runnerRunId": "RUN-20260701T104705915Z-1190f021",
   "startEndpointContacted": true,
   "startEndpointState": "CALLABLE_GUARDED",
   "startCapabilityCallable": true,
@@ -12,9 +12,9 @@
   "approvalConsumed": false,
   "approvalConsumptionPath": null,
   "preStartEvidenceCreated": true,
-  "preStartEvidencePath": "/home/ridasaidd/forgepilot/runs/FP-MCP-134/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T104040288Z-15e213b9-pre-start.json",
+  "preStartEvidencePath": "/home/ridasaidd/forgepilot/runs/FP-MCP-134/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T104705915Z-1190f021-pre-start.json",
   "postStartEvidenceCreated": true,
-  "postStartEvidencePath": "/home/ridasaidd/forgepilot/runs/FP-MCP-134/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T104040288Z-15e213b9-post-start.json",
+  "postStartEvidencePath": "/home/ridasaidd/forgepilot/runs/FP-MCP-134/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T104705915Z-1190f021-post-start.json",
   "requestArtifactMutated": false,
   "packetId": "FP-MCP-134",
   "requestId": "REQ-20260630T202005438Z-86d20df4",
@@ -22,6 +22,6 @@
   "runnerProtocolVersion": "forgepilot-runner-v1",
   "boundaryVersion": "FP-MCP-142",
   "statusSource": "private dev runner guarded OpenCode start policy",
-  "checkedAt": "2026-07-01T10:40:40.292Z",
+  "checkedAt": "2026-07-01T10:47:05.920Z",
   "reasons": []
 }
