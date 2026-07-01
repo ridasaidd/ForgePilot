@@ -18,6 +18,10 @@ Options:
   --ingest-opencode-telemetry   Ingest OpenCode telemetry from a local artifact file.
                                  Requires: --packet-id (string, e.g. FP-004) or --packet-db-id (numeric),
                                            --execution-id, --artifact-path, --mode (direct|retroactive)
+  --persist-worker-telemetry     Persist FP-MCP worker telemetry from telemetry.json.
+                                 Requires: --artifact-path
+  --read-worker-telemetry        Read persisted worker telemetry.
+                                 Requires: --packet-id and --worker-id
 
 Environment:
   ForgePilot follows an environment-centric architecture.
@@ -179,6 +183,10 @@ async function main(): Promise<void> {
       "execution-id": { type: "string" },
       "artifact-path": { type: "string" },
       "mode": { type: "string" },
+      "persist-worker-telemetry": { type: "boolean" },
+      "read-worker-telemetry": { type: "boolean" },
+      "worker-id": { type: "string" },
+      "json": { type: "boolean" },
     },
     strict: true,
     allowPositionals: true,
@@ -241,6 +249,68 @@ async function main(): Promise<void> {
     console.log("Executor Baseline: prompts/executor-baseline-v1.md");
     console.log("Auditor Baseline: prompts/auditor-baseline-v1.md");
     return;
+  }
+
+  if (values["persist-worker-telemetry"] || positionals[0] === "persist-worker-telemetry") {
+    const artifactPath = values["artifact-path"];
+    if (!artifactPath) {
+      console.error("ERROR: --artifact-path is required");
+      process.exit(1);
+    }
+
+    const { initAndMigrate } = await import("../db/migrate.js");
+    initAndMigrate();
+    const { closeDb } = await import("../db/client.js");
+    const { persistOpenCodeWorkerTelemetry } = await import("../db/opencode-worker-telemetry.js");
+
+    try {
+      const result = persistOpenCodeWorkerTelemetry(artifactPath);
+      closeDb();
+      if (values.json) {
+        console.log(JSON.stringify(result, null, 2));
+      } else {
+        console.log(`Worker telemetry persisted: ${result.row.packet_id}/${result.row.worker_id}`);
+        console.log(`  Result: ${result.insertedOrUpdated}`);
+        console.log(`  Admission State: ${result.row.admission_state}`);
+      }
+      return;
+    } catch (error) {
+      closeDb();
+      console.error(`ERROR: ${error instanceof Error ? error.message : String(error)}`);
+      process.exit(1);
+    }
+  }
+
+  if (values["read-worker-telemetry"] || positionals[0] === "read-worker-telemetry") {
+    const packetId = values["packet-id"];
+    const workerId = values["worker-id"];
+    if (!packetId || !workerId) {
+      console.error("ERROR: --packet-id and --worker-id are required");
+      process.exit(1);
+    }
+
+    const { initAndMigrate } = await import("../db/migrate.js");
+    initAndMigrate();
+    const { closeDb } = await import("../db/client.js");
+    const { getPersistedOpenCodeWorkerTelemetry } = await import("../db/opencode-worker-telemetry.js");
+
+    try {
+      const row = getPersistedOpenCodeWorkerTelemetry(packetId, workerId);
+      closeDb();
+      if (values.json) {
+        console.log(JSON.stringify(row, null, 2));
+      } else {
+        console.log(`Worker telemetry: ${row.packet_id}/${row.worker_id}`);
+        console.log(`  Worker Status: ${row.worker_status}`);
+        console.log(`  Validation State: ${row.validation_state}`);
+        console.log(`  Admission State: ${row.admission_state}`);
+      }
+      return;
+    } catch (error) {
+      closeDb();
+      console.error(`ERROR: ${error instanceof Error ? error.message : String(error)}`);
+      process.exit(1);
+    }
   }
 
   if (values["ingest-opencode-telemetry"] || positionals[0] === "ingest-opencode-telemetry") {
