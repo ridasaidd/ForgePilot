@@ -2,7 +2,7 @@
   "schemaVersion": "forgepilot.opencode-worker-telemetry.v1",
   "packetId": "FP-MCP-153",
   "workerId": "WORKER-20260701T202417844Z-46c8a6f5",
-  "capturedAt": "2026-07-01T20:38:27.253Z",
+  "capturedAt": "2026-07-01T20:50:39.883Z",
   "workerStatus": "SUCCEEDED",
   "startedAt": "2026-07-01T20:24:17.848Z",
   "completedAt": "2026-07-01T20:24:23.211Z",
