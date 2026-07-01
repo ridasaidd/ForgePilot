@@ -1,0 +1,13 @@
+{
+  "terminalCommandRequestId": "TERM-20260701T163604483Z-286f6d10",
+  "packetId": "FP-MCP-147",
+  "targetWorkspaceId": "forgepilot",
+  "workspacePath": "/home/ridasaidd/forgepilot",
+  "workingDirectory": "/home/ridasaidd/forgepilot",
+  "command": "git push",
+  "commandSha256": "c32f2b1a66f8a79deadb74f533f3075c60a629df343b89e8c4477d40fa960ba8",
+  "rationale": "Push the committed FP-MCP-147 terminal command evidence commit to the remote ForgePilot repository after the user committed it locally.",
+  "riskLevel": "GIT_MUTATION",
+  "timeoutSeconds": 60,
+  "startedAt": "2026-07-01T16:36:04.485Z"
+}

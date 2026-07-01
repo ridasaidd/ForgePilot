@@ -1,0 +1,13 @@
+{
+  "terminalCommandRequestId": "TERM-20260701T163736864Z-b46ca580",
+  "packetId": "FP-MCP-147",
+  "targetWorkspaceId": "forgepilot-chatgpt-mcp",
+  "workspacePath": "/home/ridasaidd/forgepilot-chatgpt-mcp",
+  "workingDirectory": "/home/ridasaidd/forgepilot-chatgpt-mcp",
+  "command": "/home/ridasaidd/.nvm/versions/node/v24.4.1/bin/pnpm build",
+  "commandSha256": "8aaaea1ed43ee808dad80a09ca32cf535408a7c9b769b94d2eda5e7b0f02d6c6",
+  "rationale": "Verify the FP-MCP-147 MCP bridge implementation builds when pnpm is invoked by absolute path under the terminal tool's sanitized environment.",
+  "riskLevel": "HIGH_RISK",
+  "timeoutSeconds": 120,
+  "startedAt": "2026-07-01T16:37:36.867Z"
+}

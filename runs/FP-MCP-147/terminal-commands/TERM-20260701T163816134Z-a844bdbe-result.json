@@ -1,0 +1,36 @@
+{
+  "approvalSource": "CHATGPT_MCP_TOOL_APPROVAL",
+  "approvedToolName": "forgepilot_execute_terminal_command",
+  "packetId": "FP-MCP-147",
+  "targetWorkspaceId": "forgepilot",
+  "workspacePath": "/home/ridasaidd/forgepilot",
+  "workingDirectory": "/home/ridasaidd/forgepilot",
+  "command": "cat > runs/FP-MCP-147/executor-result.md <<'EOF'\n# FP-MCP-147 — Implementation Result\n\n## Result\n\nIMPLEMENTED\n\n## Summary\n\nImplemented human-approved terminal command access in the ForgePilot ChatGPT MCP bridge.\n\nThe new MCP tool is:\n\n- `forgepilot_execute_terminal_command`\n\nThe tool uses the ChatGPT/MCP tool approval popup as the human approval surface. It does not require typed canonical approval text.\n\n## Bridge commit\n\n- Repository: `/home/ridasaidd/forgepilot-chatgpt-mcp`\n- Branch: `feature/oauth-auth0`\n- Commit: `e5e9884` — `Implement FP-MCP-147 terminal command MCP tool`\n\n## Changed files\n\n- `src/terminal-command.ts`\n- `src/server.ts`\n\n## Implemented behavior\n\n- Executes one approved terminal command in an allowlisted workspace.\n- Supports workspaces:\n  - `forgepilot` -> `/home/ridasaidd/forgepilot`\n  - `forgepilot-chatgpt-mcp` -> `/home/ridasaidd/forgepilot-chatgpt-mcp`\n- Requires approval string `EXECUTE_TERMINAL_COMMAND`.\n- Records `approvalSource: CHATGPT_MCP_TOOL_APPROVAL`.\n- Captures stdout, stderr, exit code, signal, timeout state, duration, command hash, risk metadata, pre/post git status, and evidence paths.\n- Writes evidence under `runs/<packetId-or-OPERATOR>/terminal-commands/`.\n- Fails closed for unknown workspaces and out-of-workspace paths.\n- Blocks hard-blocked command classes including sudo, su, `.env` reads, private key reads, destructive `rm -rf /`, curl/wget piped to shell, direct `.git` internals access, and background commands.\n\n## Live MCP verification\n\nThe live MCP schema exposes `forgepilot_execute_terminal_command`.\n\nA read-only command was approved and executed through MCP:\n\n```bash\ngit status --short\n```\n\nResult:\n\n- `executed: true`\n- `exitCode: 0`\n- `riskLevel: READ_ONLY`\n- `approvalSource: CHATGPT_MCP_TOOL_APPROVAL`\n\nA git push was approved and executed through MCP:\n\n```bash\ngit push\n```\n\nResult:\n\n- `executed: true`\n- `exitCode: 0`\n- `riskLevel: GIT_MUTATION`\n- remote advanced `main` from `a5fbad7` to `d758a62`\n\nThe MCP bridge build was verified through the terminal tool with an explicit PATH prefix:\n\n```bash\nPATH=/home/ridasaidd/.nvm/versions/node/v24.4.1/bin:$PATH pnpm build\n```\n\nResult:\n\n- `exitCode: 0`\n- stderr: `$ tsc`\n\n## Observed gaps\n\n1. Terminal evidence is self-observing: every terminal command writes new evidence, so committing evidence with the terminal tool leaves the final command's evidence uncommitted. This needs a follow-up batching/finalization rule.\n2. Sanitized PATH does not resolve `pnpm` by default. `pnpm build` failed with `pnpm: command not found`; absolute pnpm then failed because `node` was not on PATH. Adding the known Node bin directory to PATH made the build pass.\n3. Some safe verification commands with explicit PATH prefixes are classified as `HIGH_RISK`; risk classification can be refined later.\n\n## Conclusion\n\nFP-MCP-147 achieved the core milestone: GPT can request a terminal command, the human can approve it through the MCP UI, the command executes inside an allowlisted workspace, and GPT receives command output directly with durable evidence recorded.\nEOF\n\ngit add runs/FP-MCP-147/executor-result.md runs/FP-MCP-147/terminal-commands/\ngit commit -m \"Record FP-MCP-147 implementation result\"\ngit push",
+  "commandSha256": "979d07983049dd941b1c77470ddfa8f0077d5b485918e2e9d01e139b7a218a1e",
+  "rationale": "Record the FP-MCP-147 implementation result and commit/push accumulated terminal-command evidence in the ForgePilot evidence ledger.",
+  "riskLevel": "BLOCKED",
+  "timeoutSeconds": 120,
+  "exitCode": null,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 0,
+  "stdoutPath": null,
+  "stderrPath": null,
+  "stdoutSha256": null,
+  "stderrSha256": null,
+  "preGitStatusShort": null,
+  "postGitStatusShort": null,
+  "reasons": [
+    "sudo is not allowed",
+    "su is not allowed",
+    "Destructive rm -rf of system directories is blocked",
+    "Reading environment variables wholesale is blocked"
+  ],
+  "blocked": true,
+  "blockReasons": [
+    "sudo is not allowed",
+    "su is not allowed",
+    "Destructive rm -rf of system directories is blocked",
+    "Reading environment variables wholesale is blocked"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "approvalSource": "CHATGPT_MCP_TOOL_APPROVAL",
+  "approvedToolName": "forgepilot_execute_terminal_command",
+  "packetId": "FP-MCP-147",
+  "targetWorkspaceId": "forgepilot-chatgpt-mcp",
+  "workspacePath": "/home/ridasaidd/forgepilot-chatgpt-mcp",
+  "workingDirectory": "/home/ridasaidd/forgepilot-chatgpt-mcp",
+  "command": "/home/ridasaidd/.nvm/versions/node/v24.4.1/bin/pnpm build",
+  "commandSha256": "8aaaea1ed43ee808dad80a09ca32cf535408a7c9b769b94d2eda5e7b0f02d6c6",
+  "rationale": "Verify the FP-MCP-147 MCP bridge implementation builds when pnpm is invoked by absolute path under the terminal tool's sanitized environment.",
+  "riskLevel": "HIGH_RISK",
+  "timeoutSeconds": 120,
+  "startedAt": "2026-07-01T16:37:36.867Z",
+  "completedAt": "2026-07-01T16:37:36.889Z",
+  "exitCode": 127,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 14,
+  "stdoutPath": "/home/ridasaidd/forgepilot/runs/FP-MCP-147/terminal-commands/TERM-20260701T163736864Z-b46ca580-stdout.log",
+  "stderrPath": "/home/ridasaidd/forgepilot/runs/FP-MCP-147/terminal-commands/TERM-20260701T163736864Z-b46ca580-stderr.log",
+  "stdoutSha256": "73b3bc374772331fa14d2b21024e29cce9cba66d0f268b96731b6ae2efe102e7",
+  "stderrSha256": "d11011e3dd2a4283bbb07237e72a49cc57985a4b2a6e3dc0364a76dd7408eff5",
+  "preGitStatusShort": "",
+  "postGitStatusShort": "",
+  "reasons": [
+    "EXIT_CODE_127",
+    "HIGH_RISK_EXECUTED_WITH_APPROVAL"
+  ],
+  "blocked": false
+}

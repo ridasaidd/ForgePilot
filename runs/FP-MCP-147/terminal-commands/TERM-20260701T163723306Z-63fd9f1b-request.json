@@ -1,0 +1,13 @@
+{
+  "terminalCommandRequestId": "TERM-20260701T163723306Z-63fd9f1b",
+  "packetId": "FP-MCP-147",
+  "targetWorkspaceId": "forgepilot-chatgpt-mcp",
+  "workspacePath": "/home/ridasaidd/forgepilot-chatgpt-mcp",
+  "workingDirectory": "/home/ridasaidd/forgepilot-chatgpt-mcp",
+  "command": "git status --short && git log --oneline -3 && pnpm build",
+  "commandSha256": "91552de7cd943bcb6ec05380752fb2212f625c3b589b5d7fa0c1590d69c27499",
+  "rationale": "Verify the FP-MCP-147 terminal command implementation in the MCP bridge workspace after commit and service restart.",
+  "riskLevel": "READ_ONLY",
+  "timeoutSeconds": 120,
+  "startedAt": "2026-07-01T16:37:23.306Z"
+}
