@@ -27,6 +27,9 @@ const port = Number.parseInt(
   10
 );
 const runnerToken = process.env.FORGEPILOT_RUNNER_TOKEN || "";
+const opencodeBin =
+  process.env.FORGEPILOT_OPENCODE_BIN ||
+  "/home/ridasaidd/.nvm/versions/node/v24.4.1/bin/opencode";
 const executionEnabled =
   process.env.FORGEPILOT_RUNNER_EXECUTION_ENABLED === "true";
 
@@ -933,7 +936,7 @@ async function handleStartRun(req, res) {
   const stderrFd = await import("node:fs").then((fs) => fs.openSync(stderrPath, "a"));
 
   const child = spawn(
-    "opencode",
+    opencodeBin,
     [
       "run",
       "--attach",
@@ -951,6 +954,37 @@ async function handleStartRun(req, res) {
     }
   );
 
+  child.on("error", async (error) => {
+    try {
+      await writeFile(
+        postStartStatePath,
+        `${JSON.stringify(
+          {
+            schemaVersion: "FP-MCP-142",
+            artifactType: "runner-post-start-state",
+            packetId: validation.packetId,
+            requestId: validation.requestId,
+            runnerRunId,
+            executionEnabled,
+            startEndpointContacted: true,
+            executionStarted: false,
+            opencodeStarted: false,
+            opencodeBin,
+            errorCode: error && typeof error.code === "string" ? error.code : "OPENCODE_SPAWN_ERROR",
+            errorMessage: error && typeof error.message === "string" ? error.message : "OpenCode spawn failed",
+            stdoutPath,
+            stderrPath,
+            recordedAt: nowIso()
+          },
+          null,
+          2
+        )}\n`
+      );
+    } catch {
+      // Preserve runner liveness even if failure evidence cannot be written.
+    }
+  });
+
   child.unref();
 
   await writeFile(
@@ -967,6 +1001,7 @@ async function handleStartRun(req, res) {
         executionStarted: true,
         opencodeStarted: true,
         opencodePid: child.pid ?? null,
+        opencodeBin,
         stdoutPath,
         stderrPath,
         recordedAt: nowIso()
