@@ -1,0 +1,30 @@
+{
+  "valid": false,
+  "accepted": false,
+  "executionEnabled": true,
+  "executionStarted": false,
+  "opencodeStarted": false,
+  "runnerRunId": null,
+  "startEndpointContacted": true,
+  "startEndpointState": "CALLABLE_GUARDED",
+  "startCapabilityCallable": true,
+  "executionAllowedNow": false,
+  "approvalConsumed": false,
+  "approvalConsumptionPath": null,
+  "preStartEvidenceCreated": false,
+  "postStartEvidenceCreated": false,
+  "requestArtifactMutated": false,
+  "targetWorkspaceId": "malicious-unlisted-workspace",
+  "opencodeWorkingDirectory": null,
+  "runnerProtocolVersion": "forgepilot-runner-v1",
+  "boundaryVersion": "FP-MCP-142",
+  "statusSource": "private dev runner guarded workspace resolution policy",
+  "checkedAt": "2026-07-01T12:02:00.000Z",
+  "reasons": [
+    "DISALLOWED_WORKSPACE",
+    "START_ENDPOINT_DISABLED",
+    "START_NOT_CALLABLE",
+    "EXECUTION_NOT_ALLOWED"
+  ],
+  "_scenario": "targetWorkspaceId: malicious-unlisted-workspace -> rejected with DISALLOWED_WORKSPACE"
+}

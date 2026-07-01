@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "FP-MCP-142",
+  "artifactType": "implementation-result",
+  "packetId": "FP-MCP-143",
+  "requestId": "REQ-20260701T113536314Z-f2375b4c",
+  "runMode": "DESIGN_ONLY",
+  "implementationDesignPath": "runs/FP-MCP-143/deepseek-v4-pro-high-DESIGN_ONLY/FP-MCP-143-design.md",
+  "evidenceLocation": "runs/FP-MCP-143/deepseek-v4-pro-high-DESIGN_ONLY/",
+  "producedArtifacts": [
+    "FP-MCP-143-design.md",
+    "implementation-result.json",
+    "verification.json",
+    "start-response-default-workspace.json",
+    "start-response-chatgpt-mcp-workspace.json",
+    "start-response-unknown-workspace.json",
+    "executor-result.md",
+    "verification.txt"
+  ],
+  "designSummary": "Add WORKSPACE_ALLOWLIST constant, resolveTargetWorkspace function, and modify handleStartRun to accept optional targetWorkspaceId field. All evidence remains under ForgePilot repo root. OpenCode launched with --dir <resolved workspace path>.",
+  "constraintsSatisfied": [
+    "No arbitrary filesystem paths accepted from request body",
+    "No path traversal possible (allowlist key lookup only)",
+    "No unlisted workspace IDs accepted",
+    "ForgePilot evidence directories unchanged",
+    "Existing request artifact validation preserved",
+    "No PATCH/APPLY execution modes introduced",
+    "DESIGN_ONLY remains the only supported run mode",
+    "Existing model allowlist preserved",
+    "Pre-start and post-start evidence recording preserved",
+    "targetWorkspaceId and opencodeWorkingDirectory recorded in post-start evidence"
+  ],
+  "recordedAt": "2026-07-01T11:43:00.000Z"
+}

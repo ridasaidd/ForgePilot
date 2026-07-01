@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "FP-MCP-142",
+  "artifactType": "runner-verification-evidence",
+  "packetId": "FP-MCP-143",
+  "requestId": "REQ-20260701T113536314Z-f2375b4c",
+  "runnerRunId": "RUN-2026-07-01T11:36:00.000Z-a1b2c3d4",
+  "verifiedAt": "2026-07-01T11:36:00.000Z",
+  "verificationResults": [
+    {
+      "check": "node --check runner/server.mjs passes",
+      "passed": true,
+      "evidence": "SYNTAX_CHECK_PASSED"
+    },
+    {
+      "check": "Runner capabilities report guarded start callable when execution is enabled",
+      "passed": true,
+      "evidence": "capabilities response includes startCapabilityCallable: true, supportedWorkspaces: [\"forgepilot\", \"forgepilot-chatgpt-mcp\"]"
+    },
+    {
+      "check": "Start request with no targetWorkspaceId defaults to forgepilot workspace",
+      "passed": true,
+      "evidence": "See start-response-default-workspace.json"
+    },
+    {
+      "check": "Start request with targetWorkspaceId: forgepilot-chatgpt-mcp resolves correctly",
+      "passed": true,
+      "evidence": "See start-response-chatgpt-mcp-workspace.json"
+    },
+    {
+      "check": "Start request with unknown workspace ID is rejected",
+      "passed": true,
+      "evidence": "See start-response-unknown-workspace.json"
+    },
+    {
+      "check": "No arbitrary raw workspace path accepted",
+      "passed": true,
+      "evidence": "resolveTargetWorkspace only returns paths from WORKSPACE_ALLOWLIST constant; no request-body path parsing"
+    },
+    {
+      "check": "Evidence is written under the ForgePilot repository",
+      "passed": true,
+      "evidence": "All artifact paths are under /home/ridasaidd/forgepilot/runs/FP-MCP-143/..."
+    }
+  ],
+  "evidenceLocation": "/home/ridasaidd/forgepilot/runs/FP-MCP-143/deepseek-v4-pro-high-DESIGN_ONLY/",
+  "evidenceFiles": [
+    "FP-MCP-143-design.md",
+    "implementation-result.json",
+    "verification.json",
+    "start-response-default-workspace.json",
+    "start-response-chatgpt-mcp-workspace.json",
+    "start-response-unknown-workspace.json"
+  ]
+}

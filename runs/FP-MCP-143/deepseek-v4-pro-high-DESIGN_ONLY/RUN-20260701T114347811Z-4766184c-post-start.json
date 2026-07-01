@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "FP-MCP-142",
+  "artifactType": "runner-post-start-state",
+  "packetId": "FP-MCP-143",
+  "requestId": "REQ-20260701T113536314Z-f2375b4c",
+  "runnerRunId": "RUN-20260701T114347811Z-4766184c",
+  "executionEnabled": true,
+  "startEndpointContacted": true,
+  "executionStarted": true,
+  "opencodeStarted": true,
+  "opencodePid": 705798,
+  "opencodeBin": "/home/ridasaidd/.nvm/versions/node/v24.4.1/bin/opencode",
+  "opencodeModel": null,
+  "opencodeArgs": [
+    "run",
+    "--dir",
+    "/home/ridasaidd/forgepilot",
+    "--title",
+    "ForgePilot FP-MCP-143 RUN-20260701T114347811Z-4766184c",
+    "ForgePilot guarded DESIGN_ONLY execution request.\nPacket: FP-MCP-143\nRequest: REQ-20260701T113536314Z-f2375b4c\nModel: deepseek-v4-pro-high\nRun mode: DESIGN_ONLY\nTarget commit: fba5e50\n\nRead packets/FP-MCP-143.md and produce the requested DESIGN_ONLY implementation/evidence artifacts.\nDo not expose secrets. Preserve ForgePilot evidence discipline."
+  ],
+  "stdoutPath": "/home/ridasaidd/forgepilot/runs/FP-MCP-143/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T114347811Z-4766184c-opencode.stdout.log",
+  "stderrPath": "/home/ridasaidd/forgepilot/runs/FP-MCP-143/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T114347811Z-4766184c-opencode.stderr.log",
+  "recordedAt": "2026-07-01T11:43:47.816Z"
+}

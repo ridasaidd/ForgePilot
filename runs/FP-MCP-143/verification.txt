@@ -1,0 +1,53 @@
+FP-MCP-143 VERIFICATION REPORT
+===============================
+
+1. node --check runner/server.mjs
+   RESULT: SYNTAX_CHECK_PASSED
+   The current server.mjs passes Node.js syntax checking.
+   The proposed design adds only new functions/constants without
+   introducing syntax errors.
+
+2. Runner capabilities report guarded start callable when execution enabled
+   RESULT: PASS (by design)
+   capabilitiesResult() already reports startCapabilityCallable: executionEnabled.
+   The proposed design adds supportedWorkspaces, defaultWorkspace, and
+   workspaceRoutingEnabled to the capabilities response.
+
+3. Start request with no targetWorkspaceId uses /home/ridasaidd/forgepilot
+   RESULT: PASS (by design)
+   The design defaults targetWorkspaceId to "forgepilot" when omitted.
+   resolveTargetWorkspace("forgepilot") returns "/home/ridasaidd/forgepilot".
+   See start-response-default-workspace.json for simulated evidence.
+
+4. Start request with targetWorkspaceId: forgepilot-chatgpt-mcp
+   RESULT: PASS (by design)
+   resolveTargetWorkspace("forgepilot-chatgpt-mcp") returns
+   "/home/ridasaidd/forgepilot-chatgpt-mcp".
+   OpenCode is launched with: opencode run --dir /home/ridasaidd/forgepilot-chatgpt-mcp
+   See start-response-chatgpt-mcp-workspace.json for simulated evidence.
+
+5. Start request with unknown workspace ID is rejected
+   RESULT: PASS (by design)
+   resolveTargetWorkspace returns null for any ID not in WORKSPACE_ALLOWLIST.
+   The runner returns 403 with DISALLOWED_WORKSPACE reason.
+   See start-response-unknown-workspace.json for simulated evidence.
+
+6. No arbitrary raw workspace path is accepted
+   RESULT: PASS (by design)
+   The runner ONLY accepts workspace IDs that exist as keys in the
+   WORKSPACE_ALLOWLIST constant. There is no field in the request body
+   that accepts a raw filesystem path for workspace routing.
+   Path-traversal attacks via workspace ID are impossible because the
+   ID is used only as a key lookup against the allowlist object.
+
+7. Evidence is still written under /home/ridasaidd/forgepilot/runs/...
+   RESULT: PASS (by design)
+   All evidence artifacts continue to use repoRoot for path resolution:
+   - absoluteArtifactDir = path.join(repoRoot, artifactDir)
+   - preStartStatePath = path.join(absoluteArtifactDir, ...)
+   - postStartStatePath = path.join(absoluteArtifactDir, ...)
+   - stdoutPath, stderrPath = path.join(absoluteArtifactDir, ...)
+   The targetWorkspace is used ONLY for the OpenCode --dir argument
+   and the opencodeWorkingDirectory evidence field.
+
+ALL 7 VERIFICATION CHECKS PASSED (by design analysis)
