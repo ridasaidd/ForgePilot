@@ -1,0 +1,2 @@
+This text intentionally mentions docker, podman, nerdctl, env, and printenv inside artifact prose.
+The executable shell line is only a heredoc write into an allowed ForgePilot run artifact.
