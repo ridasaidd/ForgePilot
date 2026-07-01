@@ -1,0 +1,3823 @@
+{
+  "capturedAt": "2026-07-01T18:39:13.816081+00:00",
+  "root": "/home/ridasaidd/forgepilot/runs",
+  "policy": "metadata_only",
+  "items": [
+    {
+      "relativePath": "runs/FP-002-V3/executor-result.md",
+      "packetOrRunId": "FP-002-V3",
+      "sizeBytes": 12707,
+      "mtimeUtc": "2026-06-05T18:57:57.000048+00:00",
+      "metadataSha256": "22f32c4de6c8489ea4cb62363f6151c902928b843e3c7255d0a3abf9071e2be3"
+    },
+    {
+      "relativePath": "runs/FP-003/executor-result.md",
+      "packetOrRunId": "FP-003",
+      "sizeBytes": 1499,
+      "mtimeUtc": "2026-06-08T07:20:37.425184+00:00",
+      "metadataSha256": "128eaa0cad72aa1c15b15a712cbc4a697f2e410b8ccb1bbdf61f9caef88dcb79"
+    },
+    {
+      "relativePath": "runs/FP-004/executor-result.md",
+      "packetOrRunId": "FP-004",
+      "sizeBytes": 3812,
+      "mtimeUtc": "2026-06-16T10:37:58.476455+00:00",
+      "metadataSha256": "48569fce7bf0e46d2561041a035597bb6509b6e6b1c54e59ded96b9f7253c915"
+    },
+    {
+      "relativePath": "runs/FP-004/metrics.json",
+      "packetOrRunId": "FP-004",
+      "sizeBytes": 850,
+      "mtimeUtc": "2026-06-16T10:37:58.476455+00:00",
+      "metadataSha256": "04890066784b97029e2f648f482d179d12a38b8ae3eea8e5dc81e3c719082ce0"
+    },
+    {
+      "relativePath": "runs/FP-005/executor-result.md",
+      "packetOrRunId": "FP-005",
+      "sizeBytes": 1501,
+      "mtimeUtc": "2026-06-16T12:49:49.074874+00:00",
+      "metadataSha256": "963098c7c797ff4895b70a42f10319914b91c3efd1e27f138b2db3d1d16b3737"
+    },
+    {
+      "relativePath": "runs/FP-005/metrics.json",
+      "packetOrRunId": "FP-005",
+      "sizeBytes": 940,
+      "mtimeUtc": "2026-06-16T12:49:49.074874+00:00",
+      "metadataSha256": "6f65a5d936d6b3a6cacda213263c3bb6b582993c4a977362b500f596ff1fc3be"
+    },
+    {
+      "relativePath": "runs/FP-006/executor-result.md",
+      "packetOrRunId": "FP-006",
+      "sizeBytes": 2876,
+      "mtimeUtc": "2026-06-16T15:42:08.687003+00:00",
+      "metadataSha256": "61b843aaacecb3db4a27bb10651ee4b52bbf62630982e3275049379dd4354a0a"
+    },
+    {
+      "relativePath": "runs/FP-006/metrics.json",
+      "packetOrRunId": "FP-006",
+      "sizeBytes": 780,
+      "mtimeUtc": "2026-06-16T15:42:08.687003+00:00",
+      "metadataSha256": "f0e60bec797f7359899a6ec82ac5034b59c15c6eb759b068d7bbd92a1c067326"
+    },
+    {
+      "relativePath": "runs/FP-007/executor-result.md",
+      "packetOrRunId": "FP-007",
+      "sizeBytes": 4019,
+      "mtimeUtc": "2026-06-16T16:28:07.605130+00:00",
+      "metadataSha256": "546e219c381dd801cb896750773ea847a5ad2f84e23da357bffd47d73e4e1a27"
+    },
+    {
+      "relativePath": "runs/FP-007/metrics.json",
+      "packetOrRunId": "FP-007",
+      "sizeBytes": 764,
+      "mtimeUtc": "2026-06-16T16:28:07.605130+00:00",
+      "metadataSha256": "c870345f5de03475415e56aa5c9d67297d99cdbf095da1fe5f1f66db0d69ea9a"
+    },
+    {
+      "relativePath": "runs/FP-008/executor-result.md",
+      "packetOrRunId": "FP-008",
+      "sizeBytes": 2792,
+      "mtimeUtc": "2026-06-16T17:23:16.920043+00:00",
+      "metadataSha256": "151c49b3aae170f6b1a2ce413fdfea81de2e071fea8b8516d74161eb2626b128"
+    },
+    {
+      "relativePath": "runs/FP-008/metrics.json",
+      "packetOrRunId": "FP-008",
+      "sizeBytes": 1290,
+      "mtimeUtc": "2026-06-16T17:23:16.920043+00:00",
+      "metadataSha256": "f61cc11a751271442f5495080f5ae9e23e291896bcd515e24ab31244201f73dc"
+    },
+    {
+      "relativePath": "runs/FP-009/executor-result.md",
+      "packetOrRunId": "FP-009",
+      "sizeBytes": 3258,
+      "mtimeUtc": "2026-06-16T21:32:01.299583+00:00",
+      "metadataSha256": "38b176e10e8e4056d477eed95d9b5d82010c5c60fbdddfde0cc488f10be66885"
+    },
+    {
+      "relativePath": "runs/FP-009/metrics.json",
+      "packetOrRunId": "FP-009",
+      "sizeBytes": 2884,
+      "mtimeUtc": "2026-06-16T21:32:08.087646+00:00",
+      "metadataSha256": "a33b89d6803dd4ba79f1d44f48f508110152914328d846d79fa89fc56a76f5b0"
+    },
+    {
+      "relativePath": "runs/FP-010/executor-result-deepseek.md",
+      "packetOrRunId": "FP-010",
+      "sizeBytes": 2177,
+      "mtimeUtc": "2026-06-17T09:22:32.161253+00:00",
+      "metadataSha256": "e40858e98b3af11ac7b7c86e5e1868731a756c3574af8c545133bb78b726b2bd"
+    },
+    {
+      "relativePath": "runs/FP-010/executor-result-qwen.md",
+      "packetOrRunId": "FP-010",
+      "sizeBytes": 2883,
+      "mtimeUtc": "2026-06-17T09:22:32.161253+00:00",
+      "metadataSha256": "ca9449414150c9da20768abf9159f120e4025577d4966dfc19a7bd11a473c299"
+    },
+    {
+      "relativePath": "runs/FP-010/executor-result.md",
+      "packetOrRunId": "FP-010",
+      "sizeBytes": 2883,
+      "mtimeUtc": "2026-06-17T09:22:32.161253+00:00",
+      "metadataSha256": "be4102fb5103520483281b3ec7cde3a544c38ffea5633774fdc452a44a11c579"
+    },
+    {
+      "relativePath": "runs/FP-010/metrics-deepseek.json",
+      "packetOrRunId": "FP-010",
+      "sizeBytes": 2809,
+      "mtimeUtc": "2026-06-17T09:22:32.165253+00:00",
+      "metadataSha256": "e7a7488686f9523ab2002357bb9a5b2eba12f980e218af73a643b797db20a8fa"
+    },
+    {
+      "relativePath": "runs/FP-010/metrics-qwen.json",
+      "packetOrRunId": "FP-010",
+      "sizeBytes": 1941,
+      "mtimeUtc": "2026-06-17T09:22:32.165253+00:00",
+      "metadataSha256": "6419376c0726602eb3dea12a320021aead951f5795351b12439c4f5c249c8aa5"
+    },
+    {
+      "relativePath": "runs/FP-010/metrics.json",
+      "packetOrRunId": "FP-010",
+      "sizeBytes": 2285,
+      "mtimeUtc": "2026-06-17T09:22:32.165253+00:00",
+      "metadataSha256": "e4eff3c023161c9fb329d1d05a765572d5cbdeaa951cbad17f7b444d34df7d06"
+    },
+    {
+      "relativePath": "runs/FP-011/executor-result-deepseek.md",
+      "packetOrRunId": "FP-011",
+      "sizeBytes": 3359,
+      "mtimeUtc": "2026-06-17T16:20:36.683283+00:00",
+      "metadataSha256": "92568babb66a26117eb507c81e10ba4d92a7ae4095732dfc7b71527fdb50c02e"
+    },
+    {
+      "relativePath": "runs/FP-011/executor-result-qwen.md",
+      "packetOrRunId": "FP-011",
+      "sizeBytes": 4342,
+      "mtimeUtc": "2026-06-17T16:20:36.683283+00:00",
+      "metadataSha256": "731f2bdee92952b36286921caeaa56ea436455a3d6750c7d583fbf5506b220bb"
+    },
+    {
+      "relativePath": "runs/FP-011/executor-result.md",
+      "packetOrRunId": "FP-011",
+      "sizeBytes": 3359,
+      "mtimeUtc": "2026-06-17T16:20:36.683283+00:00",
+      "metadataSha256": "472bf739b66e8dec3a4cbaa1f94936a001d412b25db9c81d71a610c5ff027e17"
+    },
+    {
+      "relativePath": "runs/FP-011/metrics-deepseek.json",
+      "packetOrRunId": "FP-011",
+      "sizeBytes": 1798,
+      "mtimeUtc": "2026-06-17T16:20:36.683283+00:00",
+      "metadataSha256": "4c848e7cdb787e36cbdd875de734e8791c353d8c5ffbc82819ca376e09ccda9d"
+    },
+    {
+      "relativePath": "runs/FP-011/metrics-qwen.json",
+      "packetOrRunId": "FP-011",
+      "sizeBytes": 1080,
+      "mtimeUtc": "2026-06-17T16:20:36.683283+00:00",
+      "metadataSha256": "1ad9a7d64297856e8761f38c0dd0bb111a972435f324d0cf994de7dff3090435"
+    },
+    {
+      "relativePath": "runs/FP-011/metrics.json",
+      "packetOrRunId": "FP-011",
+      "sizeBytes": 2239,
+      "mtimeUtc": "2026-06-17T16:20:36.683283+00:00",
+      "metadataSha256": "7b656dfe852325cb2888f748556631397512485396e4fd4efac1e7dcf516a81d"
+    },
+    {
+      "relativePath": "runs/FP-012/executor-result-deepseek.md",
+      "packetOrRunId": "FP-012",
+      "sizeBytes": 2543,
+      "mtimeUtc": "2026-06-17T19:49:32.412614+00:00",
+      "metadataSha256": "7053dadbb3740acd3f9a87b6c03aa93ba61e43ebc6a8d276b1f3ca19463530ad"
+    },
+    {
+      "relativePath": "runs/FP-012/executor-result-qwen.md",
+      "packetOrRunId": "FP-012",
+      "sizeBytes": 6059,
+      "mtimeUtc": "2026-06-17T19:49:32.412614+00:00",
+      "metadataSha256": "5900a319cbfc1d131b843bc65c8cc103d1a25f31fe2e38ec25cee80f6b38d851"
+    },
+    {
+      "relativePath": "runs/FP-012/executor-result.md",
+      "packetOrRunId": "FP-012",
+      "sizeBytes": 2543,
+      "mtimeUtc": "2026-06-17T19:49:32.412614+00:00",
+      "metadataSha256": "54d8f96142995a22b7fa6b75ac540fe1876495eb276e499e30f56dfe9a38b9d8"
+    },
+    {
+      "relativePath": "runs/FP-012/metrics-deepseek.json",
+      "packetOrRunId": "FP-012",
+      "sizeBytes": 312,
+      "mtimeUtc": "2026-06-17T19:49:32.412614+00:00",
+      "metadataSha256": "6fb5de0d5026162d2caf092014094c44938387a72510739a4757ce0c3d638519"
+    },
+    {
+      "relativePath": "runs/FP-012/metrics-qwen.json",
+      "packetOrRunId": "FP-012",
+      "sizeBytes": 1615,
+      "mtimeUtc": "2026-06-17T19:49:32.412614+00:00",
+      "metadataSha256": "2189c6013d20bc1f23434004858b837a8fb9d05aa3993e7374a3a516d857571b"
+    },
+    {
+      "relativePath": "runs/FP-012/metrics.json",
+      "packetOrRunId": "FP-012",
+      "sizeBytes": 312,
+      "mtimeUtc": "2026-06-17T19:49:32.412614+00:00",
+      "metadataSha256": "750cb0b86950aac51e6d8d088b6f21ddfce401de624f1eb08847f1e5c8f1d9ea"
+    },
+    {
+      "relativePath": "runs/FP-EVAL-001/executor-result.md",
+      "packetOrRunId": "FP-EVAL-001",
+      "sizeBytes": 1111,
+      "mtimeUtc": "2026-06-08T18:28:41.478185+00:00",
+      "metadataSha256": "a7a198f6882c02f1efdef73f23ad350e4fa95674e065c5bfbec5bc437ce129cf"
+    },
+    {
+      "relativePath": "runs/FP-EVAL-002/executor-result.md",
+      "packetOrRunId": "FP-EVAL-002",
+      "sizeBytes": 1222,
+      "mtimeUtc": "2026-06-08T19:38:33.064729+00:00",
+      "metadataSha256": "0f0ca3c68c1555a30ab1e6cfc009bb82e3601f7c7226dc0c20ba5c76006250c6"
+    },
+    {
+      "relativePath": "runs/FP-MCP-001/executor-result.md",
+      "packetOrRunId": "FP-MCP-001",
+      "sizeBytes": 866,
+      "mtimeUtc": "2026-06-18T16:24:01.727381+00:00",
+      "metadataSha256": "90214362532bf73dc4d5eab764f8a6bd83ca63833fb524c4d0c2cf9d60e8fc9b"
+    },
+    {
+      "relativePath": "runs/FP-MCP-002/executor-result.md",
+      "packetOrRunId": "FP-MCP-002",
+      "sizeBytes": 2107,
+      "mtimeUtc": "2026-06-18T16:47:28.116522+00:00",
+      "metadataSha256": "1845afbbda267f415fddd66721dd106ca81f3ab36f16bf2ee2da49db7b19c1f4"
+    },
+    {
+      "relativePath": "runs/FP-MCP-003/executor-result.md",
+      "packetOrRunId": "FP-MCP-003",
+      "sizeBytes": 1855,
+      "mtimeUtc": "2026-06-18T17:00:03.239563+00:00",
+      "metadataSha256": "3d3fc3d58dfee37c74ecf2a789daa0ae88402c245e16b91830f4adc181e0bc3f"
+    },
+    {
+      "relativePath": "runs/FP-MCP-004/executor-result.md",
+      "packetOrRunId": "FP-MCP-004",
+      "sizeBytes": 2931,
+      "mtimeUtc": "2026-06-18T20:05:19.102913+00:00",
+      "metadataSha256": "e60f95e7879edcef6cc5f03e4c7c911ea172fbadb4836d075502c4a2a06ea82d"
+    },
+    {
+      "relativePath": "runs/FP-MCP-005/executor-result.md",
+      "packetOrRunId": "FP-MCP-005",
+      "sizeBytes": 1391,
+      "mtimeUtc": "2026-06-19T06:40:27.866488+00:00",
+      "metadataSha256": "ea21c1b7625383179846d88387953b290cf01dab905faa57599c71ea63eeb35b"
+    },
+    {
+      "relativePath": "runs/FP-MCP-006/executor-result.md",
+      "packetOrRunId": "FP-MCP-006",
+      "sizeBytes": 5492,
+      "mtimeUtc": "2026-06-19T08:09:59.864359+00:00",
+      "metadataSha256": "f8d04b12f57f26843260a271c7508cf5be38156dc839271ae962023fca5314b1"
+    },
+    {
+      "relativePath": "runs/FP-MCP-007/executor-result.md",
+      "packetOrRunId": "FP-MCP-007",
+      "sizeBytes": 6782,
+      "mtimeUtc": "2026-06-19T08:51:10.243675+00:00",
+      "metadataSha256": "9af1fd857990c98d3cd555460b977fd5d5744911921352edf54293ccadc3e8a9"
+    },
+    {
+      "relativePath": "runs/FP-MCP-007/opencode-requests/REQ-20260619T084312145Z-a9960bd6.json",
+      "packetOrRunId": "FP-MCP-007",
+      "sizeBytes": 682,
+      "mtimeUtc": "2026-06-19T08:43:12.143186+00:00",
+      "metadataSha256": "861e89532b0e2aa35f0f36945f709a1fc55983b68a006fbb682e46e45da15428"
+    },
+    {
+      "relativePath": "runs/FP-MCP-008/executor-result.md",
+      "packetOrRunId": "FP-MCP-008",
+      "sizeBytes": 3008,
+      "mtimeUtc": "2026-06-19T08:56:45.054811+00:00",
+      "metadataSha256": "1d3dd6abf8541b986333b631b6cac4c27f012aa4f31aac8f15640c94f0933a2f"
+    },
+    {
+      "relativePath": "runs/FP-MCP-009/executor-result.md",
+      "packetOrRunId": "FP-MCP-009",
+      "sizeBytes": 3308,
+      "mtimeUtc": "2026-06-19T09:10:32.602374+00:00",
+      "metadataSha256": "3a1699475544611175cb558daa268284d2e14136b83b1bbfdfc2fc586d874014"
+    },
+    {
+      "relativePath": "runs/FP-MCP-010/executor-result.md",
+      "packetOrRunId": "FP-MCP-010",
+      "sizeBytes": 3679,
+      "mtimeUtc": "2026-06-19T09:44:21.629336+00:00",
+      "metadataSha256": "35493add923076137ac2610580a135df58438c3e1e009c251c0d4811b482e79a"
+    },
+    {
+      "relativePath": "runs/FP-MCP-011/executor-result.md",
+      "packetOrRunId": "FP-MCP-011",
+      "sizeBytes": 2660,
+      "mtimeUtc": "2026-06-19T10:18:03.016215+00:00",
+      "metadataSha256": "7c7f8fe71b15214e8542a4aad9bd4721bbe4dabd70839efbdeef7c52aaddb04a"
+    },
+    {
+      "relativePath": "runs/FP-MCP-012/executor-result.md",
+      "packetOrRunId": "FP-MCP-012",
+      "sizeBytes": 2841,
+      "mtimeUtc": "2026-06-19T10:24:04.607587+00:00",
+      "metadataSha256": "6346312a83d661e69df877741c6432dc6e375cac276fd0954f6661d07140e540"
+    },
+    {
+      "relativePath": "runs/FP-MCP-013/executor-result.md",
+      "packetOrRunId": "FP-MCP-013",
+      "sizeBytes": 2428,
+      "mtimeUtc": "2026-06-19T10:32:29.100291+00:00",
+      "metadataSha256": "d35edee202abb512de89134adb24e2f5f37ce92007acb26497ce8df79c7f4b28"
+    },
+    {
+      "relativePath": "runs/FP-MCP-014/executor-result.md",
+      "packetOrRunId": "FP-MCP-014",
+      "sizeBytes": 3232,
+      "mtimeUtc": "2026-06-19T12:15:42+00:00",
+      "metadataSha256": "5b48df54468214f551dd480f753232d52d8376fb362b5ae8518a4a865f2afbb8"
+    },
+    {
+      "relativePath": "runs/FP-MCP-015/executor-result.md",
+      "packetOrRunId": "FP-MCP-015",
+      "sizeBytes": 3554,
+      "mtimeUtc": "2026-06-19T12:27:51+00:00",
+      "metadataSha256": "150822758c0cd3233f7c1f557b5ea82e684d42d5f83fa132dce3368387f01790"
+    },
+    {
+      "relativePath": "runs/FP-MCP-016/executor-result.md",
+      "packetOrRunId": "FP-MCP-016",
+      "sizeBytes": 3074,
+      "mtimeUtc": "2026-06-19T12:37:18+00:00",
+      "metadataSha256": "c2ba24d7a57753e2018abdc7e728ddb7df703e7facc9d7db0bfd735d1fc6269a"
+    },
+    {
+      "relativePath": "runs/FP-MCP-017/executor-result.md",
+      "packetOrRunId": "FP-MCP-017",
+      "sizeBytes": 3010,
+      "mtimeUtc": "2026-06-19T12:42:26+00:00",
+      "metadataSha256": "7ad10bdfea87f4868cb20d6a99cc1b997a7198f1855ca3485db30c41b59a8cda"
+    },
+    {
+      "relativePath": "runs/FP-MCP-018/executor-result.md",
+      "packetOrRunId": "FP-MCP-018",
+      "sizeBytes": 3158,
+      "mtimeUtc": "2026-06-19T13:04:57+00:00",
+      "metadataSha256": "8faa47d4ad3f16f5cbb10dde2b96d1a844bbe12fec3ff061da10bf956ab43a91"
+    },
+    {
+      "relativePath": "runs/FP-MCP-019/executor-result.md",
+      "packetOrRunId": "FP-MCP-019",
+      "sizeBytes": 2674,
+      "mtimeUtc": "2026-06-19T13:11:10+00:00",
+      "metadataSha256": "a212e37dba05f3353fe000e10fd4d51d2fc678d087837f08fbfedfbbac349c10"
+    },
+    {
+      "relativePath": "runs/FP-MCP-020/executor-result.md",
+      "packetOrRunId": "FP-MCP-020",
+      "sizeBytes": 4156,
+      "mtimeUtc": "2026-06-19T13:22:25+00:00",
+      "metadataSha256": "d38f996781c6a8772f9357c71d71b3d2994cbe2cab4159108dd7cf6ac886f670"
+    },
+    {
+      "relativePath": "runs/FP-MCP-021/executor-result.md",
+      "packetOrRunId": "FP-MCP-021",
+      "sizeBytes": 2542,
+      "mtimeUtc": "2026-06-19T13:34:01+00:00",
+      "metadataSha256": "2f8bcdcda09e63f7a7a6301032d5b2d62642718332edd371fa4867fa083469cb"
+    },
+    {
+      "relativePath": "runs/FP-MCP-022/executor-result.md",
+      "packetOrRunId": "FP-MCP-022",
+      "sizeBytes": 5436,
+      "mtimeUtc": "2026-06-19T13:50:06+00:00",
+      "metadataSha256": "fb59efe5517a348fa71de3a335e515d9c8214ae7a064bc863c5211135e25e919"
+    },
+    {
+      "relativePath": "runs/FP-MCP-023/executor-result.md",
+      "packetOrRunId": "FP-MCP-023",
+      "sizeBytes": 2525,
+      "mtimeUtc": "2026-06-19T13:54:36+00:00",
+      "metadataSha256": "f4a3ae246fb9877385846b4cc6e6d2764444b02305907738d671a6da53a3f739"
+    },
+    {
+      "relativePath": "runs/FP-MCP-024/executor-result.md",
+      "packetOrRunId": "FP-MCP-024",
+      "sizeBytes": 3291,
+      "mtimeUtc": "2026-06-19T14:08:23+00:00",
+      "metadataSha256": "8e4156d0a4bff74b0fb08867545c0570b8bc63f88a3f89ef8d7dc79decd08cd0"
+    },
+    {
+      "relativePath": "runs/FP-MCP-025/executor-result.md",
+      "packetOrRunId": "FP-MCP-025",
+      "sizeBytes": 4370,
+      "mtimeUtc": "2026-06-19T14:18:41+00:00",
+      "metadataSha256": "f850dd0c785a4c87b4ba0a3abeebe033dca77e0d5cea42add51543ef21ce1bb4"
+    },
+    {
+      "relativePath": "runs/FP-MCP-026/executor-result.md",
+      "packetOrRunId": "FP-MCP-026",
+      "sizeBytes": 6727,
+      "mtimeUtc": "2026-06-19T14:39:34+00:00",
+      "metadataSha256": "978af3847229a76377a5eaa2104c89caec9074c5a655a0542d0e168543e0787f"
+    },
+    {
+      "relativePath": "runs/FP-MCP-027/executor-result.md",
+      "packetOrRunId": "FP-MCP-027",
+      "sizeBytes": 4017,
+      "mtimeUtc": "2026-06-19T22:19:37.895451+00:00",
+      "metadataSha256": "038ee23534c99d91a302e2598b3095a193fbc822b872ce1132e0253b994590cd"
+    },
+    {
+      "relativePath": "runs/FP-MCP-027/opencode-requests/REQ-20260619T212214986Z-a283929e.json",
+      "packetOrRunId": "FP-MCP-027",
+      "sizeBytes": 682,
+      "mtimeUtc": "2026-06-19T21:22:14.983522+00:00",
+      "metadataSha256": "b07778f56fbccaf8f6f82b96b09a6f7733aa3f690253e0250cf200e3e70e1dcc"
+    },
+    {
+      "relativePath": "runs/FP-MCP-028/executor-result.md",
+      "packetOrRunId": "FP-MCP-028",
+      "sizeBytes": 1845,
+      "mtimeUtc": "2026-06-22T11:15:51.463878+00:00",
+      "metadataSha256": "95751b7672466cd8275f5f8ae5d713d5717cd37ae29a996feba3f547f06ec6fd"
+    },
+    {
+      "relativePath": "runs/FP-MCP-029/executor-result.md",
+      "packetOrRunId": "FP-MCP-029",
+      "sizeBytes": 3969,
+      "mtimeUtc": "2026-06-22T11:29:44+00:00",
+      "metadataSha256": "b45ce76401fa048485bc5ce46eed06b5ec692b27c6bf88b2548a97997ed30452"
+    },
+    {
+      "relativePath": "runs/FP-MCP-029/opencode-requests/REQ-20260622T112059183Z-2023d0c0.json",
+      "packetOrRunId": "FP-MCP-029",
+      "sizeBytes": 682,
+      "mtimeUtc": "2026-06-22T11:20:59.178782+00:00",
+      "metadataSha256": "1af8efdb66b4d77c9f0564625c106eefd715e31df7a704540bdd213cd5b63c73"
+    },
+    {
+      "relativePath": "runs/FP-MCP-030/executor-result.md",
+      "packetOrRunId": "FP-MCP-030",
+      "sizeBytes": 3205,
+      "mtimeUtc": "2026-06-22T12:27:31+00:00",
+      "metadataSha256": "c7f9d3594812ca1bdbc645509dfc25b78e1b6897e65f65e168ac267b26602cee"
+    },
+    {
+      "relativePath": "runs/FP-MCP-030/opencode-requests/REQ-20260622T121501538Z-52d997e0.json",
+      "packetOrRunId": "FP-MCP-030",
+      "sizeBytes": 682,
+      "mtimeUtc": "2026-06-22T12:15:01.536944+00:00",
+      "metadataSha256": "7fa57d34b278e2e0adc266bc6f8e60c62735098261d59b357d49238f1342910c"
+    },
+    {
+      "relativePath": "runs/FP-MCP-031/executor-result.md",
+      "packetOrRunId": "FP-MCP-031",
+      "sizeBytes": 4863,
+      "mtimeUtc": "2026-06-22T12:51:58+00:00",
+      "metadataSha256": "c24393e9f343dd06dd73e164c14db37cfbefabe548a0cc3e620982e4d811a2db"
+    },
+    {
+      "relativePath": "runs/FP-MCP-031/opencode-requests/REQ-20260622T124849179Z-e46928b8.json",
+      "packetOrRunId": "FP-MCP-031",
+      "sizeBytes": 682,
+      "mtimeUtc": "2026-06-22T12:48:49.176023+00:00",
+      "metadataSha256": "fc3cf549c84b3606c29b52e6f1baf605f07df67ceeda0280b37fc4106c449446"
+    },
+    {
+      "relativePath": "runs/FP-MCP-032/executor-result.md",
+      "packetOrRunId": "FP-MCP-032",
+      "sizeBytes": 5085,
+      "mtimeUtc": "2026-06-22T13:35:52.090573+00:00",
+      "metadataSha256": "a4704cfb53962c90265f017710d609fece8f7526a8228402a17987eb796e2e14"
+    },
+    {
+      "relativePath": "runs/FP-MCP-032/opencode-requests/REQ-20260622T130913484Z-40c72000.json",
+      "packetOrRunId": "FP-MCP-032",
+      "sizeBytes": 682,
+      "mtimeUtc": "2026-06-22T13:09:13.483552+00:00",
+      "metadataSha256": "7d8c42f572d52c1bc6a1aa8531c3615f8178caec4a08593808a9ef5be86f6e8e"
+    },
+    {
+      "relativePath": "runs/FP-MCP-033/executor-result.md",
+      "packetOrRunId": "FP-MCP-033",
+      "sizeBytes": 4377,
+      "mtimeUtc": "2026-06-22T13:52:55+00:00",
+      "metadataSha256": "ea7064900a477ee419e162b79355bf071a0107aad11335325bcd772f39394ce3"
+    },
+    {
+      "relativePath": "runs/FP-MCP-034/executor-result.md",
+      "packetOrRunId": "FP-MCP-034",
+      "sizeBytes": 4733,
+      "mtimeUtc": "2026-06-22T14:21:25+00:00",
+      "metadataSha256": "14ccf54fdfc2cf35855d03b94f1284cf298fc65fb0abc847d260e761ded897bf"
+    },
+    {
+      "relativePath": "runs/FP-MCP-034/opencode-requests/REQ-20260622T141136780Z-435cbaa9.json",
+      "packetOrRunId": "FP-MCP-034",
+      "sizeBytes": 682,
+      "mtimeUtc": "2026-06-22T14:11:36.778785+00:00",
+      "metadataSha256": "56295ad11842d1c278629da102d1bdf96351024639a896c87191ba606efee0d7"
+    },
+    {
+      "relativePath": "runs/FP-MCP-035/executor-result.md",
+      "packetOrRunId": "FP-MCP-035",
+      "sizeBytes": 5113,
+      "mtimeUtc": "2026-06-22T14:32:34+00:00",
+      "metadataSha256": "94ae275e4104539874f5080b662739d180f0c67e550d746dae22f2dc92cda3fe"
+    },
+    {
+      "relativePath": "runs/FP-MCP-036/executor-result.md",
+      "packetOrRunId": "FP-MCP-036",
+      "sizeBytes": 6528,
+      "mtimeUtc": "2026-06-22T14:55:35+00:00",
+      "metadataSha256": "2abaf34e8df24e557f41026c93bcfa5e003270cb3c2360ec7d97742700c6709e"
+    },
+    {
+      "relativePath": "runs/FP-MCP-036/opencode-requests/REQ-20260622T144553300Z-fbbe8d82.json",
+      "packetOrRunId": "FP-MCP-036",
+      "sizeBytes": 682,
+      "mtimeUtc": "2026-06-22T14:45:53.298086+00:00",
+      "metadataSha256": "9cb74955c7be583b9b4b9ada980afcc2f858d17b515fcf54d6d641742942c5b3"
+    },
+    {
+      "relativePath": "runs/FP-MCP-036/qwen-3.7-max-DESIGN_ONLY/execution-dry-run/start-request.json",
+      "packetOrRunId": "FP-MCP-036",
+      "sizeBytes": 588,
+      "mtimeUtc": "2026-06-22T14:48:33.279589+00:00",
+      "metadataSha256": "d1cc43ef17a25026fa82d7b9a9f6eb44c349fb60c8967c9f4bddd3653de37af7"
+    },
+    {
+      "relativePath": "runs/FP-MCP-037/executor-result.md",
+      "packetOrRunId": "FP-MCP-037",
+      "sizeBytes": 6078,
+      "mtimeUtc": "2026-06-22T15:20:54+00:00",
+      "metadataSha256": "d81a7de13b1876c2d06c3b637a5175ed369566987505132d532b9f75b95616ee"
+    },
+    {
+      "relativePath": "runs/FP-MCP-038/executor-result.md",
+      "packetOrRunId": "FP-MCP-038",
+      "sizeBytes": 5788,
+      "mtimeUtc": "2026-06-22T15:30:55+00:00",
+      "metadataSha256": "c43f4717cfaa9c792e761a4638416dfd197a349e044739eb551f1a06cfda7f4c"
+    },
+    {
+      "relativePath": "runs/FP-MCP-039/executor-result.md",
+      "packetOrRunId": "FP-MCP-039",
+      "sizeBytes": 6063,
+      "mtimeUtc": "2026-06-22T15:49:53+00:00",
+      "metadataSha256": "3433a4933aa69663307ddee9c697b5db7848e3a3db46985292ebce8ccbb7e29e"
+    },
+    {
+      "relativePath": "runs/FP-MCP-040/executor-result.md",
+      "packetOrRunId": "FP-MCP-040",
+      "sizeBytes": 6780,
+      "mtimeUtc": "2026-06-22T16:03:38+00:00",
+      "metadataSha256": "78f1283abed90efc55a15d3ea93eb3f8a6ca45785b7a594b41dd9b45a54c5b5b"
+    },
+    {
+      "relativePath": "runs/FP-MCP-041/executor-result.md",
+      "packetOrRunId": "FP-MCP-041",
+      "sizeBytes": 6774,
+      "mtimeUtc": "2026-06-22T16:20:19+00:00",
+      "metadataSha256": "76835d839a9f3e7e023dfb07cd1745acf9726cc6e937067776e3101d5e6c9faf"
+    },
+    {
+      "relativePath": "runs/FP-MCP-042/approval-negative-fixtures/scope-mismatch-request.json",
+      "packetOrRunId": "FP-MCP-042",
+      "sizeBytes": 1643,
+      "mtimeUtc": "2026-06-22T16:27:39+00:00",
+      "metadataSha256": "d7a70c396fa4a89bb7ef888cc652b58f3e73a554e77ab23667a4ef027cb3d361"
+    },
+    {
+      "relativePath": "runs/FP-MCP-042/executor-result.md",
+      "packetOrRunId": "FP-MCP-042",
+      "sizeBytes": 7249,
+      "mtimeUtc": "2026-06-22T16:44:12+00:00",
+      "metadataSha256": "913e40a9bce8300e627981a9aec9896b32f0dd523746a16e5f728804cf2d2bd0"
+    },
+    {
+      "relativePath": "runs/FP-MCP-043/executor-result.md",
+      "packetOrRunId": "FP-MCP-043",
+      "sizeBytes": 1153,
+      "mtimeUtc": "2026-06-22T16:55:58+00:00",
+      "metadataSha256": "5449eb45023c2511e29a59ef4ccc6eadc70c85fc6723e4d946eabbb895dc473d"
+    },
+    {
+      "relativePath": "runs/FP-MCP-044/executor-result.md",
+      "packetOrRunId": "FP-MCP-044",
+      "sizeBytes": 2131,
+      "mtimeUtc": "2026-06-22T17:07:15+00:00",
+      "metadataSha256": "391f8263948a2a83691470a06f70a6246c559d0b95e3fcdb63fdde6eab78343d"
+    },
+    {
+      "relativePath": "runs/FP-MCP-045/disable-scope-fixtures/02-request-context-global-precedence.json",
+      "packetOrRunId": "FP-MCP-045",
+      "sizeBytes": 2444,
+      "mtimeUtc": "2026-06-22T15:13:44+00:00",
+      "metadataSha256": "5dfadf5955ed82391d64b8c94e9d68182efebb96d558e62f40d759e6604b6689"
+    },
+    {
+      "relativePath": "runs/FP-MCP-045/executor-result.md",
+      "packetOrRunId": "FP-MCP-045",
+      "sizeBytes": 2220,
+      "mtimeUtc": "2026-06-22T17:16:54+00:00",
+      "metadataSha256": "8607acbc64ccf78131214020335e4c09ae6ab2a3cb8b96a8c30ce5b20cb81001"
+    },
+    {
+      "relativePath": "runs/FP-MCP-046/executor-result.md",
+      "packetOrRunId": "FP-MCP-046",
+      "sizeBytes": 2326,
+      "mtimeUtc": "2026-06-22T17:27:15+00:00",
+      "metadataSha256": "8c761465ff8ff52b0289d57b1976eed79bbfce397babf70d9bf2e45707693213"
+    },
+    {
+      "relativePath": "runs/FP-MCP-047/executor-result.md",
+      "packetOrRunId": "FP-MCP-047",
+      "sizeBytes": 2776,
+      "mtimeUtc": "2026-06-22T17:43:52+00:00",
+      "metadataSha256": "b028bac9bc25d8d8fefcb4d1e88eb4b807d662dd5683aa1ab52c7c28859bbb26"
+    },
+    {
+      "relativePath": "runs/FP-MCP-048/executor-result.md",
+      "packetOrRunId": "FP-MCP-048",
+      "sizeBytes": 1877,
+      "mtimeUtc": "2026-06-22T15:57:52+00:00",
+      "metadataSha256": "12161de342bf6cc9bb9485e5050505b1390b6feb6f3904f15ba474cfc6e18f16"
+    },
+    {
+      "relativePath": "runs/FP-MCP-048/start-approval-fixtures/04-create-request-approval-disabled.json",
+      "packetOrRunId": "FP-MCP-048",
+      "sizeBytes": 1158,
+      "mtimeUtc": "2026-06-22T15:57:52+00:00",
+      "metadataSha256": "16daefc2222627e88f8c4f932adffa01b5ad3a7a1b893527de32acaed4c0807e"
+    },
+    {
+      "relativePath": "runs/FP-MCP-049/executor-result.md",
+      "packetOrRunId": "FP-MCP-049",
+      "sizeBytes": 1702,
+      "mtimeUtc": "2026-06-22T16:16:04+00:00",
+      "metadataSha256": "a15d2fdb37035e582a3d6dceb7948f39c0b0b874888af9e5710b1da5a52161d7"
+    },
+    {
+      "relativePath": "runs/FP-MCP-049/start-artifact-fixtures/02-missing-request-artifact.json",
+      "packetOrRunId": "FP-MCP-049",
+      "sizeBytes": 1469,
+      "mtimeUtc": "2026-06-22T16:16:04+00:00",
+      "metadataSha256": "11503699db4c9a3263413130defd9b85cbdd4d5b5725966f3385798201ec5723"
+    },
+    {
+      "relativePath": "runs/FP-MCP-049/start-artifact-fixtures/03-malformed-request-id.json",
+      "packetOrRunId": "FP-MCP-049",
+      "sizeBytes": 1385,
+      "mtimeUtc": "2026-06-22T16:16:04+00:00",
+      "metadataSha256": "eef8dc13b89cafd15a880d8c9438aeee38c2bf76702e43e89e6909f804182971"
+    },
+    {
+      "relativePath": "runs/FP-MCP-050/executor-result.md",
+      "packetOrRunId": "FP-MCP-050",
+      "sizeBytes": 1184,
+      "mtimeUtc": "2026-06-22T18:31:59+00:00",
+      "metadataSha256": "4f593edbfc27cd5337abc06d9e8bebdab8bfc6bd49eca855b33f629c81c4860a"
+    },
+    {
+      "relativePath": "runs/FP-MCP-051/executor-result.md",
+      "packetOrRunId": "FP-MCP-051",
+      "sizeBytes": 2272,
+      "mtimeUtc": "2026-06-22T18:48:14+00:00",
+      "metadataSha256": "e3e03c33709857ccfd185b38dfc27517163eede77a98e320cc82580ef83532de"
+    },
+    {
+      "relativePath": "runs/FP-MCP-052/executor-result.md",
+      "packetOrRunId": "FP-MCP-052",
+      "sizeBytes": 2753,
+      "mtimeUtc": "2026-06-22T19:02:09+00:00",
+      "metadataSha256": "b5140a313750a66cd1864992493659930db7e007643fa5b77c9745a8814163ee"
+    },
+    {
+      "relativePath": "runs/FP-MCP-053/executor-result.md",
+      "packetOrRunId": "FP-MCP-053",
+      "sizeBytes": 2849,
+      "mtimeUtc": "2026-06-22T19:18:01+00:00",
+      "metadataSha256": "aa3ac4b94be047b8e2b0fb76a76461645e6ff8baf8d8754d42e6e82784d005f3"
+    },
+    {
+      "relativePath": "runs/FP-MCP-054/executor-result.md",
+      "packetOrRunId": "FP-MCP-054",
+      "sizeBytes": 1324,
+      "mtimeUtc": "2026-06-22T19:27:19+00:00",
+      "metadataSha256": "00e78b4d72df185675fc96a091b906e590a4f8d7ac263d307d66bec18934ff0c"
+    },
+    {
+      "relativePath": "runs/FP-MCP-055/executor-result.md",
+      "packetOrRunId": "FP-MCP-055",
+      "sizeBytes": 2097,
+      "mtimeUtc": "2026-06-22T20:12:51+00:00",
+      "metadataSha256": "36f946ffe52ae0d47030a65054cd41acac0840c25d2af41e6fcfdcd350836772"
+    },
+    {
+      "relativePath": "runs/FP-MCP-056/executor-result.md",
+      "packetOrRunId": "FP-MCP-056",
+      "sizeBytes": 2601,
+      "mtimeUtc": "2026-06-22T21:04:22+00:00",
+      "metadataSha256": "d8985d78049746dda0caed3dd9146c5aeb3b7681b11084457adf95958704fb05"
+    },
+    {
+      "relativePath": "runs/FP-MCP-057/executor-result.md",
+      "packetOrRunId": "FP-MCP-057",
+      "sizeBytes": 3425,
+      "mtimeUtc": "2026-06-22T21:23:44+00:00",
+      "metadataSha256": "703190eabae5d7bbddf66db67b9d4fc61eb116f9806f2e303faa24299caf8948"
+    },
+    {
+      "relativePath": "runs/FP-MCP-058/executor-result.md",
+      "packetOrRunId": "FP-MCP-058",
+      "sizeBytes": 1346,
+      "mtimeUtc": "2026-06-22T21:38:35+00:00",
+      "metadataSha256": "656e92ea60be656f38b55dc15d61cb4c2a55f459376d7ad02e5d9249853d4b8e"
+    },
+    {
+      "relativePath": "runs/FP-MCP-059/executor-result.md",
+      "packetOrRunId": "FP-MCP-059",
+      "sizeBytes": 4479,
+      "mtimeUtc": "2026-06-22T21:56:04+00:00",
+      "metadataSha256": "336b38882144a5c2e67c120c1856fe3faa6b334eec7cf7f0189331f67db9f4d2"
+    },
+    {
+      "relativePath": "runs/FP-MCP-060/executor-result.md",
+      "packetOrRunId": "FP-MCP-060",
+      "sizeBytes": 3223,
+      "mtimeUtc": "2026-06-22T22:04:47+00:00",
+      "metadataSha256": "71722aa741ba0f2967be18b909a6f36802ef786242d0acb24ef9d24ee4515706"
+    },
+    {
+      "relativePath": "runs/FP-MCP-061/executor-result.md",
+      "packetOrRunId": "FP-MCP-061",
+      "sizeBytes": 4261,
+      "mtimeUtc": "2026-06-22T22:22:56+00:00",
+      "metadataSha256": "887cf80183c167a2d5c7854f78d9e65d22738142e4c7c9510319ef3e829ec636"
+    },
+    {
+      "relativePath": "runs/FP-MCP-062/executor-result.md",
+      "packetOrRunId": "FP-MCP-062",
+      "sizeBytes": 3104,
+      "mtimeUtc": "2026-06-22T22:43:29+00:00",
+      "metadataSha256": "39b9c431686626ad92fc17672fcf9d3c87a279035e673ecd844386b92098bb3f"
+    },
+    {
+      "relativePath": "runs/FP-MCP-063/executor-result.md",
+      "packetOrRunId": "FP-MCP-063",
+      "sizeBytes": 3130,
+      "mtimeUtc": "2026-06-22T22:59:34+00:00",
+      "metadataSha256": "bfedfc17abc601340e0000d62c9d424d55a3cef299f9336aea5574b047ee3e35"
+    },
+    {
+      "relativePath": "runs/FP-MCP-064/executor-result.md",
+      "packetOrRunId": "FP-MCP-064",
+      "sizeBytes": 4549,
+      "mtimeUtc": "2026-06-22T23:11:19+00:00",
+      "metadataSha256": "6fef84fa4b7b167b67f304e9fbec72a961a0d5bb8c15ae9733cc241ca1551e2a"
+    },
+    {
+      "relativePath": "runs/FP-MCP-065/executor-result.md",
+      "packetOrRunId": "FP-MCP-065",
+      "sizeBytes": 2629,
+      "mtimeUtc": "2026-06-22T23:18:18+00:00",
+      "metadataSha256": "7c40f9d9e12cd61ef7d459daf8535f376a019fb32b29cd6f28764c0a0cbb4d6a"
+    },
+    {
+      "relativePath": "runs/FP-MCP-066/executor-result.md",
+      "packetOrRunId": "FP-MCP-066",
+      "sizeBytes": 1662,
+      "mtimeUtc": "2026-06-23T08:55:28+00:00",
+      "metadataSha256": "ec8e9aaf084a9c4aeae0974fddfd81c2b07d4a914a1815acdbde28669f5b4472"
+    },
+    {
+      "relativePath": "runs/FP-MCP-067/executor-result.md",
+      "packetOrRunId": "FP-MCP-067",
+      "sizeBytes": 4396,
+      "mtimeUtc": "2026-06-23T09:32:08+00:00",
+      "metadataSha256": "7d971de5a940c26c517abc6f852f92b1fb0259086b787cc8c5150e3c3d8c6b35"
+    },
+    {
+      "relativePath": "runs/FP-MCP-068/executor-result.md",
+      "packetOrRunId": "FP-MCP-068",
+      "sizeBytes": 1935,
+      "mtimeUtc": "2026-06-23T09:45:50+00:00",
+      "metadataSha256": "7e42ac977ba68ea9b286011cb139e68c505b19eed216e15ca63cabf128176662"
+    },
+    {
+      "relativePath": "runs/FP-MCP-069/executor-result.md",
+      "packetOrRunId": "FP-MCP-069",
+      "sizeBytes": 2570,
+      "mtimeUtc": "2026-06-23T09:56:22+00:00",
+      "metadataSha256": "6cbc20a63a728b4de81feb487350285da3924fb25a4d68180c946361b5a4cf85"
+    },
+    {
+      "relativePath": "runs/FP-MCP-070/executor-result.md",
+      "packetOrRunId": "FP-MCP-070",
+      "sizeBytes": 1144,
+      "mtimeUtc": "2026-06-23T10:02:34+00:00",
+      "metadataSha256": "0fd81690ea108e0390a0c14f643b2ffe44a66418aee8d30bafacae3b9d4512d2"
+    },
+    {
+      "relativePath": "runs/FP-MCP-071/executor-result.md",
+      "packetOrRunId": "FP-MCP-071",
+      "sizeBytes": 2360,
+      "mtimeUtc": "2026-06-23T11:19:25+00:00",
+      "metadataSha256": "7291181c8e8e69f16eb29cd6143b6e47d090100f01d348a455de0ecb23b99b4c"
+    },
+    {
+      "relativePath": "runs/FP-MCP-072/executor-result.md",
+      "packetOrRunId": "FP-MCP-072",
+      "sizeBytes": 2568,
+      "mtimeUtc": "2026-06-26T13:27:30+00:00",
+      "metadataSha256": "fe1b615f3efab638197d7fee4b598772485693073427fac34ded03806acecdb2"
+    },
+    {
+      "relativePath": "runs/FP-MCP-073/executor-result.md",
+      "packetOrRunId": "FP-MCP-073",
+      "sizeBytes": 1822,
+      "mtimeUtc": "2026-06-26T13:52:38+00:00",
+      "metadataSha256": "67a3ea117c3c7cf03e1fe9d1435f70151690972e2304bca48d5bd0f62631cfe3"
+    },
+    {
+      "relativePath": "runs/FP-MCP-074/executor-result.md",
+      "packetOrRunId": "FP-MCP-074",
+      "sizeBytes": 1958,
+      "mtimeUtc": "2026-06-26T14:12:48+00:00",
+      "metadataSha256": "7812fe1b4f0ffb5cdb073e10d2f11d2b064a4314909d03e332f03c8793d2bcdb"
+    },
+    {
+      "relativePath": "runs/FP-MCP-075/executor-result.md",
+      "packetOrRunId": "FP-MCP-075",
+      "sizeBytes": 1324,
+      "mtimeUtc": "2026-06-26T20:36:54.228828+00:00",
+      "metadataSha256": "069ae8b4133dc669e4d9ad1d87bc78174918d345834e75af800e995e710cee25"
+    },
+    {
+      "relativePath": "runs/FP-MCP-076/executor-result.md",
+      "packetOrRunId": "FP-MCP-076",
+      "sizeBytes": 1106,
+      "mtimeUtc": "2026-06-27T00:07:51.485567+00:00",
+      "metadataSha256": "58529110dafc995a6f936b84dd1748910e3bc843d0f509fe97c466940da2720b"
+    },
+    {
+      "relativePath": "runs/FP-MCP-077/executor-result.md",
+      "packetOrRunId": "FP-MCP-077",
+      "sizeBytes": 1213,
+      "mtimeUtc": "2026-06-27T00:16:54.446747+00:00",
+      "metadataSha256": "148fe637f98d1e973693e0649a7e1d1aa8c72af879911d32c8531135a54f0809"
+    },
+    {
+      "relativePath": "runs/FP-MCP-078/executor-result.md",
+      "packetOrRunId": "FP-MCP-078",
+      "sizeBytes": 1026,
+      "mtimeUtc": "2026-06-27T00:23:39.970624+00:00",
+      "metadataSha256": "d12bd28b880051317d8d22cc76240631fd1451b5611a9469a89230c419f901ff"
+    },
+    {
+      "relativePath": "runs/FP-MCP-079/executor-result.md",
+      "packetOrRunId": "FP-MCP-079",
+      "sizeBytes": 1097,
+      "mtimeUtc": "2026-06-27T00:41:21.840799+00:00",
+      "metadataSha256": "01c4b60ae844104e4920fbd5f19e71f57ec0cf81a6eafbc1e33781ad2f4ceb5e"
+    },
+    {
+      "relativePath": "runs/FP-MCP-080/executor-result.md",
+      "packetOrRunId": "FP-MCP-080",
+      "sizeBytes": 1029,
+      "mtimeUtc": "2026-06-27T00:50:17.637889+00:00",
+      "metadataSha256": "48f55ceccb285298f92b3c10bf3dc60e7d1786891ca9cdc3ea08a64c02fe594a"
+    },
+    {
+      "relativePath": "runs/FP-MCP-081/executor-result.md",
+      "packetOrRunId": "FP-MCP-081",
+      "sizeBytes": 2894,
+      "mtimeUtc": "2026-06-27T02:04:00.620199+00:00",
+      "metadataSha256": "a6ada6693b853797858866b394b8a2dfe4aaf0aaff001ff307d07e588e05cb13"
+    },
+    {
+      "relativePath": "runs/FP-MCP-082/executor-result.md",
+      "packetOrRunId": "FP-MCP-082",
+      "sizeBytes": 2047,
+      "mtimeUtc": "2026-06-29T14:49:35.078122+00:00",
+      "metadataSha256": "ae0caab4eef5f4eaa1d16dbca2ca35cb8ac61470dabbf0c8e5c3adec70718d09"
+    },
+    {
+      "relativePath": "runs/FP-MCP-082/opencode-requests/REQ-20260629T131053102Z-5f58e3e3.json",
+      "packetOrRunId": "FP-MCP-082",
+      "sizeBytes": 698,
+      "mtimeUtc": "2026-06-29T13:10:53.100601+00:00",
+      "metadataSha256": "780367b9ab8a8daceef18891c29beb48fb9cbac9cde0a3d8472715133d2368b0"
+    },
+    {
+      "relativePath": "runs/FP-MCP-083/opencode-requests/REQ-20260630T092810882Z-001bb36a.json",
+      "packetOrRunId": "FP-MCP-083",
+      "sizeBytes": 4200,
+      "mtimeUtc": "2026-06-30T09:28:10.888443+00:00",
+      "metadataSha256": "ec30b17cee6b3a2ba2187bff355fcc1822e188651a356b5da245f575a0f75a25"
+    },
+    {
+      "relativePath": "runs/FP-MCP-084/opencode-requests/REQ-20260630T094727908Z-630a4f0d.json",
+      "packetOrRunId": "FP-MCP-084",
+      "sizeBytes": 4200,
+      "mtimeUtc": "2026-06-30T09:47:27.911448+00:00",
+      "metadataSha256": "6074b820395d9a89edb9814d02bc44ca5828e7d347dccf4e246d8e0f691f4de1"
+    },
+    {
+      "relativePath": "runs/FP-MCP-086/executor-result.md",
+      "packetOrRunId": "FP-MCP-086",
+      "sizeBytes": 873,
+      "mtimeUtc": "2026-06-30T10:03:25.768550+00:00",
+      "metadataSha256": "c7ef1236ed30df47da3b06b3865cfc3c77a9dddf55c563045979950b7a76b6ec"
+    },
+    {
+      "relativePath": "runs/FP-MCP-088/remote-runner-validate-request-observation.md",
+      "packetOrRunId": "FP-MCP-088",
+      "sizeBytes": 1702,
+      "mtimeUtc": "2026-06-30T11:12:24.956476+00:00",
+      "metadataSha256": "0e4d68e9fbe49f5263b2f818ff1f53139e99da3d2b3dfce36992b20067904b0f"
+    },
+    {
+      "relativePath": "runs/FP-MCP-099/opencode-requests/REQ-20260630T115752019Z-25b7c1b8.json",
+      "packetOrRunId": "FP-MCP-099",
+      "sizeBytes": 4204,
+      "mtimeUtc": "2026-06-30T11:57:52.026768+00:00",
+      "metadataSha256": "f81d1d938014bcbbc47b01e3d071f50779cc86b77d640961c6dc8e615f201596"
+    },
+    {
+      "relativePath": "runs/FP-MCP-099/request-validation.md",
+      "packetOrRunId": "FP-MCP-099",
+      "sizeBytes": 3056,
+      "mtimeUtc": "2026-06-30T11:58:57.551401+00:00",
+      "metadataSha256": "6a537dc75a83c369ff41a7242032b632bae656ba4f82ac1d054a79cd315378ee"
+    },
+    {
+      "relativePath": "runs/FP-MCP-102/opencode-requests/REQ-20260630T123936836Z-a102a576.json",
+      "packetOrRunId": "FP-MCP-102",
+      "sizeBytes": 4204,
+      "mtimeUtc": "2026-06-30T12:39:36.842790+00:00",
+      "metadataSha256": "f203c19f8db0c2b0103af4fb3366ed7ddc841350c4f654a5bfc31a936b321e48"
+    },
+    {
+      "relativePath": "runs/FP-MCP-102/request-validation.md",
+      "packetOrRunId": "FP-MCP-102",
+      "sizeBytes": 3528,
+      "mtimeUtc": "2026-06-30T12:43:32.749051+00:00",
+      "metadataSha256": "dc3238074b6cbf4f534493f10fc22e2e2f9dab8b0245596da0204d77e2d6420c"
+    },
+    {
+      "relativePath": "runs/FP-MCP-105/opencode-requests/REQ-20260630T125407939Z-6e8ad285.json",
+      "packetOrRunId": "FP-MCP-105",
+      "sizeBytes": 4204,
+      "mtimeUtc": "2026-06-30T12:54:07.943144+00:00",
+      "metadataSha256": "74267ccbfde6050eb640508bcccfc1a6c3401fc35df4ea6de44ba4da3a5773ed"
+    },
+    {
+      "relativePath": "runs/FP-MCP-105/request-validation.md",
+      "packetOrRunId": "FP-MCP-105",
+      "sizeBytes": 3590,
+      "mtimeUtc": "2026-06-30T12:55:51.044133+00:00",
+      "metadataSha256": "20dcc918645852386ad8b1172dfe947d3ca461d9e2a18486b2f9e611980cb0a2"
+    },
+    {
+      "relativePath": "runs/FP-MCP-106/opencode-requests/REQ-20260630T125835152Z-06e854d9.json",
+      "packetOrRunId": "FP-MCP-106",
+      "sizeBytes": 4204,
+      "mtimeUtc": "2026-06-30T12:58:35.157701+00:00",
+      "metadataSha256": "d52d79592897f509748ea41890c62bd3fad342d85c15a9382facfc365175f13f"
+    },
+    {
+      "relativePath": "runs/FP-MCP-106/request-validation.md",
+      "packetOrRunId": "FP-MCP-106",
+      "sizeBytes": 3590,
+      "mtimeUtc": "2026-06-30T13:00:39.974894+00:00",
+      "metadataSha256": "a20203a7dbd18397e461e357d6e4060d82a2e5c442bc913e27e1378b229758ce"
+    },
+    {
+      "relativePath": "runs/FP-MCP-107/executor-result.md",
+      "packetOrRunId": "FP-MCP-107",
+      "sizeBytes": 3548,
+      "mtimeUtc": "2026-06-30T13:14:23.570783+00:00",
+      "metadataSha256": "14de8f32cf16776f2dd263e1cfb6723f0bcb247ba1ae7c90efb60a358e60032e"
+    },
+    {
+      "relativePath": "runs/FP-MCP-108/executor-result.md",
+      "packetOrRunId": "FP-MCP-108",
+      "sizeBytes": 3888,
+      "mtimeUtc": "2026-06-30T13:26:51.333954+00:00",
+      "metadataSha256": "045af844a0dafc1f06cfceda4d6753d9f6831d3ac72cc0c152b715d18ec80c9e"
+    },
+    {
+      "relativePath": "runs/FP-MCP-110/executor-result.md",
+      "packetOrRunId": "FP-MCP-110",
+      "sizeBytes": 6275,
+      "mtimeUtc": "2026-06-30T13:42:59.431151+00:00",
+      "metadataSha256": "cbd604d3133850d86ddc69c93284cdab1c60a4117b8b9c6d031f3b756ef68d2e"
+    },
+    {
+      "relativePath": "runs/FP-MCP-111/executor-result.md",
+      "packetOrRunId": "FP-MCP-111",
+      "sizeBytes": 3240,
+      "mtimeUtc": "2026-06-30T14:08:16.285711+00:00",
+      "metadataSha256": "608ba3c93598f74cda06983d1030d1fd60e4ade64e0374c862bc980cc224bea2"
+    },
+    {
+      "relativePath": "runs/FP-MCP-116/executor-result.md",
+      "packetOrRunId": "FP-MCP-116",
+      "sizeBytes": 8015,
+      "mtimeUtc": "2026-06-30T16:07:38.122904+00:00",
+      "metadataSha256": "daf42794de7e30255d2af461ad1ab5a957dfc5fcd0172ec27a44cbf6dd3da04c"
+    },
+    {
+      "relativePath": "runs/FP-MCP-117/opencode-requests/REQ-20260630T160920008Z-195b9969.json",
+      "packetOrRunId": "FP-MCP-117",
+      "sizeBytes": 4204,
+      "mtimeUtc": "2026-06-30T16:09:20.019889+00:00",
+      "metadataSha256": "112a7b770f1748d6e2c8cbf951203ca810dafae9a8557bca6149ce0cb97ce4fd"
+    },
+    {
+      "relativePath": "runs/FP-MCP-117/request-artifact.md",
+      "packetOrRunId": "FP-MCP-117",
+      "sizeBytes": 3279,
+      "mtimeUtc": "2026-06-30T16:12:28.085706+00:00",
+      "metadataSha256": "ccedd767ab6ea9b2596251c9d8bf78cc30673ef0690a89e31ff06f9d0c94b438"
+    },
+    {
+      "relativePath": "runs/FP-MCP-134/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T104040288Z-15e213b9-opencode.stderr.log",
+      "packetOrRunId": "FP-MCP-134",
+      "sizeBytes": 38,
+      "mtimeUtc": "2026-07-01T10:40:41.838371+00:00",
+      "metadataSha256": "a1bdaa00c6c1fec1195205bd35e6a30d54b9c1380e4468eade39f0b0635ffca5"
+    },
+    {
+      "relativePath": "runs/FP-MCP-134/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T104040288Z-15e213b9-opencode.stdout.log",
+      "packetOrRunId": "FP-MCP-134",
+      "sizeBytes": 0,
+      "mtimeUtc": "2026-07-01T10:40:40.286356+00:00",
+      "metadataSha256": "900c8019610eb9dfba9f9f810c40c5b890070db0917c72148cc39ad949720690"
+    },
+    {
+      "relativePath": "runs/FP-MCP-134/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T104705915Z-1190f021-opencode.stderr.log",
+      "packetOrRunId": "FP-MCP-134",
+      "sizeBytes": 854,
+      "mtimeUtc": "2026-07-01T10:50:40.144211+00:00",
+      "metadataSha256": "3df782171c8ccf5b1a26bb848c8333a018f3ee0aca93304b1c8c59b846f56edd"
+    },
+    {
+      "relativePath": "runs/FP-MCP-134/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T104705915Z-1190f021-opencode.stdout.log",
+      "packetOrRunId": "FP-MCP-134",
+      "sizeBytes": 90,
+      "mtimeUtc": "2026-07-01T10:50:36.552176+00:00",
+      "metadataSha256": "a54bbf9c1d2ac4e89e10787ac98c7b86a8a06ad88bcc4d7b718cf12113e97555"
+    },
+    {
+      "relativePath": "runs/FP-MCP-134/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T115523115Z-f2fc1f2d-opencode.stderr.log",
+      "packetOrRunId": "FP-MCP-134",
+      "sizeBytes": 2775,
+      "mtimeUtc": "2026-07-01T11:55:54.954369+00:00",
+      "metadataSha256": "726e75ad47a73e3f7508ee80d591b6dedbdcb70c60dcfccdc9437b6098e5ac8f"
+    },
+    {
+      "relativePath": "runs/FP-MCP-134/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T115523115Z-f2fc1f2d-opencode.stdout.log",
+      "packetOrRunId": "FP-MCP-134",
+      "sizeBytes": 0,
+      "mtimeUtc": "2026-07-01T11:55:23.110059+00:00",
+      "metadataSha256": "3756181f0975ae78b1744afcc1342519bcf1fbf88f5f3f12d20f7bc498c24fe2"
+    },
+    {
+      "relativePath": "runs/FP-MCP-134/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T124239073Z-c2cae54f-opencode.stderr.log",
+      "packetOrRunId": "FP-MCP-134",
+      "sizeBytes": 7913,
+      "mtimeUtc": "2026-07-01T12:46:31.167804+00:00",
+      "metadataSha256": "0c21d1d7a8a85e83942ce4cd3c6e12673815a1695e51cf4277e5afe88fee30c0"
+    },
+    {
+      "relativePath": "runs/FP-MCP-134/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T124239073Z-c2cae54f-opencode.stdout.log",
+      "packetOrRunId": "FP-MCP-134",
+      "sizeBytes": 395,
+      "mtimeUtc": "2026-07-01T12:46:31.275805+00:00",
+      "metadataSha256": "06d4e5c96af62d5ad90e1f7c7ff9b39f0824c4b5dff8bf061062f80063716f50"
+    },
+    {
+      "relativePath": "runs/FP-MCP-134/initial-request-artifact-observation.md",
+      "packetOrRunId": "FP-MCP-134",
+      "sizeBytes": 1394,
+      "mtimeUtc": "2026-06-30T20:19:16.699466+00:00",
+      "metadataSha256": "1032afb72c9413ac53facc3a107bca9ebbbfa2f0cdf23e25b57f873c87c22a17"
+    },
+    {
+      "relativePath": "runs/FP-MCP-134/opencode-requests/REQ-20260630T201607512Z-b14f6109.json",
+      "packetOrRunId": "FP-MCP-134",
+      "sizeBytes": 4204,
+      "mtimeUtc": "2026-06-30T20:16:07.525656+00:00",
+      "metadataSha256": "6c300e255035355f6ba1fdaec53416400c7ab90689b477a496599b85ae25e1cd"
+    },
+    {
+      "relativePath": "runs/FP-MCP-134/opencode-requests/REQ-20260630T202005438Z-86d20df4.json",
+      "packetOrRunId": "FP-MCP-134",
+      "sizeBytes": 4288,
+      "mtimeUtc": "2026-06-30T20:20:05.451916+00:00",
+      "metadataSha256": "99c6d13acefe83e731ea313161fa9186296a9c4324b0f6e07d34f554f8b1b85c"
+    },
+    {
+      "relativePath": "runs/FP-MCP-134/request-artifact.md",
+      "packetOrRunId": "FP-MCP-134",
+      "sizeBytes": 1312,
+      "mtimeUtc": "2026-06-30T20:21:24.304589+00:00",
+      "metadataSha256": "a400f359d0cc419d64c1be7d4ffdcaaee2542e6dd3cb9d1976a6ae3dfb050555"
+    },
+    {
+      "relativePath": "runs/FP-MCP-142/mcp-v1-runner-retry/opencode-run-help.txt",
+      "packetOrRunId": "FP-MCP-142",
+      "sizeBytes": 0,
+      "mtimeUtc": "2026-07-01T10:44:41.096715+00:00",
+      "metadataSha256": "74a809ae4a0c0830710626abee2f77164b1da216997217a942e1db1a6a179e79"
+    },
+    {
+      "relativePath": "runs/FP-MCP-142/mcp-v1-runner-retry/opencode-session-not-found.md",
+      "packetOrRunId": "FP-MCP-142",
+      "sizeBytes": 749,
+      "mtimeUtc": "2026-07-01T10:44:41.096715+00:00",
+      "metadataSha256": "0657d05eabaa3b10d9f6ef8eefb4f42bcae8206ef2a9c394d44c6a3da3391884"
+    },
+    {
+      "relativePath": "runs/FP-MCP-143/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T114347811Z-4766184c-opencode.stderr.log",
+      "packetOrRunId": "FP-MCP-143",
+      "sizeBytes": 6932,
+      "mtimeUtc": "2026-07-01T11:49:04.138375+00:00",
+      "metadataSha256": "ddfe91b4150eb38fc59a3181e06e938e4c535a244ffa76d153d30118be6cfce5"
+    },
+    {
+      "relativePath": "runs/FP-MCP-143/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T114347811Z-4766184c-opencode.stdout.log",
+      "packetOrRunId": "FP-MCP-143",
+      "sizeBytes": 2056,
+      "mtimeUtc": "2026-07-01T11:49:12.106452+00:00",
+      "metadataSha256": "d364b5cb898b90dbbebe51328334aa80d58f54c80c18f9c095c213abf9b9bb8a"
+    },
+    {
+      "relativePath": "runs/FP-MCP-143/executor-result.md",
+      "packetOrRunId": "FP-MCP-143",
+      "sizeBytes": 1641,
+      "mtimeUtc": "2026-07-01T11:48:24.265987+00:00",
+      "metadataSha256": "c7cd8f855719b7aebaa4d3760a08743c655fc7702f9df14b869e39dc34c4df9f"
+    },
+    {
+      "relativePath": "runs/FP-MCP-143/opencode-requests/REQ-20260701T113536314Z-f2375b4c.json",
+      "packetOrRunId": "FP-MCP-143",
+      "sizeBytes": 4288,
+      "mtimeUtc": "2026-07-01T11:35:36.322516+00:00",
+      "metadataSha256": "ff63c903c5443a3b5396efc052d05153cc514301ec117fb0f581a74009b5c196"
+    },
+    {
+      "relativePath": "runs/FP-MCP-144/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T120726968Z-71a6e40b-opencode.stderr.log",
+      "packetOrRunId": "FP-MCP-144",
+      "sizeBytes": 11638,
+      "mtimeUtc": "2026-07-01T12:11:54.111683+00:00",
+      "metadataSha256": "114435de8f00cca1ec2a3953711367f6ce189ce73efcc7fa66d6a271349af052"
+    },
+    {
+      "relativePath": "runs/FP-MCP-144/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T120726968Z-71a6e40b-opencode.stdout.log",
+      "packetOrRunId": "FP-MCP-144",
+      "sizeBytes": 606,
+      "mtimeUtc": "2026-07-01T12:11:33.199481+00:00",
+      "metadataSha256": "d06a3ac10fa61f01ed97383bfdc2fc9b04702de0e4c77f20aa85f493701239c3"
+    },
+    {
+      "relativePath": "runs/FP-MCP-144/opencode-requests/REQ-20260701T120601086Z-0dfc4d30.json",
+      "packetOrRunId": "FP-MCP-144",
+      "sizeBytes": 4288,
+      "mtimeUtc": "2026-07-01T12:06:01.096256+00:00",
+      "metadataSha256": "38f184bdbce40b18c0dcfc33a1f424711c8270e9e021befc578e380123cc4e0f"
+    },
+    {
+      "relativePath": "runs/FP-MCP-145/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T130106905Z-7d4954dc-opencode.stderr.log",
+      "packetOrRunId": "FP-MCP-145",
+      "sizeBytes": 3938,
+      "mtimeUtc": "2026-07-01T13:07:19.432292+00:00",
+      "metadataSha256": "a0f26ef9b8b4a100a4ca3ea538f3ed5ba2a2a36eec5717dbd8b4056af190b2f0"
+    },
+    {
+      "relativePath": "runs/FP-MCP-145/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T130106905Z-7d4954dc-opencode.stdout.log",
+      "packetOrRunId": "FP-MCP-145",
+      "sizeBytes": 781,
+      "mtimeUtc": "2026-07-01T13:07:25.092348+00:00",
+      "metadataSha256": "d939258ca025c33df54e51e72318ddfb2b65c212f774affc8d63e96f54425e4a"
+    },
+    {
+      "relativePath": "runs/FP-MCP-145/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T132248140Z-dba7768d-bridge-verify-outputs/executor-result.md",
+      "packetOrRunId": "FP-MCP-145",
+      "sizeBytes": 3032,
+      "mtimeUtc": "2026-07-01T13:27:50.116385+00:00",
+      "metadataSha256": "db82fad820c446bbc01271045a6a7f14752f9f7ae421b113ab21e5107548ec5f"
+    },
+    {
+      "relativePath": "runs/FP-MCP-145/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T132248140Z-dba7768d-opencode.stderr.log",
+      "packetOrRunId": "FP-MCP-145",
+      "sizeBytes": 5169,
+      "mtimeUtc": "2026-07-01T13:28:07.912561+00:00",
+      "metadataSha256": "782d10fad394baa0c07047b5b00a78b41d049a138cd879be8f1338b797bd8d40"
+    },
+    {
+      "relativePath": "runs/FP-MCP-145/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T132248140Z-dba7768d-opencode.stdout.log",
+      "packetOrRunId": "FP-MCP-145",
+      "sizeBytes": 1113,
+      "mtimeUtc": "2026-07-01T13:28:13.848619+00:00",
+      "metadataSha256": "4b29efa0239809f7b8df8d824f256285fda07e5488fc8ad96a0d08f9d1c17bad"
+    },
+    {
+      "relativePath": "runs/FP-MCP-145/opencode-requests/REQ-20260701T125903957Z-3d529835.json",
+      "packetOrRunId": "FP-MCP-145",
+      "sizeBytes": 4288,
+      "mtimeUtc": "2026-07-01T12:59:03.963374+00:00",
+      "metadataSha256": "fd4dd51e9a6fe97a0565a8320cd9c8fb066fb63fcea19674435f4c6f0b5d567b"
+    },
+    {
+      "relativePath": "runs/FP-MCP-146/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T133341720Z-0d7af9f0-opencode.stderr.log",
+      "packetOrRunId": "FP-MCP-146",
+      "sizeBytes": 3420,
+      "mtimeUtc": "2026-07-01T13:37:06.717855+00:00",
+      "metadataSha256": "03af3bbec222ced47ffe59621a47335f0b7272313429a1c86548824e4478105c"
+    },
+    {
+      "relativePath": "runs/FP-MCP-146/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T133341720Z-0d7af9f0-opencode.stdout.log",
+      "packetOrRunId": "FP-MCP-146",
+      "sizeBytes": 1482,
+      "mtimeUtc": "2026-07-01T13:37:12.493912+00:00",
+      "metadataSha256": "73230b82f82a5380112c7712142f434834d986f76e095ebaee5654f16f67c843"
+    },
+    {
+      "relativePath": "runs/FP-MCP-146/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T133341720Z-0d7af9f0-task-bundle-outputs/executor-result.md",
+      "packetOrRunId": "FP-MCP-146",
+      "sizeBytes": 3041,
+      "mtimeUtc": "2026-07-01T13:36:25.373449+00:00",
+      "metadataSha256": "f34d7c742baba6c3bcbd0e09e3732fb9ea1c7af36a189ee0b6f862c6237f4db7"
+    },
+    {
+      "relativePath": "runs/FP-MCP-146/opencode-requests/REQ-20260701T133309176Z-34bc6ab3.json",
+      "packetOrRunId": "FP-MCP-146",
+      "sizeBytes": 4288,
+      "mtimeUtc": "2026-07-01T13:33:09.183523+00:00",
+      "metadataSha256": "2e7eee02507aa1108e6006f93ae6fb7f14d860acffc578e9943e008c327ad2b6"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/executor-result.md",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 1693,
+      "mtimeUtc": "2026-07-01T16:38:34.015329+00:00",
+      "metadataSha256": "4cdacfdd2d57d28a5cca40418565aa524cccb92137b31cb92e1dfcefde777a8f"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/opencode-requests/REQ-20260701T160318574Z-b8679c47.json",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 4288,
+      "mtimeUtc": "2026-07-01T16:03:18.582924+00:00",
+      "metadataSha256": "d7598b93707e15d8ab26f9ef2a9b7553a11a2b48136080b5bc206b739718d6c7"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/opencode-requests/REQ-20260701T162200217Z-59695c38.json",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 4288,
+      "mtimeUtc": "2026-07-01T16:22:00.221747+00:00",
+      "metadataSha256": "02597ecda7340fc3c0c62d1f4500491f7092add34b3a4a0593ef1d0c11298185"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T163442396Z-3edd0c50-request.json",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 625,
+      "mtimeUtc": "2026-07-01T16:34:42.453091+00:00",
+      "metadataSha256": "e344a9485295597b55195256d2df5abd3bc9e75616464a72824654fa425caea8"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T163442396Z-3edd0c50-result.json",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 1324,
+      "mtimeUtc": "2026-07-01T16:34:42.453091+00:00",
+      "metadataSha256": "2936a2eea93f1c0303d369e7aa9ddda1849b36079c3c9fcd26192237a2a5f856"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T163442396Z-3edd0c50-stdout.log",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 181,
+      "mtimeUtc": "2026-07-01T16:34:42.453091+00:00",
+      "metadataSha256": "d005e3af6e5b96d0fd1f71edaa7cc321ed4ea7a582169a70d342d6403190b58c"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T163604483Z-286f6d10-request.json",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 600,
+      "mtimeUtc": "2026-07-01T16:36:06.349901+00:00",
+      "metadataSha256": "9db40b3748e101f810254a545acad148c9cf7c056015efa99088b092e6592447"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T163604483Z-286f6d10-result.json",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 1280,
+      "mtimeUtc": "2026-07-01T16:36:06.349901+00:00",
+      "metadataSha256": "81e2dc2ebe504387bd8fe97fc34ba4f1e844f9d7d62258f0b8e8d302a14a62ae"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T163604483Z-286f6d10-stderr.log",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 73,
+      "mtimeUtc": "2026-07-01T16:36:06.349901+00:00",
+      "metadataSha256": "71d1ef9f17605ea965f7a3f2eafe6fb3c65452bd629baa11ea3d589d50192f3e"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T163604483Z-286f6d10-stdout.log",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 88,
+      "mtimeUtc": "2026-07-01T16:36:06.349901+00:00",
+      "metadataSha256": "693f96faeaa23c68b8d40e6b66a55b5fd95af238d4879e882930646a00d09672"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T163723306Z-63fd9f1b-request.json",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 662,
+      "mtimeUtc": "2026-07-01T16:37:23.338645+00:00",
+      "metadataSha256": "bec4f7aba145f1e3897c924edcb00a77aa7e1341216de455b0451649809bb79a"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T163723306Z-63fd9f1b-result.json",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 1365,
+      "mtimeUtc": "2026-07-01T16:37:23.338645+00:00",
+      "metadataSha256": "2aea67e336454866273316bb3371d88b58093030360659365d3bb5353b77532e"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T163723306Z-63fd9f1b-stderr.log",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 43,
+      "mtimeUtc": "2026-07-01T16:37:23.338645+00:00",
+      "metadataSha256": "ff09afd4fe1c02fbd2db9fe66841df11e2facb083ead49361d7f55365df952c2"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T163723306Z-63fd9f1b-stdout.log",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 251,
+      "mtimeUtc": "2026-07-01T16:37:23.334646+00:00",
+      "metadataSha256": "d43b1919d2c381a110ffec3e4c50c119da604e82dd39cc7eb76a79c17736534f"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T163736864Z-b46ca580-request.json",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 689,
+      "mtimeUtc": "2026-07-01T16:37:36.894777+00:00",
+      "metadataSha256": "dc4f6c0ec8eaf669e1b26504b969665a5cf6c1718d215cc5b2628958a33de60b"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T163736864Z-b46ca580-result.json",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 1432,
+      "mtimeUtc": "2026-07-01T16:37:36.890776+00:00",
+      "metadataSha256": "a51789e727c98425f4ae051f094cf60b4acbf8ec511c3a9d24ce22e7f166159a"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T163736864Z-b46ca580-stderr.log",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 52,
+      "mtimeUtc": "2026-07-01T16:37:36.890776+00:00",
+      "metadataSha256": "43def8b23d10edf295d0479d21154f6341428dcc4f653f6b1b22bab4eab8ea39"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T163736864Z-b46ca580-stdout.log",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 88,
+      "mtimeUtc": "2026-07-01T16:37:36.890776+00:00",
+      "metadataSha256": "d911c3e6cfcdfac90520c0c35a034856edd706635ebb4ecbed7471861d405b7c"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T163743304Z-c68ed305-request.json",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 699,
+      "mtimeUtc": "2026-07-01T16:37:47.150876+00:00",
+      "metadataSha256": "445c7b11b4e3d356907cda4d9ef53be6ddc5cc23470c21672581c85cea4db958"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T163743304Z-c68ed305-result.json",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 1421,
+      "mtimeUtc": "2026-07-01T16:37:47.150876+00:00",
+      "metadataSha256": "b27f89fe1490fc3d280cb497669d49088c5f12492f7b4686a3f88184aa627928"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T163743304Z-c68ed305-stderr.log",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 6,
+      "mtimeUtc": "2026-07-01T16:37:47.150876+00:00",
+      "metadataSha256": "35383c4f917271110f9a666652e544314d019dc6aad81ff28a1a4587e0b651fb"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T163743304Z-c68ed305-stdout.log",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 88,
+      "mtimeUtc": "2026-07-01T16:37:47.150876+00:00",
+      "metadataSha256": "54df2c980605646232fb92c4f462d3f880b2de394453e949d9ce46dcc13afe0a"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T163816134Z-a844bdbe-result.json",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 4538,
+      "mtimeUtc": "2026-07-01T16:38:16.135156+00:00",
+      "metadataSha256": "1d046739a24fbd6d43d35e753f48115aac3fa482cc5c258d0ed020374f7f44b8"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T163833990Z-d46c5a84-request.json",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 2508,
+      "mtimeUtc": "2026-07-01T16:38:35.871346+00:00",
+      "metadataSha256": "39f90e7bb60b2f202b9eebcb6789e5e15851a3e1f481492ae4cc97cee6e5873e"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T163833990Z-d46c5a84-result.json",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 3946,
+      "mtimeUtc": "2026-07-01T16:38:35.871346+00:00",
+      "metadataSha256": "c6dd093798cfb9c788cea2292c6830b2af64f190555405d377988aa0b61f2345"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T163833990Z-d46c5a84-stderr.log",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 73,
+      "mtimeUtc": "2026-07-01T16:38:35.871346+00:00",
+      "metadataSha256": "dfd9149296697c9bb9e49fe070fd51ecc09476a0d429bd20a5212447b738899c"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T163833990Z-d46c5a84-stdout.log",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 1139,
+      "mtimeUtc": "2026-07-01T16:38:35.871346+00:00",
+      "metadataSha256": "7698b7828a09b53858d1eefc8cd23ad3ff51e6943bf8d4e80d21a5d5ea833c3e"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T163915895Z-8953a4ad-request.json",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 552,
+      "mtimeUtc": "2026-07-01T16:39:15.939734+00:00",
+      "metadataSha256": "5d9a7c99283a6d6105acd9a7abeddad788c6f5ae5d8c11224ef027b18f4d939c"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T163915895Z-8953a4ad-result.json",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 1441,
+      "mtimeUtc": "2026-07-01T16:39:15.939734+00:00",
+      "metadataSha256": "1c8af0e39312355cc5e37981d165d3015b7283340dc0e75cb771f162a953b1be"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T163915895Z-8953a4ad-stdout.log",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 377,
+      "mtimeUtc": "2026-07-01T16:39:15.935734+00:00",
+      "metadataSha256": "bfa8d2feb9287c37cbf3c384175b3a5ddd26b1c32a6028d21760c07d78d12632"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T171236910Z-d4511596-request.json",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 1066,
+      "mtimeUtc": "2026-07-01T17:12:36.979299+00:00",
+      "metadataSha256": "9c4ed1be584a0547c6f4e39323e58c4359e1ea06686c5603d72a1f8c8d2eb3a0"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T171236910Z-d4511596-result.json",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 2251,
+      "mtimeUtc": "2026-07-01T17:12:36.979299+00:00",
+      "metadataSha256": "269f4ad350f74e8e5480edb6589c1273616a4672cec1fdc12e730a7517040ecc"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T171236910Z-d4511596-stdout.log",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 368,
+      "mtimeUtc": "2026-07-01T17:12:36.979299+00:00",
+      "metadataSha256": "95076e9443e2bbe444a2d2e850677fc0aab15762a07d6236b7c04b137f8480b3"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T171253465Z-372db7f7-request.json",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 1003,
+      "mtimeUtc": "2026-07-01T17:12:53.551460+00:00",
+      "metadataSha256": "cf67599bb1801fbab29dd2f094054a72bc4ed0341af693355a04defed9189c94"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T171253465Z-372db7f7-result.json",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 2526,
+      "mtimeUtc": "2026-07-01T17:12:53.551460+00:00",
+      "metadataSha256": "00612d0baf59af5a13a4f194f395b97057a986f4675edff442144e2933a263e6"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T171253465Z-372db7f7-stdout.log",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 5259,
+      "mtimeUtc": "2026-07-01T17:12:53.551460+00:00",
+      "metadataSha256": "735f2d10a15efc3f9bae8f25b3fc871706612ffcb4a474be870570b8cc035f63"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T171926022Z-4e7df7bc-request.json",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 781,
+      "mtimeUtc": "2026-07-01T17:19:26.055283+00:00",
+      "metadataSha256": "c2bea0b7c3353e0dfa3cb1a613881d28c7a8d6b11c6e964b2a604e335d7bb1bd"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T171926022Z-4e7df7bc-result.json",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 1294,
+      "mtimeUtc": "2026-07-01T17:19:26.055283+00:00",
+      "metadataSha256": "eb9fa042a991d7a1940132c5a59b6a5499bee9fe744e50590103f9ae3530a495"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T171926022Z-4e7df7bc-stdout.log",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 7139,
+      "mtimeUtc": "2026-07-01T17:19:26.055283+00:00",
+      "metadataSha256": "38f805fd74dff6a9f6e7f3e62a9072c9ed6e312a0daae4cfb1e086cdf8c2e573"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T171933878Z-9a019145-request.json",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 632,
+      "mtimeUtc": "2026-07-01T17:19:33.907360+00:00",
+      "metadataSha256": "3a952cc16ff2862234a1517e90d0366d09919282d8666061f1a11b7f68b32afa"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T171933878Z-9a019145-result.json",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 1145,
+      "mtimeUtc": "2026-07-01T17:19:33.907360+00:00",
+      "metadataSha256": "d07d2c693f5d376ceecbb6e707c556c7bb1ca48ed264eaf2f62a7bbe0b075dbb"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T171933878Z-9a019145-stdout.log",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 6726,
+      "mtimeUtc": "2026-07-01T17:19:33.907360+00:00",
+      "metadataSha256": "f1e8783c18138dcb9ef7d4af354365639a4e46d820ef44dc21f9b64d6a61fad5"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T171939749Z-a788977a-request.json",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 641,
+      "mtimeUtc": "2026-07-01T17:19:39.783417+00:00",
+      "metadataSha256": "8d06de004a8e859de5595c1993547008041864f679affe5c57e62ee44ba9c751"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T171939749Z-a788977a-result.json",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 1154,
+      "mtimeUtc": "2026-07-01T17:19:39.783417+00:00",
+      "metadataSha256": "abc768846853c6c4abc16efa9f23e0915d882582ee7aff8cc4da4eea1d69f91c"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T171939749Z-a788977a-stdout.log",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 5928,
+      "mtimeUtc": "2026-07-01T17:19:39.783417+00:00",
+      "metadataSha256": "d1d62530fbd3dfeafc239ffca813ef6a18a3f6fa8ca58a949a6b390892932ad9"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T171945309Z-0277badd-request.json",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 637,
+      "mtimeUtc": "2026-07-01T17:19:45.331471+00:00",
+      "metadataSha256": "ed26990f60c2695145d371eadea541a3c4887fd559c7795053dbf5b07baf7ab3"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T171945309Z-0277badd-result.json",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 1150,
+      "mtimeUtc": "2026-07-01T17:19:45.331471+00:00",
+      "metadataSha256": "06be5b64fd97d8d9888626842aee456b5cc88137c15a77ab0e71bb01ecb2414e"
+    },
+    {
+      "relativePath": "runs/FP-MCP-147/terminal-commands/TERM-20260701T171945309Z-0277badd-stdout.log",
+      "packetOrRunId": "FP-MCP-147",
+      "sizeBytes": 2920,
+      "mtimeUtc": "2026-07-01T17:19:45.331471+00:00",
+      "metadataSha256": "68b98eae6c0202a2b94c67fe65adccda5d955cfd4502176c2d932989aadd0e5d"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/executor-result.md",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 2320,
+      "mtimeUtc": "2026-07-01T18:28:45.674419+00:00",
+      "metadataSha256": "638efef6841c1b14dc06b1f51c0555be90aab1ed2173efc2a7dbd9effced580e"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/opencode-requests/REQ-20260701T174913920Z-772131aa.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 4288,
+      "mtimeUtc": "2026-07-01T17:49:13.935945+00:00",
+      "metadataSha256": "cbdbb493157132dc363a6a8d276a257a193d7d2eb1fe7e2a0592a17f5825ac9f"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/opencode-worker/pid.txt",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 7,
+      "mtimeUtc": "2026-07-01T18:03:02.607771+00:00",
+      "metadataSha256": "3c512eff99106bf0f9d3c4190abca91546d4433649cba588ef0c0c8574824abf"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/opencode-worker/run.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 463,
+      "mtimeUtc": "2026-07-01T18:03:08.935830+00:00",
+      "metadataSha256": "ba7db0ee03b33568a342f282eabf76acf4fbc528338f47f12cff3a27981ca982"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/opencode-worker-prompt.md",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 2682,
+      "mtimeUtc": "2026-07-01T17:50:30.148673+00:00",
+      "metadataSha256": "a456818d156abb03e0bf0d5ed090ca431e0ffb42084d66d8694fdb6a394d184e"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T172023478Z-d6bcfacc-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 2915,
+      "mtimeUtc": "2026-07-01T17:20:23.475842+00:00",
+      "metadataSha256": "4d464f97a83006d3d299d90d19eac214bcd005deb78a97b0e4b202aa8dd9380e"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T172231667Z-0611b0eb-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 3859,
+      "mtimeUtc": "2026-07-01T17:22:33.777111+00:00",
+      "metadataSha256": "b0413d274bb38173cda56f56278152b287a6595be146b45dd4bdf3a2e4b41a48"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T172231667Z-0611b0eb-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 7281,
+      "mtimeUtc": "2026-07-01T17:22:33.777111+00:00",
+      "metadataSha256": "f8849bf939e2fd7ef20cd547195154480ea288ec5410e51d17a307733cb3ceaa"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T172231667Z-0611b0eb-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 73,
+      "mtimeUtc": "2026-07-01T17:22:33.777111+00:00",
+      "metadataSha256": "5528716ab4d345fbbfae27756d72585c870b73c961ee214c95b25ebd1e51db1f"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T172231667Z-0611b0eb-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 220,
+      "mtimeUtc": "2026-07-01T17:22:33.777111+00:00",
+      "metadataSha256": "2f22ff5ec29ead4b5ddab4e66dd75b16682e3443c77e25e0444d9254e871a96d"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T172516305Z-af403ee1-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1328,
+      "mtimeUtc": "2026-07-01T17:25:16.438543+00:00",
+      "metadataSha256": "ea644bd96d9948a9535a41dfd88d0b7e9ed08af6f1ba6faa198387f8c18c2577"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T172516305Z-af403ee1-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 4584,
+      "mtimeUtc": "2026-07-01T17:25:16.438543+00:00",
+      "metadataSha256": "80b38596c4bd3287271bf4487a66672882fabc8a7cffb7b5c0ff6e80b9fd8e09"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T172516305Z-af403ee1-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 9053,
+      "mtimeUtc": "2026-07-01T17:25:16.438543+00:00",
+      "metadataSha256": "8ac24ac140310df80edff66f44bceb6860459852c5351840c194d204d0856aa4"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T174922010Z-a3fb99f3-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 846,
+      "mtimeUtc": "2026-07-01T17:49:24.068042+00:00",
+      "metadataSha256": "b4a8071f523088fae3ccb7d061db3c81bc401c76de5cea5ce376b6b95d7589c5"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T174922010Z-a3fb99f3-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1545,
+      "mtimeUtc": "2026-07-01T17:49:24.068042+00:00",
+      "metadataSha256": "2951588f87d31f94a65b2759a74bcd1718aca7d8e1ecb648ffce21ab2930c39b"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T174922010Z-a3fb99f3-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 73,
+      "mtimeUtc": "2026-07-01T17:49:24.068042+00:00",
+      "metadataSha256": "21314c70c9cf87fe4c725e5d7c9ac06fcd31a134e45a3f102a8895930cb0b73a"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T174922010Z-a3fb99f3-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 274,
+      "mtimeUtc": "2026-07-01T17:49:24.068042+00:00",
+      "metadataSha256": "d329620c5b88895191b0c763a326154dee1ecc36567c62dc79735aad654b6f17"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175030119Z-dcaac4a1-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 3559,
+      "mtimeUtc": "2026-07-01T17:50:31.976691+00:00",
+      "metadataSha256": "b5193bd65bab1ba0f5a77ba7aafeb077031721f2afe4a882e6f30970c0642a3e"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175030119Z-dcaac4a1-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 4239,
+      "mtimeUtc": "2026-07-01T17:50:31.976691+00:00",
+      "metadataSha256": "af88e54f5ceb87d5c1992b14c760aaf024c89f29a1475be321b958e3981c3927"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175030119Z-dcaac4a1-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 73,
+      "mtimeUtc": "2026-07-01T17:50:31.976691+00:00",
+      "metadataSha256": "a3f44dec06366efa5b4194e8828e1ae5984ab362ac71865e9813745f21baf3df"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175030119Z-dcaac4a1-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 240,
+      "mtimeUtc": "2026-07-01T17:50:31.976691+00:00",
+      "metadataSha256": "4d6644f3fdadda6bbff5f433bb3e1020aeb9eab3f369b4871b74d7fb86c4d1c7"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175129603Z-d4d5ef79-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 957,
+      "mtimeUtc": "2026-07-01T17:51:29.733242+00:00",
+      "metadataSha256": "f31f8e8bb170e99af6964a87b68c0b24773c908934d060528a88d9b3fcf32990"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175129603Z-d4d5ef79-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1513,
+      "mtimeUtc": "2026-07-01T17:51:29.733242+00:00",
+      "metadataSha256": "605ae3835c3abd653338352e21a879e5a950d4429bc39b6b1f41635ec95b1a5c"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175129603Z-d4d5ef79-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 127,
+      "mtimeUtc": "2026-07-01T17:51:29.733242+00:00",
+      "metadataSha256": "71afad3c3ad1af3a8a2b1c1d3af8aff6df4af3c7721b05463f65ab164d8017c8"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175146215Z-58443651-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 723,
+      "mtimeUtc": "2026-07-01T17:51:46.241400+00:00",
+      "metadataSha256": "35a400fc561f40fad2c1ae191915906168c1e93ae54a7729fef1817373ae8d8c"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175146215Z-58443651-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1401,
+      "mtimeUtc": "2026-07-01T17:51:46.241400+00:00",
+      "metadataSha256": "60ba5fdf16637f39d0214c8a3f974d24e50ea1643efce83669d462d95f3cc7d2"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175146215Z-58443651-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 45,
+      "mtimeUtc": "2026-07-01T17:51:46.241400+00:00",
+      "metadataSha256": "d1b6b3f0dc86188cf3e3d77d0722179f94de22c83dabbefe9677bb3bd1629419"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175146215Z-58443651-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 876,
+      "mtimeUtc": "2026-07-01T17:51:46.241400+00:00",
+      "metadataSha256": "99a93cc3175434c62286a2287ca310d0f0693c84d3db11d9cee468fddbd9cc84"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175155327Z-cb0df05e-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 829,
+      "mtimeUtc": "2026-07-01T17:51:55.361487+00:00",
+      "metadataSha256": "b98c353f4a4a6aa9a82f3df6f4e7babaf128de180a3b8862f74e42560b210853"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175155327Z-cb0df05e-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1342,
+      "mtimeUtc": "2026-07-01T17:51:55.361487+00:00",
+      "metadataSha256": "56a3d1701af767959fd96e2ce564c85d3b6f60cacc9531998a83735a22a2ac40"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175155327Z-cb0df05e-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 256,
+      "mtimeUtc": "2026-07-01T17:51:55.361487+00:00",
+      "metadataSha256": "892684bad86bb4de3a5444cd3f37e6ce32d44172037502496d4fdf7ebce7d26d"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175202740Z-aedac939-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 749,
+      "mtimeUtc": "2026-07-01T17:52:03.861569+00:00",
+      "metadataSha256": "7f61e9cfaba5d721f98aea8a7d17b0c19d83f543bf88a9a7a29b437cce3bbe70"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175202740Z-aedac939-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1471,
+      "mtimeUtc": "2026-07-01T17:52:03.861569+00:00",
+      "metadataSha256": "78185c481356eba266ecd078d4bdefcf0cd77221db83fd2c76e9d9a8e521c6ad"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175202740Z-aedac939-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 3787,
+      "mtimeUtc": "2026-07-01T17:52:03.861569+00:00",
+      "metadataSha256": "85efd1d6606c9ea967369505d13f86f137e722ca141e51b6843db69e95dbfdec"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175202740Z-aedac939-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 88,
+      "mtimeUtc": "2026-07-01T17:52:03.861569+00:00",
+      "metadataSha256": "2eed321acdc75939d2889569a36441d3856d595c13edb9018241b8193579a189"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175213801Z-a83d56db-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 712,
+      "mtimeUtc": "2026-07-01T17:52:14.849674+00:00",
+      "metadataSha256": "cf010cba1530ac7f1b7fdad482d4b6c6948caedb1cacc1952813594b08be096c"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175213801Z-a83d56db-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1434,
+      "mtimeUtc": "2026-07-01T17:52:14.849674+00:00",
+      "metadataSha256": "0a53a1c798e0ed578c68365adf2291ebf6aa6dd9ab4131a9470ca5b8100b35e8"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175213801Z-a83d56db-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 4224,
+      "mtimeUtc": "2026-07-01T17:52:14.849674+00:00",
+      "metadataSha256": "b436007f5886938cd12378e08a739207d48d40763981615013116284e130bb70"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175213801Z-a83d56db-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 88,
+      "mtimeUtc": "2026-07-01T17:52:14.849674+00:00",
+      "metadataSha256": "a29bb39b0ed87eee7d0ec7097043a9600ee3cbcde8cc1f5aad07585505c3c708"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175229872Z-321b1c49-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1085,
+      "mtimeUtc": "2026-07-01T17:54:29.902966+00:00",
+      "metadataSha256": "46bd9c89c406e0126a4bd1e8c9afadfef258e1d79f827e09fdee4407c701cf3a"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175229872Z-321b1c49-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1690,
+      "mtimeUtc": "2026-07-01T17:54:29.902966+00:00",
+      "metadataSha256": "4253439b366aff7041b64602b3c94479e8d95df19ab5e604ff24982ae45355d1"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175229872Z-321b1c49-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 88,
+      "mtimeUtc": "2026-07-01T17:54:29.898965+00:00",
+      "metadataSha256": "d812ca3e2c46f31db178b00d8ed68282e373719df160a411b1fa3e6fe90c6afb"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175542904Z-4883cf1f-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 775,
+      "mtimeUtc": "2026-07-01T17:55:42.947664+00:00",
+      "metadataSha256": "47035b8c4e802c2b946f6aba43f973fef0a01a29c9fc518a3a2762dc0ba69dfe"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175542904Z-4883cf1f-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1495,
+      "mtimeUtc": "2026-07-01T17:55:42.947664+00:00",
+      "metadataSha256": "acce3c7bdf10d2b2f4a9640363fadcbeccd344f09c6985d12af6d01ff3c79cc5"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175542904Z-4883cf1f-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 42,
+      "mtimeUtc": "2026-07-01T17:55:42.947664+00:00",
+      "metadataSha256": "d72f1c220eb747ca4e0b1ae7e997401e09040c430f4ce30a49c762c91bdd4a56"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175542904Z-4883cf1f-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 190,
+      "mtimeUtc": "2026-07-01T17:55:42.947664+00:00",
+      "metadataSha256": "154fba3e46cbcdde063c3ad8c6e6efc90aaf1af739ac428656cc37f60ffbad58"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175555914Z-2e7bbf46-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 764,
+      "mtimeUtc": "2026-07-01T17:55:57.319802+00:00",
+      "metadataSha256": "618a9e6f4b8780c524cd3cf786635bc9b1ce9bd6cbf124a8d42b55e479f0c272"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175555914Z-2e7bbf46-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1486,
+      "mtimeUtc": "2026-07-01T17:55:57.315802+00:00",
+      "metadataSha256": "d3694709dbea051d94cfa0874c17218189a2349b9da9d7e027bd57bb39147583"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175555914Z-2e7bbf46-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 3903,
+      "mtimeUtc": "2026-07-01T17:55:57.315802+00:00",
+      "metadataSha256": "716a427430054c512f3f15672537a788a47b521da45412a03632838373dc55f9"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175555914Z-2e7bbf46-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 158,
+      "mtimeUtc": "2026-07-01T17:55:57.315802+00:00",
+      "metadataSha256": "675369898b2280b956d7f8f302061599861772c2e701f4462af9c239687a62cb"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175952387Z-1c094670-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 886,
+      "mtimeUtc": "2026-07-01T17:59:52.641999+00:00",
+      "metadataSha256": "c7761de7dd94bad21a586d8b892ac4c645d8c54a7435325314fc8eb46994bd8d"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175952387Z-1c094670-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1607,
+      "mtimeUtc": "2026-07-01T17:59:52.641999+00:00",
+      "metadataSha256": "659ac8d15de5f74a5ce99afe998d1fee6e4d14c01e648fd0018e71a1137cb991"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175952387Z-1c094670-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 116,
+      "mtimeUtc": "2026-07-01T17:59:52.641999+00:00",
+      "metadataSha256": "787ddfc4a2e1588baae48b841c85d138beed61eb6009ad9e1a987110aa38b193"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T175952387Z-1c094670-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 202,
+      "mtimeUtc": "2026-07-01T17:59:52.641999+00:00",
+      "metadataSha256": "d7a2155ca53331b7a682aa6a83bff3132202f7ed5a26e6ffd802cd3163cf0a45"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180003801Z-d6d88fcb-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 700,
+      "mtimeUtc": "2026-07-01T18:00:05.026114+00:00",
+      "metadataSha256": "c18a7a5009995734099487808712fa86a55bdf722a57f1785d76fb3ce1664103"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180003801Z-d6d88fcb-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1422,
+      "mtimeUtc": "2026-07-01T18:00:05.026114+00:00",
+      "metadataSha256": "b1ba8edd23ce032cdeab5efd9954063534cd41f64f4206f98734b42706395a5f"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180003801Z-d6d88fcb-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1410,
+      "mtimeUtc": "2026-07-01T18:00:05.022114+00:00",
+      "metadataSha256": "39e0b0755dc0ab12163492076854c9e3defad98e022c0052e98ec2bc396ccc75"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180003801Z-d6d88fcb-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 88,
+      "mtimeUtc": "2026-07-01T18:00:05.022114+00:00",
+      "metadataSha256": "0aa3f4c4ab8b4497c0cc1cfad48dd35cefa7012f70dc49b4faa94f86f4cd2f5e"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180014041Z-7b052ec1-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 823,
+      "mtimeUtc": "2026-07-01T18:02:14.095317+00:00",
+      "metadataSha256": "6233b4050d20f3bf78ea529828127870cd2de5d2c86e44952e382f1bd083f31d"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180014041Z-7b052ec1-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1593,
+      "mtimeUtc": "2026-07-01T18:02:14.095317+00:00",
+      "metadataSha256": "d3f92cffe65d39ef1b43a88f2b8cf8e611e2d3197d3004564680c2acc2c2241a"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180014041Z-7b052ec1-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 116,
+      "mtimeUtc": "2026-07-01T18:02:14.095317+00:00",
+      "metadataSha256": "57f6237ffda0305e9c3ad88e99a824c419562e4532acde5002f358e9e7031997"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180014041Z-7b052ec1-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 88,
+      "mtimeUtc": "2026-07-01T18:02:14.095317+00:00",
+      "metadataSha256": "dc5ad31314b076e0e8eb2ccd35f42c91efbda8213be69fb2a101381f22464f3d"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180251107Z-fc2a8e96-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 709,
+      "mtimeUtc": "2026-07-01T18:02:51.135664+00:00",
+      "metadataSha256": "765a27e836efa93e2ededdd612c3ce79fe6a57951ed0d8435211b50c8fd020da"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180251107Z-fc2a8e96-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1222,
+      "mtimeUtc": "2026-07-01T18:02:51.135664+00:00",
+      "metadataSha256": "e74c534ab6eaab857712c2768f9f623c0bac82eb05dde6637ed092e90d5ddb3f"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180251107Z-fc2a8e96-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 102,
+      "mtimeUtc": "2026-07-01T18:02:51.135664+00:00",
+      "metadataSha256": "f75f4051e96dc2d9d0da342b5766d3757719953cf8e706f1b2f54b87f9c045a7"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180302364Z-01d8fd65-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1127,
+      "mtimeUtc": "2026-07-01T18:03:02.615771+00:00",
+      "metadataSha256": "5df4f2627b4be8c57ca8a09ee772f45c48ad6eba9d27be5853bb0410616f6fec"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180302364Z-01d8fd65-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1848,
+      "mtimeUtc": "2026-07-01T18:03:02.615771+00:00",
+      "metadataSha256": "fbae12d9e1d77de6f6918a772dd0dd9708f536088d7006006577aaa0816b6208"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180302364Z-01d8fd65-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 127,
+      "mtimeUtc": "2026-07-01T18:03:02.615771+00:00",
+      "metadataSha256": "d99ff8a8f66e318e2c722ee68f74bad96578b5f8b5feef43313479be669f15e7"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180302364Z-01d8fd65-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 95,
+      "mtimeUtc": "2026-07-01T18:03:02.615771+00:00",
+      "metadataSha256": "a6093d4ea615ec50c603c131144993515e3b79d01e2be9aea6a56ff226b31e2b"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180310270Z-9d0f23e4-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 904,
+      "mtimeUtc": "2026-07-01T18:03:10.295843+00:00",
+      "metadataSha256": "297bfe0c3fab6a35a6935ab88068dde555df2df1ea3975f166f74c9f9b9a70e7"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180310270Z-9d0f23e4-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1459,
+      "mtimeUtc": "2026-07-01T18:03:10.295843+00:00",
+      "metadataSha256": "7ccb2e6d10096257eed83a3b56cd74a4ce801df8c55f79281adfe867945689dc"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180310270Z-9d0f23e4-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 587,
+      "mtimeUtc": "2026-07-01T18:03:10.295843+00:00",
+      "metadataSha256": "a195c03070c72bf3a4a6e894187225594003f132384f1538d7f532716ba598fe"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180326721Z-bf41bcbf-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 2630,
+      "mtimeUtc": "2026-07-01T18:03:26.755997+00:00",
+      "metadataSha256": "76d06acb459ddaa5e5e761c33de07fa81d3520264817f1b26819fbf8e6c217de"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180326721Z-bf41bcbf-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 3143,
+      "mtimeUtc": "2026-07-01T18:03:26.755997+00:00",
+      "metadataSha256": "2fc4cb62738605b21758bcfaffe278ef54fe2e31f019f5e13ec6e1eef80b6664"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180326721Z-bf41bcbf-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1442,
+      "mtimeUtc": "2026-07-01T18:03:26.755997+00:00",
+      "metadataSha256": "760d95738af1197436b84108da890a7f336a84857363e1f5a307836da137f730"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180402787Z-65df8145-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 584,
+      "mtimeUtc": "2026-07-01T18:04:02.816336+00:00",
+      "metadataSha256": "aa6b151f2681eb7a5bf6f146ca2b3bedb5247d5d7959d9f07868af4dc17eed14"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180402787Z-65df8145-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1097,
+      "mtimeUtc": "2026-07-01T18:04:02.816336+00:00",
+      "metadataSha256": "7f6b4b0c6bae010a96e6505f999aa303d71d5b98c31b48d2c2a0abfb4e748ecc"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180402787Z-65df8145-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 224,
+      "mtimeUtc": "2026-07-01T18:04:02.816336+00:00",
+      "metadataSha256": "9b5c0c404fcf1b8cfee2b753d310e1fba37a67eb67b8b2a4a2ff0baaa82d350e"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180409746Z-49fce4a3-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 603,
+      "mtimeUtc": "2026-07-01T18:04:09.780401+00:00",
+      "metadataSha256": "0d8206590d3d2f3397c2f83a354839a1a550a902a20819966928d64f806eeb64"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180409746Z-49fce4a3-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1116,
+      "mtimeUtc": "2026-07-01T18:04:09.780401+00:00",
+      "metadataSha256": "725dfaa5e12f8f35e3da30ef49131f47a021afc312c6ea0416de68bedeee953d"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180409746Z-49fce4a3-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 214,
+      "mtimeUtc": "2026-07-01T18:04:09.780401+00:00",
+      "metadataSha256": "ca3ea9bbf481bc16ae54eed5c76f77f5c004c844d5f7f213fc3092d17a78c30b"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180417225Z-4f9458b4-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 654,
+      "mtimeUtc": "2026-07-01T18:04:17.248471+00:00",
+      "metadataSha256": "b9201d081dbf2a50abaf1e8c5242b64c48e5c442a935bdd5706ed6359ec64a63"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180417225Z-4f9458b4-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1167,
+      "mtimeUtc": "2026-07-01T18:04:17.248471+00:00",
+      "metadataSha256": "7364ee03c8846a16d03a1b093ac0318bec8599abdbcb8286d0e571b58c8da84e"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180417225Z-4f9458b4-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 6646,
+      "mtimeUtc": "2026-07-01T18:04:17.248471+00:00",
+      "metadataSha256": "d99e877bc9ed9d3618920caf8af1ffe7e3e83102c6edfe051ddc87b3531b4d69"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180424331Z-5e969b60-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 652,
+      "mtimeUtc": "2026-07-01T18:04:24.372538+00:00",
+      "metadataSha256": "e025bb6b50014dcde0dfa5394d4bbc41d57e2fc2fe17f537e4557ff9b75ba120"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180424331Z-5e969b60-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1165,
+      "mtimeUtc": "2026-07-01T18:04:24.368538+00:00",
+      "metadataSha256": "96ba1b70191ecc632179b1175c5e1dbc5fb0aca6a541442705d2e39e378e19de"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180424331Z-5e969b60-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 8491,
+      "mtimeUtc": "2026-07-01T18:04:24.368538+00:00",
+      "metadataSha256": "62dcb749cf3fa19edf6e710d49e717e292bf7c4040b9b4477dcff1eb26c88e84"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180433515Z-761a3cb7-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 665,
+      "mtimeUtc": "2026-07-01T18:04:33.552624+00:00",
+      "metadataSha256": "8c7d119b321efed299d7f7ea0327b0e7edbaa6a6d78b8b1b275966b4a62afc7e"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180433515Z-761a3cb7-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1178,
+      "mtimeUtc": "2026-07-01T18:04:33.552624+00:00",
+      "metadataSha256": "364fb9feb4ce94dd7304cbdb6e94300f7994bca2ca847358c2094656fa11e74a"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180433515Z-761a3cb7-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 9797,
+      "mtimeUtc": "2026-07-01T18:04:33.552624+00:00",
+      "metadataSha256": "fd5ed75b8375184a93951721111d2409cc3cda8c0fd24a0b358f0f17c8fd0936"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180439840Z-c3e16fd2-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 653,
+      "mtimeUtc": "2026-07-01T18:04:39.872684+00:00",
+      "metadataSha256": "0d581d0b361fadb0a7f37b41ddd356ec77aff46932caca3c820540ff5e6b91fd"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180439840Z-c3e16fd2-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1166,
+      "mtimeUtc": "2026-07-01T18:04:39.872684+00:00",
+      "metadataSha256": "b6e38f834ea5d0ef5f298783f2f72241a7723d5f47ef18a3c2a7f11bcf90b539"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180439840Z-c3e16fd2-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 4234,
+      "mtimeUtc": "2026-07-01T18:04:39.872684+00:00",
+      "metadataSha256": "98dc57db3e2ae066ceab3b50c1ccba1a8e6c3609144474077977b6ce90c74edf"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180457961Z-1c8a15a7-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 5815,
+      "mtimeUtc": "2026-07-01T18:04:57.960854+00:00",
+      "metadataSha256": "ce5f7026f7764d0fc1163c794cb035291d5973f6599713d1c7e4f666e9e9958c"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180502300Z-b181671c-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 796,
+      "mtimeUtc": "2026-07-01T18:07:02.338026+00:00",
+      "metadataSha256": "637ea2bac5892314295dade288da45fbca1fbc774eb4876c88b23a55aeedb49e"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180502300Z-b181671c-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1591,
+      "mtimeUtc": "2026-07-01T18:07:02.338026+00:00",
+      "metadataSha256": "52c8374ff556da415d585acb8e0165c047f01c8fc8dfe6fe02117307e5a6856c"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180502300Z-b181671c-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 116,
+      "mtimeUtc": "2026-07-01T18:07:02.338026+00:00",
+      "metadataSha256": "12279b84696d6a41900c7ee68ab854c21da0786dc3452e7c984a1621fa7aace6"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180502300Z-b181671c-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 88,
+      "mtimeUtc": "2026-07-01T18:07:02.338026+00:00",
+      "metadataSha256": "f8c68e52298c568a4a992c2db76d0d1ca5f2ce75afdef3427ffc0da408ef4d06"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180544493Z-83a3eb39-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 837,
+      "mtimeUtc": "2026-07-01T18:05:44.665293+00:00",
+      "metadataSha256": "216308cf8c723b1d22f07df3da914ff3e01b806ea4fba4cb6d813b20c93d15cf"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180544493Z-83a3eb39-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1393,
+      "mtimeUtc": "2026-07-01T18:05:44.665293+00:00",
+      "metadataSha256": "ee7d5198a80d3be077626f4f807d610725999d45c0813b9f7edd55bfaf954c1b"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180544493Z-83a3eb39-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 9382,
+      "mtimeUtc": "2026-07-01T18:05:44.665293+00:00",
+      "metadataSha256": "b1ebf90f934fab27aab649f7517ad7aa26b9023f2d1cf09d7fc1e12b37d1a3f1"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180641365Z-867ace91-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 5230,
+      "mtimeUtc": "2026-07-01T18:06:41.457829+00:00",
+      "metadataSha256": "9a14e0826041b4fa82fa0556e16453a97b0ed0718ec49f4621ac0d3d6d47a102"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180641365Z-867ace91-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 5810,
+      "mtimeUtc": "2026-07-01T18:06:41.457829+00:00",
+      "metadataSha256": "8c48e180f023d6b1cfb058f9d3bbb7d0e7e26e0b1df1c692ccf4a7478b592bf6"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180641365Z-867ace91-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 4598,
+      "mtimeUtc": "2026-07-01T18:06:41.453829+00:00",
+      "metadataSha256": "01ce832d5d9f27fdfd7ebf49ea1aab32a2dc4cc2fe2e8aa369ccbd970f7c3ce0"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180653371Z-4206ecdd-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 603,
+      "mtimeUtc": "2026-07-01T18:06:57.265978+00:00",
+      "metadataSha256": "3a38b12295ada0e39b08f3dd5dabb3d071e7387697eb41e742a7310b10cec142"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180653371Z-4206ecdd-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1375,
+      "mtimeUtc": "2026-07-01T18:06:57.265978+00:00",
+      "metadataSha256": "d734908a0e037a4f6ca9bc312c81dcd7a40fc2789a35e9a3f7d2a31014644c20"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180653371Z-4206ecdd-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 122,
+      "mtimeUtc": "2026-07-01T18:06:57.265978+00:00",
+      "metadataSha256": "10eb259e15ce1c69eb546c3110fb25e69b9a182ec67d09bfea53ea879468865e"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180653371Z-4206ecdd-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 88,
+      "mtimeUtc": "2026-07-01T18:06:57.265978+00:00",
+      "metadataSha256": "90f5a59db5f86e4a67492fc80850d37e30814a39f565b6842b5e344b894e1ed3"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180706522Z-a5e56eae-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 685,
+      "mtimeUtc": "2026-07-01T18:07:06.550066+00:00",
+      "metadataSha256": "3d08b4d2c7524d9c6a14e4021a0634fcd1bc95970e805ae606b10e1eec133ac5"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180706522Z-a5e56eae-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1478,
+      "mtimeUtc": "2026-07-01T18:07:06.550066+00:00",
+      "metadataSha256": "0a763b0c7b3b35b178f2a2c23de17ad6ddb9c3c77278bf431f66abe8b4a0e97c"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180706522Z-a5e56eae-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 43,
+      "mtimeUtc": "2026-07-01T18:07:06.550066+00:00",
+      "metadataSha256": "221f565c3537874af5cf0dccca742129c51024589d65cf0a1fba3562dc984c74"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180706522Z-a5e56eae-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 88,
+      "mtimeUtc": "2026-07-01T18:07:06.550066+00:00",
+      "metadataSha256": "08775cd607a90961cdf254a46a0ce85a66da8d91104abf08bbf48e9038972569"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180714196Z-522d4ab8-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 719,
+      "mtimeUtc": "2026-07-01T18:07:14.230138+00:00",
+      "metadataSha256": "466a856a40dd35f42a61ae4ec75ea46ab625f1268698c1d6a89600e882b41e94"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180714196Z-522d4ab8-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1282,
+      "mtimeUtc": "2026-07-01T18:07:14.230138+00:00",
+      "metadataSha256": "4b778be373ec2c2b71b964da0c0c989915f915c7dd7af07deaa007cb999f395d"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180714196Z-522d4ab8-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 4633,
+      "mtimeUtc": "2026-07-01T18:07:14.230138+00:00",
+      "metadataSha256": "cca94600919e0cc0090aa4f06747edd9758cddfddf383748c9cc215d8bdc13a7"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180719696Z-19581511-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 632,
+      "mtimeUtc": "2026-07-01T18:07:19.726190+00:00",
+      "metadataSha256": "87d69b908cc33690b53b9e9234ad0b51a09d82c4cb5371407b49626d544f76d9"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180719696Z-19581511-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1195,
+      "mtimeUtc": "2026-07-01T18:07:19.726190+00:00",
+      "metadataSha256": "0ae8f0a127ec74c9de3495efc68c47396f870fdff8f62b4024fc0cd89a5ee9c0"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180719696Z-19581511-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 813,
+      "mtimeUtc": "2026-07-01T18:07:19.726190+00:00",
+      "metadataSha256": "6baca950cfbefdb664dcd6b67a8bab9973424d093ba40addc964a9a042fcb313"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180726553Z-41932dee-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 598,
+      "mtimeUtc": "2026-07-01T18:07:33.022315+00:00",
+      "metadataSha256": "fbd0d9c6c35e26706dbb82c634d4f4ee73827c37edcd4dd226196213d4601acf"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180726553Z-41932dee-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1370,
+      "mtimeUtc": "2026-07-01T18:07:33.022315+00:00",
+      "metadataSha256": "edd66d94cef1bf9bd1d7ec5f74d2dba3dc2e2ef49a0df6332e6eec4849afc3f0"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180726553Z-41932dee-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 135,
+      "mtimeUtc": "2026-07-01T18:07:33.022315+00:00",
+      "metadataSha256": "03fff363a1ba1455b3c5773f749e47c117d95b84da24137656ea734d4061b296"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180726553Z-41932dee-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 88,
+      "mtimeUtc": "2026-07-01T18:07:33.022315+00:00",
+      "metadataSha256": "0dd880d4bb8f80aa6277068bc28adb0ace229bac427ffe235a618732f6476a5a"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180726823Z-70475feb-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 604,
+      "mtimeUtc": "2026-07-01T18:07:32.558311+00:00",
+      "metadataSha256": "ad95dd0cb02e91ca5e01b7ff89ef2d475fcb25c8893fd888917dfd582a4f5297"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180726823Z-70475feb-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1376,
+      "mtimeUtc": "2026-07-01T18:07:32.558311+00:00",
+      "metadataSha256": "b71d1faaabb38f127c236917295db1f0746bf80175568547f3ed7e0ef6379fa1"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180726823Z-70475feb-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 122,
+      "mtimeUtc": "2026-07-01T18:07:32.558311+00:00",
+      "metadataSha256": "0c43cc7821ffa6ba50e0bde293b14cf18dd9679d214c55496b600d35355a5eaa"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180726823Z-70475feb-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 88,
+      "mtimeUtc": "2026-07-01T18:07:32.558311+00:00",
+      "metadataSha256": "9e1018636d510961a66a85f41d53379c65736766d2c4fa1d513af2aa1d155c94"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180741580Z-40e8ca66-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1336,
+      "mtimeUtc": "2026-07-01T18:07:41.578396+00:00",
+      "metadataSha256": "8b27d24de0b32a3046f1c52ad24810f57523756a8cb908e8d882cf24b8604491"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180741862Z-166f3326-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 687,
+      "mtimeUtc": "2026-07-01T18:07:41.902399+00:00",
+      "metadataSha256": "603ff1d0a6ac6df13687a86b422e0d812b591f08f72067b83499cd0ff6053768"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180741862Z-166f3326-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1250,
+      "mtimeUtc": "2026-07-01T18:07:41.902399+00:00",
+      "metadataSha256": "5dfbf91ec443a159e769e352ecb5806ee5764ffe0ff3c48a095e04f104f1ae7a"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180741862Z-166f3326-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 246,
+      "mtimeUtc": "2026-07-01T18:07:41.898399+00:00",
+      "metadataSha256": "9f099d42ba29eb90dd07469c9a04bcbf9ea8da8b9b34337223855ec9d78b6ba4"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180751412Z-481948ee-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 712,
+      "mtimeUtc": "2026-07-01T18:07:51.454489+00:00",
+      "metadataSha256": "0f1643c20f9e07048e7c6af071bb61a806c51006d37ad2e31f6ebe28ebb137a5"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180751412Z-481948ee-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1250,
+      "mtimeUtc": "2026-07-01T18:07:51.454489+00:00",
+      "metadataSha256": "b93e594aa88f284345aa61c5fbdcf5ae92ce24ed223a6cc567457f26edbc419a"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180751412Z-481948ee-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 209,
+      "mtimeUtc": "2026-07-01T18:07:51.454489+00:00",
+      "metadataSha256": "b5b585257440d2ab75bdf9981f03656b56d52381fdb011788209c8d512cc1b38"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180800452Z-99a6b51e-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 624,
+      "mtimeUtc": "2026-07-01T18:08:02.374593+00:00",
+      "metadataSha256": "ba8853442b123a0c29b37cedf28df3c074f3cc1e2be3b14791f88525029598c4"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180800452Z-99a6b51e-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1304,
+      "mtimeUtc": "2026-07-01T18:08:02.374593+00:00",
+      "metadataSha256": "27023690f01136c7238cb32f9b5335b982d3d4f576cbec2d4f0ecd7b0110be47"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180800452Z-99a6b51e-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 115,
+      "mtimeUtc": "2026-07-01T18:08:02.374593+00:00",
+      "metadataSha256": "b0412755aeeec594ee295710667e6143cadcc51058b81ebfd216a6be4f8beaca"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180800452Z-99a6b51e-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 88,
+      "mtimeUtc": "2026-07-01T18:08:02.374593+00:00",
+      "metadataSha256": "b6676ec9bd526e58086527c4a47c45918dab37f49720e75d025b086b03204226"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180813482Z-26010d17-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 756,
+      "mtimeUtc": "2026-07-01T18:08:13.526698+00:00",
+      "metadataSha256": "633922e5528144975866d5a9c96ce65d9667e82ef8303336262866ab081d3713"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180813482Z-26010d17-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1455,
+      "mtimeUtc": "2026-07-01T18:08:13.526698+00:00",
+      "metadataSha256": "e3c6cf800412778fc6fb181060c5c631983b83588e7b221cab97af7dbdd12d14"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180813482Z-26010d17-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 84,
+      "mtimeUtc": "2026-07-01T18:08:13.526698+00:00",
+      "metadataSha256": "b821bacc4b817de2e86597794ef3b72494e4a5767e3aefb454bd85235fa5e1a5"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180813482Z-26010d17-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 88,
+      "mtimeUtc": "2026-07-01T18:08:13.526698+00:00",
+      "metadataSha256": "1a3cf9c828662dbae50a21a91f2251d3e68064acc61ca3421abee36d4d0bc682"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180836178Z-978b2c1c-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 691,
+      "mtimeUtc": "2026-07-01T18:08:37.574925+00:00",
+      "metadataSha256": "0ba18f2dc9878345647b32373a06361a4830b089d789b7a9da9dcda30de8185b"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180836178Z-978b2c1c-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1371,
+      "mtimeUtc": "2026-07-01T18:08:37.574925+00:00",
+      "metadataSha256": "f3f2bad48ad76503d48da12f9a843580c8d05199c1bf336901005df73a96ef04"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180836178Z-978b2c1c-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 22,
+      "mtimeUtc": "2026-07-01T18:08:37.574925+00:00",
+      "metadataSha256": "f310021fa49ab7d29a90ea22508ae0e1b0b57fade6f630d62ed6bb727c19abf8"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180836178Z-978b2c1c-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 218,
+      "mtimeUtc": "2026-07-01T18:08:37.574925+00:00",
+      "metadataSha256": "a6196509a1fa77c1230c259b948732546353563acaae5e20d6ca564d2d9aa5fd"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180848235Z-6da3b8b1-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 772,
+      "mtimeUtc": "2026-07-01T18:08:48.275027+00:00",
+      "metadataSha256": "95cb65ec5704f6f52d962b077f2b02354605a42f5efe9bb29f18fdf84796c236"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180848235Z-6da3b8b1-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1285,
+      "mtimeUtc": "2026-07-01T18:08:48.275027+00:00",
+      "metadataSha256": "fc6924cde4ac9a37a82367c541cb9c65308b110b4319bdca1e26c82f9f73d3fd"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180848235Z-6da3b8b1-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 2016,
+      "mtimeUtc": "2026-07-01T18:08:48.271026+00:00",
+      "metadataSha256": "13a96858c6a2007c1064681b93787367ba88b977acdaad632fab7e1a44ebe778"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180857400Z-9930f6ac-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 709,
+      "mtimeUtc": "2026-07-01T18:08:57.447113+00:00",
+      "metadataSha256": "2872886356081e04d19d2bc60586f1e247d96b705bbded941c8d129fa1583aeb"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180857400Z-9930f6ac-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1408,
+      "mtimeUtc": "2026-07-01T18:08:57.447113+00:00",
+      "metadataSha256": "138d2fecfa1f3f6d55fc5fbf4beb444cdbbcaac053f47d86d9e1eb0b1d127df5"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180857400Z-9930f6ac-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 84,
+      "mtimeUtc": "2026-07-01T18:08:57.447113+00:00",
+      "metadataSha256": "787c444df4d261b8b439938e7c139362ca8d6e3beadb6037091c36ed0467b673"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T180857400Z-9930f6ac-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 88,
+      "mtimeUtc": "2026-07-01T18:08:57.443113+00:00",
+      "metadataSha256": "437890dbb6a03086264bc573b552b549b19cf3fa332a59826948e1387aeff89d"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181344260Z-ccf05b09-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 776,
+      "mtimeUtc": "2026-07-01T18:13:44.301833+00:00",
+      "metadataSha256": "d4d4082f4a6e98249b20067412b1e307b47bc640d0d375eb30ef401f4f840152"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181344260Z-ccf05b09-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1289,
+      "mtimeUtc": "2026-07-01T18:13:44.301833+00:00",
+      "metadataSha256": "c762533a9b0765a86b47770abfa5928b2aa3cbe3560a85af2e5549c69f69bbd4"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181344260Z-ccf05b09-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 95,
+      "mtimeUtc": "2026-07-01T18:13:44.301833+00:00",
+      "metadataSha256": "cdf3e8efe2289d502581c2550c30d3ba25b81ceb6b0e7edbb16a8791f78169c0"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181354983Z-f7ca37a9-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 626,
+      "mtimeUtc": "2026-07-01T18:13:55.033935+00:00",
+      "metadataSha256": "6dff73a4dea1617b31b5ccfecdfd7574d8c2ca1f144c77d44b0c0642aae59d66"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181354983Z-f7ca37a9-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1329,
+      "mtimeUtc": "2026-07-01T18:13:55.033935+00:00",
+      "metadataSha256": "0737b189c4ad67809f67f4734101bca8fa34c12627654698742709a933b43100"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181354983Z-f7ca37a9-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 43,
+      "mtimeUtc": "2026-07-01T18:13:55.033935+00:00",
+      "metadataSha256": "883cd861043835d1cd46bd3b671bce304156d56ed21bec7a68662049ff1b6a59"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181354983Z-f7ca37a9-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 88,
+      "mtimeUtc": "2026-07-01T18:13:55.033935+00:00",
+      "metadataSha256": "467bcff49827daa1411ca93e9ecf48de510cccf36f0e9689bb221f5a58d7038d"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181422748Z-62db43c1-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 636,
+      "mtimeUtc": "2026-07-01T18:14:22.774198+00:00",
+      "metadataSha256": "389859c5106e656d76a7350ac9bbf6167660895db863a1f1fb1b5172f7701e23"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181422748Z-62db43c1-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1339,
+      "mtimeUtc": "2026-07-01T18:14:22.774198+00:00",
+      "metadataSha256": "d4652369c061708a13dbf3472d3a45df030298b6bd91560a33910e18d35a96b9"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181422748Z-62db43c1-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 43,
+      "mtimeUtc": "2026-07-01T18:14:22.774198+00:00",
+      "metadataSha256": "8e6588aa0e0ab9a6c5cbee3e2d5c1272a1ae2c7aaadcc8cd5d83dfbb2243232a"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181422748Z-62db43c1-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 88,
+      "mtimeUtc": "2026-07-01T18:14:22.770198+00:00",
+      "metadataSha256": "563291e02fe81249b6df50766b9e97c5eee3908bdef732de4a39d4da3f192770"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181431506Z-408cf9d3-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 753,
+      "mtimeUtc": "2026-07-01T18:14:31.770284+00:00",
+      "metadataSha256": "b08253246dd1237cbde61d6ed310aa47b5c6770fbee0fdbe1efaafd45df5b00f"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181431506Z-408cf9d3-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1453,
+      "mtimeUtc": "2026-07-01T18:14:31.770284+00:00",
+      "metadataSha256": "0f80f568a5dab6a51e68ec53392c7a3fac904a64092410819e39d3a12a3e6e33"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181431506Z-408cf9d3-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 158,
+      "mtimeUtc": "2026-07-01T18:14:31.770284+00:00",
+      "metadataSha256": "e0f35799cb8611210ec958d537c978130c2fb163d3b4b64c1f15439d88054f21"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181431506Z-408cf9d3-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 88,
+      "mtimeUtc": "2026-07-01T18:14:31.770284+00:00",
+      "metadataSha256": "76a4b0d46b46aff51212b3a5660bc5d83d25dc830162eddca3f05ccea8816dae"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181442680Z-586dc1ad-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 909,
+      "mtimeUtc": "2026-07-01T18:14:42.758388+00:00",
+      "metadataSha256": "6c8aa900b88f665188fc65c605c18ee6e394212d05d34badab588ef1d3e4fad0"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181442680Z-586dc1ad-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1422,
+      "mtimeUtc": "2026-07-01T18:14:42.754388+00:00",
+      "metadataSha256": "6ff055555904013ec209645264787a3b3a274792513ed13ec080f43d4b66eabc"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181442680Z-586dc1ad-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 3188,
+      "mtimeUtc": "2026-07-01T18:14:42.754388+00:00",
+      "metadataSha256": "49943eed82e4c6ce0cc5252e6d8466fd442cdf34ae7228bb0b1253cab6364a62"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181445229Z-b0b0b138-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 767,
+      "mtimeUtc": "2026-07-01T18:14:45.258412+00:00",
+      "metadataSha256": "f315f4bbc5a8cee8a62c8a4decf21ca3b2cbdeb8944e3fa2f9c4f4ba42279bbf"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181445229Z-b0b0b138-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1280,
+      "mtimeUtc": "2026-07-01T18:14:45.258412+00:00",
+      "metadataSha256": "6499dde4c0688fe503c7e1fb2d91b9d674695b530f14d03b76671ccb5314cfe5"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181445229Z-b0b0b138-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 95,
+      "mtimeUtc": "2026-07-01T18:14:45.258412+00:00",
+      "metadataSha256": "d8b4d0eda69419df4f0baeca8fd363606d2a03191b839dc92c2481410c3d6e1f"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181915018Z-35fa391e-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 660,
+      "mtimeUtc": "2026-07-01T18:19:15.052979+00:00",
+      "metadataSha256": "53c7b09e4ee3540660fedce0fb366da4e5951edda938d827d70b45f0611b342d"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181915018Z-35fa391e-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1363,
+      "mtimeUtc": "2026-07-01T18:19:15.052979+00:00",
+      "metadataSha256": "feb1bbe8b8ba5f978263f0244410c775cea101e3a237d3ca5776093574a4b04f"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181915018Z-35fa391e-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 43,
+      "mtimeUtc": "2026-07-01T18:19:15.052979+00:00",
+      "metadataSha256": "6523b239f50ed9cb3f93dfdd40c9dfbdb627ddca283f023d1471283990caf236"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181915018Z-35fa391e-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 88,
+      "mtimeUtc": "2026-07-01T18:19:15.052979+00:00",
+      "metadataSha256": "b7958ec2b4803590e99f2904d7dee09ef700294f9e5e0fb59963043e83376e83"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181926293Z-810cb26d-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1033,
+      "mtimeUtc": "2026-07-01T18:19:26.357086+00:00",
+      "metadataSha256": "a3e15d678c78aa5c66e8d44863fda9a7ea738b2d20a41583a1155cea2378013e"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181926293Z-810cb26d-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1588,
+      "mtimeUtc": "2026-07-01T18:19:26.357086+00:00",
+      "metadataSha256": "440dd755a77545261dd114b64edc6c80fc50706a5dab50c3ba2d7be239581081"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181926293Z-810cb26d-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 339,
+      "mtimeUtc": "2026-07-01T18:19:26.357086+00:00",
+      "metadataSha256": "9da36ff3116ea56d571c92c1f6868f38fc3da90ca351fbf11839d327253c6f63"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181935424Z-df0992ae-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 721,
+      "mtimeUtc": "2026-07-01T18:19:35.449173+00:00",
+      "metadataSha256": "8b0aa3756fa09cca96b54dfce633a1c4a2ca41667ba5758426d09132031aab2d"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181935424Z-df0992ae-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1234,
+      "mtimeUtc": "2026-07-01T18:19:35.449173+00:00",
+      "metadataSha256": "9208a30cb5612549f5d6b459ec82d676cc753ced14f4d9a9aac07de1c9e8226b"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181935424Z-df0992ae-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 4550,
+      "mtimeUtc": "2026-07-01T18:19:35.445173+00:00",
+      "metadataSha256": "2883de2e05f1f030c33ca657dd13379a2f66db157a196038132f65ba10d8945a"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181943709Z-08070dce-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 629,
+      "mtimeUtc": "2026-07-01T18:19:43.737252+00:00",
+      "metadataSha256": "830c2c72a16221d461666a5d068fb12a12000c6e4fc4147dbe9c3d43b919af50"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181943709Z-08070dce-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1142,
+      "mtimeUtc": "2026-07-01T18:19:43.737252+00:00",
+      "metadataSha256": "9d1aa830df7626e29253879767cf15c4bf364d9f4f8752dfe50ccd1e8caef302"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181943709Z-08070dce-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1789,
+      "mtimeUtc": "2026-07-01T18:19:43.737252+00:00",
+      "metadataSha256": "e2908980f95dc544e6044082b0063659d59630e83415e6f414870f0f1d7f196f"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181951557Z-0a9efe14-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 678,
+      "mtimeUtc": "2026-07-01T18:19:51.589327+00:00",
+      "metadataSha256": "f13a7799541ddc16e0e49e54f354df685bc71d4b04c6e32a9f44a452b3496e04"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181951557Z-0a9efe14-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1191,
+      "mtimeUtc": "2026-07-01T18:19:51.589327+00:00",
+      "metadataSha256": "61f8f3a3104833d2567383d5f7b01a7aeb2d7ad1c2990e47c59b8a8779c435d5"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T181951557Z-0a9efe14-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1027,
+      "mtimeUtc": "2026-07-01T18:19:51.589327+00:00",
+      "metadataSha256": "479ecdb3bcac99afc8ae196c53c767aa4fb9ad30f2be57feeb0f145f5672c206"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182000228Z-6bbe8ee5-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 645,
+      "mtimeUtc": "2026-07-01T18:20:00.261409+00:00",
+      "metadataSha256": "1bf5eece4f448ae2457dec1dcd1db93e7efdb54b43c3c69a0705c7acfaefc18b"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182000228Z-6bbe8ee5-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1158,
+      "mtimeUtc": "2026-07-01T18:20:00.261409+00:00",
+      "metadataSha256": "c0fa96bdaefa575443b1481666ddeb835f7a42b09b5b2a75feb1f01023b7d0af"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182000228Z-6bbe8ee5-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 177,
+      "mtimeUtc": "2026-07-01T18:20:00.261409+00:00",
+      "metadataSha256": "0121f51468587301c2b6baf24971a671c822fc3f79a7e9875955eeb09603e50e"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182004456Z-d88f8472-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 585,
+      "mtimeUtc": "2026-07-01T18:20:04.481450+00:00",
+      "metadataSha256": "a73037133a77deb963ea3501979ac9951ec65a2a04012c5fb13ee288205bbad2"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182004456Z-d88f8472-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1288,
+      "mtimeUtc": "2026-07-01T18:20:04.481450+00:00",
+      "metadataSha256": "a18ca4c7facc581da090c9255a527295634a51becbe25e0dd035d0745b0205ae"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182004456Z-d88f8472-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 43,
+      "mtimeUtc": "2026-07-01T18:20:04.481450+00:00",
+      "metadataSha256": "de6a63be43eb84061ac46b43ff1e3ad9479f9f5dada059a0f5ef23f69dae3986"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182004456Z-d88f8472-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 88,
+      "mtimeUtc": "2026-07-01T18:20:04.481450+00:00",
+      "metadataSha256": "fe75289f0fb3d6c7079642116cf7c214795d6a8ff736296406d2426d1ee7a40d"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182014662Z-8a925a26-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1156,
+      "mtimeUtc": "2026-07-01T18:20:14.661546+00:00",
+      "metadataSha256": "81ce1047a099f72496b29e02171eaeb6807dc44d9c4bac43817afe9055981147"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182016219Z-7989b9e0-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1199,
+      "mtimeUtc": "2026-07-01T18:20:16.217561+00:00",
+      "metadataSha256": "efd2c115a0b1d033ff4c7e1a3287ad78e7b7fc0d81ac61de3e2cdff8859551f1"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182029628Z-39ad0dc5-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 794,
+      "mtimeUtc": "2026-07-01T18:20:29.657689+00:00",
+      "metadataSha256": "c24fd4094d63c437c6506f6d42c4e89aabba0238ac4548a3ba139792ce5f8cb9"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182029628Z-39ad0dc5-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1307,
+      "mtimeUtc": "2026-07-01T18:20:29.657689+00:00",
+      "metadataSha256": "aa97f25075c547e202e5ffec8a4f05ecd7dfc1a70b5496fdfe92c90b6a2e4cb9"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182029628Z-39ad0dc5-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1420,
+      "mtimeUtc": "2026-07-01T18:20:29.657689+00:00",
+      "metadataSha256": "baeaa80493ea055d72e5784b58e9810722cc0ec6653041622e3cb713ee0472a5"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182038253Z-ffef0e47-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 705,
+      "mtimeUtc": "2026-07-01T18:20:38.273772+00:00",
+      "metadataSha256": "1b9c1b013b9d4afd77155f5214b5eeeb4bc6c8842d78f0dca397f3ec01f84c68"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182038253Z-ffef0e47-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1218,
+      "mtimeUtc": "2026-07-01T18:20:38.273772+00:00",
+      "metadataSha256": "1714efad9cf934c25cef71f9b808e578b6636ffb69f7e4b0ab2b43e433cc9114"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182038253Z-ffef0e47-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 5303,
+      "mtimeUtc": "2026-07-01T18:20:38.273772+00:00",
+      "metadataSha256": "16b791c555f620cd0e8c25cd6c977b83d1e1bcc4a7ec31022f8735c04d318342"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182055220Z-a673c47b-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 599,
+      "mtimeUtc": "2026-07-01T18:20:55.245933+00:00",
+      "metadataSha256": "bcfef7c044924e3d39f0994893d38eebf5849d8fd0789a4715bda89811e2476e"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182055220Z-a673c47b-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1112,
+      "mtimeUtc": "2026-07-01T18:20:55.245933+00:00",
+      "metadataSha256": "56842de46f7ae354c3c68d47be9e4c195b0835c042fe4b51e98c67768a0fa58d"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182055220Z-a673c47b-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 147,
+      "mtimeUtc": "2026-07-01T18:20:55.245933+00:00",
+      "metadataSha256": "cee082ed5f54b54e00a2bf9b9432f608492c35a342e44932daebe1faaf9fda33"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182057520Z-c6388109-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1051,
+      "mtimeUtc": "2026-07-01T18:21:01.553993+00:00",
+      "metadataSha256": "5faf781c06c42ef1a5a720a6b13969705dfe640bdea00f0cc4a4b8ac0093b957"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182057520Z-c6388109-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1798,
+      "mtimeUtc": "2026-07-01T18:21:01.553993+00:00",
+      "metadataSha256": "e84d112f0d9df9bfa65dec4901b9ccc5f6a92176ace41db8f76ce5036a588619"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182057520Z-c6388109-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 122,
+      "mtimeUtc": "2026-07-01T18:21:01.553993+00:00",
+      "metadataSha256": "abead7adbc50f032da746683cebb7a3a00ed3548c7bcdb56afa273480a6ae805"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182057520Z-c6388109-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 548,
+      "mtimeUtc": "2026-07-01T18:21:01.553993+00:00",
+      "metadataSha256": "1f853e50164a3597e5820dd5f3a0865d11280330f31095f73f212f623c630a71"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182104012Z-2d86c628-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 654,
+      "mtimeUtc": "2026-07-01T18:21:04.030017+00:00",
+      "metadataSha256": "ff4bd62ebe16721a55ec9ffe7591d7b71757dbea16f8a9dc048fd166e2321965"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182104012Z-2d86c628-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1217,
+      "mtimeUtc": "2026-07-01T18:21:04.030017+00:00",
+      "metadataSha256": "891e15c58f9975bc22a2d1a68b77b9478cf5d46e9d26a152072dda993ae42ab0"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182104012Z-2d86c628-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 4169,
+      "mtimeUtc": "2026-07-01T18:21:04.030017+00:00",
+      "metadataSha256": "db2435a331c3e7bb0429b3d1fee6bd4099a64848f36dc123df3f629d9ae42549"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182126982Z-16c780ea-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 786,
+      "mtimeUtc": "2026-07-01T18:21:28.818253+00:00",
+      "metadataSha256": "731e34d26f050c9a62720b96e780fd332e64da113c47f57e6afe93fb8da09b19"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182126982Z-16c780ea-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1491,
+      "mtimeUtc": "2026-07-01T18:21:28.818253+00:00",
+      "metadataSha256": "bb2e82a84936ed95579b13f14abeff6581397ba6cb310ab3d433bf8cc7928753"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182126982Z-16c780ea-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 316,
+      "mtimeUtc": "2026-07-01T18:21:28.818253+00:00",
+      "metadataSha256": "77b8e24717126bd1ab6c5d6091f1e6f70550e561cdc1ba9b8c6fc7216e562fa0"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182126982Z-16c780ea-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 208,
+      "mtimeUtc": "2026-07-01T18:21:28.818253+00:00",
+      "metadataSha256": "4c1874d999747a5fa2809a6fad98a501461dcff8684e37f040e86ac4aa4aba79"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182126998Z-5d0e3df0-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 617,
+      "mtimeUtc": "2026-07-01T18:21:27.034236+00:00",
+      "metadataSha256": "7358d4084f5828250c2315ed2001d30a06203fa01131b82a2eff7eb38ae137e8"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182126998Z-5d0e3df0-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1155,
+      "mtimeUtc": "2026-07-01T18:21:27.034236+00:00",
+      "metadataSha256": "f1985b9dd716d9d207295b5d8d196ed8c6cbe12920bc5e12353af30c22707949"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182126998Z-5d0e3df0-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1027,
+      "mtimeUtc": "2026-07-01T18:21:27.034236+00:00",
+      "metadataSha256": "6c5e87e402e799f05bb8c55e959f348f71a0b71fdaf6aac6d01d042a83e50638"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182140886Z-93bcb388-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 956,
+      "mtimeUtc": "2026-07-01T18:21:49.338449+00:00",
+      "metadataSha256": "1e132c1bf0464f0f2aa5546317cc326176b2a396ddf7d7a30dd10f04bd7704f1"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182140886Z-93bcb388-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1678,
+      "mtimeUtc": "2026-07-01T18:21:49.338449+00:00",
+      "metadataSha256": "c356554fc19689f46f5385eee9d675d8ff5d6a5da74b010e4ef9634e66271d62"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182140886Z-93bcb388-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 141,
+      "mtimeUtc": "2026-07-01T18:21:49.338449+00:00",
+      "metadataSha256": "e0c350bea61a1c55b7fad6a6b23db35b85279a8fc1174e8886975b89c8f49112"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182140886Z-93bcb388-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 88,
+      "mtimeUtc": "2026-07-01T18:21:49.338449+00:00",
+      "metadataSha256": "e8c4b9a077ae6ee22459cff0e0398f18806de35d9e2068b80d7534d6c5684f42"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182200895Z-5640b0b9-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 686,
+      "mtimeUtc": "2026-07-01T18:22:00.974560+00:00",
+      "metadataSha256": "aa4a4fefc5e61891ab40edb2e61ad9a516f146e723d136df86649e063c83885a"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182200895Z-5640b0b9-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1199,
+      "mtimeUtc": "2026-07-01T18:22:00.974560+00:00",
+      "metadataSha256": "35e235265242a63e13f1b14c788b1fbd546d71505a113b8ab9263a117184937a"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182200895Z-5640b0b9-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 704,
+      "mtimeUtc": "2026-07-01T18:22:00.974560+00:00",
+      "metadataSha256": "0a1591f4a1fea460bb9bbe68e8795f2a0405105e47e43a33717fdb6758454eeb"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182212009Z-96ed499b-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 573,
+      "mtimeUtc": "2026-07-01T18:22:13.330677+00:00",
+      "metadataSha256": "f28542f2867fd341b7c51f077877fb2f6456d71c88c758ac43181bece700bfc8"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182212009Z-96ed499b-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1088,
+      "mtimeUtc": "2026-07-01T18:22:13.330677+00:00",
+      "metadataSha256": "f5b4f62f15b689ff8ec6f496256390ec88eab323e6b94886a48187c8aa6c7b77"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182212009Z-96ed499b-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 22,
+      "mtimeUtc": "2026-07-01T18:22:13.330677+00:00",
+      "metadataSha256": "eec691737c9f67c9b626194d729e1e457e32ccc79582f2a41cfd26176a84df05"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182234181Z-bb698f0e-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 720,
+      "mtimeUtc": "2026-07-01T18:22:34.206876+00:00",
+      "metadataSha256": "cbb48fb8c57762fccef623c5f7561bfa94e29d3f9547eaa3fc3816550d5dfed9"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182234181Z-bb698f0e-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1233,
+      "mtimeUtc": "2026-07-01T18:22:34.206876+00:00",
+      "metadataSha256": "8e15b95b968fe1703008246109b3d640f6e84a4e20a56386e71fd06288457e78"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182234181Z-bb698f0e-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 7,
+      "mtimeUtc": "2026-07-01T18:22:34.206876+00:00",
+      "metadataSha256": "dbe4a127678b0b275342095ac6159dded9cc47e8d1214c3afcd38fa83323a4ce"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182722289Z-57407e26-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 568,
+      "mtimeUtc": "2026-07-01T18:27:26.065659+00:00",
+      "metadataSha256": "d0085b0d74a0315a8850d87a98122e504d22230374c8c31aab4b089d26900818"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182722289Z-57407e26-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1083,
+      "mtimeUtc": "2026-07-01T18:27:26.065659+00:00",
+      "metadataSha256": "907aa635a1e3b8c95fa4b99809dcee33e74d864ae68a2d310330c94d809769ca"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182722289Z-57407e26-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 6,
+      "mtimeUtc": "2026-07-01T18:27:26.065659+00:00",
+      "metadataSha256": "bd767f10d13d4040f31bd6ea7edf6d633bcb5a5ab0d10731f7da25524130c4e4"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182743512Z-3b3f4e2c-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 932,
+      "mtimeUtc": "2026-07-01T18:27:43.505826+00:00",
+      "metadataSha256": "a13d895dfe852b9631580592574666b9d058f2e47f339d2a3ee0585c5d68f8eb"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182813562Z-2b6fbe3e-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 3719,
+      "mtimeUtc": "2026-07-01T18:28:13.562113+00:00",
+      "metadataSha256": "435fa22afd10b4b9c3860bffca74dcfc2b634da324293ec2c0d7138b43af1df0"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182845654Z-c9d7ff3d-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 3191,
+      "mtimeUtc": "2026-07-01T18:28:47.614437+00:00",
+      "metadataSha256": "f9332926182fa6308f72eb267190c6bea6bbd82005c3c50257462af59ca2966f"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182845654Z-c9d7ff3d-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 3941,
+      "mtimeUtc": "2026-07-01T18:28:47.614437+00:00",
+      "metadataSha256": "058df9fc61080ad3da4ef9e9b2878caf8ab6abde33732df5e155d669204ee881"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182845654Z-c9d7ff3d-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 73,
+      "mtimeUtc": "2026-07-01T18:28:47.614437+00:00",
+      "metadataSha256": "5f2b3931eed3005ff0bd15f5c23cedefb4c6fdbe6c2c261c6722d54461ed7d82"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T182845654Z-c9d7ff3d-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 144,
+      "mtimeUtc": "2026-07-01T18:28:47.614437+00:00",
+      "metadataSha256": "062507aa25450d6ce8f0b36dc8e1cf9fab3b19985868fb76b8673ad3b65ede72"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T183706896Z-72f9d29c-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1113,
+      "mtimeUtc": "2026-07-01T18:37:06.947411+00:00",
+      "metadataSha256": "9429f888b3ed19df641c9c9d102adb2f50dca9c1ef7bd7a6c8a1cf5fbcd0ae16"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T183706896Z-72f9d29c-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1696,
+      "mtimeUtc": "2026-07-01T18:37:06.947411+00:00",
+      "metadataSha256": "e5e2234f2d8430ce9606c11da3504b1e9f731c03655feb7103b439c53ec82e93"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T183706896Z-72f9d29c-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 9645,
+      "mtimeUtc": "2026-07-01T18:37:06.947411+00:00",
+      "metadataSha256": "3c0013d84977587c3ca61ee883015c08816f3c9921f3c9e7008654ee9ee2e076"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T183714730Z-a96a4973-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1087,
+      "mtimeUtc": "2026-07-01T18:37:14.779489+00:00",
+      "metadataSha256": "622cef31e587d85ad16e0008b05e2adb247ee4dd01cec27917bcb6cc65a83a4d"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T183714730Z-a96a4973-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1600,
+      "mtimeUtc": "2026-07-01T18:37:14.779489+00:00",
+      "metadataSha256": "d0521f6447c891deb3339f56501a8c91d8f006e72a23bf5f8feacb70335bd2c6"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T183714730Z-a96a4973-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 700,
+      "mtimeUtc": "2026-07-01T18:37:14.779489+00:00",
+      "metadataSha256": "98b94eeeabcc3c0141a5a9a7d0f88f26f4ba51ddcedb3a6aebf4417577123d4d"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T183721997Z-480cdfb4-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 756,
+      "mtimeUtc": "2026-07-01T18:37:22.031561+00:00",
+      "metadataSha256": "183e6446a287eaf2876b96e48720167e8c750afcb59d295ab7b8080b4ad460f2"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T183721997Z-480cdfb4-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1338,
+      "mtimeUtc": "2026-07-01T18:37:22.031561+00:00",
+      "metadataSha256": "1318011dc4e65b26172c3f4fd9d6467569e6628627d762e2a494cbdbd13eea11"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T183721997Z-480cdfb4-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 489,
+      "mtimeUtc": "2026-07-01T18:37:22.031561+00:00",
+      "metadataSha256": "8d3c727ee3affd2f40e4b5cbb481e0803bb902b05da59b9873c1d8e923844b97"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T183732178Z-b0d74acb-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 763,
+      "mtimeUtc": "2026-07-01T18:37:34.087682+00:00",
+      "metadataSha256": "b295f4f29afeb31d4ff61adb1d17cabf4e71af363a8520e673f3a0bb0f38d459"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T183732178Z-b0d74acb-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1478,
+      "mtimeUtc": "2026-07-01T18:37:34.087682+00:00",
+      "metadataSha256": "6b3dc2852fef2fde49640ca3b83dc4ec1e347a38dac82b585bde77dc458fdf01"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T183732178Z-b0d74acb-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 309,
+      "mtimeUtc": "2026-07-01T18:37:34.087682+00:00",
+      "metadataSha256": "e531b16e9975ef319fc55ae73e8cbd08660fcfb95e301ddec2efaa5d90935c92"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T183732178Z-b0d74acb-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 145,
+      "mtimeUtc": "2026-07-01T18:37:34.087682+00:00",
+      "metadataSha256": "5e5423dc650853898a5718d9c7719fb6cba5a6e152874d2d675271047e459caa"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T183745286Z-defd0267-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 755,
+      "mtimeUtc": "2026-07-01T18:37:47.123811+00:00",
+      "metadataSha256": "2a6529112edcff2ebc701c28542cac1cccaa35e496ff873d5c43b0c1614b2f8b"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T183745286Z-defd0267-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1435,
+      "mtimeUtc": "2026-07-01T18:37:47.123811+00:00",
+      "metadataSha256": "7806dd4f107638042f693c5a471afa9e948ed6291a6b72f098e0212027965691"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T183745286Z-defd0267-stderr.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 73,
+      "mtimeUtc": "2026-07-01T18:37:47.123811+00:00",
+      "metadataSha256": "75512f8a9b9f725f368923a2e4100979a6c53365d68a7c00f2c8ad557a0d6507"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T183745286Z-defd0267-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 149,
+      "mtimeUtc": "2026-07-01T18:37:47.123811+00:00",
+      "metadataSha256": "1bc4e5d3edcd869ff3cec980abcc7cba8a38033618258e702d60de4b93cf7451"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T183758592Z-cb41e3f9-request.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1394,
+      "mtimeUtc": "2026-07-01T18:37:58.667926+00:00",
+      "metadataSha256": "5fc7a822d541631c2250cdcdc710cf810614dc107110ef3a0d2f9fc782630a5a"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T183758592Z-cb41e3f9-result.json",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1907,
+      "mtimeUtc": "2026-07-01T18:37:58.667926+00:00",
+      "metadataSha256": "dc1f268379be96966d5161734ad2645ac4c270978e4505a726ab1bae4955f4ff"
+    },
+    {
+      "relativePath": "runs/FP-MCP-148/terminal-commands/TERM-20260701T183758592Z-cb41e3f9-stdout.log",
+      "packetOrRunId": "FP-MCP-148",
+      "sizeBytes": 1081,
+      "mtimeUtc": "2026-07-01T18:37:58.667926+00:00",
+      "metadataSha256": "4e11b7171a49a0af55a61560e0022f0d3fc772d52ed478aa7138e42a0eca68b3"
+    },
+    {
+      "relativePath": "runs/FP-MCP-149/opencode-process-inventory.md",
+      "packetOrRunId": "FP-MCP-149",
+      "sizeBytes": 9516,
+      "mtimeUtc": "2026-07-01T18:39:13.832672+00:00",
+      "metadataSha256": "17aadf2e0754d807933be2f54bfafdcb1b51d5b69d3cfb647ae530f7f455fd97"
+    },
+    {
+      "relativePath": "runs/FP-MCP-149/opencode-state-inventory.json",
+      "packetOrRunId": "FP-MCP-149",
+      "sizeBytes": 340191,
+      "mtimeUtc": "2026-07-01T18:39:13.940673+00:00",
+      "metadataSha256": "e42ee5597136b0dc79225c1308482626e05570e429d8e6c10702d4b3b1e9eced"
+    },
+    {
+      "relativePath": "runs/FP-MCP-149/terminal-commands/TERM-20260701T172715165Z-1f4bb790-request.json",
+      "packetOrRunId": "FP-MCP-149",
+      "sizeBytes": 2235,
+      "mtimeUtc": "2026-07-01T17:27:17.051613+00:00",
+      "metadataSha256": "7a906e285566944d69e7290151b6a136c6e0cb3a7dad513bbc6f4b1508bb755a"
+    },
+    {
+      "relativePath": "runs/FP-MCP-149/terminal-commands/TERM-20260701T172715165Z-1f4bb790-result.json",
+      "packetOrRunId": "FP-MCP-149",
+      "sizeBytes": 5657,
+      "mtimeUtc": "2026-07-01T17:27:17.051613+00:00",
+      "metadataSha256": "9b3b6562c08dd6c660f6bef2d71887d4dd3bb277e03bcc017adc649346d252f0"
+    },
+    {
+      "relativePath": "runs/FP-MCP-149/terminal-commands/TERM-20260701T172715165Z-1f4bb790-stderr.log",
+      "packetOrRunId": "FP-MCP-149",
+      "sizeBytes": 73,
+      "mtimeUtc": "2026-07-01T17:27:17.051613+00:00",
+      "metadataSha256": "96f6ebf378c95d4e7e3c76a964a69016f9160baf12384184db675d75df0bc18c"
+    },
+    {
+      "relativePath": "runs/FP-MCP-149/terminal-commands/TERM-20260701T172715165Z-1f4bb790-stdout.log",
+      "packetOrRunId": "FP-MCP-149",
+      "sizeBytes": 230,
+      "mtimeUtc": "2026-07-01T17:27:17.051613+00:00",
+      "metadataSha256": "3872eab7c4ebb24663398f14cbc129a580ceffb95005321f4ab750effc1e8916"
+    },
+    {
+      "relativePath": "runs/FP-MCP-149/terminal-commands/TERM-20260701T173126072Z-e00d8870-request.json",
+      "packetOrRunId": "FP-MCP-149",
+      "sizeBytes": 4149,
+      "mtimeUtc": "2026-07-01T17:31:27.921893+00:00",
+      "metadataSha256": "f09099cfbe829967a11f4a1948635ce61a8dd11dca51ce558f6a84a00636169e"
+    },
+    {
+      "relativePath": "runs/FP-MCP-149/terminal-commands/TERM-20260701T173126072Z-e00d8870-result.json",
+      "packetOrRunId": "FP-MCP-149",
+      "sizeBytes": 7673,
+      "mtimeUtc": "2026-07-01T17:31:27.921893+00:00",
+      "metadataSha256": "66ec77c86935b21dde814497d916af0df453bbc025000f1c6e9dddb0422780fd"
+    },
+    {
+      "relativePath": "runs/FP-MCP-149/terminal-commands/TERM-20260701T173126072Z-e00d8870-stderr.log",
+      "packetOrRunId": "FP-MCP-149",
+      "sizeBytes": 73,
+      "mtimeUtc": "2026-07-01T17:31:27.917892+00:00",
+      "metadataSha256": "cc6af23c35503a2d5b7c50e43b9a27d70972903ddd5f304885aa4c383bb9fd17"
+    },
+    {
+      "relativePath": "runs/FP-MCP-149/terminal-commands/TERM-20260701T173126072Z-e00d8870-stdout.log",
+      "packetOrRunId": "FP-MCP-149",
+      "sizeBytes": 222,
+      "mtimeUtc": "2026-07-01T17:31:27.917892+00:00",
+      "metadataSha256": "9e7b9ae8bf572b0e4e0f3b98592526ec47ecc5881025f5e3e6c148c272a67318"
+    },
+    {
+      "relativePath": "runs/FP-MCP-149/terminal-commands/TERM-20260701T173446688Z-82134de2-request.json",
+      "packetOrRunId": "FP-MCP-149",
+      "sizeBytes": 2677,
+      "mtimeUtc": "2026-07-01T17:34:48.511752+00:00",
+      "metadataSha256": "3318889001cd1e1ccf038522538e6505435db965615e82342f7a1143fab35fc6"
+    },
+    {
+      "relativePath": "runs/FP-MCP-149/terminal-commands/TERM-20260701T173446688Z-82134de2-result.json",
+      "packetOrRunId": "FP-MCP-149",
+      "sizeBytes": 6177,
+      "mtimeUtc": "2026-07-01T17:34:48.507752+00:00",
+      "metadataSha256": "75e98c6ea0f932258a83278897cda3493835d6a4e425e8c08921a705e42bbac9"
+    },
+    {
+      "relativePath": "runs/FP-MCP-149/terminal-commands/TERM-20260701T173446688Z-82134de2-stderr.log",
+      "packetOrRunId": "FP-MCP-149",
+      "sizeBytes": 73,
+      "mtimeUtc": "2026-07-01T17:34:48.507752+00:00",
+      "metadataSha256": "1ace5e897b0cd02bf1a00a17c23df505ac2b4bae5676dd84f408b883fd081e52"
+    },
+    {
+      "relativePath": "runs/FP-MCP-149/terminal-commands/TERM-20260701T173446688Z-82134de2-stdout.log",
+      "packetOrRunId": "FP-MCP-149",
+      "sizeBytes": 219,
+      "mtimeUtc": "2026-07-01T17:34:48.507752+00:00",
+      "metadataSha256": "20fbd7c898370a364c2b8b960a63918283bd21b08ea789737544f02160748389"
+    },
+    {
+      "relativePath": "runs/FP-MCP-149/terminal-commands/TERM-20260701T174413896Z-c18840a2-request.json",
+      "packetOrRunId": "FP-MCP-149",
+      "sizeBytes": 1270,
+      "mtimeUtc": "2026-07-01T17:44:13.945086+00:00",
+      "metadataSha256": "6901f1c2c984a8c5db5363741f2eb7788df2d1071fb6447a786d1870cae01cad"
+    },
+    {
+      "relativePath": "runs/FP-MCP-149/terminal-commands/TERM-20260701T174413896Z-c18840a2-result.json",
+      "packetOrRunId": "FP-MCP-149",
+      "sizeBytes": 4603,
+      "mtimeUtc": "2026-07-01T17:44:13.945086+00:00",
+      "metadataSha256": "3e9203523e6a5b15c0353baa37f017a186e8d695727f9a31067508426a6e49fb"
+    },
+    {
+      "relativePath": "runs/FP-MCP-149/terminal-commands/TERM-20260701T174413896Z-c18840a2-stdout.log",
+      "packetOrRunId": "FP-MCP-149",
+      "sizeBytes": 8912,
+      "mtimeUtc": "2026-07-01T17:44:13.945086+00:00",
+      "metadataSha256": "5813b51e8acf36285835ab88ebb0ec97b63a9b86c9c9c72094472acba0a9c03b"
+    },
+    {
+      "relativePath": "runs/FP-MCP-149/terminal-commands/TERM-20260701T183839343Z-926aed7f-request.json",
+      "packetOrRunId": "FP-MCP-149",
+      "sizeBytes": 973,
+      "mtimeUtc": "2026-07-01T18:38:39.424331+00:00",
+      "metadataSha256": "46f5e0fa4d615ccb76860c0fb583aee87e23f8b28f38ab10e555898cee8cfd0d"
+    },
+    {
+      "relativePath": "runs/FP-MCP-149/terminal-commands/TERM-20260701T183839343Z-926aed7f-result.json",
+      "packetOrRunId": "FP-MCP-149",
+      "sizeBytes": 1486,
+      "mtimeUtc": "2026-07-01T18:38:39.424331+00:00",
+      "metadataSha256": "8a6d2fe77a13c04d1bfa15edaa2e55c630ece04f3a841fd830ad716cb5a2310a"
+    },
+    {
+      "relativePath": "runs/FP-MCP-149/terminal-commands/TERM-20260701T183839343Z-926aed7f-stdout.log",
+      "packetOrRunId": "FP-MCP-149",
+      "sizeBytes": 2845,
+      "mtimeUtc": "2026-07-01T18:38:39.424331+00:00",
+      "metadataSha256": "7f949e53718de609450406eeeaffa2a54275e2daa20731850b5c8481d87e7b7f"
+    },
+    {
+      "relativePath": "runs/FP-MCP-150/terminal-commands/TERM-20260701T174740197Z-568f4763-request.json",
+      "packetOrRunId": "FP-MCP-150",
+      "sizeBytes": 16635,
+      "mtimeUtc": "2026-07-01T17:47:42.015068+00:00",
+      "metadataSha256": "f463c9ec67a5f84e7f529861acc734e34874655b82eecc6022fd781432c23bb8"
+    },
+    {
+      "relativePath": "runs/FP-MCP-150/terminal-commands/TERM-20260701T174740197Z-568f4763-result.json",
+      "packetOrRunId": "FP-MCP-150",
+      "sizeBytes": 20135,
+      "mtimeUtc": "2026-07-01T17:47:42.015068+00:00",
+      "metadataSha256": "fd2196d44a5609c0f6c0d98f7896f1178463143c82a43b5a256d40321f9dcfad"
+    },
+    {
+      "relativePath": "runs/FP-MCP-150/terminal-commands/TERM-20260701T174740197Z-568f4763-stderr.log",
+      "packetOrRunId": "FP-MCP-150",
+      "sizeBytes": 73,
+      "mtimeUtc": "2026-07-01T17:47:42.015068+00:00",
+      "metadataSha256": "d4fff33d921c79708a078aec29553bf98e787ad1242e8ed2cf2941dedc97ace7"
+    },
+    {
+      "relativePath": "runs/FP-MCP-150/terminal-commands/TERM-20260701T174740197Z-568f4763-stdout.log",
+      "packetOrRunId": "FP-MCP-150",
+      "sizeBytes": 259,
+      "mtimeUtc": "2026-07-01T17:47:42.015068+00:00",
+      "metadataSha256": "a1f9916af5d12ef603541c587aacb468e22796e573dbf99cec45b08b6e98ad87"
+    },
+    {
+      "relativePath": "runs/FP-MCP-151/terminal-commands/TERM-20260701T174905823Z-4899e37b-request.json",
+      "packetOrRunId": "FP-MCP-151",
+      "sizeBytes": 776,
+      "mtimeUtc": "2026-07-01T17:49:05.855868+00:00",
+      "metadataSha256": "10f465b044703d0395af6283e7e76dc57018a4bf2fd1d0d48709f176907d7b85"
+    },
+    {
+      "relativePath": "runs/FP-MCP-151/terminal-commands/TERM-20260701T174905823Z-4899e37b-result.json",
+      "packetOrRunId": "FP-MCP-151",
+      "sizeBytes": 2720,
+      "mtimeUtc": "2026-07-01T17:49:05.855868+00:00",
+      "metadataSha256": "d4b92730ffa5884da937f33c665fbd01b756352da1229a69f9dceb5bb98d39d1"
+    },
+    {
+      "relativePath": "runs/FP-MCP-151/terminal-commands/TERM-20260701T174905823Z-4899e37b-stdout.log",
+      "packetOrRunId": "FP-MCP-151",
+      "sizeBytes": 88,
+      "mtimeUtc": "2026-07-01T17:49:05.855868+00:00",
+      "metadataSha256": "ed8388f473e005988d77d84ab2cc95f2fe8d337435c080de33e1e87fad2ea7c6"
+    },
+    {
+      "relativePath": "runs/FP-MCP-153/terminal-commands/TERM-20260701T181520446Z-83cdf796-request.json",
+      "packetOrRunId": "FP-MCP-153",
+      "sizeBytes": 824,
+      "mtimeUtc": "2026-07-01T18:15:23.698777+00:00",
+      "metadataSha256": "6315e6928e6a8711525104e52ec40a538562b8b0cbc5ea1a27321c6366ae89f5"
+    },
+    {
+      "relativePath": "runs/FP-MCP-153/terminal-commands/TERM-20260701T181520446Z-83cdf796-result.json",
+      "packetOrRunId": "FP-MCP-153",
+      "sizeBytes": 1546,
+      "mtimeUtc": "2026-07-01T18:15:23.698777+00:00",
+      "metadataSha256": "16b5ab95c7bf43dcdec7e47947058e6b23b5ef3664e58799804a1e6194fb0088"
+    },
+    {
+      "relativePath": "runs/FP-MCP-153/terminal-commands/TERM-20260701T181520446Z-83cdf796-stderr.log",
+      "packetOrRunId": "FP-MCP-153",
+      "sizeBytes": 5795,
+      "mtimeUtc": "2026-07-01T18:15:23.698777+00:00",
+      "metadataSha256": "d3f0b36577322ec3722905f7b241d40cb56b98131b85c375e0b8fd8fab99c691"
+    },
+    {
+      "relativePath": "runs/FP-MCP-153/terminal-commands/TERM-20260701T181520446Z-83cdf796-stdout.log",
+      "packetOrRunId": "FP-MCP-153",
+      "sizeBytes": 115,
+      "mtimeUtc": "2026-07-01T18:15:23.694777+00:00",
+      "metadataSha256": "1adfd997c76306cdbaa525332d20d840733a388c497776063053afe44d2e452e"
+    },
+    {
+      "relativePath": "runs/FP-META-002/executor-result.md",
+      "packetOrRunId": "FP-META-002",
+      "sizeBytes": 1339,
+      "mtimeUtc": "2026-06-08T10:41:56.301461+00:00",
+      "metadataSha256": "eaae3e7f070b116bd830bcb066aa0b7f7709e96b24732cd29ed48b8b0416e205"
+    },
+    {
+      "relativePath": "runs/FP-META-003/executor-result.md",
+      "packetOrRunId": "FP-META-003",
+      "sizeBytes": 1228,
+      "mtimeUtc": "2026-06-08T11:28:27.307403+00:00",
+      "metadataSha256": "cb118a1ff43ed2688496f8be466a42ff0ed6ce3e1a575fb4d89299dab97e64ca"
+    },
+    {
+      "relativePath": "runs/FP-META-004/executor-result.md",
+      "packetOrRunId": "FP-META-004",
+      "sizeBytes": 1760,
+      "mtimeUtc": "2026-06-08T12:54:59.763709+00:00",
+      "metadataSha256": "ed19b32a0dc2c78638781d3957b4b5d3869fc38fb7a9733c25ae3cf369eaf75d"
+    },
+    {
+      "relativePath": "runs/FP-META-005/executor-result.md",
+      "packetOrRunId": "FP-META-005",
+      "sizeBytes": 1253,
+      "mtimeUtc": "2026-06-08T13:20:51.250242+00:00",
+      "metadataSha256": "5df32c99076b304d639ff48da03244e30e9e622d7b88f01df706ca2467a0d4cf"
+    },
+    {
+      "relativePath": "runs/FP-META-006/executor-result.md",
+      "packetOrRunId": "FP-META-006",
+      "sizeBytes": 1003,
+      "mtimeUtc": "2026-06-08T18:28:41.482186+00:00",
+      "metadataSha256": "86b07a2a16fbb036f948046593f7c6eddcfac8110e1f13a657c3b280875c3a69"
+    },
+    {
+      "relativePath": "runs/FP-META-007/executor-result.md",
+      "packetOrRunId": "FP-META-007",
+      "sizeBytes": 1387,
+      "mtimeUtc": "2026-06-09T08:45:04.637624+00:00",
+      "metadataSha256": "008540a6eff8a9a65dfe5e0931df538e2b10cd2bef786315d12cf6ed1d06bfd1"
+    },
+    {
+      "relativePath": "runs/FP-META-008/executor-result.md",
+      "packetOrRunId": "FP-META-008",
+      "sizeBytes": 1060,
+      "mtimeUtc": "2026-06-09T09:47:32.744639+00:00",
+      "metadataSha256": "e2b955b855cc386bc4ffe928c39db214c2e7b31c7d0a98a87065304b8ab0c8af"
+    },
+    {
+      "relativePath": "runs/FP-META-008/metrics.json",
+      "packetOrRunId": "FP-META-008",
+      "sizeBytes": 548,
+      "mtimeUtc": "2026-06-09T09:47:32.744639+00:00",
+      "metadataSha256": "fe031a8f3e8740e3b046b8e42acad723026a9e174f10444de1509bb6310d98bd"
+    },
+    {
+      "relativePath": "runs/FP-META-009/executor-result.md",
+      "packetOrRunId": "FP-META-009",
+      "sizeBytes": 1142,
+      "mtimeUtc": "2026-06-09T11:15:42.353829+00:00",
+      "metadataSha256": "c95be220a412187e4480866209e57c6af6b037c1bdb54b8ed18ec82750708f3c"
+    },
+    {
+      "relativePath": "runs/FP-META-009/metrics.json",
+      "packetOrRunId": "FP-META-009",
+      "sizeBytes": 629,
+      "mtimeUtc": "2026-06-09T11:15:42.353829+00:00",
+      "metadataSha256": "3bce44f502e7669c682b61ba072139901764f41d7a7b431bf273271519d54eeb"
+    },
+    {
+      "relativePath": "runs/FP-META-010/executor-result.md",
+      "packetOrRunId": "FP-META-010",
+      "sizeBytes": 1210,
+      "mtimeUtc": "2026-06-09T11:45:44.190707+00:00",
+      "metadataSha256": "6380ec416c01a85fafadfdd7065fcab3b3aaf6603490ecd4850c9526f19ae22b"
+    },
+    {
+      "relativePath": "runs/FP-META-010/metrics.json",
+      "packetOrRunId": "FP-META-010",
+      "sizeBytes": 629,
+      "mtimeUtc": "2026-06-09T11:45:44.190707+00:00",
+      "metadataSha256": "a7c8d7ce1521b7408d1d814dec6f762dcd3706e92f441af068957fdb83503c68"
+    },
+    {
+      "relativePath": "runs/FP-META-011/executor-result.md",
+      "packetOrRunId": "FP-META-011",
+      "sizeBytes": 982,
+      "mtimeUtc": "2026-06-09T12:13:27.474395+00:00",
+      "metadataSha256": "be8db23391c381580ef2640888ce77e0ad1c9d016a09e2e56b1aa446bb205306"
+    },
+    {
+      "relativePath": "runs/FP-META-011/metrics.json",
+      "packetOrRunId": "FP-META-011",
+      "sizeBytes": 629,
+      "mtimeUtc": "2026-06-09T12:13:27.474395+00:00",
+      "metadataSha256": "2e279d42b5e5fdbd6b93ca03fe3e7f9dc20511d665181d98ad453bf262bd6b25"
+    },
+    {
+      "relativePath": "runs/FP-META-012/executor-result.md",
+      "packetOrRunId": "FP-META-012",
+      "sizeBytes": 1227,
+      "mtimeUtc": "2026-06-09T12:54:27.817281+00:00",
+      "metadataSha256": "9325f4de7357ebaf0d27eb71a41aa30e906b960cd8f62b705fc67eb3f7eb1d51"
+    },
+    {
+      "relativePath": "runs/FP-META-012/metrics.json",
+      "packetOrRunId": "FP-META-012",
+      "sizeBytes": 629,
+      "mtimeUtc": "2026-06-09T12:54:27.817281+00:00",
+      "metadataSha256": "c77857d6c2715ced8a5a78634657086bea43d4b751ae2c5f4b12b2be52c7a08f"
+    },
+    {
+      "relativePath": "runs/FP-META-014/executor-result.md",
+      "packetOrRunId": "FP-META-014",
+      "sizeBytes": 1560,
+      "mtimeUtc": "2026-06-10T12:17:16.119235+00:00",
+      "metadataSha256": "5308fcfb89d40456af98bdf189892e79fbd29a13fde36a3188284668e4b973db"
+    },
+    {
+      "relativePath": "runs/FP-META-014/metrics.json",
+      "packetOrRunId": "FP-META-014",
+      "sizeBytes": 645,
+      "mtimeUtc": "2026-06-10T12:17:16.119235+00:00",
+      "metadataSha256": "375416f84525406450fc854a116d6d95db7a1fe31f996aa0bc043bc3fac9afad"
+    },
+    {
+      "relativePath": "runs/FP-META-015/executor-result.md",
+      "packetOrRunId": "FP-META-015",
+      "sizeBytes": 1693,
+      "mtimeUtc": "2026-06-15T20:51:34.961885+00:00",
+      "metadataSha256": "79fa2858d925481d9a7853c6b4cc8eaa225892c89c55dee4b91806b8d4075586"
+    },
+    {
+      "relativePath": "runs/FP-META-015/metrics.json",
+      "packetOrRunId": "FP-META-015",
+      "sizeBytes": 596,
+      "mtimeUtc": "2026-06-15T20:51:34.961885+00:00",
+      "metadataSha256": "64e31351807330e794c0b0f765d17c77c98d4e5364532fe2156e3b9333e7e76c"
+    },
+    {
+      "relativePath": "runs/FP-META-016/executor-result.md",
+      "packetOrRunId": "FP-META-016",
+      "sizeBytes": 1931,
+      "mtimeUtc": "2026-06-16T07:02:11.379381+00:00",
+      "metadataSha256": "598adb25167cf559d84074dc13e8b25f82b3d301056a8411dd4441d17403c315"
+    },
+    {
+      "relativePath": "runs/FP-META-016/metrics.json",
+      "packetOrRunId": "FP-META-016",
+      "sizeBytes": 596,
+      "mtimeUtc": "2026-06-16T07:02:11.379381+00:00",
+      "metadataSha256": "70380469d797f99efa087aeaa03ff8fcbd155a922f83a72045c02bbed55d0703"
+    }
+  ],
+  "skipped": []
+}
