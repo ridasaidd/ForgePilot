@@ -1,0 +1,120 @@
+{
+  "snapshotId": "SNAPSHOT-20260701T195005822Z-c3f5883c",
+  "capturedAt": "2026-07-01T19:50:05.822Z",
+  "packetId": "FP-MCP-152",
+  "options": {
+    "includeProcesses": true,
+    "includeListeners": true,
+    "includeRecentEvidence": true
+  },
+  "repositories": {
+    "forgepilot": {
+      "label": "ForgePilot",
+      "path": "/home/ridasaidd/forgepilot",
+      "branch": "main",
+      "commit": "a2ab0ea",
+      "gitStatusShort": "",
+      "workingTreeClean": true
+    },
+    "bridge": {
+      "label": "ForgePilot ChatGPT MCP",
+      "path": "/home/ridasaidd/forgepilot-chatgpt-mcp",
+      "branch": "feature/oauth-auth0",
+      "commit": "cd55de0",
+      "gitStatusShort": "",
+      "workingTreeClean": true
+    }
+  },
+  "services": {
+    "bridge": {
+      "serviceName": "forgepilot-chatgpt-mcp.service",
+      "active": true,
+      "statusText": "active",
+      "observable": true
+    },
+    "runner": {
+      "serviceName": "forgepilot-runner.service",
+      "active": true,
+      "statusText": "active",
+      "observable": true
+    }
+  },
+  "processes": [
+    {
+      "line": "367970 opencode        opencode serve --hostname 0.0.0.0 --port 4096"
+    },
+    {
+      "line": "730178 MainThread      /home/ridasaidd/.nvm/versions/node/v24.4.1/bin/node /home/ridasaidd/forgepilot-chatgpt-mcp/dist/server.js"
+    }
+  ],
+  "openCode": {
+    "legacyServerPresent": true,
+    "expectedPort": 4096
+  },
+  "listeners": [
+    {
+      "line": "LISTEN 0      511                     127.0.0.1:8791       0.0.0.0:*    users:((\"MainThread\",pid=710619,fd=21))"
+    },
+    {
+      "line": "LISTEN 0      511                       0.0.0.0:8787       0.0.0.0:*    users:((\"MainThread\",pid=730178,fd=21))"
+    },
+    {
+      "line": "LISTEN 0      512                       0.0.0.0:4096       0.0.0.0:*    users:((\"opencode\",pid=367970,fd=18))"
+    }
+  ],
+  "gptHouse": {
+    "path": "/home/ridasaidd/forgepilot-gpt-house",
+    "exists": true,
+    "isDirectory": true,
+    "isFile": false,
+    "sizeBytes": 4096,
+    "mtimeUtc": "2026-07-01T17:34:46.711Z"
+  },
+  "latestPackets": [
+    "FP-MCP-148.md",
+    "FP-MCP-149.md",
+    "FP-MCP-150.md",
+    "FP-MCP-151.md",
+    "FP-MCP-152.md",
+    "FP-META-001.md",
+    "FP-META-002.md",
+    "FP-META-003.md",
+    "FP-META-004.md",
+    "FP-META-005.md",
+    "FP-META-006.md",
+    "FP-META-008.md",
+    "FP-META-009.md",
+    "FP-META-010.md",
+    "FP-META-011.md",
+    "FP-META-012.md",
+    "FP-META-013.md",
+    "FP-META-014.md",
+    "FP-META-015.md",
+    "FP-META-016.md"
+  ],
+  "latestRuns": [
+    "FP-MCP-150",
+    "FP-MCP-151",
+    "FP-MCP-152",
+    "FP-MCP-153",
+    "FP-META-002",
+    "FP-META-003",
+    "FP-META-004",
+    "FP-META-005",
+    "FP-META-006",
+    "FP-META-007",
+    "FP-META-008",
+    "FP-META-009",
+    "FP-META-010",
+    "FP-META-011",
+    "FP-META-012",
+    "FP-META-013",
+    "FP-META-014",
+    "FP-META-015",
+    "FP-META-016",
+    "OPERATOR"
+  ],
+  "recentEvidence": [],
+  "artifactPath": "/home/ridasaidd/forgepilot/runs/FP-MCP-152/workspace-snapshots/SNAPSHOT-20260701T195005822Z-c3f5883c.json",
+  "observationSemantics": "workspace snapshot is an observation, not admitted evidence by itself"
+}
