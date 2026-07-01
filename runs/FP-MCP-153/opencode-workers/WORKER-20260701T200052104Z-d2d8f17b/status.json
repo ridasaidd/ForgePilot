@@ -1,0 +1,39 @@
+{
+  "workerId": "WORKER-20260701T200052104Z-d2d8f17b",
+  "packetId": "FP-MCP-153",
+  "requestId": null,
+  "modelId": null,
+  "targetWorkspaceId": "forgepilot",
+  "workspacePath": "/home/ridasaidd/forgepilot",
+  "promptFile": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/worker-smoke-prompt.md",
+  "promptFileSha256": "905ff2bda33cf984c826538bdebfc4aa7830056abf8596d9e75ca6719244bb04",
+  "pid": 730804,
+  "status": "UNKNOWN_EXIT",
+  "startedAt": "2026-07-01T20:00:52.111Z",
+  "updatedAt": "2026-07-01T20:01:00.118Z",
+  "completedAt": "2026-07-01T20:01:00.118Z",
+  "timeoutSeconds": 120,
+  "stdoutPath": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T200052104Z-d2d8f17b/stdout.log",
+  "stderrPath": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T200052104Z-d2d8f17b/stderr.log",
+  "statusPath": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T200052104Z-d2d8f17b/status.json",
+  "startRequestPath": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T200052104Z-d2d8f17b/start-request.json",
+  "workerDir": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T200052104Z-d2d8f17b",
+  "approvalSource": "CHATGPT_MCP_TOOL_APPROVAL",
+  "approvedToolName": "forgepilot_start_opencode_worker",
+  "command": {
+    "executable": "/home/ridasaidd/.nvm/versions/node/v24.4.1/bin/opencode",
+    "args": [
+      "run",
+      "--dir",
+      "/home/ridasaidd/forgepilot",
+      "--file",
+      "/home/ridasaidd/forgepilot/runs/FP-MCP-153/worker-smoke-prompt.md",
+      "--title",
+      "FP-MCP-153 smoke",
+      "Implement attached prompt."
+    ]
+  },
+  "reasons": [
+    "PROCESS_NOT_ACTIVE_EXIT_CODE_UNKNOWN"
+  ]
+}
