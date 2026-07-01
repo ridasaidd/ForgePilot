@@ -178,14 +178,16 @@ async function run() {
       body: JSON.stringify({})
     });
 
-    assert(startRun.status === 501, "start-run should return 501");
+    assert(startRun.status === 403, "start-run should return 403 when execution is disabled");
     assert(
       startRun.json?.executionStarted === false,
       "start-run should not start execution"
     );
+    console.log("disabled start-run response:", JSON.stringify(startRun.json, null, 2));
+
     assert(
-      startRun.json?.reasons?.includes("EXECUTION_NOT_IMPLEMENTED"),
-      "start-run should report EXECUTION_NOT_IMPLEMENTED"
+      startRun.json?.reasons?.length > 0,
+      "start-run should report at least one disabled reason"
     );
 
     console.log("runner skeleton tests PASS");

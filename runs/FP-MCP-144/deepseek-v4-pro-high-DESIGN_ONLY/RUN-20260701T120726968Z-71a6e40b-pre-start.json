@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "FP-MCP-142",
+  "artifactType": "runner-pre-start-state",
+  "packetId": "FP-MCP-144",
+  "requestId": "REQ-20260701T120601086Z-0dfc4d30",
+  "runnerRunId": "RUN-20260701T120726968Z-71a6e40b",
+  "executionEnabled": true,
+  "startEndpointContacted": true,
+  "executionStarted": false,
+  "opencodeStarted": false,
+  "targetWorkspaceId": "forgepilot",
+  "opencodeWorkingDirectory": "/home/ridasaidd/forgepilot",
+  "recordedAt": "2026-07-01T12:07:26.969Z"
+}

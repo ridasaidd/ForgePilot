@@ -75,6 +75,49 @@ function resolveTargetWorkspace(targetWorkspaceId) {
   return resolved;
 }
 
+async function stageTaskBundle(opencodeWorkingDirectory, runnerRunId, packetId, requestArtifactPath) {
+  const bundleDir = path.join(
+    opencodeWorkingDirectory,
+    ".forgepilot",
+    "tasks",
+    runnerRunId
+  );
+  const outputsDir = path.join(bundleDir, "outputs");
+
+  await mkdir(outputsDir, { recursive: true });
+
+  const packetSrc = path.join(repoRoot, "packets", `${packetId}.md`);
+  const packetContent = await readFile(packetSrc, "utf8");
+  await writeFile(path.join(bundleDir, "packet.md"), packetContent);
+
+  const requestSrc = path.join(repoRoot, requestArtifactPath);
+  const requestContent = await readFile(requestSrc, "utf8");
+  await writeFile(path.join(bundleDir, "request.json"), requestContent);
+
+  const instructions = [
+    `ForgePilot staged task execution instructions.`,
+    ``,
+    `Packet: ${packetId}`,
+    `Runner run ID: ${runnerRunId}`,
+    ``,
+    `Read packet.md to understand the task requirements.`,
+    `Read request.json for the execution context details.`,
+    `Produce all DESIGN_ONLY implementation/evidence artifacts in the outputs/ directory.`,
+    ``,
+    `Do not read outside the current workspace.`,
+    `Do not expose secrets.`,
+    `Preserve ForgePilot evidence discipline.`
+  ].join("\n");
+
+  await writeFile(path.join(bundleDir, "instructions.md"), instructions);
+
+  return {
+    bundleDir,
+    bundleRelativePath: `.forgepilot/tasks/${runnerRunId}`,
+    files: ["packet.md", "request.json", "instructions.md", "outputs/"]
+  };
+}
+
 function nowIso() {
   return new Date().toISOString();
 }
@@ -978,6 +1021,13 @@ async function handleStartRun(req, res) {
   const absoluteArtifactDir = path.join(repoRoot, artifactDir);
   await mkdir(absoluteArtifactDir, { recursive: true });
 
+  const taskBundle = await stageTaskBundle(
+    opencodeWorkingDirectory,
+    runnerRunId,
+    validation.packetId,
+    validation.requestArtifactPath
+  );
+
   const preStartStatePath = path.join(absoluteArtifactDir, `${runnerRunId}-pre-start.json`);
   const postStartStatePath = path.join(absoluteArtifactDir, `${runnerRunId}-post-start.json`);
   const stdoutPath = path.join(absoluteArtifactDir, `${runnerRunId}-opencode.stdout.log`);
@@ -991,7 +1041,11 @@ async function handleStartRun(req, res) {
     `Run mode: ${validation.runMode}`,
     `Target commit: ${validation.requestBaseCommit || validation.baseCommit}`,
     ``,
-    `Read packets/${validation.packetId}.md and produce the requested DESIGN_ONLY implementation/evidence artifacts.`,
+    `Read ${taskBundle.bundleRelativePath}/instructions.md.`,
+    `The packet has been staged at ${taskBundle.bundleRelativePath}/packet.md.`,
+    `The request artifact has been staged at ${taskBundle.bundleRelativePath}/request.json.`,
+    `Write outputs to ${taskBundle.bundleRelativePath}/outputs/.`,
+    `Do not read outside the current workspace.`,
     `Do not expose secrets. Preserve ForgePilot evidence discipline.`
   ].join("\n");
 
@@ -1010,6 +1064,10 @@ async function handleStartRun(req, res) {
         opencodeStarted: false,
         targetWorkspaceId: requestedTargetWorkspaceId,
         opencodeWorkingDirectory,
+        taskBundleCreated: true,
+        taskBundlePath: taskBundle.bundleDir,
+        taskBundleRelativePath: taskBundle.bundleRelativePath,
+        taskBundleFiles: taskBundle.files,
         recordedAt: nowIso()
       },
       null,
@@ -1065,6 +1123,9 @@ async function handleStartRun(req, res) {
             opencodeArgs,
             targetWorkspaceId: requestedTargetWorkspaceId,
             opencodeWorkingDirectory,
+            taskBundleCreated: true,
+            taskBundlePath: taskBundle.bundleDir,
+            taskBundleRelativePath: taskBundle.bundleRelativePath,
             errorCode: error && typeof error.code === "string" ? error.code : "OPENCODE_SPAWN_ERROR",
             errorMessage: error && typeof error.message === "string" ? error.message : "OpenCode spawn failed",
             stdoutPath,
@@ -1101,6 +1162,9 @@ async function handleStartRun(req, res) {
         opencodeArgs,
         targetWorkspaceId: requestedTargetWorkspaceId,
         opencodeWorkingDirectory,
+        taskBundleCreated: true,
+        taskBundlePath: taskBundle.bundleDir,
+        taskBundleRelativePath: taskBundle.bundleRelativePath,
         stdoutPath,
         stderrPath,
         recordedAt: nowIso()
@@ -1129,6 +1193,9 @@ async function handleStartRun(req, res) {
     preStartEvidencePath: preStartStatePath,
     postStartEvidenceCreated: true,
     postStartEvidencePath: postStartStatePath,
+    taskBundleCreated: true,
+    taskBundlePath: taskBundle.bundleDir,
+    taskBundleRelativePath: taskBundle.bundleRelativePath,
     requestArtifactMutated: false,
     packetId: validation.packetId,
     requestId: validation.requestId,
