@@ -2,9 +2,9 @@
 
 import { createHash, timingSafeEqual } from "node:crypto";
 import { createServer } from "node:http";
-import { readFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { execFile } from "node:child_process";
+import { execFile, spawn } from "node:child_process";
 import { promisify } from "node:util";
 
 const execFileAsync = promisify(execFile);
@@ -636,34 +636,40 @@ function capabilitiesResult() {
     runnerVersion: RUNNER_VERSION,
     runnerProtocolVersion: RUNNER_PROTOCOL_VERSION,
     executionEnabled,
-    opencodeHarnessConfigured: false,
-    opencodeHarnessReachable: false,
-    supportedOperations: ["capabilities", "validate-request"],
+    opencodeHarnessConfigured: executionEnabled,
+    opencodeHarnessReachable: executionEnabled,
+    supportedOperations: executionEnabled
+      ? ["capabilities", "validate-request", "start-run"]
+      : ["capabilities", "validate-request"],
     startCapabilityAdvertised: true,
-    startCapabilityCallable: false,
-    startCapabilityVersion: "guarded-start-capability-v0",
-    startOperationName: "start-disabled-stub",
+    startCapabilityCallable: executionEnabled,
+    startCapabilityVersion: "guarded-start-capability-v1",
+    startOperationName: executionEnabled ? "start-run" : "start-disabled-stub",
     startEndpointPresent: true,
-    startEndpointState: "PRESENT_DISABLED",
+    startEndpointState: executionEnabled ? "CALLABLE_GUARDED" : "PRESENT_DISABLED",
     startRequiresApprovalEvidence: true,
     startRequiresPreflight: true,
     startRequiresDisableSwitchClear: true,
     startRequiresRequestArtifactHash: true,
     startRequiresTargetExecutionCommit: true,
     startRequiresEvidenceLedgerValidation: true,
-    startRecordsPreStartState: false,
-    startRecordsPostStartState: false,
-    startReturnsRunnerRunId: false,
-    startDisabledReason: "START_ENDPOINT_PRESENT_DISABLED",
-    startBlockingReasons: [
-      "START_ENDPOINT_DISABLED",
-      "START_NOT_CALLABLE",
-      "RUNNER_EXECUTION_DISABLED",
-      "OPENCODE_EXECUTION_DISABLED"
-    ],
+    startRecordsPreStartState: executionEnabled,
+    startRecordsPostStartState: executionEnabled,
+    startReturnsRunnerRunId: executionEnabled,
+    startDisabledReason: executionEnabled ? null : "START_ENDPOINT_PRESENT_DISABLED",
+    startBlockingReasons: executionEnabled
+      ? []
+      : [
+          "START_ENDPOINT_DISABLED",
+          "START_NOT_CALLABLE",
+          "RUNNER_EXECUTION_DISABLED",
+          "OPENCODE_EXECUTION_DISABLED"
+        ],
     supportedRunModes: ALLOWED_RUN_MODES,
     allowedModels: ALLOWED_MODELS,
-    statusSource: "private dev runner static policy",
+    statusSource: executionEnabled
+      ? "private dev runner guarded execution policy"
+      : "private dev runner static policy",
     checkedAt: nowIso(),
     reasons
   };
@@ -777,35 +783,221 @@ async function handleStartRun(req, res) {
     return;
   }
 
-  logOperationEnd(operation, startedAt, false, "START_ENDPOINT_DISABLED");
+  let body;
 
-  jsonResponse(res, 403, {
-    valid: false,
-    accepted: false,
-    executionEnabled: false,
-    executionStarted: false,
-    opencodeStarted: false,
-    runnerRunId: null,
+  try {
+    body = await readJsonBody(req);
+  } catch {
+    logOperationEnd(operation, startedAt, false, "RUNNER_PROTOCOL_ERROR");
+    jsonResponse(res, 400, {
+      valid: false,
+      accepted: false,
+      executionEnabled,
+      executionStarted: false,
+      opencodeStarted: false,
+      runnerRunId: null,
+      startEndpointContacted: true,
+      runnerProtocolVersion: RUNNER_PROTOCOL_VERSION,
+      boundaryVersion: BOUNDARY_VERSION,
+      statusSource: "private dev runner guarded start protocol policy",
+      checkedAt: nowIso(),
+      reasons: ["RUNNER_PROTOCOL_ERROR"]
+    });
+    return;
+  }
+
+  if (!executionEnabled) {
+    logOperationEnd(operation, startedAt, false, "START_ENDPOINT_DISABLED");
+
+    jsonResponse(res, 403, {
+      valid: false,
+      accepted: false,
+      executionEnabled: false,
+      executionStarted: false,
+      opencodeStarted: false,
+      runnerRunId: null,
+      startEndpointContacted: true,
+      startEndpointState: "PRESENT_DISABLED",
+      startCapabilityCallable: false,
+      executionAllowedNow: false,
+      approvalConsumed: false,
+      approvalConsumptionPath: null,
+      preStartEvidenceCreated: false,
+      postStartEvidenceCreated: false,
+      requestArtifactMutated: false,
+      runnerProtocolVersion: RUNNER_PROTOCOL_VERSION,
+      boundaryVersion: BOUNDARY_VERSION,
+      statusSource: "private dev runner disabled start stub policy",
+      checkedAt: nowIso(),
+      reasons: [
+        "START_ENDPOINT_DISABLED",
+        "START_NOT_CALLABLE",
+        "EXECUTION_NOT_ALLOWED",
+        "RUNNER_EXECUTION_DISABLED",
+        "OPENCODE_EXECUTION_DISABLED"
+      ]
+    });
+    return;
+  }
+
+  const validation = await validateRequestArtifact(body);
+
+  if (validation.valid !== true) {
+    logOperationEnd(
+      operation,
+      startedAt,
+      false,
+      validation.reasons?.[0] || "RUNNER_REJECTED_REQUEST"
+    );
+
+    jsonResponse(res, 200, {
+      ...validation,
+      accepted: false,
+      executionEnabled,
+      executionStarted: false,
+      opencodeStarted: false,
+      runnerRunId: null,
+      startEndpointContacted: true,
+      startEndpointState: "CALLABLE_GUARDED",
+      startCapabilityCallable: true,
+      executionAllowedNow: false,
+      approvalConsumed: false,
+      approvalConsumptionPath: null,
+      preStartEvidenceCreated: false,
+      postStartEvidenceCreated: false,
+      requestArtifactMutated: false,
+      statusSource: "private dev runner guarded start validation policy",
+      checkedAt: nowIso()
+    });
+    return;
+  }
+
+  const runnerRunId = `RUN-${new Date()
+    .toISOString()
+    .replace(/[-:.]/g, "")
+    .replace("T", "T")
+    .replace("Z", "Z")}-${Math.random().toString(16).slice(2, 10)}`;
+
+  const artifactDir =
+    typeof validation.artifactDir === "string"
+      ? validation.artifactDir
+      : `runs/${validation.packetId}/${validation.modelId}-${validation.runMode}/`;
+
+  const absoluteArtifactDir = path.join(repoRoot, artifactDir);
+  await mkdir(absoluteArtifactDir, { recursive: true });
+
+  const preStartStatePath = path.join(absoluteArtifactDir, `${runnerRunId}-pre-start.json`);
+  const postStartStatePath = path.join(absoluteArtifactDir, `${runnerRunId}-post-start.json`);
+  const stdoutPath = path.join(absoluteArtifactDir, `${runnerRunId}-opencode.stdout.log`);
+  const stderrPath = path.join(absoluteArtifactDir, `${runnerRunId}-opencode.stderr.log`);
+
+  const message = [
+    `ForgePilot guarded DESIGN_ONLY execution request.`,
+    `Packet: ${validation.packetId}`,
+    `Request: ${validation.requestId}`,
+    `Model: ${validation.modelId}`,
+    `Run mode: ${validation.runMode}`,
+    `Target commit: ${validation.requestBaseCommit || validation.baseCommit}`,
+    ``,
+    `Read packets/${validation.packetId}.md and produce the requested DESIGN_ONLY implementation/evidence artifacts.`,
+    `Do not expose secrets. Preserve ForgePilot evidence discipline.`
+  ].join("\n");
+
+  await writeFile(
+    preStartStatePath,
+    `${JSON.stringify(
+      {
+        schemaVersion: "FP-MCP-142",
+        artifactType: "runner-pre-start-state",
+        packetId: validation.packetId,
+        requestId: validation.requestId,
+        runnerRunId,
+        executionEnabled,
+        startEndpointContacted: true,
+        executionStarted: false,
+        opencodeStarted: false,
+        recordedAt: nowIso()
+      },
+      null,
+      2
+    )}\n`
+  );
+
+  const stdoutFd = await import("node:fs").then((fs) => fs.openSync(stdoutPath, "a"));
+  const stderrFd = await import("node:fs").then((fs) => fs.openSync(stderrPath, "a"));
+
+  const child = spawn(
+    "opencode",
+    [
+      "run",
+      "--attach",
+      "http://127.0.0.1:4096",
+      "--dir",
+      repoRoot,
+      "--title",
+      `ForgePilot ${validation.packetId} ${runnerRunId}`,
+      message
+    ],
+    {
+      cwd: repoRoot,
+      detached: true,
+      stdio: ["ignore", stdoutFd, stderrFd]
+    }
+  );
+
+  child.unref();
+
+  await writeFile(
+    postStartStatePath,
+    `${JSON.stringify(
+      {
+        schemaVersion: "FP-MCP-142",
+        artifactType: "runner-post-start-state",
+        packetId: validation.packetId,
+        requestId: validation.requestId,
+        runnerRunId,
+        executionEnabled,
+        startEndpointContacted: true,
+        executionStarted: true,
+        opencodeStarted: true,
+        opencodePid: child.pid ?? null,
+        stdoutPath,
+        stderrPath,
+        recordedAt: nowIso()
+      },
+      null,
+      2
+    )}\n`
+  );
+
+  logOperationEnd(operation, startedAt, true);
+
+  jsonResponse(res, 200, {
+    valid: true,
+    accepted: true,
+    executionEnabled,
+    executionStarted: true,
+    opencodeStarted: true,
+    runnerRunId,
     startEndpointContacted: true,
-    startEndpointState: "PRESENT_DISABLED",
-    startCapabilityCallable: false,
-    executionAllowedNow: false,
+    startEndpointState: "CALLABLE_GUARDED",
+    startCapabilityCallable: true,
+    executionAllowedNow: true,
     approvalConsumed: false,
     approvalConsumptionPath: null,
-    preStartEvidenceCreated: false,
-    postStartEvidenceCreated: false,
+    preStartEvidenceCreated: true,
+    preStartEvidencePath: preStartStatePath,
+    postStartEvidenceCreated: true,
+    postStartEvidencePath: postStartStatePath,
     requestArtifactMutated: false,
+    packetId: validation.packetId,
+    requestId: validation.requestId,
+    artifactDir,
     runnerProtocolVersion: RUNNER_PROTOCOL_VERSION,
-    boundaryVersion: BOUNDARY_VERSION,
-    statusSource: "private dev runner disabled start stub policy",
+    boundaryVersion: "FP-MCP-142",
+    statusSource: "private dev runner guarded OpenCode start policy",
     checkedAt: nowIso(),
-    reasons: [
-      "START_ENDPOINT_DISABLED",
-      "START_NOT_CALLABLE",
-      "EXECUTION_NOT_ALLOWED",
-      "RUNNER_EXECUTION_DISABLED",
-      "OPENCODE_EXECUTION_DISABLED"
-    ]
+    reasons: []
   });
 }
 
