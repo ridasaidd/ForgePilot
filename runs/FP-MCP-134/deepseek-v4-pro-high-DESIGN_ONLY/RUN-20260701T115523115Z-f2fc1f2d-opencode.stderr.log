@@ -1,0 +1,83 @@
+[0m
+> build · deepseek-v4-pro
+[0m
+[0m✗ [0mRead packets/FP-MCP-134.md failed
+[91m[1mError: [0mFile not found: /home/ridasaidd/forgepilot-chatgpt-mcp/packets/FP-MCP-134.md
+[0m→ [0mRead .
+[0m✱ [0mGlob "**/FP-MCP-134*"[90m 0 matches[0m
+[0m✱ [0mGlob "**/packets/**"[90m 0 matches[0m
+[0m
+[0m$ [0mgit log --oneline -20
+232ecc5 Bind server approval commit checks to target commit
+e555807 Derive approval packet scope from request artifact
+8228eb9 Apply gate normalization to local preflight output
+e779b39 Normalize local preflight report gates
+0a4236e Bind request artifacts to target execution commit
+b0794cc Add target execution commit to request artifacts
+6399cb5 Use target commit binding in local preflight approval evaluation
+9e94ad9 Add local guarded preflight report skeleton
+89124e4 Classify guarded preflight approval evidence
+c656a7e Align guarded preflight ledger readiness reasons
+0b4ddb1 Evaluate guarded preflight evidence ledger readiness
+0b134cc Add guarded start preflight report skeleton
+22e1c12 Fail closed on disabled runner start boundary
+ae6cfbe Expose runner start endpoint state metadata
+d7a1e7b Expose disabled runner start capability metadata
+88e9b55 Complete FP-MCP-086 endpoint validator failed-path output
+2d1311f Normalize FP-MCP-084 create response boundary summary
+472861f Harden OAuth metadata response handling
+3d27061 Upgrade OpenCode request artifact contract
+75b854d Update MCP bridge server
+[0m
+[0m$ [0mgit show --stat bbf930a
+fatal: ambiguous argument 'bbf930a': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+[0m
+[0m→ [0mRead docs
+[0m→ [0mRead src
+[0m✱ [0mGlob "**/*.ts"[90m 3 matches[0m
+[0m→ [0mRead src/server.ts
+[0m→ [0mRead src/oauthMetadata.ts
+[0m→ [0mRead src/auth.ts
+[0m→ [0mRead package.json
+[0m
+[0m$ [0mls /home/ridasaidd/forgepilot/packets/ 2>/dev/null | head -30
+FP-002.md
+FP-002-V2.md
+FP-002-V3.md
+FP-003.md
+FP-004.md
+FP-005.md
+FP-006.md
+FP-007.md
+FP-008.md
+FP-009.md
+FP-010.md
+FP-011.md
+FP-012.md
+FP-EVAL-001.md
+FP-EVAL-002.md
+FP-MCP-001.md
+FP-MCP-002.md
+FP-MCP-003.md
+FP-MCP-004.md
+FP-MCP-005.md
+FP-MCP-006.md
+FP-MCP-007.md
+FP-MCP-008.md
+FP-MCP-009.md
+FP-MCP-010.md
+FP-MCP-011.md
+FP-MCP-012.md
+FP-MCP-013.md
+FP-MCP-014.md
+FP-MCP-015.md
+[0m
+[0m$ [0mls /home/ridasaidd/forgepilot/packets/FP-MCP-134* 2>/dev/null
+/home/ridasaidd/forgepilot/packets/FP-MCP-134.md
+[0m
+[0m→ [0mRead scripts
+[93m[1m! [0mpermission requested: external_directory (/home/ridasaidd/forgepilot/packets/*); auto-rejecting
+[0m✗ [0mRead /home/ridasaidd/forgepilot/packets/FP-MCP-134.md failed
+[91m[1mError: [0mThe user rejected permission to use this specific tool call.

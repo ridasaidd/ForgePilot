@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "FP-MCP-142",
+  "artifactType": "runner-pre-start-state",
+  "packetId": "FP-MCP-134",
+  "requestId": "REQ-20260630T202005438Z-86d20df4",
+  "runnerRunId": "RUN-20260701T115523115Z-f2fc1f2d",
+  "executionEnabled": true,
+  "startEndpointContacted": true,
+  "executionStarted": false,
+  "opencodeStarted": false,
+  "targetWorkspaceId": "forgepilot-chatgpt-mcp",
+  "opencodeWorkingDirectory": "/home/ridasaidd/forgepilot-chatgpt-mcp",
+  "recordedAt": "2026-07-01T11:55:23.115Z"
+}
