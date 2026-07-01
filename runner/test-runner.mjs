@@ -3,8 +3,8 @@
 import { spawn } from "node:child_process";
 import { setTimeout as delay } from "node:timers/promises";
 
-const HOST = "127.0.0.1";
-const PORT = "8791";
+const HOST = process.env.FORGEPILOT_RUNNER_TEST_HOST || "127.0.0.1";
+const PORT = process.env.FORGEPILOT_RUNNER_TEST_PORT || "8799";
 const BASE_URL = `http://${HOST}:${PORT}`;
 const TOKEN = process.env.FORGEPILOT_RUNNER_TOKEN || "test-token";
 

@@ -75,7 +75,29 @@ function resolveTargetWorkspace(targetWorkspaceId) {
   return resolved;
 }
 
-async function stageTaskBundle(opencodeWorkingDirectory, runnerRunId, packetId, requestArtifactPath) {
+async function getGitShortCommit(workingDirectory) {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync("git", ["rev-parse", "--short", "HEAD"], {
+    cwd: workingDirectory,
+    encoding: "utf8"
+  });
+
+  if (result.status !== 0) {
+    return null;
+  }
+
+  const commit = typeof result.stdout === "string" ? result.stdout.trim() : "";
+
+  return commit.length > 0 ? commit : null;
+}
+
+async function stageTaskBundle(
+  opencodeWorkingDirectory,
+  runnerRunId,
+  packetId,
+  requestArtifactPath,
+  context
+) {
   const bundleDir = path.join(
     opencodeWorkingDirectory,
     ".forgepilot",
@@ -94,16 +116,30 @@ async function stageTaskBundle(opencodeWorkingDirectory, runnerRunId, packetId, 
   const requestContent = await readFile(requestSrc, "utf8");
   await writeFile(path.join(bundleDir, "request.json"), requestContent);
 
+  await writeFile(
+    path.join(bundleDir, "context.json"),
+    `${JSON.stringify(context, null, 2)}\n`
+  );
+
   const instructions = [
     `ForgePilot staged task execution instructions.`,
     ``,
     `Packet: ${packetId}`,
     `Runner run ID: ${runnerRunId}`,
     ``,
+    `Control repository: ${context.controlRepoPath}`,
+    `Control repository commit: ${context.controlRepoCommit}`,
+    `Target workspace id: ${context.targetWorkspaceId}`,
+    `Target workspace path: ${context.opencodeWorkingDirectory}`,
+    `Target workspace commit: ${context.targetWorkspaceCommit}`,
+    ``,
     `Read packet.md to understand the task requirements.`,
-    `Read request.json for the execution context details.`,
+    `Read request.json for the immutable request artifact.`,
+    `Read context.json for execution context, workspace identity, and commit bindings.`,
     `Produce all DESIGN_ONLY implementation/evidence artifacts in the outputs/ directory.`,
     ``,
+    `Do not resolve controlRepoCommit inside the target workspace.`,
+    `Use targetWorkspaceCommit for git comparisons inside the target workspace.`,
     `Do not read outside the current workspace.`,
     `Do not expose secrets.`,
     `Preserve ForgePilot evidence discipline.`
@@ -114,7 +150,7 @@ async function stageTaskBundle(opencodeWorkingDirectory, runnerRunId, packetId, 
   return {
     bundleDir,
     bundleRelativePath: `.forgepilot/tasks/${runnerRunId}`,
-    files: ["packet.md", "request.json", "instructions.md", "outputs/"]
+    files: ["packet.md", "request.json", "context.json", "instructions.md", "outputs/"]
   };
 }
 
@@ -1007,6 +1043,75 @@ async function handleStartRun(req, res) {
     return;
   }
 
+  const controlRepoCommit = await getGitShortCommit(repoRoot);
+
+  if (controlRepoCommit === null) {
+    logOperationEnd(operation, startedAt, false, "CONTROL_REPO_COMMIT_UNRESOLVABLE");
+
+    jsonResponse(res, 403, {
+      valid: false,
+      accepted: false,
+      executionEnabled,
+      executionStarted: false,
+      opencodeStarted: false,
+      runnerRunId: null,
+      startEndpointContacted: true,
+      startEndpointState: "CALLABLE_GUARDED",
+      startCapabilityCallable: true,
+      executionAllowedNow: false,
+      approvalConsumed: false,
+      approvalConsumptionPath: null,
+      preStartEvidenceCreated: false,
+      postStartEvidenceCreated: false,
+      requestArtifactMutated: false,
+      controlRepoPath: repoRoot,
+      controlRepoCommit: null,
+      targetWorkspaceId: requestedTargetWorkspaceId,
+      opencodeWorkingDirectory,
+      runnerProtocolVersion: RUNNER_PROTOCOL_VERSION,
+      boundaryVersion: BOUNDARY_VERSION,
+      statusSource: "private dev runner guarded commit binding policy",
+      checkedAt: nowIso(),
+      reasons: ["CONTROL_REPO_COMMIT_UNRESOLVABLE"]
+    });
+    return;
+  }
+
+  const targetWorkspaceCommit = await getGitShortCommit(opencodeWorkingDirectory);
+
+  if (targetWorkspaceCommit === null) {
+    logOperationEnd(operation, startedAt, false, "TARGET_WORKSPACE_COMMIT_UNRESOLVABLE");
+
+    jsonResponse(res, 403, {
+      valid: false,
+      accepted: false,
+      executionEnabled,
+      executionStarted: false,
+      opencodeStarted: false,
+      runnerRunId: null,
+      startEndpointContacted: true,
+      startEndpointState: "CALLABLE_GUARDED",
+      startCapabilityCallable: true,
+      executionAllowedNow: false,
+      approvalConsumed: false,
+      approvalConsumptionPath: null,
+      preStartEvidenceCreated: false,
+      postStartEvidenceCreated: false,
+      requestArtifactMutated: false,
+      controlRepoPath: repoRoot,
+      controlRepoCommit,
+      targetWorkspaceId: requestedTargetWorkspaceId,
+      targetWorkspaceCommit: null,
+      opencodeWorkingDirectory,
+      runnerProtocolVersion: RUNNER_PROTOCOL_VERSION,
+      boundaryVersion: BOUNDARY_VERSION,
+      statusSource: "private dev runner guarded commit binding policy",
+      checkedAt: nowIso(),
+      reasons: ["TARGET_WORKSPACE_COMMIT_UNRESOLVABLE"]
+    });
+    return;
+  }
+
   const runnerRunId = `RUN-${new Date()
     .toISOString()
     .replace(/[-:.]/g, "")
@@ -1021,11 +1126,31 @@ async function handleStartRun(req, res) {
   const absoluteArtifactDir = path.join(repoRoot, artifactDir);
   await mkdir(absoluteArtifactDir, { recursive: true });
 
+  const context = {
+    schemaVersion: "FP-MCP-145",
+    artifactType: "runner-task-context",
+    packetId: validation.packetId,
+    requestId: validation.requestId,
+    runnerRunId,
+    modelId: validation.modelId,
+    runMode: validation.runMode,
+    controlRepoPath: repoRoot,
+    controlRepoCommit,
+    targetWorkspaceId: requestedTargetWorkspaceId,
+    targetWorkspaceCommit,
+    opencodeWorkingDirectory,
+    requestArtifactPath: validation.requestArtifactPath,
+    requestArtifactSha256: validation.requestArtifactSha256 ?? null,
+    requestBaseCommit: validation.requestBaseCommit ?? validation.baseCommit ?? null,
+    recordedAt: nowIso()
+  };
+
   const taskBundle = await stageTaskBundle(
     opencodeWorkingDirectory,
     runnerRunId,
     validation.packetId,
-    validation.requestArtifactPath
+    validation.requestArtifactPath,
+    context
   );
 
   const preStartStatePath = path.join(absoluteArtifactDir, `${runnerRunId}-pre-start.json`);
@@ -1039,11 +1164,14 @@ async function handleStartRun(req, res) {
     `Request: ${validation.requestId}`,
     `Model: ${validation.modelId}`,
     `Run mode: ${validation.runMode}`,
-    `Target commit: ${validation.requestBaseCommit || validation.baseCommit}`,
+    `Control repo commit: ${controlRepoCommit}`,
+    `Target workspace id: ${requestedTargetWorkspaceId}`,
+    `Target workspace commit: ${targetWorkspaceCommit}`,
     ``,
     `Read ${taskBundle.bundleRelativePath}/instructions.md.`,
     `The packet has been staged at ${taskBundle.bundleRelativePath}/packet.md.`,
     `The request artifact has been staged at ${taskBundle.bundleRelativePath}/request.json.`,
+    `The execution context has been staged at ${taskBundle.bundleRelativePath}/context.json.`,
     `Write outputs to ${taskBundle.bundleRelativePath}/outputs/.`,
     `Do not read outside the current workspace.`,
     `Do not expose secrets. Preserve ForgePilot evidence discipline.`
@@ -1062,7 +1190,9 @@ async function handleStartRun(req, res) {
         startEndpointContacted: true,
         executionStarted: false,
         opencodeStarted: false,
+        controlRepoCommit,
         targetWorkspaceId: requestedTargetWorkspaceId,
+        targetWorkspaceCommit,
         opencodeWorkingDirectory,
         taskBundleCreated: true,
         taskBundlePath: taskBundle.bundleDir,
@@ -1160,7 +1290,9 @@ async function handleStartRun(req, res) {
         opencodeBin,
         opencodeModel,
         opencodeArgs,
+        controlRepoCommit,
         targetWorkspaceId: requestedTargetWorkspaceId,
+        targetWorkspaceCommit,
         opencodeWorkingDirectory,
         taskBundleCreated: true,
         taskBundlePath: taskBundle.bundleDir,
