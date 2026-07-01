@@ -1,0 +1,30 @@
+{
+  "approvalSource": "CHATGPT_MCP_TOOL_APPROVAL",
+  "approvedToolName": "forgepilot_execute_terminal_command",
+  "packetId": null,
+  "targetWorkspaceId": "forgepilot",
+  "workspacePath": "/home/ridasaidd/forgepilot",
+  "workingDirectory": "/home/ridasaidd/forgepilot",
+  "command": "rm -rf /",
+  "commandSha256": "5c7923bd67b06c93279d49c466301c57023822eec29c49e269063e47aecd973c",
+  "rationale": "Should be blocked",
+  "riskLevel": "BLOCKED",
+  "timeoutSeconds": 30,
+  "exitCode": null,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 0,
+  "stdoutPath": null,
+  "stderrPath": null,
+  "stdoutSha256": null,
+  "stderrSha256": null,
+  "preGitStatusShort": null,
+  "postGitStatusShort": null,
+  "reasons": [
+    "Destructive rm -rf of system directories is blocked"
+  ],
+  "blocked": true,
+  "blockReasons": [
+    "Destructive rm -rf of system directories is blocked"
+  ]
+}

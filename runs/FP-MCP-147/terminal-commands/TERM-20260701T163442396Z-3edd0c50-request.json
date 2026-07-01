@@ -1,0 +1,13 @@
+{
+  "terminalCommandRequestId": "TERM-20260701T163442396Z-3edd0c50",
+  "packetId": "FP-MCP-147",
+  "targetWorkspaceId": "forgepilot",
+  "workspacePath": "/home/ridasaidd/forgepilot",
+  "workingDirectory": "/home/ridasaidd/forgepilot",
+  "command": "git status --short",
+  "commandSha256": "c96885f0a85f64c61b0d76510ca80e4a19be674e163a73b68a0a3d57f4dc15b6",
+  "rationale": "Verify the new human-approved terminal command MCP tool can run a read-only command in the ForgePilot workspace and return stdout/stderr directly to GPT.",
+  "riskLevel": "READ_ONLY",
+  "timeoutSeconds": 10,
+  "startedAt": "2026-07-01T16:34:42.399Z"
+}

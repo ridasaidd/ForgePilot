@@ -1,0 +1,13 @@
+{
+  "terminalCommandRequestId": "TERM-20260701T163008054Z-2a3f3a43",
+  "packetId": null,
+  "targetWorkspaceId": "forgepilot",
+  "workspacePath": "/home/ridasaidd/forgepilot",
+  "workingDirectory": "/home/ridasaidd/forgepilot",
+  "command": "nonexistent_command_12345",
+  "commandSha256": "135843cccb1edc92a43fce7c2d1acbab8a9992183b66d7cda093a30ebc4c9af6",
+  "rationale": "Test non-zero exit code",
+  "riskLevel": "HIGH_RISK",
+  "timeoutSeconds": 10,
+  "startedAt": "2026-07-01T16:30:08.055Z"
+}

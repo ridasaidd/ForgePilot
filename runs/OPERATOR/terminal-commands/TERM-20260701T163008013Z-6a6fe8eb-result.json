@@ -1,0 +1,32 @@
+{
+  "approvalSource": "CHATGPT_MCP_TOOL_APPROVAL",
+  "approvedToolName": "forgepilot_execute_terminal_command",
+  "packetId": null,
+  "targetWorkspaceId": "forgepilot",
+  "workspacePath": "/home/ridasaidd/forgepilot",
+  "workingDirectory": "/home/ridasaidd/forgepilot",
+  "command": "cat .env",
+  "commandSha256": "648b13a0a3555ec5c302e06ca33a05aa40ba26836bd99f5498c138cb35d5787a",
+  "rationale": "Should be blocked",
+  "riskLevel": "BLOCKED",
+  "timeoutSeconds": 30,
+  "exitCode": null,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 0,
+  "stdoutPath": null,
+  "stderrPath": null,
+  "stdoutSha256": null,
+  "stderrSha256": null,
+  "preGitStatusShort": null,
+  "postGitStatusShort": null,
+  "reasons": [
+    "Reading .env files is blocked",
+    "Reading environment variables wholesale is blocked"
+  ],
+  "blocked": true,
+  "blockReasons": [
+    "Reading .env files is blocked",
+    "Reading environment variables wholesale is blocked"
+  ]
+}

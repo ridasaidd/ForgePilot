@@ -1,0 +1,30 @@
+{
+  "approvalSource": "CHATGPT_MCP_TOOL_APPROVAL",
+  "approvedToolName": "forgepilot_execute_terminal_command",
+  "packetId": null,
+  "targetWorkspaceId": "forgepilot",
+  "workspacePath": "/home/ridasaidd/forgepilot",
+  "workingDirectory": "/home/ridasaidd/forgepilot",
+  "command": "nonexistent_command_12345",
+  "commandSha256": "135843cccb1edc92a43fce7c2d1acbab8a9992183b66d7cda093a30ebc4c9af6",
+  "rationale": "Test non-zero exit code",
+  "riskLevel": "HIGH_RISK",
+  "timeoutSeconds": 10,
+  "startedAt": "2026-07-01T16:30:08.055Z",
+  "completedAt": "2026-07-01T16:30:08.079Z",
+  "exitCode": 127,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 13,
+  "stdoutPath": "/home/ridasaidd/forgepilot/runs/OPERATOR/terminal-commands/TERM-20260701T163008054Z-2a3f3a43-stdout.log",
+  "stderrPath": "/home/ridasaidd/forgepilot/runs/OPERATOR/terminal-commands/TERM-20260701T163008054Z-2a3f3a43-stderr.log",
+  "stdoutSha256": "73b3bc374772331fa14d2b21024e29cce9cba66d0f268b96731b6ae2efe102e7",
+  "stderrSha256": "d14accf590e1fcb1b293aed282896ee283661fc675cc8926d6a12245e4c6668c",
+  "preGitStatusShort": "?? runs/FP-MCP-147/opencode-requests/REQ-20260701T162200217Z-59695c38.json\n?? runs/OPERATOR/",
+  "postGitStatusShort": "?? runs/FP-MCP-147/opencode-requests/REQ-20260701T162200217Z-59695c38.json\n?? runs/OPERATOR/",
+  "reasons": [
+    "EXIT_CODE_127",
+    "HIGH_RISK_EXECUTED_WITH_APPROVAL"
+  ],
+  "blocked": false
+}

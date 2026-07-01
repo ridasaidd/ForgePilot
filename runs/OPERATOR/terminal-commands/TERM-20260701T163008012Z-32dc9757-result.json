@@ -1,0 +1,30 @@
+{
+  "approvalSource": "CHATGPT_MCP_TOOL_APPROVAL",
+  "approvedToolName": "forgepilot_execute_terminal_command",
+  "packetId": null,
+  "targetWorkspaceId": "forgepilot",
+  "workspacePath": "/home/ridasaidd/forgepilot",
+  "workingDirectory": "/home/ridasaidd/forgepilot",
+  "command": "sudo ls",
+  "commandSha256": "9d805d93228875e0cf45e5aa2be984a2b892a5371e6ffa51120b90bc24169bf9",
+  "rationale": "Should be blocked",
+  "riskLevel": "BLOCKED",
+  "timeoutSeconds": 30,
+  "exitCode": null,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 0,
+  "stdoutPath": null,
+  "stderrPath": null,
+  "stdoutSha256": null,
+  "stderrSha256": null,
+  "preGitStatusShort": null,
+  "postGitStatusShort": null,
+  "reasons": [
+    "sudo is not allowed"
+  ],
+  "blocked": true,
+  "blockReasons": [
+    "sudo is not allowed"
+  ]
+}
