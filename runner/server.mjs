@@ -33,6 +33,23 @@ const opencodeBin =
 const executionEnabled =
   process.env.FORGEPILOT_RUNNER_EXECUTION_ENABLED === "true";
 
+function getOpenCodeModelForModelId(modelId) {
+  if (typeof modelId !== "string" || modelId.length === 0) {
+    return null;
+  }
+
+  const envKey = `FORGEPILOT_OPENCODE_MODEL_${modelId
+    .toUpperCase()
+    .replaceAll("-", "_")
+    .replaceAll(".", "_")}`;
+
+  const configured = process.env[envKey];
+
+  return typeof configured === "string" && configured.trim().length > 0
+    ? configured.trim()
+    : null;
+}
+
 function nowIso() {
   return new Date().toISOString();
 }
@@ -935,18 +952,24 @@ async function handleStartRun(req, res) {
   const stdoutFd = await import("node:fs").then((fs) => fs.openSync(stdoutPath, "a"));
   const stderrFd = await import("node:fs").then((fs) => fs.openSync(stderrPath, "a"));
 
+  const opencodeModel = getOpenCodeModelForModelId(validation.modelId);
+  const opencodeArgs = [
+    "run",
+    "--dir",
+    repoRoot,
+    "--title",
+    `ForgePilot ${validation.packetId} ${runnerRunId}`
+  ];
+
+  if (opencodeModel !== null) {
+    opencodeArgs.push("--model", opencodeModel);
+  }
+
+  opencodeArgs.push(message);
+
   const child = spawn(
     opencodeBin,
-    [
-      "run",
-      "--attach",
-      "http://127.0.0.1:4096",
-      "--dir",
-      repoRoot,
-      "--title",
-      `ForgePilot ${validation.packetId} ${runnerRunId}`,
-      message
-    ],
+    opencodeArgs,
     {
       cwd: repoRoot,
       detached: true,
@@ -970,6 +993,8 @@ async function handleStartRun(req, res) {
             executionStarted: false,
             opencodeStarted: false,
             opencodeBin,
+            opencodeModel,
+            opencodeArgs,
             errorCode: error && typeof error.code === "string" ? error.code : "OPENCODE_SPAWN_ERROR",
             errorMessage: error && typeof error.message === "string" ? error.message : "OpenCode spawn failed",
             stdoutPath,
@@ -1002,6 +1027,8 @@ async function handleStartRun(req, res) {
         opencodeStarted: true,
         opencodePid: child.pid ?? null,
         opencodeBin,
+        opencodeModel,
+        opencodeArgs,
         stdoutPath,
         stderrPath,
         recordedAt: nowIso()
