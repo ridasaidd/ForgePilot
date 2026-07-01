@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "FP-MCP-142",
+  "artifactType": "runner-post-start-state",
+  "packetId": "FP-MCP-145",
+  "requestId": "REQ-20260701T125903957Z-3d529835",
+  "runnerRunId": "RUN-20260701T130106905Z-7d4954dc",
+  "executionEnabled": true,
+  "startEndpointContacted": true,
+  "executionStarted": true,
+  "opencodeStarted": true,
+  "opencodePid": 709411,
+  "opencodeBin": "/home/ridasaidd/.nvm/versions/node/v24.4.1/bin/opencode",
+  "opencodeModel": null,
+  "opencodeArgs": [
+    "run",
+    "--dir",
+    "/home/ridasaidd/forgepilot",
+    "--title",
+    "ForgePilot FP-MCP-145 RUN-20260701T130106905Z-7d4954dc",
+    "ForgePilot guarded DESIGN_ONLY execution request.\nPacket: FP-MCP-145\nRequest: REQ-20260701T125903957Z-3d529835\nModel: deepseek-v4-pro-high\nRun mode: DESIGN_ONLY\nTarget commit: 20a2396\n\nRead .forgepilot/tasks/RUN-20260701T130106905Z-7d4954dc/instructions.md.\nThe packet has been staged at .forgepilot/tasks/RUN-20260701T130106905Z-7d4954dc/packet.md.\nThe request artifact has been staged at .forgepilot/tasks/RUN-20260701T130106905Z-7d4954dc/request.json.\nWrite outputs to .forgepilot/tasks/RUN-20260701T130106905Z-7d4954dc/outputs/.\nDo not read outside the current workspace.\nDo not expose secrets. Preserve ForgePilot evidence discipline."
+  ],
+  "targetWorkspaceId": "forgepilot",
+  "opencodeWorkingDirectory": "/home/ridasaidd/forgepilot",
+  "taskBundleCreated": true,
+  "taskBundlePath": "/home/ridasaidd/forgepilot/.forgepilot/tasks/RUN-20260701T130106905Z-7d4954dc",
+  "taskBundleRelativePath": ".forgepilot/tasks/RUN-20260701T130106905Z-7d4954dc",
+  "stdoutPath": "/home/ridasaidd/forgepilot/runs/FP-MCP-145/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T130106905Z-7d4954dc-opencode.stdout.log",
+  "stderrPath": "/home/ridasaidd/forgepilot/runs/FP-MCP-145/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T130106905Z-7d4954dc-opencode.stderr.log",
+  "recordedAt": "2026-07-01T13:01:06.909Z"
+}
