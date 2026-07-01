@@ -1,0 +1,41 @@
+{
+  "runnerConfigured": true,
+  "runnerHostRole": "dev-execution-plane",
+  "runnerVersion": "0.1.0-fp-mcp-024",
+  "runnerProtocolVersion": "forgepilot-runner-v1",
+  "executionEnabled": true,
+  "opencodeHarnessConfigured": true,
+  "opencodeHarnessReachable": true,
+  "supportedOperations": [
+    "capabilities",
+    "validate-request",
+    "start-run"
+  ],
+  "startCapabilityAdvertised": true,
+  "startCapabilityCallable": true,
+  "startCapabilityVersion": "guarded-start-capability-v1",
+  "startOperationName": "start-run",
+  "startEndpointPresent": true,
+  "startEndpointState": "CALLABLE_GUARDED",
+  "startRequiresApprovalEvidence": true,
+  "startRequiresPreflight": true,
+  "startRequiresDisableSwitchClear": true,
+  "startRequiresRequestArtifactHash": true,
+  "startRequiresTargetExecutionCommit": true,
+  "startRequiresEvidenceLedgerValidation": true,
+  "startRecordsPreStartState": true,
+  "startRecordsPostStartState": true,
+  "startReturnsRunnerRunId": true,
+  "startDisabledReason": null,
+  "startBlockingReasons": [],
+  "supportedRunModes": [
+    "DESIGN_ONLY"
+  ],
+  "allowedModels": [
+    "deepseek-v4-pro-high",
+    "qwen-3.7-max"
+  ],
+  "statusSource": "private dev runner guarded execution policy",
+  "checkedAt": "2026-07-01T10:32:39.055Z",
+  "reasons": []
+}
