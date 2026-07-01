@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "FP-MCP-142",
+  "artifactType": "runner-pre-start-state",
+  "packetId": "FP-MCP-146",
+  "requestId": "REQ-20260701T133309176Z-34bc6ab3",
+  "runnerRunId": "RUN-20260701T133341720Z-0d7af9f0",
+  "executionEnabled": true,
+  "startEndpointContacted": true,
+  "executionStarted": false,
+  "opencodeStarted": false,
+  "controlRepoCommit": "441db5b",
+  "targetWorkspaceId": "forgepilot-chatgpt-mcp",
+  "targetWorkspaceCommit": "22e99d9",
+  "opencodeWorkingDirectory": "/home/ridasaidd/forgepilot-chatgpt-mcp",
+  "taskBundleCreated": true,
+  "taskBundlePath": "/home/ridasaidd/forgepilot-chatgpt-mcp/.forgepilot/tasks/RUN-20260701T133341720Z-0d7af9f0",
+  "taskBundleRelativePath": ".forgepilot/tasks/RUN-20260701T133341720Z-0d7af9f0",
+  "taskBundleFiles": [
+    "packet.md",
+    "request.json",
+    "context.json",
+    "instructions.md",
+    "outputs/"
+  ],
+  "recordedAt": "2026-07-01T13:33:41.723Z"
+}

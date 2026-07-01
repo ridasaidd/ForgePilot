@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "FP-MCP-146",
+  "artifactType": "implementation-design",
+  "packetId": "FP-MCP-146",
+  "requestId": "REQ-20260701T133309176Z-34bc6ab3",
+  "runnerRunId": "RUN-20260701T133341720Z-0d7af9f0",
+  "modelId": "deepseek-v4-pro-high",
+  "runMode": "DESIGN_ONLY",
+  "createdAt": "2026-07-01T13:33:41.720Z",
+  "targetWorkspaceId": "forgepilot-chatgpt-mcp",
+  "targetWorkspaceCommit": "22e99d9",
+  "controlRepoCommit": "441db5b",
+  "status": "DESIGN_COMPLETE",
+  "filesChanged": [
+    "src/server.ts"
+  ],
+  "changes": {
+    "changeCount": 6,
+    "summary": [
+      {
+        "id": "CHG-1",
+        "description": "Add targetWorkspaceId parameter to startRemoteRunnerRequest function",
+        "location": "src/server.ts:7989-7994",
+        "type": "parameter-addition"
+      },
+      {
+        "id": "CHG-2",
+        "description": "Add workspace id validation with fail-closed behavior",
+        "location": "src/server.ts (new helper function)",
+        "type": "validation-addition"
+      },
+      {
+        "id": "CHG-3",
+        "description": "Forward targetWorkspaceId and boundaryVersion to runner in start request",
+        "location": "src/server.ts:8549-8558",
+        "type": "request-body-update"
+      },
+      {
+        "id": "CHG-4",
+        "description": "Parse and return new runner response fields (controlRepoCommit, targetWorkspaceCommit, opencodeWorkingDirectory, taskBundle*, preStartEvidencePath, postStartEvidencePath, requestArtifactMutated)",
+        "location": "src/server.ts:8635-8769",
+        "type": "response-extraction"
+      },
+      {
+        "id": "CHG-5",
+        "description": "Update baseStartRemoteRunnerResult to include new fields with null defaults",
+        "location": "src/server.ts:5747-5871",
+        "type": "schema-update"
+      },
+      {
+        "id": "CHG-6",
+        "description": "Add targetWorkspaceId to tool input schema, pass to function",
+        "location": "src/server.ts:9997-10027",
+        "type": "tool-registration-update"
+      },
+      {
+        "id": "CHG-7",
+        "description": "Add workspace routing capability fields to getRemoteRunnerStatus",
+        "location": "src/server.ts:1249-1397",
+        "type": "capability-surface-update"
+      },
+      {
+        "id": "CHG-8",
+        "description": "Update ForgePilotRemoteRunnerStatusOutputSchema with new capability fields",
+        "location": "src/server.ts:220-254",
+        "type": "schema-update"
+      },
+      {
+        "id": "CHG-9",
+        "description": "Update ForgePilotStartRemoteRunnerRequestOutputSchema with new response fields",
+        "location": "src/server.ts:387-455",
+        "type": "schema-update"
+      }
+    ]
+  },
+  "constraintsPreserved": {
+    "noDirectOpencodeExecution": true,
+    "noArbitraryWorkspacePaths": true,
+    "runnerRemainsOnlyExecutionBoundary": true,
+    "explicitApprovalRequired": true,
+    "designOnlyPreserved": true,
+    "failClosedForUnknownWorkspaces": true,
+    "noRequestArtifactMutation": true,
+    "noSecretExposure": true,
+    "controlRepoCommitNotTreatedAsTargetCommit": true,
+    "evidenceNotMoved": true
+  },
+  "verificationPlan": {
+    "typecheck": "pnpm build (tsc)",
+    "existingTools": "All existing MCP bridge tools continue to work",
+    "targetWorkspaceIdAccepted": "forgepilot_start_remote_runner_request accepts targetWorkspaceId",
+    "forwardedToRunner": "targetWorkspaceId forwarded to runner in start request body",
+    "responseIncludesControlRepoCommit": "Response includes controlRepoCommit field",
+    "responseIncludesTargetWorkspaceCommit": "Response includes targetWorkspaceCommit field",
+    "responseIncludesOpencodeWorkingDirectory": "Response includes opencodeWorkingDirectory field",
+    "responseIncludesTaskBundleFields": "Response includes taskBundleCreated, taskBundlePath, taskBundleRelativePath",
+    "unknownWorkspaceRejected": "Unknown workspace ids return UNKNOWN_WORKSPACE_ID reason",
+    "requestArtifactsUnmutated": "Bridge does not mutate request artifacts",
+    "noDirectOpencodeStart": "Bridge does not start OpenCode directly",
+    "runnerRemainsBoundary": "Runner remains the only execution boundary"
+  }
+}

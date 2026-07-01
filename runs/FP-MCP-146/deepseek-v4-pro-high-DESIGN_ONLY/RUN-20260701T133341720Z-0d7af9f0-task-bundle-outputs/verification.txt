@@ -1,0 +1,81 @@
+FP-MCP-146 DESIGN_ONLY Verification
+===================================
+
+Packet: FP-MCP-146
+Request: REQ-20260701T133309176Z-34bc6ab3
+Runner Run: RUN-20260701T133341720Z-0d7af9f0
+Date: 2026-07-01
+
+Verification Items
+------------------
+
+[PASS] 1. Design complete for MCP bridge update
+  - 9 changes specified across src/server.ts
+  - Design document covers all packet requirements
+
+[PASS] 2. targetWorkspaceId parameter design complete
+  - Added to startRemoteRunnerRequest signature
+  - Added to tool input schema (optional, with description)
+  - Forwarded to runner in start request body
+
+[PASS] 3. Workspace validation design complete
+  - ALLOWED_WORKSPACE_IDS constant defined
+  - isValidTargetWorkspaceId helper specified
+  - Fail-closed: unknown workspaces return UNKNOWN_WORKSPACE_ID reason
+
+[PASS] 4. Runner response field extraction design complete
+  - controlRepoCommit
+  - targetWorkspaceId (from runner)
+  - targetWorkspaceCommit
+  - opencodeWorkingDirectory
+  - taskBundleCreated
+  - taskBundlePath
+  - taskBundleRelativePath
+  - preStartEvidencePath
+  - postStartEvidencePath
+  - requestArtifactMutated
+
+[PASS] 5. baseStartRemoteRunnerResult updated
+  - All new fields have null/empty defaults in failure paths
+
+[PASS] 6. Remote runner status capability surface designed
+  - supportedWorkspaces
+  - defaultWorkspace
+  - workspaceRoutingEnabled
+  - commitBindingEnabled
+  - taskBundleStagingEnabled
+
+[PASS] 7. Schema updates specified
+  - ForgePilotStartRemoteRunnerRequestOutputSchema updated
+  - ForgePilotRemoteRunnerStatusOutputSchema updated
+
+[PASS] 8. No direct OpenCode execution
+  - Bridge calls runner endpoint only, never shell commands
+  - Runner remains the only execution boundary
+
+[PASS] 9. No arbitrary workspace paths
+  - targetWorkspaceId validated against ALLOWED_WORKSPACE_IDS
+
+[PASS] 10. Explicit approval required
+  - approval must equal START_REMOTE_RUNNER_REQUEST
+
+[PASS] 11. DESIGN_ONLY mode preserved
+  - ALLOWED_OPENCODE_RUN_MODES unchanged
+
+[PASS] 12. Evidence discipline preserved
+  - Bridge reports paths but does not move evidence
+  - Runner evidence stays under /home/ridasaidd/forgepilot/runs/
+
+[PASS] 13. No secret exposure
+  - No new env var access
+  - No token forwarding changes
+
+[PASS] 14. controlRepoCommit distinction preserved
+  - controlRepoCommit not treated as target workspace commit
+  - Separate field returned in response
+
+Summary
+-------
+All 14 verification items pass at design stage.
+Total changes: 9 (affecting 1 file: src/server.ts)
+Constraints preserved: 10 of 10

@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "FP-MCP-146",
+  "artifactType": "implementation-diff-summary",
+  "packetId": "FP-MCP-146",
+  "requestId": "REQ-20260701T133309176Z-34bc6ab3",
+  "runnerRunId": "RUN-20260701T133341720Z-0d7af9f0",
+  "targetFile": "src/server.ts",
+  "sections": [
+    {
+      "section": "ForgePilotStartRemoteRunnerRequestOutputSchema (line ~387)",
+      "action": "append",
+      "description": "Add 10 new nullable fields to the output schema for runner commit-binding and task-bundle response fields",
+      "newFields": [
+        "controlRepoCommit: NullableStringSchema",
+        "targetWorkspaceId: z.string()",
+        "targetWorkspaceCommit: NullableStringSchema",
+        "opencodeWorkingDirectory: NullableStringSchema",
+        "taskBundleCreated: z.boolean()",
+        "taskBundlePath: NullableStringSchema",
+        "taskBundleRelativePath: NullableStringSchema",
+        "preStartEvidencePath: NullableStringSchema",
+        "postStartEvidencePath: NullableStringSchema",
+        "requestArtifactMutated: z.boolean()"
+      ]
+    },
+    {
+      "section": "ForgePilotRemoteRunnerStatusOutputSchema (line ~220)",
+      "action": "append",
+      "description": "Add 5 workspace routing capability fields",
+      "newFields": [
+        "supportedWorkspaces: StringArraySchema",
+        "defaultWorkspace: NullableStringSchema",
+        "workspaceRoutingEnabled: z.boolean()",
+        "commitBindingEnabled: z.boolean()",
+        "taskBundleStagingEnabled: z.boolean()"
+      ]
+    },
+    {
+      "section": "getRemoteRunnerStatus (line ~1249)",
+      "action": "modify",
+      "description": "Add parsing of workspace routing capabilities from runner capabilities response and include in return object"
+    },
+    {
+      "section": "baseStartRemoteRunnerResult (line ~5747)",
+      "action": "modify",
+      "description": "Add new params with null/empty defaults for all new response fields"
+    },
+    {
+      "section": "startRemoteRunnerRequest (line ~7989)",
+      "action": "modify",
+      "description": "Add targetWorkspaceId param, workspace validation, forward to runner, parse runner response for commit-binding and task-bundle fields"
+    },
+    {
+      "section": "Tool registration (line ~9997)",
+      "action": "modify",
+      "description": "Add targetWorkspaceId to input schema and pass to startRemoteRunnerRequest"
+    }
+  ],
+  "newHelpers": [
+    {
+      "name": "isValidTargetWorkspaceId",
+      "description": "Validates workspace id against ALLOWED_WORKSPACE_IDS; returns true for undefined (optional) or known ids, false for unknown ids"
+    }
+  ],
+  "newConstants": [
+    {
+      "name": "ALLOWED_WORKSPACE_IDS",
+      "value": "[\"forgepilot-chatgpt-mcp\"] as const",
+      "description": "List of known workspace ids for routing validation"
+    }
+  ]
+}
