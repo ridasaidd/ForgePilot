@@ -1,0 +1,161 @@
+{
+  "schemaVersion": "FP-MCP-145",
+  "artifactType": "task-bundle-validation",
+  "packetId": "FP-MCP-145",
+  "requestId": "REQ-20260701T125903957Z-3d529835",
+  "runnerRunId": "RUN-20260701T132248140Z-dba7768d",
+  "runMode": "DESIGN_ONLY",
+  "validatedAt": "2026-07-01T15:22:48.141Z",
+  "validationOutcome": "PASSED",
+
+  "summary": "The task bundle staged by the runner for RUN-20260701T132248140Z-dba7768d fully satisfies all FP-MCP-145 requirements. All required fields are present, commit identities are properly distinguished, and the instructions correctly direct the OpenCode worker.",
+
+  "checks": [
+    {
+      "id": "context.json-schemaVersion",
+      "description": "context.json has schemaVersion FP-MCP-145",
+      "expected": "FP-MCP-145",
+      "actual": "FP-MCP-145",
+      "passed": true
+    },
+    {
+      "id": "context.json-artifactType",
+      "description": "context.json artifactType is runner-task-context",
+      "expected": "runner-task-context",
+      "actual": "runner-task-context",
+      "passed": true
+    },
+    {
+      "id": "context.json-controlRepoPath",
+      "description": "context.json includes controlRepoPath",
+      "expected": "/home/ridasaidd/forgepilot",
+      "actual": "/home/ridasaidd/forgepilot",
+      "passed": true
+    },
+    {
+      "id": "context.json-controlRepoCommit",
+      "description": "context.json includes controlRepoCommit distinct from targetWorkspaceCommit",
+      "expected": "controlRepoCommit !== targetWorkspaceCommit for cross-repo",
+      "actual": "controlRepoCommit=b37024e, targetWorkspaceCommit=22e99d9 (different, correct for cross-repo)",
+      "passed": true
+    },
+    {
+      "id": "context.json-targetWorkspaceId",
+      "description": "context.json includes targetWorkspaceId from FP-MCP-143 allowlist",
+      "expected": "forgepilot-chatgpt-mcp",
+      "actual": "forgepilot-chatgpt-mcp",
+      "passed": true
+    },
+    {
+      "id": "context.json-targetWorkspaceCommit",
+      "description": "context.json includes targetWorkspaceCommit resolved via git in target workspace",
+      "expected": "22e99d9 (short hash, hex format)",
+      "actual": "22e99d9",
+      "passed": true
+    },
+    {
+      "id": "context.json-opencodeWorkingDirectory",
+      "description": "context.json includes opencode working directory",
+      "expected": "/home/ridasaidd/forgepilot-chatgpt-mcp",
+      "actual": "/home/ridasaidd/forgepilot-chatgpt-mcp",
+      "passed": true
+    },
+    {
+      "id": "context.json-requestArtifactSha256",
+      "description": "context.json includes request artifact SHA-256 for integrity verification",
+      "expected": "1fe8e60f309eea3b745922db12483fb4bdd033173a0b70ee43487eb9b1904d58",
+      "actual": "1fe8e60f309eea3b745922db12483fb4bdd033173a0b70ee43487eb9b1904d58",
+      "passed": true
+    },
+    {
+      "id": "context.json-runnerRunId",
+      "description": "context.json includes runnerRunId",
+      "expected": "RUN-20260701T132248140Z-dba7768d",
+      "actual": "RUN-20260701T132248140Z-dba7768d",
+      "passed": true
+    },
+    {
+      "id": "instructions.md-commit-distinction",
+      "description": "instructions.md explicitly lists both controlRepoCommit and targetWorkspaceCommit",
+      "expected": "Both commits present with labels",
+      "actual": "Control repository commit: b37024e, Target workspace commit: 22e99d9",
+      "passed": true
+    },
+    {
+      "id": "instructions.md-do-not-resolve-directive",
+      "description": "instructions.md instructs not to resolve controlRepoCommit inside target workspace",
+      "expected": "Explicit directive present",
+      "actual": "Do not resolve controlRepoCommit inside the target workspace.",
+      "passed": true
+    },
+    {
+      "id": "instructions.md-use-target-directive",
+      "description": "instructions.md instructs to use targetWorkspaceCommit for git comparisons",
+      "expected": "Explicit directive present",
+      "actual": "Use targetWorkspaceCommit for git comparisons inside the target workspace.",
+      "passed": true
+    },
+    {
+      "id": "instructions.md-context-reference",
+      "description": "instructions.md directs worker to read context.json",
+      "expected": "context.json reference present",
+      "actual": "Read context.json for execution context, workspace identity, and commit bindings.",
+      "passed": true
+    },
+    {
+      "id": "instructions.md-safety-constraints",
+      "description": "instructions.md includes safety constraints",
+      "expected": "Don't read outside workspace, don't expose secrets, preserve evidence discipline",
+      "actual": "All constraints present",
+      "passed": true
+    },
+    {
+      "id": "request.json-immutability",
+      "description": "Staged request.json is an immutable copy of the original request artifact (not mutated)",
+      "expected": "Contains original fields, no new fields injected",
+      "actual": "Matches original request artifact structure, schemaVersion FP-MCP-083 preserved, no FP-MCP-145 fields injected",
+      "passed": true
+    },
+    {
+      "id": "packet.md-completeness",
+      "description": "Staged packet.md contains complete packet specification",
+      "expected": "Complete FP-MCP-145 packet content",
+      "actual": "Full 178-line packet specification present",
+      "passed": true
+    },
+    {
+      "id": "cross-repo-commit-identity",
+      "description": "For cross-repo runs, controlRepoCommit and targetWorkspaceCommit differ (FP-MCP-145 verification requirement #5)",
+      "expected": "controlRepoCommit (b37024e) != targetWorkspaceCommit (22e99d9)",
+      "actual": "b37024e != 22e99d9 (verified)",
+      "passed": true
+    }
+  ],
+
+  "verification_requirements_mapping": [
+    {"requirement": "1. node --check passes", "scope": "bridge_post_change", "status": "not_yet_verified"},
+    {"requirement": "2. Existing runner tests pass", "scope": "runner", "status": "not_yet_verified"},
+    {"requirement": "3. Capabilities report workspace routing enabled", "scope": "bridge", "status": "design_ready"},
+    {"requirement": "4. Default ForgePilot workspace records targetWorkspaceCommit", "scope": "runner", "status": "not_yet_verified"},
+    {"requirement": "5. Cross-repo workspace records different targetWorkspaceCommit", "scope": "runner", "status": "verified_in_bundle"},
+    {"requirement": "6. Task bundle instructions distinguish commits", "scope": "runner", "status": "verified_in_bundle"},
+    {"requirement": "7. Unknown workspace IDs rejected", "scope": "runner", "status": "design_ready"},
+    {"requirement": "8. Request artifacts remain unmutated", "scope": "runner+bridge", "status": "verified_in_bundle"},
+    {"requirement": "9. Evidence recorded under /home/ridasaidd/forgepilot/runs/...", "scope": "bridge", "status": "design_ready"}
+  ],
+
+  "remaining_work": {
+    "bridge_changes_needed": [
+      "Update getOpencodeCapabilities to report workspaceRoutingEnabled and targetWorkspaceCommitBinding",
+      "Update startRemoteRunnerRequest to handle and forward workspace fields from runner response",
+      "Update baseStartRemoteRunnerResult to include workspace commit fields in params and return",
+      "Update writeStartStateArtifact to include workspace commit fields",
+      "Update recordStartStateSnapshotDryRun to include workspace commit fields"
+    ],
+    "runner_verification_needed": [
+      "Verify runner capabilities endpoint reports workspace routing",
+      "Verify unknown workspace IDs are properly rejected",
+      "Verify default workspace start records targetWorkspaceCommit"
+    ]
+  }
+}

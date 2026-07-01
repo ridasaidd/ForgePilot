@@ -1,0 +1,68 @@
+FP-MCP-145 Verification Checklist
+Packet: FP-MCP-145
+Run:    RUN-20260701T132248140Z-dba7768d
+Date:   2026-07-01T15:22:48Z
+
+1.  node --check runner/server.mjs passes
+    Scope: Runner (not part of this workspace)
+    Status: NOT_VERIFIED — runner in separate repository
+
+2.  Existing runner tests pass with execution disabled
+    Scope: Runner
+    Status: NOT_VERIFIED — runner in separate repository
+
+3.  Capabilities still report workspace routing enabled
+    Scope: MCP bridge src/server.ts:1099 (getOpencodeCapabilities)
+    Status: DESIGN_READY — code change designed, not yet implemented
+
+4.  A default ForgePilot workspace start records a targetWorkspaceCommit
+    Scope: Runner
+    Status: NOT_VERIFIED — runner in separate repository
+
+5.  A forgepilot-chatgpt-mcp workspace start records bridge repo HEAD as targetWorkspaceCommit
+    Scope: Runner
+    Status: PASSED — context.json shows targetWorkspaceCommit=22e99d9 (bridge repo HEAD)
+
+6.  Task bundle instructions distinguish controlRepoCommit and targetWorkspaceCommit
+    Scope: Runner task bundle staging
+    Status: PASSED — instructions.md explicitly lists both commits and usage directives
+
+7.  Unknown workspace IDs remain rejected
+    Scope: Runner
+    Status: DESIGN_READY — FP-MCP-143 allowlist preserved
+
+8.  Request artifacts remain unmutated
+    Scope: Runner task bundle staging + Bridge
+    Status: PASSED — staged request.json is an immutable copy
+
+9.  Evidence remains recorded under /home/ridasaidd/forgepilot/runs/...
+    Scope: MCP bridge
+    Status: PASSED — all evidence paths in bridge use runs/ prefix under REPO
+
+10. Pre-start evidence includes commit binding fields
+    Scope: MCP bridge writeStartStateArtifact + Runner
+    Status: DESIGN_READY — bridge code change designed
+
+11. Post-start evidence includes commit binding fields
+    Scope: MCP bridge writeStartStateArtifact + Runner
+    Status: DESIGN_READY — bridge code change designed
+
+12. Start response includes controlRepoCommit, targetWorkspaceId, targetWorkspaceCommit, opencodeWorkingDirectory
+    Scope: MCP bridge baseStartRemoteRunnerResult + Runner
+    Status: DESIGN_READY — bridge code change designed
+
+13. Task bundle context.json includes all required fields
+    Scope: Runner task bundle staging
+    Status: PASSED — all fields present and valid
+
+14. Fail-closed on target workspace commit resolution failure
+    Scope: Runner
+    Status: DESIGN_READY — specified in packet, cannot verify in DESIGN_ONLY
+
+15. controlRepoCommit is NOT used as target workspace commit
+    Scope: Runner
+    Status: PASSED — b37024e (control) != 22e99d9 (target) in cross-repo run
+
+16. No external directory reads required by OpenCode
+    Scope: OpenCode worker constraints
+    Status: PASSED — worker reads only from staged bundle and workspace

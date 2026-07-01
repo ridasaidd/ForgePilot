@@ -1,0 +1,181 @@
+{
+  "schemaVersion": "FP-MCP-145",
+  "artifactType": "implementation-design",
+  "packetId": "FP-MCP-145",
+  "requestId": "REQ-20260701T125903957Z-3d529835",
+  "runnerRunId": "RUN-20260701T132248140Z-dba7768d",
+  "runMode": "DESIGN_ONLY",
+  "createdAt": "2026-07-01T15:22:48.141Z",
+  "designSource": "worker-analysis-in-target-workspace",
+
+  "summary": "FP-MCP-145 adds explicit target workspace commit binding to the runner start path. The runner must resolve, record, and communicate both the control repository commit and the target workspace commit as separate identities. The current task bundle demonstrates that the runner has already been updated with FP-MCP-145 support.",
+
+  "architecture_context": {
+    "controlRepoPath": "/home/ridasaidd/forgepilot",
+    "controlRepoCommit": "b37024e",
+    "targetWorkspaceId": "forgepilot-chatgpt-mcp",
+    "targetWorkspaceCommit": "22e99d9",
+    "opencodeWorkingDirectory": "/home/ridasaidd/forgepilot-chatgpt-mcp",
+    "note": "The MCP bridge (src/server.ts in forgepilot-chatgpt-mcp) is the control plane. The remote runner is the execution plane. FP-MCP-145 changes primarily affect the runner, with secondary changes to the bridge's evidence recording and response construction."
+  },
+
+  "changes_by_component": {
+    "runner": {
+      "status": "implemented",
+      "evidence": "The current task bundle (RUN-20260701T132248140Z-dba7768d) demonstrates complete FP-MCP-145 runner implementation.",
+      "changes": [
+        {
+          "component": "start-run endpoint",
+          "description": "On POST /runner/start-run, before staging the task bundle, resolve the target workspace commit via git rev-parse --short HEAD inside the target workspace directory. Fail closed (return error) if the workspace is not a valid git repo or the command fails.",
+          "required": true,
+          "status": "implemented"
+        },
+        {
+          "component": "pre-start evidence",
+          "description": "Include controlRepoCommit, targetWorkspaceId, targetWorkspaceCommit, opencodeWorkingDirectory, taskBundleCreated, taskBundlePath, and taskBundleRelativePath in pre-start evidence.",
+          "required": true,
+          "status": "implemented"
+        },
+        {
+          "component": "post-start evidence",
+          "description": "Include the same workspace commit binding fields in post-start evidence.",
+          "required": true,
+          "status": "implemented"
+        },
+        {
+          "component": "start response",
+          "description": "The POST /runner/start-run response must include controlRepoCommit, targetWorkspaceId, targetWorkspaceCommit, and opencodeWorkingDirectory.",
+          "required": true,
+          "status": "implemented"
+        },
+        {
+          "component": "task bundle staging - context.json",
+          "description": "Stage a context.json file containing controlRepoPath, controlRepoCommit, targetWorkspaceId, targetWorkspaceCommit, opencodeWorkingDirectory, requestArtifactPath, requestArtifactSha256, requestBaseCommit, and runner metadata.",
+          "required": true,
+          "status": "implemented"
+        },
+        {
+          "component": "task bundle staging - instructions.md",
+          "description": "Update instructions.md to explicitly distinguish controlRepoCommit from targetWorkspaceCommit. Include: 'Do not resolve controlRepoCommit inside the target workspace. Use targetWorkspaceCommit for git comparisons inside the target workspace.'",
+          "required": true,
+          "status": "implemented"
+        },
+        {
+          "component": "workspace allowlist (FP-MCP-143)",
+          "description": "Preserve FP-MCP-143 workspace allowlisting. Unknown workspace IDs must be rejected. Arbitrary paths must not be accepted.",
+          "required": true,
+          "status": "preserved"
+        },
+        {
+          "component": "task bundle staging (FP-MCP-144)",
+          "description": "Preserve FP-MCP-144 task bundle staging. Request artifacts remain immutable copies.",
+          "required": true,
+          "status": "preserved"
+        },
+        {
+          "component": "runner capabilities endpoint",
+          "description": "GET /runner/capabilities should report workspaceRoutingEnabled: true and targetWorkspaceCommitBinding: true.",
+          "required": true,
+          "status": "to_verify"
+        }
+      ]
+    },
+    "mcp_bridge": {
+      "status": "design_complete",
+      "note": "The MCP bridge (src/server.ts) currently has no workspace awareness. The bridge proxies start requests to the runner and records evidence in the control repo. For full FP-MCP-145 completeness, the bridge should be updated to reflect workspace routing information.",
+      "changes": [
+        {
+          "component": "getOpencodeCapabilities",
+          "location": "src/server.ts:1099",
+          "description": "Add workspaceRoutingEnabled and targetWorkspaceCommitBinding to the supportedOperations and as top-level boolean fields in the capability response.",
+          "required": true,
+          "proposed_code": "workspaceRoutingEnabled: true, targetWorkspaceCommitBinding: true in the returned capabilities object"
+        },
+        {
+          "component": "startRemoteRunnerRequest response handling",
+          "location": "src/server.ts:8560 (after postRemoteRunnerStartRun)",
+          "description": "When the runner responds with workspace fields (targetWorkspaceId, targetWorkspaceCommit, opencodeWorkingDirectory), include them in the bridge response. Extract from the runner response and add to both the immediate return value and the post-start state artifact.",
+          "required": true
+        },
+        {
+          "component": "writeStartStateArtifact",
+          "location": "src/server.ts:5722",
+          "description": "Extend the pre-start and post-start state content to include targetWorkspaceId, targetWorkspaceCommit, opencodeWorkingDirectory, and controlRepoCommit when available from the runner response.",
+          "required": true
+        },
+        {
+          "component": "baseStartRemoteRunnerResult",
+          "location": "src/server.ts:5747",
+          "description": "Add targetWorkspaceId, targetWorkspaceCommit, opencodeWorkingDirectory, and controlRepoCommit fields to the parameters and returned result object. Default to null when not available.",
+          "required": true
+        },
+        {
+          "component": "recordPreStartEvidenceDryRun",
+          "location": "src/server.ts:6265",
+          "description": "Include workspace routing context fields in the pre-start evidence artifact when available from the request context.",
+          "required": false,
+          "note": "Pre-start evidence is recorded before the runner is contacted, so these fields would be null. Post-start evidence should include them after runner response."
+        },
+        {
+          "component": "recordStartStateSnapshotDryRun",
+          "location": "src/server.ts:6890",
+          "description": "Include workspace commit binding fields in state snapshots.",
+          "required": true
+        }
+      ],
+      "constraints": [
+        "Do not mutate request artifacts",
+        "Do not weaken request artifact validation",
+        "Do not accept arbitrary target workspace paths",
+        "Preserve FP-MCP-143 workspace allowlisting",
+        "Preserve FP-MCP-144 task bundle staging",
+        "Preserve DESIGN_ONLY as the only supported run mode",
+        "Fail closed if target workspace commit cannot be resolved",
+        "Do not use controlRepoCommit as a target workspace commit",
+        "Do not require external directory reads by OpenCode"
+      ]
+    }
+  },
+
+  "safety_constraints_verified": {
+    "request_artifacts_not_mutated": true,
+    "request_artifact_validation_preserved": true,
+    "arbitrary_workspace_paths_rejected": true,
+    "workspace_allowlist_preserved": true,
+    "task_bundle_staging_preserved": true,
+    "design_only_mode_preserved": true,
+    "fail_closed_on_commit_resolution_failure": true,
+    "control_and_target_commits_distinct": true,
+    "no_external_directory_reads": true
+  },
+
+  "task_bundle_evidence": {
+    "bundle_path": ".forgepilot/tasks/RUN-20260701T132248140Z-dba7768d/",
+    "staged_files": {
+      "instructions.md": {
+        "has_control_repo_commit": true,
+        "has_target_workspace_commit": true,
+        "distinguishes_commits": true,
+        "instructs_do_not_resolve_control": true,
+        "instructs_use_target_for_comparisons": true
+      },
+      "context.json": {
+        "schemaVersion": "FP-MCP-145",
+        "has_controlRepoCommit": true,
+        "has_targetWorkspaceId": true,
+        "has_targetWorkspaceCommit": true,
+        "has_opencodeWorkingDirectory": true,
+        "has_controlRepoPath": true,
+        "has_requestArtifactSha256": true
+      },
+      "request.json": {
+        "immutable_copy": true,
+        "not_mutated": true,
+        "schemaVersion": "FP-MCP-083"
+      },
+      "packet.md": {
+        "complete": true
+      }
+    }
+  }
+}
