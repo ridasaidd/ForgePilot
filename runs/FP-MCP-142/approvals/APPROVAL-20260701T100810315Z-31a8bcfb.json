@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "FP-MCP-067",
+  "boundaryVersion": "FP-MCP-067",
+  "artifactType": "human-approval-evidence",
+  "artifactVersion": "human-approval-evidence-v1",
+  "approvalId": "APPROVAL-20260701T100810315Z-31a8bcfb",
+  "approvalKind": "EXECUTION_ENABLEMENT",
+  "approvedAction": "ALLOW_ONE_GUARDED_REMOTE_RUNNER_EXECUTION_ATTEMPT",
+  "approvalState": "RECORDED",
+  "fixture": false,
+  "dryRun": false,
+  "humanApprovalRecorded": true,
+  "approvalUsableForExecution": false,
+  "approvalUsabilityDerivedByRecorder": false,
+  "approvalUsabilityRequiresValidation": true,
+  "scope": {
+    "packetId": "FP-MCP-036",
+    "requestId": "REQ-20260630T202005438Z-86d20df4",
+    "modelId": "deepseek-v4-pro-high",
+    "runMode": "DESIGN_ONLY",
+    "repoCommit": "bbf930a",
+    "branch": "main"
+  },
+  "canonicalApprovalText": "I approve one guarded ForgePilot remote-runner start attempt for packet FP-MCP-036, request REQ-20260630T202005438Z-86d20df4, model deepseek-v4-pro-high, run mode DESIGN_ONLY, repository commit bbf930a, branch main. This approval is single-use, expires at 2026-07-01T10:17:57Z, and does not override the global disable switch or any other ForgePilot safety gate.",
+  "approvalText": "I approve one guarded ForgePilot remote-runner start attempt for packet FP-MCP-036, request REQ-20260630T202005438Z-86d20df4, model deepseek-v4-pro-high, run mode DESIGN_ONLY, repository commit bbf930a, branch main. This approval is single-use, expires at 2026-07-01T10:17:57Z, and does not override the global disable switch or any other ForgePilot safety gate.",
+  "approvedBy": {
+    "operatorId": "local-human-operator",
+    "operatorHandle": "ridasaidd",
+    "operatorEmailHash": null
+  },
+  "createdAt": "2026-07-01T10:08:10.297Z",
+  "expiresAt": "2026-07-01T10:17:57Z",
+  "singleUse": true,
+  "consumed": false,
+  "consumedAt": null,
+  "revoked": false,
+  "revokedAt": null,
+  "quarantined": false,
+  "quarantinedAt": null,
+  "preconditions": {
+    "requestArtifactValidated": true,
+    "preStartEvidenceValidated": true,
+    "stateSnapshotValidated": true,
+    "humanApprovalGateRequired": true,
+    "globalDisableSwitchNotOverridden": true
+  },
+  "secretBoundary": {
+    "containsSecrets": false,
+    "secretMaterialRedacted": true
+  },
+  "createdByTool": "forgepilot_record_real_human_approval_evidence",
+  "createdByBoundaryVersion": "FP-MCP-067",
+  "recordedAt": "2026-07-01T10:08:10.297Z",
+  "executionAllowedNow": false,
+  "executionStarted": false,
+  "startEndpointContacted": false,
+  "opencodeStarted": false,
+  "approvalConsumed": false,
+  "notes": [
+    "Fresh FP-MCP-142 approval for the first controlled DESIGN_ONLY execution attempt.",
+    "Approval text uses the recorder's canonical format exactly.",
+    "Approval is target-bound to bbf930a and should be consumed only by the guarded start path."
+  ]
+}

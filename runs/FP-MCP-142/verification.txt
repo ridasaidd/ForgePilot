@@ -1,0 +1,35 @@
+FP-MCP-142 verification
+
+Outcome:
+REAL_MCP_PREFLIGHT_BLOCKERS_RECORDED
+
+Fresh approval:
+approvalId: APPROVAL-20260701T100810315Z-31a8bcfb
+path: runs/FP-MCP-142/approvals/APPROVAL-20260701T100810315Z-31a8bcfb.json
+sha256: 503237eb59872707448aa6d58b05a84b913d75a5002b97f50189f0243cb7824d
+
+Observed passing gates with corrected request packet:
+requestArtifact: PASSED
+commitBinding: PASSED
+modelAndRunMode: PASSED
+preStartEvidence: PASSED
+
+Observed blockers:
+repository: FAILED / REPO_DIRTY
+disableSwitch: FAILED / EXECUTION_DISABLED_GLOBAL, RUNNER_EXECUTION_DISABLED, OPENCODE_EXECUTION_DISABLED, DISABLE_SWITCH_ACTIVE
+runnerCapabilityState: FAILED / START_ENDPOINT_DISABLED, START_NOT_CALLABLE
+opencodeReadiness: FAILED / OPENCODE_NOT_CONFIGURED, OPENCODE_EXECUTION_DISABLED
+stateSnapshotEvidence: INCOMPLETE / server-side state snapshot validator mismatch
+humanApprovalEvidence: FAILED / target commit and execution usability mismatch
+evidenceLedgerReadiness: INCOMPLETE / STATE_SNAPSHOT_LEDGER_ENTRY_MISSING
+
+Safety:
+executionStarted: false
+opencodeStarted: false
+runnerStartEndpointContacted: false
+startEndpointContacted: false
+runnerRunId: null
+approvalConsumed: false
+requestArtifactMutated: false
+
+PASS
