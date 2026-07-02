@@ -1,0 +1,18 @@
+{
+  "packet_id": "FP-MCP-171",
+  "result": "FP_MCP_171_PRE_CANARY_HALT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 41,
+  "run_id": "FP-MCP-171-PRE-CANARY-SEQUENCE-VIOLATION-HALT",
+  "generic_admission_event_id": 41,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "PRE_CANARY_SEQUENCE_VIOLATION_RECORDED_CANARY_NOT_RUN",
+  "total_evidence_records": 41,
+  "total_generic_evidence_record_admission_events": 41,
+  "artifact_paths": [
+    "packets/FP-MCP-171.md",
+    "runs/FP-MCP-171/result-summary.md",
+    "runs/FP-MCP-171/premature-start-response.json"
+  ]
+}
