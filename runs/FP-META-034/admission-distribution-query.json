@@ -1,0 +1,27 @@
+{
+  "packet_id": "FP-META-034",
+  "generated_at": "2026-07-02T11:10:49.662Z",
+  "database_path": "data/forgepilot.db",
+  "method": "readonly better-sqlite3 queries against current data/forgepilot.db",
+  "query_status": "OK",
+  "tables": {
+    "evidence_records": "PRESENT",
+    "evidence_admission_events": "PRESENT",
+    "admission_invalidation_events": "PRESENT",
+    "model_comparison_events": "ABSENT"
+  },
+  "distributions": {
+    "evidence_records_total": 0,
+    "evidence_records_by_admission_state": [],
+    "evidence_admission_events_total": 0,
+    "evidence_admission_events_by_decision": [],
+    "admission_invalidation_events_total": 0,
+    "admission_invalidation_events_by_decision": []
+  },
+  "notes": [
+    "Counts are SQLite-derived from current data/forgepilot.db only.",
+    "Model trust labels are intentionally not counted as admission states.",
+    "NOT_EVALUATED is not admitted evidence."
+  ],
+  "samples": []
+}
