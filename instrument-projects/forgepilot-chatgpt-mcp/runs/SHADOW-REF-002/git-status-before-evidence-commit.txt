@@ -1,0 +1,3 @@
+ M instrument-projects/forgepilot-chatgpt-mcp/checklists/server-shadow-refactor.md
+?? instrument-projects/forgepilot-chatgpt-mcp/plans/SHADOW-REF-002-high-risk-zones.md
+?? instrument-projects/forgepilot-chatgpt-mcp/runs/SHADOW-REF-002/

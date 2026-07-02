@@ -1,0 +1,33 @@
+SHADOW-REF-002 verification
+
+Packet exists:
+PASS
+- instrument-projects/forgepilot-chatgpt-mcp/packets/SHADOW-REF-002.md
+
+Risk-zone artifact exists:
+PASS
+- instrument-projects/forgepilot-chatgpt-mcp/plans/SHADOW-REF-002-high-risk-zones.md
+
+Risk analysis covers:
+PASS
+- baseline
+- risk scale
+- high-risk zone table
+- forbidden early-refactor zones
+- lower-risk candidate zones
+- required verification by risk type
+- implications for future packets
+- explicit non-refactor statement
+
+Checklist update:
+PASS
+- SR-002 marked COMPLETE
+- next suggested item changed to SR-003
+
+Scope:
+PASS
+- no MCP bridge files changed
+- no implementation code files changed
+- no model execution authorized
+- no server-next.ts created
+- no runtime entrypoint changed
