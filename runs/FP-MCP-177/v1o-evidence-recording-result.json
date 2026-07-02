@@ -1,0 +1,23 @@
+{
+  "packet_id": "FP-MCP-177",
+  "result": "FP_MCP_177_CANARY_PREFLIGHT_HALT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 48,
+  "run_id": "FP-MCP-177-FP027-CANARY-PREFLIGHT-HALT",
+  "generic_admission_event_id": 48,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_027_CANARY_BLOCKED_BEFORE_RUNNER_CONTACT",
+  "total_evidence_records": 48,
+  "total_generic_evidence_record_admission_events": 48,
+  "artifact_paths": [
+    "packets/FP-MCP-177.md",
+    "runs/FP-MCP-177/contact-confirmation.json",
+    "runs/FP-MCP-177/result-summary.md",
+    "runs/FP-MCP-177/preflight-halt.json",
+    "runs/FP-MCP-177/opencode-requests/REQ-20260702T195312056Z-e68b5d4a.json",
+    "runs/FP-MCP-177/approvals/APPROVAL-20260702T195343977Z-9c82f824.json",
+    "runs/FP-MCP-177/pre-start-evidence/REQ-20260702T195312056Z-e68b5d4a.json",
+    "runs/FP-MCP-177/workspace-snapshots/SNAPSHOT-20260702T195511224Z-df86c177.json"
+  ]
+}
