@@ -1,0 +1,50 @@
+{
+  "packet_id": "FP-MCP-176",
+  "result": "OPENCODE_HTTP_HEALTH_ENDPOINT_NOT_PROVEN_NO_HTTP_PROBE_ATTEMPTED",
+  "source_inspection": {
+    "opencode_binary": "/home/ridasaidd/.nvm/versions/node/v24.4.1/bin/opencode",
+    "resolved_binary": "/home/ridasaidd/.nvm/versions/node/v24.4.1/lib/node_modules/opencode-ai/bin/opencode.exe",
+    "package_root": "/home/ridasaidd/.nvm/versions/node/v24.4.1/lib/node_modules/opencode-ai",
+    "binary_type": "ELF 64-bit LSB executable, ARM aarch64",
+    "readable_route_grep_terms": [
+      "health",
+      "version",
+      "status",
+      "ping",
+      "/health",
+      "/version",
+      "/status",
+      "/ping"
+    ],
+    "readable_health_version_endpoint_found": false,
+    "package_layout": "binary distribution with limited readable JS/package metadata"
+  },
+  "decision": {
+    "http_probe_attempted": false,
+    "reason": "No source-confirmed execution-free HTTP health/version endpoint was found. Sending speculative HTTP requests to unknown endpoints would blur the execution boundary.",
+    "accepted_gap": "OpenCode application/API functionality remains unproven until canary or a future source-confirmed liveness endpoint is identified."
+  },
+  "known_liveness_from_fp_mcp_175": {
+    "process_running": true,
+    "port_4096_listening": true,
+    "tcp_connect_succeeded": true,
+    "payload_sent": false
+  },
+  "what_remains_unproven": {
+    "http_api_functional": true,
+    "health_endpoint_exists": true,
+    "version_endpoint_exists": true,
+    "model_auth_valid": true,
+    "prompt_execution_possible": true
+  },
+  "safety_boundary": {
+    "http_request_sent": false,
+    "opencode_run_invoked": false,
+    "worker_started": false,
+    "prompt_sent": false,
+    "runner_start_endpoint_contacted": false,
+    "approval_consumed": false,
+    "request_artifact_mutated": false,
+    "canary_retried": false
+  }
+}
