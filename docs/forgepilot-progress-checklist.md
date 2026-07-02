@@ -22,6 +22,30 @@ This checklist is not:
 
 The source of truth remains committed packet artifacts, run artifacts, migrations, tests, and supported read-only query tools.
 
+
+## Packet Namespace Rule
+
+Packet namespace selection is governed by:
+
+```text
+docs/packet-namespace-taxonomy.md
+```
+
+Forward rule:
+
+```text
+Use the narrowest applicable namespace.
+Do not default to FP-MCP-* unless the primary artifact is MCP bridge/tool/action integration.
+Existing packet IDs remain historical and should not be renamed merely to match the taxonomy.
+```
+
+Current namespace families:
+
+- `FP-*` — core ForgePilot observatory/product implementation
+- `FP-META-*` — standards, semantics, governance, methodology
+- `FP-MCP-*` — MCP bridge, tool, and OpenAI Actions integration
+- `FP-OPS-*` — operator workflows, checklists, runbooks, handoffs
+
 ## Update Rule
 
 Never mark something complete because we believe it works.
@@ -98,6 +122,7 @@ Recent closed telemetry/query chain:
 | Routing | `DEFERRED` | none for V1 | Explicitly out of scope for current V1 completion work. | No model routing or optimization may be inferred. |
 | Model scoring/ranking | `DEFERRED` | none for V1 | Explicitly out of scope for current V1 completion work. | Query results are not model-quality evidence. |
 | Dashboard UI | `DEFERRED` | none for V1 | Explicitly out of scope for current V1 completion work. | Reporting can be CLI/docs before dashboard UI. |
+| Packet namespace taxonomy | `COMPLETE` | `FP-META-017` | Namespace rules are documented in `docs/packet-namespace-taxonomy.md`. | Historical packet IDs remain unchanged. |
 
 ## Recent Packet Evidence Index
 
