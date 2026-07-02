@@ -1,0 +1,68 @@
+{
+  "packet_id": "FP-MCP-177",
+  "result": "FP_027_CANARY_BLOCKED_BEFORE_RUNNER_CONTACT",
+  "requestId": "REQ-20260702T195312056Z-e68b5d4a",
+  "approvalId": "APPROVAL-20260702T195343977Z-9c82f824",
+  "checkedAt": "2026-07-02T19:55:22.593Z",
+  "guardedStartPreflightEvaluated": true,
+  "executionPermitted": false,
+  "executionStarted": false,
+  "opencodeStarted": false,
+  "runnerStartEndpointContacted": false,
+  "startEndpointContacted": false,
+  "runnerRunId": null,
+  "approvalConsumed": false,
+  "requestArtifactMutated": false,
+  "startToolInvoked": false,
+  "passed_gates": [
+    "requestArtifact",
+    "commitBinding",
+    "modelAndRunMode",
+    "preStartEvidence",
+    "humanApprovalEvidence"
+  ],
+  "blocking_gates": {
+    "repository": ["REPO_DIRTY"],
+    "disableSwitch": [
+      "EXECUTION_DISABLED_GLOBAL",
+      "RUNNER_EXECUTION_DISABLED",
+      "OPENCODE_EXECUTION_DISABLED",
+      "DISABLE_SWITCH_ACTIVE",
+      "EXECUTION_NOT_ALLOWED",
+      "START_REQUEST_BLOCKED_BY_DISABLE_SWITCH"
+    ],
+    "runnerCapabilityState": ["UNEXPECTED_SUPPORTED_OPERATION"],
+    "opencodeReadiness": ["OPENCODE_EXECUTION_DISABLED"],
+    "stateSnapshotEvidence": [
+      "PRE_START_STATE_SNAPSHOT_MISSING",
+      "POST_START_STATE_SNAPSHOT_MISSING",
+      "STATE_SNAPSHOT_INCOMPLETE",
+      "STATE_SNAPSHOT_INVALID"
+    ],
+    "evidenceLedgerReadiness": ["STATE_SNAPSHOT_LEDGER_ENTRY_MISSING"]
+  },
+  "platform_blocked_tool": {
+    "tool": "forgepilot_record_start_state_snapshot_dry_run",
+    "blocked_twice_before_reaching_forgepilot": true,
+    "manual_replacement_attempted": false,
+    "reason": "Do not fabricate canonical start-state snapshot artifacts."
+  },
+  "opencode_help_check": {
+    "opencode_help_exit_code": 0,
+    "worker_started": false,
+    "prompt_sent": false
+  },
+  "workspace_snapshot": {
+    "snapshotId": "SNAPSHOT-20260702T195511224Z-df86c177",
+    "artifactPath": "runs/FP-MCP-177/workspace-snapshots/SNAPSHOT-20260702T195511224Z-df86c177.json",
+    "opencodeProcessObserved": true,
+    "opencodeListenerObserved": true
+  },
+  "disposition": {
+    "canary_worker_started": false,
+    "runner_contact_attempted": false,
+    "abort_readiness_check_needed": false,
+    "retry_attempted": false,
+    "halt_reason": "CANONICAL_STATE_SNAPSHOT_TOOL_BLOCKED_AND_GUARDED_PREFLIGHT_FAILED"
+  }
+}
