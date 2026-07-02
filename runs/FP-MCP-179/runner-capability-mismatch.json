@@ -1,0 +1,68 @@
+{
+  "packet_id": "FP-MCP-179",
+  "result": "RUNNER_CAPABILITY_PREDICATE_MISMATCH_CLASSIFIED_FAILS_CLOSED_FIX_REQUIRED_BEFORE_ENABLEMENT",
+  "observed_in_packet": "FP-MCP-178",
+  "observed_reason": "UNEXPECTED_SUPPORTED_OPERATION",
+  "live_runner_observation": {
+    "startEndpointPresent": true,
+    "startEndpointState": "CALLABLE_GUARDED",
+    "startCapabilityCallable": true,
+    "supportedOperations": ["capabilities", "validate-request", "start-run"],
+    "executionEnabled": false
+  },
+  "source_check": {
+    "unexpected_supported_operation_predicate_lines": "9000-9003",
+    "unexpectedSupportedOperation_is_true_when": [
+      "supportedOperations includes start-run",
+      "supportedOperations includes execute",
+      "supportedOperations includes execution"
+    ],
+    "reason_added_lines": "9031-9032",
+    "reason_added_condition": "unexpectedSupportedOperation && startEndpointState !== CALLABLE_GUARDED",
+    "runner_gate_reason_lines": "9184-9186",
+    "runner_gate_adds_reason_when": "unexpectedSupportedOperation is true",
+    "runnerCapabilityStatePassed_lines": "9068-9074",
+    "runnerCapabilityStatePassed_requires": [
+      "runnerConfigured",
+      "runnerReachable",
+      "startEndpointPresent",
+      "startEndpointState === PRESENT_GUARDED",
+      "!startCapabilityCallable",
+      "!unexpectedSupportedOperation"
+    ],
+    "eligibleForFutureGuardedStart_lines": "9234-9241",
+    "eligibleForFutureGuardedStart_requires": [
+      "runnerCapabilityStatePassed",
+      "!executionEnabled",
+      "!unexpectedSupportedOperation"
+    ],
+    "older_expected_capability_predicate_lines": "2763-2768",
+    "older_expected_capability_predicate_allows": [
+      "capabilities",
+      "validate-request",
+      "executionEnabled boolean"
+    ],
+    "older_execution_capability_presence_lines": "4245-4248",
+    "older_execution_capability_presence_treats_start_run_as_capability_present": true
+  },
+  "classification": {
+    "is_benign_noise": false,
+    "is_schema_or_policy_drift": true,
+    "fails_open": false,
+    "fails_closed": true,
+    "reason": "Guarded preflight still expects a pre-contact/non-callable runner capability shape: PRESENT_GUARDED, not callable, and no start-run operation. The live runner now reports CALLABLE_GUARDED, callable, and start-run as a guarded operation. The predicate is stale relative to FP-MCP-167/170/178 readiness state.",
+    "effect": "Blocks eligibility before runner contact and prevents enablement from proceeding through a stale capability gate. This is safe but not correct for the current intended canary path."
+  },
+  "required_next_work": {
+    "packet": "FP-MCP-180",
+    "task": "Normalize guarded preflight runner capability predicate to accept CALLABLE_GUARDED + startCapabilityCallable true + supportedOperations includes start-run only when executionEnabled remains false and all approval/evidence gates pass; preserve executionPermitted false until explicit consuming action."
+  },
+  "safety_boundary": {
+    "execution_enabled": false,
+    "runner_start_endpoint_contacted": false,
+    "start_endpoint_contacted": false,
+    "opencode_started": false,
+    "approval_consumed": false,
+    "canary_retried": false
+  }
+}
