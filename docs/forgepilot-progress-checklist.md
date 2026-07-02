@@ -298,3 +298,5 @@ These may be considered after V1 evidence/reporting surfaces stabilize:
 | Platform tool block pattern | `OPEN_OPERATIONAL_PATTERN` | `FP-017/FP-020/SHADOW-REF-006/FP-026` | Central note added for recurring platform-side blocks before MCP bridge invocation. | Trigger unresolved; cadence, command shape, sensitive terminology, action refresh timing, and intermittent platform policy remain plausible. |
 
 | Scoped OpenCode process-tree canary specification | `SPEC_DEFINED_BLOCKED` | `FP-027` | Defines a DESIGN_ONLY, single-worker, no-source-edit canary with mechanical process-group and descendant checks before FP-024 extraction retry. | Not run. Blocked by missing scoped enablement proof, fresh human approval, global execution disable, and source-inspection requirement for boundary flags. |
+
+| Execution enablement boundary flag source inspection | `COMPLETE` | `FP-028` | Inspected current bridge source for contractComplete, opencodeBoundarySatisfied, secretBoundarySatisfied, networkBoundarySatisfied, and humanApprovalRecorded. | Found cross-surface semantic mismatches; next packet should define a canonical scoped enablement contract before implementation. |

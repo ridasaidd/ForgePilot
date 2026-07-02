@@ -1,0 +1,16 @@
+{
+  "packet_id": "FP-028",
+  "total_evidence_records": 15,
+  "total_generic_evidence_record_admission_events": 15,
+  "fp028_record": {
+    "evidence_id": 15,
+    "run_id": "FP-028-BOUNDARY-FLAG-SOURCE-INSPECTION",
+    "admission_state": "ADMITTED",
+    "executor_result": "ENABLEMENT_BOUNDARY_FLAGS_SOURCE_INSPECTED",
+    "verification_result": "SOURCE_INSPECTION_COMPLETE;SURFACE_MISMATCHES_FOUND;NO_CODE_CHANGED;NO_EXECUTION_ENABLED",
+    "validation_state": "VALID",
+    "generic_admission_event_id": 15,
+    "admission_decision": "ADMITTED"
+  },
+  "result": "FP_028_BOUNDARY_FLAG_INSPECTION_CANONICAL_EVIDENCE_PRESENT"
+}

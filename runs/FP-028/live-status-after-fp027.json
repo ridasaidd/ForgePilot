@@ -1,0 +1,29 @@
+{
+  "packet_id": "FP-028",
+  "observed_packet": "FP-027",
+  "source": "forgepilot_get_execution_enablement_status after FP-027 packet commit",
+  "executionAllowedNow": false,
+  "runnerExecutionEnabled": false,
+  "opencodeExecutionEnabled": false,
+  "gates": {
+    "contractComplete": true,
+    "dryRunEvidencePresent": true,
+    "dryRunVerified": true,
+    "repoClean": true,
+    "runnerExecutionCapabilityPresent": true,
+    "opencodeBoundarySatisfied": false,
+    "secretBoundarySatisfied": false,
+    "networkBoundarySatisfied": false,
+    "humanApprovalRecorded": false,
+    "disablePathDefined": true,
+    "auditAdmissionPathDefined": true
+  },
+  "blockingReasons": [
+    "OPENCODE_BOUNDARY_UNSATISFIED",
+    "SECRET_BOUNDARY_UNSATISFIED",
+    "NETWORK_BOUNDARY_UNSATISFIED",
+    "HUMAN_APPROVAL_NOT_RECORDED",
+    "RUNNER_EXECUTION_DISABLED",
+    "OPENCODE_EXECUTION_DISABLED"
+  ]
+}

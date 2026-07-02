@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-028",
+  "result": "FP_028_BOUNDARY_FLAG_INSPECTION_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 15,
+  "run_id": "FP-028-BOUNDARY-FLAG-SOURCE-INSPECTION",
+  "generic_admission_event_id": 15,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "ENABLEMENT_BOUNDARY_FLAGS_SOURCE_INSPECTED",
+  "artifact_paths": [
+    "packets/FP-028.md",
+    "runs/FP-028/source-inspection-report.md",
+    "runs/FP-028/live-status-after-fp027.json",
+    "runs/FP-028/result-summary.md"
+  ]
+}
