@@ -1,0 +1,20 @@
+{
+  "packet_id": "FP-MCP-168",
+  "result": "FP_MCP_168_DRY_RUN_IMPLEMENTATION_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 34,
+  "run_id": "FP-MCP-168-DRY-RUN-FAULT-INJECTION-IMPLEMENTATION",
+  "generic_admission_event_id": 34,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "CONSUMING_CLEARANCE_DRY_RUN_FAULT_INJECTION_SOURCE_VERIFIED_NO_RUNNER_CONTACT",
+  "bridge_commit": "d2ecadc",
+  "total_evidence_records": 34,
+  "total_generic_evidence_record_admission_events": 34,
+  "artifact_paths": [
+    "packets/FP-MCP-168.md",
+    "runs/FP-MCP-168/result-summary.md",
+    "runs/FP-MCP-168/implementation-result.md",
+    "runs/FP-MCP-168/implementation-result.json"
+  ]
+}
