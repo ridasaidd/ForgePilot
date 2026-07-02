@@ -1,0 +1,7 @@
+2026-07-02T18:50:20Z
+    PID    PPID    PGID     SID STAT COMMAND         COMMAND
+ 367970       1  367970  367326 Sl   opencode        opencode serve --hostname 0.0.0.0 --port 4096
+ 710619    3239  710619  710619 Ssl  MainThread      /home/ridasaidd/.nvm/versions/node/v24.4.1/bin/node /home/ridasaidd/forgepilot/runner/server.mjs
+ 760543    3239  760543  760543 Ssl  MainThread      /home/ridasaidd/.nvm/versions/node/v24.4.1/bin/node /home/ridasaidd/forgepilot-chatgpt-mcp/dist/server.js
+ 761746  760543  760543  760543 S    bash            /bin/bash -c mkdir -p runs/FP-MCP-172/process-tree && { date -u +%Y-%m-%dT%H:%M:%SZ; ps -eo pid,ppid,pgid,sid,stat,comm,args | awk 'NR==1 || /opencode|forgepilot|runner|node|tsx/ {print}'; } > runs/FP-MCP-172/process-tree/pre-contact-20260702T185020Z.txt && sha256sum runs/FP-MCP-172/process-tree/pre-contact-20260702T185020Z.txt && git add runs/FP-MCP-172/process-tree/pre-contact-20260702T185020Z.txt && git commit -m fpmcp172-process-precontact
+ 761750  761746  760543  760543 S    awk             awk NR==1 || /opencode|forgepilot|runner|node|tsx/ {print}
