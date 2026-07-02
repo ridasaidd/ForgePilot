@@ -1,0 +1,18 @@
+{
+  "packet_id": "FP-MCP-176",
+  "result": "FP_MCP_176_HTTP_HEALTH_DECISION_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 47,
+  "run_id": "FP-MCP-176-OPENCODE-HTTP-HEALTH-ENDPOINT-DECISION",
+  "generic_admission_event_id": 47,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "OPENCODE_HTTP_HEALTH_ENDPOINT_NOT_PROVEN_NO_HTTP_PROBE_ATTEMPTED",
+  "total_evidence_records": 47,
+  "total_generic_evidence_record_admission_events": 47,
+  "artifact_paths": [
+    "packets/FP-MCP-176.md",
+    "runs/FP-MCP-176/result-summary.md",
+    "runs/FP-MCP-176/http-health-decision.json"
+  ]
+}
