@@ -1,0 +1,762 @@
+{
+  "packet_id": "FP-022",
+  "source_files": [
+    "src/server.ts",
+    "src/tool-registrations/recent-tools.ts"
+  ],
+  "tool_count": 38,
+  "tools": [
+    {
+      "name": "forgepilot_status",
+      "file": "src/server.ts",
+      "line": 9286,
+      "description": "Read current ForgePilot repository status. This tool is read-only.",
+      "await_calls": [
+        "git",
+        "git",
+        "git",
+        "listDir",
+        "listDir"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "static_classification": [
+        "UNCLASSIFIED_REVIEW_REQUIRED"
+      ]
+    },
+    {
+      "name": "forgepilot_get_opencode_status",
+      "file": "src/server.ts",
+      "line": 9329,
+      "description": "Read constrained OpenCode executor readiness. This tool is read-only and does not start OpenCode.",
+      "await_calls": [
+        "getRemoteRunnerStatus",
+        "listDir"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "static_classification": [
+        "READ_OR_VALIDATION_ONLY_BY_NAME"
+      ]
+    },
+    {
+      "name": "forgepilot_get_opencode_capabilities",
+      "file": "src/server.ts",
+      "line": 9350,
+      "description": "Read ForgePilot/OpenCode capability state. This tool is read-only, uses static policy discovery, and does not start OpenCode.",
+      "await_calls": [
+        "getRemoteRunnerStatus",
+        "listDir"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "static_classification": [
+        "READ_OR_VALIDATION_ONLY_BY_NAME"
+      ]
+    },
+    {
+      "name": "forgepilot_get_remote_runner_status",
+      "file": "src/server.ts",
+      "line": 9372,
+      "description": "Read remote runner capability status. This tool may contact only the configured runner capabilities endpoint and never starts OpenCode.",
+      "await_calls": [
+        "getRemoteRunnerStatus",
+        "listDir",
+        "listDir"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "static_classification": [
+        "READ_OR_VALIDATION_ONLY_BY_NAME"
+      ]
+    },
+    {
+      "name": "forgepilot_list_packets",
+      "file": "src/server.ts",
+      "line": 9394,
+      "description": "List ForgePilot packet files. This tool is read-only.",
+      "await_calls": [
+        "listDir",
+        "listDir",
+        "validateOpencodeRunRequest"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "static_classification": [
+        "READ_OR_VALIDATION_ONLY_BY_NAME"
+      ]
+    },
+    {
+      "name": "forgepilot_list_runs",
+      "file": "src/server.ts",
+      "line": 9428,
+      "description": "List ForgePilot run directories. This tool is read-only.",
+      "await_calls": [
+        "listDir",
+        "validateOpencodeRunRequest",
+        "createOpencodeRunRequestArtifact"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "static_classification": [
+        "READ_OR_VALIDATION_ONLY_BY_NAME"
+      ]
+    },
+    {
+      "name": "forgepilot_validate_opencode_run_request",
+      "file": "src/server.ts",
+      "line": 9461,
+      "description": "Validate a ForgePilot-scoped OpenCode run request without starting OpenCode or creating artifacts.",
+      "await_calls": [
+        "validateOpencodeRunRequest",
+        "createOpencodeRunRequestArtifact",
+        "listOpencodeRunRequests"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "static_classification": [
+        "READ_OR_VALIDATION_ONLY_BY_NAME"
+      ]
+    },
+    {
+      "name": "forgepilot_create_opencode_run_request",
+      "file": "src/server.ts",
+      "line": 9487,
+      "description": "Create a durable ForgePilot OpenCode run request artifact without starting OpenCode.",
+      "await_calls": [
+        "createOpencodeRunRequestArtifact",
+        "listOpencodeRunRequests",
+        "readOpencodeRunRequest"
+      ],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "static_classification": [
+        "ARTIFACT_OR_SQLITE_WRITE_CAPABLE"
+      ]
+    },
+    {
+      "name": "forgepilot_list_opencode_run_requests",
+      "file": "src/server.ts",
+      "line": 9519,
+      "description": "List existing OpenCode request artifact files for a ForgePilot packet. This tool is read-only and does not start OpenCode.",
+      "await_calls": [
+        "listOpencodeRunRequests",
+        "readOpencodeRunRequest",
+        "validateRemoteRunnerRequest"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "static_classification": [
+        "READ_OR_VALIDATION_ONLY_BY_NAME"
+      ]
+    },
+    {
+      "name": "forgepilot_read_opencode_run_request",
+      "file": "src/server.ts",
+      "line": 9544,
+      "description": "Read one existing OpenCode request artifact by packet id and request id. This tool is read-only and does not start OpenCode.",
+      "await_calls": [
+        "readOpencodeRunRequest",
+        "validateRemoteRunnerRequest",
+        "validateRemoteRunnerEndpointRequest"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "static_classification": [
+        "READ_OR_VALIDATION_ONLY_BY_NAME"
+      ]
+    },
+    {
+      "name": "forgepilot_validate_remote_runner_request",
+      "file": "src/server.ts",
+      "line": 9569,
+      "description": "Validate whether an existing OpenCode request artifact is eligible for future remote runner handoff. This tool is read-only and does not contact the runner.",
+      "await_calls": [
+        "validateRemoteRunnerRequest",
+        "validateRemoteRunnerEndpointRequest",
+        "validateExecutionPreflight"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "static_classification": [
+        "READ_OR_VALIDATION_ONLY_BY_NAME"
+      ]
+    },
+    {
+      "name": "forgepilot_validate_remote_runner_endpoint_request",
+      "file": "src/server.ts",
+      "line": 9594,
+      "description": "Validate an existing OpenCode request artifact with the configured remote runner validate-request endpoint. This tool does not start OpenCode.",
+      "await_calls": [
+        "validateRemoteRunnerEndpointRequest",
+        "validateExecutionPreflight",
+        "recordExecutionArtifactDryRun"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "static_classification": [
+        "READ_OR_VALIDATION_ONLY_BY_NAME"
+      ]
+    },
+    {
+      "name": "forgepilot_validate_execution_preflight",
+      "file": "src/server.ts",
+      "line": 9625,
+      "description": "Validate guarded execution preflight gates without starting OpenCode or contacting the runner start endpoint.",
+      "await_calls": [
+        "validateExecutionPreflight",
+        "recordExecutionArtifactDryRun",
+        "verifyExecutionArtifactDryRun"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "static_classification": [
+        "READ_OR_VALIDATION_ONLY_BY_NAME"
+      ]
+    },
+    {
+      "name": "forgepilot_record_execution_artifact_dry_run",
+      "file": "src/server.ts",
+      "line": 9655,
+      "description": "Record FP-MCP-035 contract-shaped dry-run artifacts without starting OpenCode or contacting the runner start endpoint.",
+      "await_calls": [
+        "recordExecutionArtifactDryRun",
+        "verifyExecutionArtifactDryRun",
+        "getExecutionEnablementStatus"
+      ],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "static_classification": [
+        "ARTIFACT_OR_SQLITE_WRITE_CAPABLE"
+      ]
+    },
+    {
+      "name": "forgepilot_verify_execution_artifact_dry_run",
+      "file": "src/server.ts",
+      "line": 9683,
+      "description": "Verify FP-MCP-036 dry-run artifacts without writing files, starting OpenCode, or contacting the runner start endpoint.",
+      "await_calls": [
+        "verifyExecutionArtifactDryRun",
+        "getExecutionEnablementStatus",
+        "getExecutionDisableSwitchStatus"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "static_classification": [
+        "READ_OR_VALIDATION_ONLY_BY_NAME"
+      ]
+    },
+    {
+      "name": "forgepilot_get_execution_enablement_status",
+      "file": "src/server.ts",
+      "line": 9718,
+      "description": "Evaluate execution enablement policy gates without enabling execution, starting OpenCode, or contacting the runner start endpoint.",
+      "await_calls": [
+        "getExecutionEnablementStatus",
+        "getExecutionDisableSwitchStatus"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "static_classification": [
+        "READ_OR_VALIDATION_ONLY_BY_NAME"
+      ]
+    },
+    {
+      "name": "forgepilot_get_execution_disable_switch_status",
+      "file": "src/server.ts",
+      "line": 9746,
+      "description": "Read execution disable switch status without enabling execution, starting OpenCode, mutating approvals, or contacting the runner start endpoint.",
+      "await_calls": [
+        "getExecutionDisableSwitchStatus",
+        "recordRealHumanApprovalEvidence"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "static_classification": [
+        "READ_OR_VALIDATION_ONLY_BY_NAME"
+      ]
+    },
+    {
+      "name": "forgepilot_record_real_human_approval_evidence",
+      "file": "src/server.ts",
+      "line": 9783,
+      "description": "Record real human approval evidence as a scoped create-only observation without enabling execution, consuming approval, starting OpenCode, or contacting the runner start endpoint.",
+      "await_calls": [
+        "recordRealHumanApprovalEvidence"
+      ],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "static_classification": [
+        "ARTIFACT_OR_SQLITE_WRITE_CAPABLE"
+      ]
+    },
+    {
+      "name": "forgepilot_record_human_approval_consumption",
+      "file": "src/server.ts",
+      "line": 9852,
+      "description": "Record append-only human approval consumption evidence without mutating approval artifacts, enabling execution, starting OpenCode, or contacting the runner start endpoint.",
+      "await_calls": [
+        "recordHumanApprovalConsumption",
+        "recordHumanApprovalEvidenceDryRunFixture"
+      ],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "static_classification": [
+        "ARTIFACT_OR_SQLITE_WRITE_CAPABLE"
+      ]
+    },
+    {
+      "name": "forgepilot_record_human_approval_evidence_dry_run_fixture",
+      "file": "src/server.ts",
+      "line": 9912,
+      "description": "Record a non-authorizing human approval evidence dry-run fixture without creating real approval, enabling execution, starting OpenCode, or contacting the runner start endpoint.",
+      "await_calls": [
+        "recordHumanApprovalEvidenceDryRunFixture",
+        "validateHumanApprovalRecord"
+      ],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "static_classification": [
+        "ARTIFACT_OR_SQLITE_WRITE_CAPABLE"
+      ]
+    },
+    {
+      "name": "forgepilot_validate_human_approval_record",
+      "file": "src/server.ts",
+      "line": 9954,
+      "description": "Validate a human approval evidence artifact without creating approval, enabling execution, starting OpenCode, or contacting the runner start endpoint.",
+      "await_calls": [
+        "validateHumanApprovalRecord",
+        "recordPreStartEvidenceDryRun"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "static_classification": [
+        "READ_OR_VALIDATION_ONLY_BY_NAME"
+      ]
+    },
+    {
+      "name": "forgepilot_record_pre_start_evidence_dry_run",
+      "file": "src/server.ts",
+      "line": 9996,
+      "description": "Record a non-executing pre-start evidence dry-run artifact without starting OpenCode or contacting the runner start endpoint.",
+      "await_calls": [
+        "recordPreStartEvidenceDryRun",
+        "validatePreStartEvidence",
+        "validateStartRequestStateSnapshot"
+      ],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "static_classification": [
+        "ARTIFACT_OR_SQLITE_WRITE_CAPABLE"
+      ]
+    },
+    {
+      "name": "forgepilot_validate_pre_start_evidence",
+      "file": "src/server.ts",
+      "line": 10031,
+      "description": "Validate pre-start evidence for a ForgePilot request without creating evidence, starting OpenCode, or contacting the runner start endpoint.",
+      "await_calls": [
+        "validatePreStartEvidence",
+        "validateStartRequestStateSnapshot",
+        "recordStartStateSnapshotDryRun"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "static_classification": [
+        "READ_OR_VALIDATION_ONLY_BY_NAME"
+      ]
+    },
+    {
+      "name": "forgepilot_validate_start_request_state_snapshot",
+      "file": "src/server.ts",
+      "line": 10059,
+      "description": "Validate start request pre/post state snapshots without creating snapshots, starting OpenCode, or contacting the runner start endpoint.",
+      "await_calls": [
+        "validateStartRequestStateSnapshot",
+        "recordStartStateSnapshotDryRun",
+        "getGuardedStartPreflightReport"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "static_classification": [
+        "READ_OR_VALIDATION_ONLY_BY_NAME"
+      ]
+    },
+    {
+      "name": "forgepilot_record_start_state_snapshot_dry_run",
+      "file": "src/server.ts",
+      "line": 10088,
+      "description": "Record non-executing pre/post start state snapshot dry-run artifacts without starting OpenCode or contacting the runner start endpoint.",
+      "await_calls": [
+        "recordStartStateSnapshotDryRun",
+        "getGuardedStartPreflightReport",
+        "startRemoteRunnerRequest"
+      ],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "static_classification": [
+        "ARTIFACT_OR_SQLITE_WRITE_CAPABLE"
+      ]
+    },
+    {
+      "name": "forgepilot_get_guarded_start_preflight_report",
+      "file": "src/server.ts",
+      "line": 10122,
+      "description": "Read a non-executing guarded start preflight report without contacting the runner start endpoint, starting OpenCode, consuming approval, or mutating request artifacts.",
+      "await_calls": [
+        "getGuardedStartPreflightReport",
+        "startRemoteRunnerRequest",
+        "readRepoTextFile"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "static_classification": [
+        "READ_OR_VALIDATION_ONLY_BY_NAME"
+      ]
+    },
+    {
+      "name": "forgepilot_start_remote_runner_request",
+      "file": "src/server.ts",
+      "line": 10152,
+      "description": "Request the configured private dev runner to start an OpenCode run only after approval, artifact, disable-switch, and pre-start evidence gates pass.",
+      "await_calls": [
+        "startRemoteRunnerRequest",
+        "readRepoTextFile"
+      ],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "static_classification": [
+        "REMOTE_RUNNER_START_CAPABLE",
+        "NETWORK_EXECUTION_GATE_REQUIRED"
+      ]
+    },
+    {
+      "name": "forgepilot_read_file",
+      "file": "src/server.ts",
+      "line": 10186,
+      "description": "Read a text file from allowed ForgePilot repository paths only: packets/, runs/, docs/, or metrics/. This tool is read-only.",
+      "await_calls": [
+        "readRepoTextFile",
+        "executeTerminalCommand"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "static_classification": [
+        "READ_OR_VALIDATION_ONLY_BY_NAME"
+      ]
+    },
+    {
+      "name": "forgepilot_execute_terminal_command",
+      "file": "src/server.ts",
+      "line": 10227,
+      "description": "Execute one human-approved terminal command inside an allowlisted workspace. The MCP tool invocation itself is the approval request. Hard-blocked commands (sudo, .env reads, rm -rf /, curl|sh, etc.) are refused even after UI approval. Unknown workspaces fail closed.",
+      "await_calls": [
+        "executeTerminalCommand",
+        "authorizeRequest"
+      ],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "static_classification": [
+        "TERMINAL_COMMAND_EXECUTION_CAPABLE",
+        "HUMAN_APPROVAL_REQUIRED",
+        "SEPARATE_TERMINAL_SAFETY_GATE"
+      ]
+    },
+    {
+      "name": "forgepilot_persist_opencode_worker_telemetry",
+      "file": "src/tool-registrations/recent-tools.ts",
+      "line": 186,
+      "description": "Persist an existing OpenCode worker telemetry.json artifact into ForgePilot SQLite without admitting it as evidence.",
+      "await_calls": [
+        "persistOpenCodeWorkerTelemetryViaForgePilot",
+        "queryPersistedOpenCodeWorkerTelemetryViaForgePilot",
+        "readPersistedOpenCodeWorkerTelemetryViaForgePilot"
+      ],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "static_classification": [
+        "ARTIFACT_OR_SQLITE_WRITE_CAPABLE"
+      ]
+    },
+    {
+      "name": "forgepilot_query_persisted_opencode_worker_telemetry",
+      "file": "src/tool-registrations/recent-tools.ts",
+      "line": 212,
+      "description": "Query persisted OpenCode worker telemetry observations from ForgePilot SQLite without mutating telemetry, admitting evidence, or touching live workers.",
+      "await_calls": [
+        "queryPersistedOpenCodeWorkerTelemetryViaForgePilot",
+        "readPersistedOpenCodeWorkerTelemetryViaForgePilot",
+        "captureOpenCodeWorkerTelemetry"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "static_classification": [
+        "UNCLASSIFIED_REVIEW_REQUIRED"
+      ]
+    },
+    {
+      "name": "forgepilot_read_persisted_opencode_worker_telemetry",
+      "file": "src/tool-registrations/recent-tools.ts",
+      "line": 246,
+      "description": "Read persisted OpenCode worker telemetry from ForgePilot SQLite without mutating the database.",
+      "await_calls": [
+        "readPersistedOpenCodeWorkerTelemetryViaForgePilot",
+        "captureOpenCodeWorkerTelemetry",
+        "readOpenCodeWorkerTelemetry"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "static_classification": [
+        "READ_OR_VALIDATION_ONLY_BY_NAME"
+      ]
+    },
+    {
+      "name": "forgepilot_capture_opencode_worker_telemetry",
+      "file": "src/tool-registrations/recent-tools.ts",
+      "line": 269,
+      "description": "Capture normalized, non-admitted telemetry for an existing OpenCode worker and write telemetry.json under the worker directory.",
+      "await_calls": [
+        "captureOpenCodeWorkerTelemetry",
+        "readOpenCodeWorkerTelemetry",
+        "startOpenCodeWorker"
+      ],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "static_classification": [
+        "ARTIFACT_OR_SQLITE_WRITE_CAPABLE"
+      ]
+    },
+    {
+      "name": "forgepilot_read_opencode_worker_telemetry",
+      "file": "src/tool-registrations/recent-tools.ts",
+      "line": 293,
+      "description": "Read an existing OpenCode worker telemetry.json artifact without recapturing or mutating telemetry.",
+      "await_calls": [
+        "readOpenCodeWorkerTelemetry",
+        "startOpenCodeWorker",
+        "getOpenCodeWorkerStatus"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "static_classification": [
+        "READ_OR_VALIDATION_ONLY_BY_NAME"
+      ]
+    },
+    {
+      "name": "forgepilot_start_opencode_worker",
+      "file": "src/tool-registrations/recent-tools.ts",
+      "line": 316,
+      "description": "Start a fresh bounded OpenCode worker run and record worker lifecycle evidence under runs/<packetId>/opencode-workers/<workerId>/.",
+      "await_calls": [
+        "startOpenCodeWorker",
+        "getOpenCodeWorkerStatus",
+        "readOpenCodeWorkerResult"
+      ],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "static_classification": [
+        "PROCESS_SPAWN",
+        "OPENCODE_EXECUTION_CAPABLE",
+        "SAFETY_GATE_REQUIRED"
+      ]
+    },
+    {
+      "name": "forgepilot_get_opencode_worker_status",
+      "file": "src/tool-registrations/recent-tools.ts",
+      "line": 345,
+      "description": "Read and refresh status for an existing OpenCode worker without starting, stopping, or restarting any process.",
+      "await_calls": [
+        "getOpenCodeWorkerStatus",
+        "readOpenCodeWorkerResult",
+        "captureWorkspaceSnapshot"
+      ],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "static_classification": [
+        "READ_OR_VALIDATION_ONLY_BY_NAME"
+      ]
+    },
+    {
+      "name": "forgepilot_read_opencode_worker_result",
+      "file": "src/tool-registrations/recent-tools.ts",
+      "line": 368,
+      "description": "Read bounded stdout/stderr and status for an existing OpenCode worker without starting, stopping, or restarting any process.",
+      "await_calls": [
+        "readOpenCodeWorkerResult",
+        "captureWorkspaceSnapshot"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "static_classification": [
+        "READ_OR_VALIDATION_ONLY_BY_NAME"
+      ]
+    },
+    {
+      "name": "forgepilot_capture_workspace_snapshot",
+      "file": "src/tool-registrations/recent-tools.ts",
+      "line": 392,
+      "description": "Capture a read-only ForgePilot workspace state snapshot and write an append-only snapshot artifact under runs/<packetId-or-OPERATOR>/workspace-snapshots/.",
+      "await_calls": [
+        "captureWorkspaceSnapshot"
+      ],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "static_classification": [
+        "ARTIFACT_OR_SQLITE_WRITE_CAPABLE"
+      ]
+    }
+  ]
+}

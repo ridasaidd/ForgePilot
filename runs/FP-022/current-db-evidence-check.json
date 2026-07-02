@@ -1,0 +1,15 @@
+{
+  "packet_id": "FP-022",
+  "total_evidence_records": 6,
+  "total_generic_evidence_record_admission_events": 6,
+  "fp022_record": {
+    "evidence_id": 6,
+    "run_id": "FP-022-EXECUTION-TOOL-GATE-AUDIT",
+    "admission_state": "ADMITTED",
+    "executor_result": "EXECUTION_CAPABLE_TOOL_GATE_AUDIT_COMPLETE",
+    "validation_state": "VALID",
+    "generic_admission_event_id": 6,
+    "admission_decision": "ADMITTED"
+  },
+  "result": "FP_022_TOOL_GATE_AUDIT_CANONICAL_EVIDENCE_PRESENT"
+}

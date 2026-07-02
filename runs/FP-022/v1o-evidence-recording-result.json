@@ -1,0 +1,23 @@
+{
+  "packet_id": "FP-022",
+  "result": "FP_022_TOOL_GATE_AUDIT_RECORDED_THROUGH_V1O_PATH",
+  "sqlite_packet_id": 5,
+  "evidence_id": 6,
+  "run_id": "FP-022-EXECUTION-TOOL-GATE-AUDIT",
+  "evidence_admission_state": "ADMITTED",
+  "generic_admission_event_id": 6,
+  "generic_admission_decision": "ADMITTED",
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "EXECUTION_CAPABLE_TOOL_GATE_AUDIT_COMPLETE",
+  "artifact_paths": [
+    "packets/FP-022.md",
+    "runs/FP-022/registered-tool-surface-expanded.json",
+    "runs/FP-022/registered-tool-surface-expanded.md",
+    "runs/FP-022/result-summary.md",
+    "runs/FP-022/tool-gate-audit.json",
+    "runs/SHADOW-REF-006/fp022-tool-surface-correction-note.md",
+    "runs/SHADOW-REF-007/fp022-template-correction-note.md"
+  ]
+}

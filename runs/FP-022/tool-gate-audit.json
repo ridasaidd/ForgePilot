@@ -1,0 +1,32 @@
+{
+  "packet_id": "FP-022",
+  "result": "EXECUTION_CAPABLE_TOOL_GATE_AUDIT_COMPLETE",
+  "bridge_commit_inspected": "3a16d68",
+  "direct_server_tool_count_from_shadow_ref_006": 29,
+  "expanded_tool_count": 38,
+  "tool_surface_snapshot_finding": "TOOL_SURFACE_SNAPSHOT_INCOMPLETE_STATIC_SERVER_ONLY_PARSE",
+  "execution_capable_tools": [
+    {
+      "tool": "forgepilot_start_opencode_worker",
+      "classification": "OPENCODE_PROCESS_SPAWN_CAPABLE",
+      "gate_assessment": "MISSING_EXECUTION_POLICY_GATE",
+      "matches_fp021_missing_gate_pattern": true,
+      "required_action": "FIX_AND_REGRESSION_TEST_BEFORE_EXTRACTION"
+    },
+    {
+      "tool": "forgepilot_start_remote_runner_request",
+      "classification": "REMOTE_RUNNER_START_CAPABLE",
+      "gate_assessment": "GUARDED_GATE_PATH_PRESENT_BY_SOURCE_INSPECTION",
+      "matches_fp021_missing_gate_pattern": false,
+      "required_action": "NO_FP022_BLOCKER_BUT_RETAIN_NORMAL_GUARDED_START_TESTS"
+    },
+    {
+      "tool": "forgepilot_execute_terminal_command",
+      "classification": "TERMINAL_COMMAND_EXECUTION_CAPABLE",
+      "gate_assessment": "SEPARATE_TERMINAL_SAFETY_GATE_PRESENT_BY_SOURCE_INSPECTION",
+      "matches_fp021_missing_gate_pattern": false,
+      "required_action": "OPTIONAL_FUTURE_POLICY_REVIEW_FOR_GLOBAL_DISABLE_SEMANTICS"
+    }
+  ],
+  "extraction_status": "EXTRACTION_REMAINS_BLOCKED_UNTIL_FP021_FIX"
+}
