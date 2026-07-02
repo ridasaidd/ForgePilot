@@ -1,0 +1,26 @@
+FP-META-022 verification
+
+Admission/comparison reconstruction rules document exists:
+PASS
+- docs/admission-comparison-reconstruction-rules.md
+
+Required sections/content:
+PASS
+- reconstruction inputs
+- admission state reporting rules
+- comparison state reporting rules
+- source precedence
+- unknown and missing state handling
+- historical packet handling
+- prohibited inferences
+- implementation constraints
+- required boundary text
+
+Progress checklist reference:
+PASS
+- docs/forgepilot-progress-checklist.md references docs/admission-comparison-reconstruction-rules.md
+- Admission/comparison reconstruction rules marked COMPLETE via FP-META-022
+
+Documentation-only scope:
+PASS
+- no implementation code files changed
