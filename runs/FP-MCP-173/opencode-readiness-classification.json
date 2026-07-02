@@ -1,0 +1,124 @@
+{
+  "packet_id": "FP-MCP-173",
+  "result": "OPENCODE_NOT_CONFIGURED_CLASSIFIED_AS_READINESS_LABEL_FALSE_NEGATIVE_NO_FALSE_OPEN_CONSUMER_FOUND",
+  "observed_in_packet": "FP-MCP-172",
+  "observed_blocker": "OPENCODE_NOT_CONFIGURED",
+  "classification": "readiness_label_false_negative_caused_by_field_name_mismatch",
+  "not_proven": {
+    "opencode_live_instance_reachable": true,
+    "opencode_live_instance_functional": true,
+    "endpoint_url_missing": true,
+    "credentials_missing": true,
+    "service_not_running": true
+  },
+  "direct_status_query": {
+    "tool": "forgepilot_get_opencode_status",
+    "opencodeDiscoveryConfigured": true,
+    "opencodeExecutionEnabled": false,
+    "executorStationLabel": "local-opencode",
+    "endpointLabel": "configured",
+    "statusSource": "static ForgePilot-safe configuration",
+    "liveOpenCodeChecked": false,
+    "executionDisabledReason": "FP-MCP-002 is read-only discovery only. Executor start tools are not implemented."
+  },
+  "capability_query": {
+    "tool": "forgepilot_get_opencode_capabilities",
+    "opencodeHarnessConfigured": true,
+    "opencodeHarnessReachable": false,
+    "executionEnabled": false,
+    "liveRunnerChecked": false,
+    "liveOpenCodeChecked": false,
+    "reasons": ["LIVE_RUNNER_NOT_CHECKED", "LIVE_OPENCODE_NOT_CHECKED", "EXECUTION_DISABLED"]
+  },
+  "remote_runner_query": {
+    "tool": "forgepilot_get_remote_runner_status",
+    "runnerConfigured": true,
+    "runnerReachable": true,
+    "runnerVersion": "0.1.0-fp-mcp-024",
+    "runnerProtocolVersion": "forgepilot-runner-v1",
+    "executionEnabled": false,
+    "startEndpointPresent": true,
+    "startEndpointState": "CALLABLE_GUARDED",
+    "startCapabilityCallable": true,
+    "supportedOperations": ["capabilities", "validate-request", "start-run"],
+    "startRequiresApprovalEvidence": true,
+    "startRequiresPreflight": true,
+    "startRequiresDisableSwitchClear": true,
+    "startRequiresRequestArtifactHash": true,
+    "startRequiresTargetExecutionCommit": true,
+    "startRequiresEvidenceLedgerValidation": true
+  },
+  "source_check": {
+    "getOpenCodeStatus_lines": "1310-1324",
+    "getOpenCodeStatus_returns": [
+      "opencodeDiscoveryConfigured",
+      "opencodeExecutionEnabled",
+      "executorStationLabel",
+      "endpointLabel",
+      "liveOpenCodeChecked"
+    ],
+    "guarded_preflight_lines": "8956-8964",
+    "guarded_preflight_configured_predicate_checks": [
+      "opencodeStatus.opencodeHarnessConfigured === true",
+      "opencodeStatus.opencodeConfigured === true",
+      "opencodeStatus.opencodeAvailable === true"
+    ],
+    "guarded_preflight_does_not_check": ["opencodeDiscoveryConfigured"],
+    "classification": "field_name_mismatch_false_negative_for_configured_status"
+  },
+  "false_open_audit": {
+    "terms_checked": [
+      "opencodeDiscoveryConfigured",
+      "opencodeHarnessConfigured",
+      "opencodeConfigured",
+      "opencodeAvailable"
+    ],
+    "opencodeDiscoveryConfigured_hits": [
+      { "line": 187, "role": "schema", "text": "opencodeDiscoveryConfigured: z.boolean()," },
+      { "line": 1312, "role": "producer", "text": "opencodeDiscoveryConfigured: true," }
+    ],
+    "opencodeHarnessConfigured_hits": [
+      { "line": 206, "role": "schema", "text": "opencodeHarnessConfigured: z.boolean()," },
+      { "line": 1337, "role": "producer", "text": "opencodeHarnessConfigured: true," },
+      { "line": 8958, "role": "consumer_or_predicate", "text": "opencodeStatus.opencodeHarnessConfigured === true ||" }
+    ],
+    "opencodeConfigured_hits": [
+      { "line": 8957, "role": "consumer_or_predicate", "text": "const opencodeConfigured =" },
+      { "line": 8959, "role": "consumer_or_predicate", "text": "opencodeStatus.opencodeConfigured === true ||" },
+      { "line": 8964, "role": "consumer_or_predicate", "text": "opencodeConfigured && opencodeExecutionEnabled;" },
+      { "line": 9192, "role": "consumer_or_predicate", "text": "...(opencodeConfigured ? [] : [\"OPENCODE_NOT_CONFIGURED\"])," },
+      { "line": 9306, "role": "report_field", "text": "opencodeConfigured," }
+    ],
+    "opencodeAvailable_hits": [
+      { "line": 8960, "role": "consumer_or_predicate", "text": "opencodeStatus.opencodeAvailable === true;" }
+    ],
+    "conclusion": "No false-open consumer found for this configured-field mismatch. opencodeDiscoveryConfigured is schema+producer only; the configured aliases are consumed only in guarded preflight, and opencodeExecutionEnabled remains an independent false requirement. Observed failure mode is false-closed/misleading readiness label."
+  },
+  "interpretation": {
+    "not_configured_means": "guarded preflight did not recognize the configured/discovery field returned by getOpenCodeStatus",
+    "remote_runner_reachable": true,
+    "start_endpoint_guarded_callable": true,
+    "live_opencode_instance_checked": false,
+    "opencode_execution_disabled": true,
+    "disable_switch_still_active": true,
+    "readiness_label_wrong": true,
+    "opencode_live_readiness_unverified": true
+  },
+  "expected_or_new": {
+    "remote_runner_reachable_expected_from_prior_packets": true,
+    "opencode_execution_disabled_expected_from_policy_history": true,
+    "opencode_not_configured_label_new_information": true,
+    "opencode_not_configured_label_is_misleading": true,
+    "requires_fix_before_next_canary_attempt": true
+  },
+  "next_required_work": {
+    "packet": "FP-MCP-174",
+    "task": "Fix or normalize OpenCode readiness predicate fields so configured/discovery status is labeled correctly, while preserving liveOpenCodeChecked=false and execution disabled until separately proven."
+  },
+  "safety_boundary": {
+    "runner_start_endpoint_contacted": false,
+    "opencode_started": false,
+    "execution_enabled": false,
+    "canary_retried": false
+  }
+}
