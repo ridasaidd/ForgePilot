@@ -1,0 +1,41 @@
+FP-META-028 verification
+
+Project checklist rules document exists:
+PASS
+- docs/project-checklist-rules.md
+
+MCP bridge shadow-refactor checklist exists:
+PASS
+- instrument-projects/forgepilot-chatgpt-mcp/checklists/server-shadow-refactor.md
+
+Rules covered:
+PASS
+- checklist purpose
+- checklist location
+- allowed statuses
+- required fields
+- evidence requirement
+- model-worker handoff rule
+- update rule
+- checklist/evidence boundary
+- OpenCode plugin deferral
+- CLI deferral
+
+Checklist initialized:
+PASS
+- SR-001 through SR-012 defined
+- next suggested item is SR-001 structure map
+- live entrypoint preservation boundary recorded
+
+Documentation references:
+PASS
+- docs/core-instrument-observed-project-boundaries.md references checklist rules
+- instrument-projects/forgepilot-chatgpt-mcp/README.md references checklist
+- docs/forgepilot-progress-checklist.md references FP-META-028
+
+Scope:
+PASS
+- no MCP bridge files changed
+- no implementation code files changed
+- no OpenCode plugin implemented
+- no model execution authorized

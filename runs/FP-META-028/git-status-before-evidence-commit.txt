@@ -1,0 +1,6 @@
+ M docs/core-instrument-observed-project-boundaries.md
+ M docs/forgepilot-progress-checklist.md
+ M instrument-projects/forgepilot-chatgpt-mcp/README.md
+?? docs/project-checklist-rules.md
+?? instrument-projects/forgepilot-chatgpt-mcp/checklists/
+?? runs/FP-META-028/

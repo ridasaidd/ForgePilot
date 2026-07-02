@@ -175,3 +175,18 @@ instrument-projects/forgepilot-chatgpt-mcp/model-results/
 This document defines where work is recorded.
 
 It does not start project work, admit evidence, rank models, route work, change MCP tools, or migrate historical packets.
+
+
+## Project Checklists
+
+Project-specific checklists must follow:
+
+```text
+docs/project-checklist-rules.md
+```
+
+For the MCP bridge shadow refactor, the initial checklist is:
+
+```text
+instrument-projects/forgepilot-chatgpt-mcp/checklists/server-shadow-refactor.md
+```

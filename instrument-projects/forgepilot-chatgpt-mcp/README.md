@@ -62,3 +62,20 @@ docs/shadow-refactor-rules.md
 ```
 
 Concrete shadow-refactor packets should live under this instrument-project workspace, not root ForgePilot `packets/`, unless they change the MCP instrument contract.
+
+
+## Project Checklist
+
+The initial project checklist is:
+
+```text
+checklists/server-shadow-refactor.md
+```
+
+Checklist rules are defined in:
+
+```text
+docs/project-checklist-rules.md
+```
+
+The checklist is an evidence index and planning surface. It is not evidence by itself and does not authorize model execution without a scoped packet.
