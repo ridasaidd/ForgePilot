@@ -36,3 +36,16 @@ PASS
 - no historical reports mutated
 - no files migrated
 - no implementation code changed
+
+Default marker interpretation recorded:
+PASS
+- absence of propagation marker means UNKNOWN_DEPENDENCY_STATUS, never NOT_AFFECTED
+
+Existing invalidation event check recorded:
+PASS
+- runs/FP-META-031/existing-invalidation-events.txt
+- current admission_invalidation_events count: 0
+
+Retroactive gap status:
+PASS
+- no known pre-existing admission invalidation events requiring retroactive downstream marking at this time

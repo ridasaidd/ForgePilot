@@ -178,3 +178,39 @@ A future implementation packet should define or implement:
 FP-META-031 defines invalidation propagation semantics only.
 
 It does not implement propagation, change schema, mutate historical reports, or mark existing artifacts stale.
+
+## Default Marker Interpretation
+
+Absence of a propagation marker must be interpreted as:
+
+```text
+UNKNOWN_DEPENDENCY_STATUS
+```
+
+It must never be interpreted as:
+
+```text
+NOT_AFFECTED
+```
+
+until propagation markers are implemented and explicit dependency checks have run.
+
+This rule applies to existing reports, future reports, checklist rows, model trust assignments, and derived summaries.
+
+## Existing Invalidation Event Check
+
+FP-META-031 records the current database check in:
+
+```text
+runs/FP-META-031/existing-invalidation-events.txt
+```
+
+Result at the time of this packet:
+
+```text
+admission_invalidation_events count: 0
+```
+
+Therefore there are no known pre-existing admission invalidation events requiring retroactive downstream `UNKNOWN_DEPENDENCY_STATUS` marking at this time.
+
+If later checks find historical invalidation events that predate propagation markers, their downstream dependency status must be treated as `UNKNOWN_DEPENDENCY_STATUS` until reconstructed.

@@ -1,0 +1,15 @@
+# FP-META-031 existing invalidation event check
+
+## Database
+data/forgepilot.db
+
+## Relevant table presence
+evidence_admission_events: PRESENT
+admission_review_requests: PRESENT
+admission_invalidation_events: PRESENT
+
+## admission_invalidation_events count
+0
+
+## admission_invalidation_events rows
+NO_ROWS
