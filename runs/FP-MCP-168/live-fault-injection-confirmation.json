@@ -1,0 +1,45 @@
+{
+  "packet_id": "FP-MCP-168",
+  "result": "CONSUMING_CLEARANCE_DRY_RUN_FAULT_INJECTION_LIVE_CONFIRMED_NO_RUNNER_CONTACT",
+  "bridge_commit_under_test": "d2ecadc",
+  "runtime_call": "forgepilot_dry_run_consuming_scoped_clearance",
+  "packetId": "FP-MCP-159",
+  "requestId": "REQ-20260702T143631238Z-4e3b750e",
+  "approvalId": "APPROVAL-20260702T181446995Z-26a9d4b7",
+  "attemptId": "ATTEMPT-20260702T181500000Z-5e6f7a8b",
+  "faultInjectionMode": "SIMULATE_INTERRUPTION_BEFORE_STUBBED_CONTACT_RESULT",
+  "checked_at": "2026-07-02T18:15:06.743Z",
+  "scopedClearanceEligible": true,
+  "consumptionWouldBeAllowed": true,
+  "dryRunConsumptionArtifactRecorded": true,
+  "dryRunConsumptionArtifactPath": "runs/FP-MCP-159/consuming-clearance-dry-runs/DRYRUN-20260702T181506743Z-5ff4bf7c/consumption.json",
+  "dryRunConsumptionArtifactSha256": "0a71bbc059d8b1ae23134f9a59dc4015ffb66159a32ae902566b40f70ad232c5",
+  "dryRunContactOutcomeArtifactRecorded": false,
+  "dryRunContactOutcomeArtifactPath": null,
+  "reconstructedAttemptState": "CONSUMED_PENDING_RUNNER_CONTACT_STALE",
+  "simulatedInterruptionBeforeContactOutcome": true,
+  "simulatedAfterContactDeadline": true,
+  "safety_boundary": {
+    "realApprovalConsumed": false,
+    "approvalConsumed": false,
+    "runnerStartEndpointContacted": false,
+    "startEndpointContacted": false,
+    "opencodeStarted": false,
+    "executionPermitted": false,
+    "runnerRunIdCreated": false,
+    "requestArtifactMutated": false
+  },
+  "artifact_check": {
+    "consumption_artifact_exists": true,
+    "outcome_artifact_absent": true,
+    "consumption_hash_matches": true
+  },
+  "reasons": [
+    "FAULT_INJECTION_SUPPRESSED_STUBBED_CONTACT_OUTCOME",
+    "SIMULATED_AFTER_CONTACT_DEADLINE",
+    "STALE_STATE_RECONSTRUCTED_WITHOUT_RUNNER_CONTACT",
+    "DRY_RUN_ONLY_REAL_APPROVAL_NOT_CONSUMED",
+    "DRY_RUN_ONLY_RUNNER_START_NOT_CONTACTED",
+    "DRY_RUN_ONLY_OPENCODE_NOT_STARTED"
+  ]
+}
