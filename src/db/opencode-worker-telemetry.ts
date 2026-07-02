@@ -250,6 +250,107 @@ export function persistOpenCodeWorkerTelemetry(telemetryPath: string): PersistWo
   };
 }
 
+
+export interface QueryPersistedOpenCodeWorkerTelemetryInput {
+  packetId?: string;
+  workerStatus?: string;
+  terminalState?: string;
+  validationState?: string;
+  admissionState?: string;
+  limit?: number;
+}
+
+export interface QueryPersistedOpenCodeWorkerTelemetryResult {
+  rows: PersistedOpenCodeWorkerTelemetryRow[];
+  count: number;
+  filters: Record<string, string>;
+  limit: number;
+  observation_semantics: string;
+}
+
+const DEFAULT_QUERY_LIMIT = 20;
+const MAX_QUERY_LIMIT = 100;
+const QUERY_OBSERVATION_SEMANTICS =
+  "Persisted worker telemetry query results are observations, not admitted evidence or routing input.";
+
+function optionalNonEmptyString(value: string | undefined, name: string): string | undefined {
+  if (value === undefined) return undefined;
+  if (typeof value !== "string" || value.length === 0) {
+    throw new Error(`${name} must be a non-empty string when provided`);
+  }
+  return value;
+}
+
+function normalizeLimit(value: number | undefined): number {
+  if (value === undefined) return DEFAULT_QUERY_LIMIT;
+  if (!Number.isInteger(value) || value < 1) {
+    throw new Error("limit must be a positive integer when provided");
+  }
+  return Math.min(value, MAX_QUERY_LIMIT);
+}
+
+export function queryPersistedOpenCodeWorkerTelemetry(
+  input: QueryPersistedOpenCodeWorkerTelemetryInput = {}
+): QueryPersistedOpenCodeWorkerTelemetryResult {
+  const filters: Record<string, string> = {};
+  const where: string[] = [];
+  const params: Record<string, string | number> = {};
+
+  const packetId = optionalNonEmptyString(input.packetId, "packetId");
+  const workerStatus = optionalNonEmptyString(input.workerStatus, "workerStatus");
+  const terminalState = optionalNonEmptyString(input.terminalState, "terminalState");
+  const validationState = optionalNonEmptyString(input.validationState, "validationState");
+  const admissionState = optionalNonEmptyString(input.admissionState, "admissionState");
+  const limit = normalizeLimit(input.limit);
+
+  if (packetId) {
+    filters.packetId = packetId;
+    where.push("packet_id = @packetId");
+    params.packetId = packetId;
+  }
+  if (workerStatus) {
+    filters.workerStatus = workerStatus;
+    where.push("worker_status = @workerStatus");
+    params.workerStatus = workerStatus;
+  }
+  if (terminalState) {
+    filters.terminalState = terminalState;
+    where.push("terminal_state = @terminalState");
+    params.terminalState = terminalState;
+  }
+  if (validationState) {
+    filters.validationState = validationState;
+    where.push("validation_state = @validationState");
+    params.validationState = validationState;
+  }
+  if (admissionState) {
+    filters.admissionState = admissionState;
+    where.push("admission_state = @admissionState");
+    params.admissionState = admissionState;
+  }
+
+  params.limit = limit;
+
+  const whereClause = where.length > 0 ? `WHERE ${where.join(" AND ")}` : "";
+  const rows = getDb()
+    .prepare(`
+      SELECT *
+      FROM opencode_worker_telemetry
+      ${whereClause}
+      ORDER BY persisted_at DESC, captured_at DESC, packet_id ASC, worker_id ASC
+      LIMIT @limit
+    `)
+    .all(params) as PersistedOpenCodeWorkerTelemetryRow[];
+
+  return {
+    rows,
+    count: rows.length,
+    filters,
+    limit,
+    observation_semantics: QUERY_OBSERVATION_SEMANTICS,
+  };
+}
+
 export function getPersistedOpenCodeWorkerTelemetry(packetId: string, workerId: string): PersistedOpenCodeWorkerTelemetryRow {
   const row = selectRow(packetId, workerId);
   if (!row) {

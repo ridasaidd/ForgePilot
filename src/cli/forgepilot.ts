@@ -22,6 +22,9 @@ Options:
                                  Requires: --artifact-path
   --read-worker-telemetry        Read persisted worker telemetry.
                                  Requires: --packet-id and --worker-id
+  --query-worker-telemetry       Query persisted worker telemetry observations.
+                                 Optional filters: --packet-id, --worker-status, --terminal-state,
+                                                   --validation-state, --admission-state, --limit
 
 Environment:
   ForgePilot follows an environment-centric architecture.
@@ -185,7 +188,13 @@ async function main(): Promise<void> {
       "mode": { type: "string" },
       "persist-worker-telemetry": { type: "boolean" },
       "read-worker-telemetry": { type: "boolean" },
+      "query-worker-telemetry": { type: "boolean" },
       "worker-id": { type: "string" },
+      "worker-status": { type: "string" },
+      "terminal-state": { type: "string" },
+      "validation-state": { type: "string" },
+      "admission-state": { type: "string" },
+      "limit": { type: "string" },
       "json": { type: "boolean" },
     },
     strict: true,
@@ -304,6 +313,41 @@ async function main(): Promise<void> {
         console.log(`  Worker Status: ${row.worker_status}`);
         console.log(`  Validation State: ${row.validation_state}`);
         console.log(`  Admission State: ${row.admission_state}`);
+      }
+      return;
+    } catch (error) {
+      closeDb();
+      console.error(`ERROR: ${error instanceof Error ? error.message : String(error)}`);
+      process.exit(1);
+    }
+  }
+
+
+  if (values["query-worker-telemetry"] || positionals[0] === "query-worker-telemetry") {
+    const limitValue = values["limit"];
+    const limit = limitValue === undefined ? undefined : Number(limitValue);
+
+    const { initAndMigrate } = await import("../db/migrate.js");
+    initAndMigrate();
+    const { closeDb } = await import("../db/client.js");
+    const { queryPersistedOpenCodeWorkerTelemetry } = await import("../db/opencode-worker-telemetry.js");
+
+    try {
+      const result = queryPersistedOpenCodeWorkerTelemetry({
+        packetId: values["packet-id"],
+        workerStatus: values["worker-status"],
+        terminalState: values["terminal-state"],
+        validationState: values["validation-state"],
+        admissionState: values["admission-state"],
+        limit,
+      });
+      closeDb();
+      if (values.json) {
+        console.log(JSON.stringify(result, null, 2));
+      } else {
+        console.log(`Worker telemetry rows: ${result.count}`);
+        console.log(`  Limit: ${result.limit}`);
+        console.log(`  Observation Semantics: ${result.observation_semantics}`);
       }
       return;
     } catch (error) {
