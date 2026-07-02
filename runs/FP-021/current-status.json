@@ -1,0 +1,7 @@
+{
+  "packet_id": "FP-021",
+  "result": "SAFETY_GATE_FAILURE_CONFIRMED_BY_SOURCE_INSPECTION",
+  "bridge_commit_inspected": "3a16d68",
+  "disposition": "SAFETY_GATE_FAILURE",
+  "extraction_status": "EXTRACTION_BLOCKED_UNTIL_SAFETY_GATE_FIX"
+}

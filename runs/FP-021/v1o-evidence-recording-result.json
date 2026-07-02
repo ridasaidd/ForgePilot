@@ -1,0 +1,26 @@
+{
+  "packet_id": "FP-021",
+  "result": "FP_021_SAFETY_GATE_FAILURE_RECORDED_THROUGH_V1O_PATH",
+  "sqlite_packet_id": 4,
+  "evidence_id": 5,
+  "run_id": "FP-021-SAFETY-GATE-FAILURE",
+  "evidence_admission_state": "ADMITTED",
+  "generic_admission_event_id": 5,
+  "generic_admission_decision": "ADMITTED",
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "SAFETY_GATE_FAILURE_CONFIRMED_BY_SOURCE_INSPECTION",
+  "artifact_paths": [
+    "packets/FP-021.md",
+    "runs/FP-021/root-cause-report.md",
+    "runs/FP-021/safety-disposition.md",
+    "runs/FP-021/source-evidence.md",
+    "runs/FP-021/result-summary.md",
+    "runs/FP-021/current-status.json",
+    "runs/SHADOW-REF-008/fp021-reclassification-note.md",
+    "runs/FP-MCP-036/opencode-workers/WORKER-20260702T121741820Z-e60730d6/start-request.json",
+    "runs/FP-MCP-036/opencode-workers/WORKER-20260702T121741820Z-e60730d6/status.json",
+    "runs/FP-MCP-036/opencode-workers/WORKER-20260702T121741820Z-e60730d6/telemetry.json"
+  ]
+}
