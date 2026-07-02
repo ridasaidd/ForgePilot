@@ -1,0 +1,3 @@
+ M docs/forgepilot-progress-checklist.md
+?? docs/packet-status-index.md
+?? runs/FP-OPS-004/

@@ -126,6 +126,7 @@ Recent closed telemetry/query chain:
 | Checklist namespace guidance | `COMPLETE` | `FP-OPS-001` | Checklist now includes advisory recommended namespace guidance for future work. | The taxonomy doc remains governing. |
 | Packet namespace definition of done | `COMPLETE` | `FP-META-019` | Namespace-specific minimum completion standards are documented in `docs/packet-namespace-definition-of-done.md`. | Namespace implies verification burden, not feature value. |
 | Manual action ledger | `COMPLETE` | `FP-OPS-003` | Manual external action recording pattern is documented in `docs/manual-action-ledger.md`. | Manual action still requires observable proof. |
+| Packet status index | `COMPLETE` | `FP-OPS-004` | Packet navigation/archive index exists at `docs/packet-status-index.md`. | Index does not rename, delete, move, or invalidate packets. |
 | Evidence boundary doctrine | `COMPLETE` | `FP-META-018` | Evidence boundaries are documented in `docs/evidence-boundary-doctrine.md`. | Doctrine is not implementation or admission by itself. |
 | Reporting evidence rules | `COMPLETE` | `FP-META-020` | Reporting claim boundaries are documented in `docs/reporting-evidence-rules.md`. | Reporting is an evidence index, not evidence itself. |
 | Project summary reporting rules | `COMPLETE` | `FP-META-021` | Project-wide reporting claim boundaries are documented in `docs/project-summary-reporting-rules.md`. | Project report is an index, not evidence itself. |
@@ -155,7 +156,7 @@ Do not pre-assign exact packet numbers for future work unless the packet already
 | Project summary reporting rules | `COMPLETE` | `FP-META-*` | Defines project-wide report semantics; completed by `FP-META-021`. |
 | Reporting / summary implementation | `PARTIAL` | `FP-*` | Core ForgePilot behavior; single-packet report implemented by `FP-013`, project summary report implemented by `FP-014`. |
 | Reporting via ChatGPT MCP | `NOT_STARTED` | `FP-MCP-*` | MCP bridge/tool exposure. |
-| Checklist maintenance | `PARTIAL` | `FP-OPS-*` | Operator progress tracking. |
+| Checklist maintenance | `PARTIAL` | `FP-OPS-*` | Operator progress tracking; packet status index added by `FP-OPS-004`. |
 | Session bootstrap updates | `COMPLETE` | `FP-OPS-*` | Operator runbook. |
 | Manual action records/runbooks | `COMPLETE` | `FP-OPS-*` | External operator workflow. |
 | Evidence boundary changes | `COMPLETE` | `FP-META-*` | Standards and semantics. |
