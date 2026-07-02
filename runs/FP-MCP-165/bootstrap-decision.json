@@ -1,0 +1,43 @@
+{
+  "packet_id": "FP-MCP-165",
+  "result": "SCOPED_EXECUTION_BOOTSTRAP_EXCEPTION_AND_RETRY_FRICTION_DECISION_RECORDED",
+  "no_narrower_executor_path_currently_exists": true,
+  "bootstrap_decision": {
+    "one_time_chatgpt_direct_source_exception_authorized": true,
+    "scope": "implement FP-MCP-164 scoped clearance primitive only",
+    "justification": "executor access is gated behind the primitive being implemented",
+    "exception_termination_condition": "SCOPED_CLEARANCE_IMPLEMENTATION_SOURCE_VERIFIED_EXECUTION_STILL_DISABLED",
+    "future_direct_edits_require_new_named_exception": true
+  },
+  "forbidden_by_exception": {
+    "enable_global_execution": true,
+    "unbounded_runner_execution": true,
+    "unbounded_opencode_execution": true,
+    "contact_runner_start_endpoint_during_implementation": true,
+    "start_opencode_during_implementation": true,
+    "first_real_execution_attempt": true,
+    "autonomous_retries": true,
+    "parallel_workers": true,
+    "model_routing": true
+  },
+  "retry_friction_decision": {
+    "consumed_approval_burned_if_runner_start_fails_before_worker_id": true,
+    "fresh_human_approval_required_for_retry": true,
+    "accepted_friction": true,
+    "safety_reason": "No consumed approval may become reusable due to ambiguous post-consumption failure state."
+  },
+  "canary_decision_preserved": {
+    "first_real_execution_is_fp_027_process_tree_canary": true,
+    "single_worker": true,
+    "run_mode": "DESIGN_ONLY",
+    "bounded_prompt": true
+  },
+  "safety_boundary": {
+    "execution_enabled": false,
+    "approval_consumed": false,
+    "runner_start_endpoint_contacted": false,
+    "opencode_started": false,
+    "request_artifact_mutated": false,
+    "runner_run_id_created": false
+  }
+}
