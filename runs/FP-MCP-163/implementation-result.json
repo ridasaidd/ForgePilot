@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-163",
+  "result": "STRUCTURED_APPROVAL_PRE_EXECUTION_INTEGRATION_SOURCE_VERIFIED_REFRESH_PENDING",
+  "bridge_commit": "c996ce2",
+  "verification": {
+    "pnpm_build": "PASS",
+    "pnpm_test": "PASS",
+    "typescript": "PASS"
+  },
+  "runtime_availability": "ACTION_REFRESH_PENDING",
+  "safety_boundary": {
+    "execution_enabled": false,
+    "approval_consumed": false,
+    "runner_handoff_endpoint_contacted": false,
+    "opencode_started": false
+  }
+}
