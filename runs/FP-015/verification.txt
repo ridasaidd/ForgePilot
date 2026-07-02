@@ -1,0 +1,36 @@
+FP-015 verification
+
+Typecheck:
+PASS
+- see runs/FP-015/typecheck.txt
+
+Tests:
+PASS
+- see runs/FP-015/test.txt
+
+CLI JSON smoke with comparison artifacts:
+PASS
+- pnpm fp -- reconstruction-report --packet-id FP-META-016 --json
+- output recorded at runs/FP-015/reconstruction-report-fp-meta-016.json
+
+CLI text smoke with comparison artifacts:
+PASS
+- pnpm fp -- reconstruction-report --packet-id FP-META-016
+- output recorded at runs/FP-015/reconstruction-report-fp-meta-016.txt
+
+CLI JSON smoke without comparison artifacts:
+PASS
+- pnpm fp -- reconstruction-report --packet-id FP-014 --json
+- output recorded at runs/FP-015/reconstruction-report-fp-014.json
+
+Required boundary:
+PASS
+- Reconstruction is read-only. It summarizes recorded state and does not create admission, comparison, ranking, or routing authority.
+
+Scope boundary:
+PASS
+- no SQLite schema created
+- no MCP tools added
+- no bridge code changed
+- no routing/scoring/model ranking/admission behavior implemented
+- no historical packets renamed

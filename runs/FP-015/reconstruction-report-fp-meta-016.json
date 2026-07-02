@@ -1,0 +1,44 @@
+{
+  "packet_id": "FP-META-016",
+  "packet_path": "packets/FP-META-016.md",
+  "packet_exists": true,
+  "source_artifacts": [
+    {
+      "path": "runs/FP-META-016/audit-prompt.md",
+      "kind": "audit"
+    },
+    {
+      "path": "runs/FP-META-016/audit-result.md",
+      "kind": "audit"
+    },
+    {
+      "path": "runs/FP-META-016/comparison-result.md",
+      "kind": "comparison"
+    },
+    {
+      "path": "runs/FP-META-016/executor-result.md",
+      "kind": "executor_result"
+    },
+    {
+      "path": "runs/FP-META-016/verification.txt",
+      "kind": "verification"
+    }
+  ],
+  "verification_state": "PRESENT",
+  "audit_state": "PRESENT",
+  "comparison_state": "PRESENT",
+  "admission_state": "NOT_EVALUATED",
+  "reconstructed_labels": [
+    "VERIFICATION_ARTIFACT_PRESENT",
+    "AUDIT_ARTIFACT_PRESENT",
+    "COMPARISON_ARTIFACT_PRESENT",
+    "NOT_EVALUATED"
+  ],
+  "boundary": "Reconstruction is read-only. It summarizes recorded state and does not create admission, comparison, ranking, or routing authority.",
+  "caveats": [
+    "Reconstruction is read-only. It summarizes recorded state and does not create admission, comparison, ranking, or routing authority.",
+    "Artifact presence does not imply admission or correctness.",
+    "Comparison artifacts are bounded records, not global model rankings.",
+    "Missing comparison is reported as missing, not as failure."
+  ]
+}

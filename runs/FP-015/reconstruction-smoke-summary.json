@@ -1,0 +1,28 @@
+{
+  "fp_meta_016": {
+    "verification": "PRESENT",
+    "audit": "PRESENT",
+    "comparison": "PRESENT",
+    "admission": "NOT_EVALUATED",
+    "labels": [
+      "VERIFICATION_ARTIFACT_PRESENT",
+      "AUDIT_ARTIFACT_PRESENT",
+      "COMPARISON_ARTIFACT_PRESENT",
+      "NOT_EVALUATED"
+    ],
+    "boundary": "Reconstruction is read-only. It summarizes recorded state and does not create admission, comparison, ranking, or routing authority."
+  },
+  "fp_014": {
+    "verification": "PRESENT",
+    "audit": "MISSING",
+    "comparison": "NO_COMPARISON_RECORDED",
+    "admission": "NOT_EVALUATED",
+    "labels": [
+      "VERIFICATION_ARTIFACT_PRESENT",
+      "AUDIT_MISSING",
+      "NO_COMPARISON_RECORDED",
+      "NOT_EVALUATED"
+    ],
+    "boundary": "Reconstruction is read-only. It summarizes recorded state and does not create admission, comparison, ranking, or routing authority."
+  }
+}

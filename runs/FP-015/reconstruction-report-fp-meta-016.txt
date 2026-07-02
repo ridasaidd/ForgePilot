@@ -1,0 +1,19 @@
+Reconstruction Report: FP-META-016
+Packet Path: packets/FP-META-016.md
+Verification State: PRESENT
+Audit State: PRESENT
+Comparison State: PRESENT
+Admission State: NOT_EVALUATED
+Labels: VERIFICATION_ARTIFACT_PRESENT, AUDIT_ARTIFACT_PRESENT, COMPARISON_ARTIFACT_PRESENT, NOT_EVALUATED
+Boundary: Reconstruction is read-only. It summarizes recorded state and does not create admission, comparison, ranking, or routing authority.
+Caveats:
+  - Reconstruction is read-only. It summarizes recorded state and does not create admission, comparison, ranking, or routing authority.
+  - Artifact presence does not imply admission or correctness.
+  - Comparison artifacts are bounded records, not global model rankings.
+  - Missing comparison is reported as missing, not as failure.
+Source Artifacts:
+  - runs/FP-META-016/audit-prompt.md [audit]
+  - runs/FP-META-016/audit-result.md [audit]
+  - runs/FP-META-016/comparison-result.md [comparison]
+  - runs/FP-META-016/executor-result.md [executor_result]
+  - runs/FP-META-016/verification.txt [verification]

@@ -113,7 +113,7 @@ Recent closed telemetry/query chain:
 | Audit evidence | `PARTIAL` | earlier benchmark/evaluation packets | Audit workflow exists in earlier ForgePilot work, but current FP-MCP chain does not yet expose a consolidated audit query/report view. | Audit is not comparison or admission by itself. |
 | Admission state | `PARTIAL` | FP-009, FP-010, FP-MCP-156/157 | Admission-state concepts and persistence exist; worker telemetry remains `NOT_EVALUATED`. V1 still needs a consolidated admission/reporting path. | `NOT_EVALUATED` must not be treated as admitted evidence. |
 | Comparison result | `PARTIAL` | earlier benchmark packets | Comparison artifacts exist in earlier evaluation workflows. V1 still needs a supported way to reconstruct comparison state from committed evidence/read-only queries. | Comparison must use admitted evidence only where evidence claims are made. |
-| Reporting / summary view | `PARTIAL` | `FP-013`, `FP-014` | Single-packet and project summary reports exist. Admission/comparison reconstruction remains incomplete. | Report is an evidence index, not evidence itself. |
+| Reporting / summary view | `PARTIAL` | `FP-013`, `FP-014`, `FP-015` | Single-packet, project summary, and reconstruction reports exist. V1-wide admission/comparison integration remains incomplete. | Report is an evidence index, not evidence itself. |
 | Progress checklist | `COMPLETE` | `FP-MCP-158` | This document creates the first repo-tracked V1 progress checklist. | Checklist is an index, not evidence itself. |
 | Completion criteria | `COMPLETE` | `FP-MCP-158` | V1 completion definition is recorded in this document. | Completion criteria do not imply completion. |
 | Safety boundary documentation | `PARTIAL` | FP-MCP packets, boundary docs | Safety boundaries are repeatedly documented in packets and evidence. V1 still needs consolidated boundary reporting or index. | Safety statements must map back to enforced gates or evidence. |
@@ -160,7 +160,7 @@ Do not pre-assign exact packet numbers for future work unless the packet already
 | Manual action records/runbooks | `COMPLETE` | `FP-OPS-*` | External operator workflow. |
 | Evidence boundary changes | `COMPLETE` | `FP-META-*` | Standards and semantics. |
 | Admission/comparison reconstruction rules | `COMPLETE` | `FP-META-*` | Define evidence semantics before implementation; completed by `FP-META-022`. |
-| Admission/comparison reconstruction implementation | `PARTIAL` | `FP-*` | Core query/report behavior. |
+| Admission/comparison reconstruction implementation | `PARTIAL` | `FP-*` | Core query/report behavior; first read-only reconstruction report implemented by `FP-015`. |
 | New MCP tool exposure for existing ForgePilot behavior | `DEFERRED` | `FP-MCP-*` | MCP integration only. |
 
 ## Incomplete V1 Capability Notes
