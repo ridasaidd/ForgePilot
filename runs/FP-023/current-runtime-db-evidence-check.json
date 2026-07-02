@@ -1,0 +1,16 @@
+{
+  "packet_id": "FP-023",
+  "total_evidence_records": 8,
+  "total_generic_evidence_record_admission_events": 8,
+  "fp023_runtime_record": {
+    "evidence_id": 8,
+    "run_id": "FP-023-RUNTIME-GATE-CONFIRMATION",
+    "admission_state": "ADMITTED",
+    "executor_result": "FP_023_RUNTIME_GATE_CONFIRMED_LIVE_MCP_NO_SPAWN",
+    "verification_result": "LIVE_MCP_TOOL_BLOCKED_WITH_DISABLED_REASONS;NO_WORKER_ARTIFACTS_CREATED",
+    "validation_state": "VALID",
+    "generic_admission_event_id": 8,
+    "admission_decision": "ADMITTED"
+  },
+  "result": "FP_023_RUNTIME_CONFIRMATION_CANONICAL_EVIDENCE_PRESENT"
+}
