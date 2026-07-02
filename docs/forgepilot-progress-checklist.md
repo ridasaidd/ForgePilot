@@ -116,7 +116,7 @@ Recent closed telemetry/query chain:
 | Reporting / summary view | `PARTIAL` | `FP-013`, `FP-014`, `FP-015`, `FP-016` | Single-packet, project summary, reconstruction, and capability-detail reports exist. V1-wide admission/comparison integration remains incomplete. | Report is an evidence index, not evidence itself. |
 | Progress checklist | `COMPLETE` | `FP-MCP-158` | This document creates the first repo-tracked V1 progress checklist. | Checklist is an index, not evidence itself. |
 | Completion criteria | `COMPLETE` | `FP-MCP-158` | V1 completion definition is recorded in this document. | Completion criteria do not imply completion. |
-| Safety boundary documentation | `PARTIAL` | FP-MCP packets, boundary docs | Safety boundaries are repeatedly documented in packets and evidence. V1 still needs consolidated boundary reporting or index. | Safety statements must map back to enforced gates or evidence. |
+| Safety boundary documentation | `COMPLETE` | `FP-META-018`, `FP-META-023` | Consolidated safety boundary evidence index exists at `docs/safety-boundary-evidence-index.md`. | Safety statements map to sources/evidence but are not evidence by themselves. |
 | Manual MCP Actions refresh process | `COMPLETE` | `FP-MCP-157` | Direct query proof records that new MCP tools require manual OpenAI Actions schema refresh before ChatGPT can discover them. | Bridge restart alone does not refresh ChatGPT action schema. |
 | SQLite checklist persistence | `DEFERRED` | `FP-MCP-158` | Markdown is intentionally used for v1 checklist. SQLite persistence may come later after vocabulary stabilizes. | Do not over-engineer checklist state before manual use proves shape. |
 | Routing | `DEFERRED` | none for V1 | Explicitly out of scope for current V1 completion work. | No model routing or optimization may be inferred. |
@@ -128,6 +128,7 @@ Recent closed telemetry/query chain:
 | Manual action ledger | `COMPLETE` | `FP-OPS-003` | Manual external action recording pattern is documented in `docs/manual-action-ledger.md`. | Manual action still requires observable proof. |
 | Packet status index | `COMPLETE` | `FP-OPS-004` | Packet navigation/archive index exists at `docs/packet-status-index.md`. | Index does not rename, delete, move, or invalidate packets. |
 | Evidence boundary doctrine | `COMPLETE` | `FP-META-018` | Evidence boundaries are documented in `docs/evidence-boundary-doctrine.md`. | Doctrine is not implementation or admission by itself. |
+| Safety boundary evidence index | `COMPLETE` | `FP-META-023` | Safety boundaries are mapped to governing docs, evidence, and gates in `docs/safety-boundary-evidence-index.md`. | Index is not policy engine or evidence by itself. |
 | Reporting evidence rules | `COMPLETE` | `FP-META-020` | Reporting claim boundaries are documented in `docs/reporting-evidence-rules.md`. | Reporting is an evidence index, not evidence itself. |
 | Project summary reporting rules | `COMPLETE` | `FP-META-021` | Project-wide reporting claim boundaries are documented in `docs/project-summary-reporting-rules.md`. | Project report is an index, not evidence itself. |
 | Admission/comparison reconstruction rules | `COMPLETE` | `FP-META-022` | Reconstruction boundaries are documented in `docs/admission-comparison-reconstruction-rules.md`. | Rules do not implement reconstruction. |
