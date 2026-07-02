@@ -1,0 +1,35 @@
+{
+  "packet_id": "FP-MCP-180",
+  "decision": "normalize_guarded_runner_capability_predicate",
+  "source_commit_origin_of_old_expectation": "0b134cc Add guarded start",
+  "old_expected_shape": {
+    "startEndpointState": "PRESENT_GUARDED",
+    "startCapabilityCallable": false,
+    "supportedOperations_must_not_include": ["start-run", "execute", "execution"]
+  },
+  "current_live_runner_shape": {
+    "startEndpointState": "CALLABLE_GUARDED",
+    "startCapabilityCallable": true,
+    "supportedOperations": ["capabilities", "validate-request", "start-run"],
+    "executionEnabled": false
+  },
+  "normalized_acceptance_boundary": {
+    "startEndpointState": "CALLABLE_GUARDED",
+    "startCapabilityCallable": true,
+    "supportedOperations_must_include": ["start-run"],
+    "executionEnabled_must_be_false_for_preflight_eligibility": true
+  },
+  "normalized_rejection_boundary": {
+    "supportedOperations_must_not_include": ["execute", "execution"],
+    "non_guarded_endpoint_states_rejected": true,
+    "missing_start_run_rejected": true,
+    "executionEnabled_true_rejected_for_preflight_eligibility": true
+  },
+  "safety_boundary": {
+    "does_not_enable_execution": true,
+    "does_not_contact_runner_start_endpoint": true,
+    "does_not_start_opencode": true,
+    "does_not_consume_approval": true,
+    "does_not_retry_canary": true
+  }
+}
