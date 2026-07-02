@@ -1,0 +1,74 @@
+{
+  "packet_id": "FP-017",
+  "numeric_packet_id": 1,
+  "distribution": [
+    {
+      "state": "ADMITTED",
+      "count": 1
+    },
+    {
+      "state": "REJECTED",
+      "count": 1
+    }
+  ],
+  "admitted_count": 1,
+  "rejected_count": 1,
+  "non_admitted_rows": [
+    {
+      "evidence_id": 2,
+      "run_id": "FP-017-NEGATIVE-REJECTED",
+      "admission_state": "REJECTED"
+    }
+  ],
+  "rejected_excluded_from_admitted_count": true,
+  "parity": [
+    {
+      "run_id": "FP-017-POSITIVE-ADMITTED",
+      "evidence_id": 1,
+      "expected_path": "runs/FP-017/evidence-fixtures/admitted-boring-evidence.json",
+      "file_sha256": "9e5b2c7bba505af81d6c1989b3cd36e8e6042bfd94442d7908fe816c195f56da",
+      "file_size": 305,
+      "admission_state": "ADMITTED",
+      "validation_state": "VALID",
+      "trust_tier": "TIER_2_VERIFIED_ARTIFACT",
+      "path_match": true,
+      "hash_match": true,
+      "pass": true
+    },
+    {
+      "run_id": "FP-017-NEGATIVE-REJECTED",
+      "evidence_id": 2,
+      "expected_path": "runs/FP-017/evidence-fixtures/rejected-control-evidence.json",
+      "file_sha256": "80ce76a7eed5dca2e563eb213bacf3427e507ce6eddae83b1fb43e28dc78b092",
+      "file_size": 301,
+      "admission_state": "REJECTED",
+      "validation_state": "INVALID",
+      "trust_tier": "TIER_0_UNTRUSTED",
+      "path_match": true,
+      "hash_match": true,
+      "pass": true
+    }
+  ],
+  "parity_pass": true,
+  "records": [
+    {
+      "evidence_id": 1,
+      "run_id": "FP-017-POSITIVE-ADMITTED",
+      "admission_state": "ADMITTED",
+      "validation_state": "VALID",
+      "trust_tier": "TIER_2_VERIFIED_ARTIFACT",
+      "metrics_path": "runs/FP-017/evidence-fixtures/admitted-boring-evidence.json",
+      "verification_result": "FILE_SHA256:9e5b2c7bba505af81d6c1989b3cd36e8e6042bfd94442d7908fe816c195f56da;FILE_SIZE:305"
+    },
+    {
+      "evidence_id": 2,
+      "run_id": "FP-017-NEGATIVE-REJECTED",
+      "admission_state": "REJECTED",
+      "validation_state": "INVALID",
+      "trust_tier": "TIER_0_UNTRUSTED",
+      "metrics_path": "runs/FP-017/evidence-fixtures/rejected-control-evidence.json",
+      "verification_result": "FILE_SHA256:80ce76a7eed5dca2e563eb213bacf3427e507ce6eddae83b1fb43e28dc78b092;FILE_SIZE:301"
+    }
+  ],
+  "result": "FIRST_ADMITTED_AND_REJECTED_CONTROL_PROVEN"
+}

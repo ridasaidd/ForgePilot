@@ -1,0 +1,8 @@
+{
+  "packet_id": "FP-017",
+  "case": "positive",
+  "expected_validation_state": "VALID",
+  "expected_admission_state": "ADMITTED",
+  "claim": "Boring fixture proving the FP-017 positive evidence plumbing path.",
+  "non_goal": "This fixture does not admit historical ForgePilot evidence or model trust."
+}

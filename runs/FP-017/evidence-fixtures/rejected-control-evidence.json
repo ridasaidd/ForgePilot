@@ -1,0 +1,8 @@
+{
+  "packet_id": "FP-017",
+  "case": "negative-control",
+  "expected_validation_state": "INVALID",
+  "expected_admission_state": "REJECTED",
+  "claim": "Boring fixture proving the FP-017 rejected evidence control path.",
+  "non_goal": "This fixture must not contribute to admitted evidence counts."
+}
