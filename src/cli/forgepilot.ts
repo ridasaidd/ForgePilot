@@ -27,6 +27,7 @@ Options:
                                                    --validation-state, --admission-state, --limit
   --packet-report                 Print a read-only packet evidence summary.
                                  Requires: --packet-id
+  --project-report                Print a read-only ForgePilot project summary.
 
 Environment:
   ForgePilot follows an environment-centric architecture.
@@ -192,6 +193,7 @@ async function main(): Promise<void> {
       "read-worker-telemetry": { type: "boolean" },
       "query-worker-telemetry": { type: "boolean" },
       "packet-report": { type: "boolean" },
+      "project-report": { type: "boolean" },
       "worker-id": { type: "string" },
       "worker-status": { type: "string" },
       "terminal-state": { type: "string" },
@@ -326,6 +328,24 @@ async function main(): Promise<void> {
   }
 
 
+
+
+  if (values["project-report"] || positionals[0] === "project-report") {
+    const { buildProjectReport, formatProjectReportText } = await import("../reporting/project-report.js");
+
+    try {
+      const report = buildProjectReport();
+      if (values.json) {
+        console.log(JSON.stringify(report, null, 2));
+      } else {
+        process.stdout.write(formatProjectReportText(report));
+      }
+      return;
+    } catch (error) {
+      console.error(`ERROR: ${error instanceof Error ? error.message : String(error)}`);
+      process.exit(1);
+    }
+  }
 
   if (values["packet-report"] || positionals[0] === "packet-report") {
     const packetId = values["packet-id"];
