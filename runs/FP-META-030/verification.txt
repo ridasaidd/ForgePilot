@@ -31,3 +31,13 @@ PASS
 - no reporting behavior changed
 - no reconstruction behavior changed
 - no implementation code changed
+
+
+Trust tier recorded:
+PASS
+- TIER_1_STATIC_SOURCE_INSPECTION
+
+Present conformance gap recorded:
+PASS
+- code appears conformant under current static inspection
+- structural safety is not guaranteed by construction while rootDir may default to process.cwd()

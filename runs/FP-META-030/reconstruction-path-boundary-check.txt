@@ -43,3 +43,20 @@ Because rootDir defaults to process.cwd(), future external workspace support mus
 
 Follow-up:
 No immediate boundary-conformance fix packet is required based on the searched code. A future implementation packet should add explicit evidence-root selection before external workspaces become operational.
+
+Trust classification:
+TIER_1_STATIC_SOURCE_INSPECTION
+
+Trust tier rationale:
+This evidence is generated from command-captured grep output and source excerpts. It is stronger than an unaudited prose claim because the searched paths and excerpts are preserved in committed artifacts. It is weaker than TIER_2/TIER_3 runtime evidence because no instrumented reconstruction run captured actual paths read at runtime.
+
+Admission distinction:
+- Boundary rule: ADMITTED as governance for future interpretation.
+- Current code structural safety: NOT GUARANTEED BY CONSTRUCTION.
+- Current code conformance: APPEARS CONFORMANT GIVEN STATIC SOURCE INSPECTION AND CURRENT INVOCATION ASSUMPTIONS.
+
+Present conformance gap:
+The current reporting code defaults rootDir to process.cwd() when rootDir is not explicitly provided. Therefore conformance depends on the invocation working directory. If a bridge call, cron job, script, or future automation invokes reporting from the wrong cwd, code may read the wrong evidence root without violating the static code shape captured here.
+
+Required future hardening:
+Before external workspaces become operational, reporting/reconstruction should use explicit evidence-root selection and should not rely on ambient process.cwd() for mixed core/project reporting.

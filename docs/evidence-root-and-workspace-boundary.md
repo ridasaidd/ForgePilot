@@ -89,6 +89,28 @@ runs/FP-META-030/reporting-source-excerpts.txt
 
 The boundary rule is defined here, but operational conformance must be checked against code and not inferred from this document alone.
 
+
+
+## Trust Classification for Current Check
+
+```text
+TIER_1_STATIC_SOURCE_INSPECTION
+```
+
+The FP-META-030 conformance check is based on command-captured grep output and focused source excerpts.
+
+It is stronger than narrative self-report because the searched paths and source excerpts are committed as artifacts.
+
+It is weaker than runtime tracing because it does not capture the actual paths read during an instrumented report run.
+
+## Current Code Safety Caveat
+
+The boundary rule is admitted as governance.
+
+Current code appears conformant under static source inspection, but structural safety is not guaranteed by construction because reporting code can default `rootDir` to `process.cwd()`.
+
+Therefore, future external workspace support must make evidence-root selection explicit before mixed core/project reporting becomes operational.
+
 ## Non-Goals
 
 This document does not migrate files, implement external workspace support, change reporting behavior, or generate admission distribution reports.
