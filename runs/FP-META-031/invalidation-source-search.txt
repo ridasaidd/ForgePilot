@@ -1,0 +1,1174 @@
+# FP-META-031 invalidation source search
+
+## Git baseline
+main
+4fbf62a
+?? runs/FP-META-031/
+
+## Source/docs search for invalidation/admission/downstream terminology
+src/reporting/packet-report.ts:165:  if (workerTelemetry.available) labels.push("OBSERVED_NOT_ADMITTED");
+src/db/outcome.ts:99:const VALID_ROUTING_SIGNAL_ELIGIBILITY = ["NOT_ELIGIBLE", "ELIGIBLE_AS_SIGNAL", "ELIGIBLE_AS_EVIDENCE", "QUARANTINED"];
+src/db/outcome.ts:162:  if (params.admission_state === "ADMITTED") {
+src/db/outcome.ts:163:    throw new Error("FP-008 does not implement an authorized admission process. ADMITTED is not allowed for outcome observations.");
+src/db/classification.ts:127:  if (params.admission_state === "ADMITTED") {
+src/db/classification.ts:128:    throw new Error("FP-008 does not implement an authorized admission process. ADMITTED is not allowed for classification observations.");
+src/db/schema.sql:177:                         CHECK (admission_state IN ('NOT_EVALUATED', 'REJECTED', 'PENDING', 'ADMITTED', 'QUARANTINED')),
+src/db/schema.sql:248:                                'ADMITTED', 'PENDING', 'REJECTED', 'QUARANTINED', 'NOT_EVALUATED'
+src/db/schema.sql:251:                                'ADMITTED', 'PENDING', 'REJECTED', 'QUARANTINED', 'NOT_EVALUATED'
+src/db/evidence.ts:33:  invalidation_decision: string;
+src/db/evidence.ts:34:  invalidated_by_actor_type: string;
+src/db/evidence.ts:35:  invalidated_by_actor_id: string;
+src/db/evidence.ts:36:  invalidation_reason: string;
+src/db/evidence.ts:67:  invalidation_decision: string;
+src/db/evidence.ts:68:  invalidated_by_actor_type: string;
+src/db/evidence.ts:69:  invalidated_by_actor_id?: string;
+src/db/evidence.ts:70:  invalidation_reason?: string;
+src/db/evidence.ts:78:  defeating_invalidation: AdmissionInvalidationEvent | null;
+src/db/evidence.ts:86:const VALID_ADMISSION_DECISIONS = ["ADMITTED", "REJECTED", "PENDING"];
+src/db/evidence.ts:105:  "SOURCE_OBSERVATION_QUARANTINED",
+src/db/evidence.ts:113:  "QUARANTINED",
+src/db/evidence.ts:283:    params.invalidation_decision,
+src/db/evidence.ts:285:    "invalidation_decision"
+src/db/evidence.ts:288:    params.invalidated_by_actor_type,
+src/db/evidence.ts:290:    "invalidated_by_actor_type"
+src/db/evidence.ts:333:    `INSERT INTO admission_invalidation_events (
+src/db/evidence.ts:334:      target_admission_event_id, review_request_id, invalidation_decision,
+src/db/evidence.ts:335:      invalidated_by_actor_type, invalidated_by_actor_id,
+src/db/evidence.ts:336:      invalidation_reason, validation_state, provenance_complete
+src/db/evidence.ts:343:    params.invalidation_decision,
+src/db/evidence.ts:344:    params.invalidated_by_actor_type,
+src/db/evidence.ts:345:    params.invalidated_by_actor_id ?? "",
+src/db/evidence.ts:346:    params.invalidation_reason ?? "",
+src/db/evidence.ts:352:    .prepare("SELECT * FROM admission_invalidation_events WHERE id = ?")
+src/db/evidence.ts:358:    event.admission_decision === "ADMITTED" &&
+src/db/evidence.ts:368:    (event.invalidation_decision === "INVALIDATED" ||
+src/db/evidence.ts:369:      event.invalidation_decision === "QUARANTINED")
+src/db/evidence.ts:398:    const invalidations = db
+src/db/evidence.ts:400:        `SELECT * FROM admission_invalidation_events
+src/db/evidence.ts:407:    for (const invalidation of invalidations) {
+src/db/evidence.ts:408:      if (isInvalidationDefeating(invalidation)) {
+src/db/evidence.ts:410:        lastDefeatingInvalidation = invalidation;
+src/db/evidence.ts:419:        defeating_invalidation: null,
+src/db/evidence.ts:427:    defeating_invalidation: lastDefeatingInvalidation,
+src/db/evidence.ts:473:      `SELECT * FROM admission_invalidation_events
+src/db/evidence-records.ts:54:  "ADMITTED",
+src/db/evidence-records.ts:55:  "QUARANTINED",
+src/db/model-comparison.ts:87:  "ADMITTED", "PENDING", "REJECTED", "QUARANTINED", "NOT_EVALUATED",
+src/db/validation-admission.ts:70:  "ADMITTED",
+src/db/validation-admission.ts:71:  "QUARANTINED",
+src/db/validation-admission.ts:301:    ? latestAdmission.admission_state === "ADMITTED"
+src/db/validation-admission.ts:302:    : record.admission_state === "ADMITTED";
+src/db/validation-admission.ts:304:  // If previously admitted but now invalidated, it's QUARANTINED
+src/db/validation-admission.ts:307:      admission_state: "QUARANTINED",
+src/db/validation-admission.ts:359:  // ADMITTED: validation state is VALID, provenance sufficient, trust tier sufficient
+src/db/validation-admission.ts:362:      admission_state: "ADMITTED",
+docs/packet-status-index.md:15:Existing packet IDs must not be renamed, moved, deleted, invalidated, or reinterpreted merely because the taxonomy improved later.
+docs/pre-start-evidence-contract.md:116:Pre-start evidence must be downstream of these observations:
+docs/opencode-executor-boundary.md:566:ADMITTED
+docs/opencode-executor-boundary.md:569:QUARANTINED
+docs/real-human-approval-evidence-contract.md:92:approvalState: INVALID or QUARANTINED
+docs/execution-recovery-and-quarantine-contract.md:72:quarantineState: QUARANTINED
+docs/execution-recovery-and-quarantine-contract.md:95:KEEP_QUARANTINED
+docs/execution-recovery-and-quarantine-contract.md:106:AMBIGUOUS_START_STATE -> QUARANTINED
+docs/execution-recovery-and-quarantine-contract.md:107:QUARANTINED -> KEEP_QUARANTINED
+docs/execution-recovery-and-quarantine-contract.md:108:QUARANTINED -> CONFIRMED_BLOCKED_BEFORE_CONSUMPTION
+docs/execution-recovery-and-quarantine-contract.md:109:QUARANTINED -> CONFIRMED_BLOCKED_AFTER_CONSUMPTION
+docs/execution-recovery-and-quarantine-contract.md:110:QUARANTINED -> CONFIRMED_CONSUMED_AND_STARTED
+docs/execution-recovery-and-quarantine-contract.md:111:QUARANTINED -> CONFIRMED_NO_START_ATTEMPT
+docs/execution-recovery-and-quarantine-contract.md:112:QUARANTINED -> EVIDENCE_INVALID
+docs/execution-recovery-and-quarantine-contract.md:113:QUARANTINED -> DEFERRED_PENDING_MORE_EVIDENCE
+docs/execution-recovery-and-quarantine-contract.md:119:QUARANTINED -> EXECUTION_ALLOWED
+docs/execution-recovery-and-quarantine-contract.md:120:QUARANTINED -> APPROVAL_REUSABLE
+docs/persistence-standards.md:107:- `ADMITTED`
+docs/persistence-standards.md:109:- `QUARANTINED`
+docs/persistence-standards.md:125:### ADMITTED
+docs/persistence-standards.md:133:### QUARANTINED
+docs/persistence-standards.md:296:- `QUARANTINED`
+docs/start-capability-transition-contract.md:79:If earlier evidence is later found invalid, record invalidation evidence.
+docs/start-capability-transition-contract.md:607:If evidence is found invalid later, record invalidation evidence.
+docs/rationale/FP-009-evidence-admission-rationale.md:19:The result is an event-sourced admission model where observations, admissions, review triggers, and invalidations are all treated as auditable records.
+docs/rationale/FP-009-evidence-admission-rationale.md:30:These laws prevent observation storage, evidence admission, and invalidation authority from collapsing into a single mutable state field.
+docs/rationale/FP-009-evidence-admission-rationale.md:39:evidence_status = "ADMITTED"
+docs/rationale/FP-009-evidence-admission-rationale.md:55:admission invalidation event, if required
+docs/rationale/FP-009-evidence-admission-rationale.md:63:admission_invalidation_events
+docs/rationale/FP-009-evidence-admission-rationale.md:109:Instead, it must append an invalidation event that references the admission event.
+docs/rationale/FP-009-evidence-admission-rationale.md:113:admission_invalidation_events
+docs/rationale/FP-009-evidence-admission-rationale.md:119:If invalidation events can appear without a recorded trigger, the beginning of the review chain is lost.
+docs/rationale/FP-009-evidence-admission-rationale.md:121:ForgePilot would know that something was invalidated, but not why the review began.
+docs/rationale/FP-009-evidence-admission-rationale.md:127:An admission invalidation must be preceded by an admission review request.
+docs/rationale/FP-009-evidence-admission-rationale.md:145:no later valid invalidation event defeats that admission
+docs/rationale/FP-009-evidence-admission-rationale.md:157:The invalidation event says whether the admission’s authority was removed.
+docs/rationale/FP-009-evidence-admission-rationale.md:191:FP-009 only defines the persistence boundary for admission, review triggers, and invalidation.
+docs/packet-lifecycle-evidence-index.md:34:3. Verification evidence supports `VERIFIED`, not `ADMITTED`.
+docs/metrics-trust-and-validation.md:178:### ADMITTED
+docs/metrics-trust-and-validation.md:189:### QUARANTINED
+docs/metrics-trust-and-validation.md:252:| TIER_2_VERIFIED_ARTIFACT | VALID | ADMITTED |
+docs/metrics-trust-and-validation.md:256:| TIER_3_REPRODUCIBLE | VALID | ADMITTED |
+docs/metrics-trust-and-validation.md:312:Previously admitted records may be demoted to `QUARANTINED`.
+docs/human-approval-evidence-readiness-checkpoint.md:198:APPROVAL_QUARANTINED
+docs/model-evaluation-harness.md:303:This artifact must document the reason for invalidation.
+docs/model-evaluation-harness.md:375:- Admission State definitions (NOT_EVALUATED, REJECTED, PENDING, ADMITTED, QUARANTINED)
+docs/model-evaluation-harness.md:379:- Demotion path from ADMITTED to QUARANTINED
+docs/forgepilot-master-plan.md:133:ADMITTED / REJECTED / QUARANTINED
+docs/admission-comparison-reconstruction-rules.md:41:- `ADMITTED`
+docs/admission-comparison-reconstruction-rules.md:44:- `QUARANTINED`
+docs/admission-comparison-reconstruction-rules.md:50:A report must not infer `ADMITTED` from:
+docs/reporting-evidence-rules.md:46:- `OBSERVED_NOT_ADMITTED`
+docs/reporting-evidence-rules.md:47:- `ADMITTED`
+docs/reporting-evidence-rules.md:49:- `QUARANTINED`
+docs/task-classification-standards.md:186:| `HIGH` | Incorrect implementation can cause false evidence, missing evidence, or misclassified evidence. Corruption may propagate to downstream observatory outputs and routing decisions before detection. |
+docs/model-outcome-recording-standards.md:584:| `QUARANTINED` | The outcome record was previously eligible but has been quarantined pending re-evaluation. |
+docs/model-outcome-recording-standards.md:596:| Admission state | The outcome record must be `ADMITTED`. |
+docs/model-outcome-recording-standards.md:607:Routing Signal Eligibility may change over time (e.g., promoted from `NOT_ELIGIBLE` to `ELIGIBLE_AS_EVIDENCE` after provenance is verified, demoted to `QUARANTINED` after issues are discovered). Changes must be recorded as transition observations.
+tests/fp008.test.ts:278:      assert.notEqual(obs.admission_state, "ADMITTED", "Classification must not be ADMITTED by default");
+tests/fp008.test.ts:281:    it("should reject explicit ADMITTED for classification observations", () => {
+tests/fp008.test.ts:301:            admission_state: "ADMITTED",
+tests/fp008.test.ts:304:        /ADMITTED is not allowed/,
+tests/fp008.test.ts:305:        "API should reject explicit ADMITTED for classification observations"
+tests/fp008.test.ts:421:      assert.notEqual(obs.admission_state, "ADMITTED", "Outcome must not be ADMITTED by default");
+tests/fp008.test.ts:424:    it("should reject explicit ADMITTED for outcome observations", () => {
+tests/fp008.test.ts:437:            admission_state: "ADMITTED",
+tests/fp008.test.ts:440:        /ADMITTED is not allowed/,
+tests/fp008.test.ts:441:        "API should reject explicit ADMITTED for outcome observations"
+tests/fp008.test.ts:930:        event_type: "PACKET_ADMITTED",
+tests/fp008.test.ts:931:        lifecycle_state: "ADMITTED",
+tests/fp008.test.ts:935:      assert.equal(state!.current_state, "ADMITTED");
+tests/persistence.test.ts:634:        event_type: "PACKET_ADMITTED",
+tests/persistence.test.ts:635:        lifecycle_state: "ADMITTED",
+tests/persistence.test.ts:642:      assert.equal(state!.current_state, "ADMITTED");
+tests/persistence.test.ts:673:        { type: "PACKET_ADMITTED", state: "ADMITTED" },
+tests/persistence.test.ts:674:        { type: "PACKET_QUARANTINED", state: "QUARANTINED" },
+tests/persistence.test.ts:676:        { type: "PACKET_READMITTED", state: "ADMITTED" },
+tests/persistence.test.ts:699:      assert.equal(currentState!.current_state, "ADMITTED", "Latest state should be ADMITTED");
+tests/persistence.test.ts:1457:        event_type: "PACKET_ADMITTED",
+tests/persistence.test.ts:1458:        lifecycle_state: "ADMITTED",
+tests/persistence.test.ts:1465:      assert.equal(state!.current_state, "ADMITTED");
+tests/fp013.test.ts:75:    assert.ok(report.labels.includes("OBSERVED_NOT_ADMITTED"));
+tests/fp012.test.ts:135:    model_a_admission_state: "ADMITTED",
+tests/fp012.test.ts:774:      assert.equal(event.model_a_admission_state, "ADMITTED");
+tests/fp012.test.ts:860:        model_a_admission_state: "ADMITTED",
+tests/fp012.test.ts:905:        model_a_admission_state: "ADMITTED",
+tests/fp012.test.ts:906:        model_b_admission_state: "QUARANTINED",
+tests/fp012.test.ts:909:      assert.equal(event.model_a_admission_state, "ADMITTED");
+tests/fp012.test.ts:910:      assert.equal(event.model_b_admission_state, "QUARANTINED");
+tests/fp012.test.ts:1059:        model_a_admission_state: "ADMITTED",
+tests/fp012.test.ts:1083:      assert.equal(latest!.model_a_admission_state, "ADMITTED", "model_a_admission_state should be preserved");
+tests/fp012.test.ts:1429:        model_a_admission_state: "ADMITTED",
+tests/fp012.test.ts:1497:        model_a_admission_state: "ADMITTED",
+tests/fp012.test.ts:1764:      assert.equal(admResult.admission_state, "ADMITTED");
+tests/fp012.test.ts:1768:        admission_state: "ADMITTED",
+tests/fp012.test.ts:1773:      assert.equal(admEvent.admission_state, "ADMITTED");
+tests/fp012.test.ts:1779:      assert.equal(currentAdm.admission_state, "ADMITTED");
+tests/fp012.test.ts:1810:      assert.ok(tables.includes("admission_invalidation_events"), "FP-009 invalidation table");
+tests/fp012.test.ts:2026:        model_b_admission_state: "QUARANTINED",
+tests/fp012.test.ts:2030:      assert.equal(event.model_b_admission_state, "QUARANTINED");
+tests/fp012.test.ts:2055:        model_a_admission_state: "ADMITTED",
+tests/fp012.test.ts:2223:      assert.ok(tables.includes("admission_invalidation_events"));
+tests/fp010.test.ts:174:        admission_state: "ADMITTED",
+tests/fp010.test.ts:191:      assert.equal(record.admission_state, "ADMITTED");
+tests/fp010.test.ts:409:        "ADMITTED",
+tests/fp010.test.ts:410:        "QUARANTINED",
+tests/fp010.test.ts:451:        admission_state: "QUARANTINED",
+tests/fp010.test.ts:456:      assert.equal(record.admission_state, "QUARANTINED");
+tests/fp010.test.ts:463:        admission_state: "ADMITTED",
+tests/fp010.test.ts:468:      assert.equal(record2.admission_state, "ADMITTED");
+tests/fp011.test.ts:469:  describe("Admission — ADMITTED", () => {
+tests/fp011.test.ts:470:    it("should evaluate fully valid evidence as ADMITTED", () => {
+tests/fp011.test.ts:477:      assert.equal(result.admission_state, "ADMITTED");
+tests/fp011.test.ts:481:    it("should record ADMITTED admission event", () => {
+tests/fp011.test.ts:489:        admission_state: "ADMITTED",
+tests/fp011.test.ts:496:      assert.equal(event.admission_state, "ADMITTED");
+tests/fp011.test.ts:626:  describe("Admission — QUARANTINED", () => {
+tests/fp011.test.ts:627:    it("should evaluate previously admitted evidence with invalidated validation as QUARANTINED", () => {
+tests/fp011.test.ts:636:        admission_state: "ADMITTED",
+tests/fp011.test.ts:652:      assert.equal(result.admission_state, "QUARANTINED");
+tests/fp011.test.ts:656:    it("should record QUARANTINED admission event", () => {
+tests/fp011.test.ts:664:        admission_state: "QUARANTINED",
+tests/fp011.test.ts:670:      assert.equal(event.admission_state, "QUARANTINED");
+tests/fp011.test.ts:692:        admission_state: "ADMITTED",
+tests/fp011.test.ts:710:        admission_state: "QUARANTINED",
+tests/fp011.test.ts:713:        admission_reason: "Previously admitted but now invalidated",
+tests/fp011.test.ts:724:      assert.equal(admEvents[0].admission_state, "ADMITTED");
+tests/fp011.test.ts:725:      assert.equal(admEvents[1].admission_state, "QUARANTINED");
+tests/fp011.test.ts:732:      assert.equal(currentAdm.admission_state, "QUARANTINED");
+tests/fp011.test.ts:829:        admission_state: "ADMITTED",
+tests/fp011.test.ts:837:        admission_state: "QUARANTINED",
+tests/fp011.test.ts:921:        admission_state: "QUARANTINED",
+tests/fp011.test.ts:926:      assert.equal(record.admission_state, "QUARANTINED");
+tests/fp011.test.ts:934:        admission_state: "ADMITTED",
+tests/fp011.test.ts:939:      assert.equal(record2.admission_state, "ADMITTED");
+tests/fp011.test.ts:962:      const admissionStates = ["NOT_EVALUATED", "REJECTED", "PENDING", "ADMITTED", "QUARANTINED"];
+tests/fp011.test.ts:1025:        admission_state: "ADMITTED",
+tests/fp011.test.ts:1084:        admission_state: "ADMITTED",
+tests/fp011.test.ts:1093:      assert.equal(events[1].admission_state, "ADMITTED");
+tests/fp011.test.ts:1353:      assert.ok(tables.includes("admission_invalidation_events"), "FP-009 table should exist");
+tests/fp011.test.ts:1411:        ["ADMITTED", "REJECTED", "PENDING", "QUARANTINED"].includes(result.admission_state)
+tests/fp011.test.ts:1450:        admission_state: "QUARANTINED",
+tests/fp011.test.ts:1455:      assert.equal(record.admission_state, "QUARANTINED");
+tests/fp011.test.ts:1532:      // ADMITTED
+tests/fp011.test.ts:1534:      assert.equal(evaluateAdmissionForRecord(admittedRecord.evidence_id).admission_state, "ADMITTED");
+tests/fp011.test.ts:1548:      // QUARANTINED
+tests/fp011.test.ts:1552:        admission_state: "ADMITTED",
+tests/fp011.test.ts:1560:      assert.equal(evaluateAdmissionForRecord(quarantinedRecord.evidence_id).admission_state, "QUARANTINED");
+tests/fp009.test.ts:107:    admission_decision: "ADMITTED",
+tests/fp009.test.ts:133:    invalidation_decision: decision,
+tests/fp009.test.ts:134:    invalidated_by_actor_type: "human_auditor",
+tests/fp009.test.ts:135:    invalidated_by_actor_id: "auditor-2",
+tests/fp009.test.ts:136:    invalidation_reason: "Provenance gap confirmed; admission invalidated",
+tests/fp009.test.ts:171:      assert.ok(tables.includes("admission_invalidation_events"), "admission_invalidation_events should exist");
+tests/fp009.test.ts:216:    it("should create required columns in admission_invalidation_events", () => {
+tests/fp009.test.ts:217:      const dbPath = path.join(testDir, "invalidation-columns.db");
+tests/fp009.test.ts:222:        .prepare("PRAGMA table_info(admission_invalidation_events)")
+tests/fp009.test.ts:228:        "invalidation_decision", "invalidated_by_actor_type", "invalidated_by_actor_id",
+tests/fp009.test.ts:229:        "invalidation_reason", "validation_state", "provenance_complete",
+tests/fp009.test.ts:233:        assert.ok(columns.includes(col), `admission_invalidation_events.${col} should exist`);
+tests/fp009.test.ts:249:        admission_decision: "ADMITTED",
+tests/fp009.test.ts:261:      assert.equal(admission.admission_decision, "ADMITTED");
+tests/fp009.test.ts:281:        admission_decision: "ADMITTED",
+tests/fp009.test.ts:293:      assert.equal(admission.admission_decision, "ADMITTED");
+tests/fp009.test.ts:353:            admission_decision: "ADMITTED",
+tests/fp009.test.ts:370:            admission_decision: "ADMITTED",
+tests/fp009.test.ts:446:  describe("Admission invalidation events (test 3)", () => {
+tests/fp009.test.ts:447:    it("should persist an admission invalidation event", () => {
+tests/fp009.test.ts:448:      const dbPath = path.join(testDir, "invalidation-persist.db");
+tests/fp009.test.ts:456:      const invalidation = recordAdmissionInvalidation({
+tests/fp009.test.ts:459:        invalidation_decision: "INVALIDATED",
+tests/fp009.test.ts:460:        invalidated_by_actor_type: "human_auditor",
+tests/fp009.test.ts:461:        invalidated_by_actor_id: "auditor-2",
+tests/fp009.test.ts:462:        invalidation_reason: "Provenance gap confirmed; admission cannot stand",
+tests/fp009.test.ts:467:      assert.ok(invalidation.id > 0);
+tests/fp009.test.ts:468:      assert.equal(invalidation.target_admission_event_id, admission.id);
+tests/fp009.test.ts:469:      assert.equal(invalidation.review_request_id, review.id);
+tests/fp009.test.ts:470:      assert.equal(invalidation.invalidation_decision, "INVALIDATED");
+tests/fp009.test.ts:471:      assert.equal(invalidation.invalidated_by_actor_type, "human_auditor");
+tests/fp009.test.ts:472:      assert.equal(invalidation.invalidated_by_actor_id, "auditor-2");
+tests/fp009.test.ts:473:      assert.equal(invalidation.invalidation_reason, "Provenance gap confirmed; admission cannot stand");
+tests/fp009.test.ts:474:      assert.equal(invalidation.validation_state, "VALID");
+tests/fp009.test.ts:475:      assert.equal(invalidation.provenance_complete, 1);
+tests/fp009.test.ts:476:      assert.ok(invalidation.created_at);
+tests/fp009.test.ts:479:    it("should reject invalid invalidation_decision values", () => {
+tests/fp009.test.ts:480:      const dbPath = path.join(testDir, "invalidation-invalid-decision.db");
+tests/fp009.test.ts:493:            invalidation_decision: "REVOKED",
+tests/fp009.test.ts:494:            invalidated_by_actor_type: "human_auditor",
+tests/fp009.test.ts:497:        /Invalid invalidation_decision/
+tests/fp009.test.ts:501:    it("should preserve invalidation trust tier, validation state, provenance completeness, and actor info", () => {
+tests/fp009.test.ts:502:      const dbPath = path.join(testDir, "invalidation-metadata.db");
+tests/fp009.test.ts:510:      const invalidation = recordAdmissionInvalidation({
+tests/fp009.test.ts:513:        invalidation_decision: "QUARANTINED",
+tests/fp009.test.ts:514:        invalidated_by_actor_type: "cross_model_consensus",
+tests/fp009.test.ts:515:        invalidated_by_actor_id: "consensus-3",
+tests/fp009.test.ts:516:        invalidation_reason: "Cross-model review found conflicting evidence",
+tests/fp009.test.ts:521:      assert.equal(invalidation.invalidation_decision, "QUARANTINED");
+tests/fp009.test.ts:522:      assert.equal(invalidation.invalidated_by_actor_type, "cross_model_consensus");
+tests/fp009.test.ts:523:      assert.equal(invalidation.invalidated_by_actor_id, "consensus-3");
+tests/fp009.test.ts:524:      assert.equal(invalidation.validation_state, "VALID");
+tests/fp009.test.ts:525:      assert.equal(invalidation.provenance_complete, 1);
+tests/fp009.test.ts:530:    it("should reject invalidation without a valid review request reference", () => {
+tests/fp009.test.ts:531:      const dbPath = path.join(testDir, "invalidation-no-review.db");
+tests/fp009.test.ts:543:            invalidation_decision: "INVALIDATED",
+tests/fp009.test.ts:544:            invalidated_by_actor_type: "human_auditor",
+tests/fp009.test.ts:551:    it("should reject invalidation where review request references a different admission event", () => {
+tests/fp009.test.ts:552:      const dbPath = path.join(testDir, "invalidation-mismatch-review.db");
+tests/fp009.test.ts:581:            invalidation_decision: "INVALIDATED",
+tests/fp009.test.ts:582:            invalidated_by_actor_type: "human_auditor",
+tests/fp009.test.ts:591:    it("should derive eligibility from a valid admission with no defeating invalidation (test 5, 9)", () => {
+tests/fp009.test.ts:606:      assert.equal(eligibility.admission_event!.admission_decision, "ADMITTED");
+tests/fp009.test.ts:609:      assert.equal(eligibility.defeating_invalidation, null, "No defeating invalidation should exist");
+tests/fp009.test.ts:612:    it("should make observation ineligible when a valid invalidation defeats the admission (test 10)", () => {
+tests/fp009.test.ts:613:      const dbPath = path.join(testDir, "derive-ineligible-invalidation.db");
+tests/fp009.test.ts:627:      assert.equal(eligibility.eligible, false, "Observation should be ineligible after valid invalidation");
+tests/fp009.test.ts:629:      assert.ok(eligibility.defeating_invalidation, "Should return the defeating invalidation");
+tests/fp009.test.ts:631:        eligibility.defeating_invalidation!.invalidation_decision,
+tests/fp009.test.ts:636:    it("should make observation ineligible when QUARANTINED invalidation defeats admission", () => {
+tests/fp009.test.ts:644:      createValidInvalidation(admission.id, review.id, "QUARANTINED");
+tests/fp009.test.ts:651:      assert.equal(eligibility.eligible, false, "QUARANTINED should defeat admission");
+tests/fp009.test.ts:665:        invalidation_decision: "NO_ACTION",
+tests/fp009.test.ts:666:        invalidated_by_actor_type: "human_auditor",
+tests/fp009.test.ts:667:        invalidated_by_actor_id: "auditor-2",
+tests/fp009.test.ts:668:        invalidation_reason: "Review found no issues; admission stands",
+tests/fp009.test.ts:692:        invalidation_decision: "DEFERRED",
+tests/fp009.test.ts:693:        invalidated_by_actor_type: "human_auditor",
+tests/fp009.test.ts:694:        invalidated_by_actor_id: "auditor-2",
+tests/fp009.test.ts:695:        invalidation_reason: "More investigation needed",
+tests/fp009.test.ts:717:        admission_decision: "ADMITTED",
+tests/fp009.test.ts:740:        admission_decision: "ADMITTED",
+tests/fp009.test.ts:814:      assert.equal(eligibility.defeating_invalidation, null);
+tests/fp009.test.ts:833:    it("should derive eligibility from a re-admission after invalidation defeats the first admission", () => {
+tests/fp009.test.ts:844:        admission_decision: "ADMITTED",
+tests/fp009.test.ts:861:      // Step 2: valid invalidation I1 defeats A1
+tests/fp009.test.ts:875:        invalidation_decision: "INVALIDATED",
+tests/fp009.test.ts:876:        invalidated_by_actor_type: "human_auditor",
+tests/fp009.test.ts:877:        invalidated_by_actor_id: "auditor-2",
+tests/fp009.test.ts:878:        invalidation_reason: "Provenance gap in first admission",
+tests/fp009.test.ts:890:      assert.ok(eligibility.defeating_invalidation);
+tests/fp009.test.ts:896:        admission_decision: "ADMITTED",
+tests/fp009.test.ts:913:      assert.equal(eligibility.defeating_invalidation, null, "A2 should not have a defeating invalidation");
+tests/fp009.test.ts:963:    it("should not mutate classification observation rows when admission is invalidated (test 7)", () => {
+tests/fp009.test.ts:964:      const dbPath = path.join(testDir, "immutable-classification-invalidated.db");
+tests/fp009.test.ts:982:      assert.equal(afterInvalidation!.admission_state, original!.admission_state, "admission_state must be unchanged after invalidation");
+tests/fp009.test.ts:983:      assert.equal(afterInvalidation!.created_at, original!.created_at, "created_at must be unchanged after invalidation");
+tests/fp009.test.ts:986:    it("should not mutate outcome observation rows when admission is invalidated (test 7)", () => {
+tests/fp009.test.ts:987:      const dbPath = path.join(testDir, "immutable-outcome-invalidated.db");
+tests/fp009.test.ts:998:      createValidInvalidation(admission.id, review.id, "QUARANTINED");
+tests/fp009.test.ts:1139:        event_type: "PACKET_ADMITTED",
+tests/fp009.test.ts:1140:        lifecycle_state: "ADMITTED",
+tests/fp009.test.ts:1144:      assert.equal(state!.current_state, "ADMITTED");
+tests/fp009.test.ts:1247:    it("should retrieve invalidation events by admission event id", () => {
+tests/fp009.test.ts:1248:      const dbPath = path.join(testDir, "query-invalidations.db");
+tests/fp009.test.ts:1257:      const invalidations = getInvalidationEvents(admission.id);
+tests/fp009.test.ts:1258:      assert.equal(invalidations.length, 1);
+tests/fp009.test.ts:1259:      assert.equal(invalidations[0].target_admission_event_id, admission.id);
+tests/fp009.test.ts:1281:      assert.equal(original.admission_decision, "ADMITTED", "Admission decision should be unchanged");
+tests/fp009.test.ts:1300:    it("should preserve invalidation events (no mutation of existing records)", () => {
+tests/fp009.test.ts:1301:      const dbPath = path.join(testDir, "append-only-invalidation.db");
+tests/fp009.test.ts:1309:      const invalidation = createValidInvalidation(admission.id, review.id, "INVALIDATED");
+tests/fp009.test.ts:1311:      const invalidationCount = db
+tests/fp009.test.ts:1312:        .prepare("SELECT COUNT(*) as cnt FROM admission_invalidation_events WHERE id = ?")
+tests/fp009.test.ts:1313:        .get(invalidation.id) as { cnt: number };
+tests/fp009.test.ts:1314:      assert.equal(invalidationCount.cnt, 1, "Invalidation event should still exist");
+packets/FP-MCP-124.md:280:This packet does not implement approval invalidation or quarantine lookup unless already available read-only.
+packets/FP-MCP-114.md:584:If evidence is found invalid later, record invalidation evidence.
+packets/FP-MCP-070.md:495:APPROVAL_CONSUMPTION_FOR_QUARANTINED_APPROVAL
+packets/FP-MCP-156.md:153:The persistence tool must not change admission state to `ADMITTED`.
+packets/FP-MCP-064.md:288:APPROVAL_QUARANTINED
+packets/FP-MCP-064.md:387:APPROVAL_STATE_NOT_RECORDED or APPROVAL_QUARANTINED appears in reasons
+packets/FP-004.md:114:* ADMITTED
+packets/FP-004.md:116:* QUARANTINED
+packets/FP-MCP-068.md:193:APPROVAL_QUARANTINED
+packets/FP-MCP-068.md:332:APPROVAL_QUARANTINED
+packets/FP-MCP-136.md:9:Ensure local guarded preflight reports expose gates in a predictable object form so downstream evidence parsers do not need to guess whether `gates` is a list or object.
+packets/FP-MCP-123.md:263:- approval has not been invalidated
+packets/FP-MCP-123.md:372:`humanApprovalEvidence` may be `PASSED` only when real scoped approval evidence is present, committed, readable, unexpired, hash-matching, scope-matching, canonical, non-secret, and not invalidated.
+packets/FP-MCP-123.md:411:- approval invalidated
+packets/FP-MCP-123.md:437:- invalidation/quarantine ledger not queryable
+packets/FP-MCP-123.md:487:- `HUMAN_APPROVAL_EVIDENCE_QUARANTINED`
+packets/FP-MCP-123.md:568:This packet does not implement approval invalidation or quarantine lookup.
+packets/FP-007.md:372:* QUARANTINED
+packets/FP-MCP-080.md:161:quarantineState: QUARANTINED
+packets/FP-MCP-080.md:201:KEEP_QUARANTINED
+packets/FP-MCP-080.md:216:AMBIGUOUS_START_STATE -> QUARANTINED
+packets/FP-MCP-080.md:217:QUARANTINED -> KEEP_QUARANTINED
+packets/FP-MCP-080.md:218:QUARANTINED -> CONFIRMED_BLOCKED_BEFORE_CONSUMPTION
+packets/FP-MCP-080.md:219:QUARANTINED -> CONFIRMED_BLOCKED_AFTER_CONSUMPTION
+packets/FP-MCP-080.md:220:QUARANTINED -> CONFIRMED_CONSUMED_AND_STARTED
+packets/FP-MCP-080.md:221:QUARANTINED -> CONFIRMED_NO_START_ATTEMPT
+packets/FP-MCP-080.md:222:QUARANTINED -> EVIDENCE_INVALID
+packets/FP-MCP-080.md:223:QUARANTINED -> DEFERRED_PENDING_MORE_EVIDENCE
+packets/FP-MCP-080.md:229:QUARANTINED -> EXECUTION_ALLOWED
+packets/FP-MCP-080.md:230:QUARANTINED -> APPROVAL_REUSABLE
+packets/FP-MCP-080.md:268:admissionState: QUARANTINED
+packets/FP-010.md:82:- `ADMITTED`
+packets/FP-010.md:83:- `QUARANTINED`
+packets/FP-012.md:187:* `ADMITTED`
+packets/FP-012.md:190:* `QUARANTINED`
+packets/FP-MCP-066.md:148:approvalState: INVALID or QUARANTINED
+packets/FP-MCP-099.md:121:- dependency changes
+packets/FP-MCP-062.md:296:APPROVAL_QUARANTINED
+packets/FP-META-016.md:141:- `ADMITTED`
+packets/FP-META-016.md:143:- `QUARANTINED`
+packets/FP-META-016.md:159:### ADMITTED
+packets/FP-META-016.md:167:### QUARANTINED
+packets/FP-META-016.md:330:- `QUARANTINED`
+packets/FP-MCP-122.md:121:1. Request artifact ledger dependency
+packets/FP-MCP-122.md:122:2. Pre-start evidence ledger dependency
+packets/FP-MCP-122.md:123:3. State snapshot evidence ledger dependency
+packets/FP-MCP-122.md:185:only if the implementation explicitly explains which readiness part remains undeclared, for example approval readiness or invalidation ledger lookup.
+packets/FP-MCP-122.md:250:This packet does not implement invalidation/quarantine ledger lookup unless already available read-only.
+packets/FP-MCP-091.md:45:- APPROVAL_QUARANTINED
+packets/FP-MCP-097.md:107:- dependency changes
+packets/FP-011.md:115:- `ADMITTED`
+packets/FP-011.md:116:- `QUARANTINED`
+packets/FP-011.md:172:A record may be `ADMITTED` only if:
+packets/FP-011.md:191:A record may become `QUARANTINED` if:
+packets/FP-011.md:193:- it was previously admitted but later invalidated,
+packets/FP-011.md:237:13. Quarantine or invalidation behavior can be represented without deleting prior records.
+packets/FP-META-014.md:206:### ADMITTED
+packets/FP-META-014.md:217:### QUARANTINED
+packets/FP-META-014.md:280:| TIER_2_VERIFIED_ARTIFACT | VALID | ADMITTED |
+packets/FP-META-014.md:284:| TIER_3_REPRODUCIBLE | VALID | ADMITTED |
+packets/FP-META-014.md:340:Previously admitted records may be demoted to `QUARANTINED`.
+packets/FP-META-014.md:416:- `ADMITTED` to `QUARANTINED` demotion path is documented.
+packets/FP-META-031.md:5:Define how invalidated evidence affects downstream ForgePilot artifacts, reports, summaries, comparisons, and project-workspace outputs.
+packets/FP-META-031.md:9:Prevent an admission invalidation event from being recorded without downstream artifacts knowing they may depend on revoked evidence.
+packets/FP-META-031.md:13:> When admitted evidence is later invalidated or quarantined, what downstream artifacts become stale, affected, or require reconstruction?
+packets/FP-META-031.md:17:ForgePilot already records admission invalidation events. However, a revocation mechanism that only logs invalidation is incomplete if reports and downstream artifacts that depended on the invalidated evidence remain unflagged.
+packets/FP-META-031.md:19:FP-META-030 defined evidence-root and workspace boundaries. FP-META-031 uses that boundary to define downstream propagation semantics.
+packets/FP-META-031.md:26:docs/invalidation-propagation-rules.md
+packets/FP-META-031.md:27:runs/FP-META-031/invalidation-source-search.txt
+packets/FP-META-031.md:40:- invalidation source,
+packets/FP-META-031.md:41:- dependency edge,
+packets/FP-META-031.md:42:- downstream artifact,
+packets/FP-META-031.md:44:- affected-by-invalidation marker,
+packets/FP-META-031.md:55:A core evidence invalidation does not automatically rewrite project workspace artifacts.
+packets/FP-META-031.md:57:A project workspace invalidation does not automatically rewrite core reports unless a core report explicitly depended on that workspace.
+packets/FP-META-031.md:61:This packet must include concrete search output from existing code/docs for invalidation and admission behavior. The result may be governance-only if implementation is not yet present, but that must be recorded honestly.
+packets/FP-META-031.md:69:This packet does not implement invalidation propagation. It defines propagation semantics and records whether current implementation exists.
+packets/FP-META-031.md:74:2. Existing invalidation/admission search artifact exists.
+packets/FP-009.md:13:Implement SQLite persistence for evidence admission, admission review triggers, and admission invalidation events.
+packets/FP-009.md:25:This packet introduces append-only admission, review, and invalidation records.
+packets/FP-009.md:46:evidence_status = "ADMITTED"
+packets/FP-009.md:58:admission_invalidation_events
+packets/FP-009.md:132:ADMITTED
+packets/FP-009.md:168:admission_decision = ADMITTED
+packets/FP-009.md:203:SOURCE_OBSERVATION_QUARANTINED
+packets/FP-009.md:215:An admission invalidation event records that a previous admission event no longer grants evidentiary authority.
+packets/FP-009.md:225:invalidation_decision
+packets/FP-009.md:226:invalidated_by_actor_type
+packets/FP-009.md:227:invalidated_by_actor_id
+packets/FP-009.md:228:invalidation_reason
+packets/FP-009.md:234:Allowed `invalidation_decision` values:
+packets/FP-009.md:238:QUARANTINED
+packets/FP-009.md:247:QUARANTINED
+packets/FP-009.md:254:An invalidation event must reference an existing admission review request.
+packets/FP-009.md:256:No invalidation may occur without a recorded review trigger.
+packets/FP-009.md:265:2. The admission event has `admission_decision = ADMITTED`.
+packets/FP-009.md:268:5. No later valid invalidation event defeats that admission.
+packets/FP-009.md:271:A later invalidation event defeats an admission when:
+packets/FP-009.md:277:invalidation_decision is INVALIDATED or QUARANTINED
+packets/FP-009.md:315:3. Admission invalidation events can be persisted.
+packets/FP-009.md:316:4. Admission invalidation requires a review request.
+packets/FP-009.md:319:7. Observation rows are not mutated when admission is invalidated.
+packets/FP-009.md:321:9. A valid admission with no defeating invalidation makes an observation eligible.
+packets/FP-009.md:322:10. A later valid invalidation makes the same observation ineligible.
+packets/FP-009.md:332:3. The implementation adds append-only persistence for invalidation events.
+packets/FP-009.md:336:7. Tests cover admission, review, invalidation, and derived eligibility.
+packets/FP-009.md:357:source code for admission/review/invalidation persistence
+packets/FP-MCP-098.md:87:3. No executable, packet, request, config, dependency, or source behavior changed.
+packets/FP-MCP-098.md:151:- no dependency or lockfile changed
+packets/FP-MCP-040.md:70:* define approval invalidation conditions
+packets/FP-MCP-061.md:471:QUARANTINED
+packets/FP-MCP-061.md:548:APPROVAL_QUARANTINED
+packets/FP-META-030.md:99:This packet does not implement an external workspace root, migrate existing project workspace files, fix conformance gaps, implement invalidation propagation, or generate an admission distribution report.
+packets/FP-MCP-005.md:562:* `ADMITTED`
+packets/FP-MCP-005.md:564:* `QUARANTINED`
+packets/FP-MCP-079.md:285:QUARANTINED
+packets/FP-MCP-121.md:196:- not contradicted by a later invalidation or quarantine record, if such records exist
+packets/FP-MCP-121.md:209:A ledger readiness check may use this chain only if it can report the source packet and artifact path for each dependency.
+packets/FP-MCP-121.md:321:- no required dependency is missing
+packets/FP-MCP-121.md:322:- no required dependency is uncommitted
+packets/FP-MCP-121.md:323:- no required dependency is invalidated
+packets/FP-MCP-121.md:324:- no required dependency is quarantined
+packets/FP-MCP-121.md:351:- cross-packet dependency is ambiguous
+packets/FP-MCP-121.md:353:- evidence chain contains invalidated required evidence
+packets/FP-MCP-121.md:378:- invalidation/quarantine ledger not yet queryable
+packets/FP-MCP-121.md:380:- cross-packet dependency index not yet defined
+packets/FP-MCP-121.md:422:- `EVIDENCE_LEDGER_QUARANTINED`
+packets/FP-MCP-121.md:491:This packet does not implement invalidation or quarantine lookup.
+
+## Evidence module excerpts
+import { getDb } from "./client.js";
+
+export interface EvidenceAdmissionEvent {
+  id: number;
+  target_observation_type: string;
+  target_observation_id: number;
+  admission_decision: string;
+  admission_actor_type: string;
+  admission_actor_id: string;
+  admission_trust_tier: string;
+  validation_state: string;
+  provenance_complete: number;
+  admission_basis: string;
+  created_at: string;
+}
+
+export interface AdmissionReviewRequest {
+  id: number;
+  target_admission_event_id: number;
+  review_trigger_type: string;
+  requested_by_actor_type: string;
+  requested_by_actor_id: string;
+  review_reason: string;
+  validation_state: string;
+  provenance_complete: number;
+  created_at: string;
+}
+
+export interface AdmissionInvalidationEvent {
+  id: number;
+  target_admission_event_id: number;
+  review_request_id: number;
+  invalidation_decision: string;
+  invalidated_by_actor_type: string;
+  invalidated_by_actor_id: string;
+  invalidation_reason: string;
+  validation_state: string;
+  provenance_complete: number;
+  created_at: string;
+}
+
+export interface RecordAdmissionParams {
+  target_observation_type: string;
+  target_observation_id: number;
+  admission_decision: string;
+  admission_actor_type: string;
+  admission_actor_id?: string;
+  admission_trust_tier?: string;
+  validation_state?: string;
+  provenance_complete?: boolean;
+  admission_basis?: string;
+}
+
+export interface RecordReviewRequestParams {
+  target_admission_event_id: number;
+  review_trigger_type: string;
+  requested_by_actor_type: string;
+  requested_by_actor_id?: string;
+  review_reason?: string;
+  validation_state?: string;
+  provenance_complete?: boolean;
+}
+
+export interface RecordInvalidationParams {
+  target_admission_event_id: number;
+  review_request_id: number;
+  invalidation_decision: string;
+  invalidated_by_actor_type: string;
+  invalidated_by_actor_id?: string;
+  invalidation_reason?: string;
+  validation_state?: string;
+  provenance_complete?: boolean;
+}
+
+export interface EvidenceEligibilityResult {
+  eligible: boolean;
+  admission_event: EvidenceAdmissionEvent | null;
+  defeating_invalidation: AdmissionInvalidationEvent | null;
+}
+
+const VALID_OBSERVATION_TYPES = [
+  "classification_observation",
+  "outcome_observation",
+];
+
+const VALID_ADMISSION_DECISIONS = ["ADMITTED", "REJECTED", "PENDING"];
+
+const VALID_ACTOR_TYPES = [
+  "human_auditor",
+  "automated_validator",
+  "model_reviewer",
+  "cross_model_consensus",
+  "system",
+];
+
+const VALID_TRUST_TIERS = ["TIER_0", "TIER_1", "TIER_2", "TIER_3"];
+
+const VALID_VALIDATION_STATES = ["VALID", "INVALID", "INCOMPLETE", "DEFERRED"];
+
+const VALID_REVIEW_TRIGGER_TYPES = [
+  "MANUAL_AUDITOR_FLAG",
+  "PROVENANCE_GAP_DISCOVERED",
+  "ACTOR_MISMATCH",
+  "VALIDATION_RULE_CHANGED",
+  "SOURCE_OBSERVATION_QUARANTINED",
+  "CONFLICTING_ADMISSION_EVENT",
+  "ROUTING_OUTPUT_ANOMALY",
+  "SYSTEM_INTEGRITY_CHECK",
+];
+
+const VALID_INVALIDATION_DECISIONS = [
+  "INVALIDATED",
+  "QUARANTINED",
+  "NO_ACTION",
+  "DEFERRED",
+];
+
+function validateEnum(value: string, validValues: string[], fieldName: string): void {
+  if (!validValues.includes(value)) {
+    throw new Error(
+      `Invalid ${fieldName}: '${value}'. Must be one of: ${validValues.join(", ")}`
+    );
+  }
+}
+
+function validateObservationExists(
+  targetType: string,
+  targetId: number
+): void {
+  const db = getDb();
+  let row: unknown;
+  if (targetType === "classification_observation") {
+    row = db
+      .prepare(
+        "SELECT classification_id FROM packet_classification_observations WHERE classification_id = ?"
+      )
+      .get(targetId);
+    if (!row) {
+      throw new Error(
+        `Target classification_observation ${targetId} not found`
+      );
+    }
+  } else if (targetType === "outcome_observation") {
+    row = db
+      .prepare(
+        "SELECT outcome_id FROM model_outcome_observations WHERE outcome_id = ?"
+      )
+      .get(targetId);
+    if (!row) {
+      throw new Error(
+        `Target outcome_observation ${targetId} not found`
+      );
+    }
+  }
+}
+
+export function recordEvidenceAdmission(
+  params: RecordAdmissionParams
+): EvidenceAdmissionEvent {
+  validateEnum(
+    params.target_observation_type,
+    VALID_OBSERVATION_TYPES,
+    "target_observation_type"
+  );
+  validateEnum(
+    params.admission_decision,
+    VALID_ADMISSION_DECISIONS,
+    "admission_decision"
+  );
+  validateEnum(
+    params.admission_actor_type,
+    VALID_ACTOR_TYPES,
+    "admission_actor_type"
+  );
+
+  if (params.admission_trust_tier) {
+    validateEnum(
+      params.admission_trust_tier,
+      VALID_TRUST_TIERS,
+      "admission_trust_tier"
+    );
+  }
+  if (params.validation_state) {
+    validateEnum(
+      params.validation_state,
+      VALID_VALIDATION_STATES,
+      "validation_state"
+    );
+  }
+
+  validateObservationExists(
+    params.target_observation_type,
+    params.target_observation_id
+  );
+
+  const db = getDb();
+  const stmt = db.prepare(
+    `INSERT INTO evidence_admission_events (
+      target_observation_type, target_observation_id, admission_decision,
+      admission_actor_type, admission_actor_id, admission_trust_tier,
+      validation_state, provenance_complete, admission_basis
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
+  );
+
+  const result = stmt.run(
+    params.target_observation_type,
+    params.target_observation_id,
+    params.admission_decision,
+    params.admission_actor_type,
+    params.admission_actor_id ?? "",
+    params.admission_trust_tier ?? "TIER_0",
+    params.validation_state ?? "VALID",
+    params.provenance_complete ? 1 : 0,
+    params.admission_basis ?? ""
+  );
+
+  return db
+    .prepare("SELECT * FROM evidence_admission_events WHERE id = ?")
+    .get(result.lastInsertRowid) as EvidenceAdmissionEvent;
+}
+
+export function recordAdmissionReviewRequest(
+  params: RecordReviewRequestParams
+): AdmissionReviewRequest {
+  validateEnum(
+    params.review_trigger_type,
+    VALID_REVIEW_TRIGGER_TYPES,
+    "review_trigger_type"
+  );
+  validateEnum(
+    params.requested_by_actor_type,
+    VALID_ACTOR_TYPES,
+    "requested_by_actor_type"
+  );
+
+  if (params.validation_state) {
+    validateEnum(
+      params.validation_state,
+      VALID_VALIDATION_STATES,
+      "validation_state"
+    );
+  }
+
+  const db = getDb();
+
+  const admission = db
+    .prepare("SELECT id FROM evidence_admission_events WHERE id = ?")
+    .get(params.target_admission_event_id) as { id: number } | undefined;
+
+  if (!admission) {
+    throw new Error(
+      `Target admission event ${params.target_admission_event_id} not found`
+    );
+  }
+
+  const stmt = db.prepare(
+    `INSERT INTO admission_review_requests (
+      target_admission_event_id, review_trigger_type,
+      requested_by_actor_type, requested_by_actor_id,
+      review_reason, validation_state, provenance_complete
+    ) VALUES (?, ?, ?, ?, ?, ?, ?)`
+  );
+
+  const result = stmt.run(
+    params.target_admission_event_id,
+    params.review_trigger_type,
+    params.requested_by_actor_type,
+    params.requested_by_actor_id ?? "",
+    params.review_reason ?? "",
+    params.validation_state ?? "VALID",
+    params.provenance_complete ? 1 : 0
+  );
+
+  return db
+    .prepare("SELECT * FROM admission_review_requests WHERE id = ?")
+    .get(result.lastInsertRowid) as AdmissionReviewRequest;
+}
+
+export function recordAdmissionInvalidation(
+  params: RecordInvalidationParams
+): AdmissionInvalidationEvent {
+  validateEnum(
+    params.invalidation_decision,
+    VALID_INVALIDATION_DECISIONS,
+    "invalidation_decision"
+  );
+  validateEnum(
+    params.invalidated_by_actor_type,
+    VALID_ACTOR_TYPES,
+    "invalidated_by_actor_type"
+  );
+
+  if (params.validation_state) {
+    validateEnum(
+      params.validation_state,
+      VALID_VALIDATION_STATES,
+      "validation_state"
+    );
+  }
+
+  const db = getDb();
+
+  const admission = db
+    .prepare("SELECT id FROM evidence_admission_events WHERE id = ?")
+    .get(params.target_admission_event_id) as { id: number } | undefined;
+
+  if (!admission) {
+    throw new Error(
+      `Target admission event ${params.target_admission_event_id} not found`
+    );
+  }
+
+  const reviewRequest = db
+    .prepare("SELECT id, target_admission_event_id FROM admission_review_requests WHERE id = ?")
+    .get(params.review_request_id) as
+      | { id: number; target_admission_event_id: number }
+      | undefined;
+
+  if (!reviewRequest) {
+    throw new Error(
+      `Review request ${params.review_request_id} not found`
+    );
+  }
+
+  if (reviewRequest.target_admission_event_id !== params.target_admission_event_id) {
+    throw new Error(
+      `Review request ${params.review_request_id} targets admission event ` +
+      `${reviewRequest.target_admission_event_id}, not ${params.target_admission_event_id}`
+    );
+  }
+
+  const stmt = db.prepare(
+    `INSERT INTO admission_invalidation_events (
+      target_admission_event_id, review_request_id, invalidation_decision,
+      invalidated_by_actor_type, invalidated_by_actor_id,
+      invalidation_reason, validation_state, provenance_complete
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
+  );
+
+  const result = stmt.run(
+    params.target_admission_event_id,
+    params.review_request_id,
+    params.invalidation_decision,
+    params.invalidated_by_actor_type,
+    params.invalidated_by_actor_id ?? "",
+    params.invalidation_reason ?? "",
+    params.validation_state ?? "VALID",
+    params.provenance_complete ? 1 : 0
+  );
+
+  return db
+    .prepare("SELECT * FROM admission_invalidation_events WHERE id = ?")
+    .get(result.lastInsertRowid) as AdmissionInvalidationEvent;
+}
+
+function isAdmissionEffective(event: EvidenceAdmissionEvent): boolean {
+  return (
+    event.admission_decision === "ADMITTED" &&
+    event.validation_state === "VALID" &&
+    event.provenance_complete === 1
+  );
+}
+
+function isInvalidationDefeating(event: AdmissionInvalidationEvent): boolean {
+  return (
+    event.validation_state === "VALID" &&
+    event.provenance_complete === 1 &&
+    (event.invalidation_decision === "INVALIDATED" ||
+      event.invalidation_decision === "QUARANTINED")
+  );
+}
+
+export function deriveEvidenceEligibility(
+  targetObservationType: string,
+  targetObservationId: number
+): EvidenceEligibilityResult {
+  const db = getDb();
+
+  const admissions = db
+    .prepare(
+      `SELECT * FROM evidence_admission_events
+       WHERE target_observation_type = ? AND target_observation_id = ?
+       ORDER BY created_at ASC, id ASC`
+    )
+    .all(targetObservationType, targetObservationId) as EvidenceAdmissionEvent[];
+
+  let lastEffectiveAdmission: EvidenceAdmissionEvent | null = null;
+  let lastDefeatingInvalidation: AdmissionInvalidationEvent | null = null;
+
+  for (const admission of admissions) {
+    if (!isAdmissionEffective(admission)) {
+      continue;
+    }
+
+    lastEffectiveAdmission = admission;
+    lastDefeatingInvalidation = null;
+
+    const invalidations = db
+      .prepare(
+        `SELECT * FROM admission_invalidation_events
+         WHERE target_admission_event_id = ?
+         ORDER BY created_at ASC, id ASC`
+      )
+      .all(admission.id) as AdmissionInvalidationEvent[];
+
+    let defeated = false;
+    for (const invalidation of invalidations) {
+      if (isInvalidationDefeating(invalidation)) {
+        defeated = true;
+        lastDefeatingInvalidation = invalidation;
+        break;
+      }
+    }
+
+    if (!defeated) {
+      return {
+        eligible: true,
+        admission_event: admission,
+        defeating_invalidation: null,
+      };
+    }
+  }
+
+  return {
+    eligible: false,
+    admission_event: lastEffectiveAdmission,
+    defeating_invalidation: lastDefeatingInvalidation,
+  };
+}
+
+
+## Admission reconstruction/report excerpts
+import fs from "node:fs";
+import path from "node:path";
+
+export const RECONSTRUCTION_BOUNDARY =
+  "Reconstruction is read-only. It summarizes recorded state and does not create admission, comparison, ranking, or routing authority.";
+
+export interface ReconstructionArtifact {
+  path: string;
+  kind: "verification" | "audit" | "comparison" | "admission" | "executor_result";
+}
+
+export interface ReconstructionReport {
+  packet_id: string;
+  packet_path: string;
+  packet_exists: boolean;
+  source_artifacts: ReconstructionArtifact[];
+  verification_state: "PRESENT" | "MISSING";
+  audit_state: "PRESENT" | "MISSING";
+  comparison_state: "PRESENT" | "NO_COMPARISON_RECORDED";
+  admission_state: "PRESENT" | "NOT_EVALUATED" | "UNKNOWN";
+  reconstructed_labels: string[];
+  boundary: string;
+  caveats: string[];
+}
+
+interface BuildReconstructionReportOptions {
+  packetId: string;
+  rootDir?: string;
+}
+
+function cleanPacketId(packetId: string): string {
+  const trimmed = packetId.trim();
+  if (!trimmed) throw new Error("packetId is required");
+  if (trimmed.includes("/") || trimmed.includes("\\") || trimmed.includes("..")) {
+    throw new Error(`invalid packetId: ${packetId}`);
+  }
+  return trimmed;
+}
+
+function walkFiles(dir: string): string[] {
+  if (!fs.existsSync(dir)) return [];
+  const files: string[] = [];
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) files.push(...walkFiles(full));
+    if (entry.isFile()) files.push(full);
+  }
+  return files;
+}
+
+function kindFor(rel: string): ReconstructionArtifact["kind"] | null {
+  const base = path.basename(rel).toLowerCase();
+  if (base.includes("verification")) return "verification";
+  if (base.includes("audit")) return "audit";
+  if (base.includes("comparison")) return "comparison";
+  if (base.includes("admission")) return "admission";
+  if (base === "executor-result.md") return "executor_result";
+  return null;
+}
+
+export function buildReconstructionReport(options: BuildReconstructionReportOptions): ReconstructionReport {
+  const packetId = cleanPacketId(options.packetId);
+  const rootDir = options.rootDir ?? process.cwd();
+  const packetPath = `packets/${packetId}.md`;
+  const absolutePacketPath = path.join(rootDir, packetPath);
+  if (!fs.existsSync(absolutePacketPath)) {
+    throw new Error(`packet not found: ${packetPath}`);
+  }
+
+  const runDir = path.join(rootDir, "runs", packetId);
+  const source_artifacts = walkFiles(runDir)
+    .map((full) => path.relative(rootDir, full).split(path.sep).join("/"))
+    .filter((rel) => !rel.includes("/terminal-commands/"))
+    .map((rel) => ({ path: rel, kind: kindFor(rel) }))
+    .filter((entry): entry is ReconstructionArtifact => entry.kind !== null)
+    .sort((a, b) => a.path.localeCompare(b.path));
+
+  const has = (kind: ReconstructionArtifact["kind"]) => source_artifacts.some((a) => a.kind === kind);
+  const verification_state = has("verification") ? "PRESENT" : "MISSING";
+  const audit_state = has("audit") ? "PRESENT" : "MISSING";
+  const comparison_state = has("comparison") ? "PRESENT" : "NO_COMPARISON_RECORDED";
+  const admission_state = has("admission") ? "PRESENT" : "NOT_EVALUATED";
+
+  const reconstructed_labels = [
+    verification_state === "PRESENT" ? "VERIFICATION_ARTIFACT_PRESENT" : "VERIFICATION_MISSING",
+    audit_state === "PRESENT" ? "AUDIT_ARTIFACT_PRESENT" : "AUDIT_MISSING",
+    comparison_state === "PRESENT" ? "COMPARISON_ARTIFACT_PRESENT" : "NO_COMPARISON_RECORDED",
+    admission_state === "PRESENT" ? "ADMISSION_ARTIFACT_PRESENT" : "NOT_EVALUATED",
+  ];
+
+  return {
+    packet_id: packetId,
+    packet_path: packetPath,
+    packet_exists: true,
+    source_artifacts,
+    verification_state,
+    audit_state,
+    comparison_state,
+    admission_state,
+    reconstructed_labels,
+    boundary: RECONSTRUCTION_BOUNDARY,
+    caveats: [
+      RECONSTRUCTION_BOUNDARY,
+      "Artifact presence does not imply admission or correctness.",
+      "Comparison artifacts are bounded records, not global model rankings.",
+      "Missing comparison is reported as missing, not as failure.",
+    ],
+  };
+}
+
+export function formatReconstructionReportText(report: ReconstructionReport): string {
+  const lines = [
+    `Reconstruction Report: ${report.packet_id}`,
+    `Packet Path: ${report.packet_path}`,
+    `Verification State: ${report.verification_state}`,
+    `Audit State: ${report.audit_state}`,
+    `Comparison State: ${report.comparison_state}`,
+    `Admission State: ${report.admission_state}`,
+    `Labels: ${report.reconstructed_labels.join(", ")}`,
+    `Boundary: ${report.boundary}`,
+    "Caveats:",
+    ...report.caveats.map((c) => `  - ${c}`),
+  ];
+  if (report.source_artifacts.length > 0) {
+    lines.push("Source Artifacts:");
+    lines.push(...report.source_artifacts.map((a) => `  - ${a.path} [${a.kind}]`));
+  }
+  return `${lines.join("\n")}\n`;
+}
+# Admission and Comparison Reconstruction Rules
+
+## Purpose
+
+ForgePilot reports need to reconstruct admission and comparison state without creating trust by summary.
+
+Reconstruction is read-only.
+
+It summarizes recorded state; it does not create admission, invalidate evidence, rank models globally, or route future work.
+
+## Governing Question
+
+```text
+How may ForgePilot reconstruct admission and comparison state for reports?
+```
+
+## Reconstruction Inputs
+
+A reconstruction report may use only committed artifacts or supported read-only query results.
+
+Allowed inputs:
+
+| Input | Use |
+|---|---|
+| `packets/<packet>.md` | packet intent and acceptance criteria |
+| `runs/<packet>/verification*` | recorded verification output |
+| `runs/<packet>/audit*` | recorded audit output when present |
+| `runs/<packet>/comparison*` | recorded comparison result when present |
+| `runs/<packet>/executor-result.md` | executor result artifact when present |
+| `runs/<packet>/metrics.json` | observation only unless admitted |
+| `runs/<packet>/**/telemetry.json` | observation only unless admitted |
+| SQLite read-only query results | recorded persisted state only |
+| `docs/forgepilot-progress-checklist.md` | checklist-derived index status only |
+
+## Admission State Reporting Rules
+
+Reports may show admission state exactly as recorded.
+
+Allowed admission labels:
+
+- `ADMITTED`
+- `REJECTED`
+- `PENDING`
+- `QUARANTINED`
+- `NOT_EVALUATED`
+- `UNKNOWN`
+
+If admission state is missing, the report must use `UNKNOWN` or `NOT_EVALUATED`, depending on the source.
+
+A report must not infer `ADMITTED` from:
+
+- passing tests,
+- accepted audit text,
+- committed metrics,
+- telemetry existence,
+- comparison result existence,
+- checklist status.
+
+## Comparison State Reporting Rules
+
+Reports may summarize comparison artifacts only as bounded comparison records.
+
+Allowed comparison labels:
+
+- `SELECTED`
+- `NOT_SELECTED`
+- `TIE`
+- `ACCEPTED`
+- `REJECTED`
+- `NO_COMPARISON_RECORDED`
+- `UNKNOWN`
+
+A comparison report must identify the comparison source artifact or query.
+
+A comparison must not be treated as global model ranking.
+
+## Source Precedence
+
+When sources disagree, use this order:
+
+1. Explicit admission/comparison database state from read-only query.
+2. Committed admission/comparison artifact under `runs/<packet>/`.
+3. Packet-specific verification/audit artifacts.
+4. Progress checklist entry.
+5. Packet existence.
+
+Lower-precedence sources may provide context, but must not override higher-precedence state.
+
+## Unknown and Missing State Handling
+
+Missing evidence is not failure by itself.
+
+Reports must distinguish:
+
+| State | Meaning |
+|---|---|
+| `UNKNOWN` | source could not determine state |
+| `NOT_EVALUATED` | source explicitly says no evaluation/admission has occurred |
+| `NO_COMPARISON_RECORDED` | no comparison artifact or state was found |
+| `PARTIAL` | some evidence exists but reconstruction is incomplete |
+| `DEFERRED` | intentionally postponed |
+
+## Historical Packet Handling
+
+Historical packets remain valid historical evidence.
+
+Reports may say:
+
+```text
+This packet predates current taxonomy or reconstruction rules.
+```
+
+Reports must not rename historical packet IDs or reinterpret old packet names as errors.
+
+## Prohibited Inferences
+
+Reconstruction reports must not claim:
+
+- verification equals admission,
+- audit acceptance equals admission,
+- telemetry existence equals evidence value,
+- comparison equals global model ranking,
+- selected implementation means future routing preference,
+- missing comparison means failure,
+- historical namespace mismatch means packet invalidity,
+- checklist status is proof by itself.
+
+## Implementation Constraints for Later `FP-*` Packet
+
+A later implementation should be read-only by default.
+
+It should:
+
+- collect admission/comparison candidates from artifacts and read-only queries,
+- preserve source paths,
+- report unknown state explicitly,
+- include source precedence in output,
+- include prohibited-inference caveats,
+- avoid mutation or admission changes.
+
+It must not:
+
+- write admission events,
+- update comparison outcomes,
+- rewrite historical artifacts,
+- rank models globally,
+- route future work.
+
+## Required Boundary Text
+
+Any report using reconstructed admission/comparison state must include:
+
+```text
+Reconstruction is read-only. It summarizes recorded state and does not create admission, comparison, ranking, or routing authority.
+```

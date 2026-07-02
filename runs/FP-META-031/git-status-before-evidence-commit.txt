@@ -1,0 +1,3 @@
+ M docs/forgepilot-progress-checklist.md
+?? docs/invalidation-propagation-rules.md
+?? runs/FP-META-031/

@@ -1,0 +1,38 @@
+FP-META-031 verification
+
+Invalidation propagation rules document exists:
+PASS
+- docs/invalidation-propagation-rules.md
+
+Source search artifact exists:
+PASS
+- runs/FP-META-031/invalidation-source-search.txt
+
+Required concepts defined:
+PASS
+- invalidation source
+- dependency edge
+- downstream artifact
+- stale report
+- affected artifact
+- requires reconstruction
+- cross-workspace propagation
+- non-propagation cases
+- append-only propagation
+- model trust assignment propagation
+
+Current implementation status recorded:
+PASS
+- PROPAGATION_RULE_DEFINED_IMPLEMENTATION_NOT_PRESENT
+
+Trust tier recorded:
+PASS
+- TIER_1_STATIC_SOURCE_INSPECTION
+
+Scope:
+PASS
+- no database schema changed
+- no propagation code implemented
+- no historical reports mutated
+- no files migrated
+- no implementation code changed
