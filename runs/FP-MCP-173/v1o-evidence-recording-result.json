@@ -1,0 +1,19 @@
+{
+  "packet_id": "FP-MCP-173",
+  "result": "FP_MCP_173_OPENCODE_READINESS_CLASSIFICATION_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 43,
+  "run_id": "FP-MCP-173-OPENCODE-READINESS-BLOCKER-CLASSIFICATION",
+  "generic_admission_event_id": 43,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "OPENCODE_NOT_CONFIGURED_CLASSIFIED_AS_READINESS_LABEL_FALSE_NEGATIVE_NO_FALSE_OPEN_CONSUMER_FOUND",
+  "total_evidence_records": 43,
+  "total_generic_evidence_record_admission_events": 43,
+  "artifact_paths": [
+    "packets/FP-MCP-173.md",
+    "runs/FP-MCP-173/result-summary.md",
+    "runs/FP-MCP-173/opencode-readiness-classification.json",
+    "runs/FP-MCP-173/false-open-field-audit.md"
+  ]
+}
