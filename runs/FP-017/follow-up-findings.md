@@ -38,10 +38,10 @@ STRUCTURAL_FINDING_REQUIRES_FOLLOW_UP_PACKET
 Named follow-up:
 
 ```text
-FP-018 — Evidence Record Admission Event Linkage
+FP-019 — Evidence Record Admission Event Linkage
 ```
 
-FP-018 should decide whether:
+FP-019 should decide whether:
 
 1. `evidence_records.admission_state` is the intended authoritative query surface for evidence-record admission, or
 2. evidence records must also have event-sourced admission events, or
@@ -91,3 +91,33 @@ Reason:
 - no implementation code or MCP bridge code changed.
 
 This anomaly should not affect FP-017 evidence integrity unless future metrics treat blocked staging attempts or omitted local notes as evidence signals.
+
+
+## Finding 3 — Follow-up packet ID collision correction
+
+The first version of this follow-up document named the evidence-record admission event linkage packet as:
+
+```text
+FP-018 — Evidence Record Admission Event Linkage
+```
+
+That was incorrect because `FP-018` had already been reserved in planning for:
+
+```text
+FP-018 — V1 Report Mechanical Regeneration
+```
+
+Corrected follow-up assignment:
+
+```text
+FP-018 — V1 Report Mechanical Regeneration
+FP-019 — Evidence Record Admission Event Linkage
+```
+
+Disposition:
+
+```text
+PACKET_ID_COLLISION_CAUGHT_BEFORE_PACKET_CREATION_AND_CORRECTED
+```
+
+Historical terminal-command logs may still contain the superseded text as command-output history. Those logs must not be rewritten. The authoritative current follow-up assignment is this document.
