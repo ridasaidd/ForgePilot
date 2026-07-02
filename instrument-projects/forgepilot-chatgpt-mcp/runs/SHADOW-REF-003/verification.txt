@@ -1,0 +1,34 @@
+SHADOW-REF-003 verification
+
+Packet exists:
+PASS
+- instrument-projects/forgepilot-chatgpt-mcp/packets/SHADOW-REF-003.md
+
+Plan artifact exists:
+PASS
+- instrument-projects/forgepilot-chatgpt-mcp/plans/SHADOW-REF-003-shadow-refactor-plan.md
+
+Plan covers:
+PASS
+- baseline
+- planning principles
+- protected zones
+- staged packet sequence
+- candidate layout recommendation
+- verification gates
+- model-worker participation boundaries
+- rollback/switch strategy
+- explicit non-implementation statement
+
+Checklist update:
+PASS
+- SR-003 marked COMPLETE
+- next suggested item changed to SR-004
+
+Scope:
+PASS
+- no MCP bridge files changed
+- no implementation code files changed
+- no model execution authorized
+- no server-next.ts created
+- no runtime entrypoint changed
