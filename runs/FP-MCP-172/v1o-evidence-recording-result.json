@@ -1,0 +1,24 @@
+{
+  "packet_id": "FP-MCP-172",
+  "result": "FP_MCP_172_CANARY_PREFLIGHT_HALT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 42,
+  "run_id": "FP-MCP-172-FP027-CANARY-RESTART-PREFLIGHT-HALT",
+  "generic_admission_event_id": 42,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_027_CANARY_RESTART_HALTED_BY_GUARDED_PREFLIGHT_BEFORE_RUNNER_CONTACT",
+  "total_evidence_records": 42,
+  "total_generic_evidence_record_admission_events": 42,
+  "artifact_paths": [
+    "packets/FP-MCP-172.md",
+    "runs/FP-MCP-172/result-summary.md",
+    "runs/FP-MCP-172/lingering-state-check.json",
+    "runs/FP-MCP-172/guarded-preflight-halt.json",
+    "runs/FP-MCP-172/opencode-requests/REQ-20260702T184723318Z-b14aff46.json",
+    "runs/FP-MCP-172/approvals/APPROVAL-20260702T184751507Z-04fefaa6.json",
+    "runs/FP-MCP-172/pre-start-evidence/REQ-20260702T184723318Z-b14aff46.json",
+    "runs/FP-MCP-172/process-tree/pre-contact-20260702T185020Z.txt",
+    "runs/FP-MCP-172/process-tree/post-halt-20260702T185045Z.txt"
+  ]
+}
