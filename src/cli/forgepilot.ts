@@ -25,6 +25,8 @@ Options:
   --query-worker-telemetry       Query persisted worker telemetry observations.
                                  Optional filters: --packet-id, --worker-status, --terminal-state,
                                                    --validation-state, --admission-state, --limit
+  --packet-report                 Print a read-only packet evidence summary.
+                                 Requires: --packet-id
 
 Environment:
   ForgePilot follows an environment-centric architecture.
@@ -189,6 +191,7 @@ async function main(): Promise<void> {
       "persist-worker-telemetry": { type: "boolean" },
       "read-worker-telemetry": { type: "boolean" },
       "query-worker-telemetry": { type: "boolean" },
+      "packet-report": { type: "boolean" },
       "worker-id": { type: "string" },
       "worker-status": { type: "string" },
       "terminal-state": { type: "string" },
@@ -322,6 +325,39 @@ async function main(): Promise<void> {
     }
   }
 
+
+
+  if (values["packet-report"] || positionals[0] === "packet-report") {
+    const packetId = values["packet-id"];
+    if (!packetId) {
+      console.error("ERROR: --packet-id is required");
+      process.exit(1);
+    }
+
+    const { initAndMigrate } = await import("../db/migrate.js");
+    initAndMigrate();
+    const { closeDb } = await import("../db/client.js");
+    const { queryPersistedOpenCodeWorkerTelemetry } = await import("../db/opencode-worker-telemetry.js");
+    const { buildPacketReport, formatPacketReportText } = await import("../reporting/packet-report.js");
+
+    try {
+      const report = buildPacketReport({
+        packetId,
+        workerTelemetryQuery: (id) => queryPersistedOpenCodeWorkerTelemetry({ packetId: id, limit: 100 }),
+      });
+      closeDb();
+      if (values.json) {
+        console.log(JSON.stringify(report, null, 2));
+      } else {
+        process.stdout.write(formatPacketReportText(report));
+      }
+      return;
+    } catch (error) {
+      closeDb();
+      console.error(`ERROR: ${error instanceof Error ? error.message : String(error)}`);
+      process.exit(1);
+    }
+  }
 
   if (values["query-worker-telemetry"] || positionals[0] === "query-worker-telemetry") {
     const limitValue = values["limit"];
