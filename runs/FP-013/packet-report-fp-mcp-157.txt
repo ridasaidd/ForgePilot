@@ -1,0 +1,23 @@
+Packet Report: FP-MCP-157
+Title: FP-MCP-157 — Worker Telemetry Query Tool v1
+Packet Path: packets/FP-MCP-157.md
+Labels: INTENT_RECORDED, RUN_ARTIFACTS_PRESENT, VERIFICATION_ARTIFACT_PRESENT, OPERATIONAL_PROOF_ARTIFACT_PRESENT
+Artifacts: 5
+  Verification: 3
+  Operational Proof: 1
+  Telemetry/Metrics: 0
+  Result: 1
+Worker Telemetry Observations: 0
+Evidence Boundary: Observation only. Not admitted evidence. Not routing input.
+Reporting Rules: docs/reporting-evidence-rules.md
+Caveats:
+  - Report is an index over committed artifacts and read-only observations; it is not evidence by itself.
+  - Observation only. Not admitted evidence. Not routing input.
+  - Verification artifacts do not imply admission unless an admission artifact or state explicitly says so.
+  - This report does not rank models, route work, infer quality, or admit evidence.
+Artifacts:
+  - runs/FP-MCP-157/direct-mcp-query-result.md [operational_proof]
+  - runs/FP-MCP-157/executor-result.md [result]
+  - runs/FP-MCP-157/query-cli-verification-summary.json [verification]
+  - runs/FP-MCP-157/query-cli-verification.raw.txt [verification]
+  - runs/FP-MCP-157/verification.txt [verification]

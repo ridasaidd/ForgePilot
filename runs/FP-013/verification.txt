@@ -1,0 +1,34 @@
+FP-013 verification
+
+Typecheck:
+PASS
+- see runs/FP-013/typecheck.txt
+
+Tests:
+PASS
+- see runs/FP-013/test.txt
+
+CLI JSON smoke:
+PASS
+- pnpm fp -- packet-report --packet-id FP-MCP-157 --json
+- output recorded at runs/FP-013/packet-report-fp-mcp-157.json
+
+CLI text smoke:
+PASS
+- pnpm fp -- packet-report --packet-id FP-MCP-157
+- output recorded at runs/FP-013/packet-report-fp-mcp-157.txt
+
+Telemetry observation smoke:
+PASS
+- pnpm fp -- packet-report --packet-id FP-MCP-153 --json
+- output recorded at runs/FP-013/packet-report-fp-mcp-153.json
+- worker telemetry is labeled OBSERVED_NOT_ADMITTED
+- admission_state remains NOT_EVALUATED
+- evidence boundary is present
+
+Scope boundary:
+PASS
+- no SQLite schema created
+- no MCP tools added
+- no bridge code changed
+- no routing/scoring/model ranking/admission behavior implemented

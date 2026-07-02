@@ -1,0 +1,58 @@
+{
+  "packet_id": "FP-MCP-157",
+  "packet_path": "packets/FP-MCP-157.md",
+  "packet_exists": true,
+  "packet_title": "FP-MCP-157 — Worker Telemetry Query Tool v1",
+  "labels": [
+    "INTENT_RECORDED",
+    "RUN_ARTIFACTS_PRESENT",
+    "VERIFICATION_ARTIFACT_PRESENT",
+    "OPERATIONAL_PROOF_ARTIFACT_PRESENT"
+  ],
+  "artifacts": [
+    {
+      "path": "runs/FP-MCP-157/direct-mcp-query-result.md",
+      "kind": "operational_proof"
+    },
+    {
+      "path": "runs/FP-MCP-157/executor-result.md",
+      "kind": "result"
+    },
+    {
+      "path": "runs/FP-MCP-157/query-cli-verification-summary.json",
+      "kind": "verification"
+    },
+    {
+      "path": "runs/FP-MCP-157/query-cli-verification.raw.txt",
+      "kind": "verification"
+    },
+    {
+      "path": "runs/FP-MCP-157/verification.txt",
+      "kind": "verification"
+    }
+  ],
+  "artifact_counts": {
+    "total": 5,
+    "verification": 3,
+    "operational_proof": 1,
+    "telemetry_or_metrics": 0,
+    "result": 1
+  },
+  "worker_telemetry": {
+    "available": false,
+    "count": 0,
+    "admission_states": [],
+    "validation_states": [],
+    "worker_statuses": [],
+    "terminal_states": [],
+    "observation_boundary": "Observation only. Not admitted evidence. Not routing input."
+  },
+  "caveats": [
+    "Report is an index over committed artifacts and read-only observations; it is not evidence by itself.",
+    "Observation only. Not admitted evidence. Not routing input.",
+    "Verification artifacts do not imply admission unless an admission artifact or state explicitly says so.",
+    "This report does not rank models, route work, infer quality, or admit evidence."
+  ],
+  "reporting_rules_path": "docs/reporting-evidence-rules.md",
+  "evidence_boundary": "Observation only. Not admitted evidence. Not routing input."
+}

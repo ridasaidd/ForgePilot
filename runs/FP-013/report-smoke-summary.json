@@ -1,0 +1,45 @@
+{
+  "fp_mcp_157": {
+    "labels": [
+      "INTENT_RECORDED",
+      "RUN_ARTIFACTS_PRESENT",
+      "VERIFICATION_ARTIFACT_PRESENT",
+      "OPERATIONAL_PROOF_ARTIFACT_PRESENT"
+    ],
+    "artifact_counts": {
+      "total": 5,
+      "verification": 3,
+      "operational_proof": 1,
+      "telemetry_or_metrics": 0,
+      "result": 1
+    },
+    "evidence_boundary": "Observation only. Not admitted evidence. Not routing input.",
+    "worker_telemetry_count": 0
+  },
+  "fp_mcp_153": {
+    "labels": [
+      "INTENT_RECORDED",
+      "RUN_ARTIFACTS_PRESENT",
+      "OPERATIONAL_PROOF_ARTIFACT_PRESENT",
+      "OBSERVED_NOT_ADMITTED"
+    ],
+    "worker_telemetry": {
+      "available": true,
+      "count": 1,
+      "admission_states": [
+        "NOT_EVALUATED"
+      ],
+      "validation_states": [
+        "VALID"
+      ],
+      "worker_statuses": [
+        "SUCCEEDED"
+      ],
+      "terminal_states": [
+        "TERMINAL_SUCCEEDED"
+      ],
+      "observation_boundary": "Observation only. Not admitted evidence. Not routing input."
+    },
+    "evidence_boundary": "Observation only. Not admitted evidence. Not routing input."
+  }
+}
