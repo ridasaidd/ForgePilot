@@ -1,0 +1,9 @@
+{
+  "packet_id": "SHADOW-REF-008",
+  "forgepilot_branch": "main",
+  "forgepilot_commit_before_commit": "075ce69",
+  "bridge_branch": "feature/oauth-auth0",
+  "bridge_commit": "3a16d68",
+  "bridge_working_tree_clean": true,
+  "result": "EXECUTOR_HANDOFF_BLOCKED_NO_EXTRACTION"
+}

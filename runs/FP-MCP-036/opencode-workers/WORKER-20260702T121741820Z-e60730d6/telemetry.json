@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "forgepilot.opencode-worker-telemetry.v1",
+  "packetId": "FP-MCP-036",
+  "workerId": "WORKER-20260702T121741820Z-e60730d6",
+  "capturedAt": "2026-07-02T12:18:15.980Z",
+  "workerStatus": "FAILED",
+  "startedAt": "2026-07-02T12:17:41.827Z",
+  "completedAt": "2026-07-02T12:17:44.135Z",
+  "durationMs": 2308,
+  "targetWorkspaceId": "forgepilot-chatgpt-mcp",
+  "workspacePath": "/home/ridasaidd/forgepilot-chatgpt-mcp",
+  "promptFile": "/home/ridasaidd/forgepilot/package.json",
+  "promptFileSha256": "73f1695e0cc44f20ce139a2b92da2958a974987c1a8678a78679da7cf8dad7bc",
+  "modelId": "deepseek-v4-pro-high",
+  "command": {
+    "executable": "/home/ridasaidd/.nvm/versions/node/v24.4.1/bin/opencode",
+    "args": [
+      "run",
+      "--dir",
+      "/home/ridasaidd/forgepilot-chatgpt-mcp",
+      "--file",
+      "/home/ridasaidd/forgepilot/package.json",
+      "--title",
+      "safety probe should not start",
+      "--model",
+      "deepseek-v4-pro-high",
+      "Implement attached prompt."
+    ],
+    "argsCount": 10
+  },
+  "artifacts": {
+    "status": {
+      "path": "/home/ridasaidd/forgepilot/runs/FP-MCP-036/opencode-workers/WORKER-20260702T121741820Z-e60730d6/status.json",
+      "exists": true,
+      "byteCount": 1773,
+      "sha256": "e6172af66d0ade6d061ea59f707be0cc1217d3a87d04e5d2c23a3868ee2c01aa"
+    },
+    "startRequest": {
+      "path": "/home/ridasaidd/forgepilot/runs/FP-MCP-036/opencode-workers/WORKER-20260702T121741820Z-e60730d6/start-request.json",
+      "exists": true,
+      "byteCount": 918,
+      "sha256": "e1adfccff36018e28cfbb1d8bb5ff6e3f5c93f72d5eac3aa9c3467f6e5ba1f2e"
+    },
+    "stdout": {
+      "path": "/home/ridasaidd/forgepilot/runs/FP-MCP-036/opencode-workers/WORKER-20260702T121741820Z-e60730d6/stdout.log",
+      "exists": true,
+      "byteCount": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderr": {
+      "path": "/home/ridasaidd/forgepilot/runs/FP-MCP-036/opencode-workers/WORKER-20260702T121741820Z-e60730d6/stderr.log",
+      "exists": true,
+      "byteCount": 187,
+      "sha256": "269d2c567fd45731070b7b3c99af2a3edefa8fd7802d0224f32b4a942eeef755"
+    }
+  },
+  "classifications": {
+    "terminalState": "TERMINAL_FAILED",
+    "provenanceCompleteness": "COMPLETE",
+    "trustTier": "TIER_2_VERIFIED_ARTIFACT",
+    "validationState": "VALID",
+    "admissionState": "NOT_EVALUATED"
+  },
+  "telemetryPath": "/home/ridasaidd/forgepilot/runs/FP-MCP-036/opencode-workers/WORKER-20260702T121741820Z-e60730d6/telemetry.json",
+  "observationSemantics": "OpenCode worker telemetry is an observation, not admitted evidence or routing input by itself.",
+  "reasons": []
+}

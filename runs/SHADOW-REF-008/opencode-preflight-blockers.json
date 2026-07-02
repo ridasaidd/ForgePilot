@@ -1,0 +1,26 @@
+{
+  "packet_id": "SHADOW-REF-008",
+  "result": "EXECUTOR_HANDOFF_BLOCKED_NO_EXTRACTION",
+  "disposition": "DEFERRED_INFRASTRUCTURE_FAILURE",
+  "blockers": [
+    {
+      "kind": "PACKET_NAMESPACE_VALIDATION_BLOCKER",
+      "observation": "forgepilot_validate_opencode_run_request returned INVALID_PACKET_ID for SHADOW-REF-007 even though the packet is committed in ForgePilot.",
+      "impact": "SHADOW-REF extraction packets cannot be used directly with the current OpenCode request validator."
+    },
+    {
+      "kind": "EXECUTION_DISABLE_INCONSISTENCY",
+      "observation": "execution status/capability tools report OpenCode execution disabled, but forgepilot_start_opencode_worker started a worker when called with legacy packet id FP-MCP-036.",
+      "impact": "Worker start gate semantics are inconsistent and must be reconciled before trusted executor-driven implementation."
+    }
+  ],
+  "accidental_worker": {
+    "packet_id": "FP-MCP-036",
+    "worker_id": "WORKER-20260702T121741820Z-e60730d6",
+    "model_id": "deepseek-v4-pro-high",
+    "status": "FAILED",
+    "terminal_state": "TERMINAL_FAILED",
+    "duration_ms": 2308,
+    "telemetry_path": "runs/FP-MCP-036/opencode-workers/WORKER-20260702T121741820Z-e60730d6/telemetry.json"
+  }
+}

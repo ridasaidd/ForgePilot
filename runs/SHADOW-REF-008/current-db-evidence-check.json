@@ -1,0 +1,15 @@
+{
+  "packet_id": "SHADOW-REF-008",
+  "total_evidence_records": 4,
+  "total_generic_evidence_record_admission_events": 4,
+  "shadow_ref_008_record": {
+    "evidence_id": 4,
+    "run_id": "SHADOW-REF-008-EXECUTOR-HANDOFF-BLOCKED",
+    "admission_state": "ADMITTED",
+    "executor_result": "EXECUTOR_HANDOFF_BLOCKED_NO_EXTRACTION",
+    "validation_state": "VALID",
+    "generic_admission_event_id": 4,
+    "admission_decision": "ADMITTED"
+  },
+  "result": "SHADOW_REF_008_BLOCKED_HANDOFF_CANONICAL_EVIDENCE_PRESENT"
+}

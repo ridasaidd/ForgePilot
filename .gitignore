@@ -35,3 +35,5 @@ runner/*.env
 .forgepilot/
 !runs/SHADOW-REF-006/bridge-build-output.log
 !runs/SHADOW-REF-006/bridge-test-output.log
+!runs/FP-MCP-036/opencode-workers/WORKER-20260702T121741820Z-e60730d6/stdout.log
+!runs/FP-MCP-036/opencode-workers/WORKER-20260702T121741820Z-e60730d6/stderr.log

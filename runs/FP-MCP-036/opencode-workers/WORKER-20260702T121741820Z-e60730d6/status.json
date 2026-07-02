@@ -1,0 +1,41 @@
+{
+  "workerId": "WORKER-20260702T121741820Z-e60730d6",
+  "packetId": "FP-MCP-036",
+  "requestId": null,
+  "modelId": "deepseek-v4-pro-high",
+  "targetWorkspaceId": "forgepilot-chatgpt-mcp",
+  "workspacePath": "/home/ridasaidd/forgepilot-chatgpt-mcp",
+  "promptFile": "/home/ridasaidd/forgepilot/package.json",
+  "promptFileSha256": "73f1695e0cc44f20ce139a2b92da2958a974987c1a8678a78679da7cf8dad7bc",
+  "pid": 748395,
+  "status": "FAILED",
+  "startedAt": "2026-07-02T12:17:41.827Z",
+  "updatedAt": "2026-07-02T12:17:44.135Z",
+  "completedAt": "2026-07-02T12:17:44.135Z",
+  "timeoutSeconds": 1,
+  "stdoutPath": "/home/ridasaidd/forgepilot/runs/FP-MCP-036/opencode-workers/WORKER-20260702T121741820Z-e60730d6/stdout.log",
+  "stderrPath": "/home/ridasaidd/forgepilot/runs/FP-MCP-036/opencode-workers/WORKER-20260702T121741820Z-e60730d6/stderr.log",
+  "statusPath": "/home/ridasaidd/forgepilot/runs/FP-MCP-036/opencode-workers/WORKER-20260702T121741820Z-e60730d6/status.json",
+  "startRequestPath": "/home/ridasaidd/forgepilot/runs/FP-MCP-036/opencode-workers/WORKER-20260702T121741820Z-e60730d6/start-request.json",
+  "workerDir": "/home/ridasaidd/forgepilot/runs/FP-MCP-036/opencode-workers/WORKER-20260702T121741820Z-e60730d6",
+  "approvalSource": "CHATGPT_MCP_TOOL_APPROVAL",
+  "approvedToolName": "forgepilot_start_opencode_worker",
+  "command": {
+    "executable": "/home/ridasaidd/.nvm/versions/node/v24.4.1/bin/opencode",
+    "args": [
+      "run",
+      "--dir",
+      "/home/ridasaidd/forgepilot-chatgpt-mcp",
+      "--file",
+      "/home/ridasaidd/forgepilot/package.json",
+      "--title",
+      "safety probe should not start",
+      "--model",
+      "deepseek-v4-pro-high",
+      "Implement attached prompt."
+    ]
+  },
+  "reasons": [
+    "PROCESS_EXITED_1"
+  ]
+}

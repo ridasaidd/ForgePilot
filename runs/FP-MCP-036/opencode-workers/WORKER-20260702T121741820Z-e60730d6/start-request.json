@@ -1,0 +1,27 @@
+{
+  "packetId": "FP-MCP-036",
+  "requestId": null,
+  "targetWorkspaceId": "forgepilot-chatgpt-mcp",
+  "workspacePath": "/home/ridasaidd/forgepilot-chatgpt-mcp",
+  "promptFile": "/home/ridasaidd/forgepilot/package.json",
+  "promptFileSha256": "73f1695e0cc44f20ce139a2b92da2958a974987c1a8678a78679da7cf8dad7bc",
+  "title": "safety probe should not start",
+  "modelId": "deepseek-v4-pro-high",
+  "timeoutSeconds": 1,
+  "executable": "/home/ridasaidd/.nvm/versions/node/v24.4.1/bin/opencode",
+  "args": [
+    "run",
+    "--dir",
+    "/home/ridasaidd/forgepilot-chatgpt-mcp",
+    "--file",
+    "/home/ridasaidd/forgepilot/package.json",
+    "--title",
+    "safety probe should not start",
+    "--model",
+    "deepseek-v4-pro-high",
+    "Implement attached prompt."
+  ],
+  "approvalSource": "CHATGPT_MCP_TOOL_APPROVAL",
+  "approvedToolName": "forgepilot_start_opencode_worker",
+  "requestedAt": "2026-07-02T12:17:41.820Z"
+}
