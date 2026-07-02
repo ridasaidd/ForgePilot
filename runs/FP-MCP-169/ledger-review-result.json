@@ -1,0 +1,474 @@
+{
+  "packet_id": "FP-MCP-169",
+  "result": "PRE_CONTACT_LEDGER_REVIEW_PASSED_READY_FOR_NO_CONTACT_CONSUMING_ACTION_IMPLEMENTATION",
+  "narrated_count": 35,
+  "sqlite_counts": {
+    "total_evidence_records": 35,
+    "total_generic_evidence_record_admission_events": 35,
+    "counts_match_narrated_35": true
+  },
+  "state_checks": {
+    "expected_rejected_controls": [
+      {
+        "evidence_id": 2,
+        "run_id": "FP-017-NEGATIVE-REJECTED",
+        "branch": "main",
+        "commit_sha": "FP-017_SCRIPT",
+        "executor_result": "NOT_APPLICABLE_BORING_FIXTURE",
+        "verification_result": "FILE_SHA256:80ce76a7eed5dca2e563eb213bacf3427e507ce6eddae83b1fb43e28dc78b092;FILE_SIZE:301",
+        "admission_state": "REJECTED",
+        "validation_state": "INVALID",
+        "trust_tier": "TIER_0_UNTRUSTED",
+        "artifact_paths": "[\"runs/FP-017/evidence-fixtures/rejected-control-evidence.json\"]"
+      }
+    ],
+    "unexpected_non_admitted_evidence_records": [],
+    "unexpected_non_valid_evidence_records": [],
+    "unexpected_non_admitted_generic_events": [],
+    "unexpected_non_valid_generic_events": []
+  },
+  "dry_run_stale_state_checks": {
+    "known_fp_mcp_168_stale_rehearsal_artifacts": [
+      {
+        "path": "runs/FP-MCP-159/consuming-clearance-dry-runs/DRYRUN-20260702T181506743Z-5ff4bf7c/consumption.json",
+        "state": "CONSUMED_PENDING_RUNNER_CONTACT",
+        "dryRun": true,
+        "nonAuthorizing": true,
+        "approvalConsumed": false,
+        "realApprovalConsumed": false,
+        "runnerStartEndpointContacted": false,
+        "opencodeStarted": false,
+        "executionPermitted": false
+      }
+    ],
+    "stale_summary_artifacts": [
+      {
+        "path": "runs/FP-MCP-168/live-fault-injection-confirmation.json",
+        "state": "CONSUMED_PENDING_RUNNER_CONTACT_STALE",
+        "dryRun": null,
+        "nonAuthorizing": null,
+        "approvalConsumed": null,
+        "realApprovalConsumed": null,
+        "runnerStartEndpointContacted": null,
+        "opencodeStarted": null,
+        "executionPermitted": null
+      }
+    ],
+    "real_pending_contact_artifacts": [],
+    "historical_consumption_artifacts_count": 10,
+    "dry_run_rehearsal_distinguishable": true
+  },
+  "artifact_backing": {
+    "empty_artifact_records": [],
+    "missing_artifacts": [],
+    "total_artifact_paths_checked": 177
+  },
+  "git_reachability": {
+    "checked_hex_commit_hashes": [
+      {
+        "evidence_id": 3,
+        "run_id": "SHADOW-REF-006-BASELINE-CAPTURE",
+        "branch": "feature/oauth-auth0",
+        "commit_sha": "3a16d68",
+        "expected_repo": "bridge",
+        "reachable_in_forgepilot": false,
+        "reachable_in_bridge": true,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 4,
+        "run_id": "SHADOW-REF-008-EXECUTOR-HANDOFF-BLOCKED",
+        "branch": "feature/oauth-auth0",
+        "commit_sha": "3a16d68",
+        "expected_repo": "bridge",
+        "reachable_in_forgepilot": false,
+        "reachable_in_bridge": true,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 5,
+        "run_id": "FP-021-SAFETY-GATE-FAILURE",
+        "branch": "feature/oauth-auth0",
+        "commit_sha": "3a16d68",
+        "expected_repo": "bridge",
+        "reachable_in_forgepilot": false,
+        "reachable_in_bridge": true,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 6,
+        "run_id": "FP-022-EXECUTION-TOOL-GATE-AUDIT",
+        "branch": "feature/oauth-auth0",
+        "commit_sha": "3a16d68",
+        "expected_repo": "bridge",
+        "reachable_in_forgepilot": false,
+        "reachable_in_bridge": true,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 7,
+        "run_id": "FP-023-WORKER-START-GATE-FIX",
+        "branch": "feature/oauth-auth0",
+        "commit_sha": "3cd682c",
+        "expected_repo": "bridge",
+        "reachable_in_forgepilot": false,
+        "reachable_in_bridge": true,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 8,
+        "run_id": "FP-023-RUNTIME-GATE-CONFIRMATION",
+        "branch": "feature/oauth-auth0",
+        "commit_sha": "3cd682c",
+        "expected_repo": "bridge",
+        "reachable_in_forgepilot": false,
+        "reachable_in_bridge": true,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 9,
+        "run_id": "FP-024-EXECUTOR-START-POLICY-BLOCKED",
+        "branch": "feature/oauth-auth0",
+        "commit_sha": "3cd682c",
+        "expected_repo": "bridge",
+        "reachable_in_forgepilot": false,
+        "reachable_in_bridge": true,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 10,
+        "run_id": "FP-025-SCOPED-ENABLEMENT-POLICY",
+        "branch": "feature/oauth-auth0",
+        "commit_sha": "3cd682c",
+        "expected_repo": "bridge",
+        "reachable_in_forgepilot": false,
+        "reachable_in_bridge": true,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 11,
+        "run_id": "FP-026-WORKER-ABORT-PRIMITIVE",
+        "branch": "feature/oauth-auth0",
+        "commit_sha": "8422542",
+        "expected_repo": "bridge",
+        "reachable_in_forgepilot": false,
+        "reachable_in_bridge": true,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 12,
+        "run_id": "FP-026-RUNTIME-CONFIRMATION-PLATFORM-BLOCKED",
+        "branch": "feature/oauth-auth0",
+        "commit_sha": "8422542",
+        "expected_repo": "bridge",
+        "reachable_in_forgepilot": false,
+        "reachable_in_bridge": true,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 13,
+        "run_id": "FP-026-LIVE-CONFIRMATION-2",
+        "branch": "feature/oauth-auth0",
+        "commit_sha": "8422542",
+        "expected_repo": "bridge",
+        "reachable_in_forgepilot": false,
+        "reachable_in_bridge": true,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 14,
+        "run_id": "FP-027-CANARY-SPECIFICATION",
+        "branch": "feature/oauth-auth0",
+        "commit_sha": "8422542",
+        "expected_repo": "bridge",
+        "reachable_in_forgepilot": false,
+        "reachable_in_bridge": true,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 15,
+        "run_id": "FP-028-BOUNDARY-FLAG-SOURCE-INSPECTION",
+        "branch": "feature/oauth-auth0",
+        "commit_sha": "8422542",
+        "expected_repo": "bridge",
+        "reachable_in_forgepilot": false,
+        "reachable_in_bridge": true,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 16,
+        "run_id": "FP-029-CANONICAL-SCOPED-CONTRACT",
+        "branch": "feature/oauth-auth0",
+        "commit_sha": "8422542",
+        "expected_repo": "bridge",
+        "reachable_in_forgepilot": false,
+        "reachable_in_bridge": true,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 17,
+        "run_id": "FP-030-IMPLEMENTATION-PACKET-DEFINED",
+        "branch": "feature/oauth-auth0",
+        "commit_sha": "8422542",
+        "expected_repo": "bridge",
+        "reachable_in_forgepilot": false,
+        "reachable_in_bridge": true,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 18,
+        "run_id": "FP-031-FIRST-EXECUTOR-USE-CANDIDATE",
+        "branch": "feature/oauth-auth0",
+        "commit_sha": "8422542",
+        "expected_repo": "bridge",
+        "reachable_in_forgepilot": false,
+        "reachable_in_bridge": true,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 19,
+        "run_id": "FP-031-BOOTSTRAP-REQUEST-REMOTE-RUNNER-BLOCKED",
+        "branch": "feature/oauth-auth0",
+        "commit_sha": "8422542",
+        "expected_repo": "bridge",
+        "reachable_in_forgepilot": false,
+        "reachable_in_bridge": true,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 20,
+        "run_id": "FP-032-REMOTE-RUNNER-NAMESPACE-COMPATIBILITY",
+        "branch": "feature/oauth-auth0",
+        "commit_sha": "8422542",
+        "expected_repo": "bridge",
+        "reachable_in_forgepilot": false,
+        "reachable_in_bridge": true,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 21,
+        "run_id": "FP-033-NAMESPACE-RECONCILIATION",
+        "branch": "feature/oauth-auth0",
+        "commit_sha": "8422542",
+        "expected_repo": "bridge",
+        "reachable_in_forgepilot": false,
+        "reachable_in_bridge": true,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 22,
+        "run_id": "FP-MCP-160-STRUCTURED-APPROVAL-UX-DRY-RUN",
+        "branch": "main",
+        "commit_sha": "f056877",
+        "expected_repo": "forgepilot",
+        "reachable_in_forgepilot": true,
+        "reachable_in_bridge": false,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 23,
+        "run_id": "FP-MCP-161-STRUCTURED-SCOPED-APPROVAL-CONTRACT",
+        "branch": "main",
+        "commit_sha": "50ff807",
+        "expected_repo": "forgepilot",
+        "reachable_in_forgepilot": true,
+        "reachable_in_bridge": false,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 24,
+        "run_id": "FP-MCP-162-STRUCTURED-APPROVAL-TOOL-IMPLEMENTATION",
+        "branch": "feature/oauth-auth0",
+        "commit_sha": "25c47f1",
+        "expected_repo": "bridge",
+        "reachable_in_forgepilot": false,
+        "reachable_in_bridge": true,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 25,
+        "run_id": "FP-MCP-163-STRUCTURED-APPROVAL-PRE-EXECUTION-INTEGRATION",
+        "branch": "feature/oauth-auth0",
+        "commit_sha": "c996ce2",
+        "expected_repo": "bridge",
+        "reachable_in_forgepilot": false,
+        "reachable_in_bridge": true,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 26,
+        "run_id": "FP-MCP-163-LIVE-PRE-EXECUTION-EVIDENCE-SUCCESS",
+        "branch": "main",
+        "commit_sha": "c41e0a1",
+        "expected_repo": "forgepilot",
+        "reachable_in_forgepilot": true,
+        "reachable_in_bridge": false,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 27,
+        "run_id": "FP-MCP-163-APPROVAL-ID-PROPAGATION-FIX-LIVE-CONFIRMED",
+        "branch": "feature/oauth-auth0",
+        "commit_sha": "1c42e6c",
+        "expected_repo": "bridge",
+        "reachable_in_forgepilot": false,
+        "reachable_in_bridge": true,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 28,
+        "run_id": "FP-MCP-164-SCOPED-EXECUTION-ENABLEMENT-BOUNDARY-CONTRACT",
+        "branch": "main",
+        "commit_sha": "8643902",
+        "expected_repo": "forgepilot",
+        "reachable_in_forgepilot": true,
+        "reachable_in_bridge": false,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 29,
+        "run_id": "FP-MCP-165-SCOPED-EXECUTION-BOOTSTRAP-DECISION",
+        "branch": "main",
+        "commit_sha": "c68a354",
+        "expected_repo": "forgepilot",
+        "reachable_in_forgepilot": true,
+        "reachable_in_bridge": false,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 30,
+        "run_id": "FP-MCP-166-SCOPED-CLEARANCE-BOOTSTRAP-IMPLEMENTATION",
+        "branch": "feature/oauth-auth0",
+        "commit_sha": "99b4ba0",
+        "expected_repo": "bridge",
+        "reachable_in_forgepilot": false,
+        "reachable_in_bridge": true,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 31,
+        "run_id": "FP-MCP-166-SCOPED-CLEARANCE-LIVE-RUNTIME-CONFIRMATION",
+        "branch": "feature/oauth-auth0",
+        "commit_sha": "99b4ba0",
+        "expected_repo": "bridge",
+        "reachable_in_forgepilot": false,
+        "reachable_in_bridge": true,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 32,
+        "run_id": "FP-MCP-167-CONSUMING-CLEARANCE-MECHANISM-CONTRACT",
+        "branch": "main",
+        "commit_sha": "3a57671",
+        "expected_repo": "forgepilot",
+        "reachable_in_forgepilot": true,
+        "reachable_in_bridge": false,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 33,
+        "run_id": "FP-MCP-168-DRY-RUN-FAULT-INJECTION-DECISION",
+        "branch": "main",
+        "commit_sha": "475a65c",
+        "expected_repo": "forgepilot",
+        "reachable_in_forgepilot": true,
+        "reachable_in_bridge": false,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 34,
+        "run_id": "FP-MCP-168-DRY-RUN-FAULT-INJECTION-IMPLEMENTATION",
+        "branch": "feature/oauth-auth0",
+        "commit_sha": "d2ecadc",
+        "expected_repo": "bridge",
+        "reachable_in_forgepilot": false,
+        "reachable_in_bridge": true,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      },
+      {
+        "evidence_id": 35,
+        "run_id": "FP-MCP-168-LIVE-FAULT-INJECTION-CONFIRMATION",
+        "branch": "feature/oauth-auth0",
+        "commit_sha": "d2ecadc",
+        "expected_repo": "bridge",
+        "reachable_in_forgepilot": false,
+        "reachable_in_bridge": true,
+        "expected_repo_reachable": true,
+        "reachable_somewhere": true
+      }
+    ],
+    "non_git_commit_tokens": [
+      {
+        "evidence_id": 1,
+        "run_id": "FP-017-POSITIVE-ADMITTED",
+        "commit_sha": "FP-017_SCRIPT",
+        "expected_historical_token": true
+      },
+      {
+        "evidence_id": 2,
+        "run_id": "FP-017-NEGATIVE-REJECTED",
+        "commit_sha": "FP-017_SCRIPT",
+        "expected_historical_token": true
+      }
+    ],
+    "unexpected_non_git_commit_tokens": [],
+    "unreachable_commit_hashes": [],
+    "not_reachable_in_expected_repo": []
+  },
+  "source_live_split": {
+    "required_recent_run_ids_present": true,
+    "missing_required_run_ids": []
+  },
+  "repo_state": {
+    "bridge_clean": true,
+    "bridge_latest_commit": "d2ecadc",
+    "forgepilot_latest_commit_before_review_artifacts": "f5a355d"
+  },
+  "blockers": {
+    "count_drift": false,
+    "unexpected_non_admitted_records": [],
+    "unexpected_non_valid_records": [],
+    "unexpected_non_admitted_events": [],
+    "unexpected_non_valid_events": [],
+    "unexpected_non_git_commit_tokens": [],
+    "unreachable_commit_hashes": [],
+    "missing_artifacts": [],
+    "empty_artifact_records": [],
+    "real_pending_contact_artifacts": [],
+    "missing_required_runs": [],
+    "bridge_dirty": false
+  },
+  "may_proceed_to_fp_mcp_170": true
+}
