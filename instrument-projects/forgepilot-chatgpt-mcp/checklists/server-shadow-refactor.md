@@ -36,7 +36,7 @@ The live MCP bridge entrypoint must remain unchanged until a switch packet verif
 | SR-001 | Create server.ts structure map | `COMPLETE` | `packets/SHADOW-REF-001.md` | `plans/SHADOW-REF-001-server-structure-map.md` | `STRUCTURE_MAPPER` | Structure map is not a refactor plan or implementation. | Read-only; completed from committed analysis artifact. |
 | SR-002 | Identify high-risk zones | `COMPLETE` | `packets/SHADOW-REF-002.md` | `plans/SHADOW-REF-002-high-risk-zones.md` | `RISK_ANALYST` | Risk list does not authorize edits. | Completed from committed read-only risk analysis. |
 | SR-003 | Propose shadow refactor plan | `COMPLETE` | `packets/SHADOW-REF-003.md` | `plans/SHADOW-REF-003-shadow-refactor-plan.md` | `PLANNER` | Plan does not authorize implementation. | Completed as planning-only artifact; audit required next. |
-| SR-004 | Audit shadow refactor plan | `NOT_STARTED` | — | — | `AUDITOR` | Audit acceptance is not execution proof. | Cross-model audit preferred. |
+| SR-004 | Audit shadow refactor plan | `COMPLETE` | `packets/SHADOW-REF-004.md` | `audits/SHADOW-REF-004-plan-audit.md` | `AUDITOR` | Audit acceptance is not execution proof. | Accepted with required fixes before implementation. |
 | SR-005 | Define candidate file/module layout | `NOT_STARTED` | — | — | `PLANNER` | Layout is not implementation. | Example: `src/server-next.ts`, `src/server-next/`. |
 | SR-006 | First tiny mechanical extraction candidate | `NOT_STARTED` | — | — | `EXECUTOR_CANDIDATE` | Candidate extraction must not switch runtime entrypoint. | Scope must be one extraction only. |
 | SR-007 | Candidate build verification | `NOT_STARTED` | — | — | `VERIFIER` | Build pass is not operational proof. | No service switch. |
@@ -55,7 +55,7 @@ ForgePilot CLI checklist management is deferred.
 ## Next Suggested Item
 
 ```text
-SR-004 — Audit shadow refactor plan
+FP-META-029 — Model Roster and Profiling Rules
 ```
 
 This should become the first project-specific packet under:

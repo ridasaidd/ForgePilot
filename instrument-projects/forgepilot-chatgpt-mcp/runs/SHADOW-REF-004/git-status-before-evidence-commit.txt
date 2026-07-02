@@ -1,0 +1,3 @@
+ M instrument-projects/forgepilot-chatgpt-mcp/checklists/server-shadow-refactor.md
+?? instrument-projects/forgepilot-chatgpt-mcp/audits/SHADOW-REF-004-plan-audit.md
+?? instrument-projects/forgepilot-chatgpt-mcp/runs/SHADOW-REF-004/
