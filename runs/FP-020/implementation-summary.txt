@@ -1,0 +1,19 @@
+FP-020 implementation summary
+
+Canonical helper:
+- src/db/validation-admission.ts
+- getCanonicalEvidenceRecordAdmission(evidenceRecordId)
+
+Canonical statuses:
+- GENERIC_EVENT_CANONICAL
+- LEGACY_EVENT_ONLY_NOT_CANONICAL
+- DUAL_TABLE_CONFLICT
+- NO_EVENT
+
+Focused tests:
+- tests/fp020.test.ts
+- focused result: PASS 5/5
+
+Generated real-data artifacts:
+- runs/FP-020/fp017-canonical-backfill-result.json
+- runs/FP-020/current-db-canonical-check.json

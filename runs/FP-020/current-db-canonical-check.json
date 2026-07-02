@@ -1,0 +1,24 @@
+{
+  "packet_id": "FP-020",
+  "generic_admission_events_total": 2,
+  "legacy_evidence_record_admission_events_total": 0,
+  "fp017_rows": [
+    {
+      "evidence_id": 1,
+      "run_id": "FP-017-POSITIVE-ADMITTED",
+      "field_admission_state": "ADMITTED",
+      "generic_event_id": 1,
+      "admission_decision": "ADMITTED",
+      "admission_basis": "FP-020 canonical backfill for FP-017 positive admitted evidence record"
+    },
+    {
+      "evidence_id": 2,
+      "run_id": "FP-017-NEGATIVE-REJECTED",
+      "field_admission_state": "REJECTED",
+      "generic_event_id": 2,
+      "admission_decision": "REJECTED",
+      "admission_basis": "FP-020 canonical backfill for FP-017 rejected control evidence record"
+    }
+  ],
+  "result": "CURRENT_DB_HAS_CANONICAL_EVENTS_FOR_FP017"
+}

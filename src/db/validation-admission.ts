@@ -494,3 +494,112 @@ export function getAdmissionEvent(id: number): AdmissionEvent | undefined {
     .prepare("SELECT * FROM evidence_record_admission_events WHERE id = ?")
     .get(id) as AdmissionEvent | undefined;
 }
+
+// --- Canonical evidence-record admission surface (FP-020) ---
+
+export type CanonicalEvidenceRecordAdmissionStatus =
+  | "GENERIC_EVENT_CANONICAL"
+  | "LEGACY_EVENT_ONLY_NOT_CANONICAL"
+  | "DUAL_TABLE_CONFLICT"
+  | "NO_EVENT";
+
+export interface GenericEvidenceRecordAdmissionEvent {
+  id: number;
+  target_observation_type: string;
+  target_observation_id: number;
+  admission_decision: string;
+  admission_actor_type: string;
+  admission_actor_id: string;
+  admission_trust_tier: string;
+  validation_state: string;
+  provenance_complete: number;
+  admission_basis: string;
+  created_at: string;
+}
+
+export interface CanonicalEvidenceRecordAdmissionResult {
+  evidence_record_id: number;
+  status: CanonicalEvidenceRecordAdmissionStatus;
+  canonical_surface: "evidence_admission_events" | null;
+  canonical_state: string | null;
+  generic_event: GenericEvidenceRecordAdmissionEvent | null;
+  legacy_event: AdmissionEvent | null;
+  reason: string;
+}
+
+export function getCanonicalEvidenceRecordAdmission(
+  evidenceRecordId: number
+): CanonicalEvidenceRecordAdmissionResult {
+  if (!evidenceRecordId || evidenceRecordId <= 0) {
+    throw new Error("evidence_record_id is required");
+  }
+
+  const record = getEvidenceRecord(evidenceRecordId);
+  if (!record) {
+    throw new Error(`Evidence record ${evidenceRecordId} not found`);
+  }
+
+  const db = getDb();
+  const generic = db
+    .prepare(
+      `SELECT * FROM evidence_admission_events
+       WHERE target_observation_type = 'evidence_record'
+         AND target_observation_id = ?
+       ORDER BY created_at DESC, id DESC
+       LIMIT 1`
+    )
+    .get(evidenceRecordId) as GenericEvidenceRecordAdmissionEvent | undefined;
+
+  const legacy = getCurrentAdmissionState(evidenceRecordId);
+
+  if (generic && legacy && generic.admission_decision !== legacy.admission_state) {
+    return {
+      evidence_record_id: evidenceRecordId,
+      status: "DUAL_TABLE_CONFLICT",
+      canonical_surface: null,
+      canonical_state: null,
+      generic_event: generic,
+      legacy_event: legacy,
+      reason:
+        "Generic evidence_admission_events and legacy evidence_record_admission_events disagree; refusing to silently choose a canonical state.",
+    };
+  }
+
+  if (generic) {
+    return {
+      evidence_record_id: evidenceRecordId,
+      status: "GENERIC_EVENT_CANONICAL",
+      canonical_surface: "evidence_admission_events",
+      canonical_state: generic.admission_decision,
+      generic_event: generic,
+      legacy_event: legacy,
+      reason:
+        legacy
+          ? "Generic admission event is canonical; legacy event agrees and is ignored for canonical state."
+          : "Generic admission event is canonical for evidence records.",
+    };
+  }
+
+  if (legacy) {
+    return {
+      evidence_record_id: evidenceRecordId,
+      status: "LEGACY_EVENT_ONLY_NOT_CANONICAL",
+      canonical_surface: null,
+      canonical_state: null,
+      generic_event: null,
+      legacy_event: legacy,
+      reason:
+        "Only legacy evidence_record_admission_events entry exists; canonical generic event is absent.",
+    };
+  }
+
+  return {
+    evidence_record_id: evidenceRecordId,
+    status: "NO_EVENT",
+    canonical_surface: null,
+    canonical_state: null,
+    generic_event: null,
+    legacy_event: null,
+    reason: "No generic or legacy admission event exists for this evidence record.",
+  };
+}

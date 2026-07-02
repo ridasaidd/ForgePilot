@@ -1,0 +1,26 @@
+{
+  "packet_id": "FP-020",
+  "result": "FP017_RECORDS_BACKFILLED_TO_CANONICAL_GENERIC_EVENTS",
+  "results": [
+    {
+      "run_id": "FP-017-POSITIVE-ADMITTED",
+      "evidence_id": 1,
+      "field_admission_state": "ADMITTED",
+      "generic_event_id": 1,
+      "generic_event_decision": "ADMITTED",
+      "canonical_status": "GENERIC_EVENT_CANONICAL",
+      "canonical_surface": "evidence_admission_events",
+      "canonical_state": "ADMITTED"
+    },
+    {
+      "run_id": "FP-017-NEGATIVE-REJECTED",
+      "evidence_id": 2,
+      "field_admission_state": "REJECTED",
+      "generic_event_id": 2,
+      "generic_event_decision": "REJECTED",
+      "canonical_status": "GENERIC_EVENT_CANONICAL",
+      "canonical_surface": "evidence_admission_events",
+      "canonical_state": "REJECTED"
+    }
+  ]
+}
