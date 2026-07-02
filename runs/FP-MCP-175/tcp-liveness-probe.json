@@ -1,0 +1,18 @@
+{
+  "packet_id": "FP-MCP-175",
+  "probe": "tcp_connect_only_no_payload",
+  "target_host": "127.0.0.1",
+  "target_port": 4096,
+  "startedAt": "2026-07-02T19:36:40Z",
+  "payload_sent": false,
+  "http_request_sent": false,
+  "prompt_sent": false,
+  "request_artifact_used": false,
+  "worker_start_requested": false,
+  "opencode_started_by_probe": false,
+  "runner_start_endpoint_contacted": false,
+  "tcp_connect_succeeded": true,
+  "local_socket": "('127.0.0.1', 41896)",
+  "remote_socket": "('127.0.0.1', 4096)",
+  "completedAt": "2026-07-02T19:36:40Z"
+}
