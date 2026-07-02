@@ -1,0 +1,21 @@
+{
+  "packet_id": "FP-MCP-169",
+  "result": "FP_MCP_169_LEDGER_REVIEW_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 36,
+  "run_id": "FP-MCP-169-PRE-CONTACT-LEDGER-REVIEW",
+  "generic_admission_event_id": 36,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "PRE_CONTACT_LEDGER_REVIEW_PASSED_READY_FOR_NO_CONTACT_CONSUMING_ACTION_IMPLEMENTATION",
+  "review_sqlite_count_before_admission": 35,
+  "total_evidence_records_after_admission": 36,
+  "total_generic_evidence_record_admission_events_after_admission": 36,
+  "artifact_paths": [
+    "packets/FP-MCP-169.md",
+    "runs/FP-MCP-169/result-summary.md",
+    "runs/FP-MCP-169/review-ledger.py",
+    "runs/FP-MCP-169/ledger-review-result.md",
+    "runs/FP-MCP-169/ledger-review-result.json"
+  ]
+}
