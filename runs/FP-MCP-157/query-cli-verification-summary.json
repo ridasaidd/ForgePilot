@@ -1,0 +1,140 @@
+{
+  "no filters": {
+    "count": 1,
+    "limit": 20,
+    "filters": {},
+    "observation_semantics": "Persisted worker telemetry query results are observations, not admitted evidence or routing input.",
+    "firstRow": {
+      "packet_id": "FP-MCP-153",
+      "worker_id": "WORKER-20260701T202417844Z-46c8a6f5",
+      "worker_status": "SUCCEEDED",
+      "terminal_state": "TERMINAL_SUCCEEDED",
+      "validation_state": "VALID",
+      "admission_state": "NOT_EVALUATED",
+      "trust_tier": "TIER_2_VERIFIED_ARTIFACT",
+      "telemetry_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/telemetry.json"
+    }
+  },
+  "packetId FP-MCP-153": {
+    "count": 1,
+    "limit": 20,
+    "filters": {
+      "packetId": "FP-MCP-153"
+    },
+    "observation_semantics": "Persisted worker telemetry query results are observations, not admitted evidence or routing input.",
+    "firstRow": {
+      "packet_id": "FP-MCP-153",
+      "worker_id": "WORKER-20260701T202417844Z-46c8a6f5",
+      "worker_status": "SUCCEEDED",
+      "terminal_state": "TERMINAL_SUCCEEDED",
+      "validation_state": "VALID",
+      "admission_state": "NOT_EVALUATED",
+      "trust_tier": "TIER_2_VERIFIED_ARTIFACT",
+      "telemetry_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/telemetry.json"
+    }
+  },
+  "workerStatus SUCCEEDED": {
+    "count": 1,
+    "limit": 20,
+    "filters": {
+      "workerStatus": "SUCCEEDED"
+    },
+    "observation_semantics": "Persisted worker telemetry query results are observations, not admitted evidence or routing input.",
+    "firstRow": {
+      "packet_id": "FP-MCP-153",
+      "worker_id": "WORKER-20260701T202417844Z-46c8a6f5",
+      "worker_status": "SUCCEEDED",
+      "terminal_state": "TERMINAL_SUCCEEDED",
+      "validation_state": "VALID",
+      "admission_state": "NOT_EVALUATED",
+      "trust_tier": "TIER_2_VERIFIED_ARTIFACT",
+      "telemetry_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/telemetry.json"
+    }
+  },
+  "terminalState TERMINAL_SUCCEEDED": {
+    "count": 1,
+    "limit": 20,
+    "filters": {
+      "terminalState": "TERMINAL_SUCCEEDED"
+    },
+    "observation_semantics": "Persisted worker telemetry query results are observations, not admitted evidence or routing input.",
+    "firstRow": {
+      "packet_id": "FP-MCP-153",
+      "worker_id": "WORKER-20260701T202417844Z-46c8a6f5",
+      "worker_status": "SUCCEEDED",
+      "terminal_state": "TERMINAL_SUCCEEDED",
+      "validation_state": "VALID",
+      "admission_state": "NOT_EVALUATED",
+      "trust_tier": "TIER_2_VERIFIED_ARTIFACT",
+      "telemetry_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/telemetry.json"
+    }
+  },
+  "validationState VALID": {
+    "count": 1,
+    "limit": 20,
+    "filters": {
+      "validationState": "VALID"
+    },
+    "observation_semantics": "Persisted worker telemetry query results are observations, not admitted evidence or routing input.",
+    "firstRow": {
+      "packet_id": "FP-MCP-153",
+      "worker_id": "WORKER-20260701T202417844Z-46c8a6f5",
+      "worker_status": "SUCCEEDED",
+      "terminal_state": "TERMINAL_SUCCEEDED",
+      "validation_state": "VALID",
+      "admission_state": "NOT_EVALUATED",
+      "trust_tier": "TIER_2_VERIFIED_ARTIFACT",
+      "telemetry_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/telemetry.json"
+    }
+  },
+  "admissionState NOT_EVALUATED": {
+    "count": 1,
+    "limit": 20,
+    "filters": {
+      "admissionState": "NOT_EVALUATED"
+    },
+    "observation_semantics": "Persisted worker telemetry query results are observations, not admitted evidence or routing input.",
+    "firstRow": {
+      "packet_id": "FP-MCP-153",
+      "worker_id": "WORKER-20260701T202417844Z-46c8a6f5",
+      "worker_status": "SUCCEEDED",
+      "terminal_state": "TERMINAL_SUCCEEDED",
+      "validation_state": "VALID",
+      "admission_state": "NOT_EVALUATED",
+      "trust_tier": "TIER_2_VERIFIED_ARTIFACT",
+      "telemetry_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/telemetry.json"
+    }
+  },
+  "bounded limit 999 expected 100": {
+    "count": 1,
+    "limit": 100,
+    "filters": {},
+    "observation_semantics": "Persisted worker telemetry query results are observations, not admitted evidence or routing input.",
+    "firstRow": {
+      "packet_id": "FP-MCP-153",
+      "worker_id": "WORKER-20260701T202417844Z-46c8a6f5",
+      "worker_status": "SUCCEEDED",
+      "terminal_state": "TERMINAL_SUCCEEDED",
+      "validation_state": "VALID",
+      "admission_state": "NOT_EVALUATED",
+      "trust_tier": "TIER_2_VERIFIED_ARTIFACT",
+      "telemetry_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/telemetry.json"
+    }
+  },
+  "limit 1": {
+    "count": 1,
+    "limit": 1,
+    "filters": {},
+    "observation_semantics": "Persisted worker telemetry query results are observations, not admitted evidence or routing input.",
+    "firstRow": {
+      "packet_id": "FP-MCP-153",
+      "worker_id": "WORKER-20260701T202417844Z-46c8a6f5",
+      "worker_status": "SUCCEEDED",
+      "terminal_state": "TERMINAL_SUCCEEDED",
+      "validation_state": "VALID",
+      "admission_state": "NOT_EVALUATED",
+      "trust_tier": "TIER_2_VERIFIED_ARTIFACT",
+      "telemetry_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/telemetry.json"
+    }
+  }
+}

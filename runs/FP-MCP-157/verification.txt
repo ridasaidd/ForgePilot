@@ -1,0 +1,51 @@
+FP-MCP-157 verification
+
+ForgePilot typecheck:
+PASS
+Command: pnpm typecheck
+
+Bridge build:
+PASS
+Command: pnpm build
+
+ForgePilot CLI query checks:
+PASS
+
+Verified query cases:
+- no filters
+- packetId = FP-MCP-153
+- workerStatus = SUCCEEDED
+- terminalState = TERMINAL_SUCCEEDED
+- validationState = VALID
+- admissionState = NOT_EVALUATED
+- limit = 999 clamps to 100
+- limit = 1 returns at most one row
+
+Bridge wrapper smoke:
+PASS
+
+The built bridge wrapper queryPersistedOpenCodeWorkerTelemetryViaForgePilot returned the persisted FP-MCP-153 row for all required filters and preserved observation_semantics.
+
+Bridge service refresh:
+PASS
+
+The user service was restarted successfully using the user systemd runtime directory.
+Observed running process after restart:
+/home/ridasaidd/forgepilot-chatgpt-mcp/dist/server.js
+
+Built registration proof:
+PASS
+
+grep found forgepilot_query_persisted_opencode_worker_telemetry in:
+- dist/tool-registrations/recent-tools.js
+- src/tool-registrations/recent-tools.ts
+
+Direct ChatGPT MCP invocation:
+NOT VERIFIED IN THIS SESSION
+
+After bridge restart, api_tool.list_resources still returned the already-open 37-tool connector schema and did not expose forgepilot_query_persisted_opencode_worker_telemetry in this conversation. This appears to be a connector/schema refresh limitation of the active ChatGPT session, not a bridge build or service restart failure.
+
+Safety verification:
+PASS
+
+The query path reads persisted SQLite telemetry rows through ForgePilot query support only. It does not start/stop workers, recapture telemetry, persist new telemetry, or touch live OpenCode state.

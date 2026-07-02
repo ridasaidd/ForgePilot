@@ -1,0 +1,370 @@
+--- no filters ---
+{
+  "rows": [
+    {
+      "packet_id": "FP-MCP-153",
+      "worker_id": "WORKER-20260701T202417844Z-46c8a6f5",
+      "schema_version": "forgepilot.opencode-worker-telemetry.v1",
+      "captured_at": "2026-07-01T20:50:39.883Z",
+      "persisted_at": "2026-07-02 06:52:13",
+      "worker_status": "SUCCEEDED",
+      "started_at": "2026-07-01T20:24:17.848Z",
+      "completed_at": "2026-07-01T20:24:23.211Z",
+      "duration_ms": 5363,
+      "target_workspace_id": "forgepilot",
+      "workspace_path": "/home/ridasaidd/forgepilot",
+      "prompt_file": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/worker-smoke-prompt.md",
+      "prompt_file_sha256": "905ff2bda33cf984c826538bdebfc4aa7830056abf8596d9e75ca6719244bb04",
+      "model_id": null,
+      "command_executable": "/home/ridasaidd/.nvm/versions/node/v24.4.1/bin/opencode",
+      "command_args_json": "[\"run\",\"--dir\",\"/home/ridasaidd/forgepilot\",\"--file\",\"/home/ridasaidd/forgepilot/runs/FP-MCP-153/worker-smoke-prompt.md\",\"--title\",\"FP-MCP-153 direct MCP smoke after schema hardening\",\"Implement attached prompt.\"]",
+      "status_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/status.json",
+      "status_sha256": "6cecc800be34078e3f9d9c57c9574b3f6164add791a9484f456091d69e544b83",
+      "start_request_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/start-request.json",
+      "start_request_sha256": "966d37f15dcd2b98b777691b64cf44ae8d06cecf55cc9cccd7dcbc2028393c32",
+      "stdout_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/stdout.log",
+      "stdout_byte_count": 40,
+      "stdout_sha256": "d45df0718ab6ee4ae81d88704efeee673a86b83156c519fcdd68bf80370ca683",
+      "stderr_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/stderr.log",
+      "stderr_byte_count": 37,
+      "stderr_sha256": "cd3e7f053f3e2068dfaabb9b00d840b784833c30017fdd653f177f109802b383",
+      "terminal_state": "TERMINAL_SUCCEEDED",
+      "provenance_completeness": "COMPLETE",
+      "trust_tier": "TIER_2_VERIFIED_ARTIFACT",
+      "validation_state": "VALID",
+      "admission_state": "NOT_EVALUATED",
+      "telemetry_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/telemetry.json",
+      "observation_semantics": "OpenCode worker telemetry is an observation, not admitted evidence or routing input by itself.",
+      "reasons_json": "[]"
+    }
+  ],
+  "count": 1,
+  "filters": {},
+  "limit": 20,
+  "observation_semantics": "Persisted worker telemetry query results are observations, not admitted evidence or routing input."
+}
+--- packetId FP-MCP-153 ---
+{
+  "rows": [
+    {
+      "packet_id": "FP-MCP-153",
+      "worker_id": "WORKER-20260701T202417844Z-46c8a6f5",
+      "schema_version": "forgepilot.opencode-worker-telemetry.v1",
+      "captured_at": "2026-07-01T20:50:39.883Z",
+      "persisted_at": "2026-07-02 06:52:13",
+      "worker_status": "SUCCEEDED",
+      "started_at": "2026-07-01T20:24:17.848Z",
+      "completed_at": "2026-07-01T20:24:23.211Z",
+      "duration_ms": 5363,
+      "target_workspace_id": "forgepilot",
+      "workspace_path": "/home/ridasaidd/forgepilot",
+      "prompt_file": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/worker-smoke-prompt.md",
+      "prompt_file_sha256": "905ff2bda33cf984c826538bdebfc4aa7830056abf8596d9e75ca6719244bb04",
+      "model_id": null,
+      "command_executable": "/home/ridasaidd/.nvm/versions/node/v24.4.1/bin/opencode",
+      "command_args_json": "[\"run\",\"--dir\",\"/home/ridasaidd/forgepilot\",\"--file\",\"/home/ridasaidd/forgepilot/runs/FP-MCP-153/worker-smoke-prompt.md\",\"--title\",\"FP-MCP-153 direct MCP smoke after schema hardening\",\"Implement attached prompt.\"]",
+      "status_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/status.json",
+      "status_sha256": "6cecc800be34078e3f9d9c57c9574b3f6164add791a9484f456091d69e544b83",
+      "start_request_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/start-request.json",
+      "start_request_sha256": "966d37f15dcd2b98b777691b64cf44ae8d06cecf55cc9cccd7dcbc2028393c32",
+      "stdout_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/stdout.log",
+      "stdout_byte_count": 40,
+      "stdout_sha256": "d45df0718ab6ee4ae81d88704efeee673a86b83156c519fcdd68bf80370ca683",
+      "stderr_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/stderr.log",
+      "stderr_byte_count": 37,
+      "stderr_sha256": "cd3e7f053f3e2068dfaabb9b00d840b784833c30017fdd653f177f109802b383",
+      "terminal_state": "TERMINAL_SUCCEEDED",
+      "provenance_completeness": "COMPLETE",
+      "trust_tier": "TIER_2_VERIFIED_ARTIFACT",
+      "validation_state": "VALID",
+      "admission_state": "NOT_EVALUATED",
+      "telemetry_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/telemetry.json",
+      "observation_semantics": "OpenCode worker telemetry is an observation, not admitted evidence or routing input by itself.",
+      "reasons_json": "[]"
+    }
+  ],
+  "count": 1,
+  "filters": {
+    "packetId": "FP-MCP-153"
+  },
+  "limit": 20,
+  "observation_semantics": "Persisted worker telemetry query results are observations, not admitted evidence or routing input."
+}
+--- workerStatus SUCCEEDED ---
+{
+  "rows": [
+    {
+      "packet_id": "FP-MCP-153",
+      "worker_id": "WORKER-20260701T202417844Z-46c8a6f5",
+      "schema_version": "forgepilot.opencode-worker-telemetry.v1",
+      "captured_at": "2026-07-01T20:50:39.883Z",
+      "persisted_at": "2026-07-02 06:52:13",
+      "worker_status": "SUCCEEDED",
+      "started_at": "2026-07-01T20:24:17.848Z",
+      "completed_at": "2026-07-01T20:24:23.211Z",
+      "duration_ms": 5363,
+      "target_workspace_id": "forgepilot",
+      "workspace_path": "/home/ridasaidd/forgepilot",
+      "prompt_file": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/worker-smoke-prompt.md",
+      "prompt_file_sha256": "905ff2bda33cf984c826538bdebfc4aa7830056abf8596d9e75ca6719244bb04",
+      "model_id": null,
+      "command_executable": "/home/ridasaidd/.nvm/versions/node/v24.4.1/bin/opencode",
+      "command_args_json": "[\"run\",\"--dir\",\"/home/ridasaidd/forgepilot\",\"--file\",\"/home/ridasaidd/forgepilot/runs/FP-MCP-153/worker-smoke-prompt.md\",\"--title\",\"FP-MCP-153 direct MCP smoke after schema hardening\",\"Implement attached prompt.\"]",
+      "status_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/status.json",
+      "status_sha256": "6cecc800be34078e3f9d9c57c9574b3f6164add791a9484f456091d69e544b83",
+      "start_request_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/start-request.json",
+      "start_request_sha256": "966d37f15dcd2b98b777691b64cf44ae8d06cecf55cc9cccd7dcbc2028393c32",
+      "stdout_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/stdout.log",
+      "stdout_byte_count": 40,
+      "stdout_sha256": "d45df0718ab6ee4ae81d88704efeee673a86b83156c519fcdd68bf80370ca683",
+      "stderr_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/stderr.log",
+      "stderr_byte_count": 37,
+      "stderr_sha256": "cd3e7f053f3e2068dfaabb9b00d840b784833c30017fdd653f177f109802b383",
+      "terminal_state": "TERMINAL_SUCCEEDED",
+      "provenance_completeness": "COMPLETE",
+      "trust_tier": "TIER_2_VERIFIED_ARTIFACT",
+      "validation_state": "VALID",
+      "admission_state": "NOT_EVALUATED",
+      "telemetry_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/telemetry.json",
+      "observation_semantics": "OpenCode worker telemetry is an observation, not admitted evidence or routing input by itself.",
+      "reasons_json": "[]"
+    }
+  ],
+  "count": 1,
+  "filters": {
+    "workerStatus": "SUCCEEDED"
+  },
+  "limit": 20,
+  "observation_semantics": "Persisted worker telemetry query results are observations, not admitted evidence or routing input."
+}
+--- terminalState TERMINAL_SUCCEEDED ---
+{
+  "rows": [
+    {
+      "packet_id": "FP-MCP-153",
+      "worker_id": "WORKER-20260701T202417844Z-46c8a6f5",
+      "schema_version": "forgepilot.opencode-worker-telemetry.v1",
+      "captured_at": "2026-07-01T20:50:39.883Z",
+      "persisted_at": "2026-07-02 06:52:13",
+      "worker_status": "SUCCEEDED",
+      "started_at": "2026-07-01T20:24:17.848Z",
+      "completed_at": "2026-07-01T20:24:23.211Z",
+      "duration_ms": 5363,
+      "target_workspace_id": "forgepilot",
+      "workspace_path": "/home/ridasaidd/forgepilot",
+      "prompt_file": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/worker-smoke-prompt.md",
+      "prompt_file_sha256": "905ff2bda33cf984c826538bdebfc4aa7830056abf8596d9e75ca6719244bb04",
+      "model_id": null,
+      "command_executable": "/home/ridasaidd/.nvm/versions/node/v24.4.1/bin/opencode",
+      "command_args_json": "[\"run\",\"--dir\",\"/home/ridasaidd/forgepilot\",\"--file\",\"/home/ridasaidd/forgepilot/runs/FP-MCP-153/worker-smoke-prompt.md\",\"--title\",\"FP-MCP-153 direct MCP smoke after schema hardening\",\"Implement attached prompt.\"]",
+      "status_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/status.json",
+      "status_sha256": "6cecc800be34078e3f9d9c57c9574b3f6164add791a9484f456091d69e544b83",
+      "start_request_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/start-request.json",
+      "start_request_sha256": "966d37f15dcd2b98b777691b64cf44ae8d06cecf55cc9cccd7dcbc2028393c32",
+      "stdout_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/stdout.log",
+      "stdout_byte_count": 40,
+      "stdout_sha256": "d45df0718ab6ee4ae81d88704efeee673a86b83156c519fcdd68bf80370ca683",
+      "stderr_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/stderr.log",
+      "stderr_byte_count": 37,
+      "stderr_sha256": "cd3e7f053f3e2068dfaabb9b00d840b784833c30017fdd653f177f109802b383",
+      "terminal_state": "TERMINAL_SUCCEEDED",
+      "provenance_completeness": "COMPLETE",
+      "trust_tier": "TIER_2_VERIFIED_ARTIFACT",
+      "validation_state": "VALID",
+      "admission_state": "NOT_EVALUATED",
+      "telemetry_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/telemetry.json",
+      "observation_semantics": "OpenCode worker telemetry is an observation, not admitted evidence or routing input by itself.",
+      "reasons_json": "[]"
+    }
+  ],
+  "count": 1,
+  "filters": {
+    "terminalState": "TERMINAL_SUCCEEDED"
+  },
+  "limit": 20,
+  "observation_semantics": "Persisted worker telemetry query results are observations, not admitted evidence or routing input."
+}
+--- validationState VALID ---
+{
+  "rows": [
+    {
+      "packet_id": "FP-MCP-153",
+      "worker_id": "WORKER-20260701T202417844Z-46c8a6f5",
+      "schema_version": "forgepilot.opencode-worker-telemetry.v1",
+      "captured_at": "2026-07-01T20:50:39.883Z",
+      "persisted_at": "2026-07-02 06:52:13",
+      "worker_status": "SUCCEEDED",
+      "started_at": "2026-07-01T20:24:17.848Z",
+      "completed_at": "2026-07-01T20:24:23.211Z",
+      "duration_ms": 5363,
+      "target_workspace_id": "forgepilot",
+      "workspace_path": "/home/ridasaidd/forgepilot",
+      "prompt_file": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/worker-smoke-prompt.md",
+      "prompt_file_sha256": "905ff2bda33cf984c826538bdebfc4aa7830056abf8596d9e75ca6719244bb04",
+      "model_id": null,
+      "command_executable": "/home/ridasaidd/.nvm/versions/node/v24.4.1/bin/opencode",
+      "command_args_json": "[\"run\",\"--dir\",\"/home/ridasaidd/forgepilot\",\"--file\",\"/home/ridasaidd/forgepilot/runs/FP-MCP-153/worker-smoke-prompt.md\",\"--title\",\"FP-MCP-153 direct MCP smoke after schema hardening\",\"Implement attached prompt.\"]",
+      "status_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/status.json",
+      "status_sha256": "6cecc800be34078e3f9d9c57c9574b3f6164add791a9484f456091d69e544b83",
+      "start_request_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/start-request.json",
+      "start_request_sha256": "966d37f15dcd2b98b777691b64cf44ae8d06cecf55cc9cccd7dcbc2028393c32",
+      "stdout_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/stdout.log",
+      "stdout_byte_count": 40,
+      "stdout_sha256": "d45df0718ab6ee4ae81d88704efeee673a86b83156c519fcdd68bf80370ca683",
+      "stderr_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/stderr.log",
+      "stderr_byte_count": 37,
+      "stderr_sha256": "cd3e7f053f3e2068dfaabb9b00d840b784833c30017fdd653f177f109802b383",
+      "terminal_state": "TERMINAL_SUCCEEDED",
+      "provenance_completeness": "COMPLETE",
+      "trust_tier": "TIER_2_VERIFIED_ARTIFACT",
+      "validation_state": "VALID",
+      "admission_state": "NOT_EVALUATED",
+      "telemetry_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/telemetry.json",
+      "observation_semantics": "OpenCode worker telemetry is an observation, not admitted evidence or routing input by itself.",
+      "reasons_json": "[]"
+    }
+  ],
+  "count": 1,
+  "filters": {
+    "validationState": "VALID"
+  },
+  "limit": 20,
+  "observation_semantics": "Persisted worker telemetry query results are observations, not admitted evidence or routing input."
+}
+--- admissionState NOT_EVALUATED ---
+{
+  "rows": [
+    {
+      "packet_id": "FP-MCP-153",
+      "worker_id": "WORKER-20260701T202417844Z-46c8a6f5",
+      "schema_version": "forgepilot.opencode-worker-telemetry.v1",
+      "captured_at": "2026-07-01T20:50:39.883Z",
+      "persisted_at": "2026-07-02 06:52:13",
+      "worker_status": "SUCCEEDED",
+      "started_at": "2026-07-01T20:24:17.848Z",
+      "completed_at": "2026-07-01T20:24:23.211Z",
+      "duration_ms": 5363,
+      "target_workspace_id": "forgepilot",
+      "workspace_path": "/home/ridasaidd/forgepilot",
+      "prompt_file": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/worker-smoke-prompt.md",
+      "prompt_file_sha256": "905ff2bda33cf984c826538bdebfc4aa7830056abf8596d9e75ca6719244bb04",
+      "model_id": null,
+      "command_executable": "/home/ridasaidd/.nvm/versions/node/v24.4.1/bin/opencode",
+      "command_args_json": "[\"run\",\"--dir\",\"/home/ridasaidd/forgepilot\",\"--file\",\"/home/ridasaidd/forgepilot/runs/FP-MCP-153/worker-smoke-prompt.md\",\"--title\",\"FP-MCP-153 direct MCP smoke after schema hardening\",\"Implement attached prompt.\"]",
+      "status_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/status.json",
+      "status_sha256": "6cecc800be34078e3f9d9c57c9574b3f6164add791a9484f456091d69e544b83",
+      "start_request_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/start-request.json",
+      "start_request_sha256": "966d37f15dcd2b98b777691b64cf44ae8d06cecf55cc9cccd7dcbc2028393c32",
+      "stdout_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/stdout.log",
+      "stdout_byte_count": 40,
+      "stdout_sha256": "d45df0718ab6ee4ae81d88704efeee673a86b83156c519fcdd68bf80370ca683",
+      "stderr_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/stderr.log",
+      "stderr_byte_count": 37,
+      "stderr_sha256": "cd3e7f053f3e2068dfaabb9b00d840b784833c30017fdd653f177f109802b383",
+      "terminal_state": "TERMINAL_SUCCEEDED",
+      "provenance_completeness": "COMPLETE",
+      "trust_tier": "TIER_2_VERIFIED_ARTIFACT",
+      "validation_state": "VALID",
+      "admission_state": "NOT_EVALUATED",
+      "telemetry_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/telemetry.json",
+      "observation_semantics": "OpenCode worker telemetry is an observation, not admitted evidence or routing input by itself.",
+      "reasons_json": "[]"
+    }
+  ],
+  "count": 1,
+  "filters": {
+    "admissionState": "NOT_EVALUATED"
+  },
+  "limit": 20,
+  "observation_semantics": "Persisted worker telemetry query results are observations, not admitted evidence or routing input."
+}
+--- bounded limit 999 expected 100 ---
+{
+  "rows": [
+    {
+      "packet_id": "FP-MCP-153",
+      "worker_id": "WORKER-20260701T202417844Z-46c8a6f5",
+      "schema_version": "forgepilot.opencode-worker-telemetry.v1",
+      "captured_at": "2026-07-01T20:50:39.883Z",
+      "persisted_at": "2026-07-02 06:52:13",
+      "worker_status": "SUCCEEDED",
+      "started_at": "2026-07-01T20:24:17.848Z",
+      "completed_at": "2026-07-01T20:24:23.211Z",
+      "duration_ms": 5363,
+      "target_workspace_id": "forgepilot",
+      "workspace_path": "/home/ridasaidd/forgepilot",
+      "prompt_file": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/worker-smoke-prompt.md",
+      "prompt_file_sha256": "905ff2bda33cf984c826538bdebfc4aa7830056abf8596d9e75ca6719244bb04",
+      "model_id": null,
+      "command_executable": "/home/ridasaidd/.nvm/versions/node/v24.4.1/bin/opencode",
+      "command_args_json": "[\"run\",\"--dir\",\"/home/ridasaidd/forgepilot\",\"--file\",\"/home/ridasaidd/forgepilot/runs/FP-MCP-153/worker-smoke-prompt.md\",\"--title\",\"FP-MCP-153 direct MCP smoke after schema hardening\",\"Implement attached prompt.\"]",
+      "status_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/status.json",
+      "status_sha256": "6cecc800be34078e3f9d9c57c9574b3f6164add791a9484f456091d69e544b83",
+      "start_request_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/start-request.json",
+      "start_request_sha256": "966d37f15dcd2b98b777691b64cf44ae8d06cecf55cc9cccd7dcbc2028393c32",
+      "stdout_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/stdout.log",
+      "stdout_byte_count": 40,
+      "stdout_sha256": "d45df0718ab6ee4ae81d88704efeee673a86b83156c519fcdd68bf80370ca683",
+      "stderr_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/stderr.log",
+      "stderr_byte_count": 37,
+      "stderr_sha256": "cd3e7f053f3e2068dfaabb9b00d840b784833c30017fdd653f177f109802b383",
+      "terminal_state": "TERMINAL_SUCCEEDED",
+      "provenance_completeness": "COMPLETE",
+      "trust_tier": "TIER_2_VERIFIED_ARTIFACT",
+      "validation_state": "VALID",
+      "admission_state": "NOT_EVALUATED",
+      "telemetry_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/telemetry.json",
+      "observation_semantics": "OpenCode worker telemetry is an observation, not admitted evidence or routing input by itself.",
+      "reasons_json": "[]"
+    }
+  ],
+  "count": 1,
+  "filters": {},
+  "limit": 100,
+  "observation_semantics": "Persisted worker telemetry query results are observations, not admitted evidence or routing input."
+}
+--- limit 1 ---
+{
+  "rows": [
+    {
+      "packet_id": "FP-MCP-153",
+      "worker_id": "WORKER-20260701T202417844Z-46c8a6f5",
+      "schema_version": "forgepilot.opencode-worker-telemetry.v1",
+      "captured_at": "2026-07-01T20:50:39.883Z",
+      "persisted_at": "2026-07-02 06:52:13",
+      "worker_status": "SUCCEEDED",
+      "started_at": "2026-07-01T20:24:17.848Z",
+      "completed_at": "2026-07-01T20:24:23.211Z",
+      "duration_ms": 5363,
+      "target_workspace_id": "forgepilot",
+      "workspace_path": "/home/ridasaidd/forgepilot",
+      "prompt_file": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/worker-smoke-prompt.md",
+      "prompt_file_sha256": "905ff2bda33cf984c826538bdebfc4aa7830056abf8596d9e75ca6719244bb04",
+      "model_id": null,
+      "command_executable": "/home/ridasaidd/.nvm/versions/node/v24.4.1/bin/opencode",
+      "command_args_json": "[\"run\",\"--dir\",\"/home/ridasaidd/forgepilot\",\"--file\",\"/home/ridasaidd/forgepilot/runs/FP-MCP-153/worker-smoke-prompt.md\",\"--title\",\"FP-MCP-153 direct MCP smoke after schema hardening\",\"Implement attached prompt.\"]",
+      "status_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/status.json",
+      "status_sha256": "6cecc800be34078e3f9d9c57c9574b3f6164add791a9484f456091d69e544b83",
+      "start_request_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/start-request.json",
+      "start_request_sha256": "966d37f15dcd2b98b777691b64cf44ae8d06cecf55cc9cccd7dcbc2028393c32",
+      "stdout_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/stdout.log",
+      "stdout_byte_count": 40,
+      "stdout_sha256": "d45df0718ab6ee4ae81d88704efeee673a86b83156c519fcdd68bf80370ca683",
+      "stderr_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/stderr.log",
+      "stderr_byte_count": 37,
+      "stderr_sha256": "cd3e7f053f3e2068dfaabb9b00d840b784833c30017fdd653f177f109802b383",
+      "terminal_state": "TERMINAL_SUCCEEDED",
+      "provenance_completeness": "COMPLETE",
+      "trust_tier": "TIER_2_VERIFIED_ARTIFACT",
+      "validation_state": "VALID",
+      "admission_state": "NOT_EVALUATED",
+      "telemetry_path": "/home/ridasaidd/forgepilot/runs/FP-MCP-153/opencode-workers/WORKER-20260701T202417844Z-46c8a6f5/telemetry.json",
+      "observation_semantics": "OpenCode worker telemetry is an observation, not admitted evidence or routing input by itself.",
+      "reasons_json": "[]"
+    }
+  ],
+  "count": 1,
+  "filters": {},
+  "limit": 1,
+  "observation_semantics": "Persisted worker telemetry query results are observations, not admitted evidence or routing input."
+}
