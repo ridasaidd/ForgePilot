@@ -1,0 +1,3 @@
+ M docs/forgepilot-progress-checklist.md
+?? docs/v1-evidence-capability-completion-index.md
+?? runs/FP-META-025/

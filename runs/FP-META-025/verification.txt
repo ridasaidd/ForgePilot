@@ -1,0 +1,28 @@
+FP-META-025 verification
+
+V1 evidence capability completion index exists:
+PASS
+- docs/v1-evidence-capability-completion-index.md
+
+Five remaining capabilities evaluated:
+PASS
+- Verification evidence
+- Audit evidence
+- Admission state
+- Comparison result
+- Reporting / summary view
+
+Each capability has:
+PASS
+- supported V1 claim
+- evidence source
+- reporting surface
+- boundary
+
+Progress checklist update:
+PASS
+- five remaining non-deferred V1 capabilities marked COMPLETE
+
+Documentation-only scope:
+PASS
+- no implementation code files changed
