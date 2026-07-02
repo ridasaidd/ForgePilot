@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-027",
+  "result": "FP_027_CANARY_SPEC_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 14,
+  "run_id": "FP-027-CANARY-SPECIFICATION",
+  "generic_admission_event_id": 14,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "CANARY_SPECIFICATION_DEFINED_EXECUTION_NOT_RUN",
+  "artifact_paths": [
+    "packets/FP-027.md",
+    "runs/FP-027/prompts/process-tree-canary.md",
+    "runs/FP-027/result-summary.md",
+    "docs/operations/platform-tool-block-pattern.md"
+  ]
+}

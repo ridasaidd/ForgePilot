@@ -1,0 +1,16 @@
+{
+  "packet_id": "FP-027",
+  "total_evidence_records": 14,
+  "total_generic_evidence_record_admission_events": 14,
+  "fp027_record": {
+    "evidence_id": 14,
+    "run_id": "FP-027-CANARY-SPECIFICATION",
+    "admission_state": "ADMITTED",
+    "executor_result": "CANARY_SPECIFICATION_DEFINED_EXECUTION_NOT_RUN",
+    "verification_result": "SPEC_DEFINED;PROMPT_ARTIFACT_DEFINED;PROCESS_TREE_ACCEPTANCE_DEFINED;CURRENT_POLICY_BLOCKERS_RECORDED",
+    "validation_state": "VALID",
+    "generic_admission_event_id": 14,
+    "admission_decision": "ADMITTED"
+  },
+  "result": "FP_027_CANARY_SPEC_CANONICAL_EVIDENCE_PRESENT"
+}

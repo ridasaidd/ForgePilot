@@ -66,3 +66,11 @@ The trigger remains:
 ```text
 PLATFORM_TOOL_BLOCK_UNRESOLVED_TRIGGER
 ```
+
+## Additional FP-027 observation
+
+During FP-027 pre-spec work, platform-side blocks also affected read-only policy/status calls and a combined status check.
+
+This weakens any hypothesis that the pattern is limited to large write commands.
+
+It remains compatible with timing/cadence, content/schema sensitivity, and intermittent platform-side evaluation.
