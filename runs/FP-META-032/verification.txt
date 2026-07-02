@@ -35,3 +35,12 @@ PASS
 - no trust database implemented
 - no MCP bridge code changed
 - no implementation code changed
+
+Admission/model-trust coupling check recorded:
+PASS
+- runs/FP-META-032/admission-model-trust-coupling-check.txt
+- current result: ADMISSION_REPORTING_MODEL_TRUST_DECOUPLED_BY_STATIC_SOURCE_INSPECTION
+
+Legacy trust label status recorded:
+PASS
+- LEGACY_SCOPED_SHORTHAND_REQUIRES_RECONSTRUCTION_FOR_SCHEMA_CONFORMANCE

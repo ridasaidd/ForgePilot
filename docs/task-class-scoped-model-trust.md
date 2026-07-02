@@ -202,3 +202,44 @@ The search confirms existing docs already require task-class interpretation for 
 A model trust assignment is permission evidence, not execution authorization.
 
 Only a scoped packet can authorize a model to act.
+
+## Admission Distribution Report Coupling
+
+V1 admission distribution reporting must count admission states from evidence/admission records, not model-trust roster labels.
+
+FP-META-032 records a coupling check in:
+
+```text
+runs/FP-META-032/admission-model-trust-coupling-check.txt
+```
+
+Current result:
+
+```text
+ADMISSION_REPORTING_MODEL_TRUST_DECOUPLED_BY_STATIC_SOURCE_INSPECTION
+```
+
+The source search found admission/reporting code references to evidence/admission fields such as `admission_state`, `evidence_records`, and admission/comparison reporting code. The model-trust labels `OBSERVED_AUDIT_USEFUL`, `OBSERVED_SAFE_SMALL_CHANGE`, and `VERSION_UNPINNED` were found in documentation, not in the reporting code paths inspected.
+
+Therefore the admission distribution report should not reinterpret model trust labels unless a future implementation explicitly couples model trust and evidence admission.
+
+## Legacy Trust Assignment Status
+
+The two broad FP-META-029 trust labels are legacy pre-FP-META-032 shorthand.
+
+They do not satisfy the full FP-META-032 trust assignment schema because they predate required fields such as:
+
+- `assigned_by`,
+- `assignment_method`,
+- `provider_version_or_snapshot`,
+- observed date range,
+- explicit task class,
+- explicit project/context.
+
+Legacy entries must be treated as:
+
+```text
+LEGACY_SCOPED_SHORTHAND_REQUIRES_RECONSTRUCTION_FOR_SCHEMA_CONFORMANCE
+```
+
+They may be cited as historical context, but a future model-trust ledger must reconstruct them into full scoped assignments before using them for automation, routing, promotion, or model authorization.

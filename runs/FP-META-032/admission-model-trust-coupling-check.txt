@@ -1,0 +1,362 @@
+# FP-META-032 admission/model-trust coupling check
+
+## Search: report/admission code references to model trust roster labels
+docs/model-roster-and-profiling-rules.md:68:| `OBSERVED_AUDIT_USEFUL` | Has produced useful audits. | Plan/code audit, no code edits. |
+docs/model-roster-and-profiling-rules.md:69:| `OBSERVED_SAFE_SMALL_CHANGE` | Has successfully completed small scoped implementation with evidence. | May be considered for small mechanical changes. |
+docs/model-roster-and-profiling-rules.md:70:| `PROMOTED_FOR_EXECUTION` | Sufficient evidence supports implementation use in scoped packets. | Scoped implementation allowed. |
+docs/model-roster-and-profiling-rules.md:106:Every model trust change must cite committed evidence.
+docs/model-roster-and-profiling-rules.md:138:| `Qwen3.7 Max` | `OBSERVED_AUDIT_USEFUL` | `PLAN_AUDITOR`, `IMPLEMENTATION_AUDITOR`, `STRUCTURE_MAPPER`, `RISK_ANALYST` | Prior ForgePilot audit evidence exists, but not blanket implementation authority. |
+docs/model-roster-and-profiling-rules.md:140:| `DeepSeek V4 Pro High` | `OBSERVED_SAFE_SMALL_CHANGE` | `PLANNER`, `STRUCTURE_MAPPER`, `RISK_ANALYST`, `IMPLEMENTATION_CANDIDATE` | Prior ForgePilot implementation evidence exists, but only scoped packet authority may permit edits. |
+docs/model-roster-and-profiling-rules.md:166:- CRITICAL zones remain protected regardless of model trust state,
+docs/model-roster-and-profiling-rules.md:185:A trust state such as `OBSERVED_AUDIT_USEFUL`, `OBSERVED_SAFE_SMALL_CHANGE`, or `PROMOTED_FOR_EXECUTION` is not global.
+docs/model-roster-and-profiling-rules.md:206:No model trust state authorizes code modification without a scoped packet.
+docs/task-class-scoped-model-trust.md:5:Define how ForgePilot scopes model trust so a model is never treated as globally trusted merely because it has prior successful evidence.
+docs/task-class-scoped-model-trust.md:13:A model trust label must answer:
+docs/task-class-scoped-model-trust.md:37:A model trust assignment should record:
+docs/task-class-scoped-model-trust.md:51:| `trust_state` | Scoped trust state. |
+docs/task-class-scoped-model-trust.md:102:A model trust state must not be silently overwritten.
+docs/task-class-scoped-model-trust.md:137:Qwen3.7 Max = OBSERVED_AUDIT_USEFUL
+docs/task-class-scoped-model-trust.md:138:DeepSeek V4 Pro High = OBSERVED_SAFE_SMALL_CHANGE
+docs/task-class-scoped-model-trust.md:160:- critical zones remain protected regardless of model trust.
+docs/task-class-scoped-model-trust.md:164:When provider version/snapshot is unknown, all model trust must include:
+docs/task-class-scoped-model-trust.md:167:VERSION_UNPINNED
+docs/task-class-scoped-model-trust.md:202:A model trust assignment is permission evidence, not execution authorization.
+docs/invalidation-propagation-rules.md:33:| Downstream artifact | Any report, summary, comparison, admission decision, checklist update, model trust assignment, or derived record that depends on earlier evidence. |
+docs/invalidation-propagation-rules.md:198:This rule applies to existing reports, future reports, checklist rows, model trust assignments, and derived summaries.
+docs/forgepilot-progress-checklist.md:137:| Model roster and profiling rules | `COMPLETE` | `FP-META-029` | Model roles, task classes, trust states, promotion/demotion criteria, and initial OpenCode Go roster are documented in `docs/model-roster-and-profiling-rules.md`. | Availability is not trust; no model execution authorized. |
+docs/forgepilot-progress-checklist.md:140:| Task-class-scoped model trust | `COMPLETE` | `FP-META-032` | Model trust scoping, provenance, provider-version/date-range caveats, and append-only promotion/demotion rules are documented in `docs/task-class-scoped-model-trust.md`. | Governance only; no model execution or trust database implementation. |
+
+## Search: admission report/current evidence record fields
+src/reporting/reconstruction-report.ts:20:  admission_state: "PRESENT" | "NOT_EVALUATED" | "UNKNOWN";
+src/reporting/reconstruction-report.ts:82:  const admission_state = has("admission") ? "PRESENT" : "NOT_EVALUATED";
+src/reporting/reconstruction-report.ts:88:    admission_state === "PRESENT" ? "ADMISSION_ARTIFACT_PRESENT" : "NOT_EVALUATED",
+src/reporting/reconstruction-report.ts:99:    admission_state,
+src/reporting/reconstruction-report.ts:118:    `Admission State: ${report.admission_state}`,
+src/reporting/packet-report.ts:15:  admission_states: string[];
+src/reporting/packet-report.ts:47:    admission_state?: string | null;
+src/reporting/packet-report.ts:110:      admission_states: [],
+src/reporting/packet-report.ts:123:    admission_states: unique(rows.map((r) => r.admission_state)),
+src/db/outcome.ts:29:  admission_state: string;
+src/db/outcome.ts:70:  admission_state?: string;
+src/db/outcome.ts:162:  if (params.admission_state === "ADMITTED") {
+src/db/outcome.ts:247:      trust_tier, validation_state, admission_state
+src/db/classification.ts:21:  admission_state: string;
+src/db/classification.ts:53:  admission_state?: string;
+src/db/classification.ts:127:  if (params.admission_state === "ADMITTED") {
+src/db/classification.ts:138:      trust_tier, validation_state, admission_state
+src/db/schema.sql:160:  evidence_record_id     INTEGER NOT NULL REFERENCES evidence_records(evidence_id),
+src/db/schema.sql:175:  evidence_record_id     INTEGER NOT NULL REFERENCES evidence_records(evidence_id),
+src/db/schema.sql:176:  admission_state        TEXT NOT NULL
+src/db/schema.sql:177:                         CHECK (admission_state IN ('NOT_EVALUATED', 'REJECTED', 'PENDING', 'ADMITTED', 'QUARANTINED')),
+src/db/schema.sql:233:  evidence_a_id               INTEGER REFERENCES evidence_records(evidence_id),
+src/db/schema.sql:234:  evidence_b_id               INTEGER REFERENCES evidence_records(evidence_id),
+src/db/schema.sql:247:  model_a_admission_state     TEXT NOT NULL DEFAULT 'NOT_EVALUATED' CHECK (model_a_admission_state IN (
+src/db/schema.sql:250:  model_b_admission_state     TEXT NOT NULL DEFAULT 'NOT_EVALUATED' CHECK (model_b_admission_state IN (
+src/db/telemetry.ts:27:  admission_state: string;
+src/db/telemetry.ts:96:      validation_state, admission_state
+src/db/evidence.ts:198:    `INSERT INTO evidence_admission_events (
+src/db/evidence.ts:218:    .prepare("SELECT * FROM evidence_admission_events WHERE id = ?")
+src/db/evidence.ts:247:    .prepare("SELECT id FROM evidence_admission_events WHERE id = ?")
+src/db/evidence.ts:304:    .prepare("SELECT id FROM evidence_admission_events WHERE id = ?")
+src/db/evidence.ts:333:    `INSERT INTO admission_invalidation_events (
+src/db/evidence.ts:352:    .prepare("SELECT * FROM admission_invalidation_events WHERE id = ?")
+src/db/evidence.ts:381:      `SELECT * FROM evidence_admission_events
+src/db/evidence.ts:400:        `SELECT * FROM admission_invalidation_events
+src/db/evidence.ts:438:      `SELECT * FROM evidence_admission_events
+src/db/evidence.ts:450:    .prepare("SELECT * FROM evidence_admission_events WHERE id = ?")
+src/db/evidence.ts:473:      `SELECT * FROM admission_invalidation_events
+src/db/evidence-records.ts:19:  admission_state: string;
+src/db/evidence-records.ts:38:  admission_state?: string;
+src/db/evidence-records.ts:90:  if (params.admission_state !== undefined) {
+src/db/evidence-records.ts:92:      params.admission_state,
+src/db/evidence-records.ts:94:      "admission_state"
+src/db/evidence-records.ts:111:    `INSERT INTO evidence_records (
+src/db/evidence-records.ts:114:      metrics_path, artifact_paths, trust_tier, validation_state, admission_state
+src/db/evidence-records.ts:133:    params.admission_state ?? "NOT_EVALUATED"
+src/db/evidence-records.ts:137:    .prepare("SELECT * FROM evidence_records WHERE evidence_id = ?")
+src/db/evidence-records.ts:145:      "SELECT * FROM evidence_records WHERE packet_id = ? ORDER BY created_at ASC, evidence_id ASC"
+src/db/evidence-records.ts:154:      "SELECT * FROM evidence_records WHERE run_id = ? ORDER BY created_at ASC, evidence_id ASC"
+src/db/evidence-records.ts:164:    .prepare("SELECT * FROM evidence_records WHERE evidence_id = ?")
+src/db/model-comparison.ts:24:  model_a_admission_state: string;
+src/db/model-comparison.ts:25:  model_b_admission_state: string;
+src/db/model-comparison.ts:52:  model_a_admission_state?: string;
+src/db/model-comparison.ts:53:  model_b_admission_state?: string;
+src/db/model-comparison.ts:70:  model_a_admission_state?: string;
+src/db/model-comparison.ts:71:  model_b_admission_state?: string;
+src/db/model-comparison.ts:102:  if (params.model_a_admission_state) {
+src/db/model-comparison.ts:103:    validateEnum(params.model_a_admission_state, VALID_ADMISSION_STATES, "model_a_admission_state");
+src/db/model-comparison.ts:105:  if (params.model_b_admission_state) {
+src/db/model-comparison.ts:106:    validateEnum(params.model_b_admission_state, VALID_ADMISSION_STATES, "model_b_admission_state");
+src/db/model-comparison.ts:153:      .prepare("SELECT evidence_id, packet_id FROM evidence_records WHERE evidence_id = ?")
+src/db/model-comparison.ts:169:      .prepare("SELECT evidence_id, packet_id FROM evidence_records WHERE evidence_id = ?")
+src/db/model-comparison.ts:192:      model_a_admission_state, model_b_admission_state,
+src/db/model-comparison.ts:217:    params.model_a_admission_state ?? "NOT_EVALUATED",
+src/db/model-comparison.ts:218:    params.model_b_admission_state ?? "NOT_EVALUATED",
+src/db/model-comparison.ts:256:  const admA = params.model_a_admission_state ?? prevEvent.model_a_admission_state;
+src/db/model-comparison.ts:257:  const admB = params.model_b_admission_state ?? prevEvent.model_b_admission_state;
+src/db/model-comparison.ts:261:  if (params.model_a_admission_state) validateEnum(params.model_a_admission_state, VALID_ADMISSION_STATES, "model_a_admission_state");
+src/db/model-comparison.ts:262:  if (params.model_b_admission_state) validateEnum(params.model_b_admission_state, VALID_ADMISSION_STATES, "model_b_admission_state");
+src/db/model-comparison.ts:273:      model_a_admission_state, model_b_admission_state,
+src/db/validation-admission.ts:21:  admission_state: string;
+src/db/validation-admission.ts:42:  admission_state: string;
+src/db/validation-admission.ts:57:  admission_state: string;
+src/db/validation-admission.ts:301:    ? latestAdmission.admission_state === "ADMITTED"
+src/db/validation-admission.ts:302:    : record.admission_state === "ADMITTED";
+src/db/validation-admission.ts:307:      admission_state: "QUARANTINED",
+src/db/validation-admission.ts:316:      admission_state: "REJECTED",
+src/db/validation-admission.ts:326:      admission_state: "REJECTED",
+src/db/validation-admission.ts:335:      admission_state: "PENDING",
+src/db/validation-admission.ts:344:      admission_state: "PENDING",
+src/db/validation-admission.ts:353:      admission_state: "PENDING",
+src/db/validation-admission.ts:362:      admission_state: "ADMITTED",
+src/db/validation-admission.ts:374:    admission_state: "PENDING",
+src/db/validation-admission.ts:387:  validateEnum(params.admission_state, VALID_ADMISSION_STATES, "admission_state");
+src/db/validation-admission.ts:406:      evidence_record_id, admission_state, admission_actor_type,
+src/db/validation-admission.ts:413:    params.admission_state,
+src/db/opencode-worker-telemetry.ts:80:  admission_state: string;
+src/db/opencode-worker-telemetry.ts:160:      terminal_state, provenance_completeness, trust_tier, validation_state, admission_state,
+src/db/opencode-worker-telemetry.ts:171:      @terminal_state, @provenance_completeness, @trust_tier, @validation_state, @admission_state,
+src/db/opencode-worker-telemetry.ts:203:      admission_state = excluded.admission_state,
+src/db/opencode-worker-telemetry.ts:237:    admission_state: artifact.classifications.admissionState,
+src/db/opencode-worker-telemetry.ts:328:    where.push("admission_state = @admissionState");
+src/cli/forgepilot.ts:28:  --packet-report                 Print a read-only packet evidence summary.
+src/cli/forgepilot.ts:30:  --project-report                Print a read-only ForgePilot project summary.
+src/cli/forgepilot.ts:31:  --reconstruction-report         Print read-only admission/comparison reconstruction for a packet.
+src/cli/forgepilot.ts:197:      "packet-report": { type: "boolean" },
+src/cli/forgepilot.ts:198:      "project-report": { type: "boolean" },
+src/cli/forgepilot.ts:199:      "reconstruction-report": { type: "boolean" },
+src/cli/forgepilot.ts:291:        console.log(`  Admission State: ${result.row.admission_state}`);
+src/cli/forgepilot.ts:323:        console.log(`  Admission State: ${row.admission_state}`);
+src/cli/forgepilot.ts:337:  if (values["reconstruction-report"] || positionals[0] === "reconstruction-report") {
+src/cli/forgepilot.ts:343:    const { buildReconstructionReport, formatReconstructionReportText } = await import("../reporting/reconstruction-report.js");
+src/cli/forgepilot.ts:358:  if (values["project-report"] || positionals[0] === "project-report") {
+src/cli/forgepilot.ts:359:    const { buildProjectReport, formatProjectReportText } = await import("../reporting/project-report.js");
+src/cli/forgepilot.ts:375:  if (values["packet-report"] || positionals[0] === "packet-report") {
+src/cli/forgepilot.ts:386:    const { buildPacketReport, formatPacketReportText } = await import("../reporting/packet-report.js");
+src/cli/forgepilot.ts:558:    console.log(`  Admission State: ${result.telemetry.admission_state}`);
+tests/fp008.test.ts:150:        "admission_state", "created_at",
+tests/fp008.test.ts:194:        "admission_state", "created_at",
+tests/fp008.test.ts:277:      assert.equal(obs.admission_state, "PENDING", "Classification must default to PENDING");
+tests/fp008.test.ts:278:      assert.notEqual(obs.admission_state, "ADMITTED", "Classification must not be ADMITTED by default");
+tests/fp008.test.ts:301:            admission_state: "ADMITTED",
+tests/fp008.test.ts:420:      assert.equal(obs.admission_state, "PENDING", "Outcome must default to PENDING");
+tests/fp008.test.ts:421:      assert.notEqual(obs.admission_state, "ADMITTED", "Outcome must not be ADMITTED by default");
+tests/fp008.test.ts:437:            admission_state: "ADMITTED",
+tests/fp008.test.ts:966:      assert.equal(result.telemetry!.admission_state, "PENDING");
+tests/persistence.test.ts:957:        "validation_state", "admission_state", "recorded_at",
+tests/persistence.test.ts:1016:      assert.equal(t.admission_state, "PENDING");
+tests/persistence.test.ts:1158:      assert.equal(result.telemetry!.admission_state, "PENDING", "Should not auto-admit telemetry");
+tests/persistence.test.ts:1292:      assert.equal(result.telemetry!.admission_state, "PENDING", "Telemetry must not be automatically admitted");
+tests/persistence.test.ts:1335:      assert.equal(t.admission_state, "PENDING");
+tests/fp013.test.ts:10:} from "../src/reporting/packet-report.js";
+tests/fp013.test.ts:66:            admission_state: "NOT_EVALUATED",
+tests/fp013.test.ts:74:    assert.deepEqual(report.worker_telemetry.admission_states, ["NOT_EVALUATED"]);
+tests/fp012.test.ts:135:    model_a_admission_state: "ADMITTED",
+tests/fp012.test.ts:136:    model_b_admission_state: "REJECTED",
+tests/fp012.test.ts:223:        "model_a_admission_state", "model_b_admission_state",
+tests/fp012.test.ts:774:      assert.equal(event.model_a_admission_state, "ADMITTED");
+tests/fp012.test.ts:775:      assert.equal(event.model_b_admission_state, "REJECTED");
+tests/fp012.test.ts:860:        model_a_admission_state: "ADMITTED",
+tests/fp012.test.ts:861:        model_b_admission_state: "PENDING",
+tests/fp012.test.ts:905:        model_a_admission_state: "ADMITTED",
+tests/fp012.test.ts:906:        model_b_admission_state: "QUARANTINED",
+tests/fp012.test.ts:909:      assert.equal(event.model_a_admission_state, "ADMITTED");
+tests/fp012.test.ts:910:      assert.equal(event.model_b_admission_state, "QUARANTINED");
+tests/fp012.test.ts:928:      assert.equal(event.model_a_admission_state, "NOT_EVALUATED");
+tests/fp012.test.ts:929:      assert.equal(event.model_b_admission_state, "NOT_EVALUATED");
+tests/fp012.test.ts:1059:        model_a_admission_state: "ADMITTED",
+tests/fp012.test.ts:1060:        model_b_admission_state: "REJECTED",
+tests/fp012.test.ts:1083:      assert.equal(latest!.model_a_admission_state, "ADMITTED", "model_a_admission_state should be preserved");
+tests/fp012.test.ts:1084:      assert.equal(latest!.model_b_admission_state, "REJECTED", "model_b_admission_state should be preserved");
+tests/fp012.test.ts:1184:    it("should reject invalid admission_state for model_a", () => {
+tests/fp012.test.ts:1199:            model_a_admission_state: "BOGUS",
+tests/fp012.test.ts:1202:        /Invalid model_a_admission_state/
+tests/fp012.test.ts:1206:    it("should reject invalid admission_state for model_b", () => {
+tests/fp012.test.ts:1221:            model_b_admission_state: "BOGUS",
+tests/fp012.test.ts:1224:        /Invalid model_b_admission_state/
+tests/fp012.test.ts:1398:        model_a_admission_state: "PENDING",
+tests/fp012.test.ts:1399:        model_b_admission_state: "REJECTED",
+tests/fp012.test.ts:1402:      assert.equal(event.model_a_admission_state, "PENDING");
+tests/fp012.test.ts:1403:      assert.equal(event.model_b_admission_state, "REJECTED");
+tests/fp012.test.ts:1415:        admission_state: "NOT_EVALUATED",
+tests/fp012.test.ts:1429:        model_a_admission_state: "ADMITTED",
+tests/fp012.test.ts:1434:      assert.equal(fresh.admission_state, "NOT_EVALUATED", "Evidence admission state must be unchanged");
+tests/fp012.test.ts:1497:        model_a_admission_state: "ADMITTED",
+tests/fp012.test.ts:1571:      assert.equal(result.telemetry!.admission_state, "PENDING");
+tests/fp012.test.ts:1604:      assert.equal(obs.admission_state, "PENDING");
+tests/fp012.test.ts:1645:      assert.equal(obs.admission_state, "PENDING");
+tests/fp012.test.ts:1715:        admission_state: "NOT_EVALUATED",
+tests/fp012.test.ts:1719:      assert.equal(record.admission_state, "NOT_EVALUATED");
+tests/fp012.test.ts:1764:      assert.equal(admResult.admission_state, "ADMITTED");
+tests/fp012.test.ts:1768:        admission_state: "ADMITTED",
+tests/fp012.test.ts:1773:      assert.equal(admEvent.admission_state, "ADMITTED");
+tests/fp012.test.ts:1779:      assert.equal(currentAdm.admission_state, "ADMITTED");
+tests/fp012.test.ts:1808:      assert.ok(tables.includes("evidence_admission_events"), "FP-009 admission table");
+tests/fp012.test.ts:1810:      assert.ok(tables.includes("admission_invalidation_events"), "FP-009 invalidation table");
+tests/fp012.test.ts:1811:      assert.ok(tables.includes("evidence_records"), "FP-010 evidence records table");
+tests/fp012.test.ts:1868:      assert.ok(!classColumns.includes("admission_state"));
+tests/fp012.test.ts:2025:        model_a_admission_state: "PENDING",
+tests/fp012.test.ts:2026:        model_b_admission_state: "QUARANTINED",
+tests/fp012.test.ts:2029:      assert.equal(event.model_a_admission_state, "PENDING");
+tests/fp012.test.ts:2030:      assert.equal(event.model_b_admission_state, "QUARANTINED");
+tests/fp012.test.ts:2041:        admission_state: "PENDING",
+tests/fp012.test.ts:2055:        model_a_admission_state: "ADMITTED",
+tests/fp012.test.ts:2221:      assert.ok(tables.includes("evidence_admission_events"));
+tests/fp012.test.ts:2223:      assert.ok(tables.includes("admission_invalidation_events"));
+tests/fp012.test.ts:2224:      assert.ok(tables.includes("evidence_records"));
+tests/fp010.test.ts:78:    it("should create evidence_records table with required columns", () => {
+tests/fp010.test.ts:88:        tables.includes("evidence_records"),
+tests/fp010.test.ts:89:        "evidence_records table should exist"
+tests/fp010.test.ts:93:        .prepare("PRAGMA table_info(evidence_records)")
+tests/fp010.test.ts:113:        "admission_state",
+tests/fp010.test.ts:119:          `evidence_records.${col} should exist`
+tests/fp010.test.ts:124:    it("should create indexes on evidence_records", () => {
+tests/fp010.test.ts:174:        admission_state: "ADMITTED",
+tests/fp010.test.ts:191:      assert.equal(record.admission_state, "ADMITTED");
+tests/fp010.test.ts:213:      assert.equal(record.admission_state, "NOT_EVALUATED");
+tests/fp010.test.ts:383:    it("should reject NOT_EVALUATED for validation_state (belongs to admission_state only)", () => {
+tests/fp010.test.ts:400:    it("should accept all valid admission_state values", () => {
+tests/fp010.test.ts:417:          admission_state: validStates[i],
+tests/fp010.test.ts:419:        assert.equal(record.admission_state, validStates[i]);
+tests/fp010.test.ts:423:    it("should reject invalid admission_state values", () => {
+tests/fp010.test.ts:434:            admission_state: "APPROVED",
+tests/fp010.test.ts:436:        /Invalid admission_state/
+tests/fp010.test.ts:440:    it("should keep trust_tier, validation_state, and admission_state as separate axes", () => {
+tests/fp010.test.ts:451:        admission_state: "QUARANTINED",
+tests/fp010.test.ts:456:      assert.equal(record.admission_state, "QUARANTINED");
+tests/fp010.test.ts:463:        admission_state: "ADMITTED",
+tests/fp010.test.ts:468:      assert.equal(record2.admission_state, "ADMITTED");
+tests/fp010.test.ts:685:    it("should not affect existing evidence_admission_events table", () => {
+tests/fp010.test.ts:696:        tables.includes("evidence_admission_events"),
+tests/fp010.test.ts:697:        "evidence_admission_events should still exist"
+tests/fp010.test.ts:700:        tables.includes("evidence_records"),
+tests/fp010.test.ts:701:        "evidence_records should exist"
+tests/fp015.test.ts:10:} from "../src/reporting/reconstruction-report.js";
+tests/fp015.test.ts:41:    assert.equal(report.admission_state, "NOT_EVALUATED");
+tests/fp015.test.ts:54:    assert.equal(report.admission_state, "NOT_EVALUATED");
+tests/fp011.test.ts:81:    admission_state: "NOT_EVALUATED",
+tests/fp011.test.ts:160:        "id", "evidence_record_id", "admission_state",
+tests/fp011.test.ts:282:        `INSERT INTO evidence_records (packet_id, run_id, artifact_paths)
+tests/fp011.test.ts:299:        `INSERT INTO evidence_records (packet_id, run_id, artifact_paths)
+tests/fp011.test.ts:334:        `INSERT INTO evidence_records (packet_id, run_id, artifact_paths)
+tests/fp011.test.ts:477:      assert.equal(result.admission_state, "ADMITTED");
+tests/fp011.test.ts:489:        admission_state: "ADMITTED",
+tests/fp011.test.ts:496:      assert.equal(event.admission_state, "ADMITTED");
+tests/fp011.test.ts:523:      assert.equal(result.admission_state, "PENDING");
+tests/fp011.test.ts:541:      assert.equal(result.admission_state, "REJECTED");
+tests/fp011.test.ts:565:        admission_state: "REJECTED",
+tests/fp011.test.ts:571:      assert.equal(event.admission_state, "REJECTED");
+tests/fp011.test.ts:583:      assert.equal(result.admission_state, "PENDING");
+tests/fp011.test.ts:604:      assert.equal(result.admission_state, "PENDING");
+tests/fp011.test.ts:615:        admission_state: "PENDING",
+tests/fp011.test.ts:621:      assert.equal(event.admission_state, "PENDING");
+tests/fp011.test.ts:636:        admission_state: "ADMITTED",
+tests/fp011.test.ts:652:      assert.equal(result.admission_state, "QUARANTINED");
+tests/fp011.test.ts:664:        admission_state: "QUARANTINED",
+tests/fp011.test.ts:670:      assert.equal(event.admission_state, "QUARANTINED");
+tests/fp011.test.ts:692:        admission_state: "ADMITTED",
+tests/fp011.test.ts:710:        admission_state: "QUARANTINED",
+tests/fp011.test.ts:724:      assert.equal(admEvents[0].admission_state, "ADMITTED");
+tests/fp011.test.ts:725:      assert.equal(admEvents[1].admission_state, "QUARANTINED");
+tests/fp011.test.ts:732:      assert.equal(currentAdm.admission_state, "QUARANTINED");
+tests/fp011.test.ts:737:      assert.equal(fresh.admission_state, "NOT_EVALUATED");
+tests/fp011.test.ts:742:    it("should accept NOT_EVALUATED as a valid admission_state in events", () => {
+tests/fp011.test.ts:750:        admission_state: "NOT_EVALUATED",
+tests/fp011.test.ts:756:      assert.equal(event.admission_state, "NOT_EVALUATED");
+tests/fp011.test.ts:766:      assert.equal(record.admission_state, "NOT_EVALUATED");
+tests/fp011.test.ts:821:        admission_state: "PENDING",
+tests/fp011.test.ts:829:        admission_state: "ADMITTED",
+tests/fp011.test.ts:837:        admission_state: "QUARANTINED",
+tests/fp011.test.ts:910:    it("should keep trust_tier, validation_state, and admission_state as independent axes", () => {
+tests/fp011.test.ts:921:        admission_state: "QUARANTINED",
+tests/fp011.test.ts:926:      assert.equal(record.admission_state, "QUARANTINED");
+tests/fp011.test.ts:934:        admission_state: "ADMITTED",
+tests/fp011.test.ts:939:      assert.equal(record2.admission_state, "ADMITTED");
+tests/fp011.test.ts:947:        admission_state: "NOT_EVALUATED",
+tests/fp011.test.ts:952:      assert.equal(record3.admission_state, "NOT_EVALUATED");
+tests/fp011.test.ts:973:              admission_state: admissionStates[a],
+tests/fp011.test.ts:1025:        admission_state: "ADMITTED",
+tests/fp011.test.ts:1077:        admission_state: "PENDING",
+tests/fp011.test.ts:1084:        admission_state: "ADMITTED",
+tests/fp011.test.ts:1092:      assert.equal(events[0].admission_state, "PENDING");
+tests/fp011.test.ts:1093:      assert.equal(events[1].admission_state, "ADMITTED");
+tests/fp011.test.ts:1126:        admission_state: "PENDING",
+tests/fp011.test.ts:1233:            admission_state: "PENDING",
+tests/fp011.test.ts:1247:            admission_state: "PENDING",
+tests/fp011.test.ts:1253:    it("should require valid admission_state", () => {
+tests/fp011.test.ts:1263:            admission_state: "INVALID_STATE",
+tests/fp011.test.ts:1265:        /Invalid admission_state/
+tests/fp011.test.ts:1279:            admission_state: "PENDING",
+tests/fp011.test.ts:1326:    it("should not affect FP-010 evidence_records table", () => {
+tests/fp011.test.ts:1351:      assert.ok(tables.includes("evidence_admission_events"), "FP-009 table should exist");
+tests/fp011.test.ts:1353:      assert.ok(tables.includes("admission_invalidation_events"), "FP-009 table should exist");
+tests/fp011.test.ts:1354:      assert.ok(tables.includes("evidence_records"), "FP-010 table should exist");
+tests/fp011.test.ts:1411:        ["ADMITTED", "REJECTED", "PENDING", "QUARANTINED"].includes(result.admission_state)
+tests/fp011.test.ts:1432:        admission_state: "REJECTED",
+tests/fp011.test.ts:1450:        admission_state: "QUARANTINED",
+tests/fp011.test.ts:1455:      assert.equal(record.admission_state, "QUARANTINED");
+tests/fp011.test.ts:1482:        admission_state: "NOT_EVALUATED",
+tests/fp011.test.ts:1486:      assert.equal(event.admission_state, "NOT_EVALUATED");
+tests/fp011.test.ts:1505:        "INSERT INTO evidence_records (packet_id, run_id, artifact_paths) VALUES (?, ?, ?)"
+tests/fp011.test.ts:1534:      assert.equal(evaluateAdmissionForRecord(admittedRecord.evidence_id).admission_state, "ADMITTED");
+tests/fp011.test.ts:1542:      assert.equal(evaluateAdmissionForRecord(rejectedRecord.evidence_id).admission_state, "REJECTED");
+tests/fp011.test.ts:1546:      assert.equal(evaluateAdmissionForRecord(pendingRecord.evidence_id).admission_state, "PENDING");
+tests/fp011.test.ts:1552:        admission_state: "ADMITTED",
+tests/fp011.test.ts:1560:      assert.equal(evaluateAdmissionForRecord(quarantinedRecord.evidence_id).admission_state, "QUARANTINED");
+tests/fp011.test.ts:1566:        admission_state: "NOT_EVALUATED",
+tests/fp011.test.ts:1569:      assert.equal(neEvent.admission_state, "NOT_EVALUATED");
+tests/fp011.test.ts:1587:        admission_state: "REJECTED",
+tests/fp011.test.ts:1610:      assert.ok(tables.includes("evidence_admission_events"));
+tests/fp011.test.ts:1611:      assert.ok(tables.includes("evidence_records"));
+tests/fp009.test.ts:169:      assert.ok(tables.includes("evidence_admission_events"), "evidence_admission_events should exist");
+tests/fp009.test.ts:171:      assert.ok(tables.includes("admission_invalidation_events"), "admission_invalidation_events should exist");
+tests/fp009.test.ts:174:    it("should create required columns in evidence_admission_events", () => {
+tests/fp009.test.ts:180:        .prepare("PRAGMA table_info(evidence_admission_events)")
+tests/fp009.test.ts:191:        assert.ok(columns.includes(col), `evidence_admission_events.${col} should exist`);
+tests/fp009.test.ts:216:    it("should create required columns in admission_invalidation_events", () => {
+tests/fp009.test.ts:222:        .prepare("PRAGMA table_info(admission_invalidation_events)")
+tests/fp009.test.ts:233:        assert.ok(columns.includes(col), `admission_invalidation_events.${col} should exist`);
+tests/fp009.test.ts:936:      assert.equal(after!.admission_state, original!.admission_state, "admission_state must be unchanged");
+tests/fp009.test.ts:958:      assert.equal(after!.admission_state, original!.admission_state, "admission_state must be unchanged");
+tests/fp009.test.ts:982:      assert.equal(afterInvalidation!.admission_state, original!.admission_state, "admission_state must be unchanged after invalidation");
+tests/fp009.test.ts:1004:      assert.equal(after!.admission_state, original!.admission_state, "admission_state must be unchanged");
+tests/fp009.test.ts:1068:    it("should still default observations to PENDING admission_state", () => {
+tests/fp009.test.ts:1076:      assert.equal(classification.admission_state, "PENDING");
+tests/fp009.test.ts:1077:      assert.equal(outcome.admission_state, "PENDING");
+tests/fp009.test.ts:1274:        .prepare("SELECT COUNT(*) as cnt FROM evidence_admission_events WHERE id = ?")
+tests/fp009.test.ts:1279:        .prepare("SELECT admission_decision FROM evidence_admission_events WHERE id = ?")
+tests/fp009.test.ts:1312:        .prepare("SELECT COUNT(*) as cnt FROM admission_invalidation_events WHERE id = ?")
+tests/fp014.test.ts:10:} from "../src/reporting/project-report.js";
+docs/v1-evidence-capability-completion-index.md:32:| Verification evidence | `COMPLETE` | Verification artifacts are recorded and reportable as verification evidence, not admission. | `runs/FP-013/verification.txt`, `runs/FP-014/verification.txt`, `runs/FP-015/verification.txt`, `runs/FP-016/verification.txt`, historical `runs/*/verification*` artifacts | `packet-report`, `project-report`, `reconstruction-report` | Passing verification is not admission. |
+docs/v1-evidence-capability-completion-index.md:33:| Audit evidence | `COMPLETE` | Audit artifacts exist historically and can be reconstructed as audit presence without implying comparison or admission. | `runs/FP-META-015/audit-result.md`, `runs/FP-META-016/audit-result.md`, `runs/FP-005/audit-result.md`, `runs/FP-007/audit-result.md`, `runs/FP-010/audit-*`, `runs/FP-012/audit-*` | `reconstruction-report` | Audit is not comparison or admission by itself. |
+docs/v1-evidence-capability-completion-index.md:34:| Admission state | `COMPLETE` | Admission concepts/persistence exist and reports preserve `NOT_EVALUATED` rather than treating observations as admitted. | `FP-009`, `FP-010`, `docs/admission-comparison-reconstruction-rules.md`, `runs/FP-013/packet-report-fp-mcp-153.json`, `runs/FP-015/reconstruction-smoke-summary.json` | `packet-report`, `reconstruction-report` | `NOT_EVALUATED` must not be treated as admitted evidence. |
+docs/v1-evidence-capability-completion-index.md:35:| Comparison result | `COMPLETE` | Comparison artifacts exist historically and can be reconstructed as bounded comparison presence without global ranking. | `runs/FP-META-015/comparison-result.md`, `runs/FP-META-016/comparison-result.md`, `runs/FP-005/comparison-result.md`, `runs/FP-007/comparison-result.md`, `runs/FP-010/comparison-result.md`, `runs/FP-012/comparison-result.md` | `reconstruction-report` | Comparison is not global model ranking. |
+docs/v1-evidence-capability-completion-index.md:36:| Reporting / summary view | `COMPLETE` | Single-packet, project-wide, reconstruction, capability-detail, lifecycle, packet-status, and safety-boundary report/index surfaces exist for V1. | `FP-013`, `FP-014`, `FP-015`, `FP-016`, `FP-OPS-004`, `FP-META-023`, `FP-META-024` | `packet-report`, `project-report`, `reconstruction-report`, docs indexes | Reports and indexes are not evidence by themselves. |
+docs/v1-evidence-capability-completion-index.md:54:This is satisfied by historical audit artifacts and `reconstruction-report`, which reports audit presence separately from comparison and admission.
+docs/v1-evidence-capability-completion-index.md:70:This is satisfied by historical comparison artifacts and `reconstruction-report`.
+docs/v1-evidence-capability-completion-index.md:80:- `packet-report`,
+docs/v1-evidence-capability-completion-index.md:81:- `project-report`,
+docs/v1-evidence-capability-completion-index.md:82:- `reconstruction-report`,
+docs/safety-boundary-evidence-index.md:48:| Project report incomplete capability list | Keeps V1 incomplete state visible. | `runs/FP-016/project-report-capability-summary.json` |
+docs/model-execution-evidence-review.md:91:- Both models preserved state axis separation: trust_tier, validation_state, admission_state as independent columns with independent CHECK constraints.
+docs/model-execution-evidence-review.md:122:- DeepSeek used `validation_state` and `admission_state` column names directly in event tables, matching packet vocabulary. Qwen used `validation_outcome` and `admission_outcome` naming in event tables.
+docs/model-execution-evidence-review.md:124:- Both implemented append-only event tables referencing FP-010 `evidence_records`.
+docs/model-execution-evidence-review.md:195:5. **State axis separation preserved by both models across all packets.** trust_tier, validation_state, and admission_state remained independent axes in FP-010 and FP-011 implementations. FP-012 did not collapse them.
+docs/model-execution-evidence-review.md:207:2. **Vocabulary fidelity.** DeepSeek matched packet vocabulary directly in both FP-011 (validation_state/admission_state) and FP-012 (classification/comparison terminology). Qwen introduced alternative naming in FP-011 (validation_outcome/admission_outcome). This inference is limited to the two packets where naming was material.
+docs/model-execution-evidence-review.md:229:| 4 | Qwen used alternative naming conventions distinct from packet vocabulary in FP-011 | FP-011 | Qwen | validation_outcome/admission_outcome naming vs packet's validation_state/admission_state | Direct | High |
+docs/model-execution-evidence-review.md:234:| 9 | DeepSeek showed stronger packet vocabulary fidelity | FP-011 | DeepSeek | Direct use of validation_state/admission_state vs outcome naming | Inferred | Medium |
+docs/rationale/FP-009-evidence-admission-rationale.md:61:evidence_admission_events
+docs/rationale/FP-009-evidence-admission-rationale.md:63:admission_invalidation_events
+docs/rationale/FP-009-evidence-admission-rationale.md:113:admission_invalidation_events
+docs/packet-lifecycle-evidence-index.md:23:| `RECONSTRUCTED` | Packet state can be reconstructed by a supported read-only report. | `packet-report`, `project-report`, or `reconstruction-report` output. |
+docs/packet-lifecycle-evidence-index.md:61:| Packet state can be reported | `packet-report` from `FP-013` | `SUPPORTED` |
+docs/packet-lifecycle-evidence-index.md:62:| Project state can be reported | `project-report` from `FP-014` and `FP-016` | `SUPPORTED` |
+docs/packet-lifecycle-evidence-index.md:63:| Admission/comparison state can be reconstructed | `reconstruction-report` from `FP-015` | `SUPPORTED` |
+docs/releases/forgepilot-v1.md:13:| Final project report | `runs/FP-META-025/final-v1-project-report.json` |
+docs/invalidation-propagation-rules.md:211:admission_invalidation_events count: 0
+docs/reporting-evidence-rules.md:85:Telemetry row exists with admission_state NOT_EVALUATED.
+docs/v1-observation-plan.md:27:1. `project-report` was enough to know current project state.
+docs/v1-observation-plan.md:28:2. `project-report` was enough to choose next work.
+docs/v1-observation-plan.md:29:3. `packet-report` was enough to inspect packet evidence.
+docs/v1-observation-plan.md:30:4. `reconstruction-report` was enough to inspect verification/audit/admission/comparison state.
+docs/forgepilot-progress-checklist.md:233:- Recent telemetry persistence records `admission_state` as `NOT_EVALUATED`.

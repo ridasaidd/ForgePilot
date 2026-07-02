@@ -204,3 +204,15 @@ The initial roster entries for `Qwen3.7 Max` and `DeepSeek V4 Pro High` are hist
 If provider version/snapshot is unknown, the trust assignment is version-unpinned and must be re-observed after any known upstream provider model update.
 
 No model trust state authorizes code modification without a scoped packet.
+
+## Legacy Trust Assignment Status
+
+The initial `Qwen3.7 Max` and `DeepSeek V4 Pro High` trust labels predate FP-META-032.
+
+They are legacy scoped shorthand and do not satisfy the full task-class-scoped model trust schema until reconstructed with assigned_by, assignment_method, provider_version_or_snapshot, observed date range, explicit task class, explicit project/context, and evidence references.
+
+Status:
+
+```text
+LEGACY_SCOPED_SHORTHAND_REQUIRES_RECONSTRUCTION_FOR_SCHEMA_CONFORMANCE
+```
