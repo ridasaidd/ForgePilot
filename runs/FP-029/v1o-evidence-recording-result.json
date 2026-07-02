@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-029",
+  "result": "FP_029_CONTRACT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 16,
+  "run_id": "FP-029-CANONICAL-SCOPED-CONTRACT",
+  "generic_admission_event_id": 16,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "CANONICAL_SCOPED_ENABLEMENT_CONTRACT_DEFINED_IMPLEMENTATION_PENDING",
+  "artifact_paths": [
+    "packets/FP-029.md",
+    "runs/FP-029/call-graph-trace.md",
+    "runs/FP-029/canonical-contract.md",
+    "runs/FP-029/result-summary.md"
+  ]
+}
