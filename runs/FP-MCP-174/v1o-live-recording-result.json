@@ -1,0 +1,19 @@
+{
+  "packet_id": "FP-MCP-174",
+  "result": "FP_MCP_174_READINESS_PREDICATE_LIVE_CONFIRMATION_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 45,
+  "run_id": "FP-MCP-174-OPENCODE-READINESS-PREDICATE-LIVE-CONFIRMATION",
+  "generic_admission_event_id": 45,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "OPENCODE_READINESS_PREDICATE_LIVE_CONFIRMED_LABEL_NORMALIZED_EXECUTION_STILL_DISABLED",
+  "bridge_commit": "67f840f",
+  "total_evidence_records": 45,
+  "total_generic_evidence_record_admission_events": 45,
+  "artifact_paths": [
+    "packets/FP-MCP-174.md",
+    "runs/FP-MCP-174/live-readiness-confirmation.md",
+    "runs/FP-MCP-174/live-readiness-confirmation.json"
+  ]
+}
