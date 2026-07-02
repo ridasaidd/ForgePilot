@@ -1,0 +1,21 @@
+{
+  "packet_id": "FP-MCP-174",
+  "result": "OPENCODE_READINESS_PREDICATE_NORMALIZATION_DECISION_RECORDED",
+  "orphaned_field_to_wire": "opencodeDiscoveryConfigured",
+  "configured_aliases_after_fix": [
+    "opencodeDiscoveryConfigured",
+    "opencodeHarnessConfigured",
+    "opencodeConfigured",
+    "opencodeAvailable"
+  ],
+  "preserved_boundaries": {
+    "liveOpenCodeChecked_remains_distinct": true,
+    "opencodeExecutionEnabled_remains_independent_blocker": true,
+    "does_not_prove_live_opencode_reachable": true,
+    "does_not_enable_execution": true,
+    "does_not_contact_runner_start_endpoint": true,
+    "does_not_start_opencode": true,
+    "does_not_retry_canary": true
+  },
+  "follow_up_required": "safe liveness-only OpenCode probe must be defined or confirmed before another canary attempt"
+}
