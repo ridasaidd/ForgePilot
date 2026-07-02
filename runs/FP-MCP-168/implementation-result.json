@@ -1,0 +1,30 @@
+{
+  "packet_id": "FP-MCP-168",
+  "result": "CONSUMING_CLEARANCE_DRY_RUN_FAULT_INJECTION_SOURCE_VERIFIED_NO_RUNNER_CONTACT",
+  "bridge_commit": "d2ecadc",
+  "implemented_tool": "forgepilot_dry_run_consuming_scoped_clearance",
+  "implemented_modes": [
+    "NORMAL_STUBBED_CONTACT_OUTCOME",
+    "SIMULATE_INTERRUPTION_BEFORE_STUBBED_CONTACT_RESULT"
+  ],
+  "fault_injection_behavior": {
+    "mode": "SIMULATE_INTERRUPTION_BEFORE_STUBBED_CONTACT_RESULT",
+    "writes_dry_run_consumption_artifact": true,
+    "suppresses_contact_outcome_artifact": true,
+    "reconstructed_attempt_state": "CONSUMED_PENDING_RUNNER_CONTACT_STALE"
+  },
+  "verification": {
+    "pnpm_test": "PASS",
+    "pnpm_build": "PASS",
+    "typescript": "PASS"
+  },
+  "runtime_status": "ACTION_REFRESH_PENDING",
+  "safety_boundary": {
+    "real_approval_consumed": false,
+    "runner_contacted": false,
+    "opencode_started": false,
+    "execution_permitted": false,
+    "runner_run_id_created": false,
+    "request_artifact_mutated": false
+  }
+}

@@ -1,11 +1,15 @@
 # FP-MCP-168 Result Summary
 
-## Initial status
+## Result
 
 ```text
-PACKET_DEFINED_IMPLEMENTATION_PENDING
+CONSUMING_CLEARANCE_DRY_RUN_FAULT_INJECTION_SOURCE_VERIFIED_NO_RUNNER_CONTACT
 ```
 
-FP-MCP-168 authorizes a narrow direct-source exception for a dry-run consuming-clearance state-machine tool only.
+## Bridge commit
 
-No implementation has been recorded yet.
+```text
+d2ecadc Add consuming clearance dry-run tool
+```
+
+Source implementation is complete and build-verified. Runtime confirmation is pending refresh.
