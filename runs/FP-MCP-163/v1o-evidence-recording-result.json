@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-163",
+  "result": "FP_MCP_163_PRE_EXECUTION_APPROVAL_INTEGRATION_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 25,
+  "run_id": "FP-MCP-163-STRUCTURED-APPROVAL-PRE-EXECUTION-INTEGRATION",
+  "generic_admission_event_id": 25,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "STRUCTURED_APPROVAL_PRE_EXECUTION_INTEGRATION_SOURCE_VERIFIED_REFRESH_PENDING",
+  "artifact_paths": [
+    "packets/FP-MCP-163.md",
+    "runs/FP-MCP-163/result-summary.md",
+    "runs/FP-MCP-163/implementation-result.md",
+    "runs/FP-MCP-163/implementation-result.json"
+  ]
+}
