@@ -1,0 +1,20 @@
+{
+  "packet_id": "FP-033",
+  "result": "FP_033_NAMESPACE_RECONCILIATION_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 21,
+  "run_id": "FP-033-NAMESPACE-RECONCILIATION",
+  "generic_admission_event_id": 21,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "NAMESPACE_RECONCILIATION_CONFIRMED_FP_MCP_159_ACCEPTED",
+  "artifact_paths": [
+    "packets/FP-033.md",
+    "packets/FP-MCP-159.md",
+    "runs/FP-033/result-summary.md",
+    "runs/FP-033/namespace-reconciliation-result.md",
+    "runs/FP-033/namespace-reconciliation-result.json",
+    "runs/FP-MCP-159/opencode-requests/REQ-20260702T143631238Z-4e3b750e.json",
+    "runs/FP-MCP-159/request-status.md"
+  ]
+}

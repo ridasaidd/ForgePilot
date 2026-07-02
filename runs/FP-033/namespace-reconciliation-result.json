@@ -1,0 +1,44 @@
+{
+  "packet_id": "FP-033",
+  "result": "NAMESPACE_RECONCILIATION_CONFIRMED_FP_MCP_159_ACCEPTED",
+  "actual_bootstrap_packet": "FP-MCP-159",
+  "request_id": "REQ-20260702T143631238Z-4e3b750e",
+  "request_artifact_path": "runs/FP-MCP-159/opencode-requests/REQ-20260702T143631238Z-4e3b750e.json",
+  "remote_endpoint_validation": {
+    "valid": true,
+    "runnerContacted": true,
+    "runnerAccepted": true,
+    "reasons": []
+  },
+  "preflight": {
+    "preflightEligible": false,
+    "executionAllowedNow": false,
+    "passedGates": [
+      "requestArtifact",
+      "lifecycle",
+      "packet",
+      "model",
+      "runMode",
+      "runnerIdentity",
+      "runnerCapability"
+    ],
+    "remainingReasons": [
+      "EXECUTION_DISABLED_GLOBAL",
+      "EXECUTION_DISABLED",
+      "HUMAN_APPROVAL_EVIDENCE_MISSING",
+      "EXECUTION_PREFLIGHT_HUMAN_APPROVAL_EVIDENCE_GATE_BLOCKED",
+      "HUMAN_APPROVAL_EVIDENCE_NOT_USABLE_FOR_EXECUTION",
+      "RUNNER_EXECUTION_DISABLED",
+      "OPENCODE_EXECUTION_DISABLED",
+      "DISABLE_SWITCH_ACTIVE",
+      "EXECUTION_NOT_ALLOWED"
+    ]
+  },
+  "boundary": {
+    "workerStarted": false,
+    "opencodeStarted": false,
+    "remoteStartEndpointContacted": false,
+    "bridgeSourceChanged": false,
+    "executionEnabled": false
+  }
+}

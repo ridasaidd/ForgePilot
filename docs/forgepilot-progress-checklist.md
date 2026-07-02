@@ -306,3 +306,7 @@ These may be considered after V1 evidence/reporting surfaces stabilize:
 | First executor-use bootstrap candidate | `CANDIDATE_SELECTED` | `FP-031` | Selects docs/executor-bootstrap-canary.md as the first deliberately boring executor-driven bridge change before FP-030 implementation. | Executor not started; no bridge changes; execution remains disabled. |
 
 | Remote runner packet namespace compatibility | `BLOCKER_CONFIRMED` | `FP-032` | Non-starting endpoint comparison showed remote runner accepts FP-MCP-036 but rejects FP-031 with INVALID_PACKET_ID while local ForgePilot accepts FP-031. | No worker started; next work must reconcile local and runner packet namespace policy. |
+
+| Bootstrap canary namespace reconciliation | `COMPLETE` | `FP-033` | Reconciled FP-031 namespace blocker by selecting FP-MCP-159 as the namespace-correct bridge bootstrap canary. | FP-031 remains candidate/blocker evidence; no execution enabled. |
+
+| Executor bootstrap documentation canary | `REQUEST_ACCEPTED_BLOCKED_BY_SAFETY_GATES` | `FP-MCP-159` | Namespace-correct request artifact created and accepted by remote runner validate-request endpoint. | No worker started; remaining blockers are expected global disable and missing human approval gates. |
