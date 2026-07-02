@@ -1,0 +1,16 @@
+{
+  "packet_id": "FP-024",
+  "total_evidence_records": 9,
+  "total_generic_evidence_record_admission_events": 9,
+  "fp024_record": {
+    "evidence_id": 9,
+    "run_id": "FP-024-EXECUTOR-START-POLICY-BLOCKED",
+    "admission_state": "ADMITTED",
+    "executor_result": "EXECUTOR_START_POLICY_BLOCKED_NO_EXTRACTION",
+    "verification_result": "LIVE_MCP_TOOL_BLOCKED_WITH_DISABLED_REASONS;NO_WORKER_ARTIFACTS_CREATED;BRIDGE_SOURCE_UNCHANGED",
+    "validation_state": "VALID",
+    "generic_admission_event_id": 9,
+    "admission_decision": "ADMITTED"
+  },
+  "result": "FP_024_POLICY_BLOCKED_START_CANONICAL_EVIDENCE_PRESENT"
+}

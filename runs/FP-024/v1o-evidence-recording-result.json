@@ -1,0 +1,21 @@
+{
+  "packet_id": "FP-024",
+  "result": "FP_024_POLICY_BLOCKED_START_RECORDED_THROUGH_V1O_PATH",
+  "sqlite_packet_id": 7,
+  "evidence_id": 9,
+  "run_id": "FP-024-EXECUTOR-START-POLICY-BLOCKED",
+  "evidence_admission_state": "ADMITTED",
+  "generic_admission_event_id": 9,
+  "generic_admission_decision": "ADMITTED",
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "EXECUTOR_START_POLICY_BLOCKED_NO_EXTRACTION",
+  "artifact_paths": [
+    "packets/FP-024.md",
+    "runs/FP-024/executor-prompts/first-shadow-extraction.md",
+    "runs/FP-024/executor-start-policy-block-result.json",
+    "runs/FP-024/execution-policy-status.json",
+    "runs/FP-024/result-summary.md"
+  ]
+}

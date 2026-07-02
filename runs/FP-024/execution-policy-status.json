@@ -1,0 +1,15 @@
+{
+  "packet_id": "FP-024",
+  "opencodeExecutionEnabled": false,
+  "globalDisableActive": true,
+  "executionAllowedNow": false,
+  "effectiveDisableReason": "EXECUTION_DISABLED_GLOBAL",
+  "effectiveDisableScope": "GLOBAL",
+  "reasons": [
+    "EXECUTION_DISABLED_GLOBAL",
+    "RUNNER_EXECUTION_DISABLED",
+    "OPENCODE_EXECUTION_DISABLED",
+    "DISABLE_SWITCH_ACTIVE",
+    "EXECUTION_NOT_ALLOWED"
+  ]
+}

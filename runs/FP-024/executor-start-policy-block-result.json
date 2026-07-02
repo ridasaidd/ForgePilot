@@ -1,0 +1,18 @@
+{
+  "packet_id": "FP-024",
+  "result": "EXECUTOR_START_POLICY_BLOCKED_NO_EXTRACTION",
+  "live_tool_call_result": "BLOCKED_ERROR_RETURNED_BY_LIVE_MCP_TOOL",
+  "error_text": "OpenCode worker start blocked: EXECUTION_DISABLED_GLOBAL, OPENCODE_EXECUTION_DISABLED, DISABLE_SWITCH_ACTIVE, EXECUTION_NOT_ALLOWED",
+  "required_reasons": [
+    "EXECUTION_DISABLED_GLOBAL",
+    "OPENCODE_EXECUTION_DISABLED",
+    "DISABLE_SWITCH_ACTIVE",
+    "EXECUTION_NOT_ALLOWED"
+  ],
+  "worker_root_exists_after_live_tool_call": false,
+  "worker_root_entries_after_live_tool_call": [],
+  "no_worker_artifacts_created": true,
+  "extraction_attempted": false,
+  "bridge_source_modified": false,
+  "disposition": "EXECUTION_POLICY_BLOCKED"
+}
