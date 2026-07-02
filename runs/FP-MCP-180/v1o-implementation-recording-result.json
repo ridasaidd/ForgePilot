@@ -1,0 +1,21 @@
+{
+  "packet_id": "FP-MCP-180",
+  "result": "FP_MCP_180_RUNNER_CAPABILITY_IMPLEMENTATION_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 51,
+  "run_id": "FP-MCP-180-RUNNER-CAPABILITY-PREDICATE-IMPLEMENTATION",
+  "generic_admission_event_id": 51,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "RUNNER_CAPABILITY_PREDICATE_NORMALIZED_SOURCE_VERIFIED_FAIL_CLOSED_BOUNDARY_PRESERVED",
+  "bridge_commit": "d3471d4",
+  "total_evidence_records": 51,
+  "total_generic_evidence_record_admission_events": 51,
+  "artifact_paths": [
+    "packets/FP-MCP-180.md",
+    "runs/FP-MCP-180/result-summary.md",
+    "runs/FP-MCP-180/predicate-normalization-decision.json",
+    "runs/FP-MCP-180/implementation-result.json",
+    "runs/FP-MCP-180/false-open-audit.md"
+  ]
+}
