@@ -1,0 +1,20 @@
+{
+  "packet_id": "FP-MCP-175",
+  "result": "FP_MCP_175_OPENCODE_LIVENESS_ONLY_PROBE_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 46,
+  "run_id": "FP-MCP-175-OPENCODE-LIVENESS-ONLY-PROBE",
+  "generic_admission_event_id": 46,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "OPENCODE_LIVENESS_ONLY_PROBE_CONFIRMED_PROCESS_LISTENER_AND_TCP_CONNECT_NO_EXECUTION",
+  "total_evidence_records": 46,
+  "total_generic_evidence_record_admission_events": 46,
+  "artifact_paths": [
+    "packets/FP-MCP-175.md",
+    "runs/FP-MCP-175/result-summary.md",
+    "runs/FP-MCP-175/liveness-probe-result.json",
+    "runs/FP-MCP-175/tcp-liveness-probe.json",
+    "runs/FP-MCP-175/workspace-snapshots/SNAPSHOT-20260702T193617422Z-9ca964a5.json"
+  ]
+}
