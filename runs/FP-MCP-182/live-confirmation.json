@@ -1,0 +1,114 @@
+{
+  "packet_id": "FP-MCP-182",
+  "result": "RUNNER_CAPABILITY_PREDICATE_LIVE_CONFIRMED_COMPOSITE_ONLY_DISABLE_BLOCKERS_REMAIN",
+  "tuple": {
+    "requestId": "REQ-20260702T210007524Z-4ba16774",
+    "approvalId": "APPROVAL-20260702T210036474Z-fd2a5a94",
+    "approvalExpiresAt": "2026-07-02T21:25:00Z",
+    "requestBaseCommit": "1a2144e"
+  },
+  "approval_aware_validation": {
+    "tool": "forgepilot_validate_execution_preflight",
+    "checkedAt": "2026-07-02T21:02:19.791Z",
+    "reachedForgePilot": true,
+    "preflightEligible": false,
+    "requestArtifact": "PASSED",
+    "lifecycle": "PASSED",
+    "packet": "PASSED",
+    "model": "PASSED",
+    "runMode": "PASSED",
+    "runnerIdentity": "PASSED",
+    "runnerCapability": "PASSED",
+    "humanApprovalEvidence": "PASSED",
+    "opencodeBoundary": "PASSED",
+    "disableSwitch": "BLOCKED",
+    "executionEnablement": "FAILED",
+    "approvalEvidenceValid": true,
+    "approvalUsableForExecution": true,
+    "approvalConsumed": false,
+    "runnerSupportedOperations": ["capabilities", "validate-request", "start-run"],
+    "runnerExecutionEnabled": false,
+    "opencodeExecutionEnabled": false,
+    "reasons": [
+      "EXECUTION_DISABLED_GLOBAL",
+      "EXECUTION_DISABLED",
+      "RUNNER_EXECUTION_DISABLED",
+      "OPENCODE_EXECUTION_DISABLED",
+      "DISABLE_SWITCH_ACTIVE",
+      "EXECUTION_NOT_ALLOWED"
+    ]
+  },
+  "guarded_report_without_approval": {
+    "tool": "forgepilot_get_guarded_start_preflight_report",
+    "approvalId": null,
+    "checkedAt": "2026-07-02T21:02:33.299Z",
+    "reachedForgePilot": true,
+    "resultUsableForHumanApprovalGate": false,
+    "reason": "approval omitted because approval-bearing guarded report payload was platform-blocked",
+    "runnerCapabilityState": "PASSED",
+    "runnerCapabilityStateReasons": [],
+    "startRunOperationAdvertised": true,
+    "directExecutionOperationAdvertised": false,
+    "unexpectedSupportedOperation": false,
+    "UNEXPECTED_SUPPORTED_OPERATION": "ABSENT",
+    "eligibleForFutureGuardedStart": false,
+    "opencodeReadiness": {
+      "opencodeDiscoveryConfigured": true,
+      "opencodeConfigured": true,
+      "opencodeExecutionEnabled": false,
+      "liveOpenCodeChecked": false,
+      "opencodeReadyForFutureGuardedStart": false
+    },
+    "disableSwitchReasons": [
+      "EXECUTION_DISABLED_GLOBAL",
+      "RUNNER_EXECUTION_DISABLED",
+      "OPENCODE_EXECUTION_DISABLED",
+      "DISABLE_SWITCH_ACTIVE",
+      "EXECUTION_NOT_ALLOWED",
+      "START_REQUEST_BLOCKED_BY_DISABLE_SWITCH"
+    ],
+    "humanApprovalEvidence": "INCOMPLETE_BY_OMISSION"
+  },
+  "approval_bearing_guarded_report": {
+    "tool": "forgepilot_get_guarded_start_preflight_report",
+    "approvalId": "APPROVAL-20260702T210036474Z-fd2a5a94",
+    "reachedForgePilot": false,
+    "blockedByPlatformSafetyLayer": true,
+    "resultUsableForFullGuardedReportConfirmation": false
+  },
+  "expected_values_match": {
+    "runnerCapabilityState_PASSED": true,
+    "UNEXPECTED_SUPPORTED_OPERATION_absent": true,
+    "startRunOperationAdvertised_true": true,
+    "directExecutionOperationAdvertised_false": true,
+    "unexpectedSupportedOperation_false": true,
+    "eligibleForFutureGuardedStart_false": true
+  },
+  "remaining_blockers": {
+    "confirmed_disable_reasons": [
+      "EXECUTION_DISABLED_GLOBAL",
+      "RUNNER_EXECUTION_DISABLED",
+      "OPENCODE_EXECUTION_DISABLED",
+      "DISABLE_SWITCH_ACTIVE",
+      "EXECUTION_NOT_ALLOWED",
+      "START_REQUEST_BLOCKED_BY_DISABLE_SWITCH"
+    ],
+    "legacy_generic_reason_observed_in_validate_execution_preflight": "EXECUTION_DISABLED"
+  },
+  "safety_boundary": {
+    "executionPermitted": false,
+    "executionStarted": false,
+    "opencodeStarted": false,
+    "startEndpointContacted": false,
+    "runnerRunId": null,
+    "approvalConsumed": false,
+    "requestArtifactMutated": false,
+    "canaryRetried": false
+  },
+  "classification": {
+    "fp_mcp_180_runtime_loaded": true,
+    "fp_mcp_180_live_confirmed_for_runner_capability_predicate": true,
+    "full_approval_bearing_guarded_report_confirmed": false,
+    "reason_full_guarded_report_not_confirmed": "approval-bearing guarded report tool call blocked by platform safety layer before reaching ForgePilot"
+  }
+}
