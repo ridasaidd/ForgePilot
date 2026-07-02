@@ -1,0 +1,23 @@
+{
+  "packet_id": "FP-MCP-163",
+  "result": "FP_MCP_163_LIVE_PRE_EXECUTION_SUCCESS_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 26,
+  "run_id": "FP-MCP-163-LIVE-PRE-EXECUTION-EVIDENCE-SUCCESS",
+  "generic_admission_event_id": 26,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "STRUCTURED_APPROVAL_PRE_EXECUTION_EVIDENCE_ACCEPTED_EXECUTION_STILL_BLOCKED",
+  "total_evidence_records": 26,
+  "total_generic_evidence_record_admission_events": 26,
+  "artifact_paths": [
+    "packets/FP-MCP-163.md",
+    "runs/FP-MCP-163/evidence-review-report.md",
+    "runs/FP-MCP-163/live-pre-execution-success.md",
+    "runs/FP-MCP-163/live-pre-execution-success.json",
+    "runs/FP-MCP-163/approvals/APPROVAL-20260702T165836932Z-e4191e1a.json",
+    "runs/FP-MCP-159/pre-start-evidence/REQ-20260702T143631238Z-4e3b750e.json",
+    "runs/FP-MCP-159/start-state-snapshots/REQ-20260702T143631238Z-4e3b750e/ATTEMPT-20260702T165943947Z-5af33331/pre-start-state.json",
+    "runs/FP-MCP-159/start-state-snapshots/REQ-20260702T143631238Z-4e3b750e/ATTEMPT-20260702T165943947Z-5af33331/post-start-state.json"
+  ]
+}
