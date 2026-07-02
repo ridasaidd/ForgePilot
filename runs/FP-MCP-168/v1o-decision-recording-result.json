@@ -1,0 +1,18 @@
+{
+  "packet_id": "FP-MCP-168",
+  "result": "FP_MCP_168_DRY_RUN_FAULT_INJECTION_DECISION_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 33,
+  "run_id": "FP-MCP-168-DRY-RUN-FAULT-INJECTION-DECISION",
+  "generic_admission_event_id": 33,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "CONSUMING_CLEARANCE_DRY_RUN_FAULT_INJECTION_DECISION_RECORDED",
+  "total_evidence_records": 33,
+  "total_generic_evidence_record_admission_events": 33,
+  "artifact_paths": [
+    "packets/FP-MCP-168.md",
+    "runs/FP-MCP-168/result-summary.md",
+    "runs/FP-MCP-168/fault-injection-decision.json"
+  ]
+}
