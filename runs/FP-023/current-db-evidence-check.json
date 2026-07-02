@@ -1,0 +1,16 @@
+{
+  "packet_id": "FP-023",
+  "total_evidence_records": 7,
+  "total_generic_evidence_record_admission_events": 7,
+  "fp023_record": {
+    "evidence_id": 7,
+    "run_id": "FP-023-WORKER-START-GATE-FIX",
+    "admission_state": "ADMITTED",
+    "executor_result": "OPENCODE_WORKER_START_DISABLED_GATE_FIXED_IN_BRIDGE_SOURCE",
+    "verification_result": "NO_SPAWN_REGRESSION_PASS;BRIDGE_BUILD_PASS;BRIDGE_TEST_PASS;RUNTIME_CONFIRMATION_PENDING",
+    "validation_state": "VALID",
+    "generic_admission_event_id": 7,
+    "admission_decision": "ADMITTED"
+  },
+  "result": "FP_023_WORKER_GATE_FIX_CANONICAL_EVIDENCE_PRESENT"
+}

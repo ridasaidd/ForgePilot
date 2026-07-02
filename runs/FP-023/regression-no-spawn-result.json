@@ -1,0 +1,37 @@
+{
+  "packet_id": "FP-023",
+  "regression_packet_id": "FP-023-DISABLED-REGRESSION-1782995939721",
+  "before_worker_root_exists": false,
+  "before_worker_entries": [],
+  "after_worker_root_exists": false,
+  "after_worker_entries": [],
+  "blocked": true,
+  "error_name": "OpenCodeWorkerStartBlockedError",
+  "error_message": "OpenCode worker start blocked: EXECUTION_DISABLED_GLOBAL, OPENCODE_EXECUTION_DISABLED, DISABLE_SWITCH_ACTIVE, EXECUTION_NOT_ALLOWED",
+  "reasons": [
+    "EXECUTION_DISABLED_GLOBAL",
+    "OPENCODE_EXECUTION_DISABLED",
+    "DISABLE_SWITCH_ACTIVE",
+    "EXECUTION_NOT_ALLOWED"
+  ],
+  "required_reasons": [
+    "EXECUTION_DISABLED_GLOBAL",
+    "OPENCODE_EXECUTION_DISABLED",
+    "DISABLE_SWITCH_ACTIVE",
+    "EXECUTION_NOT_ALLOWED"
+  ],
+  "missing_reasons": [],
+  "no_worker_root_created": true,
+  "no_worker_id_allocated": true,
+  "no_pid_file_created": true,
+  "no_status_file_created": true,
+  "no_start_request_file_created": true,
+  "no_stdout_stderr_logs_created": true,
+  "gate_reasons_function": [
+    "EXECUTION_DISABLED_GLOBAL",
+    "OPENCODE_EXECUTION_DISABLED",
+    "DISABLE_SWITCH_ACTIVE",
+    "EXECUTION_NOT_ALLOWED"
+  ],
+  "result": "DISABLED_WORKER_START_REFUSED_BEFORE_ARTIFACT_OR_PROCESS_CREATION"
+}

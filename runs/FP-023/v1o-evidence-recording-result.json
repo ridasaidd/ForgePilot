@@ -1,0 +1,24 @@
+{
+  "packet_id": "FP-023",
+  "result": "FP_023_WORKER_GATE_FIX_RECORDED_THROUGH_V1O_PATH",
+  "sqlite_packet_id": 6,
+  "evidence_id": 7,
+  "run_id": "FP-023-WORKER-START-GATE-FIX",
+  "evidence_admission_state": "ADMITTED",
+  "generic_admission_event_id": 7,
+  "generic_admission_decision": "ADMITTED",
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "OPENCODE_WORKER_START_DISABLED_GATE_FIXED_IN_BRIDGE_SOURCE",
+  "runtime_status": "RUNTIME_CONFIRMATION_PENDING",
+  "artifact_paths": [
+    "packets/FP-023.md",
+    "runs/FP-023/result-summary.md",
+    "runs/FP-023/source-evidence.md",
+    "runs/FP-023/regression-no-spawn.ts",
+    "runs/FP-023/regression-no-spawn-result.json",
+    "runs/FP-023/bridge-build-output.txt",
+    "runs/FP-023/bridge-test-output.txt"
+  ]
+}
