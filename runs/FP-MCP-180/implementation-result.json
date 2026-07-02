@@ -1,0 +1,84 @@
+{
+  "packet_id": "FP-MCP-180",
+  "result": "RUNNER_CAPABILITY_PREDICATE_NORMALIZED_SOURCE_VERIFIED_FAIL_CLOSED_BOUNDARY_PRESERVED",
+  "bridge_commit": "d3471d4",
+  "changed_file": "src/server.ts",
+  "source_change": {
+    "old_runner_capability_expectation": {
+      "startEndpointState": "PRESENT_GUARDED",
+      "startCapabilityCallable": false,
+      "unexpectedSupportedOperation": "true for start-run|execute|execution"
+    },
+    "normalized_runner_capability_expectation": {
+      "startEndpointState": "CALLABLE_GUARDED",
+      "startCapabilityCallable": true,
+      "startRunOperationAdvertised": true,
+      "executionEnabled": false,
+      "unexpectedSupportedOperation": false
+    },
+    "start_run_handling": "start-run is accepted as the guarded start operation only with CALLABLE_GUARDED and startCapabilityCallable true",
+    "direct_execution_handling": "execute and execution remain unexpected supported operations",
+    "new_failure_reasons": [
+      "START_ENDPOINT_NOT_CALLABLE_GUARDED",
+      "START_RUN_OPERATION_MISSING",
+      "RUNNER_EXECUTION_ALREADY_ENABLED"
+    ]
+  },
+  "false_open_audit": {
+    "runnerCapabilityStatePassed_consumers": [
+      "runnerCapabilityState gate passed/state/reasons",
+      "eligibleForFutureGuardedStart"
+    ],
+    "eligibleForFutureGuardedStart_still_requires": [
+      "requestArtifactPassed",
+      "commitBindingPassed",
+      "modelAndRunModePassed",
+      "disableSwitchClear",
+      "runnerCapabilityStatePassed",
+      "!executionEnabled",
+      "!unexpectedSupportedOperation"
+    ],
+    "guarded_preflight_return_still_forces": {
+      "executionPermitted": false,
+      "executionStarted": false,
+      "opencodeStarted": false,
+      "runnerStartEndpointContacted": false,
+      "startEndpointContacted": false,
+      "runnerRunId": null,
+      "approvalConsumed": false,
+      "requestArtifactMutated": false
+    },
+    "real_start_disabled_boundary_checked": "The real start path still separately treats PRESENT_DISABLED or !startCapabilityCallable as disabled; CALLABLE_GUARDED with callable true is not disabled there.",
+    "false_open_found": false
+  },
+  "verification": {
+    "pnpm_test": "PASS",
+    "pnpm_build": "PASS",
+    "tsc": "PASS"
+  },
+  "expected_runtime_after_refresh": {
+    "runnerCapabilityState": "PASSED",
+    "UNEXPECTED_SUPPORTED_OPERATION": "ABSENT for supportedOperations=[capabilities,validate-request,start-run]",
+    "startRunOperationAdvertised": true,
+    "directExecutionOperationAdvertised": false,
+    "unexpectedSupportedOperation": false,
+    "eligibleForFutureGuardedStart": false,
+    "remaining_blockers": [
+      "EXECUTION_DISABLED_GLOBAL",
+      "RUNNER_EXECUTION_DISABLED",
+      "OPENCODE_EXECUTION_DISABLED",
+      "DISABLE_SWITCH_ACTIVE",
+      "EXECUTION_NOT_ALLOWED",
+      "START_REQUEST_BLOCKED_BY_DISABLE_SWITCH"
+    ]
+  },
+  "safety_boundary": {
+    "execution_enabled": false,
+    "runner_start_endpoint_contacted": false,
+    "start_endpoint_contacted": false,
+    "opencode_started": false,
+    "approval_consumed": false,
+    "canary_retried": false
+  },
+  "runtime_status": "ACTION_REFRESH_PENDING"
+}

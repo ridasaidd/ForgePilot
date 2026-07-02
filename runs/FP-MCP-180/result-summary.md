@@ -1,9 +1,15 @@
 # FP-MCP-180 Result Summary
 
-## Initial status
+## Result
 
 ```text
-PACKET_DEFINED_IMPLEMENTATION_PENDING
+RUNNER_CAPABILITY_PREDICATE_NORMALIZED_SOURCE_VERIFIED_FAIL_CLOSED_BOUNDARY_PRESERVED
 ```
 
-FP-MCP-180 authorizes a narrow source normalization of the guarded preflight runner capability predicate.
+## Bridge commit
+
+```text
+d3471d4 Normalize guarded runner capability predicate
+```
+
+Source implementation is complete and build-verified. Runtime confirmation is pending MCP service/action refresh.
