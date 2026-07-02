@@ -27,6 +27,8 @@ export interface ProjectReport {
   checklist_source: string;
   checklist_status_counts: Record<string, number>;
   checklist_capabilities: ChecklistCapability[];
+  incomplete_capabilities: ChecklistCapability[];
+  deferred_capabilities: ChecklistCapability[];
   packet_inventory: PacketInventoryEntry[];
   recent_packets: string[];
   governing_docs: string[];
@@ -140,8 +142,16 @@ function statusCounts(capabilities: ChecklistCapability[]): Record<string, numbe
   return counts;
 }
 
+function incompleteCapabilities(capabilities: ChecklistCapability[]): ChecklistCapability[] {
+  return capabilities.filter((capability) => capability.status !== "COMPLETE" && capability.status !== "DEFERRED");
+}
+
+function deferredCapabilities(capabilities: ChecklistCapability[]): ChecklistCapability[] {
+  return capabilities.filter((capability) => capability.status === "DEFERRED");
+}
+
 function determineV1Status(capabilities: ChecklistCapability[]): { status: "COMPLETE" | "NOT_COMPLETE"; reason: string } {
-  const incomplete = capabilities.filter((capability) => capability.status !== "COMPLETE" && capability.status !== "DEFERRED");
+  const incomplete = incompleteCapabilities(capabilities);
   if (incomplete.length === 0 && capabilities.length > 0) {
     return { status: "COMPLETE", reason: "All non-deferred checklist capabilities are marked COMPLETE." };
   }
@@ -161,6 +171,8 @@ export function buildProjectReport(options: BuildProjectReportOptions = {}): Pro
 
   const capabilities = parseCapabilities(checklist);
   const v1 = determineV1Status(capabilities);
+  const incomplete = incompleteCapabilities(capabilities);
+  const deferred = deferredCapabilities(capabilities);
   const inventory = buildPacketInventory(rootDir);
   const recentPackets = inventory.flatMap((entry) => entry.packets).slice(-15);
 
@@ -173,6 +185,8 @@ export function buildProjectReport(options: BuildProjectReportOptions = {}): Pro
     checklist_source: "docs/forgepilot-progress-checklist.md",
     checklist_status_counts: statusCounts(capabilities),
     checklist_capabilities: capabilities,
+    incomplete_capabilities: incomplete,
+    deferred_capabilities: deferred,
     packet_inventory: inventory,
     recent_packets: recentPackets,
     governing_docs: [
@@ -203,6 +217,18 @@ export function formatProjectReportText(report: ProjectReport): string {
     `Boundary: ${report.boundary}`,
     "Checklist Status Counts:",
     ...Object.entries(report.checklist_status_counts).sort().map(([status, count]) => `  - ${status}: ${count}`),
+    "Incomplete Capabilities:",
+    ...(report.incomplete_capabilities.length === 0
+      ? ["  - none"]
+      : report.incomplete_capabilities.map((capability) =>
+          `  - ${capability.capability}: ${capability.status} | evidence: ${capability.evidence} | boundary: ${capability.boundary}`
+        )),
+    "Deferred Capabilities:",
+    ...(report.deferred_capabilities.length === 0
+      ? ["  - none"]
+      : report.deferred_capabilities.map((capability) =>
+          `  - ${capability.capability}: ${capability.status} | evidence: ${capability.evidence} | boundary: ${capability.boundary}`
+        )),
     "Packet Inventory:",
     ...report.packet_inventory.map((entry) => `  - ${entry.namespace}: ${entry.count}`),
     "Governing Docs:",

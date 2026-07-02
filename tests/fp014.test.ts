@@ -65,6 +65,12 @@ describe("FP-014: Project summary report", () => {
     assert.equal(report.checklist_status_counts.PARTIAL, 1);
     assert.equal(report.checklist_status_counts.DEFERRED, 1);
     assert.equal(report.checklist_capabilities.length, 3);
+    assert.equal(report.incomplete_capabilities.length, 1);
+    assert.equal(report.incomplete_capabilities[0].capability, "Reporting / summary view");
+    assert.equal(report.incomplete_capabilities[0].evidence, "FP-013");
+    assert.equal(report.incomplete_capabilities[0].boundary, "index only");
+    assert.equal(report.deferred_capabilities.length, 1);
+    assert.equal(report.deferred_capabilities[0].capability, "Routing");
     assert.ok(report.packet_inventory.some((entry) => entry.namespace === "FP" && entry.count === 1));
     assert.ok(report.packet_inventory.some((entry) => entry.namespace === "FP-META" && entry.count === 1));
     assert.ok(report.packet_inventory.some((entry) => entry.namespace === "FP-MCP" && entry.count === 1));
@@ -79,6 +85,10 @@ describe("FP-014: Project summary report", () => {
     assert.match(text, /Project Report: ForgePilot/);
     assert.match(text, /V1 Completion Status: NOT_COMPLETE/);
     assert.match(text, /Boundary: This project report is an index/);
+    assert.match(text, /Incomplete Capabilities:/);
+    assert.match(text, /Reporting \/ summary view: PARTIAL/);
+    assert.match(text, /Deferred Capabilities:/);
+    assert.match(text, /Routing: DEFERRED/);
     assert.match(text, /Packet Inventory:/);
   });
 
