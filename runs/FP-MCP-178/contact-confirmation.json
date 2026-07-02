@@ -1,0 +1,15 @@
+{
+  "packet_id": "FP-MCP-178",
+  "contactConfirmation": "CONTACT_RUNNER_START_ENDPOINT_ONCE",
+  "singleUse": true,
+  "fragileCheckpoint": "forgepilot_record_start_state_snapshot_dry_run",
+  "haltIfFragileCheckpointBlockedAgain": true,
+  "scope": {
+    "single_worker_only": true,
+    "runMode": "DESIGN_ONLY",
+    "no_retry": true,
+    "no_fan_out": true,
+    "no_chained_follow_up_action": true
+  },
+  "recordedBeforeStartAttempt": true
+}
