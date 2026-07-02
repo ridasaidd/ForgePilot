@@ -1,0 +1,15 @@
+{
+  "packet_id": "FP-MCP-161",
+  "result": "FP_MCP_161_APPROVAL_TOOL_CONTRACT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 23,
+  "run_id": "FP-MCP-161-STRUCTURED-SCOPED-APPROVAL-CONTRACT",
+  "generic_admission_event_id": 23,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "STRUCTURED_SCOPED_APPROVAL_TOOL_CONTRACT_DEFINED",
+  "artifact_paths": [
+    "packets/FP-MCP-161.md",
+    "runs/FP-MCP-161/result-summary.md"
+  ]
+}
