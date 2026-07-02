@@ -1,0 +1,24 @@
+{
+  "packet_id": "FP-MCP-182",
+  "result": "FP_MCP_182_COMPOSITE_LIVE_CONFIRMATION_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 53,
+  "run_id": "FP-MCP-182-FPMCP180-COMPOSITE-LIVE-CONFIRMATION",
+  "generic_admission_event_id": 53,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "RUNNER_CAPABILITY_PREDICATE_LIVE_CONFIRMED_COMPOSITE_ONLY_DISABLE_BLOCKERS_REMAIN",
+  "total_evidence_records": 53,
+  "total_generic_evidence_record_admission_events": 53,
+  "artifact_paths": [
+    "packets/FP-MCP-182.md",
+    "runs/FP-MCP-182/expected-live-confirmation.json",
+    "runs/FP-MCP-182/result-summary.md",
+    "runs/FP-MCP-182/live-confirmation.json",
+    "runs/FP-MCP-182/opencode-requests/REQ-20260702T210007524Z-4ba16774.json",
+    "runs/FP-MCP-182/approvals/APPROVAL-20260702T210036474Z-fd2a5a94.json",
+    "runs/FP-MCP-182/pre-start-evidence/REQ-20260702T210007524Z-4ba16774.json",
+    "runs/FP-MCP-182/start-state-snapshots/REQ-20260702T210007524Z-4ba16774/ATTEMPT-20260702T210139568Z-66463fc4/pre-start-state.json",
+    "runs/FP-MCP-182/start-state-snapshots/REQ-20260702T210007524Z-4ba16774/ATTEMPT-20260702T210139568Z-66463fc4/post-start-state.json"
+  ]
+}
