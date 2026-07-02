@@ -1,0 +1,18 @@
+{
+  "packet_id": "FP-MCP-167",
+  "result": "FP_MCP_167_CONSUMING_CLEARANCE_CONTRACT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 32,
+  "run_id": "FP-MCP-167-CONSUMING-CLEARANCE-MECHANISM-CONTRACT",
+  "generic_admission_event_id": 32,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "CONSUMING_CLEARANCE_MECHANISM_CONTRACT_DEFINED",
+  "total_evidence_records": 32,
+  "total_generic_evidence_record_admission_events": 32,
+  "artifact_paths": [
+    "packets/FP-MCP-167.md",
+    "runs/FP-MCP-167/result-summary.md",
+    "runs/FP-MCP-167/consuming-clearance-contract.json"
+  ]
+}
