@@ -1,0 +1,73 @@
+{
+  "packet_id": "FP-MCP-181",
+  "result": "FP_MCP_180_LIVE_CONFIRMATION_NOT_PROVEN_RUNTIME_STILL_STALE_APPROVAL_PAYLOAD_BLOCKED",
+  "fresh_tuple": {
+    "requestId": "REQ-20260702T203356480Z-5f5eefc8",
+    "approvalId": "APPROVAL-20260702T203443589Z-1459f91e",
+    "approvalExpiresAt": "2026-07-02T20:55:00Z",
+    "approvalUsableForExecutionFromPreStartEvidence": true
+  },
+  "approval_bearing_preflight": {
+    "tool": "forgepilot_get_guarded_start_preflight_report",
+    "packetId": "FP-MCP-181",
+    "requestId": "REQ-20260702T203356480Z-5f5eefc8",
+    "approvalId": "APPROVAL-20260702T203443589Z-1459f91e",
+    "reachedForgePilot": false,
+    "blockedByPlatformSafetyLayer": true,
+    "resultUsableForFullConfirmation": false
+  },
+  "no_approval_preflight": {
+    "tool": "forgepilot_get_guarded_start_preflight_report",
+    "packetId": "FP-MCP-181",
+    "requestId": "REQ-20260702T203356480Z-5f5eefc8",
+    "approvalId": null,
+    "reachedForgePilot": true,
+    "checkedAt": "2026-07-02T20:36:40.919Z",
+    "resultUsableForFullConfirmation": false,
+    "reason": "approval omitted, so humanApprovalEvidence is incomplete",
+    "observed": {
+      "runnerCapabilityState": {
+        "state": "FAILED",
+        "reasons": ["UNEXPECTED_SUPPORTED_OPERATION"]
+      },
+      "humanApprovalEvidence": {
+        "state": "INCOMPLETE",
+        "reasons": ["HUMAN_APPROVAL_EVIDENCE_MISSING"]
+      },
+      "supportedOperations": ["capabilities", "validate-request", "start-run"],
+      "startEndpointState": "CALLABLE_GUARDED",
+      "startCapabilityCallable": true,
+      "executionEnabled": false,
+      "newFpMcp180FieldsObserved": false,
+      "startRunOperationAdvertisedFieldObserved": false,
+      "directExecutionOperationAdvertisedFieldObserved": false,
+      "unexpectedSupportedOperationFieldObserved": false
+    }
+  },
+  "expected_after_refresh": {
+    "runnerCapabilityState": "PASSED",
+    "UNEXPECTED_SUPPORTED_OPERATION": "ABSENT",
+    "startRunOperationAdvertised": true,
+    "directExecutionOperationAdvertised": false,
+    "unexpectedSupportedOperation": false,
+    "eligibleForFutureGuardedStart": false
+  },
+  "classification": {
+    "fp_mcp_180_live_confirmed": false,
+    "runtime_service_refreshed_to_bridge_commit_d3471d4": false,
+    "reason": "The running MCP service still reports the stale guarded preflight shape. FP-MCP-180 source implementation is admitted but not yet loaded by runtime tools."
+  },
+  "safety_boundary": {
+    "executionPermitted": false,
+    "executionStarted": false,
+    "opencodeStarted": false,
+    "runnerStartEndpointContacted": false,
+    "startEndpointContacted": false,
+    "runnerRunId": null,
+    "approvalConsumed": false,
+    "requestArtifactMutated": false,
+    "canaryRetried": false,
+    "startToolInvoked": false
+  },
+  "next_required_work": "Refresh/restart MCP service so bridge commit d3471d4 is loaded, then repeat live confirmation with a fresh non-expired tuple if the current approval expires."
+}
