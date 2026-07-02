@@ -51,3 +51,14 @@ Root ForgePilot packets are reserved for observatory rules, core behavior, or in
 The first candidate instrument-project task is the `server.ts` shadow refactor.
 
 That refactor has not started in this workspace yet.
+
+
+## Shadow Refactor Rules
+
+The MCP bridge `server.ts` shadow refactor must follow:
+
+```text
+docs/shadow-refactor-rules.md
+```
+
+Concrete shadow-refactor packets should live under this instrument-project workspace, not root ForgePilot `packets/`, unless they change the MCP instrument contract.
