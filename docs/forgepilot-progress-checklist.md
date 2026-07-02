@@ -294,3 +294,5 @@ These may be considered after V1 evidence/reporting surfaces stabilize:
 - cost/token analysis,
 - routing policy,
 - model scoring/ranking.
+
+| Platform tool block pattern | `OPEN_OPERATIONAL_PATTERN` | `FP-017/FP-020/SHADOW-REF-006/FP-026` | Central note added for recurring platform-side blocks before MCP bridge invocation. | Trigger unresolved; cadence, command shape, sensitive terminology, action refresh timing, and intermittent platform policy remain plausible. |
