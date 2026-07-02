@@ -1,0 +1,18 @@
+{
+  "packet_id": "FP-MCP-172",
+  "result": "PREVIOUS_REQUEST_NO_LINGERING_PARTIAL_STATE_CONFIRMED",
+  "old_request_id": "REQ-20260702T143631238Z-4e3b750e",
+  "old_request_sha256": "bf251b29b2294963e54e6c075656d32cc0142c92a10a49cb80a4d7c2391ed3e9",
+  "old_request_artifact_exists": true,
+  "filename_references": [
+    "runs/FP-MCP-159/opencode-requests/REQ-20260702T143631238Z-4e3b750e.json",
+    "runs/FP-MCP-159/start-state-snapshots/REQ-20260702T143631238Z-4e3b750e",
+    "runs/FP-MCP-159/pre-start-evidence/REQ-20260702T143631238Z-4e3b750e.json"
+  ],
+  "real_partial_state_found": false,
+  "runner_contacted_from_premature_call": false,
+  "start_endpoint_contacted_from_premature_call": false,
+  "approval_consumed_from_premature_call": false,
+  "runner_run_id_created_from_premature_call": false,
+  "decision": "fresh FP-MCP-172 request used to avoid mutating old admitted artifacts"
+}
