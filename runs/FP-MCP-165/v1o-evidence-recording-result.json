@@ -1,0 +1,18 @@
+{
+  "packet_id": "FP-MCP-165",
+  "result": "FP_MCP_165_BOOTSTRAP_DECISION_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 29,
+  "run_id": "FP-MCP-165-SCOPED-EXECUTION-BOOTSTRAP-DECISION",
+  "generic_admission_event_id": 29,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "SCOPED_EXECUTION_BOOTSTRAP_EXCEPTION_AND_RETRY_FRICTION_DECISION_RECORDED",
+  "total_evidence_records": 29,
+  "total_generic_evidence_record_admission_events": 29,
+  "artifact_paths": [
+    "packets/FP-MCP-165.md",
+    "runs/FP-MCP-165/result-summary.md",
+    "runs/FP-MCP-165/bootstrap-decision.json"
+  ]
+}
