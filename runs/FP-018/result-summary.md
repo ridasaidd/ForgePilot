@@ -9,9 +9,17 @@ V1_REPORT_MECHANICALLY_REGENERATED_CURRENT_STATE
 ## Current generated checklist counts
 
 ```text
-COMPLETE: 38
+COMPLETE: 39
 DEFERRED: 4
-TOTAL_CAPABILITY_ROWS: 42
+TOTAL_CAPABILITY_ROWS: 43
+```
+
+## Evidence tier legend
+
+```text
+capability_counts: CHECKLIST_SOURCED_TIER_1_INDEX
+sqlite_admission_distribution: SQLITE_READONLY_QUERY_TIER_2_MECHANICAL_QUERY
+static_report_comparison: DERIVED_COMPARISON_TIER_1_OVER_COMMITTED_ARTIFACTS
 ```
 
 ## Static FP-META-025 comparison
@@ -27,6 +35,15 @@ COMPLETE: 27
 DEFERRED: 4
 TOTAL_CAPABILITY_ROWS: 31
 ```
+
+Current delta from old static report:
+
+```text
++12 current checklist rows
+-0 removed rows
+```
+
+The delta is mechanically listed in `generated-v1-project-report.json` under `checklist_delta_from_static_report`.
 
 ## Regeneration stability
 

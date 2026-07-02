@@ -95,6 +95,16 @@ counts = status_counts(rows)
 static = load_static()
 sqlite = sqlite_distribution()
 static_counts = static.get('checklist_status_counts') if static.get('exists') else None
+static_capabilities = []
+if STATIC.exists():
+    static_data = json.loads(STATIC.read_text())
+    static_capabilities = [r.get('capability') for r in static_data.get('checklist_capabilities', [])]
+current_capabilities = [r.get('capability') for r in rows]
+static_capability_set = set(static_capabilities)
+current_capability_set = set(current_capabilities)
+new_capability_rows = [r for r in rows if r.get('capability') not in static_capability_set]
+removed_capability_rows = [c for c in static_capabilities if c not in current_capability_set]
+duplicate_current_capabilities = sorted([c for c in set(current_capabilities) if current_capabilities.count(c) > 1])
 counts_match_static = bool(static_counts == counts)
 cap_count_match_static = bool(static.get('checklist_capability_count') == len(rows)) if static.get('exists') else False
 
@@ -109,9 +119,21 @@ report = {
     'boundary': 'Generated report is an index over current checklist rows and current SQLite admission distribution. It is not admission evidence by itself.',
     'v1_g_status': 'GOVERNANCE_COMPLETE_CURRENT_CHECKLIST_INDEXED',
     'v1_o_status': 'OBSERVATORY_OPERATION_PARTIALLY_PROVEN_BY_FP_017_EVIDENCE_RECORDS',
+    'evidence_tier_legend': {
+        'capability_counts': 'CHECKLIST_SOURCED_TIER_1_INDEX',
+        'sqlite_admission_distribution': 'SQLITE_READONLY_QUERY_TIER_2_MECHANICAL_QUERY',
+        'static_report_comparison': 'DERIVED_COMPARISON_TIER_1_OVER_COMMITTED_ARTIFACTS'
+    },
     'checklist_status_counts': counts,
     'checklist_capability_count': len(rows),
     'checklist_capabilities': rows,
+    'checklist_delta_from_static_report': {
+        'old_capability_count': static.get('checklist_capability_count') if static.get('exists') else None,
+        'current_capability_count': len(rows),
+        'new_capability_rows': new_capability_rows,
+        'removed_capability_rows': removed_capability_rows,
+        'duplicate_current_capabilities': duplicate_current_capabilities
+    },
     'sqlite_admission_distribution': sqlite,
     'static_report_comparison': {
         'static_report': static,
@@ -126,8 +148,20 @@ comparison = report['static_report_comparison']
 
 (OUT / 'generated-v1-project-report.json').write_text(json.dumps(report, indent=2) + '\n')
 (OUT / 'static-report-comparison.json').write_text(json.dumps(comparison, indent=2) + '\n')
-md = f"""# FP-018 Generated V1 Project Report\n\n## Result\n\n```text\n{report['result']}\n```\n\n## Checklist counts from current source\n\n```json\n{json.dumps(counts, indent=2)}\n```\n\nCapability rows parsed: `{len(rows)}`\n\n## SQLite admission distribution\n\n```json\n{json.dumps(sqlite, indent=2)}\n```\n\n## Static FP-META-025 comparison\n\n```text\n{comparison['interpretation']}\n```\n\nOld static counts: `{static_counts}`\n\nCurrent generated counts: `{counts}`\n\nOld static capability count: `{static.get('checklist_capability_count') if static.get('exists') else None}`\n\nCurrent generated capability count: `{len(rows)}`\n\n## Boundary\n\nGenerated output is authoritative for FP-018 interpretation. The old static report is preserved as historical evidence and is not rewritten.\n"""
+md = f"""# FP-018 Generated V1 Project Report\n\n## Result\n\n```text\n{report['result']}\n```\n\n## Evidence tier legend
+
+```json
+{json.dumps(report['evidence_tier_legend'], indent=2)}
+```
+
+## Checklist counts from current source\n\n```json\n{json.dumps(counts, indent=2)}\n```\n\nCapability rows parsed: `{len(rows)}`\n\n## SQLite admission distribution\n\n```json\n{json.dumps(sqlite, indent=2)}\n```\n\n## Checklist delta from static FP-META-025 report
+
+```json
+{json.dumps(report['checklist_delta_from_static_report'], indent=2)}
+```
+
+## Static FP-META-025 comparison\n\n```text\n{comparison['interpretation']}\n```\n\nOld static counts: `{static_counts}`\n\nCurrent generated counts: `{counts}`\n\nOld static capability count: `{static.get('checklist_capability_count') if static.get('exists') else None}`\n\nCurrent generated capability count: `{len(rows)}`\n\n## Boundary\n\nGenerated output is authoritative for FP-018 interpretation. The old static report is preserved as historical evidence and is not rewritten.\n"""
 (OUT / 'generated-v1-project-report.md').write_text(md)
-summary = f"""# FP-018 Regeneration Summary\n\nResult: `{report['result']}`\n\nStatic comparison: `{comparison['interpretation']}`\n\nThe generator parsed `{len(rows)}` current checklist rows and produced counts `{counts}`.\n\nThe old FP-META-025 static report recorded counts `{static_counts}` across `{static.get('checklist_capability_count') if static.get('exists') else None}` capability rows.\n\nTherefore FP-018 mechanically regenerates the current project report, but it does not reproduce the old static 27/4 report from the current mutated checklist source.\n\nSQLite evidence records are included in the generated report through readonly query data.\n"""
+summary = f"""# FP-018 Regeneration Summary\n\nResult: `{report['result']}`\n\nStatic comparison: `{comparison['interpretation']}`\n\nThe generator parsed `{len(rows)}` current checklist rows and produced counts `{counts}`. Capability counts are checklist-sourced (`CHECKLIST_SOURCED_TIER_1_INDEX`), while admission distribution is SQLite-sourced (`SQLITE_READONLY_QUERY_TIER_2_MECHANICAL_QUERY`).\n\nThe old FP-META-025 static report recorded counts `{static_counts}` across `{static.get('checklist_capability_count') if static.get('exists') else None}` capability rows.\n\nTherefore FP-018 mechanically regenerates the current project report, but it does not reproduce the old static 27/4 report from the current mutated checklist source. The delta is recorded in `checklist_delta_from_static_report`.\n\nSQLite evidence records are included in the generated report through readonly query data.\n"""
 (OUT / 'regeneration-summary.md').write_text(summary)
 print(json.dumps({'result': report['result'], 'current_counts': counts, 'current_capability_count': len(rows), 'static_interpretation': comparison['interpretation'], 'sqlite_total': sqlite.get('evidence_records_total')}, indent=2))
