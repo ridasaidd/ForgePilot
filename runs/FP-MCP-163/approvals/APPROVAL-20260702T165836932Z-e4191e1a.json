@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "FP-MCP-162",
+  "boundaryVersion": "FP-MCP-067",
+  "artifactType": "human-approval-evidence",
+  "artifactVersion": "human-approval-evidence-v1",
+  "approvalId": "APPROVAL-20260702T165836932Z-e4191e1a",
+  "approvalPacketId": "FP-MCP-163",
+  "executionPacketId": "FP-MCP-159",
+  "executionScope": {
+    "packetId": "FP-MCP-159",
+    "requestId": "REQ-20260702T143631238Z-4e3b750e",
+    "modelId": "deepseek-v4-pro-high",
+    "runMode": "DESIGN_ONLY",
+    "repoCommit": "f71d8b7",
+    "branch": "main"
+  },
+  "approvalKind": "EXECUTION_ENABLEMENT",
+  "approvedAction": "ALLOW_ONE_GUARDED_REMOTE_RUNNER_EXECUTION_ATTEMPT",
+  "approvalState": "RECORDED",
+  "fixture": false,
+  "dryRun": false,
+  "humanApprovalRecorded": true,
+  "approvalUsableForExecution": false,
+  "approvalUsabilityDerivedByRecorder": false,
+  "approvalUsabilityRequiresValidation": true,
+  "scope": {
+    "packetId": "FP-MCP-159",
+    "requestId": "REQ-20260702T143631238Z-4e3b750e",
+    "modelId": "deepseek-v4-pro-high",
+    "runMode": "DESIGN_ONLY",
+    "repoCommit": "f71d8b7",
+    "branch": "main"
+  },
+  "canonicalApprovalText": "I approve one guarded ForgePilot remote-runner start attempt for packet FP-MCP-159, request REQ-20260702T143631238Z-4e3b750e, model deepseek-v4-pro-high, run mode DESIGN_ONLY, repository commit f71d8b7, branch main. This approval is single-use, expires at 2026-07-02T17:25:00Z, and does not override the global disable switch or any other ForgePilot safety gate.",
+  "approvalText": "I approve one guarded ForgePilot remote-runner start attempt for packet FP-MCP-159, request REQ-20260702T143631238Z-4e3b750e, model deepseek-v4-pro-high, run mode DESIGN_ONLY, repository commit f71d8b7, branch main. This approval is single-use, expires at 2026-07-02T17:25:00Z, and does not override the global disable switch or any other ForgePilot safety gate.",
+  "approvedBy": {
+    "operatorId": "rida",
+    "operatorHandle": "rida",
+    "operatorEmailHash": null
+  },
+  "approvalSource": "CHATGPT_MCP_TOOL_CONFIRMATION",
+  "createdAt": "2026-07-02T16:58:36.795Z",
+  "expiresAt": "2026-07-02T17:25:00Z",
+  "singleUse": true,
+  "consumed": false,
+  "consumedAt": null,
+  "revoked": false,
+  "revokedAt": null,
+  "quarantined": false,
+  "quarantinedAt": null,
+  "preconditions": {
+    "structuredScopeConfirmedByToolCall": true,
+    "requestArtifactValidated": true,
+    "preStartEvidenceValidated": true,
+    "stateSnapshotValidated": true,
+    "requestModelMatches": true,
+    "requestRunModeMatches": true,
+    "requestRepoCommitMatches": true,
+    "humanApprovalGateRequired": true,
+    "globalDisableSwitchNotOverridden": true
+  },
+  "secretBoundary": {
+    "containsSecrets": false,
+    "secretMaterialRedacted": true
+  },
+  "createdByTool": "forgepilot_record_structured_human_approval",
+  "createdByBoundaryVersion": "FP-MCP-162",
+  "recordedAt": "2026-07-02T16:58:36.795Z",
+  "executionAllowedNow": false,
+  "executionStarted": false,
+  "startEndpointContacted": false,
+  "opencodeStarted": false,
+  "approvalConsumed": false,
+  "notes": [
+    "Fresh structured approval for FP-MCP-163 pre-start evidence integration test."
+  ]
+}
