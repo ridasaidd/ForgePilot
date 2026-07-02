@@ -1,0 +1,39 @@
+{
+  "packet_id": "FP-MCP-163",
+  "result": "APPROVAL_ID_PROPAGATION_FIX_LIVE_RUNTIME_CONFIRMED",
+  "checked_at": "2026-07-02T17:23:38.449Z",
+  "bridge_commit_under_test": "1c42e6c",
+  "approval_id": "APPROVAL-20260702T165836932Z-e4191e1a",
+  "guarded_preflight_passed_gates": [
+    "repository",
+    "requestArtifact",
+    "commitBinding",
+    "modelAndRunMode",
+    "humanApprovalEvidence",
+    "preStartEvidence",
+    "stateSnapshotEvidence",
+    "evidenceLedgerReadiness"
+  ],
+  "legacy_human_approval_blocker_strings_absent_from_pre_execution_gates": [
+    "HUMAN_APPROVAL_EVIDENCE_MISSING",
+    "EXECUTION_PREFLIGHT_HUMAN_APPROVAL_EVIDENCE_GATE_BLOCKED",
+    "HUMAN_APPROVAL_EVIDENCE_NOT_USABLE_FOR_EXECUTION"
+  ],
+  "remaining_top_level_reasons": [
+    "EXECUTION_DISABLED_GLOBAL",
+    "RUNNER_EXECUTION_DISABLED",
+    "OPENCODE_EXECUTION_DISABLED",
+    "DISABLE_SWITCH_ACTIVE",
+    "EXECUTION_NOT_ALLOWED"
+  ],
+  "safety_boundary": {
+    "executionPermitted": false,
+    "executionStarted": false,
+    "opencodeStarted": false,
+    "runnerStartEndpointContacted": false,
+    "startEndpointContacted": false,
+    "runnerRunId": null,
+    "approvalConsumed": false,
+    "requestArtifactMutated": false
+  }
+}
