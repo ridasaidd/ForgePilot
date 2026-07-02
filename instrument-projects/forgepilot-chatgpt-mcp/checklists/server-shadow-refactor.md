@@ -52,10 +52,20 @@ OpenCode plugin integration is deferred.
 
 ForgePilot CLI checklist management is deferred.
 
+
+
+## Model Roster Status
+
+```text
+FP-META-029 — Model Roster and Profiling Rules: COMPLETE
+```
+
+Model availability does not authorize implementation. Bridge code edits still require a project-specific implementation packet and baseline verification.
+
 ## Next Suggested Item
 
 ```text
-FP-META-029 — Model Roster and Profiling Rules
+SHADOW-REF-006 — Capture baseline bridge verification
 ```
 
 This should become the first project-specific packet under:

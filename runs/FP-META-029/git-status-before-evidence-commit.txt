@@ -1,0 +1,4 @@
+ M docs/forgepilot-progress-checklist.md
+ M instrument-projects/forgepilot-chatgpt-mcp/checklists/server-shadow-refactor.md
+?? docs/model-roster-and-profiling-rules.md
+?? runs/FP-META-029/

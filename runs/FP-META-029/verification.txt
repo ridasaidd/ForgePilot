@@ -1,0 +1,36 @@
+FP-META-029 verification
+
+Model roster rules document exists:
+PASS
+- docs/model-roster-and-profiling-rules.md
+
+Rules covered:
+PASS
+- model roster purpose
+- model identity fields
+- allowed model roles
+- allowed task classes
+- trust states
+- promotion criteria
+- demotion criteria
+- evidence requirements
+- default restrictions for unobserved models
+- MCP bridge shadow-refactor boundary
+
+Initial roster recorded:
+PASS
+- OpenCode Go model list recorded as available candidates
+- availability does not imply trust
+
+Checklist update:
+PASS
+- MCP bridge checklist records FP-META-029 complete
+- next suggested item changed to SHADOW-REF-006 baseline bridge verification
+
+Scope:
+PASS
+- no model execution performed
+- no OpenCode call performed
+- no MCP bridge files changed
+- no implementation code files changed
+- no routing/scoring/global ranking implemented
