@@ -1,0 +1,29 @@
+{
+  "packet_id": "FP-MCP-162",
+  "result": "STRUCTURED_APPROVAL_PRECONDITIONS_COMPATIBILITY_FIX_SOURCE_VERIFIED_REFRESH_PENDING",
+  "bridge_commit": "cd99571",
+  "trigger": {
+    "first_live_structured_approval_id": "APPROVAL-20260702T153033035Z-89fd6c5c",
+    "validation_reasons": [
+      "APPROVAL_PRECONDITIONS_MISSING",
+      "APPROVAL_EVIDENCE_ARTIFACT_UNCOMMITTED",
+      "APPROVAL_ARTIFACT_UNCOMMITTED"
+    ]
+  },
+  "fix": {
+    "preStartEvidenceValidated": true,
+    "stateSnapshotValidated": true
+  },
+  "verification": {
+    "pnpm_test": "PASS",
+    "pnpm_build": "PASS",
+    "typescript": "PASS"
+  },
+  "runtime_availability": "ACTION_REFRESH_PENDING",
+  "safety_boundary": {
+    "execution_enabled": false,
+    "approval_consumed": false,
+    "runner_start_endpoint_contacted": false,
+    "opencode_started": false
+  }
+}
