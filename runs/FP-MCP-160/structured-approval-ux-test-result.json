@@ -1,0 +1,52 @@
+{
+  "packet_id": "FP-MCP-160",
+  "result": "STRUCTURED_APPROVAL_POPUP_PATTERN_SAFE_BUT_EXISTING_FIXTURE_NOT_MIGRATION_READY",
+  "approval_fixture": {
+    "approval_id": "APPROVAL-20260702T150302133Z-0011e6f4",
+    "path": "runs/FP-MCP-160/approvals/APPROVAL-20260702T150302133Z-0011e6f4.json",
+    "sha256": "45d86f655390b059d044c95c0455902723fa00d390a4c3bf2417c7289e493fd3",
+    "valid": false,
+    "usable_for_execution": false,
+    "human_approval_recorded": false
+  },
+  "intended_scope": {
+    "packetId": "FP-MCP-159",
+    "requestId": "REQ-20260702T143631238Z-4e3b750e",
+    "modelId": "deepseek-v4-pro-high",
+    "runMode": "DESIGN_ONLY",
+    "repoCommit": "daed3e6",
+    "branch": "main"
+  },
+  "observed_fixture_scope": {
+    "packetId": "FP-MCP-036",
+    "requestId": "REQ-20260702T143631238Z-4e3b750e",
+    "modelId": "deepseek-v4-pro-high",
+    "runMode": "DESIGN_ONLY",
+    "repoCommit": "daed3e6",
+    "branch": "main"
+  },
+  "validation_against_intended_scope": {
+    "approvalEvidenceValid": false,
+    "approvalValid": false,
+    "approvalUsableForExecution": false,
+    "reasons": [
+      "APPROVAL_EVIDENCE_TYPE_INVALID",
+      "APPROVAL_ARTIFACT_TYPE_INVALID",
+      "APPROVAL_STATE_NOT_RECORDED",
+      "APPROVAL_SCOPE_MISMATCH",
+      "APPROVAL_REQUEST_BINDING_INVALID",
+      "APPROVAL_TEXT_INVALID",
+      "APPROVAL_QUARANTINED",
+      "APPROVAL_EVIDENCE_ARTIFACT_UNCOMMITTED",
+      "APPROVAL_ARTIFACT_UNCOMMITTED"
+    ]
+  },
+  "safety_boundary": {
+    "execution_enabled": false,
+    "approval_consumed": false,
+    "runner_start_endpoint_contacted": false,
+    "opencode_started": false,
+    "bridge_source_changed": false
+  },
+  "conclusion": "The structured popup pattern is promising, but a new structured approval tool is required before migration."
+}

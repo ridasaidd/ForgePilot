@@ -310,3 +310,5 @@ These may be considered after V1 evidence/reporting surfaces stabilize:
 | Bootstrap canary namespace reconciliation | `COMPLETE` | `FP-033` | Reconciled FP-031 namespace blocker by selecting FP-MCP-159 as the namespace-correct bridge bootstrap canary. | FP-031 remains candidate/blocker evidence; no execution enabled. |
 
 | Executor bootstrap documentation canary | `REQUEST_ACCEPTED_BLOCKED_BY_SAFETY_GATES` | `FP-MCP-159` | Namespace-correct request artifact created and accepted by remote runner validate-request endpoint. | No worker started; remaining blockers are expected global disable and missing human approval gates. |
+
+| Structured human approval UX dry-run | `SAFE_BUT_NOT_MIGRATION_READY` | `FP-MCP-160` | Tested popup-style structured approval using existing non-authorizing dry-run fixture. Fixture remained unusable for execution but hardcoded scope to FP-MCP-036, so a new structured approval tool is required. | No execution enabled; no approval usable for execution; no OpenCode started. |
