@@ -1,0 +1,22 @@
+{
+  "packet_id": "FP-MCP-163",
+  "result": "FP_MCP_163_APPROVAL_ID_PROPAGATION_FIX_LIVE_CONFIRMED_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 27,
+  "run_id": "FP-MCP-163-APPROVAL-ID-PROPAGATION-FIX-LIVE-CONFIRMED",
+  "generic_admission_event_id": 27,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "APPROVAL_ID_PROPAGATION_FIX_LIVE_RUNTIME_CONFIRMED",
+  "bridge_commit": "1c42e6c",
+  "total_evidence_records": 27,
+  "total_generic_evidence_record_admission_events": 27,
+  "artifact_paths": [
+    "packets/FP-MCP-163.md",
+    "runs/FP-MCP-163/follow-up-verification.md",
+    "runs/FP-MCP-163/source-follow-up-result.json",
+    "runs/FP-MCP-163/post-refresh-approval-propagation-check.md",
+    "runs/FP-MCP-163/post-refresh-approval-propagation-check.json",
+    "runs/FP-MCP-163/hash-sanity-check.json"
+  ]
+}
