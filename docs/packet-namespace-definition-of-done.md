@@ -107,3 +107,25 @@ Typical evidence:
 These standards define minimum completion evidence.
 
 They do not define routing, scoring, admission policy, or dashboard behavior.
+
+
+## Project-Specific Work Gate
+
+Before creating a root ForgePilot packet, determine whether the work changes ForgePilot core or a specific project.
+
+Root ForgePilot packets are appropriate for project-agnostic observatory rules, core implementation, operator workflows, or instrument-contract changes.
+
+Project-specific work must be recorded in the relevant project workspace:
+
+```text
+instrument-projects/<project>/
+observed-projects/<project>/
+```
+
+For the MCP bridge, normal engineering work belongs under:
+
+```text
+instrument-projects/forgepilot-chatgpt-mcp/
+```
+
+Historical `FP-MCP-*` packets are preserved as bootstrap evidence. Do not rename, move, or delete them.

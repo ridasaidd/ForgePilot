@@ -171,3 +171,26 @@ Is the packet defining rules/semantics/process?         → FP-META-*
 Is the packet changing MCP bridge/tool/action behavior? → FP-MCP-*
 Is the packet changing operator docs/checklists/runbooks? → FP-OPS-*
 ```
+
+
+## Post-V1 Project Boundary
+
+After ForgePilot V1.0, root ForgePilot packets are reserved for ForgePilot core work: observatory rules, evidence semantics, reporting, admission/comparison semantics, operator workflows, core implementation, and instrument-contract changes.
+
+Project-specific work must live in a project workspace unless it changes ForgePilot itself.
+
+Instrument projects live under:
+
+```text
+instrument-projects/<project>/
+```
+
+External observed projects live under:
+
+```text
+observed-projects/<project>/
+```
+
+The MCP bridge is classified as an instrument project. Pre-V1 `FP-MCP-*` packets remain historical bootstrap evidence and must not be moved or renamed.
+
+See `docs/core-instrument-observed-project-boundaries.md`.

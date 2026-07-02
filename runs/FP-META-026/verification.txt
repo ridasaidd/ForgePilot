@@ -1,0 +1,39 @@
+FP-META-026 verification
+
+Boundary document exists:
+PASS
+- docs/core-instrument-observed-project-boundaries.md
+
+Instrument project workspace exists:
+PASS
+- instrument-projects/forgepilot-chatgpt-mcp/README.md
+- instrument-projects/forgepilot-chatgpt-mcp/packets/
+- instrument-projects/forgepilot-chatgpt-mcp/plans/
+- instrument-projects/forgepilot-chatgpt-mcp/runs/
+- instrument-projects/forgepilot-chatgpt-mcp/model-results/
+- instrument-projects/forgepilot-chatgpt-mcp/audits/
+- instrument-projects/forgepilot-chatgpt-mcp/comparisons/
+- instrument-projects/forgepilot-chatgpt-mcp/observations/
+
+Taxonomy update:
+PASS
+- docs/packet-namespace-taxonomy.md references post-V1 project boundary
+
+Definition-of-done update:
+PASS
+- docs/packet-namespace-definition-of-done.md references project-specific work gate
+
+Progress checklist update:
+PASS
+- docs/forgepilot-progress-checklist.md references FP-META-026
+
+Historical packet preservation:
+PASS
+- no packet files moved
+- no packet files renamed
+- no packet files deleted
+
+Scope:
+PASS
+- no MCP bridge files changed
+- no implementation code files changed

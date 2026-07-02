@@ -1,0 +1,6 @@
+ M docs/forgepilot-progress-checklist.md
+ M docs/packet-namespace-definition-of-done.md
+ M docs/packet-namespace-taxonomy.md
+?? docs/core-instrument-observed-project-boundaries.md
+?? instrument-projects/
+?? runs/FP-META-026/
