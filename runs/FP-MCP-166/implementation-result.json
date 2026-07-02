@@ -1,0 +1,29 @@
+{
+  "packet_id": "FP-MCP-166",
+  "result": "SCOPED_CLEARANCE_IMPLEMENTATION_SOURCE_VERIFIED_EXECUTION_STILL_DISABLED",
+  "bootstrap_authority": "FP-MCP-165",
+  "bridge_commit": "99b4ba0",
+  "implemented_tool": "forgepilot_validate_scoped_execution_clearance",
+  "tool_behavior": {
+    "validation_only": true,
+    "clearance_tuple": ["packetId", "requestId", "approvalId", "attemptId"],
+    "reports_consumption_would_be_allowed": true,
+    "checks_existing_consumption_blocks_clearance": true,
+    "requires_valid_attempt_id": true,
+    "checks_pre_execution_evidence_gates": true
+  },
+  "non_behavior": {
+    "approval_consumed": false,
+    "runner_start_endpoint_contacted": false,
+    "start_endpoint_contacted": false,
+    "opencode_started": false,
+    "execution_permitted": false,
+    "request_artifact_mutated": false
+  },
+  "verification": {
+    "pnpm_test": "PASS",
+    "pnpm_build": "PASS",
+    "typescript": "PASS"
+  },
+  "runtime_status": "ACTION_REFRESH_PENDING"
+}
