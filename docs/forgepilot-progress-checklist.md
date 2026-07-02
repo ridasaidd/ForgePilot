@@ -123,6 +123,11 @@ Recent closed telemetry/query chain:
 | Model scoring/ranking | `DEFERRED` | none for V1 | Explicitly out of scope for current V1 completion work. | Query results are not model-quality evidence. |
 | Dashboard UI | `DEFERRED` | none for V1 | Explicitly out of scope for current V1 completion work. | Reporting can be CLI/docs before dashboard UI. |
 | Packet namespace taxonomy | `COMPLETE` | `FP-META-017` | Namespace rules are documented in `docs/packet-namespace-taxonomy.md`. | Historical packet IDs remain unchanged. |
+| Checklist namespace guidance | `COMPLETE` | `FP-OPS-001` | Checklist now includes advisory recommended namespace guidance for future work. | The taxonomy doc remains governing. |
+| Packet namespace definition of done | `COMPLETE` | `FP-META-019` | Namespace-specific minimum completion standards are documented in `docs/packet-namespace-definition-of-done.md`. | Namespace implies verification burden, not feature value. |
+| Manual action ledger | `COMPLETE` | `FP-OPS-003` | Manual external action recording pattern is documented in `docs/manual-action-ledger.md`. | Manual action still requires observable proof. |
+| Evidence boundary doctrine | `COMPLETE` | `FP-META-018` | Evidence boundaries are documented in `docs/evidence-boundary-doctrine.md`. | Doctrine is not implementation or admission by itself. |
+| Session bootstrap runbook | `COMPLETE` | `FP-OPS-002` | New-session bootstrap procedure is documented in `docs/session-bootstrap.md`. | Reduces dependence on private chat memory; not automation. |
 
 ## Recent Packet Evidence Index
 
@@ -133,6 +138,26 @@ Recent closed telemetry/query chain:
 | `FP-MCP-156` | Worker telemetry persistence | `COMPLETE` | `e3702da`, `09c5094`, `d67c0cc`, `d1b03d5` | `5c2e7af`, `dc1a412` | PASS | `runs/FP-MCP-156/direct-mcp-smoke-result.md` | persisted telemetry remains non-admitted |
 | `FP-MCP-157` | Worker telemetry query visibility | `COMPLETE` | `dafa608`, `3b9d6e8`, `e91c91c`, `1e04c7f` | `3a16d68` | PASS | `runs/FP-MCP-157/direct-mcp-query-result.md` | manual OpenAI Actions schema refresh required for new MCP tools |
 | `FP-MCP-158` | Progress checklist v1 | `COMPLETE` | this packet | none | not applicable | `docs/forgepilot-progress-checklist.md` | documentation-only checklist |
+
+
+## Recommended Namespace Guidance
+
+This section is advisory. The governing rule remains `docs/packet-namespace-taxonomy.md`.
+
+Do not pre-assign exact packet numbers for future work unless the packet already exists. Recommend the namespace family and explain why.
+
+| Future capability / work item | Current status | Recommended namespace | Reason |
+|---|---|---|---|
+| Reporting evidence rules | `NOT_STARTED` | `FP-META-*` | Defines semantics before implementation. |
+| Reporting / summary implementation | `NOT_STARTED` | `FP-*` | Core ForgePilot behavior. |
+| Reporting via ChatGPT MCP | `NOT_STARTED` | `FP-MCP-*` | MCP bridge/tool exposure. |
+| Checklist maintenance | `PARTIAL` | `FP-OPS-*` | Operator progress tracking. |
+| Session bootstrap updates | `COMPLETE` | `FP-OPS-*` | Operator runbook. |
+| Manual action records/runbooks | `COMPLETE` | `FP-OPS-*` | External operator workflow. |
+| Evidence boundary changes | `COMPLETE` | `FP-META-*` | Standards and semantics. |
+| Admission/comparison reconstruction rules | `PARTIAL` | `FP-META-*` | Define evidence semantics before implementation. |
+| Admission/comparison reconstruction implementation | `PARTIAL` | `FP-*` | Core query/report behavior. |
+| New MCP tool exposure for existing ForgePilot behavior | `DEFERRED` | `FP-MCP-*` | MCP integration only. |
 
 ## Incomplete V1 Capability Notes
 

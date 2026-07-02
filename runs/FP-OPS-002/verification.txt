@@ -1,0 +1,19 @@
+FP-OPS-002 verification
+
+Session bootstrap runbook exists:
+PASS
+- docs/session-bootstrap.md
+
+Required content:
+PASS
+- git baseline checks
+- progress checklist reference
+- packet namespace taxonomy reference
+- evidence boundary doctrine reference
+- manual action ledger reference
+- packet creation gate
+- MCP tool change rule
+
+Documentation-only scope:
+PASS
+- no implementation code files changed

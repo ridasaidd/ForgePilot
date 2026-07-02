@@ -1,0 +1,17 @@
+FP-META-018 verification
+
+Evidence boundary doctrine exists:
+PASS
+- docs/evidence-boundary-doctrine.md
+
+Required content:
+PASS
+- discussion is not evidence
+- implementation is not evidence by itself
+- verification is not admission
+- observation is not routing input
+- completion requires committed evidence
+
+Documentation-only scope:
+PASS
+- no implementation code files changed

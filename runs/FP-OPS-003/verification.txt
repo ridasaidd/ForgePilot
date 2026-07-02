@@ -1,0 +1,17 @@
+FP-OPS-003 verification
+
+Manual action ledger exists:
+PASS
+- docs/manual-action-ledger.md
+
+Required content:
+PASS
+- manual action examples
+- recording pattern
+- secrets must not be recorded
+- OpenAI Actions schema refresh sequence
+- observable proof required after manual action
+
+Documentation-only scope:
+PASS
+- no implementation code files changed
