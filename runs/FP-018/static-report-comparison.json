@@ -1,0 +1,17 @@
+{
+  "static_report": {
+    "exists": true,
+    "path": "runs/FP-META-025/final-v1-project-report.json",
+    "sha256": "c4bcfdf23ffa41bb3d639e47ce21e06df5551e8b68cb6f99517e024bc1f433d8",
+    "report_type": "PROJECT_SUMMARY_V1",
+    "v1_completion_status": "COMPLETE",
+    "checklist_status_counts": {
+      "COMPLETE": 27,
+      "DEFERRED": 4
+    },
+    "checklist_capability_count": 31
+  },
+  "current_counts_match_static_counts": false,
+  "current_capability_count_matches_static": false,
+  "interpretation": "STATIC_REPORT_NOT_REPRODUCED_CURRENT_SOURCE_STATE_DIFFERS"
+}
