@@ -1,0 +1,1222 @@
+{
+  "packet_id": "SHADOW-REF-006",
+  "tool_registration_markers": [
+    {
+      "line": 9281,
+      "text": "const mcpServer = new McpServer({"
+    },
+    {
+      "line": 9286,
+      "text": "mcpServer.registerTool("
+    },
+    {
+      "line": 9329,
+      "text": "mcpServer.registerTool("
+    },
+    {
+      "line": 9350,
+      "text": "mcpServer.registerTool("
+    },
+    {
+      "line": 9372,
+      "text": "mcpServer.registerTool("
+    },
+    {
+      "line": 9394,
+      "text": "mcpServer.registerTool("
+    },
+    {
+      "line": 9428,
+      "text": "mcpServer.registerTool("
+    },
+    {
+      "line": 9461,
+      "text": "mcpServer.registerTool("
+    },
+    {
+      "line": 9487,
+      "text": "mcpServer.registerTool("
+    },
+    {
+      "line": 9519,
+      "text": "mcpServer.registerTool("
+    },
+    {
+      "line": 9544,
+      "text": "mcpServer.registerTool("
+    },
+    {
+      "line": 9569,
+      "text": "mcpServer.registerTool("
+    },
+    {
+      "line": 9594,
+      "text": "mcpServer.registerTool("
+    },
+    {
+      "line": 9625,
+      "text": "mcpServer.registerTool("
+    },
+    {
+      "line": 9655,
+      "text": "mcpServer.registerTool("
+    },
+    {
+      "line": 9683,
+      "text": "mcpServer.registerTool("
+    },
+    {
+      "line": 9718,
+      "text": "mcpServer.registerTool("
+    },
+    {
+      "line": 9746,
+      "text": "mcpServer.registerTool("
+    },
+    {
+      "line": 9783,
+      "text": "mcpServer.registerTool("
+    },
+    {
+      "line": 9852,
+      "text": "mcpServer.registerTool("
+    },
+    {
+      "line": 9912,
+      "text": "mcpServer.registerTool("
+    },
+    {
+      "line": 9954,
+      "text": "mcpServer.registerTool("
+    },
+    {
+      "line": 9996,
+      "text": "mcpServer.registerTool("
+    },
+    {
+      "line": 10031,
+      "text": "mcpServer.registerTool("
+    },
+    {
+      "line": 10059,
+      "text": "mcpServer.registerTool("
+    },
+    {
+      "line": 10088,
+      "text": "mcpServer.registerTool("
+    },
+    {
+      "line": 10122,
+      "text": "mcpServer.registerTool("
+    },
+    {
+      "line": 10152,
+      "text": "mcpServer.registerTool("
+    },
+    {
+      "line": 10186,
+      "text": "mcpServer.registerTool("
+    },
+    {
+      "line": 10227,
+      "text": "mcpServer.registerTool("
+    }
+  ],
+  "source_surface_markers": [
+    {
+      "path": "src/auth.ts",
+      "line": 3,
+      "text": "export type AuthMode = \"bearer\" | \"oidc\";"
+    },
+    {
+      "path": "src/auth.ts",
+      "line": 5,
+      "text": "export type AuthResult ="
+    },
+    {
+      "path": "src/auth.ts",
+      "line": 27,
+      "text": "function extractBearerToken(authorizationHeader: string | undefined): string | undefined {"
+    },
+    {
+      "path": "src/auth.ts",
+      "line": 36,
+      "text": "function getJwks() {"
+    },
+    {
+      "path": "src/auth.ts",
+      "line": 48,
+      "text": "async function verifyLegacyBearer(token: string | undefined): Promise<AuthResult> {"
+    },
+    {
+      "path": "src/auth.ts",
+      "line": 72,
+      "text": "async function verifyOidcBearer(token: string | undefined): Promise<AuthResult> {"
+    },
+    {
+      "path": "src/auth.ts",
+      "line": 110,
+      "text": "export async function authorizeRequest("
+    },
+    {
+      "path": "src/oauthMetadata.ts",
+      "line": 1,
+      "text": "export function getPublicBaseUrl(): string {"
+    },
+    {
+      "path": "src/oauthMetadata.ts",
+      "line": 11,
+      "text": "export function getOidcIssuer(): string {"
+    },
+    {
+      "path": "src/oauthMetadata.ts",
+      "line": 21,
+      "text": "export function getProtectedResourceMetadata() {"
+    },
+    {
+      "path": "src/oauthMetadata.ts",
+      "line": 33,
+      "text": "export function getProtectedResourceMetadataUrl(): string {"
+    },
+    {
+      "path": "src/oauthMetadata.ts",
+      "line": 37,
+      "text": "export function getWwwAuthenticateHeader(): string {"
+    },
+    {
+      "path": "src/opencode-worker-telemetry-persistence.ts",
+      "line": 10,
+      "text": "export interface PersistOpenCodeWorkerTelemetryInput {"
+    },
+    {
+      "path": "src/opencode-worker-telemetry-persistence.ts",
+      "line": 16,
+      "text": "export interface PersistedWorkerTelemetryRow {"
+    },
+    {
+      "path": "src/opencode-worker-telemetry-persistence.ts",
+      "line": 54,
+      "text": "export interface QueryPersistedOpenCodeWorkerTelemetryInput {"
+    },
+    {
+      "path": "src/opencode-worker-telemetry-persistence.ts",
+      "line": 63,
+      "text": "export interface QueryPersistedOpenCodeWorkerTelemetryResult {"
+    },
+    {
+      "path": "src/opencode-worker-telemetry-persistence.ts",
+      "line": 71,
+      "text": "export interface PersistWorkerTelemetryResult {"
+    },
+    {
+      "path": "src/opencode-worker-telemetry-persistence.ts",
+      "line": 77,
+      "text": "function telemetryArtifactPath(packetId: string, workerId: string): string {"
+    },
+    {
+      "path": "src/opencode-worker-telemetry-persistence.ts",
+      "line": 81,
+      "text": "function sanitizedEnv(): NodeJS.ProcessEnv {"
+    },
+    {
+      "path": "src/opencode-worker-telemetry-persistence.ts",
+      "line": 92,
+      "text": "function extractCliError(error: unknown): string {"
+    },
+    {
+      "path": "src/opencode-worker-telemetry-persistence.ts",
+      "line": 107,
+      "text": "async function runForgePilotJson(args: string[]): Promise<unknown> {"
+    },
+    {
+      "path": "src/opencode-worker-telemetry-persistence.ts",
+      "line": 128,
+      "text": "export async function persistOpenCodeWorkerTelemetryViaForgePilot("
+    },
+    {
+      "path": "src/opencode-worker-telemetry-persistence.ts",
+      "line": 143,
+      "text": "export async function readPersistedOpenCodeWorkerTelemetryViaForgePilot("
+    },
+    {
+      "path": "src/opencode-worker-telemetry-persistence.ts",
+      "line": 158,
+      "text": "export async function queryPersistedOpenCodeWorkerTelemetryViaForgePilot("
+    },
+    {
+      "path": "src/opencode-worker-telemetry.ts",
+      "line": 10,
+      "text": "export interface CaptureOpenCodeWorkerTelemetryInput {"
+    },
+    {
+      "path": "src/opencode-worker-telemetry.ts",
+      "line": 16,
+      "text": "export type TerminalStateClassification ="
+    },
+    {
+      "path": "src/opencode-worker-telemetry.ts",
+      "line": 22,
+      "text": "export interface ArtifactTelemetry {"
+    },
+    {
+      "path": "src/opencode-worker-telemetry.ts",
+      "line": 29,
+      "text": "export interface OpenCodeWorkerTelemetry {"
+    },
+    {
+      "path": "src/opencode-worker-telemetry.ts",
+      "line": 66,
+      "text": "function workerDir(packetId: string, workerId: string): string {"
+    },
+    {
+      "path": "src/opencode-worker-telemetry.ts",
+      "line": 70,
+      "text": "function telemetryPath(packetId: string, workerId: string): string {"
+    },
+    {
+      "path": "src/opencode-worker-telemetry.ts",
+      "line": 74,
+      "text": "async function artifactTelemetry(filePath: string): Promise<ArtifactTelemetry> {"
+    },
+    {
+      "path": "src/opencode-worker-telemetry.ts",
+      "line": 92,
+      "text": "function durationMs(status: WorkerStatus): number | null {"
+    },
+    {
+      "path": "src/opencode-worker-telemetry.ts",
+      "line": 100,
+      "text": "function classifyTerminalState(status: WorkerStatus[\"status\"]): TerminalStateClassification {"
+    },
+    {
+      "path": "src/opencode-worker-telemetry.ts",
+      "line": 113,
+      "text": "function requiredFieldsPresent(status: WorkerStatus): boolean {"
+    },
+    {
+      "path": "src/opencode-worker-telemetry.ts",
+      "line": 129,
+      "text": "function provenanceComplete(status: WorkerStatus, artifacts: OpenCodeWorkerTelemetry[\"artifacts\"]): boolean {"
+    },
+    {
+      "path": "src/opencode-worker-telemetry.ts",
+      "line": 143,
+      "text": "export async function captureOpenCodeWorkerTelemetry(input: CaptureOpenCodeWorkerTelemetryInput): Promise<OpenCodeWorkerTelemetry> {"
+    },
+    {
+      "path": "src/opencode-worker-telemetry.ts",
+      "line": 206,
+      "text": "export async function readOpenCodeWorkerTelemetry(packetId: string, workerId: string): Promise<OpenCodeWorkerTelemetry> {"
+    },
+    {
+      "path": "src/opencode-worker.ts",
+      "line": 19,
+      "text": "export type WorkerState = \"RUNNING\" | \"SUCCEEDED\" | \"FAILED\" | \"UNKNOWN_EXIT\";"
+    },
+    {
+      "path": "src/opencode-worker.ts",
+      "line": 21,
+      "text": "export interface StartOpenCodeWorkerInput {"
+    },
+    {
+      "path": "src/opencode-worker.ts",
+      "line": 32,
+      "text": "export interface WorkerStatus {"
+    },
+    {
+      "path": "src/opencode-worker.ts",
+      "line": 61,
+      "text": "function createWorkerId(packetId: string): string {"
+    },
+    {
+      "path": "src/opencode-worker.ts",
+      "line": 75,
+      "text": "function sha256String(input: string): string {"
+    },
+    {
+      "path": "src/opencode-worker.ts",
+      "line": 79,
+      "text": "function resolveWorkspace(targetWorkspaceId: string): string {"
+    },
+    {
+      "path": "src/opencode-worker.ts",
+      "line": 87,
+      "text": "function resolvePromptPath(promptFile: string): string {"
+    },
+    {
+      "path": "src/opencode-worker.ts",
+      "line": 101,
+      "text": "async function assertPromptFile(promptPath: string): Promise<string> {"
+    },
+    {
+      "path": "src/opencode-worker.ts",
+      "line": 116,
+      "text": "function workerRoot(packetId: string): string {"
+    },
+    {
+      "path": "src/opencode-worker.ts",
+      "line": 120,
+      "text": "function workerDir(packetId: string, workerId: string): string {"
+    },
+    {
+      "path": "src/opencode-worker.ts",
+      "line": 124,
+      "text": "function sanitizeEnv(): Record<string, string> {"
+    },
+    {
+      "path": "src/opencode-worker.ts",
+      "line": 135,
+      "text": "async function readJsonFile<T>(filePath: string): Promise<T> {"
+    },
+    {
+      "path": "src/opencode-worker.ts",
+      "line": 139,
+      "text": "async function writeStatus(status: WorkerStatus): Promise<void> {"
+    },
+    {
+      "path": "src/opencode-worker.ts",
+      "line": 143,
+      "text": "function processIsActive(pid: number): boolean {"
+    },
+    {
+      "path": "src/opencode-worker.ts",
+      "line": 152,
+      "text": "async function findActiveWorkerForPacket(packetId: string): Promise<WorkerStatus | null> {"
+    },
+    {
+      "path": "src/opencode-worker.ts",
+      "line": 175,
+      "text": "function clampReadChars(maxChars?: number): number {"
+    },
+    {
+      "path": "src/opencode-worker.ts",
+      "line": 180,
+      "text": "export async function startOpenCodeWorker(input: StartOpenCodeWorkerInput): Promise<WorkerStatus> {"
+    },
+    {
+      "path": "src/opencode-worker.ts",
+      "line": 318,
+      "text": "export async function getOpenCodeWorkerStatus(packetId: string, workerId: string): Promise<WorkerStatus> {"
+    },
+    {
+      "path": "src/opencode-worker.ts",
+      "line": 334,
+      "text": "export async function readOpenCodeWorkerResult(packetId: string, workerId: string, maxChars?: number) {"
+    },
+    {
+      "path": "src/opencode-worker.ts",
+      "line": 338,
+      "text": "async function readBounded(filePath: string): Promise<{ content: string; truncated: boolean; totalChars: number }> {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 29,
+      "text": "async function git(args: string[]): Promise<string> {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 38,
+      "text": "async function gitSucceeds(args: string[]): Promise<boolean> {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 51,
+      "text": "async function resolveCommitShort(commit: string | null): Promise<string | null> {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 63,
+      "text": "async function commitIsAncestor("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 79,
+      "text": "async function findArtifactCommit("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 106,
+      "text": "async function listDir(relativePath: string): Promise<string[]> {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 116,
+      "text": "function normalizeRepoRelativePath(inputPath: string): string {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 139,
+      "text": "async function readRepoTextFile(inputPath: string): Promise<string> {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 146,
+      "text": "function clampMaxChars(value: number | undefined): number {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 1122,
+      "text": "function structuredJsonResult<T extends Record<string, unknown>>(result: T) {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 1134,
+      "text": "function isValidPacketId(packetId: string): boolean {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 1138,
+      "text": "function getSafeOpencodeArtifactDir("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 1146,
+      "text": "function getOpenCodeStatus(): Record<string, unknown> {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 1163,
+      "text": "function getOpencodeCapabilities(): Record<string, unknown> {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 1200,
+      "text": "function getRemoteRunnerBaseUrl(): string | null {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 1213,
+      "text": "function getRemoteRunnerEndpointLabel(baseUrl: string | null): string {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 1221,
+      "text": "function getRemoteRunnerCapabilitiesUrl(baseUrl: string): string {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 1225,
+      "text": "function getRemoteRunnerAuthHeaders(): Record<string, string> {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 1240,
+      "text": "function getStringArrayField("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 1253,
+      "text": "async function fetchRemoteRunnerCapabilities("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 1313,
+      "text": "async function getRemoteRunnerStatus(): Promise<Record<string, unknown>> {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 1487,
+      "text": "async function validateOpencodeRunRequest("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 1571,
+      "text": "function createRequestId(): string {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 1584,
+      "text": "function getSafeRequestArtifactPath(packetId: string, requestId: string): string {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 1588,
+      "text": "function getSafeRequestArtifactDir(packetId: string): string {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 1592,
+      "text": "function isValidRequestId(requestId: string): boolean {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 1596,
+      "text": "function assertValidPacketId(packetId: string): void {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 1602,
+      "text": "function assertValidRequestId(requestId: string): void {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 1608,
+      "text": "async function listOpencodeRunRequests("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 1636,
+      "text": "async function readOpencodeRunRequest("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 1673,
+      "text": "function getStringField("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 1682,
+      "text": "async function validateRemoteRunnerRequest("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 1970,
+      "text": "function getRemoteRunnerValidateRequestUrl(baseUrl: string): string {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 1974,
+      "text": "async function sha256RepoFile(relativePath: string): Promise<string> {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 1981,
+      "text": "function getBooleanField("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 1990,
+      "text": "function getReasonCodes(value: Record<string, unknown>): string[] {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 2000,
+      "text": "async function postRemoteRunnerValidateRequest("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 2065,
+      "text": "async function validateRemoteRunnerEndpointRequest("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 2341,
+      "text": "function gatePassed(value: unknown): boolean {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 2345,
+      "text": "function getPreflightGateState(passed: boolean, blocked = false): PreflightGateState {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 2353,
+      "text": "function getUniqueReasons(reasons: string[]): string[] {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 2357,
+      "text": "async function validateExecutionPreflight("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 2806,
+      "text": "function getSafeExecutionDryRunArtifactDir("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 2814,
+      "text": "async function repoFileExists(relativePath: string): Promise<boolean> {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 2830,
+      "text": "async function writeJsonRepoArtifact("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 2854,
+      "text": "async function recordExecutionArtifactDryRun("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 3111,
+      "text": "async function readJsonRepoArtifact("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 3132,
+      "text": "function hasReason(value: Record<string, unknown> | null, reason: string): boolean {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 3140,
+      "text": "function fieldEquals("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 3152,
+      "text": "function artifactHasPacketAndRequest("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 3164,
+      "text": "async function verifyExecutionArtifactDryRun("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 3451,
+      "text": "async function repoTextIncludes("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 3464,
+      "text": "async function getExecutionEnablementStatus("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 3700,
+      "text": "async function getExecutionDisableSwitchStatus("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 3815,
+      "text": "function addReason(reasons: string[], ...reasonCodes: string[]): void {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 3821,
+      "text": "function getFirstStringField("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 3836,
+      "text": "function hasForbiddenCommitValue(value: string | null): boolean {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 3844,
+      "text": "function getExpectedCanonicalApprovalText("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 3850,
+      "text": "function getRealHumanApprovalCanonicalText("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 3857,
+      "text": "function textContainsSecretLikeMaterial(value: string | null): boolean {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 3882,
+      "text": "function notesContainSecretLikeMaterial(notes: string[]): boolean {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 3886,
+      "text": "function operatorIdLooksNonSecret(operatorId: string): boolean {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 3898,
+      "text": "function approvalTextMatchesCanonical("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 3920,
+      "text": "function isValidApprovalId(value: string): boolean {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 3924,
+      "text": "function getSafeApprovalArtifactPath(packetId: string, approvalId: string): string {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 3939,
+      "text": "async function findApprovalPacketIdByApprovalId("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 3959,
+      "text": "function isValidConsumptionId(value: string): boolean {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 3971,
+      "text": "function getScopeMatchesExpected("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 3989,
+      "text": "function getApprovalValidationObjectValid("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 4009,
+      "text": "async function findValidApprovalConsumptionEvidence("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 4151,
+      "text": "function hasForbiddenScopeValue(value: string | null): boolean {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 4161,
+      "text": "function getObjectField("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 4178,
+      "text": "function containsApprovalSecretMaterial(raw: string): boolean {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 4194,
+      "text": "function parseTimestamp(value: string | null): Date | null {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 4208,
+      "text": "function approvalTextLooksExplicit(value: string | null): boolean {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 4227,
+      "text": "async function repoArtifactCommitted(relativePath: string): Promise<boolean> {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 4240,
+      "text": "async function validateHumanApprovalRecord("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 4737,
+      "text": "function createApprovalId(): string {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 4750,
+      "text": "function createConsumptionId(): string {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 4763,
+      "text": "function createStartAttemptId(): string {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 4776,
+      "text": "function getSafeApprovalConsumptionArtifactPath("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 4794,
+      "text": "async function recordHumanApprovalEvidenceDryRunFixture("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 5044,
+      "text": "async function recordRealHumanApprovalEvidence("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 5356,
+      "text": "async function recordHumanApprovalConsumption("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 5661,
+      "text": "function getRemoteRunnerStartRunUrl(baseUrl: string): string {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 5665,
+      "text": "function isValidRunnerRunId(value: string): boolean {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 5669,
+      "text": "async function postRemoteRunnerStartRun("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 5750,
+      "text": "function isRunnerStartContractStatus("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 5762,
+      "text": "function deriveRunnerStartStateStatus(params: {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 5810,
+      "text": "async function writeStartStateArtifact("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 5835,
+      "text": "function baseStartRemoteRunnerResult(params: {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 5978,
+      "text": "function getStartRequestArtifactRejectionReasons(params: {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 6033,
+      "text": "function getSafePreStartEvidencePath("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 6045,
+      "text": "function getStringArrayFromUnknown(value: unknown): string[] {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 6053,
+      "text": "async function getCurrentRepoBranch(): Promise<string> {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 6063,
+      "text": "function getStartHumanApprovalGateBlockedReasons(params: {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 6095,
+      "text": "async function validatePreStartEvidence("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 6369,
+      "text": "async function recordPreStartEvidenceDryRun("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 6593,
+      "text": "function getSafeStartStateSnapshotBasePath("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 6604,
+      "text": "function isBoundaryFalse(value: Record<string, unknown>, key: string): boolean {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 6608,
+      "text": "function isBoundaryNull(value: Record<string, unknown>, key: string): boolean {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 6612,
+      "text": "function validateStateSnapshotShape(params: {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 6705,
+      "text": "async function validateStartRequestStateSnapshot("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 6987,
+      "text": "function createStartStateSnapshotAttemptId(timestamp: string): string {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 6994,
+      "text": "async function recordStartStateSnapshotDryRun("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 7282,
+      "text": "function makeGuardedStartGate(params: {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 7302,
+      "text": "function fpMcp124ForgePilotRoot(): string {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 7315,
+      "text": "function fpMcp124ToRepoRelativePath(absolutePath: string): string {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 7319,
+      "text": "function fpMcp124Sha256File(filePath: string): string {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 7325,
+      "text": "function fpMcp124GlobApprovalEvidencePaths(approvalId: string): string[] {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 7358,
+      "text": "function fpMcp124ReadString(source: Record<string, unknown>, key: string): string | null {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 7364,
+      "text": "function fpMcp124ReadNestedRecord(source: Record<string, unknown>, key: string): Record<string, unknown> {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 7371,
+      "text": "function fpMcp124ReadScopedString("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 7380,
+      "text": "function deriveGuardedStartHumanApprovalEvidence(args: {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 7544,
+      "text": "function deriveGuardedStartEvidenceLedgerReadiness(args: {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 7682,
+      "text": "async function getGuardedStartPreflightReport("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 8093,
+      "text": "async function startRemoteRunnerRequest("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 8927,
+      "text": "function getRequestArtifactExpectedArtifacts(packetId: string): string[] {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 8937,
+      "text": "function getRequestArtifactRequiredVerification(): string[] {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 8963,
+      "text": "function getRequestArtifactAllowedActions(): string[] {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 8975,
+      "text": "function getRequestArtifactForbiddenActions(): string[] {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 8994,
+      "text": "function getBooleanFromRecord("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 9004,
+      "text": "function getStringFromRecord("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 9014,
+      "text": "async function createOpencodeRunRequestArtifact("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 9240,
+      "text": "function sanitizeToolErrorCode(error: unknown): string {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 9253,
+      "text": "async function runLoggedTool<T>("
+    },
+    {
+      "path": "src/server.ts",
+      "line": 9280,
+      "text": "function createMcpServer(): McpServer {"
+    },
+    {
+      "path": "src/server.ts",
+      "line": 10268,
+      "text": "function getHeader(req: IncomingMessage, name: string): string | undefined {"
+    },
+    {
+      "path": "src/terminal-command.ts",
+      "line": 14,
+      "text": "export type RiskLevel ="
+    },
+    {
+      "path": "src/terminal-command.ts",
+      "line": 24,
+      "text": "export interface ExecuteTerminalCommandInput {"
+    },
+    {
+      "path": "src/terminal-command.ts",
+      "line": 34,
+      "text": "export interface ExecuteTerminalCommandOutput {"
+    },
+    {
+      "path": "src/terminal-command.ts",
+      "line": 85,
+      "text": "function createTerminalCommandRequestId(): string {"
+    },
+    {
+      "path": "src/terminal-command.ts",
+      "line": 101,
+      "text": "function sha256String(input: string): string {"
+    },
+    {
+      "path": "src/terminal-command.ts",
+      "line": 105,
+      "text": "function resolveWorkspacePath(targetWorkspaceId: string): string | null {"
+    },
+    {
+      "path": "src/terminal-command.ts",
+      "line": 111,
+      "text": "function resolveWorkingDirectory("
+    },
+    {
+      "path": "src/terminal-command.ts",
+      "line": 313,
+      "text": "function getExecutablePolicyText(command: string): string {"
+    },
+    {
+      "path": "src/terminal-command.ts",
+      "line": 338,
+      "text": "function consumeTerminalRateLimit(nowMs = Date.now()): string[] {"
+    },
+    {
+      "path": "src/terminal-command.ts",
+      "line": 358,
+      "text": "function getLongRunningGuidanceReasons(command: string): string[] {"
+    },
+    {
+      "path": "src/terminal-command.ts",
+      "line": 373,
+      "text": "function classifyRisk(command: string): {"
+    },
+    {
+      "path": "src/terminal-command.ts",
+      "line": 488,
+      "text": "function getBlockReasons(command: string): string[] {"
+    },
+    {
+      "path": "src/terminal-command.ts",
+      "line": 501,
+      "text": "async function runGitCommand("
+    },
+    {
+      "path": "src/terminal-command.ts",
+      "line": 517,
+      "text": "function isGitRepo(cwd: string): Promise<boolean> {"
+    },
+    {
+      "path": "src/terminal-command.ts",
+      "line": 523,
+      "text": "function getSanitizedEnv(): Record<string, string> {"
+    },
+    {
+      "path": "src/terminal-command.ts",
+      "line": 546,
+      "text": "async function executeCommand("
+    },
+    {
+      "path": "src/terminal-command.ts",
+      "line": 602,
+      "text": "function truncateOutput(text: string, maxChars: number): {"
+    },
+    {
+      "path": "src/terminal-command.ts",
+      "line": 612,
+      "text": "async function writeEvidenceFile("
+    },
+    {
+      "path": "src/terminal-command.ts",
+      "line": 623,
+      "text": "async function captureGitStatus(cwd: string): Promise<string | null> {"
+    },
+    {
+      "path": "src/terminal-command.ts",
+      "line": 629,
+      "text": "export async function executeTerminalCommand("
+    },
+    {
+      "path": "src/terminal-command.ts",
+      "line": 679,
+      "text": "async function writeRefusalResult("
+    },
+    {
+      "path": "src/workspace-snapshot.ts",
+      "line": 14,
+      "text": "export interface CaptureWorkspaceSnapshotInput {"
+    },
+    {
+      "path": "src/workspace-snapshot.ts",
+      "line": 29,
+      "text": "async function fixedCommand("
+    },
+    {
+      "path": "src/workspace-snapshot.ts",
+      "line": 61,
+      "text": "async function gitValue(cwd: string, args: string[]): Promise<string | null> {"
+    },
+    {
+      "path": "src/workspace-snapshot.ts",
+      "line": 66,
+      "text": "async function repoState(label: string, repoPath: string) {"
+    },
+    {
+      "path": "src/workspace-snapshot.ts",
+      "line": 81,
+      "text": "async function serviceState(serviceName: string) {"
+    },
+    {
+      "path": "src/workspace-snapshot.ts",
+      "line": 91,
+      "text": "async function listNames(dir: string, limit: number): Promise<string[]> {"
+    },
+    {
+      "path": "src/workspace-snapshot.ts",
+      "line": 99,
+      "text": "async function pathPresence(targetPath: string) {"
+    },
+    {
+      "path": "src/workspace-snapshot.ts",
+      "line": 122,
+      "text": "async function processSummary(include: boolean) {"
+    },
+    {
+      "path": "src/workspace-snapshot.ts",
+      "line": 134,
+      "text": "async function listenerSummary(include: boolean) {"
+    },
+    {
+      "path": "src/workspace-snapshot.ts",
+      "line": 146,
+      "text": "async function recentEvidence(include: boolean, limit = 40) {"
+    },
+    {
+      "path": "src/workspace-snapshot.ts",
+      "line": 150,
+      "text": "async function walk(dir: string): Promise<void> {"
+    },
+    {
+      "path": "src/workspace-snapshot.ts",
+      "line": 185,
+      "text": "function createSnapshotId(capturedAt: string): string {"
+    },
+    {
+      "path": "src/workspace-snapshot.ts",
+      "line": 191,
+      "text": "export async function captureWorkspaceSnapshot(input: CaptureWorkspaceSnapshotInput) {"
+    }
+  ]
+}

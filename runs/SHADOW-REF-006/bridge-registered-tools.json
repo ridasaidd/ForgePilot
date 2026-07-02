@@ -1,0 +1,122 @@
+{
+  "packet_id": "SHADOW-REF-006",
+  "tool_count": 29,
+  "tools": [
+    {
+      "name": "forgepilot_status",
+      "line": 9286
+    },
+    {
+      "name": "forgepilot_get_opencode_status",
+      "line": 9329
+    },
+    {
+      "name": "forgepilot_get_opencode_capabilities",
+      "line": 9350
+    },
+    {
+      "name": "forgepilot_get_remote_runner_status",
+      "line": 9372
+    },
+    {
+      "name": "forgepilot_list_packets",
+      "line": 9394
+    },
+    {
+      "name": "forgepilot_list_runs",
+      "line": 9428
+    },
+    {
+      "name": "forgepilot_validate_opencode_run_request",
+      "line": 9461
+    },
+    {
+      "name": "forgepilot_create_opencode_run_request",
+      "line": 9487
+    },
+    {
+      "name": "forgepilot_list_opencode_run_requests",
+      "line": 9519
+    },
+    {
+      "name": "forgepilot_read_opencode_run_request",
+      "line": 9544
+    },
+    {
+      "name": "forgepilot_validate_remote_runner_request",
+      "line": 9569
+    },
+    {
+      "name": "forgepilot_validate_remote_runner_endpoint_request",
+      "line": 9594
+    },
+    {
+      "name": "forgepilot_validate_execution_preflight",
+      "line": 9625
+    },
+    {
+      "name": "forgepilot_record_execution_artifact_dry_run",
+      "line": 9655
+    },
+    {
+      "name": "forgepilot_verify_execution_artifact_dry_run",
+      "line": 9683
+    },
+    {
+      "name": "forgepilot_get_execution_enablement_status",
+      "line": 9718
+    },
+    {
+      "name": "forgepilot_get_execution_disable_switch_status",
+      "line": 9746
+    },
+    {
+      "name": "forgepilot_record_real_human_approval_evidence",
+      "line": 9783
+    },
+    {
+      "name": "forgepilot_record_human_approval_consumption",
+      "line": 9852
+    },
+    {
+      "name": "forgepilot_record_human_approval_evidence_dry_run_fixture",
+      "line": 9912
+    },
+    {
+      "name": "forgepilot_validate_human_approval_record",
+      "line": 9954
+    },
+    {
+      "name": "forgepilot_record_pre_start_evidence_dry_run",
+      "line": 9996
+    },
+    {
+      "name": "forgepilot_validate_pre_start_evidence",
+      "line": 10031
+    },
+    {
+      "name": "forgepilot_validate_start_request_state_snapshot",
+      "line": 10059
+    },
+    {
+      "name": "forgepilot_record_start_state_snapshot_dry_run",
+      "line": 10088
+    },
+    {
+      "name": "forgepilot_get_guarded_start_preflight_report",
+      "line": 10122
+    },
+    {
+      "name": "forgepilot_start_remote_runner_request",
+      "line": 10152
+    },
+    {
+      "name": "forgepilot_read_file",
+      "line": 10186
+    },
+    {
+      "name": "forgepilot_execute_terminal_command",
+      "line": 10227
+    }
+  ]
+}

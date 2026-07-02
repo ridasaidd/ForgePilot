@@ -1,0 +1,22 @@
+{
+  "packet_id": "SHADOW-REF-006",
+  "result": "SHADOW_REF_006_BASELINE_RECORDED_THROUGH_V1O_PATH",
+  "sqlite_packet_id": 2,
+  "evidence_id": 3,
+  "run_id": "SHADOW-REF-006-BASELINE-CAPTURE",
+  "evidence_admission_state": "ADMITTED",
+  "generic_admission_event_id": 3,
+  "generic_admission_decision": "ADMITTED",
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "artifact_paths": [
+    "runs/SHADOW-REF-006/bridge-baseline-summary.json",
+    "runs/SHADOW-REF-006/bridge-source-hashes.tsv",
+    "runs/SHADOW-REF-006/bridge-tool-contract-snapshot.json",
+    "runs/SHADOW-REF-006/bridge-registered-tools.json",
+    "runs/SHADOW-REF-006/bridge-build-output.log",
+    "runs/SHADOW-REF-006/bridge-test-output.log",
+    "runs/SHADOW-REF-006/current-bridge-status-after-verification.json"
+  ]
+}

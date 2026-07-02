@@ -1,0 +1,256 @@
+# Bridge Tool Contract Snapshot
+
+## Tool registration markers
+
+- L9281: `const mcpServer = new McpServer({`
+- L9286: `mcpServer.registerTool(`
+- L9329: `mcpServer.registerTool(`
+- L9350: `mcpServer.registerTool(`
+- L9372: `mcpServer.registerTool(`
+- L9394: `mcpServer.registerTool(`
+- L9428: `mcpServer.registerTool(`
+- L9461: `mcpServer.registerTool(`
+- L9487: `mcpServer.registerTool(`
+- L9519: `mcpServer.registerTool(`
+- L9544: `mcpServer.registerTool(`
+- L9569: `mcpServer.registerTool(`
+- L9594: `mcpServer.registerTool(`
+- L9625: `mcpServer.registerTool(`
+- L9655: `mcpServer.registerTool(`
+- L9683: `mcpServer.registerTool(`
+- L9718: `mcpServer.registerTool(`
+- L9746: `mcpServer.registerTool(`
+- L9783: `mcpServer.registerTool(`
+- L9852: `mcpServer.registerTool(`
+- L9912: `mcpServer.registerTool(`
+- L9954: `mcpServer.registerTool(`
+- L9996: `mcpServer.registerTool(`
+- L10031: `mcpServer.registerTool(`
+- L10059: `mcpServer.registerTool(`
+- L10088: `mcpServer.registerTool(`
+- L10122: `mcpServer.registerTool(`
+- L10152: `mcpServer.registerTool(`
+- L10186: `mcpServer.registerTool(`
+- L10227: `mcpServer.registerTool(`
+
+## Source surface markers
+
+- src/auth.ts:3: `export type AuthMode = "bearer" | "oidc";`
+- src/auth.ts:5: `export type AuthResult =`
+- src/auth.ts:27: `function extractBearerToken(authorizationHeader: string | undefined): string | undefined {`
+- src/auth.ts:36: `function getJwks() {`
+- src/auth.ts:48: `async function verifyLegacyBearer(token: string | undefined): Promise<AuthResult> {`
+- src/auth.ts:72: `async function verifyOidcBearer(token: string | undefined): Promise<AuthResult> {`
+- src/auth.ts:110: `export async function authorizeRequest(`
+- src/oauthMetadata.ts:1: `export function getPublicBaseUrl(): string {`
+- src/oauthMetadata.ts:11: `export function getOidcIssuer(): string {`
+- src/oauthMetadata.ts:21: `export function getProtectedResourceMetadata() {`
+- src/oauthMetadata.ts:33: `export function getProtectedResourceMetadataUrl(): string {`
+- src/oauthMetadata.ts:37: `export function getWwwAuthenticateHeader(): string {`
+- src/opencode-worker-telemetry-persistence.ts:10: `export interface PersistOpenCodeWorkerTelemetryInput {`
+- src/opencode-worker-telemetry-persistence.ts:16: `export interface PersistedWorkerTelemetryRow {`
+- src/opencode-worker-telemetry-persistence.ts:54: `export interface QueryPersistedOpenCodeWorkerTelemetryInput {`
+- src/opencode-worker-telemetry-persistence.ts:63: `export interface QueryPersistedOpenCodeWorkerTelemetryResult {`
+- src/opencode-worker-telemetry-persistence.ts:71: `export interface PersistWorkerTelemetryResult {`
+- src/opencode-worker-telemetry-persistence.ts:77: `function telemetryArtifactPath(packetId: string, workerId: string): string {`
+- src/opencode-worker-telemetry-persistence.ts:81: `function sanitizedEnv(): NodeJS.ProcessEnv {`
+- src/opencode-worker-telemetry-persistence.ts:92: `function extractCliError(error: unknown): string {`
+- src/opencode-worker-telemetry-persistence.ts:107: `async function runForgePilotJson(args: string[]): Promise<unknown> {`
+- src/opencode-worker-telemetry-persistence.ts:128: `export async function persistOpenCodeWorkerTelemetryViaForgePilot(`
+- src/opencode-worker-telemetry-persistence.ts:143: `export async function readPersistedOpenCodeWorkerTelemetryViaForgePilot(`
+- src/opencode-worker-telemetry-persistence.ts:158: `export async function queryPersistedOpenCodeWorkerTelemetryViaForgePilot(`
+- src/opencode-worker-telemetry.ts:10: `export interface CaptureOpenCodeWorkerTelemetryInput {`
+- src/opencode-worker-telemetry.ts:16: `export type TerminalStateClassification =`
+- src/opencode-worker-telemetry.ts:22: `export interface ArtifactTelemetry {`
+- src/opencode-worker-telemetry.ts:29: `export interface OpenCodeWorkerTelemetry {`
+- src/opencode-worker-telemetry.ts:66: `function workerDir(packetId: string, workerId: string): string {`
+- src/opencode-worker-telemetry.ts:70: `function telemetryPath(packetId: string, workerId: string): string {`
+- src/opencode-worker-telemetry.ts:74: `async function artifactTelemetry(filePath: string): Promise<ArtifactTelemetry> {`
+- src/opencode-worker-telemetry.ts:92: `function durationMs(status: WorkerStatus): number | null {`
+- src/opencode-worker-telemetry.ts:100: `function classifyTerminalState(status: WorkerStatus["status"]): TerminalStateClassification {`
+- src/opencode-worker-telemetry.ts:113: `function requiredFieldsPresent(status: WorkerStatus): boolean {`
+- src/opencode-worker-telemetry.ts:129: `function provenanceComplete(status: WorkerStatus, artifacts: OpenCodeWorkerTelemetry["artifacts"]): boolean {`
+- src/opencode-worker-telemetry.ts:143: `export async function captureOpenCodeWorkerTelemetry(input: CaptureOpenCodeWorkerTelemetryInput): Promise<OpenCodeWorkerTelemetry> {`
+- src/opencode-worker-telemetry.ts:206: `export async function readOpenCodeWorkerTelemetry(packetId: string, workerId: string): Promise<OpenCodeWorkerTelemetry> {`
+- src/opencode-worker.ts:19: `export type WorkerState = "RUNNING" | "SUCCEEDED" | "FAILED" | "UNKNOWN_EXIT";`
+- src/opencode-worker.ts:21: `export interface StartOpenCodeWorkerInput {`
+- src/opencode-worker.ts:32: `export interface WorkerStatus {`
+- src/opencode-worker.ts:61: `function createWorkerId(packetId: string): string {`
+- src/opencode-worker.ts:75: `function sha256String(input: string): string {`
+- src/opencode-worker.ts:79: `function resolveWorkspace(targetWorkspaceId: string): string {`
+- src/opencode-worker.ts:87: `function resolvePromptPath(promptFile: string): string {`
+- src/opencode-worker.ts:101: `async function assertPromptFile(promptPath: string): Promise<string> {`
+- src/opencode-worker.ts:116: `function workerRoot(packetId: string): string {`
+- src/opencode-worker.ts:120: `function workerDir(packetId: string, workerId: string): string {`
+- src/opencode-worker.ts:124: `function sanitizeEnv(): Record<string, string> {`
+- src/opencode-worker.ts:135: `async function readJsonFile<T>(filePath: string): Promise<T> {`
+- src/opencode-worker.ts:139: `async function writeStatus(status: WorkerStatus): Promise<void> {`
+- src/opencode-worker.ts:143: `function processIsActive(pid: number): boolean {`
+- src/opencode-worker.ts:152: `async function findActiveWorkerForPacket(packetId: string): Promise<WorkerStatus | null> {`
+- src/opencode-worker.ts:175: `function clampReadChars(maxChars?: number): number {`
+- src/opencode-worker.ts:180: `export async function startOpenCodeWorker(input: StartOpenCodeWorkerInput): Promise<WorkerStatus> {`
+- src/opencode-worker.ts:318: `export async function getOpenCodeWorkerStatus(packetId: string, workerId: string): Promise<WorkerStatus> {`
+- src/opencode-worker.ts:334: `export async function readOpenCodeWorkerResult(packetId: string, workerId: string, maxChars?: number) {`
+- src/opencode-worker.ts:338: `async function readBounded(filePath: string): Promise<{ content: string; truncated: boolean; totalChars: number }> {`
+- src/server.ts:29: `async function git(args: string[]): Promise<string> {`
+- src/server.ts:38: `async function gitSucceeds(args: string[]): Promise<boolean> {`
+- src/server.ts:51: `async function resolveCommitShort(commit: string | null): Promise<string | null> {`
+- src/server.ts:63: `async function commitIsAncestor(`
+- src/server.ts:79: `async function findArtifactCommit(`
+- src/server.ts:106: `async function listDir(relativePath: string): Promise<string[]> {`
+- src/server.ts:116: `function normalizeRepoRelativePath(inputPath: string): string {`
+- src/server.ts:139: `async function readRepoTextFile(inputPath: string): Promise<string> {`
+- src/server.ts:146: `function clampMaxChars(value: number | undefined): number {`
+- src/server.ts:1122: `function structuredJsonResult<T extends Record<string, unknown>>(result: T) {`
+- src/server.ts:1134: `function isValidPacketId(packetId: string): boolean {`
+- src/server.ts:1138: `function getSafeOpencodeArtifactDir(`
+- src/server.ts:1146: `function getOpenCodeStatus(): Record<string, unknown> {`
+- src/server.ts:1163: `function getOpencodeCapabilities(): Record<string, unknown> {`
+- src/server.ts:1200: `function getRemoteRunnerBaseUrl(): string | null {`
+- src/server.ts:1213: `function getRemoteRunnerEndpointLabel(baseUrl: string | null): string {`
+- src/server.ts:1221: `function getRemoteRunnerCapabilitiesUrl(baseUrl: string): string {`
+- src/server.ts:1225: `function getRemoteRunnerAuthHeaders(): Record<string, string> {`
+- src/server.ts:1240: `function getStringArrayField(`
+- src/server.ts:1253: `async function fetchRemoteRunnerCapabilities(`
+- src/server.ts:1313: `async function getRemoteRunnerStatus(): Promise<Record<string, unknown>> {`
+- src/server.ts:1487: `async function validateOpencodeRunRequest(`
+- src/server.ts:1571: `function createRequestId(): string {`
+- src/server.ts:1584: `function getSafeRequestArtifactPath(packetId: string, requestId: string): string {`
+- src/server.ts:1588: `function getSafeRequestArtifactDir(packetId: string): string {`
+- src/server.ts:1592: `function isValidRequestId(requestId: string): boolean {`
+- src/server.ts:1596: `function assertValidPacketId(packetId: string): void {`
+- src/server.ts:1602: `function assertValidRequestId(requestId: string): void {`
+- src/server.ts:1608: `async function listOpencodeRunRequests(`
+- src/server.ts:1636: `async function readOpencodeRunRequest(`
+- src/server.ts:1673: `function getStringField(`
+- src/server.ts:1682: `async function validateRemoteRunnerRequest(`
+- src/server.ts:1970: `function getRemoteRunnerValidateRequestUrl(baseUrl: string): string {`
+- src/server.ts:1974: `async function sha256RepoFile(relativePath: string): Promise<string> {`
+- src/server.ts:1981: `function getBooleanField(`
+- src/server.ts:1990: `function getReasonCodes(value: Record<string, unknown>): string[] {`
+- src/server.ts:2000: `async function postRemoteRunnerValidateRequest(`
+- src/server.ts:2065: `async function validateRemoteRunnerEndpointRequest(`
+- src/server.ts:2341: `function gatePassed(value: unknown): boolean {`
+- src/server.ts:2345: `function getPreflightGateState(passed: boolean, blocked = false): PreflightGateState {`
+- src/server.ts:2353: `function getUniqueReasons(reasons: string[]): string[] {`
+- src/server.ts:2357: `async function validateExecutionPreflight(`
+- src/server.ts:2806: `function getSafeExecutionDryRunArtifactDir(`
+- src/server.ts:2814: `async function repoFileExists(relativePath: string): Promise<boolean> {`
+- src/server.ts:2830: `async function writeJsonRepoArtifact(`
+- src/server.ts:2854: `async function recordExecutionArtifactDryRun(`
+- src/server.ts:3111: `async function readJsonRepoArtifact(`
+- src/server.ts:3132: `function hasReason(value: Record<string, unknown> | null, reason: string): boolean {`
+- src/server.ts:3140: `function fieldEquals(`
+- src/server.ts:3152: `function artifactHasPacketAndRequest(`
+- src/server.ts:3164: `async function verifyExecutionArtifactDryRun(`
+- src/server.ts:3451: `async function repoTextIncludes(`
+- src/server.ts:3464: `async function getExecutionEnablementStatus(`
+- src/server.ts:3700: `async function getExecutionDisableSwitchStatus(`
+- src/server.ts:3815: `function addReason(reasons: string[], ...reasonCodes: string[]): void {`
+- src/server.ts:3821: `function getFirstStringField(`
+- src/server.ts:3836: `function hasForbiddenCommitValue(value: string | null): boolean {`
+- src/server.ts:3844: `function getExpectedCanonicalApprovalText(`
+- src/server.ts:3850: `function getRealHumanApprovalCanonicalText(`
+- src/server.ts:3857: `function textContainsSecretLikeMaterial(value: string | null): boolean {`
+- src/server.ts:3882: `function notesContainSecretLikeMaterial(notes: string[]): boolean {`
+- src/server.ts:3886: `function operatorIdLooksNonSecret(operatorId: string): boolean {`
+- src/server.ts:3898: `function approvalTextMatchesCanonical(`
+- src/server.ts:3920: `function isValidApprovalId(value: string): boolean {`
+- src/server.ts:3924: `function getSafeApprovalArtifactPath(packetId: string, approvalId: string): string {`
+- src/server.ts:3939: `async function findApprovalPacketIdByApprovalId(`
+- src/server.ts:3959: `function isValidConsumptionId(value: string): boolean {`
+- src/server.ts:3971: `function getScopeMatchesExpected(`
+- src/server.ts:3989: `function getApprovalValidationObjectValid(`
+- src/server.ts:4009: `async function findValidApprovalConsumptionEvidence(`
+- src/server.ts:4151: `function hasForbiddenScopeValue(value: string | null): boolean {`
+- src/server.ts:4161: `function getObjectField(`
+- src/server.ts:4178: `function containsApprovalSecretMaterial(raw: string): boolean {`
+- src/server.ts:4194: `function parseTimestamp(value: string | null): Date | null {`
+- src/server.ts:4208: `function approvalTextLooksExplicit(value: string | null): boolean {`
+- src/server.ts:4227: `async function repoArtifactCommitted(relativePath: string): Promise<boolean> {`
+- src/server.ts:4240: `async function validateHumanApprovalRecord(`
+- src/server.ts:4737: `function createApprovalId(): string {`
+- src/server.ts:4750: `function createConsumptionId(): string {`
+- src/server.ts:4763: `function createStartAttemptId(): string {`
+- src/server.ts:4776: `function getSafeApprovalConsumptionArtifactPath(`
+- src/server.ts:4794: `async function recordHumanApprovalEvidenceDryRunFixture(`
+- src/server.ts:5044: `async function recordRealHumanApprovalEvidence(`
+- src/server.ts:5356: `async function recordHumanApprovalConsumption(`
+- src/server.ts:5661: `function getRemoteRunnerStartRunUrl(baseUrl: string): string {`
+- src/server.ts:5665: `function isValidRunnerRunId(value: string): boolean {`
+- src/server.ts:5669: `async function postRemoteRunnerStartRun(`
+- src/server.ts:5750: `function isRunnerStartContractStatus(`
+- src/server.ts:5762: `function deriveRunnerStartStateStatus(params: {`
+- src/server.ts:5810: `async function writeStartStateArtifact(`
+- src/server.ts:5835: `function baseStartRemoteRunnerResult(params: {`
+- src/server.ts:5978: `function getStartRequestArtifactRejectionReasons(params: {`
+- src/server.ts:6033: `function getSafePreStartEvidencePath(`
+- src/server.ts:6045: `function getStringArrayFromUnknown(value: unknown): string[] {`
+- src/server.ts:6053: `async function getCurrentRepoBranch(): Promise<string> {`
+- src/server.ts:6063: `function getStartHumanApprovalGateBlockedReasons(params: {`
+- src/server.ts:6095: `async function validatePreStartEvidence(`
+- src/server.ts:6369: `async function recordPreStartEvidenceDryRun(`
+- src/server.ts:6593: `function getSafeStartStateSnapshotBasePath(`
+- src/server.ts:6604: `function isBoundaryFalse(value: Record<string, unknown>, key: string): boolean {`
+- src/server.ts:6608: `function isBoundaryNull(value: Record<string, unknown>, key: string): boolean {`
+- src/server.ts:6612: `function validateStateSnapshotShape(params: {`
+- src/server.ts:6705: `async function validateStartRequestStateSnapshot(`
+- src/server.ts:6987: `function createStartStateSnapshotAttemptId(timestamp: string): string {`
+- src/server.ts:6994: `async function recordStartStateSnapshotDryRun(`
+- src/server.ts:7282: `function makeGuardedStartGate(params: {`
+- src/server.ts:7302: `function fpMcp124ForgePilotRoot(): string {`
+- src/server.ts:7315: `function fpMcp124ToRepoRelativePath(absolutePath: string): string {`
+- src/server.ts:7319: `function fpMcp124Sha256File(filePath: string): string {`
+- src/server.ts:7325: `function fpMcp124GlobApprovalEvidencePaths(approvalId: string): string[] {`
+- src/server.ts:7358: `function fpMcp124ReadString(source: Record<string, unknown>, key: string): string | null {`
+- src/server.ts:7364: `function fpMcp124ReadNestedRecord(source: Record<string, unknown>, key: string): Record<string, unknown> {`
+- src/server.ts:7371: `function fpMcp124ReadScopedString(`
+- src/server.ts:7380: `function deriveGuardedStartHumanApprovalEvidence(args: {`
+- src/server.ts:7544: `function deriveGuardedStartEvidenceLedgerReadiness(args: {`
+- src/server.ts:7682: `async function getGuardedStartPreflightReport(`
+- src/server.ts:8093: `async function startRemoteRunnerRequest(`
+- src/server.ts:8927: `function getRequestArtifactExpectedArtifacts(packetId: string): string[] {`
+- src/server.ts:8937: `function getRequestArtifactRequiredVerification(): string[] {`
+- src/server.ts:8963: `function getRequestArtifactAllowedActions(): string[] {`
+- src/server.ts:8975: `function getRequestArtifactForbiddenActions(): string[] {`
+- src/server.ts:8994: `function getBooleanFromRecord(`
+- src/server.ts:9004: `function getStringFromRecord(`
+- src/server.ts:9014: `async function createOpencodeRunRequestArtifact(`
+- src/server.ts:9240: `function sanitizeToolErrorCode(error: unknown): string {`
+- src/server.ts:9253: `async function runLoggedTool<T>(`
+- src/server.ts:9280: `function createMcpServer(): McpServer {`
+- src/server.ts:10268: `function getHeader(req: IncomingMessage, name: string): string | undefined {`
+- src/terminal-command.ts:14: `export type RiskLevel =`
+- src/terminal-command.ts:24: `export interface ExecuteTerminalCommandInput {`
+- src/terminal-command.ts:34: `export interface ExecuteTerminalCommandOutput {`
+- src/terminal-command.ts:85: `function createTerminalCommandRequestId(): string {`
+- src/terminal-command.ts:101: `function sha256String(input: string): string {`
+- src/terminal-command.ts:105: `function resolveWorkspacePath(targetWorkspaceId: string): string | null {`
+- src/terminal-command.ts:111: `function resolveWorkingDirectory(`
+- src/terminal-command.ts:313: `function getExecutablePolicyText(command: string): string {`
+- src/terminal-command.ts:338: `function consumeTerminalRateLimit(nowMs = Date.now()): string[] {`
+- src/terminal-command.ts:358: `function getLongRunningGuidanceReasons(command: string): string[] {`
+- src/terminal-command.ts:373: `function classifyRisk(command: string): {`
+- src/terminal-command.ts:488: `function getBlockReasons(command: string): string[] {`
+- src/terminal-command.ts:501: `async function runGitCommand(`
+- src/terminal-command.ts:517: `function isGitRepo(cwd: string): Promise<boolean> {`
+- src/terminal-command.ts:523: `function getSanitizedEnv(): Record<string, string> {`
+- src/terminal-command.ts:546: `async function executeCommand(`
+- src/terminal-command.ts:602: `function truncateOutput(text: string, maxChars: number): {`
+- src/terminal-command.ts:612: `async function writeEvidenceFile(`
+- src/terminal-command.ts:623: `async function captureGitStatus(cwd: string): Promise<string | null> {`
+- src/terminal-command.ts:629: `export async function executeTerminalCommand(`
+- src/terminal-command.ts:679: `async function writeRefusalResult(`
+- src/workspace-snapshot.ts:14: `export interface CaptureWorkspaceSnapshotInput {`
+- src/workspace-snapshot.ts:29: `async function fixedCommand(`
+- src/workspace-snapshot.ts:61: `async function gitValue(cwd: string, args: string[]): Promise<string | null> {`
+- src/workspace-snapshot.ts:66: `async function repoState(label: string, repoPath: string) {`
+- src/workspace-snapshot.ts:81: `async function serviceState(serviceName: string) {`
+- src/workspace-snapshot.ts:91: `async function listNames(dir: string, limit: number): Promise<string[]> {`
+- src/workspace-snapshot.ts:99: `async function pathPresence(targetPath: string) {`
+- src/workspace-snapshot.ts:122: `async function processSummary(include: boolean) {`
+- src/workspace-snapshot.ts:134: `async function listenerSummary(include: boolean) {`
+- src/workspace-snapshot.ts:146: `async function recentEvidence(include: boolean, limit = 40) {`
+- src/workspace-snapshot.ts:150: `async function walk(dir: string): Promise<void> {`
+- src/workspace-snapshot.ts:185: `function createSnapshotId(capturedAt: string): string {`
+- src/workspace-snapshot.ts:191: `export async function captureWorkspaceSnapshot(input: CaptureWorkspaceSnapshotInput) {`

@@ -1,0 +1,7 @@
+{
+  "packet_id": "SHADOW-REF-006",
+  "branch": "feature/oauth-auth0",
+  "commit": "3a16d68",
+  "working_tree_clean": true,
+  "working_tree_status_short": ""
+}

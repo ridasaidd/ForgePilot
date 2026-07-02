@@ -1,0 +1,16 @@
+{
+  "packet_id": "SHADOW-REF-006",
+  "total_evidence_records": 3,
+  "total_generic_evidence_record_admission_events": 3,
+  "shadow_ref_006_record": {
+    "evidence_id": 3,
+    "run_id": "SHADOW-REF-006-BASELINE-CAPTURE",
+    "admission_state": "ADMITTED",
+    "trust_tier": "TIER_2_VERIFIED_ARTIFACT",
+    "validation_state": "VALID",
+    "generic_admission_event_id": 3,
+    "admission_decision": "ADMITTED",
+    "target_observation_type": "evidence_record"
+  },
+  "result": "SHADOW_REF_006_CANONICAL_EVIDENCE_PRESENT"
+}

@@ -33,3 +33,5 @@ runner/*.env
 
 # ForgePilot local task bundles
 .forgepilot/
+!runs/SHADOW-REF-006/bridge-build-output.log
+!runs/SHADOW-REF-006/bridge-test-output.log
