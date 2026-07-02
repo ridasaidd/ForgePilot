@@ -1,0 +1,20 @@
+{
+  "packet_id": "FP-MCP-170",
+  "result": "FP_MCP_170_NO_CONTACT_IMPLEMENTATION_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 38,
+  "run_id": "FP-MCP-170-NO-CONTACT-CONSUMING-ACTION-IMPLEMENTATION",
+  "generic_admission_event_id": 38,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "REAL_CONSUMING_ACTION_NO_CONTACT_SOURCE_VERIFIED_RUNNER_UNREACHABLE",
+  "bridge_commit": "2273e73",
+  "total_evidence_records": 38,
+  "total_generic_evidence_record_admission_events": 38,
+  "artifact_paths": [
+    "packets/FP-MCP-170.md",
+    "runs/FP-MCP-170/result-summary.md",
+    "runs/FP-MCP-170/implementation-result.md",
+    "runs/FP-MCP-170/implementation-result.json"
+  ]
+}
