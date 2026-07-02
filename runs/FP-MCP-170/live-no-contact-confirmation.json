@@ -1,0 +1,44 @@
+{
+  "packet_id": "FP-MCP-170",
+  "result": "REAL_CONSUMING_ACTION_NO_CONTACT_LIVE_CONFIRMED_RUNNER_UNREACHABLE",
+  "bridge_commit_under_test": "2273e73",
+  "runtime_call": "forgepilot_evaluate_consuming_action_no_contact",
+  "packetId": "FP-MCP-159",
+  "requestId": "REQ-20260702T143631238Z-4e3b750e",
+  "approvalId": "APPROVAL-20260702T183454722Z-d5c6f5f2",
+  "attemptId": "ATTEMPT-20260702T183530000Z-9a0b1c2d",
+  "contactConfirmation": "CONTACT_RUNNER_START_ENDPOINT_ONCE",
+  "checked_at": "2026-07-02T18:35:30.152Z",
+  "contactConfirmationAccepted": true,
+  "noContactMode": true,
+  "consumingActionEvaluated": true,
+  "scopedClearanceEligible": true,
+  "consumptionWouldBeAllowed": true,
+  "wouldCreateConsumptionBeforeContact": true,
+  "wouldContactRunnerAfterConsumption": true,
+  "readinessArtifactRecorded": true,
+  "readinessArtifactPath": "runs/FP-MCP-159/consuming-action-no-contact/NOCONTACT-20260702T183532521Z-3f1fb760/readiness.json",
+  "readinessArtifactSha256": "f8d02d653a6e4fcb9bf9a08b6ccc396c669aa07b6b144abb2cfb29339623316a",
+  "artifact_check": {
+    "readiness_artifact_exists": true,
+    "readiness_json_valid": true,
+    "readiness_hash_matches": true
+  },
+  "safety_boundary": {
+    "realConsumptionRecorded": false,
+    "approvalConsumed": false,
+    "runnerContactReachable": false,
+    "runnerStartEndpointContacted": false,
+    "startEndpointContacted": false,
+    "opencodeStarted": false,
+    "executionPermitted": false,
+    "runnerRunIdCreated": false,
+    "requestArtifactMutated": false
+  },
+  "nextRealActionRequiresFp027Canary": true,
+  "reasons": [
+    "NO_CONTACT_MODE_REAL_CONSUMPTION_NOT_RECORDED",
+    "NO_CONTACT_MODE_RUNNER_CONTACT_UNREACHABLE",
+    "NO_CONTACT_MODE_OPENCODE_NOT_STARTED"
+  ]
+}
