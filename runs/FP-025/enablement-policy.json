@@ -1,0 +1,28 @@
+{
+  "packet_id": "FP-025",
+  "result": "SCOPED_EXECUTOR_ENABLEMENT_POLICY_DEFINED_EXECUTION_STILL_DISABLED",
+  "execution_authorized_now": false,
+  "required_enablement_scope": {
+    "packet_id": "FP-024",
+    "workspace": "forgepilot-chatgpt-mcp",
+    "branch": "feature/oauth-auth0",
+    "base_commit": "3cd682c",
+    "model": "deepseek-v4-pro-high",
+    "run_mode": "DESIGN_ONLY",
+    "task_class": "low-risk shadow extraction",
+    "prompt_artifact": "runs/FP-024/executor-prompts/first-shadow-extraction.md",
+    "source_baseline": "SHADOW-REF-006 server.ts sha256 8412f3a74973a4ca6740a89581e0ea9476f5d01d35f5207f3193ebfee825ba1e",
+    "tool_contract_baseline": "FP-022 expanded 38-tool surface"
+  },
+  "hard_blockers": [
+    "NO_VERIFIED_WORKER_ABORT_PRIMITIVE",
+    "NO_PACKET_SCOPED_ENABLEMENT_IMPLEMENTATION_PROVEN",
+    "NO_EXACT_HUMAN_APPROVAL_CONSUMPTION_FOR_FP024_RETRY"
+  ],
+  "current_execution_policy": {
+    "opencodeExecutionEnabled": false,
+    "globalDisableActive": true,
+    "executionAllowedNow": false,
+    "effectiveDisableReason": "EXECUTION_DISABLED_GLOBAL"
+  }
+}

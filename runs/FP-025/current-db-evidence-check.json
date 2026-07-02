@@ -1,0 +1,16 @@
+{
+  "packet_id": "FP-025",
+  "total_evidence_records": 10,
+  "total_generic_evidence_record_admission_events": 10,
+  "fp025_record": {
+    "evidence_id": 10,
+    "run_id": "FP-025-SCOPED-ENABLEMENT-POLICY",
+    "admission_state": "ADMITTED",
+    "executor_result": "SCOPED_EXECUTOR_ENABLEMENT_POLICY_DEFINED_EXECUTION_STILL_DISABLED",
+    "verification_result": "NO_REGISTERED_WORKER_ABORT_TOOL_FOUND;EXECUTION_NOT_AUTHORIZED;GLOBAL_ENABLEMENT_FORBIDDEN",
+    "validation_state": "VALID",
+    "generic_admission_event_id": 10,
+    "admission_decision": "ADMITTED"
+  },
+  "result": "FP_025_ENABLEMENT_POLICY_CANONICAL_EVIDENCE_PRESENT"
+}

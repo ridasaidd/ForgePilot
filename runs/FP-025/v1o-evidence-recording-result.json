@@ -1,0 +1,20 @@
+{
+  "packet_id": "FP-025",
+  "result": "FP_025_ENABLEMENT_POLICY_RECORDED_THROUGH_V1O_PATH",
+  "sqlite_packet_id": 8,
+  "evidence_id": 10,
+  "run_id": "FP-025-SCOPED-ENABLEMENT-POLICY",
+  "evidence_admission_state": "ADMITTED",
+  "generic_admission_event_id": 10,
+  "generic_admission_decision": "ADMITTED",
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "SCOPED_EXECUTOR_ENABLEMENT_POLICY_DEFINED_EXECUTION_STILL_DISABLED",
+  "artifact_paths": [
+    "packets/FP-025.md",
+    "runs/FP-025/result-summary.md",
+    "runs/FP-025/abort-path-inspection.md",
+    "runs/FP-025/enablement-policy.json"
+  ]
+}
