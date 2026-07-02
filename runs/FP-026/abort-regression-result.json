@@ -1,0 +1,36 @@
+{
+  "packet_id": "FP-026",
+  "result": "WORKER_ABORT_PRIMITIVE_REGRESSION_PASS",
+  "fixture_packet_id": "FP-026-ABORT-REGRESSION",
+  "scope_boundary": "Synthetic recorded worker process used for abort verification; no OpenCode worker was started and no workspace rollback was attempted.",
+  "unknown_worker_refused": true,
+  "unknown_worker_error": "ENOENT: no such file or directory, open '/home/ridasaidd/forgepilot/runs/FP-026-ABORT-REGRESSION/opencode-workers/WORKER-NOT-FOUND/status.json'",
+  "completed_worker_refused": true,
+  "completed_worker_error": "Worker is not running and cannot be aborted: SUCCEEDED",
+  "malformed_record_refused": true,
+  "malformed_record_error": "Worker record is not abortable: COMMAND_EXECUTABLE_NOT_OPENCODE",
+  "malformed_process_still_active_after_refusal": true,
+  "successful_abort": {
+    "aborted": true,
+    "signal": "SIGTERM",
+    "signalTarget": "process_group",
+    "processActiveBeforeAbort": true,
+    "processExitedAfterAbort": true,
+    "finalStatus": "ABORTED",
+    "completedAtSet": true,
+    "abortRequestedAtSet": true,
+    "abortedAtSet": true,
+    "abortSignal": "SIGTERM",
+    "reasons": [
+      "SYNTHETIC_ABORT_REGRESSION_FIXTURE",
+      "ABORT_REQUESTED",
+      "ABORT_SIGNAL_SENT_SIGTERM_PROCESS_GROUP",
+      "PARTIAL_WORKSPACE_ROLLBACK_NOT_PERFORMED"
+    ],
+    "statusArtifactExists": true,
+    "startRequestArtifactExists": true,
+    "stdoutArtifactExists": true,
+    "stderrArtifactExists": true,
+    "partialWorkspaceRollbackPerformed": false
+  }
+}

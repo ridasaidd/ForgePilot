@@ -1,0 +1,32 @@
+{
+  "packet_id": "FP-026",
+  "result": "FP_026_ABORT_PRIMITIVE_RECORDED_THROUGH_V1O_PATH",
+  "sqlite_packet_id": 9,
+  "evidence_id": 11,
+  "run_id": "FP-026-WORKER-ABORT-PRIMITIVE",
+  "evidence_admission_state": "ADMITTED",
+  "generic_admission_event_id": 11,
+  "generic_admission_decision": "ADMITTED",
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "OPENCODE_WORKER_ABORT_PRIMITIVE_IMPLEMENTED_SOURCE_VERIFIED_RUNTIME_PENDING",
+  "artifact_paths": [
+    "packets/FP-026.md",
+    "runs/FP-026/result-summary.md",
+    "runs/FP-026/source-evidence.md",
+    "runs/FP-026/abort-regression.ts",
+    "runs/FP-026/abort-regression-result.json",
+    "runs/FP-026/bridge-build-output.txt",
+    "runs/FP-026/bridge-test-output.txt",
+    "runs/FP-026/expanded-tool-surface-after-abort.json",
+    "runs/FP-026/expanded-tool-surface-after-abort.md",
+    "runs/FP-026/tooling-anomaly.md",
+    "runs/FP-026-ABORT-REGRESSION/opencode-workers/WORKER-COMPLETED/status.json",
+    "runs/FP-026-ABORT-REGRESSION/opencode-workers/WORKER-COMPLETED/start-request.json",
+    "runs/FP-026-ABORT-REGRESSION/opencode-workers/WORKER-MALFORMED/status.json",
+    "runs/FP-026-ABORT-REGRESSION/opencode-workers/WORKER-MALFORMED/start-request.json",
+    "runs/FP-026-ABORT-REGRESSION/opencode-workers/WORKER-SUCCESS/status.json",
+    "runs/FP-026-ABORT-REGRESSION/opencode-workers/WORKER-SUCCESS/start-request.json"
+  ]
+}

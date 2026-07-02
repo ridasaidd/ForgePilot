@@ -1,0 +1,35 @@
+{
+  "workerId": "WORKER-COMPLETED",
+  "packetId": "FP-026-ABORT-REGRESSION",
+  "requestId": null,
+  "modelId": "deepseek-v4-pro-high",
+  "targetWorkspaceId": "forgepilot-chatgpt-mcp",
+  "workspacePath": "/home/ridasaidd/forgepilot-chatgpt-mcp",
+  "promptFile": "/home/ridasaidd/forgepilot/runs/FP-024/executor-prompts/first-shadow-extraction.md",
+  "promptFileSha256": "synthetic-test-fixture",
+  "pid": 999999,
+  "status": "SUCCEEDED",
+  "startedAt": "2026-07-02T13:07:14.760Z",
+  "updatedAt": "2026-07-02T13:07:14.760Z",
+  "completedAt": "2026-07-02T13:07:14.760Z",
+  "abortRequestedAt": null,
+  "abortedAt": null,
+  "abortSignal": null,
+  "timeoutSeconds": 60,
+  "stdoutPath": "/home/ridasaidd/forgepilot/runs/FP-026-ABORT-REGRESSION/opencode-workers/WORKER-COMPLETED/stdout.log",
+  "stderrPath": "/home/ridasaidd/forgepilot/runs/FP-026-ABORT-REGRESSION/opencode-workers/WORKER-COMPLETED/stderr.log",
+  "statusPath": "/home/ridasaidd/forgepilot/runs/FP-026-ABORT-REGRESSION/opencode-workers/WORKER-COMPLETED/status.json",
+  "startRequestPath": "/home/ridasaidd/forgepilot/runs/FP-026-ABORT-REGRESSION/opencode-workers/WORKER-COMPLETED/start-request.json",
+  "workerDir": "/home/ridasaidd/forgepilot/runs/FP-026-ABORT-REGRESSION/opencode-workers/WORKER-COMPLETED",
+  "approvalSource": "CHATGPT_MCP_TOOL_APPROVAL",
+  "approvedToolName": "forgepilot_start_opencode_worker",
+  "command": {
+    "executable": "/home/ridasaidd/.nvm/versions/node/v24.4.1/bin/opencode",
+    "args": [
+      "synthetic"
+    ]
+  },
+  "reasons": [
+    "SYNTHETIC_ABORT_REGRESSION_FIXTURE"
+  ]
+}

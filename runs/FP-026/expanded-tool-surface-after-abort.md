@@ -1,0 +1,43 @@
+# FP-026 Expanded Tool Surface After Abort Primitive
+
+Tool count: `39`
+
+- `forgepilot_status` — `src/server.ts:9286`
+- `forgepilot_get_opencode_status` — `src/server.ts:9329`
+- `forgepilot_get_opencode_capabilities` — `src/server.ts:9350`
+- `forgepilot_get_remote_runner_status` — `src/server.ts:9372`
+- `forgepilot_list_packets` — `src/server.ts:9394`
+- `forgepilot_list_runs` — `src/server.ts:9428`
+- `forgepilot_validate_opencode_run_request` — `src/server.ts:9461`
+- `forgepilot_create_opencode_run_request` — `src/server.ts:9487`
+- `forgepilot_list_opencode_run_requests` — `src/server.ts:9519`
+- `forgepilot_read_opencode_run_request` — `src/server.ts:9544`
+- `forgepilot_validate_remote_runner_request` — `src/server.ts:9569`
+- `forgepilot_validate_remote_runner_endpoint_request` — `src/server.ts:9594`
+- `forgepilot_validate_execution_preflight` — `src/server.ts:9625`
+- `forgepilot_record_execution_artifact_dry_run` — `src/server.ts:9655`
+- `forgepilot_verify_execution_artifact_dry_run` — `src/server.ts:9683`
+- `forgepilot_get_execution_enablement_status` — `src/server.ts:9718`
+- `forgepilot_get_execution_disable_switch_status` — `src/server.ts:9746`
+- `forgepilot_record_real_human_approval_evidence` — `src/server.ts:9783`
+- `forgepilot_record_human_approval_consumption` — `src/server.ts:9852`
+- `forgepilot_record_human_approval_evidence_dry_run_fixture` — `src/server.ts:9912`
+- `forgepilot_validate_human_approval_record` — `src/server.ts:9954`
+- `forgepilot_record_pre_start_evidence_dry_run` — `src/server.ts:9996`
+- `forgepilot_validate_pre_start_evidence` — `src/server.ts:10031`
+- `forgepilot_validate_start_request_state_snapshot` — `src/server.ts:10059`
+- `forgepilot_record_start_state_snapshot_dry_run` — `src/server.ts:10088`
+- `forgepilot_get_guarded_start_preflight_report` — `src/server.ts:10122`
+- `forgepilot_start_remote_runner_request` — `src/server.ts:10152`
+- `forgepilot_read_file` — `src/server.ts:10186`
+- `forgepilot_execute_terminal_command` — `src/server.ts:10227`
+- `forgepilot_persist_opencode_worker_telemetry` — `src/tool-registrations/recent-tools.ts:202`
+- `forgepilot_query_persisted_opencode_worker_telemetry` — `src/tool-registrations/recent-tools.ts:228`
+- `forgepilot_read_persisted_opencode_worker_telemetry` — `src/tool-registrations/recent-tools.ts:262`
+- `forgepilot_capture_opencode_worker_telemetry` — `src/tool-registrations/recent-tools.ts:285`
+- `forgepilot_read_opencode_worker_telemetry` — `src/tool-registrations/recent-tools.ts:309`
+- `forgepilot_start_opencode_worker` — `src/tool-registrations/recent-tools.ts:332`
+- `forgepilot_abort_opencode_worker` — `src/tool-registrations/recent-tools.ts:361`
+- `forgepilot_get_opencode_worker_status` — `src/tool-registrations/recent-tools.ts:385`
+- `forgepilot_read_opencode_worker_result` — `src/tool-registrations/recent-tools.ts:408`
+- `forgepilot_capture_workspace_snapshot` — `src/tool-registrations/recent-tools.ts:432`
