@@ -1,0 +1,8 @@
+{
+  "packet_id": "FP-026",
+  "fixture_pid": 750107,
+  "cleanup_method": "ctypes_syscall_62_direct_target_15",
+  "direct_return_code": -1,
+  "process_active_after_cleanup_wait": true,
+  "ps_after_cleanup": "750107 Ss   /bin/sh -c trap 'exit 143' TERM; while true; do sleep 1; done"
+}

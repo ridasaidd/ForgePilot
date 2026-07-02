@@ -1,0 +1,6 @@
+{
+  "packetId": "FP-026-RUNTIME-ABORT-CONFIRM",
+  "workerId": "WORKER-RUNTIME-SYNTHETIC",
+  "synthetic": true,
+  "purpose": "FP-026 live MCP runtime abort confirmation; no OpenCode worker started"
+}

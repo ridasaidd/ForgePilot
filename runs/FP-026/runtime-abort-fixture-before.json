@@ -1,0 +1,12 @@
+{
+  "packet_id": "FP-026",
+  "runtime_confirm_packet_id": "FP-026-RUNTIME-ABORT-CONFIRM",
+  "worker_id": "WORKER-RUNTIME-SYNTHETIC",
+  "pid": 750107,
+  "process_active_before_abort_tool_call": true,
+  "status_path": "/home/ridasaidd/forgepilot/runs/FP-026-RUNTIME-ABORT-CONFIRM/opencode-workers/WORKER-RUNTIME-SYNTHETIC/status.json",
+  "start_request_path": "/home/ridasaidd/forgepilot/runs/FP-026-RUNTIME-ABORT-CONFIRM/opencode-workers/WORKER-RUNTIME-SYNTHETIC/start-request.json",
+  "stdout_path": "/home/ridasaidd/forgepilot/runs/FP-026-RUNTIME-ABORT-CONFIRM/opencode-workers/WORKER-RUNTIME-SYNTHETIC/stdout.log",
+  "stderr_path": "/home/ridasaidd/forgepilot/runs/FP-026-RUNTIME-ABORT-CONFIRM/opencode-workers/WORKER-RUNTIME-SYNTHETIC/stderr.log",
+  "scope_boundary": "Synthetic recorded running process used for live MCP abort confirmation; no OpenCode worker started."
+}

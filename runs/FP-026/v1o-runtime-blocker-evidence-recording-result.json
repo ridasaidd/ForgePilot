@@ -1,0 +1,22 @@
+{
+  "packet_id": "FP-026",
+  "result": "FP_026_RUNTIME_BLOCKER_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 12,
+  "run_id": "FP-026-RUNTIME-CONFIRMATION-PLATFORM-BLOCKED",
+  "generic_admission_event_id": 12,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_026_RUNTIME_CONFIRMATION_BLOCKED_BY_PLATFORM_TOOL_SAFETY",
+  "runtime_confirmation_status": "NOT_PROVEN",
+  "artifact_paths": [
+    "runs/FP-026/runtime-confirmation-blocker.md",
+    "runs/FP-026/tooling-block-pattern-note.md",
+    "runs/FP-026/runtime-abort-fixture-before.json",
+    "runs/FP-026/runtime-confirmation-platform-block-cleanup.json",
+    "runs/FP-026/runtime-confirmation-platform-block-cleanup-direct.json",
+    "runs/FP-026/runtime-confirmation-platform-block-cleanup-dynamic.json",
+    "runs/FP-026-RUNTIME-ABORT-CONFIRM/opencode-workers/WORKER-RUNTIME-SYNTHETIC/status.json",
+    "runs/FP-026-RUNTIME-ABORT-CONFIRM/opencode-workers/WORKER-RUNTIME-SYNTHETIC/start-request.json"
+  ]
+}

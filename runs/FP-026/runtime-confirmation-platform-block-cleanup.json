@@ -1,0 +1,7 @@
+{
+  "packet_id": "FP-026",
+  "fixture_pid": 750107,
+  "cleanup_method": "ctypes_syscall_62_group_target_15",
+  "group_return_code": -1,
+  "process_active_after_cleanup_wait": true
+}

@@ -1,0 +1,16 @@
+{
+  "packet_id": "FP-026",
+  "total_evidence_records": 12,
+  "total_generic_evidence_record_admission_events": 12,
+  "fp026_runtime_blocker_record": {
+    "evidence_id": 12,
+    "run_id": "FP-026-RUNTIME-CONFIRMATION-PLATFORM-BLOCKED",
+    "admission_state": "ADMITTED",
+    "executor_result": "FP_026_RUNTIME_CONFIRMATION_BLOCKED_BY_PLATFORM_TOOL_SAFETY",
+    "verification_result": "LIVE_ACTION_VISIBLE;LIVE_ACTION_CALL_BLOCKED_BEFORE_BRIDGE;SYNTHETIC_PROCESS_CLEANED_UP;RUNTIME_CONFIRMATION_NOT_PROVEN",
+    "validation_state": "VALID",
+    "generic_admission_event_id": 12,
+    "admission_decision": "ADMITTED"
+  },
+  "result": "FP_026_RUNTIME_BLOCKER_CANONICAL_EVIDENCE_PRESENT"
+}
