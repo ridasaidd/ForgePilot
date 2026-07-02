@@ -1,0 +1,42 @@
+{
+  "packet_id": "FP-031",
+  "result": "BOOTSTRAP_REQUEST_CREATED_REMOTE_RUNNER_NAMESPACE_BLOCKED",
+  "request_id": "REQ-20260702T141753581Z-650bc292",
+  "request_artifact_path": "runs/FP-031/opencode-requests/REQ-20260702T141753581Z-650bc292.json",
+  "local_validation": {
+    "valid": true,
+    "packetExists": true,
+    "modelAllowed": true,
+    "runModeAllowed": true,
+    "workingTreeClean": true,
+    "executionEnabled": false
+  },
+  "guarded_preflight_after_artifact_commit": {
+    "preflightEligible": false,
+    "executionAllowedNow": false,
+    "requestArtifact": "PASSED",
+    "lifecycle": "PASSED",
+    "packet": "PASSED",
+    "model": "PASSED",
+    "runMode": "PASSED",
+    "disableSwitch": "BLOCKED",
+    "humanApprovalEvidence": "BLOCKED"
+  },
+  "local_remote_runner_validation": {
+    "eligible": true,
+    "runnerContacted": false,
+    "reasons": []
+  },
+  "remote_runner_endpoint_validation": {
+    "valid": false,
+    "runnerContacted": true,
+    "runnerAccepted": false,
+    "reasons": ["INVALID_PACKET_ID", "RUNNER_REJECTED_REQUEST"]
+  },
+  "boundary": {
+    "executor_started": false,
+    "opencode_started": false,
+    "bridge_source_changed": false,
+    "remote_start_endpoint_contacted": false
+  }
+}

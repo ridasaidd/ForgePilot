@@ -1,0 +1,16 @@
+{
+  "packet_id": "FP-031",
+  "result": "FP_031_BOOTSTRAP_BLOCKER_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 19,
+  "run_id": "FP-031-BOOTSTRAP-REQUEST-REMOTE-RUNNER-BLOCKED",
+  "generic_admission_event_id": 19,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "BOOTSTRAP_REQUEST_CREATED_REMOTE_RUNNER_NAMESPACE_BLOCKED",
+  "artifact_paths": [
+    "runs/FP-031/opencode-requests/REQ-20260702T141753581Z-650bc292.json",
+    "runs/FP-031/bootstrap-request-status.md",
+    "runs/FP-031/bootstrap-request-status.json"
+  ]
+}
