@@ -1,0 +1,16 @@
+{
+  "packet_id": "FP-031",
+  "result": "FP_031_CANDIDATE_SELECTION_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 18,
+  "run_id": "FP-031-FIRST-EXECUTOR-USE-CANDIDATE",
+  "generic_admission_event_id": 18,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FIRST_EXECUTOR_USE_CANDIDATE_SELECTED_EXECUTOR_NOT_STARTED",
+  "artifact_paths": [
+    "packets/FP-031.md",
+    "runs/FP-031/executor-prompts/bootstrap-doc-canary.md",
+    "runs/FP-031/result-summary.md"
+  ]
+}

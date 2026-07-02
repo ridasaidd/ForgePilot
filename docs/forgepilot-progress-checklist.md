@@ -302,3 +302,5 @@ These may be considered after V1 evidence/reporting surfaces stabilize:
 | Execution enablement boundary flag source inspection | `COMPLETE` | `FP-028` | Inspected current bridge source for contractComplete, opencodeBoundarySatisfied, secretBoundarySatisfied, networkBoundarySatisfied, and humanApprovalRecorded. | Found cross-surface semantic mismatches; next packet should define a canonical scoped enablement contract before implementation. |
 
 | Canonical scoped enablement decision implementation packet | `PACKET_DEFINED` | `FP-030` | Defines executor-driven bridge implementation for one canonical scoped decision surface with field provenance, fail-closed dependency handling, and append-only approval-consumption semantics. | Executor not started; no bridge source changed; execution remains disabled. |
+
+| First executor-use bootstrap candidate | `CANDIDATE_SELECTED` | `FP-031` | Selects docs/executor-bootstrap-canary.md as the first deliberately boring executor-driven bridge change before FP-030 implementation. | Executor not started; no bridge changes; execution remains disabled. |
