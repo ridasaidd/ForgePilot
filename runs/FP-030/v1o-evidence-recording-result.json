@@ -1,0 +1,16 @@
+{
+  "packet_id": "FP-030",
+  "result": "FP_030_PACKET_DEFINITION_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 17,
+  "run_id": "FP-030-IMPLEMENTATION-PACKET-DEFINED",
+  "generic_admission_event_id": 17,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "IMPLEMENTATION_PACKET_DEFINED_EXECUTOR_NOT_STARTED",
+  "artifact_paths": [
+    "packets/FP-030.md",
+    "runs/FP-030/executor-prompts/canonical-scoped-enable-decision.md",
+    "runs/FP-030/result-summary.md"
+  ]
+}
