@@ -1,0 +1,21 @@
+{
+  "packet_id": "FP-MCP-168",
+  "result": "FP_MCP_168_LIVE_FAULT_INJECTION_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 35,
+  "run_id": "FP-MCP-168-LIVE-FAULT-INJECTION-CONFIRMATION",
+  "generic_admission_event_id": 35,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "CONSUMING_CLEARANCE_DRY_RUN_FAULT_INJECTION_LIVE_CONFIRMED_NO_RUNNER_CONTACT",
+  "bridge_commit": "d2ecadc",
+  "total_evidence_records": 35,
+  "total_generic_evidence_record_admission_events": 35,
+  "artifact_paths": [
+    "packets/FP-MCP-168.md",
+    "runs/FP-MCP-168/live-fault-injection-confirmation.md",
+    "runs/FP-MCP-168/live-fault-injection-confirmation.json",
+    "runs/FP-MCP-168/approvals/APPROVAL-20260702T181446995Z-26a9d4b7.json",
+    "runs/FP-MCP-159/consuming-clearance-dry-runs/DRYRUN-20260702T181506743Z-5ff4bf7c/consumption.json"
+  ]
+}
