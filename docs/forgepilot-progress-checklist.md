@@ -128,6 +128,7 @@ Recent closed telemetry/query chain:
 | Manual action ledger | `COMPLETE` | `FP-OPS-003` | Manual external action recording pattern is documented in `docs/manual-action-ledger.md`. | Manual action still requires observable proof. |
 | Evidence boundary doctrine | `COMPLETE` | `FP-META-018` | Evidence boundaries are documented in `docs/evidence-boundary-doctrine.md`. | Doctrine is not implementation or admission by itself. |
 | Reporting evidence rules | `COMPLETE` | `FP-META-020` | Reporting claim boundaries are documented in `docs/reporting-evidence-rules.md`. | Reporting is an evidence index, not evidence itself. |
+| Project summary reporting rules | `COMPLETE` | `FP-META-021` | Project-wide reporting claim boundaries are documented in `docs/project-summary-reporting-rules.md`. | Project report is an index, not evidence itself. |
 | Session bootstrap runbook | `COMPLETE` | `FP-OPS-002` | New-session bootstrap procedure is documented in `docs/session-bootstrap.md`. | Reduces dependence on private chat memory; not automation. |
 
 ## Recent Packet Evidence Index
@@ -150,6 +151,7 @@ Do not pre-assign exact packet numbers for future work unless the packet already
 | Future capability / work item | Current status | Recommended namespace | Reason |
 |---|---|---|---|
 | Reporting evidence rules | `COMPLETE` | `FP-META-*` | Defines semantics before implementation; completed by `FP-META-020`. |
+| Project summary reporting rules | `COMPLETE` | `FP-META-*` | Defines project-wide report semantics; completed by `FP-META-021`. |
 | Reporting / summary implementation | `PARTIAL` | `FP-*` | Core ForgePilot behavior; initial single-packet report implemented by `FP-013`. |
 | Reporting via ChatGPT MCP | `NOT_STARTED` | `FP-MCP-*` | MCP bridge/tool exposure. |
 | Checklist maintenance | `PARTIAL` | `FP-OPS-*` | Operator progress tracking. |
@@ -166,7 +168,7 @@ Do not pre-assign exact packet numbers for future work unless the packet already
 
 Status: `PARTIAL`
 
-Initial single-packet reporting exists via `FP-013`. Reporting implementation must obey `docs/reporting-evidence-rules.md`.
+Initial single-packet reporting exists via `FP-013`. Reporting implementation must obey `docs/reporting-evidence-rules.md`. Project-wide reporting must obey `docs/project-summary-reporting-rules.md`.
 
 Required before V1:
 

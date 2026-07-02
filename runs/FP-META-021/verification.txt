@@ -1,0 +1,26 @@
+FP-META-021 verification
+
+Project summary reporting rules document exists:
+PASS
+- docs/project-summary-reporting-rules.md
+
+Required sections/content:
+PASS
+- project-wide reportable facts
+- aggregation boundary
+- status source precedence
+- checklist usage rules
+- packet inventory rules
+- incomplete/deferred/blocked reporting rules
+- V1 completion claim constraint
+- next-step recommendation constraint
+- prohibited project-wide claims
+
+Progress checklist reference:
+PASS
+- docs/forgepilot-progress-checklist.md references docs/project-summary-reporting-rules.md
+- Project summary reporting rules marked COMPLETE via FP-META-021
+
+Documentation-only scope:
+PASS
+- no implementation code files changed
