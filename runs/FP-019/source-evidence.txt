@@ -1,0 +1,164 @@
+# FP-019 source excerpt
+
+## evidence.ts evidence_record support
+78-  defeating_invalidation: AdmissionInvalidationEvent | null;
+79-}
+80-
+81:const VALID_OBSERVATION_TYPES = [
+82-  "classification_observation",
+83-  "outcome_observation",
+84:  "evidence_record",
+85-];
+86-
+87-const VALID_ADMISSION_DECISIONS = ["ADMITTED", "REJECTED", "PENDING"];
+88-
+89-const VALID_ACTOR_TYPES = [
+90-  "human_auditor",
+91-  "automated_validator",
+92-  "model_reviewer",
+93-  "cross_model_consensus",
+94-  "system",
+--
+152-        `Target outcome_observation ${targetId} not found`
+153-      );
+154-    }
+155:  } else if (targetType === "evidence_record") {
+156-    row = db
+157-      .prepare(
+158:        "SELECT evidence_id FROM evidence_records WHERE evidence_id = ?"
+159-      )
+160-      .get(targetId);
+161-    if (!row) {
+162-      throw new Error(
+163:        `Target evidence_record ${targetId} not found`
+164-      );
+165-    }
+166-  }
+167-}
+168-
+169-export function recordEvidenceAdmission(
+170-  params: RecordAdmissionParams
+171-): EvidenceAdmissionEvent {
+172-  validateEnum(
+173-    params.target_observation_type,
+174:    VALID_OBSERVATION_TYPES,
+175-    "target_observation_type"
+176-  );
+177-  validateEnum(
+178-    params.admission_decision,
+179-    VALID_ADMISSION_DECISIONS,
+180-    "admission_decision"
+181-  );
+182-  validateEnum(
+183-    params.admission_actor_type,
+184-    VALID_ACTOR_TYPES,
+
+## migration evidence_record support
+1:-- FP-019: Allow evidence_admission_events to target evidence_records.
+2:-- SQLite cannot ALTER CHECK constraints, so rebuild the table preserving rows.
+3-
+4-PRAGMA foreign_keys = OFF;
+5-
+6:CREATE TABLE IF NOT EXISTS evidence_admission_events_fp019_new (
+7-  id INTEGER PRIMARY KEY AUTOINCREMENT,
+8:  target_observation_type TEXT NOT NULL CHECK (target_observation_type IN (
+9-    'classification_observation',
+10-    'outcome_observation',
+11:    'evidence_record'
+12-  )),
+13-  target_observation_id INTEGER NOT NULL,
+14:  admission_decision TEXT NOT NULL CHECK (admission_decision IN (
+15-    'ADMITTED', 'REJECTED', 'PENDING'
+16-  )),
+17:  admission_actor_type TEXT NOT NULL CHECK (admission_actor_type IN (
+18-    'human_auditor', 'automated_validator', 'model_reviewer', 'cross_model_consensus', 'system'
+19-  )),
+20-  admission_actor_id TEXT NOT NULL DEFAULT '',
+21:  admission_trust_tier TEXT NOT NULL DEFAULT 'TIER_0' CHECK (admission_trust_tier IN (
+22-    'TIER_0', 'TIER_1', 'TIER_2', 'TIER_3'
+23-  )),
+24:  validation_state TEXT NOT NULL DEFAULT 'VALID' CHECK (validation_state IN (
+25-    'VALID', 'INVALID', 'INCOMPLETE', 'DEFERRED'
+26-  )),
+27:  provenance_complete INTEGER NOT NULL DEFAULT 0 CHECK (provenance_complete IN (0, 1)),
+28-  admission_basis TEXT NOT NULL DEFAULT '',
+29-  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+30-);
+31-
+32:INSERT INTO evidence_admission_events_fp019_new (
+33-  id, target_observation_type, target_observation_id, admission_decision,
+34-  admission_actor_type, admission_actor_id, admission_trust_tier,
+35-  validation_state, provenance_complete, admission_basis, created_at
+36-)
+--
+40-  validation_state, provenance_complete, admission_basis, created_at
+41-FROM evidence_admission_events;
+42-
+43-DROP TABLE evidence_admission_events;
+44:ALTER TABLE evidence_admission_events_fp019_new RENAME TO evidence_admission_events;
+45-
+46-CREATE INDEX IF NOT EXISTS idx_admission_obs_target
+47-  ON evidence_admission_events(target_observation_type, target_observation_id);
+48-CREATE INDEX IF NOT EXISTS idx_admission_decision
+
+## test evidence_record support
+1338-
+1339-
+1340:  describe("FP-019 evidence record admission linkage", () => {
+1341:    it("should persist an admission event targeting an evidence record", () => {
+1342-      const dbPath = path.join(testDir, "fp019-evidence-record-admission.db");
+1343-      setupDb(dbPath);
+1344-
+1345-      const packet = createTestPacket("FP019 Evidence Record Admission");
+1346-      const evidence = createValidEvidenceRecord(packet.id, "fp019-admitted-record");
+1347-
+1348-      const admission = recordEvidenceAdmission({
+1349-        target_observation_type: "evidence_record",
+--
+1364-    });
+1365-
+1366:    it("should reject admission targeting a missing evidence record", () => {
+1367-      const dbPath = path.join(testDir, "fp019-missing-evidence-record.db");
+1368-      setupDb(dbPath);
+1369-
+1370-      assert.throws(
+1371-        () => {
+1372-          recordEvidenceAdmission({
+1373-            target_observation_type: "evidence_record",
+1374-            target_observation_id: 9999,
+--
+1381-    });
+1382-
+1383:    it("should derive eligibility from an admitted evidence record event", () => {
+1384-      const dbPath = path.join(testDir, "fp019-evidence-record-eligible.db");
+1385-      setupDb(dbPath);
+1386-
+1387-      const packet = createTestPacket("FP019 Evidence Eligibility");
+1388-      const evidence = createValidEvidenceRecord(packet.id, "fp019-eligible-record");
+1389-      const admission = createValidAdmission("evidence_record", evidence.evidence_id);
+1390-
+1391-      const eligibility = deriveEvidenceEligibility("evidence_record", evidence.evidence_id);
+--
+1396-    });
+1397-
+1398:    it("should keep a rejected evidence record admission ineligible", () => {
+1399-      const dbPath = path.join(testDir, "fp019-evidence-record-rejected.db");
+1400-      setupDb(dbPath);
+1401-
+1402-      const packet = createTestPacket("FP019 Evidence Rejected");
+1403-      const evidence = createValidEvidenceRecord(packet.id, "fp019-rejected-record");
+1404-      recordEvidenceAdmission({
+1405-        target_observation_type: "evidence_record",
+1406-        target_observation_id: evidence.evidence_id,
+--
+1420-    });
+1421-
+1422:    it("should let invalidation defeat an evidence record admission", () => {
+1423-      const dbPath = path.join(testDir, "fp019-evidence-record-invalidated.db");
+1424-      setupDb(dbPath);
+1425-
+1426-      const packet = createTestPacket("FP019 Evidence Invalidated");
+1427-      const evidence = createValidEvidenceRecord(packet.id, "fp019-invalidated-record");
+1428-      const admission = createValidAdmission("evidence_record", evidence.evidence_id);
+1429-      const review = createValidReviewRequest(admission.id);
+1430-      const invalidation = createValidInvalidation(admission.id, review.id, "INVALIDATED");

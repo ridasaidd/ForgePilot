@@ -81,6 +81,7 @@ export interface EvidenceEligibilityResult {
 const VALID_OBSERVATION_TYPES = [
   "classification_observation",
   "outcome_observation",
+  "evidence_record",
 ];
 
 const VALID_ADMISSION_DECISIONS = ["ADMITTED", "REJECTED", "PENDING"];
@@ -149,6 +150,17 @@ function validateObservationExists(
     if (!row) {
       throw new Error(
         `Target outcome_observation ${targetId} not found`
+      );
+    }
+  } else if (targetType === "evidence_record") {
+    row = db
+      .prepare(
+        "SELECT evidence_id FROM evidence_records WHERE evidence_id = ?"
+      )
+      .get(targetId);
+    if (!row) {
+      throw new Error(
+        `Target evidence_record ${targetId} not found`
       );
     }
   }

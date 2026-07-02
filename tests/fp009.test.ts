@@ -27,6 +27,7 @@ import {
   getOutcomeObservations,
   getOutcomeObservation,
 } from "../src/db/outcome.js";
+import { insertEvidenceRecord } from "../src/db/evidence-records.js";
 import {
   recordEvidenceAdmission,
   recordAdmissionReviewRequest,
@@ -97,6 +98,26 @@ function createValidOutcome(packet_id: number) {
     execution_result: "COMPLETED",
     verification_result: "PASSED",
     audit_result: "ACCEPTED",
+  });
+}
+
+function createValidEvidenceRecord(packet_id: number, run_id: string = "fp019-evidence-record") {
+  return insertEvidenceRecord({
+    packet_id,
+    run_id,
+    model_id: "none",
+    model_role: "test_fixture",
+    branch: "main",
+    commit_sha: "fp019-test",
+    executor_result: "NOT_APPLICABLE_TEST_FIXTURE",
+    verification_result: "PASSED",
+    audit_result: "NOT_APPLICABLE_TEST_FIXTURE",
+    comparison_result: "NOT_APPLICABLE_TEST_FIXTURE",
+    metrics_path: "runs/FP-019/test-fixture.json",
+    artifact_paths: ["runs/FP-019/test-fixture.json"],
+    trust_tier: "TIER_2_VERIFIED_ARTIFACT",
+    validation_state: "VALID",
+    admission_state: "NOT_EVALUATED",
   });
 }
 
@@ -1312,6 +1333,107 @@ describe("FP-009: Evidence Admission Persistence", () => {
         .prepare("SELECT COUNT(*) as cnt FROM admission_invalidation_events WHERE id = ?")
         .get(invalidation.id) as { cnt: number };
       assert.equal(invalidationCount.cnt, 1, "Invalidation event should still exist");
+    });
+  });
+
+
+  describe("FP-019 evidence record admission linkage", () => {
+    it("should persist an admission event targeting an evidence record", () => {
+      const dbPath = path.join(testDir, "fp019-evidence-record-admission.db");
+      setupDb(dbPath);
+
+      const packet = createTestPacket("FP019 Evidence Record Admission");
+      const evidence = createValidEvidenceRecord(packet.id, "fp019-admitted-record");
+
+      const admission = recordEvidenceAdmission({
+        target_observation_type: "evidence_record",
+        target_observation_id: evidence.evidence_id,
+        admission_decision: "ADMITTED",
+        admission_actor_type: "human_auditor",
+        admission_actor_id: "auditor-fp019",
+        admission_trust_tier: "TIER_2",
+        validation_state: "VALID",
+        provenance_complete: true,
+        admission_basis: "FP-019 evidence record linkage test",
+      });
+
+      assert.ok(admission.id > 0);
+      assert.equal(admission.target_observation_type, "evidence_record");
+      assert.equal(admission.target_observation_id, evidence.evidence_id);
+      assert.equal(admission.admission_decision, "ADMITTED");
+    });
+
+    it("should reject admission targeting a missing evidence record", () => {
+      const dbPath = path.join(testDir, "fp019-missing-evidence-record.db");
+      setupDb(dbPath);
+
+      assert.throws(
+        () => {
+          recordEvidenceAdmission({
+            target_observation_type: "evidence_record",
+            target_observation_id: 9999,
+            admission_decision: "ADMITTED",
+            admission_actor_type: "human_auditor",
+          });
+        },
+        /Target evidence_record 9999 not found/
+      );
+    });
+
+    it("should derive eligibility from an admitted evidence record event", () => {
+      const dbPath = path.join(testDir, "fp019-evidence-record-eligible.db");
+      setupDb(dbPath);
+
+      const packet = createTestPacket("FP019 Evidence Eligibility");
+      const evidence = createValidEvidenceRecord(packet.id, "fp019-eligible-record");
+      const admission = createValidAdmission("evidence_record", evidence.evidence_id);
+
+      const eligibility = deriveEvidenceEligibility("evidence_record", evidence.evidence_id);
+
+      assert.equal(eligibility.eligible, true);
+      assert.equal(eligibility.admission_event?.id, admission.id);
+      assert.equal(eligibility.defeating_invalidation, null);
+    });
+
+    it("should keep a rejected evidence record admission ineligible", () => {
+      const dbPath = path.join(testDir, "fp019-evidence-record-rejected.db");
+      setupDb(dbPath);
+
+      const packet = createTestPacket("FP019 Evidence Rejected");
+      const evidence = createValidEvidenceRecord(packet.id, "fp019-rejected-record");
+      recordEvidenceAdmission({
+        target_observation_type: "evidence_record",
+        target_observation_id: evidence.evidence_id,
+        admission_decision: "REJECTED",
+        admission_actor_type: "human_auditor",
+        admission_trust_tier: "TIER_2",
+        validation_state: "VALID",
+        provenance_complete: true,
+        admission_basis: "Negative evidence-record admission control",
+      });
+
+      const eligibility = deriveEvidenceEligibility("evidence_record", evidence.evidence_id);
+
+      assert.equal(eligibility.eligible, false);
+      assert.equal(eligibility.admission_event, null);
+      assert.equal(eligibility.defeating_invalidation, null);
+    });
+
+    it("should let invalidation defeat an evidence record admission", () => {
+      const dbPath = path.join(testDir, "fp019-evidence-record-invalidated.db");
+      setupDb(dbPath);
+
+      const packet = createTestPacket("FP019 Evidence Invalidated");
+      const evidence = createValidEvidenceRecord(packet.id, "fp019-invalidated-record");
+      const admission = createValidAdmission("evidence_record", evidence.evidence_id);
+      const review = createValidReviewRequest(admission.id);
+      const invalidation = createValidInvalidation(admission.id, review.id, "INVALIDATED");
+
+      const eligibility = deriveEvidenceEligibility("evidence_record", evidence.evidence_id);
+
+      assert.equal(eligibility.eligible, false);
+      assert.equal(eligibility.admission_event?.id, admission.id);
+      assert.equal(eligibility.defeating_invalidation?.id, invalidation.id);
     });
   });
 });

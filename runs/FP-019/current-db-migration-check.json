@@ -1,0 +1,9 @@
+{
+  "database": "data/forgepilot.db",
+  "evidence_admission_events_present": true,
+  "evidence_record_admission_events_present": true,
+  "evidence_record_allowed_in_generic_admission_events": true,
+  "evidence_records_total": 2,
+  "generic_admission_events_total": 0,
+  "note": "FP-019 applies migration and enables generic evidence_admission_events to target evidence_record; it does not backfill existing evidence records and does not remove legacy evidence_record_admission_events table."
+}
