@@ -1,0 +1,21 @@
+{
+  "packet_id": "FP-MCP-174",
+  "result": "FP_MCP_174_READINESS_PREDICATE_IMPLEMENTATION_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 44,
+  "run_id": "FP-MCP-174-OPENCODE-READINESS-PREDICATE-IMPLEMENTATION",
+  "generic_admission_event_id": 44,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "OPENCODE_READINESS_PREDICATE_SOURCE_VERIFIED_LABEL_NORMALIZED_EXECUTION_STILL_DISABLED",
+  "bridge_commit": "67f840f",
+  "total_evidence_records": 44,
+  "total_generic_evidence_record_admission_events": 44,
+  "artifact_paths": [
+    "packets/FP-MCP-174.md",
+    "runs/FP-MCP-174/result-summary.md",
+    "runs/FP-MCP-174/readiness-predicate-decision.json",
+    "runs/FP-MCP-174/implementation-result.md",
+    "runs/FP-MCP-174/implementation-result.json"
+  ]
+}
