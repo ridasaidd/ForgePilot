@@ -1,0 +1,3 @@
+ M docs/forgepilot-progress-checklist.md
+?? docs/evidence-root-and-workspace-boundary.md
+?? runs/FP-META-030/

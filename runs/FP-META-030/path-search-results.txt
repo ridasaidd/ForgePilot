@@ -1,0 +1,730 @@
+# FP-META-030 path search results
+
+## Git baseline
+main
+081aa13
+?? runs/FP-META-030/
+
+## Search: traversal/path APIs in src scripts tests docs
+src/reporting/reconstruction-report.ts:21:  reconstructed_labels: string[];
+src/reporting/reconstruction-report.ts:43:  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+src/reporting/reconstruction-report.ts:64:  const packetPath = `packets/${packetId}.md`;
+src/reporting/reconstruction-report.ts:70:  const runDir = path.join(rootDir, "runs", packetId);
+src/reporting/reconstruction-report.ts:84:  const reconstructed_labels = [
+src/reporting/reconstruction-report.ts:100:    reconstructed_labels,
+src/reporting/reconstruction-report.ts:105:      "Comparison artifacts are bounded records, not global model rankings.",
+src/reporting/reconstruction-report.ts:119:    `Labels: ${report.reconstructed_labels.join(", ")}`,
+src/reporting/project-report.ts:18:  packets: string[];
+src/reporting/project-report.ts:33:  recent_packets: string[];
+src/reporting/project-report.ts:118:  const packetsDir = path.join(rootDir, "packets");
+src/reporting/project-report.ts:119:  if (!fs.existsSync(packetsDir)) return [];
+src/reporting/project-report.ts:121:  for (const entry of fs.readdirSync(packetsDir)) {
+src/reporting/project-report.ts:130:    .map(([namespace, packets]) => ({
+src/reporting/project-report.ts:132:      count: packets.length,
+src/reporting/project-report.ts:133:      packets: packets.sort((a, b) => a.localeCompare(b, undefined, { numeric: true })),
+src/reporting/project-report.ts:177:  const recentPackets = inventory.flatMap((entry) => entry.packets).slice(-15);
+src/reporting/project-report.ts:191:    recent_packets: recentPackets,
+src/reporting/project-report.ts:198:      "docs/project-summary-reporting-rules.md",
+src/reporting/packet-report.ts:76:  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+src/reporting/packet-report.ts:134:  const packetRelPath = `packets/${packetId}.md`;
+src/reporting/packet-report.ts:144:  const runDir = path.join(rootDir, "runs", packetId);
+src/db/task-classification.ts:91:    .prepare("SELECT id FROM packets WHERE id = ?")
+src/db/migrate.ts:24:    .readdirSync(MIGRATIONS_DIR)
+src/db/schema.sql:37:CREATE TABLE IF NOT EXISTS packets (
+src/db/schema.sql:51:  packet_id INTEGER NOT NULL REFERENCES packets(id),
+src/db/schema.sql:61:  packet_id INTEGER NOT NULL REFERENCES packets(id),
+src/db/schema.sql:88:  packet_id INTEGER NOT NULL REFERENCES packets(id),
+src/db/schema.sql:105:  packet_id INTEGER NOT NULL REFERENCES packets(id),
+src/db/schema.sql:119:  packet_id INTEGER NOT NULL REFERENCES packets(id),
+src/db/schema.sql:146:FROM packets p
+src/db/schema.sql:192:  packet_id               INTEGER NOT NULL REFERENCES packets(id),
+src/db/schema.sql:222:  packet_id                   INTEGER NOT NULL REFERENCES packets(id),
+src/db/evidence-records.ts:101:    .prepare("SELECT id FROM packets WHERE id = ?")
+src/db/persistence.ts:66:    `INSERT INTO packets (task_id, packet_type, title, packet_path, packet_hash)
+src/db/persistence.ts:77:    .prepare("SELECT * FROM packets WHERE id = ?")
+src/db/persistence.ts:194:    .prepare("SELECT * FROM packets WHERE id = ?")
+src/db/model-comparison.ts:112:    .prepare("SELECT id FROM packets WHERE id = ?")
+src/db/metrics.ts:14:        (SELECT COUNT(*) FROM packets) as total,
+src/db/metrics.ts:15:        (SELECT COUNT(*) FROM packets WHERE status = 'completed') as successful,
+src/db/metrics.ts:16:        (SELECT COUNT(*) FROM packets WHERE status = 'failed') as failed`
+src/cli/forgepilot.ts:31:  --reconstruction-report         Print read-only admission/comparison reconstruction for a packet.
+src/cli/forgepilot.ts:60:  const packetPath = resolve(`packets/${packetId}.md`);
+src/cli/forgepilot.ts:61:  const runsDir = resolve(`runs/${packetId}`);
+src/cli/forgepilot.ts:62:  const outPath = resolve(runsDir, "execution-prompt.md");
+src/cli/forgepilot.ts:95:  const header = `# Execution Prompt — {{PACKET_ID}}\n\n## Target Packet\n\npackets/{{PACKET_ID}}.md\n\n## Packet Content\n\n{{PACKET_CONTENT}}\n\n---\n\n`;
+src/cli/forgepilot.ts:108:  await mkdir(runsDir, { recursive: true });
+src/cli/forgepilot.ts:114:  const packetPath = resolve(`packets/${packetId}.md`);
+src/cli/forgepilot.ts:115:  const runsDir = resolve(`runs/${packetId}`);
+src/cli/forgepilot.ts:116:  const resultPath = resolve(runsDir, "executor-result.md");
+src/cli/forgepilot.ts:117:  const verifyPath = resolve(runsDir, "verification.txt");
+src/cli/forgepilot.ts:118:  const statusPath = resolve(runsDir, "git-status.txt");
+src/cli/forgepilot.ts:119:  const diffPath = resolve(runsDir, "relevant-diff.txt");
+src/cli/forgepilot.ts:120:  const outPath = resolve(runsDir, "audit-prompt.md");
+src/cli/forgepilot.ts:171:  await mkdir(runsDir, { recursive: true });
+src/cli/forgepilot.ts:199:      "reconstruction-report": { type: "boolean" },
+src/cli/forgepilot.ts:258:    console.log(`Total packets: ${metrics.total}`);
+src/cli/forgepilot.ts:259:    console.log(`Successful packets: ${metrics.successful}`);
+src/cli/forgepilot.ts:260:    console.log(`Failed packets: ${metrics.failed}`);
+src/cli/forgepilot.ts:337:  if (values["reconstruction-report"] || positionals[0] === "reconstruction-report") {
+src/cli/forgepilot.ts:343:    const { buildReconstructionReport, formatReconstructionReportText } = await import("../reporting/reconstruction-report.js");
+src/cli/forgepilot.ts:489:          "SELECT id FROM packets WHERE packet_path = ? OR packet_path LIKE ? OR title = ? OR title LIKE ?"
+src/cli/forgepilot.ts:492:          `packets/${packetIdStr}.md`,
+src/cli/forgepilot.ts:503:          `ERROR: --packet-id '${packetIdStr}' matched ${rows.length} packets. ` +
+tests/fp008.test.ts:65:    packet_path: `packets/${title.replace(/\s+/g, "-")}.md`,
+tests/fp008.test.ts:854:        packet_path: "packets/FP-TEST.md",
+tests/fp008.test.ts:868:        packet_path: "packets/FP-TEST.md",
+tests/fp008.test.ts:893:        packet_path: "packets/FP-TEST.md",
+tests/fp008.test.ts:918:        packet_path: "packets/FP-TEST.md",
+tests/fp008.test.ts:946:        packet_path: "packets/FP-TEST.md",
+tests/fp008.test.ts:975:        packet_path: "packets/FP-TEST.md",
+tests/smoke.test.ts:112:      "packets",
+tests/smoke.test.ts:136:      "workflow_runs",
+tests/smoke.test.ts:171:      .prepare("SELECT * FROM pragma_foreign_key_list('packets')")
+tests/smoke.test.ts:178:    assert.ok(clarFks.some((fk) => fk.table === "packets" && fk.from === "packet_id" && fk.to === "id"));
+tests/smoke.test.ts:183:    assert.ok(execFks.some((fk) => fk.table === "packets" && fk.from === "packet_id" && fk.to === "id"));
+tests/smoke.test.ts:198:    assert.ok(routeFks.some((fk) => fk.table === "packets" && fk.from === "packet_id" && fk.to === "id"));
+tests/smoke.test.ts:233:  it("should return zero counts when no packets exist", async () => {
+tests/smoke.test.ts:241:  it("should count completed and failed packets correctly", () => {
+tests/smoke.test.ts:246:    db.exec("INSERT INTO packets (id, task_id, packet_type, status) VALUES (1, 1, 'eval', 'completed')");
+tests/smoke.test.ts:247:    db.exec("INSERT INTO packets (id, task_id, packet_type, status) VALUES (2, 1, 'eval', 'failed')");
+tests/smoke.test.ts:248:    db.exec("INSERT INTO packets (id, task_id, packet_type, status) VALUES (3, 1, 'eval', 'pending')");
+tests/smoke.test.ts:249:    db.exec("INSERT INTO packets (id, task_id, packet_type, status) VALUES (4, 1, 'eval', 'completed')");
+tests/smoke.test.ts:254:          (SELECT COUNT(*) FROM packets) as total,
+tests/smoke.test.ts:255:          (SELECT COUNT(*) FROM packets WHERE status = 'completed') as successful,
+tests/smoke.test.ts:256:          (SELECT COUNT(*) FROM packets WHERE status = 'failed') as failed`
+tests/smoke.test.ts:270:    assert.ok(output.includes("Total packets"), "Output should include Total packets");
+tests/smoke.test.ts:271:    assert.ok(output.includes("Successful packets"), "Output should include Successful packets");
+tests/smoke.test.ts:272:    assert.ok(output.includes("Failed packets"), "Output should include Failed packets");
+tests/smoke.test.ts:285:          (SELECT COUNT(*) FROM packets) as total,
+tests/smoke.test.ts:286:          (SELECT COUNT(*) FROM packets WHERE status = 'completed') as successful,
+tests/smoke.test.ts:287:          (SELECT COUNT(*) FROM packets WHERE status = 'failed') as failed`
+tests/persistence.test.ts:134:    it("should add FP-004 columns to existing packets table", () => {
+tests/persistence.test.ts:135:      const dbPath = path.join(testDir, "packets-columns.db");
+tests/persistence.test.ts:140:        .prepare("PRAGMA table_info(packets)")
+tests/persistence.test.ts:144:      assert.ok(columns.includes("title"), "packets.title should exist");
+tests/persistence.test.ts:145:      assert.ok(columns.includes("packet_path"), "packets.packet_path should exist");
+tests/persistence.test.ts:146:      assert.ok(columns.includes("packet_hash"), "packets.packet_hash should exist");
+tests/persistence.test.ts:157:        packet_path: "packets/FP-004.md",
+tests/persistence.test.ts:163:      assert.equal(packet.packet_path, "packets/FP-004.md");
+tests/persistence.test.ts:179:        packet_path: "packets/FP-TEST.md",
+tests/persistence.test.ts:196:        packet_path: "packets/FP-TEST.md",
+tests/persistence.test.ts:237:        packet_path: "packets/FP-TEST.md",
+tests/persistence.test.ts:282:        packet_path: "packets/FP-TEST.md",
+tests/persistence.test.ts:317:        packet_path: "packets/FP-TEST.md",
+tests/persistence.test.ts:349:        packet_path: "packets/FP-TEST.md",
+tests/persistence.test.ts:373:        packet_path: "packets/FP-TEST.md",
+tests/persistence.test.ts:404:        packet_path: "packets/FP-TEST.md",
+tests/persistence.test.ts:440:        packet_path: "packets/FP-TEST.md",
+tests/persistence.test.ts:467:        packet_path: "packets/FP-TEST.md",
+tests/persistence.test.ts:510:        packet_path: "packets/FP-TEST.md",
+tests/persistence.test.ts:541:        packet_path: "packets/FP-TEST.md",
+tests/persistence.test.ts:575:        packet_path: "packets/FP-TEST.md",
+tests/persistence.test.ts:603:        packet_path: "packets/FP-TEST.md",
+tests/persistence.test.ts:651:        packet_path: "packets/FP-TEST.md",
+tests/persistence.test.ts:666:        packet_path: "packets/FP-TEST.md",
+tests/persistence.test.ts:727:    it("should preserve existing packets table columns and foreign keys", () => {
+tests/persistence.test.ts:733:        .prepare("PRAGMA table_info(packets)")
+tests/persistence.test.ts:737:      assert.ok(columns.includes("id"), "packets.id should exist");
+tests/persistence.test.ts:738:      assert.ok(columns.includes("task_id"), "packets.task_id should exist");
+tests/persistence.test.ts:739:      assert.ok(columns.includes("packet_type"), "packets.packet_type should exist");
+tests/persistence.test.ts:740:      assert.ok(columns.includes("status"), "packets.status should exist");
+tests/persistence.test.ts:741:      assert.ok(columns.includes("created_at"), "packets.created_at should exist");
+tests/persistence.test.ts:742:      assert.ok(columns.includes("updated_at"), "packets.updated_at should exist");
+tests/persistence.test.ts:745:        .prepare("SELECT * FROM pragma_foreign_key_list('packets')")
+tests/persistence.test.ts:749:        "packets.task_id FK to tasks.id should remain"
+tests/persistence.test.ts:761:      db.exec("INSERT OR REPLACE INTO packets (id, task_id, packet_type, status) VALUES (1, 1, 'eval', 'completed')");
+tests/persistence.test.ts:762:      db.exec("INSERT OR REPLACE INTO packets (id, task_id, packet_type, status) VALUES (2, 1, 'eval', 'failed')");
+tests/persistence.test.ts:767:            (SELECT COUNT(*) FROM packets) as total,
+tests/persistence.test.ts:768:            (SELECT COUNT(*) FROM packets WHERE status = 'completed') as successful,
+tests/persistence.test.ts:769:            (SELECT COUNT(*) FROM packets WHERE status = 'failed') as failed`
+tests/persistence.test.ts:786:        packet_path: "packets/FP-TEST.md",
+tests/persistence.test.ts:972:        packet_path: "packets/FP-005.md",
+tests/persistence.test.ts:1025:        packet_path: "packets/FP-005.md",
+tests/persistence.test.ts:1071:        packet_path: "packets/FP-005.md",
+tests/persistence.test.ts:1092:        packet_path: "packets/FP-A.md",
+tests/persistence.test.ts:1104:        packet_path: "packets/FP-B.md",
+tests/persistence.test.ts:1137:        packet_path: "packets/FP-005.md",
+tests/persistence.test.ts:1167:        packet_path: "packets/FP-005.md",
+tests/persistence.test.ts:1193:        packet_path: "packets/FP-005.md",
+tests/persistence.test.ts:1219:        packet_path: "packets/FP-005.md",
+tests/persistence.test.ts:1247:        packet_path: "packets/FP-005.md",
+tests/persistence.test.ts:1275:        packet_path: "packets/FP-005.md",
+tests/persistence.test.ts:1301:        packet_path: "packets/FP-005.md",
+tests/persistence.test.ts:1345:        packet_path: "packets/FP-004.md",
+tests/persistence.test.ts:1350:        .prepare("SELECT id FROM packets WHERE packet_path = ?")
+tests/persistence.test.ts:1351:        .get("packets/FP-004.md") as { id: number } | undefined;
+tests/persistence.test.ts:1356:        .prepare("SELECT id FROM packets WHERE title LIKE ?")
+tests/persistence.test.ts:1363:          "SELECT id FROM packets WHERE packet_path = ? OR packet_path LIKE ? OR title = ? OR title LIKE ?"
+tests/persistence.test.ts:1365:        .get("packets/FP-004.md", "%FP-004%", "FP-004", "%FP-004%") as { id: number } | undefined;
+tests/persistence.test.ts:1377:        packet_path: "packets/FP-TEST.md",
+tests/persistence.test.ts:1391:        packet_path: "packets/FP-TEST.md",
+tests/persistence.test.ts:1416:        packet_path: "packets/FP-TEST.md",
+tests/persistence.test.ts:1442:        packet_path: "packets/FP-TEST.md",
+tests/persistence.test.ts:1474:        packet_path: "packets/FP-TEST.md",
+tests/persistence.test.ts:1506:        packet_path: "packets/FP-TEST.md",
+tests/persistence.test.ts:1562:      assert.ok(tables.includes("packets"), "packets table should exist");
+tests/fp013.test.ts:30:    writeFile("packets/FP-TEST.md", "# FP-TEST — Example Packet\n\nTask body.\n");
+tests/fp013.test.ts:31:    writeFile("runs/FP-TEST/verification.txt", "PASS\n");
+tests/fp013.test.ts:32:    writeFile("runs/FP-TEST/direct-mcp-query-result.md", "PASS\n");
+tests/fp013.test.ts:33:    writeFile("runs/FP-TEST/metrics.json", "{}\n");
+tests/fp013.test.ts:34:    writeFile("runs/FP-TEST/terminal-commands/ignored-result.json", "{}\n");
+tests/fp013.test.ts:39:    assert.equal(report.packet_path, "packets/FP-TEST.md");
+tests/fp013.test.ts:55:    writeFile("packets/FP-WORKER.md", "# FP-WORKER\n");
+tests/fp013.test.ts:83:      /packet not found: packets\/FP-MISSING.md/
+tests/fp013.test.ts:95:    writeFile("packets/FP-TEXT.md", "# FP-TEXT — Text Report\n");
+tests/fp013.test.ts:96:    writeFile("runs/FP-TEXT/verification.txt", "PASS\n");
+tests/fp013.test.ts:103:    assert.match(text, /runs\/FP-TEXT\/verification.txt \[verification\]/);
+tests/fp012.test.ts:95:    packet_path: `packets/${title.replace(/\s+/g, "-")}.md`,
+tests/fp012.test.ts:1444:        .prepare("SELECT id, title, status FROM packets WHERE id = ?")
+tests/fp012.test.ts:1458:        .prepare("SELECT id, title, status FROM packets WHERE id = ?")
+tests/fp012.test.ts:1516:        packet_path: "packets/test.md",
+tests/fp012.test.ts:1552:        packet_path: "packets/test.md",
+tests/fp012.test.ts:1583:        packet_path: "packets/test.md",
+tests/fp012.test.ts:1626:        packet_path: "packets/test.md",
+tests/fp012.test.ts:1657:        packet_path: "packets/test.md",
+tests/fp012.test.ts:1697:        packet_path: "packets/test.md",
+tests/fp012.test.ts:1711:        metrics_path: "runs/test/metrics.json",
+tests/fp012.test.ts:1712:        artifact_paths: ["runs/test/output.md"],
+tests/fp012.test.ts:1731:        packet_path: "packets/test.md",
+tests/fp012.test.ts:1745:        metrics_path: "runs/test/metrics.json",
+tests/fp012.test.ts:1746:        artifact_paths: ["runs/test/output.md"],
+tests/fp012.test.ts:1814:      assert.ok(tables.includes("packets"), "FP-004 packets table");
+tests/fp012.test.ts:1845:        "global_model_ranking",
+tests/fp012.test.ts:2069:        .prepare("SELECT id, title, status FROM packets WHERE id = ?")
+tests/fp012.test.ts:2075:        .prepare("SELECT id, title, status FROM packets WHERE id = ?")
+tests/fp012.test.ts:2248:        "provider_recommendation", "global_model_ranking",
+tests/fp010.test.ts:52:    packet_path: `packets/${title.replace(/\s+/g, "-")}.md`,
+tests/fp010.test.ts:167:        metrics_path: "runs/FP-010/metrics.json",
+tests/fp010.test.ts:169:          "runs/FP-010/executor-result.md",
+tests/fp010.test.ts:170:          "runs/FP-010/verification.txt",
+tests/fp010.test.ts:188:      assert.equal(record.metrics_path, "runs/FP-010/metrics.json");
+tests/fp010.test.ts:196:      assert.equal(paths[0], "runs/FP-010/executor-result.md");
+tests/fp010.test.ts:197:      assert.equal(paths[1], "runs/FP-010/verification.txt");
+tests/fp010.test.ts:567:        "runs/FP-010/executor-result.md",
+tests/fp010.test.ts:568:        "runs/FP-010/verification.txt",
+tests/fp010.test.ts:569:        "runs/FP-010/metrics.json",
+tests/fp010.test.ts:633:        metrics_path: "runs/FP-010/metrics.json",
+tests/fp010.test.ts:634:        artifact_paths: ["runs/FP-010/executor-result.md"],
+tests/fp010.test.ts:649:        "runs/FP-010/metrics.json",
+tests/fp010.test.ts:655:        paths.includes("runs/FP-010/executor-result.md"),
+tests/fp010.test.ts:663:      const dbPath = path.join(testDir, "preserve-packets.db");
+tests/fp010.test.ts:672:        .prepare("PRAGMA table_info(packets)")
+tests/fp015.test.ts:10:} from "../src/reporting/reconstruction-report.js";
+tests/fp015.test.ts:29:  it("reconstructs artifact presence without overclaiming", () => {
+tests/fp015.test.ts:30:    writeFile("packets/FP-X.md", "# FP-X\n");
+tests/fp015.test.ts:31:    writeFile("runs/FP-X/verification.txt", "PASS\n");
+tests/fp015.test.ts:32:    writeFile("runs/FP-X/audit-result.md", "ACCEPTED\n");
+tests/fp015.test.ts:33:    writeFile("runs/FP-X/comparison-result.md", "TIE\n");
+tests/fp015.test.ts:34:    writeFile("runs/FP-X/terminal-commands/ignored.json", "{}\n");
+tests/fp015.test.ts:43:    assert.ok(report.reconstructed_labels.includes("NO_COMPARISON_RECORDED") === false);
+tests/fp015.test.ts:48:    writeFile("packets/FP-Y.md", "# FP-Y\n");
+tests/fp015.test.ts:68:      /packet not found: packets\/FP-MISSING.md/
+tests/fp011.test.ts:57:    packet_path: `packets/${title.replace(/\s+/g, "-")}.md`,
+tests/fp011.test.ts:74:    metrics_path: "runs/FP-011/metrics.json",
+tests/fp011.test.ts:76:      "runs/FP-011/executor-result.md",
+tests/fp011.test.ts:77:      "runs/FP-011/verification.txt",
+tests/fp011.test.ts:365:        metrics_path: "runs/FP-011/metrics.json",
+tests/fp011.test.ts:366:        artifact_paths: ["runs/FP-011/executor-result.md"],
+tests/fp011.test.ts:389:        metrics_path: "runs/FP-011/metrics.json",
+tests/fp011.test.ts:390:        artifact_paths: ["runs/FP-011/executor-result.md"],
+tests/fp011.test.ts:415:        metrics_path: "runs/FP-011/metrics.json",
+tests/fp011.test.ts:416:        artifact_paths: ["runs/FP-011/executor-result.md"],
+tests/fp011.test.ts:516:        metrics_path: "runs/FP-011/metrics.json",
+tests/fp011.test.ts:517:        artifact_paths: ["runs/FP-011/executor-result.md"],
+tests/fp011.test.ts:598:        metrics_path: "runs/FP-011/metrics.json",
+tests/fp011.test.ts:599:        artifact_paths: ["runs/FP-011/executor-result.md"],
+tests/fp011.test.ts:1318:        packet_path: "packets/test.md",
+tests/fp011.test.ts:1357:      assert.ok(tables.includes("packets"), "FP-004 table should exist");
+tests/fp011.test.ts:1518:        metrics_path: "runs/test/metrics.json",
+tests/fp011.test.ts:1519:        artifact_paths: ["runs/test/output.md"],
+tests/fp009.test.ts:69:    packet_path: `packets/${title.replace(/\s+/g, "-")}.md`,
+tests/fp009.test.ts:1088:        packet_path: "packets/FP-004-TEST.md",
+tests/fp009.test.ts:1102:        packet_path: "packets/FP-004-TEST.md",
+tests/fp009.test.ts:1127:        packet_path: "packets/FP-004-TEST.md",
+tests/fp009.test.ts:1155:        packet_path: "packets/FP-005-TEST.md",
+tests/fp009.test.ts:1183:        packet_path: "packets/FP-005-TEST.md",
+tests/fp014.test.ts:32:ForgePilot V1 is complete when packet intent, execution, telemetry, verification, audit, admission, comparison, and reporting can be reconstructed from committed evidence.
+tests/fp014.test.ts:54:    writeFile("packets/FP-013.md", "# FP-013\n");
+tests/fp014.test.ts:55:    writeFile("packets/FP-META-021.md", "# FP-META-021\n");
+tests/fp014.test.ts:56:    writeFile("packets/FP-OPS-001.md", "# FP-OPS-001\n");
+tests/fp014.test.ts:57:    writeFile("packets/FP-MCP-157.md", "# FP-MCP-157\n");
+docs/packet-namespace-taxonomy.md:17:For new packets:
+docs/packet-namespace-taxonomy.md:41:- reporting commands that reconstruct packet state.
+docs/packet-namespace-taxonomy.md:50:| Add verification-state reconstruction query | `FP-*` |
+docs/packet-namespace-taxonomy.md:142:Some existing packets may be broader than their namespace suggests.
+docs/packet-namespace-taxonomy.md:178:After ForgePilot V1.0, root ForgePilot packets are reserved for ForgePilot core work: observatory rules, evidence semantics, reporting, admission/comparison semantics, operator workflows, core implementation, and instrument-contract changes.
+docs/packet-namespace-taxonomy.md:185:instrument-projects/<project>/
+docs/packet-namespace-taxonomy.md:191:observed-projects/<project>/
+docs/packet-namespace-taxonomy.md:194:The MCP bridge is classified as an instrument project. Pre-V1 `FP-MCP-*` packets remain historical bootstrap evidence and must not be moved or renamed.
+docs/packet-status-index.md:5:This index helps operators navigate ForgePilot packets without rewriting history.
+docs/packet-status-index.md:29:| `ACTIVE` | Current or near-current work surface; future packets may build directly on it. |
+docs/packet-status-index.md:32:| `SUPERSEDED` | Later packets replaced or refined its operating role. |
+docs/packet-status-index.md:62:| `FP-META-022` | `COMPLETED` | Admission/comparison reconstruction rules | Governs reconstruction reports. |
+docs/packet-status-index.md:63:| `FP-015` | `COMPLETED` | Reconstruction report | First read-only admission/comparison reconstruction report. |
+docs/packet-status-index.md:82:| Early `FP-META-*` packets before `FP-META-017` | `HISTORICAL` / `UNKNOWN` | Preserve as standards/evaluation history; review individually before calling superseded. |
+docs/packet-status-index.md:83:| Early `FP-*` implementation packets before `FP-013` | `HISTORICAL` / `COMPLETED` | Many are core implementation history; use run evidence before making current claims. |
+docs/packet-status-index.md:84:| Early `FP-MCP-*` bridge packets before `FP-MCP-153` | `HISTORICAL` / `UNKNOWN` | Preserve as MCP bridge history; review individually before current use. |
+docs/pre-start-evidence-contract.md:35:runs/<packetId>/pre-start-evidence/<requestId>.json
+docs/pre-start-evidence-contract.md:64:  "requestArtifactPath": "runs/<packetId>/opencode-requests/<requestId>.json",
+docs/pre-start-evidence-contract.md:68:  "artifactDir": "runs/<packetId>/<modelId>-<runMode>/ or null",
+docs/opencode-executor-boundary.md:46:Those concerns require future packets.
+docs/opencode-executor-boundary.md:125:* `forgepilot_list_packets`
+docs/opencode-executor-boundary.md:126:* `forgepilot_list_runs`
+docs/opencode-executor-boundary.md:130:* `packets/`
+docs/opencode-executor-boundary.md:131:* `runs/`
+docs/opencode-executor-boundary.md:292:A run must not begin if the ForgePilot working tree is dirty, unless a future explicit policy allows dirty-tree runs.
+docs/opencode-executor-boundary.md:549:Executor runs should move through explicit lifecycle states.
+docs/opencode-executor-boundary.md:583:The first implementation should not start OpenCode runs.
+docs/opencode-executor-boundary.md:643:6. Should ChatGPT be allowed to request audits, or only executor runs?
+docs/single-use-approval-consumption-contract.md:56:runs/<packetId>/approval-consumptions/<consumptionId>.json
+docs/single-use-approval-consumption-contract.md:121:A consumption event must not cover all approvals, all packets, all requests, all models, all run modes, future requests, recurring execution, or background execution.
+docs/single-use-approval-consumption-contract.md:159:The next narrow packets should be:
+docs/start-request-state-snapshot-contract.md:59:runs/<packetId>/start-state-snapshots/<requestId>/<attemptId>/pre-start-state.json
+docs/start-request-state-snapshot-contract.md:60:runs/<packetId>/start-state-snapshots/<requestId>/<attemptId>/post-start-state.json
+docs/start-request-state-snapshot-contract.md:78:  "requestArtifactPath": "runs/.../opencode-requests/REQ-....json",
+docs/start-request-state-snapshot-contract.md:80:  "preStartEvidencePath": "runs/.../pre-start-evidence/REQ-....json",
+docs/start-request-state-snapshot-contract.md:115:  "requestArtifactPath": "runs/.../opencode-requests/REQ-....json",
+docs/start-request-state-snapshot-contract.md:117:  "preStartEvidencePath": "runs/.../pre-start-evidence/REQ-....json",
+docs/start-request-state-snapshot-contract.md:119:  "preStateSnapshotPath": "runs/.../pre-start-state.json",
+docs/start-request-state-snapshot-contract.md:165:While the global execution disable switch is active, both pre-start and post-start snapshots must record:
+docs/start-request-state-snapshot-contract.md:252:runs/FP-MCP-054/executor-result.md
+docs/start-request-state-snapshot-contract.md:253:runs/FP-MCP-054/verification.txt
+docs/project-summary-reporting-rules.md:14:What may a ForgePilot project summary report claim across multiple packets?
+docs/project-summary-reporting-rules.md:25:| Packet inventory | packet files present under `packets/` | filesystem/git tree |
+docs/project-summary-reporting-rules.md:27:| Evidence artifacts | run artifacts present under `runs/<packet>/` | filesystem/git tree |
+docs/project-summary-reporting-rules.md:84:- packets executed,
+docs/project-summary-reporting-rules.md:85:- packets succeeded,
+docs/project-summary-reporting-rules.md:86:- packets are current,
+docs/project-summary-reporting-rules.md:87:- packets are V1-relevant,
+docs/project-summary-reporting-rules.md:88:- packets are correctly named under the newer taxonomy.
+docs/project-summary-reporting-rules.md:137:Observed proof for FP-MCP-157 exists at runs/FP-MCP-157/direct-mcp-query-result.md.
+docs/project-summary-reporting-rules.md:147:- all historical packets are current,
+docs/project-summary-reporting-rules.md:150:- comparison artifacts imply global model ranking,
+docs/real-human-approval-evidence-contract.md:56:globalDisableActive: true
+docs/real-human-approval-evidence-contract.md:134:runs/<packetId>/approvals/<approvalId>.json
+docs/real-human-approval-evidence-contract.md:191:all packets
+docs/real-human-approval-evidence-contract.md:222:non-override of the global disable switch
+docs/real-human-approval-evidence-contract.md:316:global disable switch not active
+docs/real-human-approval-evidence-contract.md:341:The recommended next packets are:
+docs/metrics.md:35:High-quality clarifications (precise, resolved before execution) result in packets that are more complete, unambiguous, and likely to succeed on first pass.
+docs/metrics.md:39:Well-structured, clear packets lead to higher first-pass success rates, fewer fix attempts, and fewer escalations.
+docs/human-approval-record-contract.md:63:runs/<packetId>/approvals/<approvalId>.json
+docs/human-approval-record-contract.md:69:runs/FP-MCP-041/approvals/APPROVAL-20260622T000000000Z-abcdef12.json
+docs/human-approval-record-contract.md:77:under runs/<packetId>/approvals/
+docs/human-approval-record-contract.md:86:packets/
+docs/human-approval-record-contract.md:520:approval path is outside runs/<packetId>/approvals/
+docs/v1-evidence-capability-completion-index.md:7:It records which capabilities are complete for V1 evidence reconstruction and reporting.
+docs/v1-evidence-capability-completion-index.md:16:Packet intent, execution evidence, telemetry/observations, verification, audit, admission state, comparison state, and reporting can be reconstructed from committed evidence and supported read-only reports.
+docs/v1-evidence-capability-completion-index.md:24:- all historical packets are individually reclassified,
+docs/v1-evidence-capability-completion-index.md:32:| Verification evidence | `COMPLETE` | Verification artifacts are recorded and reportable as verification evidence, not admission. | `runs/FP-013/verification.txt`, `runs/FP-014/verification.txt`, `runs/FP-015/verification.txt`, `runs/FP-016/verification.txt`, historical `runs/*/verification*` artifacts | `packet-report`, `project-report`, `reconstruction-report` | Passing verification is not admission. |
+docs/v1-evidence-capability-completion-index.md:33:| Audit evidence | `COMPLETE` | Audit artifacts exist historically and can be reconstructed as audit presence without implying comparison or admission. | `runs/FP-META-015/audit-result.md`, `runs/FP-META-016/audit-result.md`, `runs/FP-005/audit-result.md`, `runs/FP-007/audit-result.md`, `runs/FP-010/audit-*`, `runs/FP-012/audit-*` | `reconstruction-report` | Audit is not comparison or admission by itself. |
+docs/v1-evidence-capability-completion-index.md:34:| Admission state | `COMPLETE` | Admission concepts/persistence exist and reports preserve `NOT_EVALUATED` rather than treating observations as admitted. | `FP-009`, `FP-010`, `docs/admission-comparison-reconstruction-rules.md`, `runs/FP-013/packet-report-fp-mcp-153.json`, `runs/FP-015/reconstruction-smoke-summary.json` | `packet-report`, `reconstruction-report` | `NOT_EVALUATED` must not be treated as admitted evidence. |
+docs/v1-evidence-capability-completion-index.md:35:| Comparison result | `COMPLETE` | Comparison artifacts exist historically and can be reconstructed as bounded comparison presence without global ranking. | `runs/FP-META-015/comparison-result.md`, `runs/FP-META-016/comparison-result.md`, `runs/FP-005/comparison-result.md`, `runs/FP-007/comparison-result.md`, `runs/FP-010/comparison-result.md`, `runs/FP-012/comparison-result.md` | `reconstruction-report` | Comparison is not global model ranking. |
+docs/v1-evidence-capability-completion-index.md:36:| Reporting / summary view | `COMPLETE` | Single-packet, project-wide, reconstruction, capability-detail, lifecycle, packet-status, and safety-boundary report/index surfaces exist for V1. | `FP-013`, `FP-014`, `FP-015`, `FP-016`, `FP-OPS-004`, `FP-META-023`, `FP-META-024` | `packet-report`, `project-report`, `reconstruction-report`, docs indexes | Reports and indexes are not evidence by themselves. |
+docs/v1-evidence-capability-completion-index.md:52:It requires that audit artifacts are preserved and can be reconstructed when present.
+docs/v1-evidence-capability-completion-index.md:54:This is satisfied by historical audit artifacts and `reconstruction-report`, which reports audit presence separately from comparison and admission.
+docs/v1-evidence-capability-completion-index.md:66:ForgePilot V1 does not require global model ranking.
+docs/v1-evidence-capability-completion-index.md:68:It requires bounded comparison artifacts to be preserved and reconstructable.
+docs/v1-evidence-capability-completion-index.md:70:This is satisfied by historical comparison artifacts and `reconstruction-report`.
+docs/v1-evidence-capability-completion-index.md:76:It requires supported read-only reporting surfaces sufficient to reconstruct project state.
+docs/v1-evidence-capability-completion-index.md:82:- `reconstruction-report`,
+docs/execution-recovery-and-quarantine-contract.md:134:globalDisableActive: true
+docs/persistence-standards.md:306:Persistence must preserve provenance sufficient to reconstruct:
+docs/safety-boundary-evidence-index.md:5:This index consolidates ForgePilot V1 safety boundaries and maps each boundary to source documents, packets, or evidence artifacts.
+docs/safety-boundary-evidence-index.md:25:| Discussion is not evidence. | Treating chat/design intent as committed evidence. | `docs/evidence-boundary-doctrine.md` | `FP-META-018`, `runs/FP-META-018/verification.txt` | `DOCUMENTED`, `INDEXED` |
+docs/safety-boundary-evidence-index.md:26:| Packet existence is not execution evidence. | Claiming work executed because a packet exists. | `docs/evidence-boundary-doctrine.md`, `docs/project-summary-reporting-rules.md` | `FP-014`, `FP-016` project report caveats and incomplete capability output | `DOCUMENTED`, `OBSERVED`, `INDEXED` |
+docs/safety-boundary-evidence-index.md:27:| Implementation is not evidence by itself. | Claiming correctness from committed code alone. | `docs/evidence-boundary-doctrine.md`, `docs/packet-namespace-definition-of-done.md` | Verification artifacts required per namespace; `runs/FP-013` through `runs/FP-016` | `DOCUMENTED`, `OBSERVED`, `INDEXED` |
+docs/safety-boundary-evidence-index.md:28:| Verification is not admission. | Treating passing tests as admitted evidence. | `docs/evidence-boundary-doctrine.md`, `docs/reporting-evidence-rules.md` | `runs/FP-013/verification.txt`, `runs/FP-014/verification.txt`, `runs/FP-015/verification.txt`, `runs/FP-016/verification.txt` | `DOCUMENTED`, `OBSERVED`, `INDEXED` |
+docs/safety-boundary-evidence-index.md:30:| Non-admitted observations are not routing input. | Using telemetry or query results for routing/model preference. | `docs/reporting-evidence-rules.md`, `docs/admission-comparison-reconstruction-rules.md` | Report boundary text: `Observation only. Not admitted evidence. Not routing input.` | `DOCUMENTED`, `OBSERVED`, `INDEXED` |
+docs/safety-boundary-evidence-index.md:31:| Comparison is not global model ranking. | Treating bounded comparisons as universal model scores. | `docs/admission-comparison-reconstruction-rules.md` | `FP-015` reconstruction report caveat; comparison artifacts reported as bounded records | `DOCUMENTED`, `OBSERVED`, `INDEXED` |
+docs/safety-boundary-evidence-index.md:32:| Reporting is an index, not evidence itself. | Treating report output as stronger than source artifacts. | `docs/reporting-evidence-rules.md`, `docs/project-summary-reporting-rules.md` | `FP-013`, `FP-014`, `FP-016` report boundaries | `DOCUMENTED`, `OBSERVED`, `INDEXED` |
+docs/safety-boundary-evidence-index.md:33:| Reconstruction is read-only. | Creating admission/comparison/ranking authority from reconstruction. | `docs/admission-comparison-reconstruction-rules.md` | `FP-015` reconstruction report boundary and smoke evidence | `DOCUMENTED`, `OBSERVED`, `INDEXED` |
+docs/safety-boundary-evidence-index.md:36:| Historical packets must not be renamed or deleted. | Rewriting packet history after taxonomy changes. | `docs/packet-namespace-taxonomy.md`, `docs/packet-status-index.md` | `FP-OPS-004` packet status index; `FP-MCP-158` namespace drift example preserved | `DOCUMENTED`, `INDEXED` |
+docs/safety-boundary-evidence-index.md:37:| Routing is deferred. | Premature model routing or optimization. | `docs/forgepilot-progress-checklist.md`, `docs/project-summary-reporting-rules.md` | Project report deferred capability output in `FP-016` | `DEFERRED`, `OBSERVED`, `INDEXED` |
+docs/safety-boundary-evidence-index.md:38:| Model scoring/ranking is deferred. | Premature model-quality scoring from incomplete telemetry/comparison evidence. | `docs/forgepilot-progress-checklist.md`, `docs/project-summary-reporting-rules.md` | Project report deferred capability output in `FP-016` | `DEFERRED`, `OBSERVED`, `INDEXED` |
+docs/safety-boundary-evidence-index.md:45:| Terminal/MCP command evidence artifacts | Separates command invocation evidence from final admitted evidence. | `runs/*/terminal-commands/` excluded from committed user-facing evidence unless summarized |
+docs/safety-boundary-evidence-index.md:46:| Verification artifacts | Records typecheck/test/smoke evidence without implying admission. | `runs/FP-013` through `runs/FP-016` |
+docs/safety-boundary-evidence-index.md:47:| Direct MCP proof artifacts | Shows operational tool visibility without implying admission/routing. | `runs/FP-MCP-157/direct-mcp-query-result.md` |
+docs/safety-boundary-evidence-index.md:48:| Project report incomplete capability list | Keeps V1 incomplete state visible. | `runs/FP-016/project-report-capability-summary.json` |
+docs/safety-boundary-evidence-index.md:49:| Packet status index | Preserves historical packets without renaming/deleting. | `docs/packet-status-index.md` |
+docs/opencode-start-tool-implementation-boundary.md:11:The current ForgePilot MCP bridge is not execution-capable. OpenCode discovery is configured, but OpenCode execution is disabled. The remote runner is reachable, but its advertised operations are limited to capabilities and validate-request. The global execution disable switch remains active.
+docs/opencode-start-tool-implementation-boundary.md:28:global disable switch
+docs/opencode-start-tool-implementation-boundary.md:69:This layer may exist while execution is globally disabled.
+docs/opencode-start-tool-implementation-boundary.md:91:global disable status recording
+docs/opencode-start-tool-implementation-boundary.md:108:global disable switch inactive
+docs/opencode-start-tool-implementation-boundary.md:167:runs/<packetId>/opencode-requests/<requestId>.json
+docs/opencode-start-tool-implementation-boundary.md:260:FP-MCP-081 does not relax the global disable switch.
+docs/execution-artifact-contract.md:57:runs/<packetId>/<modelId>-<runMode>/
+docs/execution-artifact-contract.md:63:runs/FP-MCP-035/qwen-3.7-max-DESIGN_ONLY/
+docs/execution-artifact-contract.md:71:under runs/<packetId>/
+docs/execution-artifact-contract.md:122:  "requestArtifactPath": "runs/FP-MCP-035/opencode-requests/REQ-....json",
+docs/execution-artifact-contract.md:178:  "artifactDir": "runs/FP-MCP-035/qwen-3.7-max-DESIGN_ONLY/",
+docs/execution-artifact-contract.md:238:  "stdoutPath": "runs/FP-MCP-035/qwen-3.7-max-DESIGN_ONLY/stdout.txt",
+docs/execution-artifact-contract.md:239:  "stderrPath": "runs/FP-MCP-035/qwen-3.7-max-DESIGN_ONLY/stderr.txt",
+docs/execution-artifact-contract.md:301:      "path": "runs/FP-MCP-035/qwen-3.7-max-DESIGN_ONLY/preflight-result.json",
+docs/model-execution-evidence-review.md:13:> Which model is globally better?
+docs/model-execution-evidence-review.md:29:- `packets/FP-010.md`
+docs/model-execution-evidence-review.md:30:- `runs/FP-010/executor-result-deepseek.md`
+docs/model-execution-evidence-review.md:31:- `runs/FP-010/executor-result-qwen.md`
+docs/model-execution-evidence-review.md:32:- `runs/FP-010/executor-result.md`
+docs/model-execution-evidence-review.md:33:- `runs/FP-010/audit-deepseek-by-qwen.md`
+docs/model-execution-evidence-review.md:34:- `runs/FP-010/audit-qwen-by-deepseek.md`
+docs/model-execution-evidence-review.md:35:- `runs/FP-010/comparison-result.md`
+docs/model-execution-evidence-review.md:36:- `runs/FP-010/metrics.json`
+docs/model-execution-evidence-review.md:37:- `runs/FP-010/metrics-deepseek.json`
+docs/model-execution-evidence-review.md:38:- `runs/FP-010/metrics-qwen.json`
+docs/model-execution-evidence-review.md:39:- `runs/FP-010/verification.txt`
+docs/model-execution-evidence-review.md:40:- `runs/FP-010/verification-deepseek.txt`
+docs/model-execution-evidence-review.md:41:- `runs/FP-010/verification-qwen.txt`
+docs/model-execution-evidence-review.md:45:- `packets/FP-011.md`
+docs/model-execution-evidence-review.md:46:- `runs/FP-011/executor-result-deepseek.md`
+docs/model-execution-evidence-review.md:47:- `runs/FP-011/executor-result-qwen.md`
+docs/model-execution-evidence-review.md:48:- `runs/FP-011/executor-result.md`
+docs/model-execution-evidence-review.md:49:- `runs/FP-011/audit-deepseek-by-qwen.md`
+docs/model-execution-evidence-review.md:50:- `runs/FP-011/audit-qwen-by-deepseek.md`
+docs/model-execution-evidence-review.md:51:- `runs/FP-011/comparison-result.md`
+docs/model-execution-evidence-review.md:52:- `runs/FP-011/metrics.json`
+docs/model-execution-evidence-review.md:53:- `runs/FP-011/metrics-deepseek.json`
+docs/model-execution-evidence-review.md:54:- `runs/FP-011/metrics-qwen.json`
+docs/model-execution-evidence-review.md:55:- `runs/FP-011/verification.txt`
+docs/model-execution-evidence-review.md:56:- `runs/FP-011/verification-deepseek.txt`
+docs/model-execution-evidence-review.md:57:- `runs/FP-011/verification-qwen.txt`
+docs/model-execution-evidence-review.md:61:- `packets/FP-012.md`
+docs/model-execution-evidence-review.md:62:- `runs/FP-012/executor-result-deepseek.md`
+docs/model-execution-evidence-review.md:63:- `runs/FP-012/executor-result-qwen.md`
+docs/model-execution-evidence-review.md:64:- `runs/FP-012/executor-result.md`
+docs/model-execution-evidence-review.md:65:- `runs/FP-012/audit-deepseek-by-qwen.md`
+docs/model-execution-evidence-review.md:66:- `runs/FP-012/audit-qwen-by-deepseek.md`
+docs/model-execution-evidence-review.md:67:- `runs/FP-012/postfix-audit-qwen-by-deepseek.md`
+docs/model-execution-evidence-review.md:68:- `runs/FP-012/comparison-result.md`
+docs/model-execution-evidence-review.md:69:- `runs/FP-012/metrics.json`
+docs/model-execution-evidence-review.md:70:- `runs/FP-012/metrics-deepseek.json`
+docs/model-execution-evidence-review.md:71:- `runs/FP-012/metrics-qwen.json`
+docs/model-execution-evidence-review.md:72:- `runs/FP-012/verification.txt`
+docs/model-execution-evidence-review.md:73:- `runs/FP-012/verification-deepseek.txt`
+docs/model-execution-evidence-review.md:74:- `runs/FP-012/verification-qwen.txt`
+docs/model-execution-evidence-review.md:80:**Packet question:** Can ForgePilot store and retrieve evidence records for packet runs?
+docs/model-execution-evidence-review.md:88:- DeepSeek stored `packet_id` as text (e.g., `FP-010`). Qwen stored `packet_id` as an integer foreign key referencing `packets(id)`.
+docs/model-execution-evidence-review.md:89:- DeepSeek used a globally unique `run_id`. Qwen used `run_id` unique only within a packet (unique on `(packet_id, run_id)`).
+docs/model-execution-evidence-review.md:189:2. **Both models required corrections in all 3 packets.** Neither model achieved first-pass success in any packet (per metrics.json records). Correction counts ranged from 1 to 3 per model per packet.
+docs/model-execution-evidence-review.md:193:4. **Both models preserved scope boundaries in all 3 packets.** No audit found routing, ranking, cost optimization, leaderboards, dashboards, reports, or automatic model-selection logic.
+docs/model-execution-evidence-review.md:195:5. **State axis separation preserved by both models across all packets.** trust_tier, validation_state, and admission_state remained independent axes in FP-010 and FP-011 implementations. FP-012 did not collapse them.
+docs/model-execution-evidence-review.md:199:7. **One model had observed cost recorded.** Qwen FP-011 execution incurred $2.61 USD (Zen cost, recorded in `runs/FP-011/metrics.json`). No cost data recorded for DeepSeek executions.
+docs/model-execution-evidence-review.md:205:1. **Schema integration discipline.** DeepSeek consistently updated `src/db/schema.sql` alongside migrations (FP-011, FP-012). Qwen did so only after correction in FP-012. This is an inference from comparison notes; it is not a global property of either model.
+docs/model-execution-evidence-review.md:207:2. **Vocabulary fidelity.** DeepSeek matched packet vocabulary directly in both FP-011 (validation_state/admission_state) and FP-012 (classification/comparison terminology). Qwen introduced alternative naming in FP-011 (validation_outcome/admission_outcome). This inference is limited to the two packets where naming was material.
+docs/model-execution-evidence-review.md:213:- Statements about which model is "globally better"
+docs/model-execution-evidence-review.md:222:Observations are evidence-bound and limited to the reviewed packets. Confidence levels are described per observation.
+docs/model-execution-evidence-review.md:226:| 1 | Both models produced accepted implementations for all three packets | FP-010, FP-011, FP-012 | DeepSeek, Qwen | 6 primary cross-model audit verdicts (5 ACCEPTED, 1 ACCEPTED_WITH_NOTES); 1 post-fix audit confirming resolution; 7 total audit artifacts | Direct | High |
+docs/model-execution-evidence-review.md:239:1. **Packet count.** Only 3 packets were reviewed (FP-010, FP-011, FP-012). No inference generalizes beyond these packets.
+docs/model-execution-evidence-review.md:241:2. **Task type range.** All three packets were PERSISTENCE-type tasks (schema, validation/admission, classification/comparison). No CLI, BUGFIX, REFACTOR, ARCHITECTURE, or EVALUATION tasks were observed.
+docs/model-execution-evidence-review.md:249:6. **Selection basis variance.** Each packet used a different selection basis. No basis was applied consistently across packets, so no cross-packet selection pattern can be observed.
+docs/model-execution-evidence-review.md:259:1. **Create model rankings.** Comparison outcomes (QWEN_SELECTED, DEEPSEEK_SELECTED) apply only to their respective packets.
+docs/model-execution-evidence-review.md:283:3. **Canonical schema maintenance:** Should packets that add tables be required to update `src/db/schema.sql`? Two of three comparisons cited schema update behavior.
+docs/start-capability-transition-contract.md:369:- `runs/<packet>/transition-decision.md`
+docs/start-capability-transition-contract.md:488:- `runs/<packet>/transition-decision.md`
+docs/manual-action-ledger.md:51:Evidence artifact: runs/<packet>/direct-mcp-*.md
+docs/telemetry-authority-and-field-ownership.md:85:The comparison process owns the field. Comparison-owned fields are populated only after all executor runs complete and comparison evaluation finishes. Executors and auditors must not write comparison-owned fields.
+docs/telemetry-authority-and-field-ownership.md:372:- **Task Classification Standards** (`docs/task-classification-standards.md`) — Defines classification axes for packets including task class, risk level, and audit requirement. Classification records are themselves observations with defined field authority and ownership requirements.
+docs/runner-start-response-contract.md:86:  "requestArtifactPath": "runs/FP-MCP-031/opencode-requests/REQ-....json",
+docs/runner-start-response-contract.md:90:  "artifactDir": "runs/FP-MCP-031/qwen-3.7-max-DESIGN_ONLY/",
+docs/rationale/FP-009-evidence-admission-rationale.md:8:Related packet: packets/FP-009.md
+docs/packet-lifecycle-evidence-index.md:19:| `INTENT_RECORDED` | Packet intent exists. | `packets/<packet>.md` exists. |
+docs/packet-lifecycle-evidence-index.md:21:| `VERIFIED` | Defined verification checks passed or were recorded. | `runs/<packet>/verification*`, typecheck/test/smoke artifact, or report output. |
+docs/packet-lifecycle-evidence-index.md:23:| `RECONSTRUCTED` | Packet state can be reconstructed by a supported read-only report. | `packet-report`, `project-report`, or `reconstruction-report` output. |
+docs/packet-lifecycle-evidence-index.md:24:| `REPORTED` | Packet appears in a supported report surface. | `runs/<packet>` report evidence or project report output. |
+docs/packet-lifecycle-evidence-index.md:38:7. Historical packets retain their IDs and lifecycle history.
+docs/packet-lifecycle-evidence-index.md:45:| Packet files | all `packets/*.md` | `INTENT_RECORDED` | Packet existence alone does not prove execution. |
+docs/packet-lifecycle-evidence-index.md:46:| Run artifacts | `runs/<packet>/` | varies | Verification/audit/comparison/executor artifacts support specific states only. |
+docs/packet-lifecycle-evidence-index.md:63:| Admission/comparison state can be reconstructed | `reconstruction-report` from `FP-015` | `SUPPORTED` |
+docs/packet-lifecycle-evidence-index.md:71:1. committed packets as intent records,
+docs/packet-lifecycle-evidence-index.md:73:3. report surfaces that can inspect packet/project/reconstruction state,
+docs/packet-lifecycle-evidence-index.md:81:- `FP-015` reconstruction report,
+docs/project-checklist-rules.md:7:A project checklist is an evidence-bound planning surface for creating scoped packets and model-worker tasks.
+docs/project-checklist-rules.md:23:instrument-projects/<project>/checklists/
+docs/project-checklist-rules.md:29:observed-projects/<project>/checklists/
+docs/execution-disable-switch-contract.md:142:This reason is distinct from global disable because it records the observed source as operator action rather than static policy.
+docs/execution-disable-switch-contract.md:294:* global disable active,
+docs/execution-disable-switch-contract.md:329:* the contract defines global and scoped disable reasons,
+docs/metrics-trust-and-validation.md:154:- Comparison outcome cannot be validated before all benchmark runs complete
+docs/human-approval-evidence-readiness-checkpoint.md:216:globalDisableSwitchActive: true
+docs/human-approval-evidence-readiness-checkpoint.md:240:## Recommended next packets
+docs/model-roster-and-profiling-rules.md:25:| Model ID | Stable model name used in packets and artifacts. |
+docs/model-roster-and-profiling-rules.md:53:| `READ_ONLY_STRUCTURE_MAP` | Map files, modules, and responsibilities. | Allowed for unobserved models in bounded packets |
+docs/model-roster-and-profiling-rules.md:54:| `RISK_IDENTIFICATION` | Identify risk zones and guardrails. | Allowed for unobserved models in bounded packets |
+docs/model-roster-and-profiling-rules.md:70:| `PROMOTED_FOR_EXECUTION` | Sufficient evidence supports implementation use in scoped packets. | Scoped implementation allowed. |
+docs/model-roster-and-profiling-rules.md:164:- models may participate in read-only planning and audit packets first,
+docs/model-roster-and-profiling-rules.md:173:These rules do not implement routing, scoring, global ranking, model automation, OpenCode plugins, or model execution.
+docs/chatgpt-mcp-compliance-boundary.md:80:packets/
+docs/chatgpt-mcp-compliance-boundary.md:81:runs/
+docs/guarded-execution-preflight-contract.md:591:After this contract, ForgePilot may safely proceed to one of two packets:
+docs/human-approval-consumption-readiness-checkpoint.md:39:approvalPath: runs/FP-MCP-069/approvals/APPROVAL-20260623T111242963Z-78f7e740.json
+docs/human-approval-consumption-readiness-checkpoint.md:42:consumptionPath: runs/FP-MCP-071/approval-consumptions/CONSUMPTION-20260623T111327467Z-0cfc7dee.json
+docs/human-approval-consumption-readiness-checkpoint.md:119:globalDisableSwitchActive: true
+docs/model-evaluation-harness.md:13:The following variables must be held constant across all evaluation runs for a given comparison:
+docs/model-evaluation-harness.md:19:* **Verification procedure** — The same verification commands and acceptance criteria must be applied to all evaluation runs. This ensures that results are measured consistently.
+docs/model-evaluation-harness.md:45:1. **Run artifact** — `runs/<PACKET_ID>/metrics.json`
+docs/model-evaluation-harness.md:90:* **comparison_outcome** — This field remains `null` during individual executor runs. It is populated after comparison completion, when results from multiple models are compared.
+docs/model-evaluation-harness.md:183:* `INVALID` runs are excluded from winner selection.
+docs/model-evaluation-harness.md:190:    * `runs/<PACKET_ID>/metrics.json`
+docs/model-evaluation-harness.md:197:The following standards define how outcome and quality fields in `metrics.json` must be recorded. These standards ensure consistent recording across benchmark packets, auditors, and comparison runs.
+docs/model-evaluation-harness.md:241:Record `NONE` for accepted runs with no failure.
+docs/model-evaluation-harness.md:243:For failed, rejected, invalid, or escalated runs, record one of:
+docs/model-evaluation-harness.md:255:* FP-EVAL-002 discovered packet ambiguity around the meaning of "Successful packets"; this should record `ambiguity_discovered: true` and `root_cause: PACKET`.
+docs/model-evaluation-harness.md:278:The following rules govern all evaluation runs:
+docs/model-evaluation-harness.md:281:* Audits should use the same auditor model across all runs being compared.
+docs/model-evaluation-harness.md:295:* **No merging until comparison complete** — Benchmark implementation must not be merged into any shared branch until all compared model runs are complete and results have been recorded. Merging one model's implementation before all runs finish contaminates the comparison baseline.
+docs/model-evaluation-harness.md:296:* **Invalid-run classification** — Any run that violates the same-packet, same-base-commit, isolated-branch, or no-merge-before-completion rules is classified as an invalid run. Invalid runs must not be included in model comparisons.
+docs/model-evaluation-harness.md:333:Future FP-EVAL benchmark packets must include the following to eliminate ambiguity and enable fair comparisons.
+docs/model-evaluation-harness.md:341:Any status value used in success or failure metrics must be documented in the packet. If "successful" corresponds to a specific `packets.status` value, the packet must state which value or values constitute success. Packets must not rely on executor inference of undocumented mappings.
+docs/model-evaluation-harness.md:363:Before executor runs begin, the packet author must perform an ambiguity review. Every status label, value mapping, and qualitative term must be traceable to a concrete programmatic artifact or an explicit definition. The review must confirm that no term can be interpreted in more than one way by a reasonable executor. Any disambiguations must be recorded in the packet itself.
+docs/model-evaluation-harness.md:423:All packets are subject to task classification standards that define independent axes for classifying packet work type, risk, constraint strictness, evidence sensitivity, blast radius, skill requirement, audit requirement, challenger requirement, and routing eligibility.
+docs/forgepilot-master-plan.md:13:It answers that question by recording packets, executions, verification, audits, comparisons, telemetry, and admission decisions over time.
+docs/forgepilot-master-plan.md:41:GPT may request bounded actions, inspect workspace state, draft packets, review diffs, compare evidence, and decide what to ask executors or auditors to do.
+docs/forgepilot-master-plan.md:49:It stores packets, run artifacts, docs, standards, metrics artifacts, and source code for the observatory itself.
+docs/forgepilot-master-plan.md:61:Architecture decisions, standards, plans, packets, audit results, comparison records, and rationale documents live in Markdown unless they need normalized runtime querying.
+docs/forgepilot-master-plan.md:67:It exposes tools for reading state, creating request artifacts, requesting approved terminal commands, validating preflight gates, and eventually invoking bounded worker runs.
+docs/forgepilot-master-plan.md:83:They may execute packets, audit implementations, compare outputs, classify failures, or summarize telemetry. Their claims become evidence only after validation and admission.
+docs/forgepilot-master-plan.md:110:2. Markdown records policy, packets, rationale, audits, and plans.
+docs/forgepilot-master-plan.md:161:- read packets and runs,
+docs/forgepilot-master-plan.md:173:- start bounded worker runs only after gates pass,
+docs/forgepilot-master-plan.md:192:- validate packets,
+docs/forgepilot-master-plan.md:214:Large edits, bulk telemetry capture, and multi-file changes should prefer OpenCode worker runs or explicitly bounded packets.
+docs/forgepilot-master-plan.md:225:OpenCode runs selected model as executor
+docs/forgepilot-master-plan.md:321:Normalize packets, runs, metrics, evidence records, validation states, and admission states.
+docs/forgepilot-master-plan.md:333:Run multiple models under controlled packets with cross-model audit and comparison.
+docs/forgepilot-master-plan.md:380:Reduce rapid-fire command patterns and force large tasks toward worker runs.
+docs/forgepilot-master-plan.md:413:8. Audit artifacts for relevant runs.
+docs/forgepilot-master-plan.md:414:9. Comparison artifacts for multi-model runs.
+docs/core-instrument-observed-project-boundaries.md:13:| ForgePilot core | Project-agnostic observatory rules, evidence semantics, reporting, persistence, admission, comparison, and operator workflows. | `packets/` | `FP-META-*`, `FP-OPS-*`, `FP-*` |
+docs/core-instrument-observed-project-boundaries.md:14:| Instrument project | A separate project required for ForgePilot operation or observation. It is not ForgePilot core, but ForgePilot depends on it. | `instrument-projects/<project>/` | `forgepilot-chatgpt-mcp` |
+docs/core-instrument-observed-project-boundaries.md:15:| External observed project | A separate project being studied by ForgePilot but not required for ForgePilot operation. | `observed-projects/<project>/` | `terminal-explorer`, future repos |
+docs/core-instrument-observed-project-boundaries.md:20:ForgePilot root packets define the observatory.
+docs/core-instrument-observed-project-boundaries.md:22:Instrument-project and observed-project packets describe work being observed by the observatory.
+docs/core-instrument-observed-project-boundaries.md:27:Use root `packets/` for work that changes or defines project-agnostic ForgePilot behavior, including:
+docs/core-instrument-observed-project-boundaries.md:49:instrument-projects/forgepilot-chatgpt-mcp/
+docs/core-instrument-observed-project-boundaries.md:67:observed-projects/<project>/
+docs/core-instrument-observed-project-boundaries.md:70:External observed project packets must not be placed in root ForgePilot `packets/` unless the work changes ForgePilot itself.
+docs/core-instrument-observed-project-boundaries.md:77:instrument-projects/<project>/
+docs/core-instrument-observed-project-boundaries.md:79:  packets/
+docs/core-instrument-observed-project-boundaries.md:81:  runs/
+docs/core-instrument-observed-project-boundaries.md:92:| `packets/` | Project-specific task packets. |
+docs/core-instrument-observed-project-boundaries.md:94:| `runs/` | Execution and verification artifacts. |
+docs/core-instrument-observed-project-boundaries.md:102:MCP bridge work belongs in root ForgePilot packets only when it changes the observatory instrument contract.
+docs/core-instrument-observed-project-boundaries.md:116:MCP bridge work belongs under `instrument-projects/forgepilot-chatgpt-mcp/` when it is project-specific engineering work.
+docs/core-instrument-observed-project-boundaries.md:130:Pre-V1 `FP-MCP-*` packets remain valid historical bootstrap evidence.
+docs/core-instrument-observed-project-boundaries.md:137:Historical bootstrap packets for the ForgePilot MCP instrument.
+docs/core-instrument-observed-project-boundaries.md:149:instrument-projects/forgepilot-chatgpt-mcp/
+docs/core-instrument-observed-project-boundaries.md:152:A future root ForgePilot packet may define general shadow-refactor rules, but the concrete `server.ts` refactor packets should be project-specific.
+docs/core-instrument-observed-project-boundaries.md:170:instrument-projects/forgepilot-chatgpt-mcp/model-results/
+docs/core-instrument-observed-project-boundaries.md:177:It does not start project work, admit evidence, rank models, route work, change MCP tools, or migrate historical packets.
+docs/core-instrument-observed-project-boundaries.md:191:instrument-projects/forgepilot-chatgpt-mcp/checklists/server-shadow-refactor.md
+docs/releases/forgepilot-v1.md:13:| Final project report | `runs/FP-META-025/final-v1-project-report.json` |
+docs/releases/forgepilot-v1.md:25:Packet intent, execution evidence, telemetry/observations, verification, audit, admission state, comparison state, and reporting can be reconstructed from committed evidence and supported read-only reports.
+docs/execution-safety-boundary-checkpoint.md:24:- global disable switch exists
+docs/execution-safety-boundary-checkpoint.md:27:- start path blocks on global disable switch
+docs/execution-safety-boundary-checkpoint.md:88:- global execution disable switch remains active
+docs/post-consumption-blocked-attempt-classification.md:122:global disable switch active: true
+docs/successful-start-consumption-handoff-contract.md:136:global disable switch active: true
+docs/ambiguous-start-state-classification-contract.md:100:globalDisableActive: true
+docs/shadow-refactor-rules.md:178:instrument-projects/forgepilot-chatgpt-mcp/model-results/
+docs/shadow-refactor-rules.md:183:Unless explicitly scoped, shadow refactor packets must not:
+docs/admission-comparison-reconstruction-rules.md:5:ForgePilot reports need to reconstruct admission and comparison state without creating trust by summary.
+docs/admission-comparison-reconstruction-rules.md:9:It summarizes recorded state; it does not create admission, invalidate evidence, rank models globally, or route future work.
+docs/admission-comparison-reconstruction-rules.md:14:How may ForgePilot reconstruct admission and comparison state for reports?
+docs/admission-comparison-reconstruction-rules.md:19:A reconstruction report may use only committed artifacts or supported read-only query results.
+docs/admission-comparison-reconstruction-rules.md:25:| `packets/<packet>.md` | packet intent and acceptance criteria |
+docs/admission-comparison-reconstruction-rules.md:26:| `runs/<packet>/verification*` | recorded verification output |
+docs/admission-comparison-reconstruction-rules.md:27:| `runs/<packet>/audit*` | recorded audit output when present |
+docs/admission-comparison-reconstruction-rules.md:28:| `runs/<packet>/comparison*` | recorded comparison result when present |
+docs/admission-comparison-reconstruction-rules.md:29:| `runs/<packet>/executor-result.md` | executor result artifact when present |
+docs/admission-comparison-reconstruction-rules.md:30:| `runs/<packet>/metrics.json` | observation only unless admitted |
+docs/admission-comparison-reconstruction-rules.md:31:| `runs/<packet>/**/telemetry.json` | observation only unless admitted |
+docs/admission-comparison-reconstruction-rules.md:75:A comparison must not be treated as global model ranking.
+docs/admission-comparison-reconstruction-rules.md:82:2. Committed admission/comparison artifact under `runs/<packet>/`.
+docs/admission-comparison-reconstruction-rules.md:100:| `PARTIAL` | some evidence exists but reconstruction is incomplete |
+docs/admission-comparison-reconstruction-rules.md:105:Historical packets remain valid historical evidence.
+docs/admission-comparison-reconstruction-rules.md:110:This packet predates current taxonomy or reconstruction rules.
+docs/admission-comparison-reconstruction-rules.md:122:- comparison equals global model ranking,
+docs/admission-comparison-reconstruction-rules.md:146:- rank models globally,
+docs/admission-comparison-reconstruction-rules.md:151:Any report using reconstructed admission/comparison state must include:
+docs/reporting-evidence-rules.md:25:| Packet exists | A packet file exists. | `packets/<packet>.md` |
+docs/reporting-evidence-rules.md:28:| Verification result | A check passed, failed, or was not run. | `runs/<packet>/verification*` or recorded command output |
+docs/reporting-evidence-rules.md:139:Evidence: runs/FP-MCP-157/direct-mcp-query-result.md.
+docs/reporting-evidence-rules.md:152:Source: packets/<packet>.md
+docs/reporting-evidence-rules.md:153:Source: runs/<packet>/<artifact>
+docs/reporting-evidence-rules.md:176:- comparison equals global model ranking,
+docs/v1-observation-plan.md:20:runs/V1-OBSERVATION/log.md
+docs/v1-observation-plan.md:30:4. `reconstruction-report` was enough to inspect verification/audit/admission/comparison state.
+docs/forgepilot-progress-checklist.md:80:ForgePilot V1 is complete when packet intent, execution, telemetry, verification, audit, admission, comparison, and reporting can be reconstructed from committed evidence and supported read-only queries, without relying on private chat memory.
+docs/forgepilot-progress-checklist.md:84:V1 is complete when a new operator or agent can inspect the repository and supported query surfaces and reconstruct what happened without relying on a previous ChatGPT session.
+docs/forgepilot-progress-checklist.md:110:| Worker telemetry persistence | `COMPLETE` | `FP-MCP-156` | SQLite persistence exists, direct persist/read proof recorded in `runs/FP-MCP-156/direct-mcp-smoke-result.md`. | Persistence does not admit telemetry or make it routing input. |
+docs/forgepilot-progress-checklist.md:111:| Worker telemetry query visibility | `COMPLETE` | `FP-MCP-157` | Query tool implemented, verified, direct MCP query proof recorded in `runs/FP-MCP-157/direct-mcp-query-result.md`. | Querying makes telemetry visible, not meaningful. |
+docs/forgepilot-progress-checklist.md:113:| Audit evidence | `COMPLETE` | `FP-META-025` | Audit evidence is classified complete for V1 in `docs/v1-evidence-capability-completion-index.md`; reconstruction reports audit artifact presence when available. | Audit is not comparison or admission by itself. |
+docs/forgepilot-progress-checklist.md:115:| Comparison result | `COMPLETE` | `FP-META-025` | Comparison result evidence is classified complete for V1; reconstruction reports bounded comparison artifact presence. | Comparison must not be treated as global model ranking. |
+docs/forgepilot-progress-checklist.md:116:| Reporting / summary view | `COMPLETE` | `FP-013`, `FP-014`, `FP-015`, `FP-016`, `FP-META-025` | V1 reporting and summary view is complete via packet, project, reconstruction, capability-detail, and completion indexes. | Report is an evidence index, not evidence itself. |
+docs/forgepilot-progress-checklist.md:129:| Packet status index | `COMPLETE` | `FP-OPS-004` | Packet navigation/archive index exists at `docs/packet-status-index.md`. | Index does not rename, delete, move, or invalidate packets. |
+docs/forgepilot-progress-checklist.md:133:| Core/instrument/observed project boundary | `COMPLETE` | `FP-META-026` | Boundaries and workspace layout are defined in `docs/core-instrument-observed-project-boundaries.md`; MCP bridge classified as an instrument project. | Historical `FP-MCP-*` packets remain bootstrap evidence and are not moved. |
+docs/forgepilot-progress-checklist.md:141:| Project summary reporting rules | `COMPLETE` | `FP-META-021` | Project-wide reporting claim boundaries are documented in `docs/project-summary-reporting-rules.md`. | Project report is an index, not evidence itself. |
+docs/forgepilot-progress-checklist.md:142:| Admission/comparison reconstruction rules | `COMPLETE` | `FP-META-022` | Reconstruction boundaries are documented in `docs/admission-comparison-reconstruction-rules.md`. | Rules do not implement reconstruction. |
+docs/forgepilot-progress-checklist.md:149:| `FP-MCP-153` | Bounded worker invocation | `COMPLETE` | existing committed evidence | existing bridge support | PASS | worker lifecycle artifacts under `runs/FP-MCP-153/` | none recorded here |
+docs/forgepilot-progress-checklist.md:151:| `FP-MCP-156` | Worker telemetry persistence | `COMPLETE` | `e3702da`, `09c5094`, `d67c0cc`, `d1b03d5` | `5c2e7af`, `dc1a412` | PASS | `runs/FP-MCP-156/direct-mcp-smoke-result.md` | persisted telemetry remains non-admitted |
+docs/forgepilot-progress-checklist.md:152:| `FP-MCP-157` | Worker telemetry query visibility | `COMPLETE` | `dafa608`, `3b9d6e8`, `e91c91c`, `1e04c7f` | `3a16d68` | PASS | `runs/FP-MCP-157/direct-mcp-query-result.md` | manual OpenAI Actions schema refresh required for new MCP tools |
+docs/forgepilot-progress-checklist.md:172:| Admission/comparison reconstruction rules | `COMPLETE` | `FP-META-*` | Define evidence semantics before implementation; completed by `FP-META-022`. |
+docs/forgepilot-progress-checklist.md:173:| Admission/comparison reconstruction implementation | `PARTIAL` | `FP-*` | Core query/report behavior; first read-only reconstruction report implemented by `FP-015`. |
+docs/forgepilot-progress-checklist.md:182:Single-packet reporting exists via `FP-013`; project summary reporting exists via `FP-014`. Reporting implementation must obey `docs/reporting-evidence-rules.md`. Project-wide reporting must obey `docs/project-summary-reporting-rules.md`.
+docs/forgepilot-progress-checklist.md:203:- Individual packets record typecheck/build/test/smoke evidence.
+docs/forgepilot-progress-checklist.md:207:- A supported way to summarize verification state across packets.
+docs/forgepilot-progress-checklist.md:220:- A supported way to inspect audit state across packets.
+docs/forgepilot-progress-checklist.md:234:- A supported read-only way to reconstruct admission/comparison state for a packet.
+docs/opencode-start-request-artifact-creation.md:17:requestArtifactPath: runs/FP-MCP-082/opencode-requests/REQ-20260629T131053102Z-5f58e3e3.json
+docs/opencode-start-request-artifact-creation.md:28:globalDisableActive: true
+docs/opencode-start-request-artifact-creation.md:56:globalDisableActive: true
+docs/opencode-start-request-artifact-creation.md:81:relax the global disable switch
+docs/task-classification-standards.md:5:This document defines standards for classifying ForgePilot packets by task type, risk, constraint strictness, evidence sensitivity, blast radius, skill requirement, audit requirement, challenger requirement, and routing eligibility.
+docs/task-classification-standards.md:123:| `MEDIUM` | Incorrect implementation could cause limited data integrity issues, require manual correction, or affect a small number of future runs. Does not threaten observatory trust or routing evidence. |
+docs/task-classification-standards.md:264:Skill classification informs routing only in conjunction with admitted evidence showing that a model performs well on packets of that skill type.
+docs/task-classification-standards.md:311:High-risk or evidence-sensitive packets should prefer challenger execution until sufficient routing evidence exists.
+docs/task-classification-standards.md:336:Early ForgePilot packets are not eligible for automated selection until sufficient admitted evidence exists about which models perform well on which task classes, risk levels, and skill requirements.
+docs/task-classification-standards.md:340:A packet may be `ELIGIBLE_FOR_RECOMMENDATION` only when admitted evidence demonstrates at least one measurable relationship between model selection and outcome quality for packets of similar classification.
+docs/task-classification-standards.md:463:1. Multiple packets of the same task class must have admitted execution evidence.
+docs/task-classification-standards.md:465:3. The performance differences must be stable across comparable packets.
+docs/task-classification-standards.md:490:Task classification standards are a framework for classifying packets before execution. The standards define what to classify and how, but they do not pre-classify packets.
+docs/task-classification-standards.md:508:- **Model Evaluation Harness** (`docs/model-evaluation-harness.md`) — Defines evaluation methodology. Task classification provides the `packet_category` field context that allows evaluation results to be compared meaningfully across packets of similar classification.
+docs/task-classification-standards.md:510:- **Model Outcome Recording Standards** (`docs/model-outcome-recording-standards.md`) — Defines how model performance on classified packets is recorded. Outcome records must reference task classification observations. A model outcome must not be interpreted without the packet's task classification. Task classification disaggregation rules apply when evaluating model outcomes across different task classes.
+docs/packet-namespace-definition-of-done.md:33:- evidence is recorded under `runs/<packet>/`,
+docs/packet-namespace-definition-of-done.md:116:Root ForgePilot packets are appropriate for project-agnostic observatory rules, core implementation, operator workflows, or instrument-contract changes.
+docs/packet-namespace-definition-of-done.md:121:instrument-projects/<project>/
+docs/packet-namespace-definition-of-done.md:122:observed-projects/<project>/
+docs/packet-namespace-definition-of-done.md:128:instrument-projects/forgepilot-chatgpt-mcp/
+docs/packet-namespace-definition-of-done.md:131:Historical `FP-MCP-*` packets are preserved as bootstrap evidence. Do not rename, move, or delete them.
+docs/model-outcome-recording-standards.md:717:2. Multiple outcome records exist for packets of the same task class.
+docs/model-outcome-recording-standards.md:719:4. The performance differences are stable across comparable packets.
+docs/execution-enablement-readiness-review.md:33:globalDisableActive: true
+docs/execution-enablement-readiness-review.md:96:global disable switch relaxation policy
+docs/execution-enablement-readiness-review.md:133:ForgePilot is not ready to relax the global disable switch.
+
+## Search: report/reconstruction files by filename
+./docs/admission-comparison-reconstruction-rules.md
+./docs/evidence-boundary-doctrine.md
+./docs/forgepilot-progress-checklist.md
+./docs/guarded-start-preflight-report-contract.md
+./docs/human-approval-evidence-readiness-checkpoint.md
+./docs/model-execution-evidence-review.md
+./docs/packet-lifecycle-evidence-index.md
+./docs/pre-start-evidence-contract.md
+./docs/project-checklist-rules.md
+./docs/project-summary-reporting-rules.md
+./docs/rationale/FP-009-evidence-admission-rationale.md
+./docs/real-human-approval-evidence-contract.md
+./docs/reporting-evidence-rules.md
+./docs/safety-boundary-evidence-index.md
+./docs/v1-evidence-capability-completion-index.md
+./.forgepilot/tasks/RUN-20260701T130106905Z-7d4954dc/outputs/evidence-schema-update.md
+./instrument-projects/forgepilot-chatgpt-mcp/checklists/server-shadow-refactor.md
+./instrument-projects/forgepilot-chatgpt-mcp/runs/SHADOW-REF-001/git-status-before-evidence-commit.txt
+./instrument-projects/forgepilot-chatgpt-mcp/runs/SHADOW-REF-002/git-status-before-evidence-commit.txt
+./instrument-projects/forgepilot-chatgpt-mcp/runs/SHADOW-REF-003/git-status-before-evidence-commit.txt
+./instrument-projects/forgepilot-chatgpt-mcp/runs/SHADOW-REF-004/git-status-before-evidence-commit.txt
+./migrations/005_fp009_evidence_admission.sql
+./migrations/006_fp010_evidence_persistence.sql
+./migrations/007_fp011_validation_admission.sql
+./runs/FP-013/git-status-before-evidence-commit.txt
+./runs/FP-013/packet-report-fp-mcp-153.json
+./runs/FP-013/packet-report-fp-mcp-157.json
+./runs/FP-013/packet-report-fp-mcp-157.txt
+./runs/FP-013/report-smoke-summary.json
+./runs/FP-014/git-status-before-evidence-commit.txt
+./runs/FP-014/project-report.json
+./runs/FP-014/project-report-summary.json
+./runs/FP-014/project-report.txt
+./runs/FP-015/git-status-before-evidence-commit.txt
+./runs/FP-015/reconstruction-report-fp-014.json
+./runs/FP-015/reconstruction-report-fp-meta-016.json
+./runs/FP-015/reconstruction-report-fp-meta-016.txt
+./runs/FP-015/reconstruction-smoke-summary.json
+./runs/FP-016/git-status-before-evidence-commit.txt
+./runs/FP-016/project-report-capability-summary.json
+./runs/FP-016/project-report.json
+./runs/FP-016/project-report.txt
+./runs/FP-MCP-036/pre-start-evidence/REQ-20260622T144553300Z-fbbe8d82.json
+./runs/FP-MCP-109/contract-evidence.md
+./runs/FP-MCP-114/contract-evidence.md
+./runs/FP-MCP-115/contract-evidence.md
+./runs/FP-MCP-117/preflight-report.md
+./runs/FP-MCP-117/pre-start-evidence/REQ-20260630T160920008Z-195b9969.json
+./runs/FP-MCP-118/preflight-report.md
+./runs/FP-MCP-119/preflight-report.md
+./runs/FP-MCP-119/pre-start-evidence.md
+./runs/FP-MCP-120/preflight-report.md
+./runs/FP-MCP-120/state-snapshot-evidence.md
+./runs/FP-MCP-121/contract-evidence.md
+./runs/FP-MCP-122/implementation-evidence.md
+./runs/FP-MCP-122/preflight-report.md
+./runs/FP-MCP-123/contract-evidence.md
+./runs/FP-MCP-124/implementation-evidence.md
+./runs/FP-MCP-124/preflight-report.md
+./runs/FP-MCP-125/contract-evidence.md
+./runs/FP-MCP-127/preflight-report.md
+./runs/FP-MCP-128/contract-evidence.md
+./runs/FP-MCP-129/implementation-evidence.md
+./runs/FP-MCP-130/local-preflight-report.json
+./runs/FP-MCP-130/local-preflight-report.md
+./runs/FP-MCP-131/contract-evidence.md
+./runs/FP-MCP-132/implementation-evidence.md
+./runs/FP-MCP-132/local-preflight-report.json
+./runs/FP-MCP-132/local-preflight-report.md
+./runs/FP-MCP-133/contract-evidence.md
+./runs/FP-MCP-134/implementation-evidence.md
+./runs/FP-MCP-134/pre-start-evidence/REQ-20260630T202005438Z-86d20df4.json
+./runs/FP-MCP-135/local-preflight-report.json
+./runs/FP-MCP-135/local-preflight-report.md
+./runs/FP-MCP-136/implementation-evidence.md
+./runs/FP-MCP-136/local-preflight-report.json
+./runs/FP-MCP-136/local-preflight-report.md
+./runs/FP-MCP-137/implementation-evidence.md
+./runs/FP-MCP-137/local-preflight-report.json
+./runs/FP-MCP-137/local-preflight-report.md
+./runs/FP-MCP-138/local-preflight-report.json
+./runs/FP-MCP-138/local-preflight-report.md
+./runs/FP-MCP-139/local-preflight-report.json
+./runs/FP-MCP-139/local-preflight-report.md
+./runs/FP-MCP-139/pre-start-evidence-contract.md
+./runs/FP-MCP-140/local-preflight-report.json
+./runs/FP-MCP-140/local-preflight-report.md
+./runs/FP-MCP-140/state-snapshot-evidence-contract.md
+./runs/FP-MCP-141/fresh-approval-evidence-contract.md
+./runs/FP-MCP-141/local-preflight-report.json
+./runs/FP-MCP-141/local-preflight-report.md
+./runs/FP-MCP-142/mcp-v1-runner-retry/summary.md
+./runs/FP-MCP-142/mcp-v1-runner-smoke/blocked-summary.md
+./runs/FP-MCP-142/real-mcp-preflight-blocker-report.md
+./runs/FP-MCP-145/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T130106905Z-7d4954dc-task-bundle-outputs/evidence-schema-update.md
+./runs/FP-MCP-146/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260701T133341720Z-0d7af9f0-task-bundle-outputs/diff-summary.json
+./runs/FP-MCP-147/pre-start-evidence/REQ-20260701T160318574Z-b8679c47.json
+./runs/FP-MCP-149/capture-summary.md
+./runs/FP-MCP-157/query-cli-verification-summary.json
+./runs/FP-META-013/evidence-review-deepseek.md
+./runs/FP-META-013/evidence-review.md
+./runs/FP-META-013/evidence-review-qwen.md
+./runs/FP-META-013/model-execution-evidence-review-deepseek.md
+./runs/FP-META-013/model-execution-evidence-review-qwen.md
+./runs/FP-META-023/git-status-before-evidence-commit.txt
+./runs/FP-META-024/git-status-before-evidence-commit.txt
+./runs/FP-META-025/final-v1-project-report.json
+./runs/FP-META-025/git-status-before-evidence-commit.txt
+./runs/FP-META-026/git-status-before-evidence-commit.txt
+./runs/FP-META-027/git-status-before-evidence-commit.txt
+./runs/FP-META-028/git-status-before-evidence-commit.txt
+./runs/FP-META-029/git-status-before-evidence-commit.txt
+./runs/FP-OPS-004/git-status-before-evidence-commit.txt
+./runs/FP-OPS-005/git-status-before-evidence-commit.txt
+./runs/FP-OPS-006/git-status-before-evidence-commit.txt
+./src/db/evidence-records.ts
+./src/db/evidence.ts
+./src/db/validation-admission.ts
+./src/reporting/packet-report.ts
+./src/reporting/project-report.ts
+./src/reporting/reconstruction-report.ts
+./tests/fixtures/opencode-telemetry-summary.json
+
+## Search: instrument/observed project references outside docs and packets

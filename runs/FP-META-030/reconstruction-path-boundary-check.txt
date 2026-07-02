@@ -1,0 +1,45 @@
+FP-META-030 reconstruction path boundary check
+
+Status:
+BOUNDARY_RULE_DEFINED_AND_CURRENT_CODE_APPEARS_CONFORMANT
+
+Evidence artifacts:
+- runs/FP-META-030/path-search-results.txt
+- runs/FP-META-030/reporting-source-excerpts.txt
+
+Method:
+- grep-based source search for traversal/path/reporting/reconstruction terms
+- focused source excerpts from reporting/reconstruction code
+- no implementation changes
+- no runtime tracing beyond source/path inspection
+
+Important limitation:
+This is grep/source-excerpt evidence, not full runtime path tracing. It is stronger than narrative self-report but weaker than instrumented runtime path capture.
+
+Findings:
+
+1. reconstruction-report.ts uses explicit root-relative core locations:
+   - packet path: packets/<packetId>.md
+   - run dir: runs/<packetId>
+   - rootDir defaults to process.cwd() if not provided
+
+2. project-report.ts builds packet inventory from:
+   - path.join(rootDir, "packets")
+   It does not appear to walk the entire repository tree for packets.
+
+3. packet-report.ts uses explicit packet and run paths:
+   - packets/<packetId>.md
+   - runs/<packetId>
+
+4. Search did not find src/scripts/tests code references to instrument-projects or observed-projects.
+
+5. Documentation does mention instrument-projects/ and observed-projects/, but the searched reporting code does not appear to traverse those directories as core packet/run evidence.
+
+Conclusion:
+Current reporting/reconstruction code appears to use explicit root-relative packets/ and runs/ paths rather than whole-repository traversal. Therefore bootstrap project workspace content under instrument-projects/ does not appear to be silently included in core packet/run reconstruction by the current reporting code.
+
+Conformance caveat:
+Because rootDir defaults to process.cwd(), future external workspace support must make evidence root selection explicit and should avoid relying on ambient cwd for mixed core/project reporting.
+
+Follow-up:
+No immediate boundary-conformance fix packet is required based on the searched code. A future implementation packet should add explicit evidence-root selection before external workspaces become operational.

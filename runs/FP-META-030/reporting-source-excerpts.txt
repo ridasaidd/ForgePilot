@@ -1,0 +1,614 @@
+# FP-META-030 focused reporting source excerpts
+
+## src/reporting/reconstruction-report.ts
+import fs from "node:fs";
+import path from "node:path";
+
+export const RECONSTRUCTION_BOUNDARY =
+  "Reconstruction is read-only. It summarizes recorded state and does not create admission, comparison, ranking, or routing authority.";
+
+export interface ReconstructionArtifact {
+  path: string;
+  kind: "verification" | "audit" | "comparison" | "admission" | "executor_result";
+}
+
+export interface ReconstructionReport {
+  packet_id: string;
+  packet_path: string;
+  packet_exists: boolean;
+  source_artifacts: ReconstructionArtifact[];
+  verification_state: "PRESENT" | "MISSING";
+  audit_state: "PRESENT" | "MISSING";
+  comparison_state: "PRESENT" | "NO_COMPARISON_RECORDED";
+  admission_state: "PRESENT" | "NOT_EVALUATED" | "UNKNOWN";
+  reconstructed_labels: string[];
+  boundary: string;
+  caveats: string[];
+}
+
+interface BuildReconstructionReportOptions {
+  packetId: string;
+  rootDir?: string;
+}
+
+function cleanPacketId(packetId: string): string {
+  const trimmed = packetId.trim();
+  if (!trimmed) throw new Error("packetId is required");
+  if (trimmed.includes("/") || trimmed.includes("\\") || trimmed.includes("..")) {
+    throw new Error(`invalid packetId: ${packetId}`);
+  }
+  return trimmed;
+}
+
+function walkFiles(dir: string): string[] {
+  if (!fs.existsSync(dir)) return [];
+  const files: string[] = [];
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) files.push(...walkFiles(full));
+    if (entry.isFile()) files.push(full);
+  }
+  return files;
+}
+
+function kindFor(rel: string): ReconstructionArtifact["kind"] | null {
+  const base = path.basename(rel).toLowerCase();
+  if (base.includes("verification")) return "verification";
+  if (base.includes("audit")) return "audit";
+  if (base.includes("comparison")) return "comparison";
+  if (base.includes("admission")) return "admission";
+  if (base === "executor-result.md") return "executor_result";
+  return null;
+}
+
+export function buildReconstructionReport(options: BuildReconstructionReportOptions): ReconstructionReport {
+  const packetId = cleanPacketId(options.packetId);
+  const rootDir = options.rootDir ?? process.cwd();
+  const packetPath = `packets/${packetId}.md`;
+  const absolutePacketPath = path.join(rootDir, packetPath);
+  if (!fs.existsSync(absolutePacketPath)) {
+    throw new Error(`packet not found: ${packetPath}`);
+  }
+
+  const runDir = path.join(rootDir, "runs", packetId);
+  const source_artifacts = walkFiles(runDir)
+    .map((full) => path.relative(rootDir, full).split(path.sep).join("/"))
+    .filter((rel) => !rel.includes("/terminal-commands/"))
+    .map((rel) => ({ path: rel, kind: kindFor(rel) }))
+    .filter((entry): entry is ReconstructionArtifact => entry.kind !== null)
+    .sort((a, b) => a.path.localeCompare(b.path));
+
+  const has = (kind: ReconstructionArtifact["kind"]) => source_artifacts.some((a) => a.kind === kind);
+  const verification_state = has("verification") ? "PRESENT" : "MISSING";
+  const audit_state = has("audit") ? "PRESENT" : "MISSING";
+  const comparison_state = has("comparison") ? "PRESENT" : "NO_COMPARISON_RECORDED";
+  const admission_state = has("admission") ? "PRESENT" : "NOT_EVALUATED";
+
+  const reconstructed_labels = [
+    verification_state === "PRESENT" ? "VERIFICATION_ARTIFACT_PRESENT" : "VERIFICATION_MISSING",
+    audit_state === "PRESENT" ? "AUDIT_ARTIFACT_PRESENT" : "AUDIT_MISSING",
+    comparison_state === "PRESENT" ? "COMPARISON_ARTIFACT_PRESENT" : "NO_COMPARISON_RECORDED",
+    admission_state === "PRESENT" ? "ADMISSION_ARTIFACT_PRESENT" : "NOT_EVALUATED",
+  ];
+
+  return {
+    packet_id: packetId,
+    packet_path: packetPath,
+    packet_exists: true,
+    source_artifacts,
+    verification_state,
+    audit_state,
+    comparison_state,
+    admission_state,
+    reconstructed_labels,
+    boundary: RECONSTRUCTION_BOUNDARY,
+    caveats: [
+      RECONSTRUCTION_BOUNDARY,
+      "Artifact presence does not imply admission or correctness.",
+      "Comparison artifacts are bounded records, not global model rankings.",
+      "Missing comparison is reported as missing, not as failure.",
+    ],
+  };
+}
+
+export function formatReconstructionReportText(report: ReconstructionReport): string {
+  const lines = [
+    `Reconstruction Report: ${report.packet_id}`,
+    `Packet Path: ${report.packet_path}`,
+    `Verification State: ${report.verification_state}`,
+    `Audit State: ${report.audit_state}`,
+    `Comparison State: ${report.comparison_state}`,
+    `Admission State: ${report.admission_state}`,
+    `Labels: ${report.reconstructed_labels.join(", ")}`,
+    `Boundary: ${report.boundary}`,
+    "Caveats:",
+    ...report.caveats.map((c) => `  - ${c}`),
+  ];
+  if (report.source_artifacts.length > 0) {
+    lines.push("Source Artifacts:");
+    lines.push(...report.source_artifacts.map((a) => `  - ${a.path} [${a.kind}]`));
+  }
+  return `${lines.join("\n")}\n`;
+}
+
+## src/reporting/project-report.ts
+import fs from "node:fs";
+import path from "node:path";
+
+export const PROJECT_REPORT_BOUNDARY =
+  "This project report is an index over committed evidence and checklist state. It is not evidence by itself.";
+
+export interface ChecklistCapability {
+  capability: string;
+  status: string;
+  evidence: string;
+  notes: string;
+  boundary: string;
+}
+
+export interface PacketInventoryEntry {
+  namespace: string;
+  count: number;
+  packets: string[];
+}
+
+export interface ProjectReport {
+  report_type: "PROJECT_SUMMARY_V1";
+  boundary: string;
+  v1_completion_definition: string | null;
+  v1_completion_status: "COMPLETE" | "NOT_COMPLETE";
+  v1_completion_reason: string;
+  checklist_source: string;
+  checklist_status_counts: Record<string, number>;
+  checklist_capabilities: ChecklistCapability[];
+  incomplete_capabilities: ChecklistCapability[];
+  deferred_capabilities: ChecklistCapability[];
+  packet_inventory: PacketInventoryEntry[];
+  recent_packets: string[];
+  governing_docs: string[];
+  next_recommended_work: Array<{
+    work_item: string;
+    current_status: string;
+    recommended_namespace: string;
+    reason: string;
+  }>;
+  caveats: string[];
+}
+
+interface BuildProjectReportOptions {
+  rootDir?: string;
+}
+
+function readIfExists(pathname: string): string | null {
+  return fs.existsSync(pathname) ? fs.readFileSync(pathname, "utf-8") : null;
+}
+
+function parseMarkdownTableRows(section: string): string[][] {
+  return section
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => line.startsWith("|") && line.endsWith("|"))
+    .filter((line) => !/^\|\s*-+/.test(line))
+    .map((line) => line.slice(1, -1).split("|").map((cell) => cell.trim()))
+    .filter((cells) => cells.length >= 2);
+}
+
+function extractSection(content: string, heading: string): string {
+  const start = content.indexOf(`## ${heading}`);
+  if (start === -1) return "";
+  const rest = content.slice(start);
+  const next = rest.slice(1).search(/\n##\s+/);
+  return next === -1 ? rest : rest.slice(0, next + 1);
+}
+
+function stripMarkdown(value: string): string {
+  return value.replace(/`/g, "").trim();
+}
+
+function parseCapabilities(checklist: string): ChecklistCapability[] {
+  const section = extractSection(checklist, "V1 Capability Checklist");
+  const rows = parseMarkdownTableRows(section);
+  return rows
+    .filter((cells) => cells[0] !== "Capability")
+    .filter((cells) => cells.length >= 5)
+    .map((cells) => ({
+      capability: stripMarkdown(cells[0]),
+      status: stripMarkdown(cells[1]),
+      evidence: stripMarkdown(cells[2]),
+      notes: stripMarkdown(cells[3]),
+      boundary: stripMarkdown(cells[4]),
+    }));
+}
+
+function parseRecommendations(checklist: string): ProjectReport["next_recommended_work"] {
+  const section = extractSection(checklist, "Recommended Namespace Guidance");
+  const rows = parseMarkdownTableRows(section);
+  return rows
+    .filter((cells) => cells[0] !== "Future capability / work item")
+    .filter((cells) => cells.length >= 4)
+    .filter((cells) => stripMarkdown(cells[1]) !== "COMPLETE")
+    .map((cells) => ({
+      work_item: stripMarkdown(cells[0]),
+      current_status: stripMarkdown(cells[1]),
+      recommended_namespace: stripMarkdown(cells[2]),
+      reason: stripMarkdown(cells[3]),
+    }));
+}
+
+function extractV1CompletionDefinition(checklist: string): string | null {
+  const match = checklist.match(/ForgePilot V1 is complete when ([\s\S]*?)\n\n/);
+  return match ? `ForgePilot V1 is complete when ${match[1].trim()}` : null;
+}
+
+function namespaceForPacket(filename: string): string {
+  if (/^FP-META-/.test(filename)) return "FP-META";
+  if (/^FP-MCP-/.test(filename)) return "FP-MCP";
+  if (/^FP-OPS-/.test(filename)) return "FP-OPS";
+  if (/^FP-\d+/.test(filename)) return "FP";
+  return "OTHER";
+}
+
+function buildPacketInventory(rootDir: string): PacketInventoryEntry[] {
+  const packetsDir = path.join(rootDir, "packets");
+  if (!fs.existsSync(packetsDir)) return [];
+  const grouped = new Map<string, string[]>();
+  for (const entry of fs.readdirSync(packetsDir)) {
+    if (!entry.endsWith(".md")) continue;
+    const namespace = namespaceForPacket(entry);
+    const list = grouped.get(namespace) ?? [];
+    list.push(entry.replace(/\.md$/, ""));
+    grouped.set(namespace, list);
+  }
+  return Array.from(grouped.entries())
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([namespace, packets]) => ({
+      namespace,
+      count: packets.length,
+      packets: packets.sort((a, b) => a.localeCompare(b, undefined, { numeric: true })),
+    }));
+}
+
+function statusCounts(capabilities: ChecklistCapability[]): Record<string, number> {
+  const counts: Record<string, number> = {};
+  for (const capability of capabilities) {
+    counts[capability.status] = (counts[capability.status] ?? 0) + 1;
+  }
+  return counts;
+}
+
+function incompleteCapabilities(capabilities: ChecklistCapability[]): ChecklistCapability[] {
+  return capabilities.filter((capability) => capability.status !== "COMPLETE" && capability.status !== "DEFERRED");
+}
+
+function deferredCapabilities(capabilities: ChecklistCapability[]): ChecklistCapability[] {
+  return capabilities.filter((capability) => capability.status === "DEFERRED");
+}
+
+function determineV1Status(capabilities: ChecklistCapability[]): { status: "COMPLETE" | "NOT_COMPLETE"; reason: string } {
+  const incomplete = incompleteCapabilities(capabilities);
+  if (incomplete.length === 0 && capabilities.length > 0) {
+    return { status: "COMPLETE", reason: "All non-deferred checklist capabilities are marked COMPLETE." };
+  }
+  return {
+    status: "NOT_COMPLETE",
+    reason: `${incomplete.length} non-deferred checklist capabilities are not COMPLETE.`,
+  };
+}
+
+export function buildProjectReport(options: BuildProjectReportOptions = {}): ProjectReport {
+  const rootDir = options.rootDir ?? process.cwd();
+  const checklistPath = path.join(rootDir, "docs", "forgepilot-progress-checklist.md");
+  const checklist = readIfExists(checklistPath);
+  if (!checklist) {
+    throw new Error("progress checklist not found: docs/forgepilot-progress-checklist.md");
+  }
+
+  const capabilities = parseCapabilities(checklist);
+  const v1 = determineV1Status(capabilities);
+  const incomplete = incompleteCapabilities(capabilities);
+  const deferred = deferredCapabilities(capabilities);
+  const inventory = buildPacketInventory(rootDir);
+  const recentPackets = inventory.flatMap((entry) => entry.packets).slice(-15);
+
+  return {
+    report_type: "PROJECT_SUMMARY_V1",
+    boundary: PROJECT_REPORT_BOUNDARY,
+    v1_completion_definition: extractV1CompletionDefinition(checklist),
+    v1_completion_status: v1.status,
+    v1_completion_reason: v1.reason,
+    checklist_source: "docs/forgepilot-progress-checklist.md",
+    checklist_status_counts: statusCounts(capabilities),
+    checklist_capabilities: capabilities,
+    incomplete_capabilities: incomplete,
+    deferred_capabilities: deferred,
+    packet_inventory: inventory,
+    recent_packets: recentPackets,
+    governing_docs: [
+      "docs/forgepilot-progress-checklist.md",
+      "docs/packet-namespace-taxonomy.md",
+      "docs/packet-namespace-definition-of-done.md",
+      "docs/evidence-boundary-doctrine.md",
+      "docs/reporting-evidence-rules.md",
+      "docs/project-summary-reporting-rules.md",
+      "docs/manual-action-ledger.md",
+    ].filter((rel) => fs.existsSync(path.join(rootDir, rel))),
+    next_recommended_work: parseRecommendations(checklist),
+    caveats: [
+      PROJECT_REPORT_BOUNDARY,
+      "Checklist status is an index, not proof by itself.",
+      "Packet inventory does not imply execution, success, or current relevance.",
+      "This report does not admit evidence, rank models, route work, or infer quality.",
+    ],
+  };
+}
+
+export function formatProjectReportText(report: ProjectReport): string {
+  const lines = [
+    "Project Report: ForgePilot",
+    `Report Type: ${report.report_type}`,
+    `V1 Completion Status: ${report.v1_completion_status}`,
+    `V1 Completion Reason: ${report.v1_completion_reason}`,
+    `Boundary: ${report.boundary}`,
+    "Checklist Status Counts:",
+    ...Object.entries(report.checklist_status_counts).sort().map(([status, count]) => `  - ${status}: ${count}`),
+    "Incomplete Capabilities:",
+    ...(report.incomplete_capabilities.length === 0
+      ? ["  - none"]
+      : report.incomplete_capabilities.map((capability) =>
+          `  - ${capability.capability}: ${capability.status} | evidence: ${capability.evidence} | boundary: ${capability.boundary}`
+        )),
+    "Deferred Capabilities:",
+    ...(report.deferred_capabilities.length === 0
+      ? ["  - none"]
+      : report.deferred_capabilities.map((capability) =>
+          `  - ${capability.capability}: ${capability.status} | evidence: ${capability.evidence} | boundary: ${capability.boundary}`
+        )),
+    "Packet Inventory:",
+    ...report.packet_inventory.map((entry) => `  - ${entry.namespace}: ${entry.count}`),
+    "Governing Docs:",
+    ...report.governing_docs.map((doc) => `  - ${doc}`),
+    "Next Recommended Work:",
+    ...(report.next_recommended_work.length === 0
+      ? ["  - none"]
+      : report.next_recommended_work.map((item) => `  - ${item.work_item}: ${item.current_status}, ${item.recommended_namespace} (${item.reason})`)),
+    "Caveats:",
+    ...report.caveats.map((caveat) => `  - ${caveat}`),
+  ];
+
+  return `${lines.join("\n")}\n`;
+}
+
+## src/reporting/packet-report.ts
+import fs from "node:fs";
+import path from "node:path";
+
+export const REPORT_OBSERVATION_BOUNDARY =
+  "Observation only. Not admitted evidence. Not routing input.";
+
+export interface PacketReportArtifact {
+  path: string;
+  kind: string;
+}
+
+export interface PacketReportWorkerTelemetrySummary {
+  available: boolean;
+  count: number;
+  admission_states: string[];
+  validation_states: string[];
+  worker_statuses: string[];
+  terminal_states: string[];
+  observation_boundary: string;
+}
+
+export interface PacketReport {
+  packet_id: string;
+  packet_path: string;
+  packet_exists: boolean;
+  packet_title: string | null;
+  labels: string[];
+  artifacts: PacketReportArtifact[];
+  artifact_counts: {
+    total: number;
+    verification: number;
+    operational_proof: number;
+    telemetry_or_metrics: number;
+    result: number;
+  };
+  worker_telemetry: PacketReportWorkerTelemetrySummary;
+  caveats: string[];
+  reporting_rules_path: string;
+  evidence_boundary: string;
+}
+
+interface WorkerTelemetryQueryResult {
+  rows?: Array<{
+    worker_status?: string | null;
+    terminal_state?: string | null;
+    validation_state?: string | null;
+    admission_state?: string | null;
+  }>;
+}
+
+export interface BuildPacketReportOptions {
+  packetId: string;
+  rootDir?: string;
+  workerTelemetryQuery?: (packetId: string) => WorkerTelemetryQueryResult;
+}
+
+function requirePacketId(packetId: string): string {
+  const trimmed = packetId.trim();
+  if (!trimmed) {
+    throw new Error("packetId is required");
+  }
+  if (trimmed.includes("/") || trimmed.includes("\\") || trimmed.includes("..")) {
+    throw new Error(`invalid packetId: ${packetId}`);
+  }
+  return trimmed;
+}
+
+function extractTitle(content: string): string | null {
+  const match = content.match(/^#\s+(.+)$/m);
+  return match ? match[1].trim() : null;
+}
+
+function walkFiles(dir: string): string[] {
+  if (!fs.existsSync(dir)) return [];
+  const out: string[] = [];
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      out.push(...walkFiles(full));
+    } else if (entry.isFile()) {
+      out.push(full);
+    }
+  }
+  return out;
+}
+
+function artifactKind(relativePath: string): string {
+  const base = path.basename(relativePath).toLowerCase();
+  if (base.includes("verification")) return "verification";
+  if (base.includes("direct-mcp") || base.includes("smoke") || base.includes("query-result")) {
+    return "operational_proof";
+  }
+  if (base.includes("telemetry") || base.includes("metrics")) return "telemetry_or_metrics";
+  if (base.includes("result")) return "result";
+  return "artifact";
+}
+
+function unique(values: Array<string | null | undefined>): string[] {
+  return Array.from(new Set(values.filter((v): v is string => Boolean(v && v.trim())))).sort();
+}
+
+function buildWorkerTelemetrySummary(
+  packetId: string,
+  workerTelemetryQuery?: (packetId: string) => WorkerTelemetryQueryResult
+): PacketReportWorkerTelemetrySummary {
+  if (!workerTelemetryQuery) {
+    return {
+      available: false,
+      count: 0,
+      admission_states: [],
+      validation_states: [],
+      worker_statuses: [],
+      terminal_states: [],
+      observation_boundary: REPORT_OBSERVATION_BOUNDARY,
+    };
+  }
+
+  const result = workerTelemetryQuery(packetId);
+  const rows = result.rows ?? [];
+  return {
+    available: rows.length > 0,
+    count: rows.length,
+    admission_states: unique(rows.map((r) => r.admission_state)),
+    validation_states: unique(rows.map((r) => r.validation_state)),
+    worker_statuses: unique(rows.map((r) => r.worker_status)),
+    terminal_states: unique(rows.map((r) => r.terminal_state)),
+    observation_boundary: REPORT_OBSERVATION_BOUNDARY,
+  };
+}
+
+export function buildPacketReport(options: BuildPacketReportOptions): PacketReport {
+  const packetId = requirePacketId(options.packetId);
+  const rootDir = options.rootDir ?? process.cwd();
+  const packetRelPath = `packets/${packetId}.md`;
+  const packetPath = path.join(rootDir, packetRelPath);
+
+  if (!fs.existsSync(packetPath)) {
+    throw new Error(`packet not found: ${packetRelPath}`);
+  }
+
+  const packetContent = fs.readFileSync(packetPath, "utf-8");
+  const packetTitle = extractTitle(packetContent);
+
+  const runDir = path.join(rootDir, "runs", packetId);
+  const artifacts = walkFiles(runDir)
+    .map((fullPath) => path.relative(rootDir, fullPath).split(path.sep).join("/"))
+    .filter((rel) => !rel.includes("/terminal-commands/"))
+    .sort()
+    .map((rel) => ({ path: rel, kind: artifactKind(rel) }));
+
+
+## src/cli/forgepilot.ts reporting dispatch
+
+  if (values["read-worker-telemetry"] || positionals[0] === "read-worker-telemetry") {
+    const packetId = values["packet-id"];
+    const workerId = values["worker-id"];
+    if (!packetId || !workerId) {
+      console.error("ERROR: --packet-id and --worker-id are required");
+      process.exit(1);
+    }
+
+    const { initAndMigrate } = await import("../db/migrate.js");
+    initAndMigrate();
+    const { closeDb } = await import("../db/client.js");
+    const { getPersistedOpenCodeWorkerTelemetry } = await import("../db/opencode-worker-telemetry.js");
+
+    try {
+      const row = getPersistedOpenCodeWorkerTelemetry(packetId, workerId);
+      closeDb();
+      if (values.json) {
+        console.log(JSON.stringify(row, null, 2));
+      } else {
+        console.log(`Worker telemetry: ${row.packet_id}/${row.worker_id}`);
+        console.log(`  Worker Status: ${row.worker_status}`);
+        console.log(`  Validation State: ${row.validation_state}`);
+        console.log(`  Admission State: ${row.admission_state}`);
+      }
+      return;
+    } catch (error) {
+      closeDb();
+      console.error(`ERROR: ${error instanceof Error ? error.message : String(error)}`);
+      process.exit(1);
+    }
+  }
+
+
+
+
+
+  if (values["reconstruction-report"] || positionals[0] === "reconstruction-report") {
+    const packetId = values["packet-id"];
+    if (!packetId) {
+      console.error("ERROR: --packet-id is required");
+      process.exit(1);
+    }
+    const { buildReconstructionReport, formatReconstructionReportText } = await import("../reporting/reconstruction-report.js");
+    try {
+      const report = buildReconstructionReport({ packetId });
+      if (values.json) {
+        console.log(JSON.stringify(report, null, 2));
+      } else {
+        process.stdout.write(formatReconstructionReportText(report));
+      }
+      return;
+    } catch (error) {
+      console.error(`ERROR: ${error instanceof Error ? error.message : String(error)}`);
+      process.exit(1);
+    }
+  }
+
+  if (values["project-report"] || positionals[0] === "project-report") {
+    const { buildProjectReport, formatProjectReportText } = await import("../reporting/project-report.js");
+
+    try {
+      const report = buildProjectReport();
+      if (values.json) {
+        console.log(JSON.stringify(report, null, 2));
+      } else {
+        process.stdout.write(formatProjectReportText(report));
+      }
+      return;
+    } catch (error) {
+      console.error(`ERROR: ${error instanceof Error ? error.message : String(error)}`);
+      process.exit(1);
+    }
+  }
+
+  if (values["packet-report"] || positionals[0] === "packet-report") {
+    const packetId = values["packet-id"];
+    if (!packetId) {
+      console.error("ERROR: --packet-id is required");
+      process.exit(1);
+    }
