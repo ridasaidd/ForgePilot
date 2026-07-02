@@ -1,0 +1,20 @@
+--- mcp server tool declarations ---
+--- http route/listen markers ---
+1:import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+5:import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
+10:import { authorizeRequest } from "./auth.js";
+11:import { getProtectedResourceMetadata, getWwwAuthenticateHeader } from "./oauthMetadata.js";
+9916:        "Record a non-authorizing human approval evidence dry-run fixture without creating real approval, enabling execution, starting OpenCode, or contacting the runner start endpoint.",
+10274:const httpServer = createServer(async (req: IncomingMessage, res: ServerResponse) => {
+10276:    req.method === "GET" &&
+10277:    (req.url === "/.well-known/oauth-protected-resource" ||
+10278:      req.url === "/.well-known/oauth-protected-resource/mcp")
+10295:  if (req.url !== "/mcp") {
+10302:    const authResult = await authorizeRequest(getHeader(req, "authorization"));
+10304:    if (!authResult.ok) {
+10309:      if (AUTH_MODE === "oidc" && authResult.status === 401) {
+10310:        headers["www-authenticate"] = getWwwAuthenticateHeader();
+10313:      res.writeHead(authResult.status, headers);
+10314:      res.end(authResult.message);
+10362:httpServer.listen(PORT, HOST, () => {
+10363:  console.log(`ForgePilot MCP bridge listening on http://${HOST}:${PORT}/mcp`);

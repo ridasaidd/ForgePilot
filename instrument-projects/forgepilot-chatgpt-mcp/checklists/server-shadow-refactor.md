@@ -33,7 +33,7 @@ The live MCP bridge entrypoint must remain unchanged until a switch packet verif
 
 | ID | Item | Status | Packet | Evidence | Model role | Boundary | Notes |
 |---|---|---|---|---|---|---|---|
-| SR-001 | Create server.ts structure map | `NOT_STARTED` | — | — | `STRUCTURE_MAPPER` | Structure map is not a refactor plan or implementation. | Read-only. |
+| SR-001 | Create server.ts structure map | `COMPLETE` | `packets/SHADOW-REF-001.md` | `plans/SHADOW-REF-001-server-structure-map.md` | `STRUCTURE_MAPPER` | Structure map is not a refactor plan or implementation. | Read-only; completed from committed analysis artifact. |
 | SR-002 | Identify high-risk zones | `NOT_STARTED` | — | — | `RISK_ANALYST` | Risk list does not authorize edits. | Include auth, approval, tool contracts, service startup. |
 | SR-003 | Propose shadow refactor plan | `NOT_STARTED` | — | — | `PLANNER` | Plan does not authorize implementation. | Must preserve live entrypoint. |
 | SR-004 | Audit shadow refactor plan | `NOT_STARTED` | — | — | `AUDITOR` | Audit acceptance is not execution proof. | Cross-model audit preferred. |
@@ -55,7 +55,7 @@ ForgePilot CLI checklist management is deferred.
 ## Next Suggested Item
 
 ```text
-SR-001 — Create server.ts structure map
+SR-002 — Identify high-risk zones
 ```
 
 This should become the first project-specific packet under:

@@ -1,0 +1,629 @@
+--- server top-level markers ---
+1:import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+2:import { z } from "zod";
+3:import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
+4:import { execFile } from "node:child_process";
+5:import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
+6:import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
+7:import path from "node:path";
+8:import { createHash,randomBytes, randomUUID } from "node:crypto";
+9:import { promisify } from "node:util";
+10:import { authorizeRequest } from "./auth.js";
+11:import { getProtectedResourceMetadata, getWwwAuthenticateHeader } from "./oauthMetadata.js";
+12:import { createHash as fpMcp124CreateHash } from "node:crypto";
+13:import { readdirSync as fpMcp124ReaddirSync, readFileSync as fpMcp124ReadFileSync } from "node:fs";
+14:import { join as fpMcp124Join, relative as fpMcp124Relative } from "node:path";
+15:import { executeTerminalCommand } from "./terminal-command.js";
+16:import { registerRecentToolRegistrations } from "./tool-registrations/recent-tools.js";
+18:const execFileAsync = promisify(execFile);
+20:const REPO = process.env.FORGEPILOT_REPO ?? "/home/ridasaidd/forgepilot";
+21:const PORT = Number(process.env.PORT ?? "8787");
+22:const HOST = process.env.HOST ?? "127.0.0.1";
+23:const AUTH_MODE = process.env.FORGEPILOT_AUTH_MODE ?? "bearer";
+25:type Transport = StreamableHTTPServerTransport;
+27:const transports = new Map<string, Transport>();
+29:async function git(args: string[]): Promise<string> {
+38:async function gitSucceeds(args: string[]): Promise<boolean> {
+51:async function resolveCommitShort(commit: string | null): Promise<string | null> {
+63:async function commitIsAncestor(
+79:async function findArtifactCommit(
+106:async function listDir(relativePath: string): Promise<string[]> {
+114:const ALLOWED_READ_ROOTS = ["packets", "runs", "docs", "metrics"] as const;
+116:function normalizeRepoRelativePath(inputPath: string): string {
+139:async function readRepoTextFile(inputPath: string): Promise<string> {
+146:function clampMaxChars(value: number | undefined): number {
+157:const ALLOWED_OPENCODE_MODELS = [
+162:const ALLOWED_OPENCODE_RUN_MODES = ["DESIGN_ONLY"] as const;
+164:const NullableStringSchema = z.string().nullable();
+165:const StringArraySchema = z.array(z.string());
+166:const ReasonCodesSchema = z.array(z.string());
+168:const PreflightGateStateSchema = z.enum([
+175:const ForgePilotStatusOutputSchema = {
+186:const ForgePilotOpenCodeStatusOutputSchema = {
+200:const ForgePilotOpenCodeCapabilitiesOutputSchema = {
+222:const ForgePilotRemoteRunnerStatusOutputSchema = {
+263:const ForgePilotListPacketsOutputSchema = {
+269:const ForgePilotListRunsOutputSchema = {
+275:const ForgePilotValidateOpenCodeRunRequestOutputSchema = {
+290:const ForgePilotCreateOpenCodeRunRequestOutputSchema = {
+309:const ForgePilotListOpenCodeRunRequestsOutputSchema = {
+316:const ForgePilotReadOpenCodeRunRequestOutputSchema = {
+323:const ForgePilotValidateRemoteRunnerRequestOutputSchema = {
+355:const ForgePilotValidateRemoteRunnerEndpointRequestOutputSchema = {
+394:const ForgePilotStartRemoteRunnerRequestOutputSchema = {
+474:const ForgePilotGuardedStartPreflightReportOutputSchema = {
+503:const ForgePilotValidatePreStartEvidenceOutputSchema = {
+543:const ForgePilotValidateStartRequestStateSnapshotOutputSchema = {
+586:const ForgePilotRecordStartStateSnapshotDryRunOutputSchema = {
+622:const ForgePilotRecordPreStartEvidenceDryRunOutputSchema = {
+655:const ForgePilotValidateExecutionPreflightOutputSchema = {
+731:const ForgePilotRecordExecutionArtifactDryRunOutputSchema = {
+757:const ForgePilotVerifyExecutionArtifactDryRunOutputSchema = {
+790:const ForgePilotGetExecutionEnablementStatusOutputSchema = {
+835:const ForgePilotGetExecutionDisableSwitchStatusOutputSchema = {
+865:const ForgePilotValidateHumanApprovalRecordOutputSchema = {
+937:const ForgePilotRecordHumanApprovalEvidenceDryRunFixtureOutputSchema = {
+976:const ForgePilotRecordRealHumanApprovalEvidenceOutputSchema = {
+1022:const ForgePilotRecordHumanApprovalConsumptionOutputSchema = {
+1065:const ForgePilotReadFileOutputSchema = {
+1073:const ForgePilotExecuteTerminalCommandOutputSchema = {
+1122:function structuredJsonResult<T extends Record<string, unknown>>(result: T) {
+1134:function isValidPacketId(packetId: string): boolean {
+1138:function getSafeOpencodeArtifactDir(
+1146:function getOpenCodeStatus(): Record<string, unknown> {
+1163:function getOpencodeCapabilities(): Record<string, unknown> {
+1200:function getRemoteRunnerBaseUrl(): string | null {
+1213:function getRemoteRunnerEndpointLabel(baseUrl: string | null): string {
+1221:function getRemoteRunnerCapabilitiesUrl(baseUrl: string): string {
+1225:function getRemoteRunnerAuthHeaders(): Record<string, string> {
+1240:function getStringArrayField(
+1253:async function fetchRemoteRunnerCapabilities(
+1313:async function getRemoteRunnerStatus(): Promise<Record<string, unknown>> {
+1487:async function validateOpencodeRunRequest(
+1562:const CREATE_REQUEST_ARTIFACT_APPROVAL = "CREATE_REQUEST_ARTIFACT";
+1563:const START_REMOTE_RUNNER_REQUEST_APPROVAL = "START_REMOTE_RUNNER_REQUEST";
+1564:const RECORD_HUMAN_APPROVAL_EVIDENCE_DRY_RUN_FIXTURE_APPROVAL =
+1566:const RECORD_REAL_HUMAN_APPROVAL_EVIDENCE_APPROVAL =
+1568:const RECORD_HUMAN_APPROVAL_CONSUMPTION_APPROVAL =
+1571:function createRequestId(): string {
+1584:function getSafeRequestArtifactPath(packetId: string, requestId: string): string {
+1588:function getSafeRequestArtifactDir(packetId: string): string {
+1592:function isValidRequestId(requestId: string): boolean {
+1596:function assertValidPacketId(packetId: string): void {
+1602:function assertValidRequestId(requestId: string): void {
+1608:async function listOpencodeRunRequests(
+1636:async function readOpencodeRunRequest(
+1673:function getStringField(
+1682:async function validateRemoteRunnerRequest(
+1970:function getRemoteRunnerValidateRequestUrl(baseUrl: string): string {
+1974:async function sha256RepoFile(relativePath: string): Promise<string> {
+1981:function getBooleanField(
+1990:function getReasonCodes(value: Record<string, unknown>): string[] {
+2000:async function postRemoteRunnerValidateRequest(
+2065:async function validateRemoteRunnerEndpointRequest(
+2339:type PreflightGateState = "PASSED" | "FAILED" | "BLOCKED" | "NOT_EVALUATED";
+2341:function gatePassed(value: unknown): boolean {
+2345:function getPreflightGateState(passed: boolean, blocked = false): PreflightGateState {
+2353:function getUniqueReasons(reasons: string[]): string[] {
+2357:async function validateExecutionPreflight(
+2806:function getSafeExecutionDryRunArtifactDir(
+2814:async function repoFileExists(relativePath: string): Promise<boolean> {
+2830:async function writeJsonRepoArtifact(
+2854:async function recordExecutionArtifactDryRun(
+3111:async function readJsonRepoArtifact(
+3132:function hasReason(value: Record<string, unknown> | null, reason: string): boolean {
+3140:function fieldEquals(
+3152:function artifactHasPacketAndRequest(
+3164:async function verifyExecutionArtifactDryRun(
+3451:async function repoTextIncludes(
+3464:async function getExecutionEnablementStatus(
+3693:type ExecutionDisableSwitchContext = {
+3700:async function getExecutionDisableSwitchStatus(
+3797:type ApprovalExpectedScope = {
+3806:const HUMAN_APPROVAL_VALIDATOR_BOUNDARY_VERSION = "FP-MCP-072";
+3807:const HUMAN_APPROVAL_EVIDENCE_CONTRACT_VERSION = "FP-MCP-066";
+3808:const LEGACY_HUMAN_APPROVAL_EVIDENCE_CONTRACT_VERSION = "FP-MCP-059";
+3809:const REAL_HUMAN_APPROVAL_RECORDER_BOUNDARY_VERSION = "FP-MCP-067";
+3810:const LEGACY_HUMAN_APPROVAL_RECORD_BOUNDARY_VERSION = "FP-MCP-041";
+3811:const LEGACY_HUMAN_APPROVAL_RECORD_SCHEMA_VERSION = "FP-MCP-040";
+3812:const HUMAN_APPROVAL_EVIDENCE_ARTIFACT_VERSION = "human-approval-evidence-v1";
+3813:const MAX_HUMAN_APPROVAL_LIFETIME_MS = 30 * 60 * 1000;
+3815:function addReason(reasons: string[], ...reasonCodes: string[]): void {
+3821:function getFirstStringField(
+3836:function hasForbiddenCommitValue(value: string | null): boolean {
+3844:function getExpectedCanonicalApprovalText(
+3850:function getRealHumanApprovalCanonicalText(
+3857:function textContainsSecretLikeMaterial(value: string | null): boolean {
+3882:function notesContainSecretLikeMaterial(notes: string[]): boolean {
+3886:function operatorIdLooksNonSecret(operatorId: string): boolean {
+3898:function approvalTextMatchesCanonical(
+3920:function isValidApprovalId(value: string): boolean {
+3924:function getSafeApprovalArtifactPath(packetId: string, approvalId: string): string {
+3939:async function findApprovalPacketIdByApprovalId(
+3959:function isValidConsumptionId(value: string): boolean {
+3963:type ApprovalConsumptionEvidenceSummary = {
+3971:function getScopeMatchesExpected(
+3989:function getApprovalValidationObjectValid(
+4009:async function findValidApprovalConsumptionEvidence(
+4151:function hasForbiddenScopeValue(value: string | null): boolean {
+4161:function getObjectField(
+4178:function containsApprovalSecretMaterial(raw: string): boolean {
+4194:function parseTimestamp(value: string | null): Date | null {
+4208:function approvalTextLooksExplicit(value: string | null): boolean {
+4227:async function repoArtifactCommitted(relativePath: string): Promise<boolean> {
+4240:async function validateHumanApprovalRecord(
+4737:function createApprovalId(): string {
+4750:function createConsumptionId(): string {
+4763:function createStartAttemptId(): string {
+4776:function getSafeApprovalConsumptionArtifactPath(
+4794:async function recordHumanApprovalEvidenceDryRunFixture(
+5044:async function recordRealHumanApprovalEvidence(
+5356:async function recordHumanApprovalConsumption(
+5661:function getRemoteRunnerStartRunUrl(baseUrl: string): string {
+5665:function isValidRunnerRunId(value: string): boolean {
+5669:async function postRemoteRunnerStartRun(
+5743:type RunnerStartStateStatus =
+5750:function isRunnerStartContractStatus(
+5762:function deriveRunnerStartStateStatus(params: {
+5810:async function writeStartStateArtifact(
+5835:function baseStartRemoteRunnerResult(params: {
+5978:function getStartRequestArtifactRejectionReasons(params: {
+6033:function getSafePreStartEvidencePath(
+6045:function getStringArrayFromUnknown(value: unknown): string[] {
+6053:async function getCurrentRepoBranch(): Promise<string> {
+6063:function getStartHumanApprovalGateBlockedReasons(params: {
+6095:async function validatePreStartEvidence(
+6369:async function recordPreStartEvidenceDryRun(
+6593:function getSafeStartStateSnapshotBasePath(
+6604:function isBoundaryFalse(value: Record<string, unknown>, key: string): boolean {
+6608:function isBoundaryNull(value: Record<string, unknown>, key: string): boolean {
+6612:function validateStateSnapshotShape(params: {
+6705:async function validateStartRequestStateSnapshot(
+6987:function createStartStateSnapshotAttemptId(timestamp: string): string {
+6994:async function recordStartStateSnapshotDryRun(
+7275:type GuardedStartGateState =
+7282:function makeGuardedStartGate(params: {
+7302:function fpMcp124ForgePilotRoot(): string {
+7315:function fpMcp124ToRepoRelativePath(absolutePath: string): string {
+7319:function fpMcp124Sha256File(filePath: string): string {
+7325:function fpMcp124GlobApprovalEvidencePaths(approvalId: string): string[] {
+7358:function fpMcp124ReadString(source: Record<string, unknown>, key: string): string | null {
+7364:function fpMcp124ReadNestedRecord(source: Record<string, unknown>, key: string): Record<string, unknown> {
+7371:function fpMcp124ReadScopedString(
+7380:function deriveGuardedStartHumanApprovalEvidence(args: {
+7544:function deriveGuardedStartEvidenceLedgerReadiness(args: {
+7682:async function getGuardedStartPreflightReport(
+8093:async function startRemoteRunnerRequest(
+8927:function getRequestArtifactExpectedArtifacts(packetId: string): string[] {
+8937:function getRequestArtifactRequiredVerification(): string[] {
+8963:function getRequestArtifactAllowedActions(): string[] {
+8975:function getRequestArtifactForbiddenActions(): string[] {
+8994:function getBooleanFromRecord(
+9004:function getStringFromRecord(
+9014:async function createOpencodeRunRequestArtifact(
+9240:function sanitizeToolErrorCode(error: unknown): string {
+9253:async function runLoggedTool<T>(
+9280:function createMcpServer(): McpServer {
+10268:function getHeader(req: IncomingMessage, name: string): string | undefined {
+10274:const httpServer = createServer(async (req: IncomingMessage, res: ServerResponse) => {
+--- tool/handler markers ---
+1:import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+2:import { z } from "zod";
+3:import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
+5:import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
+10:import { authorizeRequest } from "./auth.js";
+11:import { getProtectedResourceMetadata, getWwwAuthenticateHeader } from "./oauthMetadata.js";
+15:import { executeTerminalCommand } from "./terminal-command.js";
+16:import { registerRecentToolRegistrations } from "./tool-registrations/recent-tools.js";
+20:const REPO = process.env.FORGEPILOT_REPO ?? "/home/ridasaidd/forgepilot";
+23:const AUTH_MODE = process.env.FORGEPILOT_AUTH_MODE ?? "bearer";
+25:type Transport = StreamableHTTPServerTransport;
+80:  requestArtifactPath: string | null
+82:  if (requestArtifactPath === null) {
+92:      requestArtifactPath
+157:const ALLOWED_OPENCODE_MODELS = [
+162:const ALLOWED_OPENCODE_RUN_MODES = ["DESIGN_ONLY"] as const;
+164:const NullableStringSchema = z.string().nullable();
+165:const StringArraySchema = z.array(z.string());
+166:const ReasonCodesSchema = z.array(z.string());
+168:const PreflightGateStateSchema = z.enum([
+175:const ForgePilotStatusOutputSchema = {
+182:  latestPackets: StringArraySchema,
+183:  latestRuns: StringArraySchema
+186:const ForgePilotOpenCodeStatusOutputSchema = {
+187:  opencodeDiscoveryConfigured: z.boolean(),
+188:  opencodeExecutionEnabled: z.boolean(),
+193:  supportedRunModes: StringArraySchema,
+194:  allowedModels: StringArraySchema,
+196:  liveOpenCodeChecked: z.boolean(),
+200:const ForgePilotOpenCodeCapabilitiesOutputSchema = {
+204:  runnerVersion: NullableStringSchema,
+205:  runnerProtocolVersion: NullableStringSchema,
+206:  opencodeHarnessConfigured: z.boolean(),
+207:  opencodeHarnessReachable: z.boolean(),
+209:  supportedOperations: StringArraySchema,
+210:  supportedRunModes: StringArraySchema,
+211:  discoveredModels: StringArraySchema,
+212:  allowedModels: StringArraySchema,
+213:  blockedModels: StringArraySchema,
+218:  liveOpenCodeChecked: z.boolean(),
+219:  reasons: ReasonCodesSchema
+222:const ForgePilotRemoteRunnerStatusOutputSchema = {
+228:  runnerVersion: NullableStringSchema,
+229:  runnerProtocolVersion: NullableStringSchema,
+235:  supportedOperations: StringArraySchema,
+238:  startCapabilityVersion: NullableStringSchema,
+239:  startOperationName: NullableStringSchema,
+241:  startEndpointState: NullableStringSchema,
+242:  startRequiresApprovalEvidence: z.boolean(),
+245:  startRequiresRequestArtifactHash: z.boolean(),
+247:  startRequiresEvidenceLedgerValidation: z.boolean(),
+251:  startDisabledReason: NullableStringSchema,
+252:  startBlockingReasons: StringArraySchema,
+253:  supportedRunModes: StringArraySchema,
+254:  allowedModels: StringArraySchema,
+255:  supportedWorkspaces: StringArraySchema,
+256:  defaultWorkspace: NullableStringSchema,
+260:  reasons: ReasonCodesSchema
+263:const ForgePilotListPacketsOutputSchema = {
+266:  packets: StringArraySchema
+269:const ForgePilotListRunsOutputSchema = {
+272:  runs: StringArraySchema
+275:const ForgePilotValidateOpenCodeRunRequestOutputSchema = {
+278:  requiresApproval: z.boolean(),
+284:  wouldUseArtifactDir: NullableStringSchema,
+287:  reasons: ReasonCodesSchema
+290:const ForgePilotCreateOpenCodeRunRequestOutputSchema = {
+295:  requiresApproval: z.boolean(),
+296:  approvalAccepted: z.boolean(),
+297:  requestId: NullableStringSchema,
+298:  requestArtifactPath: NullableStringSchema,
+302:  baseCommit: NullableStringSchema,
+306:  reasons: ReasonCodesSchema
+309:const ForgePilotListOpenCodeRunRequestsOutputSchema = {
+313:  requests: StringArraySchema
+316:const ForgePilotReadOpenCodeRunRequestOutputSchema = {
+318:  requestId: z.string(),
+319:  requestArtifactPath: z.string(),
+323:const ForgePilotValidateRemoteRunnerRequestOutputSchema = {
+329:  requestId: z.string(),
+330:  requestArtifactPath: NullableStringSchema,
+332:  requestExists: z.boolean(),
+333:  requestArtifactValid: z.boolean(),
+343:  artifactDir: NullableStringSchema,
+344:  currentCommit: NullableStringSchema,
+345:  requestBaseCommit: NullableStringSchema,
+346:  creationCommit: NullableStringSchema,
+347:  artifactCommit: NullableStringSchema,
+348:  modelId: NullableStringSchema,
+349:  runMode: NullableStringSchema,
+352:  reasons: ReasonCodesSchema
+355:const ForgePilotValidateRemoteRunnerEndpointRequestOutputSchema = {
+362:  opencodeStarted: z.boolean(),
+365:  requestId: z.string(),
+366:  approvalId: NullableStringSchema,
+367:  approvalPacketId: NullableStringSchema,
+368:  approvalPath: NullableStringSchema,
+369:  requestArtifactPath: NullableStringSchema,
+370:  requestArtifactSha256: NullableStringSchema,
+371:  baseCommit: NullableStringSchema,
+372:  runnerProtocolVersion: NullableStringSchema,
+377:  requestExists: z.boolean(),
+378:  requestArtifactValid: z.boolean(),
+383:  creationCommit: NullableStringSchema,
+384:  artifactCommit: NullableStringSchema,
+385:  currentCommit: NullableStringSchema,
+391:  reasons: ReasonCodesSchema
+394:const ForgePilotStartRemoteRunnerRequestOutputSchema = {
+397:  approvalAccepted: z.boolean(),
+403:  startEndpointState: NullableStringSchema.optional(),
+406:  opencodeStarted: z.boolean().optional(),
+408:  requestArtifactMutated: z.boolean().optional(),
+410:  requestId: z.string(),
+411:  requestArtifactPath: NullableStringSchema,
+412:  requestArtifactSha256: NullableStringSchema,
+413:  baseCommit: NullableStringSchema,
+414:  runnerRunId: NullableStringSchema,
+415:  artifactDir: NullableStringSchema,
+416:  runnerProtocolVersion: NullableStringSchema,
+426:  effectiveDisableReason: NullableStringSchema,
+427:  effectiveDisableScope: NullableStringSchema,
+428:  preStartEvidenceEvaluated: z.boolean(),
+429:  preStartEvidenceComplete: z.boolean(),
+430:  preStartEvidenceValid: z.boolean(),
+431:  preStartEvidencePath: NullableStringSchema,
+432:  postStartEvidencePath: NullableStringSchema,
+433:  controlRepoCommit: NullableStringSchema,
+434:  targetWorkspaceId: NullableStringSchema,
+435:  targetWorkspaceCommit: NullableStringSchema,
+436:  opencodeWorkingDirectory: NullableStringSchema,
+438:  taskBundlePath: NullableStringSchema,
+439:  taskBundleRelativePath: NullableStringSchema,
+440:  preStartEvidenceMissingEvidence: StringArraySchema,
+441:  preStartEvidenceInconsistentEvidence: StringArraySchema,
+445:  stateSnapshotPath: NullableStringSchema,
+446:  stateSnapshotAttemptId: NullableStringSchema,
+447:  stateSnapshotMissingEvidence: StringArraySchema,
+448:  stateSnapshotInconsistentEvidence: StringArraySchema,
+449:  humanApprovalEvidenceEvaluated: z.boolean(),
+450:  humanApprovalEvidenceGatePassed: z.boolean(),
+451:  humanApprovalEvidenceId: NullableStringSchema,
+452:  humanApprovalEvidencePath: NullableStringSchema,
+453:  humanApprovalEvidenceValid: z.boolean(),
+454:  humanApprovalEvidenceUsableForExecution: z.boolean(),
+455:  humanApprovalEvidenceReasons: ReasonCodesSchema,
+456:  approvalValidationEvaluated: z.boolean(),
+457:  approvalEvidenceValid: z.boolean(),
+458:  approvalValid: z.boolean(),
+459:  approvalUsableForExecution: z.boolean(),
+460:  approvalConsumed: z.boolean(),
+461:  consumptionEvidenceEvaluated: z.boolean(),
+462:  consumptionEvidencePresent: z.boolean(),
+463:  consumptionEvidenceValid: z.boolean(),
+464:  consumptionEvidenceId: NullableStringSchema,
+465:  consumptionEvidencePath: NullableStringSchema,
+466:  approvalCreated: z.boolean(),
+467:  approvalMutated: z.boolean(),
+468:  humanApprovalRecorded: z.boolean(),
+469:  reasons: ReasonCodesSchema
+474:const ForgePilotGuardedStartPreflightReportOutputSchema = {
+479:  opencodeStarted: z.boolean(),
+482:  runnerRunId: NullableStringSchema,
+483:  approvalConsumed: z.boolean(),
+484:  requestArtifactMutated: z.boolean(),
+486:  requestId: z.string(),
+487:  approvalId: NullableStringSchema,
+492:  startEndpointState: NullableStringSchema,
+495:  supportedOperations: StringArraySchema,
+500:  reasons: ReasonCodesSchema
+503:const ForgePilotValidatePreStartEvidenceOutputSchema = {
+504:  schemaVersion: z.string(),
+506:  requestId: z.string(),
+507:  preStartEvidenceEvaluated: z.boolean(),
+508:  preStartEvidenceComplete: z.boolean(),
+509:  preStartEvidenceValid: z.boolean(),
+513:  opencodeStarted: z.boolean(),
+515:  requestArtifactValid: z.boolean(),
+519:  approvalObserved: z.boolean(),
+520:  approvalAccepted: z.boolean(),
+523:  preStartEvidencePath: NullableStringSchema,
+524:  preStartEvidenceArtifactPresent: z.boolean(),
+525:  requestArtifactPath: NullableStringSchema,
+526:  requestArtifactSha256: NullableStringSchema,
+527:  modelId: NullableStringSchema,
+528:  runMode: NullableStringSchema,
+529:  baseCommit: NullableStringSchema,
+530:  currentCommit: NullableStringSchema,
+531:  effectiveDisableReason: NullableStringSchema,
+532:  effectiveDisableScope: NullableStringSchema,
+533:  requiredEvidence: StringArraySchema,
+534:  missingEvidence: StringArraySchema,
+535:  inconsistentEvidence: StringArraySchema,
+539:  reasons: ReasonCodesSchema
+543:const ForgePilotValidateStartRequestStateSnapshotOutputSchema = {
+544:  schemaVersion: z.string(),
+546:  requestId: z.string(),
+554:  requestArtifactValid: z.boolean(),
+555:  preStartEvidenceEvaluated: z.boolean(),
+556:  preStartEvidenceValid: z.boolean(),
+562:  opencodeStarted: z.boolean(),
+564:  snapshotBasePath: NullableStringSchema,
+565:  selectedAttemptId: NullableStringSchema,
+566:  attemptIds: StringArraySchema,
+567:  preStartSnapshotPath: NullableStringSchema,
+568:  postStartSnapshotPath: NullableStringSchema,
+569:  preStartSnapshotSha256: NullableStringSchema,
+570:  postStartSnapshotSha256: NullableStringSchema,
+571:  requestArtifactPath: NullableStringSchema,
+572:  requestArtifactSha256: NullableStringSchema,
+573:  preStartEvidencePath: NullableStringSchema,
+574:  preStartEvidenceSha256: NullableStringSchema,
+575:  effectiveDisableReason: NullableStringSchema,
+576:  effectiveDisableScope: NullableStringSchema,
+577:  missingSnapshotEvidence: StringArraySchema,
+578:  inconsistentSnapshotEvidence: StringArraySchema,
+582:  reasons: ReasonCodesSchema
+586:const ForgePilotRecordStartStateSnapshotDryRunOutputSchema = {
+587:  schemaVersion: z.string(),
+589:  requestId: z.string(),
+591:  stateSnapshotAttemptId: NullableStringSchema,
+594:  preStartSnapshotPath: NullableStringSchema,
+595:  postStartSnapshotPath: NullableStringSchema,
+596:  preStartSnapshotSha256: NullableStringSchema,
+597:  postStartSnapshotSha256: NullableStringSchema,
+598:  requestArtifactValid: z.boolean(),
+599:  preStartEvidenceEvaluated: z.boolean(),
+600:  preStartEvidenceValid: z.boolean(),
+603:  approvalAccepted: z.boolean(),
+607:  opencodeStarted: z.boolean(),
+609:  requestArtifactPath: NullableStringSchema,
+610:  requestArtifactSha256: NullableStringSchema,
+611:  preStartEvidencePath: NullableStringSchema,
+612:  preStartEvidenceSha256: NullableStringSchema,
+613:  effectiveDisableReason: NullableStringSchema,
+614:  effectiveDisableScope: NullableStringSchema,
+618:  reasons: ReasonCodesSchema
+622:const ForgePilotRecordPreStartEvidenceDryRunOutputSchema = {
+623:  schemaVersion: z.string(),
+625:  requestId: z.string(),
+630:  opencodeStarted: z.boolean(),
+632:  approvalAccepted: z.boolean(),
+633:  requestArtifactValid: z.boolean(),
+637:  preStartEvidencePath: NullableStringSchema,
+638:  preStartEvidenceArtifactPresentBefore: z.boolean(),
+639:  preStartEvidenceArtifactPresentAfter: z.boolean(),
+640:  requestArtifactPath: NullableStringSchema,
+641:  requestArtifactSha256: NullableStringSchema,
+642:  preStartEvidenceSha256: NullableStringSchema,
+643:  modelId: NullableStringSchema,
+644:  runMode: NullableStringSchema,
+645:  baseCommit: NullableStringSchema,
+646:  currentCommit: NullableStringSchema,
+647:  effectiveDisableReason: NullableStringSchema,
+648:  effectiveDisableScope: NullableStringSchema,
+652:  reasons: ReasonCodesSchema
+655:const ForgePilotValidateExecutionPreflightOutputSchema = {
+656:  schemaVersion: z.string(),
+658:  requestId: z.string(),
+663:  opencodeContacted: z.boolean(),
+665:  opencodeStarted: z.boolean(),
+669:    requestArtifact: PreflightGateStateSchema,
+670:    lifecycle: PreflightGateStateSchema,
+671:    packet: PreflightGateStateSchema,
+672:    model: PreflightGateStateSchema,
+673:    runMode: PreflightGateStateSchema,
+674:    runnerIdentity: PreflightGateStateSchema,
+675:    runnerCapability: PreflightGateStateSchema,
+676:    disableSwitch: PreflightGateStateSchema,
+677:    executionEnablement: PreflightGateStateSchema,
+678:    humanApprovalEvidence: PreflightGateStateSchema,
+679:    opencodeBoundary: PreflightGateStateSchema,
+680:    artifactRecording: PreflightGateStateSchema,
+681:    secretsBoundary: PreflightGateStateSchema,
+682:    networkExposure: PreflightGateStateSchema
+684:  reasons: ReasonCodesSchema,
+685:  approvalId: NullableStringSchema,
+686:  approvalPacketId: NullableStringSchema,
+687:  approvalPath: NullableStringSchema,
+688:  humanApprovalEvidenceEvaluated: z.boolean(),
+689:  humanApprovalEvidenceGatePassed: z.boolean(),
+690:  humanApprovalEvidenceId: NullableStringSchema,
+691:  humanApprovalEvidencePath: NullableStringSchema,
+692:  humanApprovalEvidenceValid: z.boolean(),
+693:  humanApprovalEvidenceUsableForExecution: z.boolean(),
+694:  humanApprovalEvidenceReasons: ReasonCodesSchema,
+695:  approvalValidationEvaluated: z.boolean(),
+696:  approvalEvidenceValid: z.boolean(),
+697:  approvalValid: z.boolean(),
+698:  approvalUsableForExecution: z.boolean(),
+699:  approvalConsumed: z.boolean(),
+700:  consumptionEvidenceEvaluated: z.boolean(),
+701:  consumptionEvidencePresent: z.boolean(),
+702:  consumptionEvidenceValid: z.boolean(),
+703:  consumptionEvidenceId: NullableStringSchema,
+704:  consumptionEvidencePath: NullableStringSchema,
+705:  approvalCreated: z.boolean(),
+706:  approvalMutated: z.boolean(),
+707:  humanApprovalRecorded: z.boolean(),
+708:  requestArtifactPath: NullableStringSchema,
+709:  requestArtifactSha256: NullableStringSchema,
+710:  baseCommit: NullableStringSchema,
+711:  currentCommit: NullableStringSchema,
+712:  creationCommit: NullableStringSchema,
+713:  artifactCommit: NullableStringSchema,
+714:  modelId: NullableStringSchema,
+715:  runMode: NullableStringSchema,
+716:  runnerProtocolVersion: NullableStringSchema,
+717:  runnerVersion: NullableStringSchema,
+718:  runnerSupportedOperations: StringArraySchema,
+719:  runnerSupportedRunModes: StringArraySchema,
+720:  runnerAllowedModels: StringArraySchema,
+722:  opencodeExecutionEnabled: z.boolean(),
+725:  effectiveDisableReason: NullableStringSchema,
+726:  effectiveDisableScope: NullableStringSchema,
+731:const ForgePilotRecordExecutionArtifactDryRunOutputSchema = {
+732:  schemaVersion: z.string(),
+734:  requestId: z.string(),
+739:  opencodeStarted: z.boolean(),
+740:  artifactDir: NullableStringSchema,
+741:  artifacts: StringArraySchema,
+742:  artifactPaths: StringArraySchema,
+746:  requestArtifactPath: NullableStringSchema,
+747:  requestArtifactSha256: NullableStringSchema,
+748:  baseCommit: NullableStringSchema,
+749:  currentCommit: NullableStringSchema,
+750:  modelId: NullableStringSchema,
+751:  runMode: NullableStringSchema,
+754:  reasons: ReasonCodesSchema
+757:const ForgePilotVerifyExecutionArtifactDryRunOutputSchema = {
+758:  schemaVersion: z.string(),
+761:  requestId: z.string(),
+770:  packetRequestConsistent: z.boolean(),
+776:  opencodeStarted: z.boolean(),
+778:  requiredArtifacts: StringArraySchema,
+779:  forbiddenArtifacts: StringArraySchema,
+780:  missingArtifacts: StringArraySchema,
+781:  unexpectedArtifacts: StringArraySchema,
+782:  hashMismatches: StringArraySchema,
+784:  manifestSelfHash: NullableStringSchema,
+787:  reasons: ReasonCodesSchema
+790:const ForgePilotGetExecutionEnablementStatusOutputSchema = {
+791:  schemaVersion: z.string(),
+797:  opencodeStarted: z.boolean(),
+799:  opencodeExecutionEnabled: z.boolean(),
+802:    dryRunEvidencePresent: z.boolean(),
+806:    opencodeBoundarySatisfied: z.boolean(),
+809:    humanApprovalRecorded: z.boolean(),
+813:  blockingReasons: ReasonCodesSchema,
+817:  repoCommit: NullableStringSchema,
+819:  requiredContracts: StringArraySchema,
+820:  missingContracts: StringArraySchema,
+821:  dryRunArtifacts: StringArraySchema,
+822:  missingDryRunArtifacts: StringArraySchema,
+823:  verificationArtifacts: StringArraySchema,
+824:  missingVerificationArtifacts: StringArraySchema,
+825:  runnerSupportedOperations: StringArraySchema,
+826:  runnerSupportedRunModes: StringArraySchema,
+827:  runnerAllowedModels: StringArraySchema,
+835:const ForgePilotGetExecutionDisableSwitchStatusOutputSchema = {
+836:  schemaVersion: z.string(),
+837:  packetId: NullableStringSchema,
+838:  requestId: NullableStringSchema,
+839:  modelId: NullableStringSchema,
+840:  runMode: NullableStringSchema,
+847:  opencodeStarted: z.boolean(),
+849:  opencodeExecutionEnabled: z.boolean(),
+852:  requestDisableActive: z.boolean(),
+858:  precedenceApplied: StringArraySchema,
+862:  reasons: ReasonCodesSchema
+865:const ForgePilotValidateHumanApprovalRecordOutputSchema = {
+866:  schemaVersion: z.string(),
+868:  approvalEvidenceContractVersion: z.string(),
+869:  legacyApprovalRecordBoundaryRecognized: z.string(),
+870:  approvalValidationEvaluated: z.boolean(),
+871:  approvalEvidenceValid: z.boolean(),
+872:  approvalValid: z.boolean(),
+873:  approvalUsableForExecution: z.boolean(),
+874:  approvalCreated: z.boolean(),
+875:  approvalMutated: z.boolean(),
+876:  humanApprovalRecorded: z.boolean(),
+877:  approvalConsumed: z.boolean(),
+878:  consumptionEvidenceEvaluated: z.boolean(),
+879:  consumptionEvidencePresent: z.boolean(),
+880:  consumptionEvidenceValid: z.boolean(),
+881:  consumptionEvidenceId: NullableStringSchema,
+882:  consumptionEvidencePath: NullableStringSchema,
+886:  opencodeStarted: z.boolean(),
+888:  approvalId: z.string(),
+889:  approvalPath: z.string(),
+893:    approvalIdFormatValid: z.boolean(),
+896:    approvalEvidenceSchemaValid: z.boolean(),
+897:    approvalEvidenceTypeValid: z.boolean(),
+898:    schemaVersionValid: z.boolean(),
+900:    approvalIdValid: z.boolean(),
+901:    approvalStateValid: z.boolean(),
+902:    approvalKindValid: z.boolean(),
+908:    requestBindingValid: z.boolean(),
+913:    canonicalApprovalTextPresent: z.boolean(),
+914:    canonicalApprovalTextValid: z.boolean(),
+915:    approvalTextPresent: z.boolean(),
+920:    approvalLifetimeValid: z.boolean(),
+933:  reasons: ReasonCodesSchema
+937:const ForgePilotRecordHumanApprovalEvidenceDryRunFixtureOutputSchema = {
+938:  schemaVersion: z.string(),
+940:  requestId: z.string(),
+947:  dryRunFixturePath: NullableStringSchema,
+948:  dryRunFixtureApprovalId: NullableStringSchema,
+949:  dryRunFixtureSha256: NullableStringSchema,
+952:  approvalValidationEvaluated: z.boolean(),
+953:  approvalEvidenceValid: z.boolean(),
+954:  approvalValid: z.boolean(),
+955:  approvalUsableForExecution: z.boolean(),
+956:  approvalCreated: z.boolean(),
+957:  approvalMutated: z.boolean(),
+958:  humanApprovalRecorded: z.boolean(),
+962:  opencodeStarted: z.boolean(),
+966:  opencodeExecutionEnabled: z.boolean(),
+967:  effectiveDisableReason: NullableStringSchema,
+968:  effectiveDisableScope: NullableStringSchema,
+969:  validationReasons: ReasonCodesSchema,

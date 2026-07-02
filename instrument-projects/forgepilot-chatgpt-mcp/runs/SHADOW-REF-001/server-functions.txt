@@ -1,0 +1,130 @@
+--- function declarations ---
+29:async function git(args: string[]): Promise<string> {
+38:async function gitSucceeds(args: string[]): Promise<boolean> {
+51:async function resolveCommitShort(commit: string | null): Promise<string | null> {
+63:async function commitIsAncestor(
+79:async function findArtifactCommit(
+106:async function listDir(relativePath: string): Promise<string[]> {
+116:function normalizeRepoRelativePath(inputPath: string): string {
+139:async function readRepoTextFile(inputPath: string): Promise<string> {
+146:function clampMaxChars(value: number | undefined): number {
+1122:function structuredJsonResult<T extends Record<string, unknown>>(result: T) {
+1134:function isValidPacketId(packetId: string): boolean {
+1138:function getSafeOpencodeArtifactDir(
+1146:function getOpenCodeStatus(): Record<string, unknown> {
+1163:function getOpencodeCapabilities(): Record<string, unknown> {
+1200:function getRemoteRunnerBaseUrl(): string | null {
+1213:function getRemoteRunnerEndpointLabel(baseUrl: string | null): string {
+1221:function getRemoteRunnerCapabilitiesUrl(baseUrl: string): string {
+1225:function getRemoteRunnerAuthHeaders(): Record<string, string> {
+1240:function getStringArrayField(
+1253:async function fetchRemoteRunnerCapabilities(
+1313:async function getRemoteRunnerStatus(): Promise<Record<string, unknown>> {
+1487:async function validateOpencodeRunRequest(
+1571:function createRequestId(): string {
+1584:function getSafeRequestArtifactPath(packetId: string, requestId: string): string {
+1588:function getSafeRequestArtifactDir(packetId: string): string {
+1592:function isValidRequestId(requestId: string): boolean {
+1596:function assertValidPacketId(packetId: string): void {
+1602:function assertValidRequestId(requestId: string): void {
+1608:async function listOpencodeRunRequests(
+1636:async function readOpencodeRunRequest(
+1673:function getStringField(
+1682:async function validateRemoteRunnerRequest(
+1970:function getRemoteRunnerValidateRequestUrl(baseUrl: string): string {
+1974:async function sha256RepoFile(relativePath: string): Promise<string> {
+1981:function getBooleanField(
+1990:function getReasonCodes(value: Record<string, unknown>): string[] {
+2000:async function postRemoteRunnerValidateRequest(
+2065:async function validateRemoteRunnerEndpointRequest(
+2341:function gatePassed(value: unknown): boolean {
+2345:function getPreflightGateState(passed: boolean, blocked = false): PreflightGateState {
+2353:function getUniqueReasons(reasons: string[]): string[] {
+2357:async function validateExecutionPreflight(
+2806:function getSafeExecutionDryRunArtifactDir(
+2814:async function repoFileExists(relativePath: string): Promise<boolean> {
+2830:async function writeJsonRepoArtifact(
+2854:async function recordExecutionArtifactDryRun(
+3111:async function readJsonRepoArtifact(
+3132:function hasReason(value: Record<string, unknown> | null, reason: string): boolean {
+3140:function fieldEquals(
+3152:function artifactHasPacketAndRequest(
+3164:async function verifyExecutionArtifactDryRun(
+3451:async function repoTextIncludes(
+3464:async function getExecutionEnablementStatus(
+3700:async function getExecutionDisableSwitchStatus(
+3815:function addReason(reasons: string[], ...reasonCodes: string[]): void {
+3821:function getFirstStringField(
+3836:function hasForbiddenCommitValue(value: string | null): boolean {
+3844:function getExpectedCanonicalApprovalText(
+3850:function getRealHumanApprovalCanonicalText(
+3857:function textContainsSecretLikeMaterial(value: string | null): boolean {
+3882:function notesContainSecretLikeMaterial(notes: string[]): boolean {
+3886:function operatorIdLooksNonSecret(operatorId: string): boolean {
+3898:function approvalTextMatchesCanonical(
+3920:function isValidApprovalId(value: string): boolean {
+3924:function getSafeApprovalArtifactPath(packetId: string, approvalId: string): string {
+3939:async function findApprovalPacketIdByApprovalId(
+3959:function isValidConsumptionId(value: string): boolean {
+3971:function getScopeMatchesExpected(
+3989:function getApprovalValidationObjectValid(
+4009:async function findValidApprovalConsumptionEvidence(
+4151:function hasForbiddenScopeValue(value: string | null): boolean {
+4161:function getObjectField(
+4178:function containsApprovalSecretMaterial(raw: string): boolean {
+4194:function parseTimestamp(value: string | null): Date | null {
+4208:function approvalTextLooksExplicit(value: string | null): boolean {
+4227:async function repoArtifactCommitted(relativePath: string): Promise<boolean> {
+4240:async function validateHumanApprovalRecord(
+4737:function createApprovalId(): string {
+4750:function createConsumptionId(): string {
+4763:function createStartAttemptId(): string {
+4776:function getSafeApprovalConsumptionArtifactPath(
+4794:async function recordHumanApprovalEvidenceDryRunFixture(
+5044:async function recordRealHumanApprovalEvidence(
+5356:async function recordHumanApprovalConsumption(
+5661:function getRemoteRunnerStartRunUrl(baseUrl: string): string {
+5665:function isValidRunnerRunId(value: string): boolean {
+5669:async function postRemoteRunnerStartRun(
+5750:function isRunnerStartContractStatus(
+5762:function deriveRunnerStartStateStatus(params: {
+5810:async function writeStartStateArtifact(
+5835:function baseStartRemoteRunnerResult(params: {
+5978:function getStartRequestArtifactRejectionReasons(params: {
+6033:function getSafePreStartEvidencePath(
+6045:function getStringArrayFromUnknown(value: unknown): string[] {
+6053:async function getCurrentRepoBranch(): Promise<string> {
+6063:function getStartHumanApprovalGateBlockedReasons(params: {
+6095:async function validatePreStartEvidence(
+6369:async function recordPreStartEvidenceDryRun(
+6593:function getSafeStartStateSnapshotBasePath(
+6604:function isBoundaryFalse(value: Record<string, unknown>, key: string): boolean {
+6608:function isBoundaryNull(value: Record<string, unknown>, key: string): boolean {
+6612:function validateStateSnapshotShape(params: {
+6705:async function validateStartRequestStateSnapshot(
+6987:function createStartStateSnapshotAttemptId(timestamp: string): string {
+6994:async function recordStartStateSnapshotDryRun(
+7282:function makeGuardedStartGate(params: {
+7302:function fpMcp124ForgePilotRoot(): string {
+7315:function fpMcp124ToRepoRelativePath(absolutePath: string): string {
+7319:function fpMcp124Sha256File(filePath: string): string {
+7325:function fpMcp124GlobApprovalEvidencePaths(approvalId: string): string[] {
+7358:function fpMcp124ReadString(source: Record<string, unknown>, key: string): string | null {
+7364:function fpMcp124ReadNestedRecord(source: Record<string, unknown>, key: string): Record<string, unknown> {
+7371:function fpMcp124ReadScopedString(
+7380:function deriveGuardedStartHumanApprovalEvidence(args: {
+7544:function deriveGuardedStartEvidenceLedgerReadiness(args: {
+7682:async function getGuardedStartPreflightReport(
+8093:async function startRemoteRunnerRequest(
+8927:function getRequestArtifactExpectedArtifacts(packetId: string): string[] {
+8937:function getRequestArtifactRequiredVerification(): string[] {
+8963:function getRequestArtifactAllowedActions(): string[] {
+8975:function getRequestArtifactForbiddenActions(): string[] {
+8994:function getBooleanFromRecord(
+9004:function getStringFromRecord(
+9014:async function createOpencodeRunRequestArtifact(
+9240:function sanitizeToolErrorCode(error: unknown): string {
+9253:async function runLoggedTool<T>(
+9280:function createMcpServer(): McpServer {
+10268:function getHeader(req: IncomingMessage, name: string): string | undefined {
+10274:const httpServer = createServer(async (req: IncomingMessage, res: ServerResponse) => {

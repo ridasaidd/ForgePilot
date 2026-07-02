@@ -1,0 +1,1002 @@
+--- createMcpServer section 9280-10280 ---
+function createMcpServer(): McpServer {
+  const mcpServer = new McpServer({
+    name: "forgepilot-chatgpt-mcp",
+    version: "0.1.0"
+  });
+
+  mcpServer.registerTool(
+    "forgepilot_status",
+    {
+      description: "Read current ForgePilot repository status. This tool is read-only.",
+      inputSchema: {},
+      outputSchema: ForgePilotStatusOutputSchema,
+      annotations: {
+        readOnlyHint: true,
+        destructiveHint: false,
+        idempotentHint: true,
+        openWorldHint: false
+      }
+    },
+    async () =>
+      runLoggedTool("forgepilot_status", async () => {
+        const branch = await git(["branch", "--show-current"]);
+        const commit = await git(["rev-parse", "--short", "HEAD"]);
+        const gitStatusShort = await git(["status", "--short"]);
+
+        const latestPackets = (await listDir("packets"))
+          .filter((file) => file.endsWith(".md"))
+          .sort()
+          .slice(-10);
+
+        const latestRuns = (await listDir("runs"))
+          .sort()
+          .slice(-10);
+
+        const result = {
+          repo: "ForgePilot",
+          repoPath: REPO,
+          branch,
+          commit,
+          workingTreeClean: gitStatusShort.length === 0,
+          gitStatusShort,
+          latestPackets,
+          latestRuns
+        };
+
+        return structuredJsonResult(result);
+      })
+  );
+
+  mcpServer.registerTool(
+    "forgepilot_get_opencode_status",
+    {
+      description: "Read constrained OpenCode executor readiness. This tool is read-only and does not start OpenCode.",
+      inputSchema: {},
+      outputSchema: ForgePilotOpenCodeStatusOutputSchema,
+      annotations: {
+        readOnlyHint: true,
+        destructiveHint: false,
+        idempotentHint: true,
+        openWorldHint: false
+      }
+    },
+    async () =>
+      runLoggedTool("forgepilot_get_opencode_status", async () => {
+        const result = getOpenCodeStatus();
+
+        return structuredJsonResult(result);
+      })
+  );
+
+  mcpServer.registerTool(
+    "forgepilot_get_opencode_capabilities",
+    {
+      description:
+        "Read ForgePilot/OpenCode capability state. This tool is read-only, uses static policy discovery, and does not start OpenCode.",
+      inputSchema: {},
+      outputSchema: ForgePilotOpenCodeCapabilitiesOutputSchema,
+      annotations: {
+        readOnlyHint: true,
+        destructiveHint: false,
+        idempotentHint: true,
+        openWorldHint: false
+      }
+    },
+    async () =>
+      runLoggedTool("forgepilot_get_opencode_capabilities", async () => {
+        const result = getOpencodeCapabilities();
+
+        return structuredJsonResult(result);
+      })
+  );
+
+    mcpServer.registerTool(
+    "forgepilot_get_remote_runner_status",
+    {
+      description:
+        "Read remote runner capability status. This tool may contact only the configured runner capabilities endpoint and never starts OpenCode.",
+      inputSchema: {},
+      outputSchema: ForgePilotRemoteRunnerStatusOutputSchema,
+      annotations: {
+        readOnlyHint: true,
+        destructiveHint: false,
+        idempotentHint: true,
+        openWorldHint: true
+      }
+    },
+    async () =>
+      runLoggedTool("forgepilot_get_remote_runner_status", async () => {
+        const result = await getRemoteRunnerStatus();
+
+        return structuredJsonResult(result);
+      })
+  );
+
+  mcpServer.registerTool(
+    "forgepilot_list_packets",
+    {
+      description: "List ForgePilot packet files. This tool is read-only.",
+      inputSchema: {
+        limit: z.number().optional().describe("Maximum number of packet files to return. Defaults to 20. Hard-capped at 50.")
+      },
+      outputSchema: ForgePilotListPacketsOutputSchema,
+      annotations: {
+        readOnlyHint: true,
+        destructiveHint: false,
+        idempotentHint: true,
+        openWorldHint: false
+      }
+    },
+    async ({ limit }) =>
+      runLoggedTool("forgepilot_list_packets", async () => {
+        const maxItems = Math.max(1, Math.min(Math.floor(limit ?? 20), 50));
+
+        const packets = (await listDir("packets"))
+          .filter((file) => file.endsWith(".md"))
+          .sort()
+          .slice(-maxItems);
+
+        const result = {
+          path: "packets",
+          count: packets.length,
+          packets
+        };
+
+        return structuredJsonResult(result);
+      })
+  );
+
+  mcpServer.registerTool(
+    "forgepilot_list_runs",
+    {
+      description: "List ForgePilot run directories. This tool is read-only.",
+      inputSchema: {
+        limit: z.number().optional().describe("Maximum number of run directories to return. Defaults to 20. Hard-capped at 50.")
+      },
+      outputSchema: ForgePilotListRunsOutputSchema,
+      annotations: {
+        readOnlyHint: true,
+        destructiveHint: false,
+        idempotentHint: true,
+        openWorldHint: false
+      }
+    },
+    async ({ limit }) =>
+      runLoggedTool("forgepilot_list_runs", async () => {
+        const maxItems = Math.max(1, Math.min(Math.floor(limit ?? 20), 50));
+
+        const runs = (await listDir("runs"))
+          .sort()
+          .slice(-maxItems);
+
+        const result = {
+          path: "runs",
+          count: runs.length,
+          runs
+        };
+
+        return structuredJsonResult(result);
+      })
+  );
+
+  mcpServer.registerTool(
+    "forgepilot_validate_opencode_run_request",
+    {
+      description:
+        "Validate a ForgePilot-scoped OpenCode run request without starting OpenCode or creating artifacts.",
+      inputSchema: {
+        packetId: z.string().describe("Known ForgePilot packet id, for example FP-MCP-006."),
+        modelId: z.string().describe("Allowed OpenCode model id."),
+        runMode: z.string().describe("Allowed ForgePilot run mode. Initially only DESIGN_ONLY is allowed.")
+      },
+      outputSchema: ForgePilotValidateOpenCodeRunRequestOutputSchema,
+      annotations: {
+        readOnlyHint: true,
+        destructiveHint: false,
+        idempotentHint: true,
+        openWorldHint: false
+      }
+    },
+    async ({ packetId, modelId, runMode }) =>
+      runLoggedTool("forgepilot_validate_opencode_run_request", async () => {
+        const result = await validateOpencodeRunRequest(packetId, modelId, runMode);
+
+        return structuredJsonResult(result);
+      })
+  );
+
+  mcpServer.registerTool(
+    "forgepilot_create_opencode_run_request",
+    {
+      description:
+        "Create a durable ForgePilot OpenCode run request artifact without starting OpenCode.",
+      inputSchema: {
+        packetId: z.string().describe("Known ForgePilot packet id, for example FP-MCP-007."),
+        modelId: z.string().describe("Allowed OpenCode model id."),
+        runMode: z.string().describe("Allowed ForgePilot run mode. Initially only DESIGN_ONLY is allowed."),
+        approval: z.string().describe("Must exactly equal CREATE_REQUEST_ARTIFACT.")
+      },
+      outputSchema: ForgePilotCreateOpenCodeRunRequestOutputSchema,
+      annotations: {
+        readOnlyHint: false,
+        destructiveHint: false,
+        idempotentHint: false,
+        openWorldHint: false
+      }
+    },
+    async ({ packetId, modelId, runMode, approval }) =>
+      runLoggedTool("forgepilot_create_opencode_run_request", async () => {
+        const result = await createOpencodeRunRequestArtifact(
+          packetId,
+          modelId,
+          runMode,
+          approval
+        );
+
+        return structuredJsonResult(result);
+      })
+  );
+
+  mcpServer.registerTool(
+    "forgepilot_list_opencode_run_requests",
+    {
+      description:
+        "List existing OpenCode request artifact files for a ForgePilot packet. This tool is read-only and does not start OpenCode.",
+      inputSchema: {
+        packetId: z.string().describe("Known ForgePilot packet id, for example FP-MCP-007."),
+        limit: z.number().optional().describe("Maximum number of request artifact files to return. Defaults to 20. Hard-capped at 50.")
+      },
+      outputSchema: ForgePilotListOpenCodeRunRequestsOutputSchema,
+      annotations: {
+        readOnlyHint: true,
+        destructiveHint: false,
+        idempotentHint: true,
+        openWorldHint: false
+      }
+    },
+    async ({ packetId, limit }) =>
+      runLoggedTool("forgepilot_list_opencode_run_requests", async () => {
+        const result = await listOpencodeRunRequests(packetId, limit);
+
+        return structuredJsonResult(result);
+      })
+  );
+
+  mcpServer.registerTool(
+    "forgepilot_read_opencode_run_request",
+    {
+      description:
+        "Read one existing OpenCode request artifact by packet id and request id. This tool is read-only and does not start OpenCode.",
+      inputSchema: {
+        packetId: z.string().describe("Known ForgePilot packet id, for example FP-MCP-007."),
+        requestId: z.string().describe("Request artifact id, for example REQ-20260619T084312145Z-a9960bd6.")
+      },
+      outputSchema: ForgePilotReadOpenCodeRunRequestOutputSchema,
+      annotations: {
+        readOnlyHint: true,
+        destructiveHint: false,
+        idempotentHint: true,
+        openWorldHint: false
+      }
+    },
+    async ({ packetId, requestId }) =>
+      runLoggedTool("forgepilot_read_opencode_run_request", async () => {
+        const result = await readOpencodeRunRequest(packetId, requestId);
+
+        return structuredJsonResult(result);
+      })
+  );
+
+  mcpServer.registerTool(
+    "forgepilot_validate_remote_runner_request",
+    {
+      description:
+        "Validate whether an existing OpenCode request artifact is eligible for future remote runner handoff. This tool is read-only and does not contact the runner.",
+      inputSchema: {
+        packetId: z.string().describe("Known ForgePilot packet id, for example FP-MCP-007."),
+        requestId: z.string().describe("Request artifact id, for example REQ-20260619T084312145Z-a9960bd6.")
+      },
+      outputSchema: ForgePilotValidateRemoteRunnerRequestOutputSchema,
+      annotations: {
+        readOnlyHint: true,
+        destructiveHint: false,
+        idempotentHint: true,
+        openWorldHint: false
+      }
+    },
+    async ({ packetId, requestId }) =>
+      runLoggedTool("forgepilot_validate_remote_runner_request", async () => {
+        const result = await validateRemoteRunnerRequest(packetId, requestId);
+
+        return structuredJsonResult(result);
+      })
+  );
+
+    mcpServer.registerTool(
+    "forgepilot_validate_remote_runner_endpoint_request",
+    {
+      description:
+        "Validate an existing OpenCode request artifact with the configured remote runner validate-request endpoint. This tool does not start OpenCode.",
+      inputSchema: {
+        packetId: z.string().describe("Known ForgePilot packet id, for example FP-MCP-007."),
+        requestId: z.string().describe("Request artifact id, for example REQ-20260619T084312145Z-a9960bd6.")
+      },
+      outputSchema: ForgePilotValidateRemoteRunnerEndpointRequestOutputSchema,
+      annotations: {
+        readOnlyHint: true,
+        destructiveHint: false,
+        idempotentHint: true,
+        openWorldHint: true
+      }
+    },
+    async ({ packetId, requestId }) =>
+      runLoggedTool(
+        "forgepilot_validate_remote_runner_endpoint_request",
+        async () => {
+          const result = await validateRemoteRunnerEndpointRequest(
+            packetId,
+            requestId
+          );
+
+          return structuredJsonResult(result);
+        }
+      )
+  );
+
+    mcpServer.registerTool(
+    "forgepilot_validate_execution_preflight",
+    {
+      description:
+        "Validate guarded execution preflight gates without starting OpenCode or contacting the runner start endpoint.",
+      inputSchema: {
+        packetId: z.string().describe("Known ForgePilot packet id, for example FP-MCP-034."),
+        requestId: z.string().describe("Request artifact id, for example REQ-20260619T084312145Z-a9960bd6."),
+        approvalId: z.string().optional().describe("Optional human approval evidence artifact id to validate as part of execution preflight.")
+      },
+      outputSchema: ForgePilotValidateExecutionPreflightOutputSchema,
+      annotations: {
+        readOnlyHint: true,
+        destructiveHint: false,
+        idempotentHint: true,
+        openWorldHint: true
+      }
+    },
+    async ({ packetId, requestId, approvalId }) =>
+      runLoggedTool("forgepilot_validate_execution_preflight", async () => {
+        const result = await validateExecutionPreflight(
+          packetId,
+          requestId,
+          approvalId
+        );
+
+        return structuredJsonResult(result);
+      })
+  );
+
+    mcpServer.registerTool(
+    "forgepilot_record_execution_artifact_dry_run",
+    {
+      description:
+        "Record FP-MCP-035 contract-shaped dry-run artifacts without starting OpenCode or contacting the runner start endpoint.",
+      inputSchema: {
+        packetId: z.string().describe("Known ForgePilot packet id, for example FP-MCP-036."),
+        requestId: z.string().describe("Request artifact id, for example REQ-20260619T084312145Z-a9960bd6.")
+      },
+      outputSchema: ForgePilotRecordExecutionArtifactDryRunOutputSchema,
+      annotations: {
+        readOnlyHint: false,
+        destructiveHint: false,
+        idempotentHint: false,
+        openWorldHint: true
+      }
+    },
+    async ({ packetId, requestId }) =>
+      runLoggedTool(
+        "forgepilot_record_execution_artifact_dry_run",
+        async () => {
+          const result = await recordExecutionArtifactDryRun(packetId, requestId);
+
+          return structuredJsonResult(result);
+        }
+      )
+  );
+
+    mcpServer.registerTool(
+    "forgepilot_verify_execution_artifact_dry_run",
+    {
+      description:
+        "Verify FP-MCP-036 dry-run artifacts without writing files, starting OpenCode, or contacting the runner start endpoint.",
+      inputSchema: {
+        packetId: z.string().describe("Known ForgePilot dry-run packet id, for example FP-MCP-036."),
+        requestId: z.string().describe("Request artifact id, for example REQ-20260619T084312145Z-a9960bd6."),
+        modelId: z.string().describe("Allowed OpenCode model id used by the dry-run artifacts."),
+        runMode: z.string().describe("Allowed ForgePilot run mode used by the dry-run artifacts.")
+      },
+      outputSchema: ForgePilotVerifyExecutionArtifactDryRunOutputSchema,
+      annotations: {
+        readOnlyHint: true,
+        destructiveHint: false,
+        idempotentHint: true,
+        openWorldHint: false
+      }
+    },
+    async ({ packetId, requestId, modelId, runMode }) =>
+      runLoggedTool(
+        "forgepilot_verify_execution_artifact_dry_run",
+        async () => {
+          const result = await verifyExecutionArtifactDryRun(
+            packetId,
+            requestId,
+            modelId,
+            runMode
+          );
+
+          return structuredJsonResult(result);
+        }
+      )
+  );
+
+    mcpServer.registerTool(
+    "forgepilot_get_execution_enablement_status",
+    {
+      description:
+        "Evaluate execution enablement policy gates without enabling execution, starting OpenCode, or contacting the runner start endpoint.",
+      inputSchema: {
+        packetId: z.string().describe("Known ForgePilot policy-status packet id, for example FP-MCP-039.")
+      },
+      outputSchema: ForgePilotGetExecutionEnablementStatusOutputSchema,
+      annotations: {
+        readOnlyHint: true,
+        destructiveHint: false,
+        idempotentHint: true,
+        openWorldHint: true
+      }
+    },
+    async ({ packetId }) =>
+      runLoggedTool(
+        "forgepilot_get_execution_enablement_status",
+        async () => {
+          const result = await getExecutionEnablementStatus(packetId);
+
+          return structuredJsonResult(result);
+        }
+      )
+  );
+
+
+    mcpServer.registerTool(
+    "forgepilot_get_execution_disable_switch_status",
+    {
+      description:
+        "Read execution disable switch status without enabling execution, starting OpenCode, mutating approvals, or contacting the runner start endpoint.",
+      inputSchema: {
+        packetId: z.string().optional().describe("Optional ForgePilot packet id used only as observational context, for example FP-MCP-044."),
+        requestId: z.string().optional().describe("Optional request id used only as observational context."),
+        modelId: z.string().optional().describe("Optional model id used only as observational context."),
+        runMode: z.string().optional().describe("Optional run mode used only as observational context.")
+      },
+      outputSchema: ForgePilotGetExecutionDisableSwitchStatusOutputSchema,
+      annotations: {
+        readOnlyHint: true,
+        destructiveHint: false,
+        idempotentHint: true,
+        openWorldHint: true
+      }
+    },
+    async ({ packetId, requestId, modelId, runMode }) =>
+      runLoggedTool(
+        "forgepilot_get_execution_disable_switch_status",
+        async () => {
+          const result = await getExecutionDisableSwitchStatus({
+            packetId,
+            requestId,
+            modelId,
+            runMode
+          });
+
+          return structuredJsonResult(result);
+        }
+      )
+  );
+
+
+
+    mcpServer.registerTool(
+    "forgepilot_record_real_human_approval_evidence",
+    {
+      description:
+        "Record real human approval evidence as a scoped create-only observation without enabling execution, consuming approval, starting OpenCode, or contacting the runner start endpoint.",
+      inputSchema: {
+        packetId: z.string().describe("Known ForgePilot recorder packet id, for example FP-MCP-067."),
+        requestId: z.string().describe("Request artifact id, for example REQ-20260622T144553300Z-fbbe8d82."),
+        modelId: z.string().describe("Allowed OpenCode model id."),
+        runMode: z.string().describe("Allowed ForgePilot run mode. Initially only DESIGN_ONLY is allowed."),
+        repoCommit: z.string().describe("Concrete repository commit bound by the approval."),
+        branch: z.string().describe("Concrete repository branch bound by the approval."),
+        approvalText: z.string().describe("Exact canonical human approval text."),
+        operatorId: z.string().describe("Non-secret operator identifier. Do not use raw email or secrets."),
+        expiresAt: z.string().describe("ISO-8601 UTC expiration timestamp."),
+        approval: z.string().describe("Must exactly equal RECORD_REAL_HUMAN_APPROVAL_EVIDENCE."),
+        operatorHandle: z.string().optional().describe("Optional non-secret operator handle."),
+        operatorEmailHash: z.string().optional().describe("Optional non-reversible hash of operator email, not raw email."),
+        notes: z.array(z.string()).optional().describe("Optional non-secret notes.")
+      },
+      outputSchema: ForgePilotRecordRealHumanApprovalEvidenceOutputSchema,
+      annotations: {
+        readOnlyHint: false,
+        destructiveHint: false,
+        idempotentHint: false,
+        openWorldHint: false
+      }
+    },
+    async ({
+      packetId,
+      requestId,
+      modelId,
+      runMode,
+      repoCommit,
+      branch,
+      approvalText,
+      operatorId,
+      expiresAt,
+      approval,
+      operatorHandle,
+      operatorEmailHash,
+      notes
+    }) =>
+      runLoggedTool(
+        "forgepilot_record_real_human_approval_evidence",
+        async () => {
+          const result = await recordRealHumanApprovalEvidence(
+            packetId,
+            requestId,
+            modelId,
+            runMode,
+            repoCommit,
+            branch,
+            approvalText,
+            operatorId,
+            expiresAt,
+            approval,
+            operatorHandle,
+            operatorEmailHash,
+            notes
+          );
+
+          return structuredJsonResult(result);
+        }
+      )
+  );
+
+
+
+    mcpServer.registerTool(
+    "forgepilot_record_human_approval_consumption",
+    {
+      description:
+        "Record append-only human approval consumption evidence without mutating approval artifacts, enabling execution, starting OpenCode, or contacting the runner start endpoint.",
+      inputSchema: {
+        packetId: z.string().describe("Known ForgePilot recorder packet id, for example FP-MCP-071."),
+        approvalPacketId: z.string().describe("Packet id where the approval artifact is stored, for example FP-MCP-069."),
+        approvalId: z.string().describe("Approval artifact id to consume, for example APPROVAL-20260623T095047127Z-6d1ed2e9."),
+        requestId: z.string().describe("Request artifact id, for example REQ-20260622T144553300Z-fbbe8d82."),
+        modelId: z.string().describe("Allowed OpenCode model id."),
+        runMode: z.string().describe("Allowed ForgePilot run mode. Initially only DESIGN_ONLY is allowed."),
+        repoCommit: z.string().describe("Concrete repository commit bound by the approval."),
+        branch: z.string().describe("Concrete repository branch bound by the approval."),
+        approval: z.string().describe("Must exactly equal RECORD_HUMAN_APPROVAL_CONSUMPTION."),
+        notes: z.array(z.string()).optional().describe("Optional non-secret notes.")
+      },
+      outputSchema: ForgePilotRecordHumanApprovalConsumptionOutputSchema,
+      annotations: {
+        readOnlyHint: false,
+        destructiveHint: false,
+        idempotentHint: false,
+        openWorldHint: false
+      }
+    },
+    async ({
+      packetId,
+      approvalPacketId,
+      approvalId,
+      requestId,
+      modelId,
+      runMode,
+      repoCommit,
+      branch,
+      approval,
+      notes
+    }) =>
+      runLoggedTool(
+        "forgepilot_record_human_approval_consumption",
+        async () => {
+          const result = await recordHumanApprovalConsumption(
+            packetId,
+            approvalPacketId,
+            approvalId,
+            requestId,
+            modelId,
+            runMode,
+            repoCommit,
+            branch,
+            approval,
+            notes
+          );
+
+          return structuredJsonResult(result);
+        }
+      )
+  );
+
+
+
+    mcpServer.registerTool(
+    "forgepilot_record_human_approval_evidence_dry_run_fixture",
+    {
+      description:
+        "Record a non-authorizing human approval evidence dry-run fixture without creating real approval, enabling execution, starting OpenCode, or contacting the runner start endpoint.",
+      inputSchema: {
+        packetId: z.string().describe("Known ForgePilot packet id, for example FP-MCP-063."),
+        requestId: z.string().describe("Request artifact id, for example REQ-20260622T144553300Z-fbbe8d82."),
+        modelId: z.string().describe("Allowed OpenCode model id."),
+        runMode: z.string().describe("Allowed ForgePilot run mode. Initially only DESIGN_ONLY is allowed."),
+        repoCommit: z.string().describe("Scoped repository commit for the fixture approval evidence shape."),
+        branch: z.string().describe("Scoped repository branch for the fixture approval evidence shape."),
+        approval: z.string().describe("Must exactly equal RECORD_HUMAN_APPROVAL_EVIDENCE_DRY_RUN_FIXTURE.")
+      },
+      outputSchema: ForgePilotRecordHumanApprovalEvidenceDryRunFixtureOutputSchema,
+      annotations: {
+        readOnlyHint: false,
+        destructiveHint: false,
+        idempotentHint: false,
+        openWorldHint: false
+      }
+    },
+    async ({ packetId, requestId, modelId, runMode, repoCommit, branch, approval }) =>
+      runLoggedTool(
+        "forgepilot_record_human_approval_evidence_dry_run_fixture",
+        async () => {
+          const result = await recordHumanApprovalEvidenceDryRunFixture(
+            packetId,
+            requestId,
+            modelId,
+            runMode,
+            repoCommit,
+            branch,
+            approval
+          );
+
+          return structuredJsonResult(result);
+        }
+      )
+  );
+
+
+    mcpServer.registerTool(
+    "forgepilot_validate_human_approval_record",
+    {
+      description:
+        "Validate a human approval evidence artifact without creating approval, enabling execution, starting OpenCode, or contacting the runner start endpoint.",
+      inputSchema: {
+        packetId: z.string().describe("Known ForgePilot approval-validation packet id, for example FP-MCP-061."),
+        approvalId: z.string().describe("Approval artifact id, for example APPROVAL-20260622T000000000Z-abcdef12."),
+        expectedScope: z.object({
+          packetId: z.string().describe("Expected scoped packet id."),
+          requestId: z.string().describe("Expected scoped request id."),
+          modelId: z.string().describe("Expected scoped model id."),
+          runMode: z.string().describe("Expected scoped run mode."),
+          repoCommit: z.string().describe("Expected scoped repository commit."),
+          branch: z.string().describe("Expected scoped branch.")
+        }).describe("Expected approval scope that must match the approval artifact exactly.")
+      },
+      outputSchema: ForgePilotValidateHumanApprovalRecordOutputSchema,
+      annotations: {
+        readOnlyHint: true,
+        destructiveHint: false,
+        idempotentHint: true,
+        openWorldHint: false
+      }
+    },
+    async ({ packetId, approvalId, expectedScope }) =>
+      runLoggedTool(
+        "forgepilot_validate_human_approval_record",
+        async () => {
+          const result = await validateHumanApprovalRecord(
+            packetId,
+            approvalId,
+            expectedScope
+          );
+
+          return structuredJsonResult(result);
+        }
+      )
+  );
+
+
+
+    mcpServer.registerTool(
+    "forgepilot_record_pre_start_evidence_dry_run",
+    {
+      description:
+        "Record a non-executing pre-start evidence dry-run artifact without starting OpenCode or contacting the runner start endpoint.",
+      inputSchema: {
+        packetId: z.string().describe("Known ForgePilot packet id, for example FP-MCP-036."),
+        requestId: z.string().describe("Request artifact id, for example REQ-20260622T144553300Z-fbbe8d82."),
+        approval: z.string().describe("Must exactly equal START_REMOTE_RUNNER_REQUEST.")
+      },
+      outputSchema: ForgePilotRecordPreStartEvidenceDryRunOutputSchema,
+      annotations: {
+        readOnlyHint: false,
+        destructiveHint: false,
+        idempotentHint: false,
+        openWorldHint: true
+      }
+    },
+    async ({ packetId, requestId, approval }) =>
+      runLoggedTool(
+        "forgepilot_record_pre_start_evidence_dry_run",
+        async () => {
+          const result = await recordPreStartEvidenceDryRun(
+            packetId,
+            requestId,
+            approval
+          );
+
+          return structuredJsonResult(result);
+        }
+      )
+  );
+
+
+
+    mcpServer.registerTool(
+    "forgepilot_validate_pre_start_evidence",
+    {
+      description:
+        "Validate pre-start evidence for a ForgePilot request without creating evidence, starting OpenCode, or contacting the runner start endpoint.",
+      inputSchema: {
+        packetId: z.string().describe("Known ForgePilot packet id, for example FP-MCP-036."),
+        requestId: z.string().describe("Request artifact id, for example REQ-20260622T144553300Z-fbbe8d82.")
+      },
+      outputSchema: ForgePilotValidatePreStartEvidenceOutputSchema,
+      annotations: {
+        readOnlyHint: true,
+        destructiveHint: false,
+        idempotentHint: true,
+        openWorldHint: true
+      }
+    },
+    async ({ packetId, requestId }) =>
+      runLoggedTool(
+        "forgepilot_validate_pre_start_evidence",
+        async () => {
+          const result = await validatePreStartEvidence(packetId, requestId);
+
+          return structuredJsonResult(result);
+        }
+      )
+  );
+
+    mcpServer.registerTool(
+    "forgepilot_validate_start_request_state_snapshot",
+    {
+      description:
+        "Validate start request pre/post state snapshots without creating snapshots, starting OpenCode, or contacting the runner start endpoint.",
+      inputSchema: {
+        packetId: z.string().describe("Known ForgePilot packet id, for example FP-MCP-036."),
+        requestId: z.string().describe("Request artifact id, for example REQ-20260622T144553300Z-fbbe8d82.")
+      },
+      outputSchema: ForgePilotValidateStartRequestStateSnapshotOutputSchema,
+      annotations: {
+        readOnlyHint: true,
+        destructiveHint: false,
+        idempotentHint: true,
+        openWorldHint: true
+      }
+    },
+    async ({ packetId, requestId }) =>
+      runLoggedTool(
+        "forgepilot_validate_start_request_state_snapshot",
+        async () => {
+          const result = await validateStartRequestStateSnapshot(packetId, requestId);
+
+          return structuredJsonResult(result);
+        }
+      )
+  );
+
+
+    mcpServer.registerTool(
+    "forgepilot_record_start_state_snapshot_dry_run",
+    {
+      description:
+        "Record non-executing pre/post start state snapshot dry-run artifacts without starting OpenCode or contacting the runner start endpoint.",
+      inputSchema: {
+        packetId: z.string().describe("Known ForgePilot packet id, for example FP-MCP-036."),
+        requestId: z.string().describe("Request artifact id, for example REQ-20260622T144553300Z-fbbe8d82."),
+        approval: z.string().describe("Must exactly equal START_REMOTE_RUNNER_REQUEST.")
+      },
+      outputSchema: ForgePilotRecordStartStateSnapshotDryRunOutputSchema,
+      annotations: {
+        readOnlyHint: false,
+        destructiveHint: false,
+        idempotentHint: false,
+        openWorldHint: true
+      }
+    },
+    async ({ packetId, requestId, approval }) =>
+      runLoggedTool(
+        "forgepilot_record_start_state_snapshot_dry_run",
+        async () => {
+          const result = await recordStartStateSnapshotDryRun(
+            packetId,
+            requestId,
+            approval
+          );
+
+          return structuredJsonResult(result);
+        }
+      )
+  );
+
+
+    mcpServer.registerTool(
+    "forgepilot_get_guarded_start_preflight_report",
+    {
+      description:
+        "Read a non-executing guarded start preflight report without contacting the runner start endpoint, starting OpenCode, consuming approval, or mutating request artifacts.",
+      inputSchema: {
+        packetId: z.string().describe("Known ForgePilot packet id, for example FP-MCP-116."),
+        requestId: z.string().describe("Request artifact id, for example REQ-20260619T084312145Z-a9960bd6."),
+        approvalId: z.string().optional().describe("Optional human approval evidence artifact id.")
+      },
+      outputSchema: ForgePilotGuardedStartPreflightReportOutputSchema,
+      annotations: {
+        readOnlyHint: true,
+        destructiveHint: false,
+        idempotentHint: true,
+        openWorldHint: true
+      }
+    },
+    async ({ packetId, requestId, approvalId }) =>
+      runLoggedTool("forgepilot_get_guarded_start_preflight_report", async () => {
+        const result = await getGuardedStartPreflightReport(
+          packetId,
+          requestId,
+          approvalId
+        );
+
+        return structuredJsonResult(result);
+      })
+  );
+
+    mcpServer.registerTool(
+    "forgepilot_start_remote_runner_request",
+    {
+      description:
+        "Request the configured private dev runner to start an OpenCode run only after approval, artifact, disable-switch, and pre-start evidence gates pass.",
+      inputSchema: {
+        packetId: z.string().describe("Known ForgePilot packet id, for example FP-MCP-007."),
+        requestId: z.string().describe("Request artifact id, for example REQ-20260619T084312145Z-a9960bd6."),
+        approvalId: z.string().optional().describe("Human approval evidence artifact id, for example APPROVAL-20260622T000000000Z-abcdef12."),
+        approval: z.string().describe("Must exactly equal START_REMOTE_RUNNER_REQUEST."),
+        targetWorkspaceId: z.string().optional().describe("Optional allowed runner workspace id, for example forgepilot or forgepilot-chatgpt-mcp.")
+      },
+      outputSchema: ForgePilotStartRemoteRunnerRequestOutputSchema,
+      annotations: {
+        readOnlyHint: false,
+        destructiveHint: false,
+        idempotentHint: false,
+        openWorldHint: true
+      }
+    },
+    async ({ packetId, requestId, approvalId, approval, targetWorkspaceId }) =>
+      runLoggedTool("forgepilot_start_remote_runner_request", async () => {
+        const result = await startRemoteRunnerRequest(
+          packetId,
+          requestId,
+          approvalId,
+          approval,
+          targetWorkspaceId
+        );
+
+        return structuredJsonResult(result);
+      })
+  );
+
+  mcpServer.registerTool(
+    "forgepilot_read_file",
+    {
+      description: "Read a text file from allowed ForgePilot repository paths only: packets/, runs/, docs/, or metrics/. This tool is read-only.",
+      inputSchema: {
+        filePath: z.string().describe("Repository-relative path under packets/, runs/, docs/, or metrics/."),
+        maxChars: z.number().optional().describe("Maximum characters to return. Defaults to 20000. Hard-capped at 100000.")
+      },
+      outputSchema: ForgePilotReadFileOutputSchema,
+      annotations: {
+        readOnlyHint: true,
+        destructiveHint: false,
+        idempotentHint: true,
+        openWorldHint: false
+      }
+    },
+    async ({ filePath, maxChars }) =>
+      runLoggedTool("forgepilot_read_file", async () => {
+        const safeRelativePath = normalizeRepoRelativePath(filePath);
+        const text = await readRepoTextFile(safeRelativePath);
+        const limit = clampMaxChars(maxChars);
+        const truncated = text.length > limit;
+        const content = truncated ? text.slice(0, limit) : text;
+
+        const result = {
+          path: safeRelativePath,
+          content,
+          truncated,
+          returnedChars: content.length,
+          totalChars: text.length
+        };
+
+        return structuredJsonResult(result);
+      })
+  );
+
+
+
+
+  registerRecentToolRegistrations(mcpServer, runLoggedTool, structuredJsonResult);
+
+  mcpServer.registerTool(
+    "forgepilot_execute_terminal_command",
+    {
+      description:
+        "Execute one human-approved terminal command inside an allowlisted workspace. The MCP tool invocation itself is the approval request. Hard-blocked commands (sudo, .env reads, rm -rf /, curl|sh, etc.) are refused even after UI approval. Unknown workspaces fail closed.",
+      inputSchema: {
+        packetId: z.string().optional().describe("Optional ForgePilot packet id, for example FP-MCP-147."),
+        targetWorkspaceId: z.string().describe("Allowed workspace id: forgepilot or forgepilot-chatgpt-mcp."),
+        workingDirectory: z.string().optional().describe("Optional directory inside the workspace. Defaults to workspace root."),
+        command: z.string().describe("The exact shell command to execute."),
+        rationale: z.string().describe("Why this command should execute."),
+        timeoutSeconds: z.number().optional().describe("Optional timeout in seconds. Defaults to 30. Capped at 120."),
+        approval: z.string().describe("Must exactly equal EXECUTE_TERMINAL_COMMAND.")
+      },
+      outputSchema: ForgePilotExecuteTerminalCommandOutputSchema,
+      annotations: {
+        readOnlyHint: false,
+        destructiveHint: true,
+        idempotentHint: false,
+        openWorldHint: true
+      }
+    },
+    async ({ packetId, targetWorkspaceId, workingDirectory, command, rationale, timeoutSeconds, approval }) =>
+      runLoggedTool("forgepilot_execute_terminal_command", async () => {
+        const result = await executeTerminalCommand({
+          packetId,
+          targetWorkspaceId,
+          workingDirectory,
+          command,
+          rationale,
+          timeoutSeconds,
+          approval
+        });
+
+        return structuredJsonResult(result as unknown as Record<string, unknown>);
+      })
+  );
+
+  return mcpServer;
+}
+
+function getHeader(req: IncomingMessage, name: string): string | undefined {
+  const value = req.headers[name.toLowerCase()];
+  if (Array.isArray(value)) return value[0];
+  return value;
+}
+
+const httpServer = createServer(async (req: IncomingMessage, res: ServerResponse) => {
+  if (
+    req.method === "GET" &&
+    (req.url === "/.well-known/oauth-protected-resource" ||
+      req.url === "/.well-known/oauth-protected-resource/mcp")
+  ) {
+    try {

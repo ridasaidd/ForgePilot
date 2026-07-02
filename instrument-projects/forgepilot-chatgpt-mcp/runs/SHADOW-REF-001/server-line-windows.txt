@@ -1,0 +1,1119 @@
+--- line windows ---
+
+--- lines 1-41 ---
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { z } from "zod";
+import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
+import { execFile } from "node:child_process";
+import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
+import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
+import path from "node:path";
+import { createHash,randomBytes, randomUUID } from "node:crypto";
+import { promisify } from "node:util";
+import { authorizeRequest } from "./auth.js";
+import { getProtectedResourceMetadata, getWwwAuthenticateHeader } from "./oauthMetadata.js";
+import { createHash as fpMcp124CreateHash } from "node:crypto";
+import { readdirSync as fpMcp124ReaddirSync, readFileSync as fpMcp124ReadFileSync } from "node:fs";
+import { join as fpMcp124Join, relative as fpMcp124Relative } from "node:path";
+import { executeTerminalCommand } from "./terminal-command.js";
+import { registerRecentToolRegistrations } from "./tool-registrations/recent-tools.js";
+
+const execFileAsync = promisify(execFile);
+
+const REPO = process.env.FORGEPILOT_REPO ?? "/home/ridasaidd/forgepilot";
+const PORT = Number(process.env.PORT ?? "8787");
+const HOST = process.env.HOST ?? "127.0.0.1";
+const AUTH_MODE = process.env.FORGEPILOT_AUTH_MODE ?? "bearer";
+
+type Transport = StreamableHTTPServerTransport;
+
+const transports = new Map<string, Transport>();
+
+async function git(args: string[]): Promise<string> {
+  const { stdout } = await execFileAsync("git", args, {
+    cwd: REPO,
+    timeout: 10_000
+  });
+
+  return stdout.trim();
+}
+
+async function gitSucceeds(args: string[]): Promise<boolean> {
+  try {
+    await execFileAsync("git", args, {
+      cwd: REPO,
+
+--- lines 401-441 ---
+  startEndpointContacted: z.boolean(),
+  startEndpointPresent: z.boolean().optional(),
+  startEndpointState: NullableStringSchema.optional(),
+  startCapabilityCallable: z.boolean().optional(),
+  executionStarted: z.boolean(),
+  opencodeStarted: z.boolean().optional(),
+  executionAllowedNow: z.boolean().optional(),
+  requestArtifactMutated: z.boolean().optional(),
+  packetId: z.string(),
+  requestId: z.string(),
+  requestArtifactPath: NullableStringSchema,
+  requestArtifactSha256: NullableStringSchema,
+  baseCommit: NullableStringSchema,
+  runnerRunId: NullableStringSchema,
+  artifactDir: NullableStringSchema,
+  runnerProtocolVersion: NullableStringSchema,
+  boundaryVersion: z.string(),
+  statusSource: z.string(),
+  checkedAt: z.string(),
+  localValidationPassed: z.boolean(),
+  remoteValidationPassed: z.boolean(),
+  preStartStateRecorded: z.boolean(),
+  postStartStateRecorded: z.boolean(),
+  disableSwitchStatusEvaluated: z.boolean(),
+  disableSwitchActive: z.boolean(),
+  effectiveDisableReason: NullableStringSchema,
+  effectiveDisableScope: NullableStringSchema,
+  preStartEvidenceEvaluated: z.boolean(),
+  preStartEvidenceComplete: z.boolean(),
+  preStartEvidenceValid: z.boolean(),
+  preStartEvidencePath: NullableStringSchema,
+  postStartEvidencePath: NullableStringSchema,
+  controlRepoCommit: NullableStringSchema,
+  targetWorkspaceId: NullableStringSchema,
+  targetWorkspaceCommit: NullableStringSchema,
+  opencodeWorkingDirectory: NullableStringSchema,
+  taskBundleCreated: z.boolean().optional(),
+  taskBundlePath: NullableStringSchema,
+  taskBundleRelativePath: NullableStringSchema,
+  preStartEvidenceMissingEvidence: StringArraySchema,
+  preStartEvidenceInconsistentEvidence: StringArraySchema,
+
+--- lines 801-841 ---
+    contractComplete: z.boolean(),
+    dryRunEvidencePresent: z.boolean(),
+    dryRunVerified: z.boolean(),
+    repoClean: z.boolean(),
+    runnerExecutionCapabilityPresent: z.boolean(),
+    opencodeBoundarySatisfied: z.boolean(),
+    secretBoundarySatisfied: z.boolean(),
+    networkBoundarySatisfied: z.boolean(),
+    humanApprovalRecorded: z.boolean(),
+    disablePathDefined: z.boolean(),
+    auditAdmissionPathDefined: z.boolean()
+  }),
+  blockingReasons: ReasonCodesSchema,
+  checkedAt: z.string(),
+  statusSource: z.string(),
+  boundaryVersion: z.string(),
+  repoCommit: NullableStringSchema,
+  workingTreeClean: z.boolean(),
+  requiredContracts: StringArraySchema,
+  missingContracts: StringArraySchema,
+  dryRunArtifacts: StringArraySchema,
+  missingDryRunArtifacts: StringArraySchema,
+  verificationArtifacts: StringArraySchema,
+  missingVerificationArtifacts: StringArraySchema,
+  runnerSupportedOperations: StringArraySchema,
+  runnerSupportedRunModes: StringArraySchema,
+  runnerAllowedModels: StringArraySchema,
+  dryRunVerifierObserved: z.boolean(),
+  dryRunVerifierVerified: z.boolean()
+};
+
+
+
+
+const ForgePilotGetExecutionDisableSwitchStatusOutputSchema = {
+  schemaVersion: z.string(),
+  packetId: NullableStringSchema,
+  requestId: NullableStringSchema,
+  modelId: NullableStringSchema,
+  runMode: NullableStringSchema,
+  disableSwitchStatusEvaluated: z.boolean(),
+
+--- lines 1201-1241 ---
+  const value =
+    process.env.FORGEPILOT_REMOTE_RUNNER_BASE_URL ??
+    process.env.FORGEPILOT_RUNNER_BASE_URL ??
+    null;
+
+  if (typeof value !== "string" || value.trim().length === 0) {
+    return null;
+  }
+
+  return value.trim().replace(/\/+$/, "");
+}
+
+function getRemoteRunnerEndpointLabel(baseUrl: string | null): string {
+  if (baseUrl === null) {
+    return "not-configured";
+  }
+
+  return "configured";
+}
+
+function getRemoteRunnerCapabilitiesUrl(baseUrl: string): string {
+  return `${baseUrl}/runner/capabilities`;
+}
+
+function getRemoteRunnerAuthHeaders(): Record<string, string> {
+  const token =
+    process.env.FORGEPILOT_REMOTE_RUNNER_TOKEN ??
+    process.env.FORGEPILOT_RUNNER_TOKEN ??
+    null;
+
+  if (typeof token !== "string" || token.trim().length === 0) {
+    return {};
+  }
+
+  return {
+    Authorization: `Bearer ${token.trim()}`
+  };
+}
+
+function getStringArrayField(
+  value: Record<string, unknown>,
+
+--- lines 1601-1641 ---
+
+function assertValidRequestId(requestId: string): void {
+  if (!isValidRequestId(requestId)) {
+    throw new Error("Invalid request id.");
+  }
+}
+
+async function listOpencodeRunRequests(
+  packetId: string,
+  limit: number | undefined
+): Promise<Record<string, unknown>> {
+  assertValidPacketId(packetId);
+
+  const requestDir = getSafeRequestArtifactDir(packetId);
+  const safeRequestDir = normalizeRepoRelativePath(requestDir);
+
+  if (safeRequestDir !== requestDir) {
+    throw new Error("Invalid request artifact directory.");
+  }
+
+  const maxItems = Math.max(1, Math.min(Math.floor(limit ?? 20), 50));
+
+  const requests = (await listDir(safeRequestDir))
+    .filter((file) => file.endsWith(".json"))
+    .sort()
+    .slice(-maxItems);
+
+  return {
+    packetId,
+    path: safeRequestDir,
+    count: requests.length,
+    requests
+  };
+}
+
+async function readOpencodeRunRequest(
+  packetId: string,
+  requestId: string
+): Promise<Record<string, unknown>> {
+  assertValidPacketId(packetId);
+  assertValidRequestId(requestId);
+
+--- lines 2001-2041 ---
+  baseUrl: string,
+  body: Record<string, unknown>
+): Promise<Record<string, unknown>> {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 5000);
+
+  try {
+    const response = await fetch(getRemoteRunnerValidateRequestUrl(baseUrl), {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        ...getRemoteRunnerAuthHeaders()
+      },
+      body: JSON.stringify(body),
+      signal: controller.signal
+    });
+
+    if (!response.ok) {
+      return {
+        contacted: true,
+        protocolError: response.status !== 401 && response.status !== 403,
+        reason:
+          response.status === 401 || response.status === 403
+            ? "RUNNER_AUTH_FAILED"
+            : "RUNNER_PROTOCOL_ERROR"
+      };
+    }
+
+    const parsed = await response.json();
+
+    if (
+      typeof parsed !== "object" ||
+      parsed === null ||
+      Array.isArray(parsed)
+    ) {
+      return {
+        contacted: true,
+        protocolError: true,
+        reason: "RUNNER_PROTOCOL_ERROR"
+      };
+
+--- lines 2401-2441 ---
+      ? remoteValidation.currentCommit
+      : typeof localValidation.currentCommit === "string"
+        ? localValidation.currentCommit
+        : null;
+
+  const creationCommit =
+    typeof remoteValidation.creationCommit === "string"
+      ? remoteValidation.creationCommit
+      : typeof localValidation.creationCommit === "string"
+        ? localValidation.creationCommit
+        : null;
+
+  const artifactCommit =
+    typeof remoteValidation.artifactCommit === "string"
+      ? remoteValidation.artifactCommit
+      : typeof localValidation.artifactCommit === "string"
+        ? localValidation.artifactCommit
+        : null;
+
+  const modelId =
+    typeof localValidation.modelId === "string" ? localValidation.modelId : null;
+
+  const runMode =
+    typeof localValidation.runMode === "string" ? localValidation.runMode : null;
+
+  const normalizedApprovalId =
+    typeof approvalId === "string" && approvalId.trim().length > 0
+      ? approvalId.trim()
+      : null;
+  const approvalPacketId =
+    normalizedApprovalId !== null
+      ? await findApprovalPacketIdByApprovalId(normalizedApprovalId)
+      : null;
+  const approvalScopeRepoCommit =
+    typeof localValidation.requestBaseCommit === "string"
+      ? localValidation.requestBaseCommit
+      : typeof localValidation.creationCommit === "string"
+        ? localValidation.creationCommit
+        : baseCommit;
+  const approvalScopeBranch = await getCurrentRepoBranch();
+  const expectedApprovalScope: ApprovalExpectedScope | null =
+
+--- lines 2801-2841 ---
+    boundaryVersion: "FP-MCP-073",
+    statusSource: "ForgePilot guarded execution preflight validation with disable-switch and consumed approval enforcement"
+  };
+}
+
+function getSafeExecutionDryRunArtifactDir(
+  packetId: string,
+  modelId: string,
+  runMode: string
+): string {
+  return `runs/${packetId}/${modelId}-${runMode}/execution-dry-run/`;
+}
+
+async function repoFileExists(relativePath: string): Promise<boolean> {
+  try {
+    const safeRelativePath = normalizeRepoRelativePath(relativePath);
+
+    if (safeRelativePath !== relativePath) {
+      return false;
+    }
+
+    await readFile(path.join(REPO, safeRelativePath));
+
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function writeJsonRepoArtifact(
+  relativePath: string,
+  content: Record<string, unknown>
+): Promise<boolean> {
+  try {
+    const safeRelativePath = normalizeRepoRelativePath(relativePath);
+
+    if (safeRelativePath !== relativePath || !safeRelativePath.startsWith("runs/")) {
+      return false;
+    }
+
+    const fullPath = path.join(REPO, safeRelativePath);
+
+--- lines 3201-3241 ---
+    artifactDir.endsWith("execution-dry-run/");
+
+  if (!directorySafe) {
+    reasons.push("ARTIFACT_DIR_INVALID");
+  }
+
+  const requiredArtifacts = [
+    "preflight-result.json",
+    "start-request.json",
+    "runner-acceptance.json",
+    "artifact-manifest.json"
+  ];
+  const forbiddenArtifacts = [
+    "execution-start.json",
+    "stdout.txt",
+    "stderr.txt",
+    "execution-result.json",
+    "execution-failure.json"
+  ];
+
+  const requiredArtifactPaths = requiredArtifacts.map(
+    (artifactName) => `${artifactDir}${artifactName}`
+  );
+  const forbiddenArtifactPaths = forbiddenArtifacts.map(
+    (artifactName) => `${artifactDir}${artifactName}`
+  );
+
+  const requiredExistence = await Promise.all(
+    requiredArtifactPaths.map((artifactPath) => repoFileExists(artifactPath))
+  );
+  const missingArtifacts = requiredArtifacts.filter(
+    (_artifactName, index) => !requiredExistence[index]
+  );
+  const requiredArtifactsPresent = missingArtifacts.length === 0;
+
+  if (!requiredArtifactsPresent) {
+    reasons.push("REQUIRED_ARTIFACT_MISSING");
+  }
+
+  const forbiddenExistence = await Promise.all(
+    forbiddenArtifactPaths.map((artifactPath) => repoFileExists(artifactPath))
+
+--- lines 3601-3641 ---
+
+  if (!contractComplete) {
+    blockingReasons.push("CONTRACT_INCOMPLETE");
+  }
+
+  if (!dryRunEvidencePresent) {
+    blockingReasons.push("DRY_RUN_EVIDENCE_MISSING");
+  }
+
+  if (!dryRunVerified) {
+    blockingReasons.push("DRY_RUN_VERIFICATION_FAILED");
+  }
+
+  if (!workingTreeClean) {
+    blockingReasons.push("REPO_STATE_INVALID");
+  }
+
+  if (!runnerExecutionCapabilityPresent) {
+    blockingReasons.push("RUNNER_EXECUTION_CAPABILITY_NOT_PRESENT");
+  }
+
+  if (!opencodeBoundarySatisfied) {
+    blockingReasons.push("OPENCODE_BOUNDARY_UNSATISFIED");
+  }
+
+  if (!secretBoundarySatisfied) {
+    blockingReasons.push("SECRET_BOUNDARY_UNSATISFIED");
+  }
+
+  if (!networkBoundarySatisfied) {
+    blockingReasons.push("NETWORK_BOUNDARY_UNSATISFIED");
+  }
+
+  if (!humanApprovalRecorded) {
+    blockingReasons.push("HUMAN_APPROVAL_NOT_RECORDED");
+  }
+
+  if (!disablePathDefined) {
+    blockingReasons.push("DISABLE_PATH_MISSING");
+  }
+
+
+--- lines 4001-4041 ---
+    getBooleanField(approvalValidation, "artifactCommitted") === true &&
+    getBooleanField(approvalValidation, "expirationValid") === true &&
+    getBooleanField(approvalValidation, "notRevoked") === true &&
+    getBooleanField(approvalValidation, "notConsumed") === true &&
+    getBooleanField(approvalValidation, "notQuarantined") === true
+  );
+}
+
+async function findValidApprovalConsumptionEvidence(
+  approvalPacketId: string,
+  approvalId: string,
+  expectedScope: ApprovalExpectedScope
+): Promise<ApprovalConsumptionEvidenceSummary> {
+  const emptyResult: ApprovalConsumptionEvidenceSummary = {
+    evaluated: true,
+    present: false,
+    valid: false,
+    consumptionId: null,
+    consumptionPath: null
+  };
+
+  let invalidMatchingEvidence: ApprovalConsumptionEvidenceSummary | null = null;
+  const runDirs = await listDir("runs");
+
+  for (const runDir of runDirs.filter(isValidPacketId).sort()) {
+    const consumptionDir = `runs/${runDir}/approval-consumptions`;
+    const consumptionFiles = (await listDir(consumptionDir))
+      .filter((file) => file.endsWith(".json"))
+      .sort();
+
+    for (const consumptionFile of consumptionFiles) {
+      const candidatePath = `${consumptionDir}/${consumptionFile}`;
+      let safeCandidatePath: string;
+
+      try {
+        safeCandidatePath = normalizeRepoRelativePath(candidatePath);
+      } catch {
+        continue;
+      }
+
+      if (safeCandidatePath !== candidatePath) {
+
+--- lines 4401-4441 ---
+  const scopePresent = scope !== null || parsedApproval !== null;
+
+  if (artifactExists && !scopePresent) {
+    reasons.push("APPROVAL_SCOPE_MISSING");
+  }
+
+  const scopeValues = {
+    packetId: getStringField(sourceForScope, "packetId"),
+    requestId: getStringField(sourceForScope, "requestId"),
+    modelId: getStringField(sourceForScope, "modelId"),
+    runMode: getStringField(sourceForScope, "runMode"),
+    repoCommit: getFirstStringField(sourceForScope, ["repoCommit", "baseCommitSha"]),
+    branch: getStringField(sourceForScope, "branch")
+  };
+
+  const scopeHasBroadValue = [
+    scopeValues.packetId,
+    scopeValues.requestId,
+    scopeValues.modelId,
+    scopeValues.runMode,
+    scopeValues.repoCommit
+  ].some(hasForbiddenScopeValue);
+
+  if (artifactExists && scopeHasBroadValue) {
+    reasons.push("APPROVAL_SCOPE_TOO_BROAD");
+  }
+
+  const packetBindingValid = scopeValues.packetId === expectedScope.packetId;
+  const requestBindingValid =
+    packetBindingValid && scopeValues.requestId === expectedScope.requestId;
+  const modelBindingValid = scopeValues.modelId === expectedScope.modelId;
+  const runModeBindingValid = scopeValues.runMode === expectedScope.runMode;
+  const baseCommitBindingValid =
+    scopeValues.repoCommit === expectedScope.repoCommit &&
+    !hasForbiddenCommitValue(scopeValues.repoCommit);
+  const commitBindingValid = baseCommitBindingValid;
+  const branchBindingValid =
+    scopeValues.branch === null
+      ? true
+      : scopeValues.branch === expectedScope.branch &&
+        !hasForbiddenScopeValue(scopeValues.branch);
+
+--- lines 4801-4841 ---
+  approval: string
+): Promise<Record<string, unknown>> {
+  const checkedAt = new Date().toISOString();
+  const reasons: string[] = [];
+
+  const packetIdValid = isValidPacketId(packetId);
+  if (!packetIdValid) {
+    reasons.push("INVALID_PACKET_ID");
+  }
+
+  const requestIdValid = isValidRequestId(requestId);
+  if (!requestIdValid) {
+    reasons.push("INVALID_REQUEST_ID");
+  }
+
+  const modelAllowed = ALLOWED_OPENCODE_MODELS.includes(
+    modelId as typeof ALLOWED_OPENCODE_MODELS[number]
+  );
+  if (!modelAllowed) {
+    reasons.push("DISALLOWED_MODEL");
+  }
+
+  const runModeAllowed = ALLOWED_OPENCODE_RUN_MODES.includes(
+    runMode as typeof ALLOWED_OPENCODE_RUN_MODES[number]
+  );
+  if (!runModeAllowed) {
+    reasons.push("DISALLOWED_RUN_MODE");
+  }
+
+  const approvalStringValid =
+    approval === RECORD_HUMAN_APPROVAL_EVIDENCE_DRY_RUN_FIXTURE_APPROVAL;
+  if (!approvalStringValid) {
+    reasons.push("FIXTURE_RECORDING_APPROVAL_INVALID");
+  }
+
+  const gitStatusShort = await git(["status", "--short"]);
+  const workingTreeClean = gitStatusShort.length === 0;
+  if (!workingTreeClean) {
+    reasons.push("DIRTY_WORKING_TREE");
+  }
+
+
+--- lines 5201-5241 ---
+  let approvalArtifactAlreadyExists = false;
+  let realHumanApprovalEvidenceRecorded = false;
+
+  const validForWrite =
+    packetIdValid &&
+    requestIdValid &&
+    modelAllowed &&
+    runModeAllowed &&
+    approvalStringValid &&
+    repoCommitValid &&
+    branchValid &&
+    operatorIdValid &&
+    operatorHandleValid &&
+    operatorEmailHashValid &&
+    expiresAtValid &&
+    approvalLifetimeValid &&
+    approvalTextValid &&
+    secretBoundaryValid &&
+    workingTreeClean;
+
+  if (validForWrite) {
+    approvalId = createApprovalId();
+
+    try {
+      approvalArtifactPath = getSafeApprovalArtifactPath(packetId, approvalId);
+      approvalArtifactAlreadyExists = await repoFileExists(approvalArtifactPath);
+
+      if (approvalArtifactAlreadyExists) {
+        reasons.push("REAL_APPROVAL_ARTIFACT_ALREADY_EXISTS");
+      } else {
+        const approvalArtifact = {
+          schemaVersion: "FP-MCP-067",
+          boundaryVersion: "FP-MCP-067",
+          artifactType: "human-approval-evidence",
+          artifactVersion: HUMAN_APPROVAL_EVIDENCE_ARTIFACT_VERSION,
+          approvalId,
+          approvalKind: "EXECUTION_ENABLEMENT",
+          approvedAction: "ALLOW_ONE_GUARDED_REMOTE_RUNNER_EXECUTION_ATTEMPT",
+          approvalState: "RECORDED",
+          fixture: false,
+          dryRun: false,
+
+--- lines 5601-5641 ---
+          consumptionArtifactSha256 = await sha256RepoFile(consumptionArtifactPath);
+        }
+      }
+    } catch {
+      reasons.push("APPROVAL_CONSUMPTION_ARTIFACT_PATH_UNSAFE");
+      consumptionId = null;
+      consumptionArtifactPath = null;
+    }
+  }
+
+  const approvalConsumed = approvalConsumptionRecorded;
+
+  return {
+    schemaVersion: "FP-MCP-071",
+    boundaryVersion: "FP-MCP-071",
+    packetId,
+    approvalPacketId,
+    approvalId,
+    requestId,
+    modelId,
+    runMode,
+    repoCommit,
+    branch,
+    approvalConsumptionRecorderEvaluated: true,
+    approvalConsumptionRecorderDefined: true,
+    approvalConsumptionRecorded,
+    consumptionArtifactPath,
+    consumptionId,
+    consumptionArtifactSha256,
+    consumptionArtifactAlreadyExists,
+    approvalValidationEvaluated,
+    approvalEvidenceValid,
+    approvalValid,
+    approvalUsableForExecution,
+    humanApprovalRecorded,
+    approvalConsumed,
+    approvalMutated: false,
+    approvalRevoked,
+    approvalQuarantined,
+    executionAllowedNow: false,
+    executionStarted: false,
+
+--- lines 6001-6041 ---
+  if (requestExists && requestArtifactValid && requestArtifactSha256 === null) {
+    reasons.push("START_REQUEST_DIGEST_MISSING");
+  }
+
+  if (localValidation.safeArtifactDir !== true || artifactDir === null) {
+    reasons.push("START_ARTIFACT_DIR_INVALID");
+  }
+
+  if (localValidation.packetExists !== true) {
+    reasons.push("START_PACKET_NOT_AUTHORIZED");
+  }
+
+  if (localValidation.modelAllowed !== true) {
+    reasons.push("START_MODEL_NOT_ALLOWED");
+  }
+
+  if (localValidation.runModeAllowed !== true) {
+    reasons.push("START_RUN_MODE_NOT_ALLOWED");
+  }
+
+  if (localValidation.baseCommitMatches !== true) {
+    reasons.push("START_REQUEST_LIFECYCLE_INVALID");
+  }
+
+  if (localValidation.workingTreeClean !== true) {
+    reasons.push("START_WORKING_TREE_DIRTY");
+  }
+
+  return getUniqueReasons(reasons);
+}
+
+
+function getSafePreStartEvidencePath(
+  packetId: string,
+  requestId: string
+): string | null {
+  if (!isValidPacketId(packetId) || !isValidRequestId(requestId)) {
+    return null;
+  }
+
+  return `runs/${packetId}/pre-start-evidence/${requestId}.json`;
+
+--- lines 6401-6441 ---
+  const runMode =
+    typeof localValidation.runMode === "string" ? localValidation.runMode : null;
+
+  const baseCommit =
+    typeof localValidation.requestBaseCommit === "string"
+      ? localValidation.requestBaseCommit
+      : null;
+
+  const currentCommit =
+    typeof localValidation.currentCommit === "string"
+      ? localValidation.currentCommit
+      : null;
+
+  const requestArtifactValid =
+    localValidation.requestExists === true &&
+    localValidation.requestArtifactValid === true &&
+    localValidation.safeArtifactDir === true;
+
+  if (!requestArtifactValid) {
+    reasons.push("REQUEST_ARTIFACT_INVALID");
+  }
+
+  reasons.push(...localReasons);
+
+  let requestArtifactSha256: string | null = null;
+
+  if (requestArtifactValid && requestArtifactPath !== null) {
+    try {
+      requestArtifactSha256 = await sha256RepoFile(requestArtifactPath);
+    } catch {
+      reasons.push("ARTIFACT_HASH_MISMATCH");
+    }
+  }
+
+  if (requestArtifactSha256 === null) {
+    reasons.push("ARTIFACT_HASH_MISSING");
+  }
+
+  const preflight = await validateExecutionPreflight(packetId, requestId);
+  const preflightReasons = Array.isArray(preflight.reasons)
+    ? preflight.reasons.map(String)
+
+--- lines 6801-6841 ---
+    reasons.push("DISABLE_SWITCH_ACTIVE");
+  }
+
+  reasons.push(...getReasonCodes(disableSwitchStatus));
+
+  const snapshotBasePath = getSafeStartStateSnapshotBasePath(packetId, requestId);
+  let attemptIds: string[] = [];
+  let selectedAttemptId: string | null = null;
+  let preStartSnapshotPath: string | null = null;
+  let postStartSnapshotPath: string | null = null;
+  let preStartSnapshotPresent = false;
+  let postStartSnapshotPresent = false;
+  let preStartSnapshotValid = false;
+  let postStartSnapshotValid = false;
+  let preStartSnapshotSha256: string | null = null;
+  let postStartSnapshotSha256: string | null = null;
+
+  if (snapshotBasePath === null) {
+    reasons.push("STATE_SNAPSHOT_PATH_INVALID");
+    missingSnapshotEvidence.push("state-snapshot-path");
+  } else {
+    attemptIds = (await listDir(snapshotBasePath))
+      .filter((entry) => entry.startsWith("ATT-") || entry.startsWith("ATTEMPT-"))
+      .sort();
+    selectedAttemptId = attemptIds.length > 0 ? attemptIds[attemptIds.length - 1] : null;
+
+    if (selectedAttemptId === null) {
+      reasons.push(
+        "PRE_START_STATE_SNAPSHOT_MISSING",
+        "POST_START_STATE_SNAPSHOT_MISSING",
+        "STATE_SNAPSHOT_INCOMPLETE"
+      );
+      missingSnapshotEvidence.push(
+        "start-state-snapshot-attempt",
+        "pre-start-state-snapshot",
+        "post-start-state-snapshot"
+      );
+    } else {
+      preStartSnapshotPath = `${snapshotBasePath}/${selectedAttemptId}/pre-start-state.json`;
+      postStartSnapshotPath = `${snapshotBasePath}/${selectedAttemptId}/post-start-state.json`;
+      preStartSnapshotPresent = await repoFileExists(preStartSnapshotPath);
+
+--- lines 7201-7241 ---
+      preStartSnapshot
+    );
+
+    if (!preStartSnapshotRecorded) {
+      reasons.push("PRE_START_STATE_SNAPSHOT_WRITE_FAILED");
+    } else {
+      preStartSnapshotSha256 = await sha256RepoFile(preStartSnapshotPath);
+    }
+
+    if (preStartSnapshotRecorded && preStartSnapshotSha256 !== null) {
+      const postStartSnapshot = {
+        ...commonSnapshotFields,
+        artifactType: "start-post-state-snapshot",
+        snapshotKind: "post-start",
+        preStateSnapshotPath: preStartSnapshotPath,
+        preStateSnapshotSha256: preStartSnapshotSha256,
+        recordedAt: new Date().toISOString()
+      };
+
+      postStartSnapshotRecorded = await writeJsonRepoArtifact(
+        postStartSnapshotPath,
+        postStartSnapshot
+      );
+
+      if (!postStartSnapshotRecorded) {
+        reasons.push("POST_START_STATE_SNAPSHOT_WRITE_FAILED");
+      } else {
+        postStartSnapshotSha256 = await sha256RepoFile(postStartSnapshotPath);
+      }
+    }
+  }
+
+  const dryRunRecorded = preStartSnapshotRecorded && postStartSnapshotRecorded;
+
+  if (!dryRunRecorded && !reasons.includes("STATE_SNAPSHOT_NOT_RECORDED")) {
+    reasons.push("STATE_SNAPSHOT_NOT_RECORDED");
+  }
+
+  return {
+    schemaVersion: "FP-MCP-056",
+    packetId,
+
+--- lines 7601-7641 ---
+      readBoolean(args.preStartEvidenceValidation, "passed")) &&
+    !hasAnyReason(args.preStartEvidenceValidation, [
+      "PRE_START_EVIDENCE_MISSING",
+      "PRE_START_EVIDENCE_INCOMPLETE",
+      "PRE_START_EVIDENCE_INVALID",
+      "PRE_START_EVIDENCE_UNCOMMITTED",
+      "ARTIFACT_HASH_MISSING",
+    ]);
+
+  if (!preStartEvidenceReady) {
+    ledgerReasons.push("PRE_START_EVIDENCE_LEDGER_ENTRY_MISSING");
+  }
+
+  const stateSnapshotEvidencePath =
+    readString(args.stateSnapshotValidation, "stateSnapshotEvidencePath") ??
+    readString(args.stateSnapshotValidation, "stateSnapshotPath") ??
+    readString(args.stateSnapshotValidation, "snapshotPath") ??
+    readString(args.stateSnapshotValidation, "evidencePath");
+
+  const preStartSnapshotPath = readString(
+    args.stateSnapshotValidation,
+    "preStartSnapshotPath",
+  );
+  const postStartSnapshotPath = readString(
+    args.stateSnapshotValidation,
+    "postStartSnapshotPath",
+  );
+
+  const stateSnapshotHasPath =
+    stateSnapshotEvidencePath !== null ||
+    (preStartSnapshotPath !== null && postStartSnapshotPath !== null);
+
+  const stateSnapshotEvidenceReady =
+    stateSnapshotHasPath &&
+    (readBoolean(args.stateSnapshotValidation, "stateSnapshotEvidenceValid") ||
+      readBoolean(args.stateSnapshotValidation, "stateSnapshotValid") ||
+      readBoolean(args.stateSnapshotValidation, "valid") ||
+      readBoolean(args.stateSnapshotValidation, "passed") ||
+      (readBoolean(args.stateSnapshotValidation, "preStartSnapshotValid") &&
+        readBoolean(args.stateSnapshotValidation, "postStartSnapshotValid")) ||
+      !hasAnyReason(args.stateSnapshotValidation, [
+
+--- lines 8001-8041 ---
+      branch: typeof localValidation.currentBranch === "string" ? localValidation.currentBranch : null,
+      commit: typeof localValidation.currentCommit === "string" ? localValidation.currentCommit : null,
+    }),
+    evidenceLedgerReadiness,};
+
+  const eligibleForFutureGuardedStart =
+    requestArtifactPassed &&
+    commitBindingPassed &&
+    modelAndRunModePassed &&
+    disableSwitchClear &&
+    runnerCapabilityStatePassed &&
+    !executionEnabled &&
+    !unexpectedSupportedOperation;
+
+  return {
+    guardedStartPreflightEvaluated: true,
+    eligibleForFutureGuardedStart,
+    executionPermitted: false,
+    executionStarted: false,
+    opencodeStarted: false,
+    runnerStartEndpointContacted: false,
+    startEndpointContacted: false,
+    runnerRunId: null,
+    approvalConsumed: false,
+    requestArtifactMutated: false,
+    packetId,
+    requestId,
+    approvalId: normalizedApprovalId,
+    runnerConfigured,
+    runnerReachable,
+    runnerStateObserved,
+    startEndpointPresent,
+    startEndpointState,
+    startCapabilityCallable,
+    executionEnabled,
+    supportedOperations,
+    gates,
+    repository: {
+      repoClean: localValidation.workingTreeClean === true,
+      currentCommit:
+        typeof localValidation.currentCommit === "string"
+
+--- lines 8401-8441 ---
+  const approvalValid =
+    approvalValidation !== null && approvalValidation.approvalValid === true;
+  const approvalUsableForExecution =
+    approvalValidation !== null &&
+    approvalValidation.approvalUsableForExecution === true;
+  const approvalConsumed =
+    approvalValidation !== null && approvalValidation.approvalConsumed === true;
+  const consumptionEvidenceEvaluated =
+    approvalValidation !== null &&
+    approvalValidation.consumptionEvidenceEvaluated === true;
+  const consumptionEvidencePresent =
+    approvalValidation !== null &&
+    approvalValidation.consumptionEvidencePresent === true;
+  const consumptionEvidenceValid =
+    approvalValidation !== null &&
+    approvalValidation.consumptionEvidenceValid === true;
+  const consumptionEvidenceId =
+    approvalValidation !== null &&
+    typeof approvalValidation.consumptionEvidenceId === "string"
+      ? approvalValidation.consumptionEvidenceId
+      : null;
+  const consumptionEvidencePath =
+    approvalValidation !== null &&
+    typeof approvalValidation.consumptionEvidencePath === "string"
+      ? approvalValidation.consumptionEvidencePath
+      : null;
+  const approvalCreated =
+    approvalValidation !== null && approvalValidation.approvalCreated === true;
+  const approvalMutated =
+    approvalValidation !== null && approvalValidation.approvalMutated === true;
+  const humanApprovalRecorded =
+    approvalValidation !== null && approvalValidation.humanApprovalRecorded === true;
+  const humanApprovalEvidencePath =
+    approvalValidation !== null && typeof approvalValidation.approvalPath === "string"
+      ? approvalValidation.approvalPath
+      : normalizedApprovalId !== null && approvalPacketId !== null
+        ? `runs/${approvalPacketId}/approvals/${normalizedApprovalId}.json`
+        : null;
+  const humanApprovalEvidenceGatePassed =
+    approvalValidationEvaluated &&
+    approvalEvidenceValid &&
+
+--- lines 8801-8841 ---
+
+  const postStartEvidencePath =
+    runnerResponse !== null ? getStringField(runnerResponse, "postStartEvidencePath") : null;
+
+  const responseValidationReasons: string[] = [...responseReasons];
+
+  if (runnerResponse === null) {
+    responseValidationReasons.push(
+      typeof startResult.reason === "string"
+        ? startResult.reason
+        : "RUNNER_PROTOCOL_ERROR"
+    );
+  }
+
+  if (runnerProtocolVersion !== "forgepilot-runner-v1") {
+    responseValidationReasons.push("RUNNER_PROTOCOL_ERROR");
+  }
+
+  if (responsePacketId !== null && responsePacketId !== packetId) {
+    responseValidationReasons.push("RUNNER_PROTOCOL_ERROR");
+  }
+
+  if (responseRequestId !== null && responseRequestId !== requestId) {
+    responseValidationReasons.push("RUNNER_PROTOCOL_ERROR");
+  }
+
+  if (
+    accepted &&
+    (responsePacketId !== packetId || responseRequestId !== requestId)
+  ) {
+    responseValidationReasons.push("RUNNER_PROTOCOL_ERROR");
+  }
+
+  if (accepted && (runnerRunId === null || !isValidRunnerRunId(runnerRunId))) {
+    responseValidationReasons.push("RUNNER_ACCEPTED_BUT_NO_RUN_ID");
+  }
+
+  if (
+    responseArtifactDir !== null &&
+    (normalizeRepoRelativePath(responseArtifactDir) !== responseArtifactDir ||
+      !responseArtifactDir.startsWith(`runs/${packetId}/`))
+
+--- lines 9201-9241 ---
+      created: false,
+      valid: false,
+      executionEnabled: false,
+      executionStarted: false,
+      requiresApproval: true,
+      approvalAccepted,
+      requestId: null,
+      requestArtifactPath: null,
+      packetId,
+      modelId,
+      runMode,
+      baseCommit,
+      boundaryVersion: "FP-MCP-081",
+      implementationBoundaryVersion: "FP-MCP-083",
+      statusSource: "ForgePilot request-artifact policy",
+      reasons: [code === "EEXIST" ? "ARTIFACT_ALREADY_EXISTS" : "ARTIFACT_WRITE_FAILED"]
+    };
+  }
+
+  return {
+    created: true,
+    valid: true,
+    executionEnabled: false,
+    executionStarted: false,
+    requiresApproval: true,
+    approvalAccepted: true,
+    requestId,
+    requestArtifactPath: safeRequestArtifactPath,
+    packetId,
+    modelId,
+    runMode,
+    baseCommit,
+    boundaryVersion: "FP-MCP-081",
+    implementationBoundaryVersion: "FP-MCP-083",
+    statusSource: "ForgePilot request-artifact policy",
+    reasons: []
+  };
+}
+
+function sanitizeToolErrorCode(error: unknown): string {
+  if (error instanceof Error) {
+
+--- lines 9601-9641 ---
+        requestId: z.string().describe("Request artifact id, for example REQ-20260619T084312145Z-a9960bd6.")
+      },
+      outputSchema: ForgePilotValidateRemoteRunnerEndpointRequestOutputSchema,
+      annotations: {
+        readOnlyHint: true,
+        destructiveHint: false,
+        idempotentHint: true,
+        openWorldHint: true
+      }
+    },
+    async ({ packetId, requestId }) =>
+      runLoggedTool(
+        "forgepilot_validate_remote_runner_endpoint_request",
+        async () => {
+          const result = await validateRemoteRunnerEndpointRequest(
+            packetId,
+            requestId
+          );
+
+          return structuredJsonResult(result);
+        }
+      )
+  );
+
+    mcpServer.registerTool(
+    "forgepilot_validate_execution_preflight",
+    {
+      description:
+        "Validate guarded execution preflight gates without starting OpenCode or contacting the runner start endpoint.",
+      inputSchema: {
+        packetId: z.string().describe("Known ForgePilot packet id, for example FP-MCP-034."),
+        requestId: z.string().describe("Request artifact id, for example REQ-20260619T084312145Z-a9960bd6."),
+        approvalId: z.string().optional().describe("Optional human approval evidence artifact id to validate as part of execution preflight.")
+      },
+      outputSchema: ForgePilotValidateExecutionPreflightOutputSchema,
+      annotations: {
+        readOnlyHint: true,
+        destructiveHint: false,
+        idempotentHint: true,
+        openWorldHint: true
+      }
+
+--- lines 10001-10041 ---
+      inputSchema: {
+        packetId: z.string().describe("Known ForgePilot packet id, for example FP-MCP-036."),
+        requestId: z.string().describe("Request artifact id, for example REQ-20260622T144553300Z-fbbe8d82."),
+        approval: z.string().describe("Must exactly equal START_REMOTE_RUNNER_REQUEST.")
+      },
+      outputSchema: ForgePilotRecordPreStartEvidenceDryRunOutputSchema,
+      annotations: {
+        readOnlyHint: false,
+        destructiveHint: false,
+        idempotentHint: false,
+        openWorldHint: true
+      }
+    },
+    async ({ packetId, requestId, approval }) =>
+      runLoggedTool(
+        "forgepilot_record_pre_start_evidence_dry_run",
+        async () => {
+          const result = await recordPreStartEvidenceDryRun(
+            packetId,
+            requestId,
+            approval
+          );
+
+          return structuredJsonResult(result);
+        }
+      )
+  );
+
+
+
+    mcpServer.registerTool(
+    "forgepilot_validate_pre_start_evidence",
+    {
+      description:
+        "Validate pre-start evidence for a ForgePilot request without creating evidence, starting OpenCode, or contacting the runner start endpoint.",
+      inputSchema: {
+        packetId: z.string().describe("Known ForgePilot packet id, for example FP-MCP-036."),
+        requestId: z.string().describe("Request artifact id, for example REQ-20260622T144553300Z-fbbe8d82.")
+      },
+      outputSchema: ForgePilotValidatePreStartEvidenceOutputSchema,
+      annotations: {
