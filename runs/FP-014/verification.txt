@@ -1,0 +1,36 @@
+FP-014 verification
+
+Typecheck:
+PASS
+- see runs/FP-014/typecheck.txt
+
+Tests:
+PASS
+- see runs/FP-014/test.txt
+
+CLI JSON smoke:
+PASS
+- pnpm fp -- project-report --json
+- output recorded at runs/FP-014/project-report.json
+
+CLI text smoke:
+PASS
+- pnpm fp -- project-report
+- output recorded at runs/FP-014/project-report.txt
+
+Project report boundary:
+PASS
+- report includes: This project report is an index over committed evidence and checklist state. It is not evidence by itself.
+
+V1 completion restraint:
+PASS
+- report returns V1 Completion Status: NOT_COMPLETE
+- report does not claim V1 completion while checklist capabilities remain partial
+
+Scope boundary:
+PASS
+- no SQLite schema created
+- no MCP tools added
+- no bridge code changed
+- no routing/scoring/model ranking/admission behavior implemented
+- no historical packets renamed

@@ -1,0 +1,35 @@
+Project Report: ForgePilot
+Report Type: PROJECT_SUMMARY_V1
+V1 Completion Status: NOT_COMPLETE
+V1 Completion Reason: 7 non-deferred checklist capabilities are not COMPLETE.
+Boundary: This project report is an index over committed evidence and checklist state. It is not evidence by itself.
+Checklist Status Counts:
+  - COMPLETE: 15
+  - DEFERRED: 4
+  - PARTIAL: 7
+Packet Inventory:
+  - FP: 15
+  - FP-MCP: 158
+  - FP-META: 20
+  - FP-OPS: 3
+  - OTHER: 2
+Governing Docs:
+  - docs/forgepilot-progress-checklist.md
+  - docs/packet-namespace-taxonomy.md
+  - docs/packet-namespace-definition-of-done.md
+  - docs/evidence-boundary-doctrine.md
+  - docs/reporting-evidence-rules.md
+  - docs/project-summary-reporting-rules.md
+  - docs/manual-action-ledger.md
+Next Recommended Work:
+  - Reporting / summary implementation: PARTIAL, FP-* (Core ForgePilot behavior; single-packet report implemented by FP-013, project summary report implemented by FP-014.)
+  - Reporting via ChatGPT MCP: NOT_STARTED, FP-MCP-* (MCP bridge/tool exposure.)
+  - Checklist maintenance: PARTIAL, FP-OPS-* (Operator progress tracking.)
+  - Admission/comparison reconstruction rules: PARTIAL, FP-META-* (Define evidence semantics before implementation.)
+  - Admission/comparison reconstruction implementation: PARTIAL, FP-* (Core query/report behavior.)
+  - New MCP tool exposure for existing ForgePilot behavior: DEFERRED, FP-MCP-* (MCP integration only.)
+Caveats:
+  - This project report is an index over committed evidence and checklist state. It is not evidence by itself.
+  - Checklist status is an index, not proof by itself.
+  - Packet inventory does not imply execution, success, or current relevance.
+  - This report does not admit evidence, rank models, route work, or infer quality.

@@ -1,0 +1,64 @@
+{
+  "status": "NOT_COMPLETE",
+  "reason": "7 non-deferred checklist capabilities are not COMPLETE.",
+  "counts": {
+    "PARTIAL": 7,
+    "COMPLETE": 15,
+    "DEFERRED": 4
+  },
+  "namespaces": [
+    [
+      "FP",
+      15
+    ],
+    [
+      "FP-MCP",
+      158
+    ],
+    [
+      "FP-META",
+      20
+    ],
+    [
+      "FP-OPS",
+      3
+    ],
+    [
+      "OTHER",
+      2
+    ]
+  ],
+  "boundary": "This project report is an index over committed evidence and checklist state. It is not evidence by itself.",
+  "next": [
+    {
+      "work_item": "Reporting / summary implementation",
+      "current_status": "PARTIAL",
+      "recommended_namespace": "FP-*",
+      "reason": "Core ForgePilot behavior; single-packet report implemented by FP-013, project summary report implemented by FP-014."
+    },
+    {
+      "work_item": "Reporting via ChatGPT MCP",
+      "current_status": "NOT_STARTED",
+      "recommended_namespace": "FP-MCP-*",
+      "reason": "MCP bridge/tool exposure."
+    },
+    {
+      "work_item": "Checklist maintenance",
+      "current_status": "PARTIAL",
+      "recommended_namespace": "FP-OPS-*",
+      "reason": "Operator progress tracking."
+    },
+    {
+      "work_item": "Admission/comparison reconstruction rules",
+      "current_status": "PARTIAL",
+      "recommended_namespace": "FP-META-*",
+      "reason": "Define evidence semantics before implementation."
+    },
+    {
+      "work_item": "Admission/comparison reconstruction implementation",
+      "current_status": "PARTIAL",
+      "recommended_namespace": "FP-*",
+      "reason": "Core query/report behavior."
+    }
+  ]
+}

@@ -1,0 +1,497 @@
+{
+  "report_type": "PROJECT_SUMMARY_V1",
+  "boundary": "This project report is an index over committed evidence and checklist state. It is not evidence by itself.",
+  "v1_completion_definition": "ForgePilot V1 is complete when packet intent, execution, telemetry, verification, audit, admission, comparison, and reporting can be reconstructed from committed evidence and supported read-only queries, without relying on private chat memory.",
+  "v1_completion_status": "NOT_COMPLETE",
+  "v1_completion_reason": "7 non-deferred checklist capabilities are not COMPLETE.",
+  "checklist_source": "docs/forgepilot-progress-checklist.md",
+  "checklist_status_counts": {
+    "PARTIAL": 7,
+    "COMPLETE": 15,
+    "DEFERRED": 4
+  },
+  "checklist_capabilities": [
+    {
+      "capability": "Packet lifecycle",
+      "status": "PARTIAL",
+      "evidence": "earlier packets, FP-MCP series",
+      "notes": "Packets are committed and used as work units. Full V1 lifecycle summary still needs a supported reporting view.",
+      "boundary": "Packet existence is not execution evidence."
+    },
+    {
+      "capability": "Worker lifecycle",
+      "status": "COMPLETE",
+      "evidence": "FP-MCP-153",
+      "notes": "Bounded OpenCode worker invocation has direct MCP proof and committed worker lifecycle artifacts.",
+      "boundary": "Worker lifecycle proof does not imply routing or autonomous execution."
+    },
+    {
+      "capability": "Worker telemetry capture",
+      "status": "COMPLETE",
+      "evidence": "FP-MCP-154",
+      "notes": "Normalized non-admitted worker telemetry capture exists and is directly readable.",
+      "boundary": "Telemetry is observation, not admitted evidence."
+    },
+    {
+      "capability": "Worker telemetry persistence",
+      "status": "COMPLETE",
+      "evidence": "FP-MCP-156",
+      "notes": "SQLite persistence exists, direct persist/read proof recorded in runs/FP-MCP-156/direct-mcp-smoke-result.md.",
+      "boundary": "Persistence does not admit telemetry or make it routing input."
+    },
+    {
+      "capability": "Worker telemetry query visibility",
+      "status": "COMPLETE",
+      "evidence": "FP-MCP-157",
+      "notes": "Query tool implemented, verified, direct MCP query proof recorded in runs/FP-MCP-157/direct-mcp-query-result.md.",
+      "boundary": "Querying makes telemetry visible, not meaningful."
+    },
+    {
+      "capability": "Verification evidence",
+      "status": "PARTIAL",
+      "evidence": "FP-MCP evidence chain, earlier FP packets",
+      "notes": "Typecheck/build/test evidence exists for recent packets, but V1-wide verification reporting is not yet consolidated.",
+      "boundary": "Passing verification is not admission."
+    },
+    {
+      "capability": "Audit evidence",
+      "status": "PARTIAL",
+      "evidence": "earlier benchmark/evaluation packets",
+      "notes": "Audit workflow exists in earlier ForgePilot work, but current FP-MCP chain does not yet expose a consolidated audit query/report view.",
+      "boundary": "Audit is not comparison or admission by itself."
+    },
+    {
+      "capability": "Admission state",
+      "status": "PARTIAL",
+      "evidence": "FP-009, FP-010, FP-MCP-156/157",
+      "notes": "Admission-state concepts and persistence exist; worker telemetry remains NOT_EVALUATED. V1 still needs a consolidated admission/reporting path.",
+      "boundary": "NOT_EVALUATED must not be treated as admitted evidence."
+    },
+    {
+      "capability": "Comparison result",
+      "status": "PARTIAL",
+      "evidence": "earlier benchmark packets",
+      "notes": "Comparison artifacts exist in earlier evaluation workflows. V1 still needs a supported way to reconstruct comparison state from committed evidence/read-only queries.",
+      "boundary": "Comparison must use admitted evidence only where evidence claims are made."
+    },
+    {
+      "capability": "Reporting / summary view",
+      "status": "PARTIAL",
+      "evidence": "FP-013, FP-014",
+      "notes": "Single-packet and project summary reports exist. Admission/comparison reconstruction remains incomplete.",
+      "boundary": "Report is an evidence index, not evidence itself."
+    },
+    {
+      "capability": "Progress checklist",
+      "status": "COMPLETE",
+      "evidence": "FP-MCP-158",
+      "notes": "This document creates the first repo-tracked V1 progress checklist.",
+      "boundary": "Checklist is an index, not evidence itself."
+    },
+    {
+      "capability": "Completion criteria",
+      "status": "COMPLETE",
+      "evidence": "FP-MCP-158",
+      "notes": "V1 completion definition is recorded in this document.",
+      "boundary": "Completion criteria do not imply completion."
+    },
+    {
+      "capability": "Safety boundary documentation",
+      "status": "PARTIAL",
+      "evidence": "FP-MCP packets, boundary docs",
+      "notes": "Safety boundaries are repeatedly documented in packets and evidence. V1 still needs consolidated boundary reporting or index.",
+      "boundary": "Safety statements must map back to enforced gates or evidence."
+    },
+    {
+      "capability": "Manual MCP Actions refresh process",
+      "status": "COMPLETE",
+      "evidence": "FP-MCP-157",
+      "notes": "Direct query proof records that new MCP tools require manual OpenAI Actions schema refresh before ChatGPT can discover them.",
+      "boundary": "Bridge restart alone does not refresh ChatGPT action schema."
+    },
+    {
+      "capability": "SQLite checklist persistence",
+      "status": "DEFERRED",
+      "evidence": "FP-MCP-158",
+      "notes": "Markdown is intentionally used for v1 checklist. SQLite persistence may come later after vocabulary stabilizes.",
+      "boundary": "Do not over-engineer checklist state before manual use proves shape."
+    },
+    {
+      "capability": "Routing",
+      "status": "DEFERRED",
+      "evidence": "none for V1",
+      "notes": "Explicitly out of scope for current V1 completion work.",
+      "boundary": "No model routing or optimization may be inferred."
+    },
+    {
+      "capability": "Model scoring/ranking",
+      "status": "DEFERRED",
+      "evidence": "none for V1",
+      "notes": "Explicitly out of scope for current V1 completion work.",
+      "boundary": "Query results are not model-quality evidence."
+    },
+    {
+      "capability": "Dashboard UI",
+      "status": "DEFERRED",
+      "evidence": "none for V1",
+      "notes": "Explicitly out of scope for current V1 completion work.",
+      "boundary": "Reporting can be CLI/docs before dashboard UI."
+    },
+    {
+      "capability": "Packet namespace taxonomy",
+      "status": "COMPLETE",
+      "evidence": "FP-META-017",
+      "notes": "Namespace rules are documented in docs/packet-namespace-taxonomy.md.",
+      "boundary": "Historical packet IDs remain unchanged."
+    },
+    {
+      "capability": "Checklist namespace guidance",
+      "status": "COMPLETE",
+      "evidence": "FP-OPS-001",
+      "notes": "Checklist now includes advisory recommended namespace guidance for future work.",
+      "boundary": "The taxonomy doc remains governing."
+    },
+    {
+      "capability": "Packet namespace definition of done",
+      "status": "COMPLETE",
+      "evidence": "FP-META-019",
+      "notes": "Namespace-specific minimum completion standards are documented in docs/packet-namespace-definition-of-done.md.",
+      "boundary": "Namespace implies verification burden, not feature value."
+    },
+    {
+      "capability": "Manual action ledger",
+      "status": "COMPLETE",
+      "evidence": "FP-OPS-003",
+      "notes": "Manual external action recording pattern is documented in docs/manual-action-ledger.md.",
+      "boundary": "Manual action still requires observable proof."
+    },
+    {
+      "capability": "Evidence boundary doctrine",
+      "status": "COMPLETE",
+      "evidence": "FP-META-018",
+      "notes": "Evidence boundaries are documented in docs/evidence-boundary-doctrine.md.",
+      "boundary": "Doctrine is not implementation or admission by itself."
+    },
+    {
+      "capability": "Reporting evidence rules",
+      "status": "COMPLETE",
+      "evidence": "FP-META-020",
+      "notes": "Reporting claim boundaries are documented in docs/reporting-evidence-rules.md.",
+      "boundary": "Reporting is an evidence index, not evidence itself."
+    },
+    {
+      "capability": "Project summary reporting rules",
+      "status": "COMPLETE",
+      "evidence": "FP-META-021",
+      "notes": "Project-wide reporting claim boundaries are documented in docs/project-summary-reporting-rules.md.",
+      "boundary": "Project report is an index, not evidence itself."
+    },
+    {
+      "capability": "Session bootstrap runbook",
+      "status": "COMPLETE",
+      "evidence": "FP-OPS-002",
+      "notes": "New-session bootstrap procedure is documented in docs/session-bootstrap.md.",
+      "boundary": "Reduces dependence on private chat memory; not automation."
+    }
+  ],
+  "packet_inventory": [
+    {
+      "namespace": "FP",
+      "count": 15,
+      "packets": [
+        "FP-002",
+        "FP-002-V2",
+        "FP-002-V3",
+        "FP-003",
+        "FP-004",
+        "FP-005",
+        "FP-006",
+        "FP-007",
+        "FP-008",
+        "FP-009",
+        "FP-010",
+        "FP-011",
+        "FP-012",
+        "FP-013",
+        "FP-014"
+      ]
+    },
+    {
+      "namespace": "FP-MCP",
+      "count": 158,
+      "packets": [
+        "FP-MCP-001",
+        "FP-MCP-002",
+        "FP-MCP-003",
+        "FP-MCP-004",
+        "FP-MCP-005",
+        "FP-MCP-006",
+        "FP-MCP-007",
+        "FP-MCP-008",
+        "FP-MCP-009",
+        "FP-MCP-010",
+        "FP-MCP-011",
+        "FP-MCP-012",
+        "FP-MCP-013",
+        "FP-MCP-014",
+        "FP-MCP-015",
+        "FP-MCP-016",
+        "FP-MCP-017",
+        "FP-MCP-018",
+        "FP-MCP-019",
+        "FP-MCP-020",
+        "FP-MCP-021",
+        "FP-MCP-022",
+        "FP-MCP-023",
+        "FP-MCP-024",
+        "FP-MCP-025",
+        "FP-MCP-026",
+        "FP-MCP-027",
+        "FP-MCP-028",
+        "FP-MCP-029",
+        "FP-MCP-030",
+        "FP-MCP-031",
+        "FP-MCP-032",
+        "FP-MCP-033",
+        "FP-MCP-034",
+        "FP-MCP-035",
+        "FP-MCP-036",
+        "FP-MCP-037",
+        "FP-MCP-038",
+        "FP-MCP-039",
+        "FP-MCP-040",
+        "FP-MCP-041",
+        "FP-MCP-042",
+        "FP-MCP-043",
+        "FP-MCP-044",
+        "FP-MCP-045",
+        "FP-MCP-046",
+        "FP-MCP-047",
+        "FP-MCP-048",
+        "FP-MCP-049",
+        "FP-MCP-050",
+        "FP-MCP-051",
+        "FP-MCP-052",
+        "FP-MCP-053",
+        "FP-MCP-054",
+        "FP-MCP-055",
+        "FP-MCP-056",
+        "FP-MCP-057",
+        "FP-MCP-058",
+        "FP-MCP-059",
+        "FP-MCP-060",
+        "FP-MCP-061",
+        "FP-MCP-062",
+        "FP-MCP-063",
+        "FP-MCP-064",
+        "FP-MCP-065",
+        "FP-MCP-066",
+        "FP-MCP-067",
+        "FP-MCP-068",
+        "FP-MCP-069",
+        "FP-MCP-070",
+        "FP-MCP-071",
+        "FP-MCP-072",
+        "FP-MCP-073",
+        "FP-MCP-074",
+        "FP-MCP-075",
+        "FP-MCP-076",
+        "FP-MCP-077",
+        "FP-MCP-078",
+        "FP-MCP-079",
+        "FP-MCP-080",
+        "FP-MCP-081",
+        "FP-MCP-082",
+        "FP-MCP-083",
+        "FP-MCP-084",
+        "FP-MCP-085",
+        "FP-MCP-086",
+        "FP-MCP-087",
+        "FP-MCP-088",
+        "FP-MCP-089",
+        "FP-MCP-090",
+        "FP-MCP-091",
+        "FP-MCP-092",
+        "FP-MCP-093",
+        "FP-MCP-094",
+        "FP-MCP-095",
+        "FP-MCP-096",
+        "FP-MCP-097",
+        "FP-MCP-098",
+        "FP-MCP-099",
+        "FP-MCP-100",
+        "FP-MCP-101",
+        "FP-MCP-102",
+        "FP-MCP-103",
+        "FP-MCP-104",
+        "FP-MCP-105",
+        "FP-MCP-106",
+        "FP-MCP-107",
+        "FP-MCP-108",
+        "FP-MCP-109",
+        "FP-MCP-110",
+        "FP-MCP-111",
+        "FP-MCP-112",
+        "FP-MCP-113",
+        "FP-MCP-114",
+        "FP-MCP-115",
+        "FP-MCP-116",
+        "FP-MCP-117",
+        "FP-MCP-118",
+        "FP-MCP-119",
+        "FP-MCP-120",
+        "FP-MCP-121",
+        "FP-MCP-122",
+        "FP-MCP-123",
+        "FP-MCP-124",
+        "FP-MCP-125",
+        "FP-MCP-126",
+        "FP-MCP-127",
+        "FP-MCP-128",
+        "FP-MCP-129",
+        "FP-MCP-130",
+        "FP-MCP-131",
+        "FP-MCP-132",
+        "FP-MCP-133",
+        "FP-MCP-134",
+        "FP-MCP-135",
+        "FP-MCP-136",
+        "FP-MCP-137",
+        "FP-MCP-138",
+        "FP-MCP-139",
+        "FP-MCP-140",
+        "FP-MCP-141",
+        "FP-MCP-142",
+        "FP-MCP-143",
+        "FP-MCP-144",
+        "FP-MCP-145",
+        "FP-MCP-146",
+        "FP-MCP-147",
+        "FP-MCP-148",
+        "FP-MCP-149",
+        "FP-MCP-150",
+        "FP-MCP-151",
+        "FP-MCP-152",
+        "FP-MCP-153",
+        "FP-MCP-154",
+        "FP-MCP-155",
+        "FP-MCP-156",
+        "FP-MCP-157",
+        "FP-MCP-158"
+      ]
+    },
+    {
+      "namespace": "FP-META",
+      "count": 20,
+      "packets": [
+        "FP-META-001",
+        "FP-META-002",
+        "FP-META-003",
+        "FP-META-004",
+        "FP-META-005",
+        "FP-META-006",
+        "FP-META-008",
+        "FP-META-009",
+        "FP-META-010",
+        "FP-META-011",
+        "FP-META-012",
+        "FP-META-013",
+        "FP-META-014",
+        "FP-META-015",
+        "FP-META-016",
+        "FP-META-017",
+        "FP-META-018",
+        "FP-META-019",
+        "FP-META-020",
+        "FP-META-021"
+      ]
+    },
+    {
+      "namespace": "FP-OPS",
+      "count": 3,
+      "packets": [
+        "FP-OPS-001",
+        "FP-OPS-002",
+        "FP-OPS-003"
+      ]
+    },
+    {
+      "namespace": "OTHER",
+      "count": 2,
+      "packets": [
+        "FP-EVAL-001",
+        "FP-EVAL-002"
+      ]
+    }
+  ],
+  "recent_packets": [
+    "FP-META-012",
+    "FP-META-013",
+    "FP-META-014",
+    "FP-META-015",
+    "FP-META-016",
+    "FP-META-017",
+    "FP-META-018",
+    "FP-META-019",
+    "FP-META-020",
+    "FP-META-021",
+    "FP-OPS-001",
+    "FP-OPS-002",
+    "FP-OPS-003",
+    "FP-EVAL-001",
+    "FP-EVAL-002"
+  ],
+  "governing_docs": [
+    "docs/forgepilot-progress-checklist.md",
+    "docs/packet-namespace-taxonomy.md",
+    "docs/packet-namespace-definition-of-done.md",
+    "docs/evidence-boundary-doctrine.md",
+    "docs/reporting-evidence-rules.md",
+    "docs/project-summary-reporting-rules.md",
+    "docs/manual-action-ledger.md"
+  ],
+  "next_recommended_work": [
+    {
+      "work_item": "Reporting / summary implementation",
+      "current_status": "PARTIAL",
+      "recommended_namespace": "FP-*",
+      "reason": "Core ForgePilot behavior; single-packet report implemented by FP-013, project summary report implemented by FP-014."
+    },
+    {
+      "work_item": "Reporting via ChatGPT MCP",
+      "current_status": "NOT_STARTED",
+      "recommended_namespace": "FP-MCP-*",
+      "reason": "MCP bridge/tool exposure."
+    },
+    {
+      "work_item": "Checklist maintenance",
+      "current_status": "PARTIAL",
+      "recommended_namespace": "FP-OPS-*",
+      "reason": "Operator progress tracking."
+    },
+    {
+      "work_item": "Admission/comparison reconstruction rules",
+      "current_status": "PARTIAL",
+      "recommended_namespace": "FP-META-*",
+      "reason": "Define evidence semantics before implementation."
+    },
+    {
+      "work_item": "Admission/comparison reconstruction implementation",
+      "current_status": "PARTIAL",
+      "recommended_namespace": "FP-*",
+      "reason": "Core query/report behavior."
+    },
+    {
+      "work_item": "New MCP tool exposure for existing ForgePilot behavior",
+      "current_status": "DEFERRED",
+      "recommended_namespace": "FP-MCP-*",
+      "reason": "MCP integration only."
+    }
+  ],
+  "caveats": [
+    "This project report is an index over committed evidence and checklist state. It is not evidence by itself.",
+    "Checklist status is an index, not proof by itself.",
+    "Packet inventory does not imply execution, success, or current relevance.",
+    "This report does not admit evidence, rank models, route work, or infer quality."
+  ]
+}
