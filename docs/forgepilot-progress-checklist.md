@@ -104,7 +104,7 @@ Recent closed telemetry/query chain:
 
 | Capability | Status | Evidence Packet(s) | Evidence / Notes | Boundary |
 |---|---|---|---|---|
-| Packet lifecycle | `PARTIAL` | earlier packets, FP-MCP series | Packets are committed and used as work units. Full V1 lifecycle summary still needs a supported reporting view. | Packet existence is not execution evidence. |
+| Packet lifecycle | `COMPLETE` | `FP-013`, `FP-014`, `FP-015`, `FP-016`, `FP-OPS-004`, `FP-META-024` | Packet lifecycle states and report surfaces are indexed in `docs/packet-lifecycle-evidence-index.md`. | Packet existence supports only intent; lifecycle claims require supporting artifacts. |
 | Worker lifecycle | `COMPLETE` | `FP-MCP-153` | Bounded OpenCode worker invocation has direct MCP proof and committed worker lifecycle artifacts. | Worker lifecycle proof does not imply routing or autonomous execution. |
 | Worker telemetry capture | `COMPLETE` | `FP-MCP-154` | Normalized non-admitted worker telemetry capture exists and is directly readable. | Telemetry is observation, not admitted evidence. |
 | Worker telemetry persistence | `COMPLETE` | `FP-MCP-156` | SQLite persistence exists, direct persist/read proof recorded in `runs/FP-MCP-156/direct-mcp-smoke-result.md`. | Persistence does not admit telemetry or make it routing input. |
@@ -127,6 +127,7 @@ Recent closed telemetry/query chain:
 | Packet namespace definition of done | `COMPLETE` | `FP-META-019` | Namespace-specific minimum completion standards are documented in `docs/packet-namespace-definition-of-done.md`. | Namespace implies verification burden, not feature value. |
 | Manual action ledger | `COMPLETE` | `FP-OPS-003` | Manual external action recording pattern is documented in `docs/manual-action-ledger.md`. | Manual action still requires observable proof. |
 | Packet status index | `COMPLETE` | `FP-OPS-004` | Packet navigation/archive index exists at `docs/packet-status-index.md`. | Index does not rename, delete, move, or invalidate packets. |
+| Packet lifecycle evidence index | `COMPLETE` | `FP-META-024` | Lifecycle states and required evidence are documented in `docs/packet-lifecycle-evidence-index.md`. | Index does not create execution evidence. |
 | Evidence boundary doctrine | `COMPLETE` | `FP-META-018` | Evidence boundaries are documented in `docs/evidence-boundary-doctrine.md`. | Doctrine is not implementation or admission by itself. |
 | Safety boundary evidence index | `COMPLETE` | `FP-META-023` | Safety boundaries are mapped to governing docs, evidence, and gates in `docs/safety-boundary-evidence-index.md`. | Index is not policy engine or evidence by itself. |
 | Reporting evidence rules | `COMPLETE` | `FP-META-020` | Reporting claim boundaries are documented in `docs/reporting-evidence-rules.md`. | Reporting is an evidence index, not evidence itself. |
