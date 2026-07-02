@@ -28,6 +28,8 @@ Options:
   --packet-report                 Print a read-only packet evidence summary.
                                  Requires: --packet-id
   --project-report                Print a read-only ForgePilot project summary.
+  --reconstruction-report         Print read-only admission/comparison reconstruction for a packet.
+                                 Requires: --packet-id
 
 Environment:
   ForgePilot follows an environment-centric architecture.
@@ -194,6 +196,7 @@ async function main(): Promise<void> {
       "query-worker-telemetry": { type: "boolean" },
       "packet-report": { type: "boolean" },
       "project-report": { type: "boolean" },
+      "reconstruction-report": { type: "boolean" },
       "worker-id": { type: "string" },
       "worker-status": { type: "string" },
       "terminal-state": { type: "string" },
@@ -329,6 +332,28 @@ async function main(): Promise<void> {
 
 
 
+
+
+  if (values["reconstruction-report"] || positionals[0] === "reconstruction-report") {
+    const packetId = values["packet-id"];
+    if (!packetId) {
+      console.error("ERROR: --packet-id is required");
+      process.exit(1);
+    }
+    const { buildReconstructionReport, formatReconstructionReportText } = await import("../reporting/reconstruction-report.js");
+    try {
+      const report = buildReconstructionReport({ packetId });
+      if (values.json) {
+        console.log(JSON.stringify(report, null, 2));
+      } else {
+        process.stdout.write(formatReconstructionReportText(report));
+      }
+      return;
+    } catch (error) {
+      console.error(`ERROR: ${error instanceof Error ? error.message : String(error)}`);
+      process.exit(1);
+    }
+  }
 
   if (values["project-report"] || positionals[0] === "project-report") {
     const { buildProjectReport, formatProjectReportText } = await import("../reporting/project-report.js");
