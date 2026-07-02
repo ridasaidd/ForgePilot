@@ -1,0 +1,16 @@
+{
+  "packet_id": "FP-032",
+  "result": "FP_032_NAMESPACE_COMPATIBILITY_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 20,
+  "run_id": "FP-032-REMOTE-RUNNER-NAMESPACE-COMPATIBILITY",
+  "generic_admission_event_id": 20,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "REMOTE_RUNNER_ACCEPTS_FP_MCP_REJECTS_FP_NAMESPACE",
+  "artifact_paths": [
+    "packets/FP-032.md",
+    "runs/FP-032/namespace-compatibility-report.md",
+    "runs/FP-032/namespace-compatibility-report.json"
+  ]
+}

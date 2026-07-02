@@ -1,0 +1,28 @@
+{
+  "packet_id": "FP-032",
+  "result": "REMOTE_RUNNER_ACCEPTS_FP_MCP_REJECTS_FP_NAMESPACE",
+  "fp031": {
+    "packetId": "FP-031",
+    "requestId": "REQ-20260702T141753581Z-650bc292",
+    "localValidationValid": true,
+    "localRemoteRunnerEligible": true,
+    "remoteEndpointValid": false,
+    "remoteEndpointAccepted": false,
+    "remoteEndpointReasons": ["INVALID_PACKET_ID", "RUNNER_REJECTED_REQUEST"]
+  },
+  "fpMcp036": {
+    "packetId": "FP-MCP-036",
+    "requestId": "REQ-20260622T144553300Z-fbbe8d82",
+    "remoteEndpointValid": true,
+    "remoteEndpointAccepted": true,
+    "remoteEndpointReasons": []
+  },
+  "classification": "REMOTE_RUNNER_NAMESPACE_POLICY_DIVERGES_FROM_LOCAL_FORGEPILOT_POLICY",
+  "boundary": {
+    "workerStarted": false,
+    "opencodeStarted": false,
+    "remoteStartEndpointContacted": false,
+    "bridgeSourceChanged": false,
+    "runnerSourceChanged": false
+  }
+}
