@@ -1,0 +1,33 @@
+FP-OPS-005 verification
+
+V1 release record exists:
+PASS
+- docs/releases/forgepilot-v1.md
+
+V1 observation plan exists:
+PASS
+- docs/v1-observation-plan.md
+
+V1 observation log exists:
+PASS
+- runs/V1-OBSERVATION/log.md
+
+V1 completion evidence is referenced:
+PASS
+- completion commit: 54b08f8
+- final report: runs/FP-META-025/final-v1-project-report.json
+- status: COMPLETE
+- complete: 27
+- deferred: 4
+- incomplete: 0
+
+V1.x vs V2 decision rules:
+PASS
+- V1.x triggers documented
+- V2 triggers documented
+- non-triggers documented
+- V2 must be evidence-triggered, not ambition-triggered
+
+Documentation-only scope:
+PASS
+- no implementation code files changed

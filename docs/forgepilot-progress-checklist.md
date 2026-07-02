@@ -129,6 +129,7 @@ Recent closed telemetry/query chain:
 | Packet status index | `COMPLETE` | `FP-OPS-004` | Packet navigation/archive index exists at `docs/packet-status-index.md`. | Index does not rename, delete, move, or invalidate packets. |
 | Packet lifecycle evidence index | `COMPLETE` | `FP-META-024` | Lifecycle states and required evidence are documented in `docs/packet-lifecycle-evidence-index.md`. | Index does not create execution evidence. |
 | V1 evidence capability completion index | `COMPLETE` | `FP-META-025` | Final V1 evidence capabilities are evaluated in `docs/v1-evidence-capability-completion-index.md`. | Completion is V1-scoped and does not include deferred routing/scoring/dashboard work. |
+| V1 release and observation plan | `COMPLETE` | `FP-OPS-005` | V1 release record and observation protocol are documented in `docs/releases/forgepilot-v1.md` and `docs/v1-observation-plan.md`. | V2 must be evidence-triggered, not ambition-triggered. |
 | Evidence boundary doctrine | `COMPLETE` | `FP-META-018` | Evidence boundaries are documented in `docs/evidence-boundary-doctrine.md`. | Doctrine is not implementation or admission by itself. |
 | Safety boundary evidence index | `COMPLETE` | `FP-META-023` | Safety boundaries are mapped to governing docs, evidence, and gates in `docs/safety-boundary-evidence-index.md`. | Index is not policy engine or evidence by itself. |
 | Reporting evidence rules | `COMPLETE` | `FP-META-020` | Reporting claim boundaries are documented in `docs/reporting-evidence-rules.md`. | Reporting is an evidence index, not evidence itself. |

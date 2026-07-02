@@ -1,0 +1,5 @@
+ M docs/forgepilot-progress-checklist.md
+?? docs/releases/
+?? docs/v1-observation-plan.md
+?? runs/FP-OPS-005/
+?? runs/V1-OBSERVATION/
