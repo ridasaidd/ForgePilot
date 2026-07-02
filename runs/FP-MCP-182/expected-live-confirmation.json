@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-182",
+  "purpose": "FP-MCP-180 live runtime confirmation after service refresh using fresh tuple",
+  "expired_tuple_not_reused": {
+    "packetId": "FP-MCP-181",
+    "approvalId": "APPROVAL-20260702T203443589Z-1459f91e",
+    "validationReason": "APPROVAL_EXPIRED"
+  },
+  "expected_values": {
+    "runnerCapabilityState": "PASSED",
+    "UNEXPECTED_SUPPORTED_OPERATION": "ABSENT",
+    "startRunOperationAdvertised": true,
+    "directExecutionOperationAdvertised": false,
+    "unexpectedSupportedOperation": false,
+    "eligibleForFutureGuardedStart": false
+  }
+}
