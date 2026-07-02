@@ -113,7 +113,7 @@ Recent closed telemetry/query chain:
 | Audit evidence | `PARTIAL` | earlier benchmark/evaluation packets | Audit workflow exists in earlier ForgePilot work, but current FP-MCP chain does not yet expose a consolidated audit query/report view. | Audit is not comparison or admission by itself. |
 | Admission state | `PARTIAL` | FP-009, FP-010, FP-MCP-156/157 | Admission-state concepts and persistence exist; worker telemetry remains `NOT_EVALUATED`. V1 still needs a consolidated admission/reporting path. | `NOT_EVALUATED` must not be treated as admitted evidence. |
 | Comparison result | `PARTIAL` | earlier benchmark packets | Comparison artifacts exist in earlier evaluation workflows. V1 still needs a supported way to reconstruct comparison state from committed evidence/read-only queries. | Comparison must use admitted evidence only where evidence claims are made. |
-| Reporting / summary view | `PARTIAL` | `FP-013`, `FP-014`, `FP-015` | Single-packet, project summary, and reconstruction reports exist. V1-wide admission/comparison integration remains incomplete. | Report is an evidence index, not evidence itself. |
+| Reporting / summary view | `PARTIAL` | `FP-013`, `FP-014`, `FP-015`, `FP-016` | Single-packet, project summary, reconstruction, and capability-detail reports exist. V1-wide admission/comparison integration remains incomplete. | Report is an evidence index, not evidence itself. |
 | Progress checklist | `COMPLETE` | `FP-MCP-158` | This document creates the first repo-tracked V1 progress checklist. | Checklist is an index, not evidence itself. |
 | Completion criteria | `COMPLETE` | `FP-MCP-158` | V1 completion definition is recorded in this document. | Completion criteria do not imply completion. |
 | Safety boundary documentation | `PARTIAL` | FP-MCP packets, boundary docs | Safety boundaries are repeatedly documented in packets and evidence. V1 still needs consolidated boundary reporting or index. | Safety statements must map back to enforced gates or evidence. |
@@ -154,7 +154,7 @@ Do not pre-assign exact packet numbers for future work unless the packet already
 |---|---|---|---|
 | Reporting evidence rules | `COMPLETE` | `FP-META-*` | Defines semantics before implementation; completed by `FP-META-020`. |
 | Project summary reporting rules | `COMPLETE` | `FP-META-*` | Defines project-wide report semantics; completed by `FP-META-021`. |
-| Reporting / summary implementation | `PARTIAL` | `FP-*` | Core ForgePilot behavior; single-packet report implemented by `FP-013`, project summary report implemented by `FP-014`. |
+| Reporting / summary implementation | `PARTIAL` | `FP-*` | Core ForgePilot behavior; reports implemented by `FP-013`, `FP-014`, `FP-015`; capability detail integration added by `FP-016`. |
 | Reporting via ChatGPT MCP | `NOT_STARTED` | `FP-MCP-*` | MCP bridge/tool exposure. |
 | Checklist maintenance | `PARTIAL` | `FP-OPS-*` | Operator progress tracking; packet status index added by `FP-OPS-004`. |
 | Session bootstrap updates | `COMPLETE` | `FP-OPS-*` | Operator runbook. |

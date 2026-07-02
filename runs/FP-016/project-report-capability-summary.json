@@ -1,0 +1,74 @@
+{
+  "status": "NOT_COMPLETE",
+  "reason": "7 non-deferred checklist capabilities are not COMPLETE.",
+  "incomplete": [
+    {
+      "capability": "Packet lifecycle",
+      "status": "PARTIAL",
+      "evidence": "earlier packets, FP-MCP series",
+      "boundary": "Packet existence is not execution evidence."
+    },
+    {
+      "capability": "Verification evidence",
+      "status": "PARTIAL",
+      "evidence": "FP-MCP evidence chain, earlier FP packets",
+      "boundary": "Passing verification is not admission."
+    },
+    {
+      "capability": "Audit evidence",
+      "status": "PARTIAL",
+      "evidence": "earlier benchmark/evaluation packets",
+      "boundary": "Audit is not comparison or admission by itself."
+    },
+    {
+      "capability": "Admission state",
+      "status": "PARTIAL",
+      "evidence": "FP-009, FP-010, FP-MCP-156/157",
+      "boundary": "NOT_EVALUATED must not be treated as admitted evidence."
+    },
+    {
+      "capability": "Comparison result",
+      "status": "PARTIAL",
+      "evidence": "earlier benchmark packets",
+      "boundary": "Comparison must use admitted evidence only where evidence claims are made."
+    },
+    {
+      "capability": "Reporting / summary view",
+      "status": "PARTIAL",
+      "evidence": "FP-013, FP-014, FP-015",
+      "boundary": "Report is an evidence index, not evidence itself."
+    },
+    {
+      "capability": "Safety boundary documentation",
+      "status": "PARTIAL",
+      "evidence": "FP-MCP packets, boundary docs",
+      "boundary": "Safety statements must map back to enforced gates or evidence."
+    }
+  ],
+  "deferred": [
+    {
+      "capability": "SQLite checklist persistence",
+      "status": "DEFERRED",
+      "evidence": "FP-MCP-158",
+      "boundary": "Do not over-engineer checklist state before manual use proves shape."
+    },
+    {
+      "capability": "Routing",
+      "status": "DEFERRED",
+      "evidence": "none for V1",
+      "boundary": "No model routing or optimization may be inferred."
+    },
+    {
+      "capability": "Model scoring/ranking",
+      "status": "DEFERRED",
+      "evidence": "none for V1",
+      "boundary": "Query results are not model-quality evidence."
+    },
+    {
+      "capability": "Dashboard UI",
+      "status": "DEFERRED",
+      "evidence": "none for V1",
+      "boundary": "Reporting can be CLI/docs before dashboard UI."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+FP-016 verification
+
+Typecheck:
+PASS
+- see runs/FP-016/typecheck.txt
+
+Tests:
+PASS
+- see runs/FP-016/test.txt
+
+Project report JSON smoke:
+PASS
+- pnpm fp -- project-report --json
+- output recorded at runs/FP-016/project-report.json
+- output includes incomplete_capabilities and deferred_capabilities
+
+Project report text smoke:
+PASS
+- pnpm fp -- project-report
+- output recorded at runs/FP-016/project-report.txt
+- text output lists Incomplete Capabilities and Deferred Capabilities
+
+Capability detail preservation:
+PASS
+- capability evidence references are preserved
+- capability boundary text is preserved
+
+Scope boundary:
+PASS
+- no SQLite schema created
+- no MCP tools added
+- no bridge code changed
+- no routing/scoring/model ranking/admission behavior implemented
+- no historical packets renamed
