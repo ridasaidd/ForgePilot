@@ -127,6 +127,7 @@ Recent closed telemetry/query chain:
 | Packet namespace definition of done | `COMPLETE` | `FP-META-019` | Namespace-specific minimum completion standards are documented in `docs/packet-namespace-definition-of-done.md`. | Namespace implies verification burden, not feature value. |
 | Manual action ledger | `COMPLETE` | `FP-OPS-003` | Manual external action recording pattern is documented in `docs/manual-action-ledger.md`. | Manual action still requires observable proof. |
 | Evidence boundary doctrine | `COMPLETE` | `FP-META-018` | Evidence boundaries are documented in `docs/evidence-boundary-doctrine.md`. | Doctrine is not implementation or admission by itself. |
+| Reporting evidence rules | `COMPLETE` | `FP-META-020` | Reporting claim boundaries are documented in `docs/reporting-evidence-rules.md`. | Reporting is an evidence index, not evidence itself. |
 | Session bootstrap runbook | `COMPLETE` | `FP-OPS-002` | New-session bootstrap procedure is documented in `docs/session-bootstrap.md`. | Reduces dependence on private chat memory; not automation. |
 
 ## Recent Packet Evidence Index
@@ -148,7 +149,7 @@ Do not pre-assign exact packet numbers for future work unless the packet already
 
 | Future capability / work item | Current status | Recommended namespace | Reason |
 |---|---|---|---|
-| Reporting evidence rules | `NOT_STARTED` | `FP-META-*` | Defines semantics before implementation. |
+| Reporting evidence rules | `COMPLETE` | `FP-META-*` | Defines semantics before implementation; completed by `FP-META-020`. |
 | Reporting / summary implementation | `NOT_STARTED` | `FP-*` | Core ForgePilot behavior. |
 | Reporting via ChatGPT MCP | `NOT_STARTED` | `FP-MCP-*` | MCP bridge/tool exposure. |
 | Checklist maintenance | `PARTIAL` | `FP-OPS-*` | Operator progress tracking. |
@@ -164,6 +165,8 @@ Do not pre-assign exact packet numbers for future work unless the packet already
 ### Reporting / Summary View
 
 Status: `NOT_STARTED`
+
+Reporting implementation must obey `docs/reporting-evidence-rules.md`.
 
 Required before V1:
 

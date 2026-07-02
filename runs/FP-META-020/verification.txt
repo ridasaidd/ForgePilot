@@ -1,0 +1,27 @@
+FP-META-020 verification
+
+Reporting evidence rules document exists:
+PASS
+- docs/reporting-evidence-rules.md
+
+Required sections/content:
+PASS
+- reportable facts
+- required labels
+- non-admitted observation rule
+- admitted evidence constraint
+- verification constraint
+- packet completion constraint
+- comparison constraint
+- manual action reporting constraint
+- source citation expectations
+- prohibited claims
+
+Progress checklist reference:
+PASS
+- docs/forgepilot-progress-checklist.md references docs/reporting-evidence-rules.md
+- Reporting evidence rules marked COMPLETE via FP-META-020
+
+Documentation-only scope:
+PASS
+- no implementation code files changed
