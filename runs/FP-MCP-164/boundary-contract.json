@@ -1,0 +1,80 @@
+{
+  "packet_id": "FP-MCP-164",
+  "result": "SCOPED_EXECUTION_ENABLEMENT_BOUNDARY_CONTRACT_DEFINED",
+  "contract_type": "scoped_execution_enablement_boundary",
+  "clearance_tuple": [
+    "packetId",
+    "requestId",
+    "approvalId",
+    "modelId",
+    "runMode",
+    "repoCommit",
+    "branch",
+    "attemptId"
+  ],
+  "mandatory_consumption": {
+    "append_only": true,
+    "created_before_runner_start_contact": true,
+    "same_approval_request_replay_allowed": false,
+    "consumed_remains_consumed_if_start_fails": true
+  },
+  "expiry_enforcement": {
+    "checked_at_approval_recording": true,
+    "checked_again_at_clearance_time": true,
+    "expired_approval_blocks_consumption": true,
+    "expired_approval_blocks_runner_contact": true
+  },
+  "clearance_sequence": [
+    "validate_request_artifact",
+    "validate_structured_approval",
+    "validate_pre_start_evidence",
+    "validate_state_snapshots",
+    "validate_scoped_execution_policy",
+    "create_append_only_approval_consumption_evidence",
+    "verify_consumption_binds_exact_tuple",
+    "contact_runner_start_endpoint_once",
+    "record_start_attempt_outcome"
+  ],
+  "failure_states": {
+    "runner_start_fails_before_worker_id": {
+      "startAttemptState": "START_FAILED_NO_WORKER_ID",
+      "approvalConsumed": true,
+      "runnerStartEndpointContacted": true,
+      "retryAllowedWithSameApproval": false
+    },
+    "worker_started": {
+      "startAttemptState": "WORKER_STARTED_OBSERVED",
+      "workerIdRequired": true,
+      "abortAvailableImmediately": true
+    },
+    "worker_hangs": {
+      "abortTool": "forgepilot_abort_opencode_worker",
+      "abortEligibility": "immediately_after_worker_id_recorded",
+      "approvalConsumed": true,
+      "retryAllowedWithSameApproval": false
+    }
+  },
+  "first_real_execution_policy": {
+    "serves_as_fp_027_canary": true,
+    "separate_smaller_canary_before_first_execution": false,
+    "single_worker": true,
+    "runMode": "DESIGN_ONLY",
+    "bounded_prompt": true,
+    "parallel_workers": false,
+    "autonomous_retry": false,
+    "model_routing": false,
+    "execution_fanout": false
+  },
+  "forbidden_actions_in_this_packet": {
+    "enable_global_execution": false,
+    "consume_approval": false,
+    "contact_runner_start_endpoint": false,
+    "start_opencode": false,
+    "mutate_request_artifact": false,
+    "create_runner_run_id": false
+  },
+  "implementation_boundary": {
+    "implementation_must_be_executor_driven_after_admission": true,
+    "chatgpt_direct_source_implementation_allowed_in_this_packet": false
+  }
+}
