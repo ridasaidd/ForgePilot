@@ -1,0 +1,24 @@
+{
+  "packet_id": "FP-MCP-181",
+  "result": "FP_MCP_181_RUNTIME_STALE_HALT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 52,
+  "run_id": "FP-MCP-181-FPMCP180-LIVE-CONFIRMATION-STALLED",
+  "generic_admission_event_id": 52,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_MCP_180_LIVE_CONFIRMATION_NOT_PROVEN_RUNTIME_STILL_STALE_APPROVAL_PAYLOAD_BLOCKED",
+  "total_evidence_records": 52,
+  "total_generic_evidence_record_admission_events": 52,
+  "artifact_paths": [
+    "packets/FP-MCP-181.md",
+    "runs/FP-MCP-181/expected-live-confirmation.json",
+    "runs/FP-MCP-181/result-summary.md",
+    "runs/FP-MCP-181/live-confirmation-blocked.json",
+    "runs/FP-MCP-181/opencode-requests/REQ-20260702T203356480Z-5f5eefc8.json",
+    "runs/FP-MCP-181/approvals/APPROVAL-20260702T203443589Z-1459f91e.json",
+    "runs/FP-MCP-181/pre-start-evidence/REQ-20260702T203356480Z-5f5eefc8.json",
+    "runs/FP-MCP-181/start-state-snapshots/REQ-20260702T203356480Z-5f5eefc8/ATTEMPT-20260702T203531148Z-1c5a8e71/pre-start-state.json",
+    "runs/FP-MCP-181/start-state-snapshots/REQ-20260702T203356480Z-5f5eefc8/ATTEMPT-20260702T203531148Z-1c5a8e71/post-start-state.json"
+  ]
+}
