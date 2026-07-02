@@ -1,0 +1,18 @@
+{
+  "packet_id": "FP-MCP-162",
+  "result": "FP_MCP_162_STRUCTURED_APPROVAL_TOOL_IMPLEMENTATION_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 24,
+  "run_id": "FP-MCP-162-STRUCTURED-APPROVAL-TOOL-IMPLEMENTATION",
+  "generic_admission_event_id": 24,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "STRUCTURED_SCOPED_APPROVAL_TOOL_IMPLEMENTED_SOURCE_VERIFIED_ACTION_REFRESH_PENDING",
+  "artifact_paths": [
+    "packets/FP-MCP-162.md",
+    "runs/FP-MCP-162/result-summary.md",
+    "runs/FP-MCP-162/implementation-result.md",
+    "runs/FP-MCP-162/implementation-result.json",
+    "runs/FP-MCP-162/verification.txt"
+  ]
+}

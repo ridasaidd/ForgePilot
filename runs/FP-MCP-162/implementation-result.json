@@ -1,0 +1,19 @@
+{
+  "packet_id": "FP-MCP-162",
+  "result": "STRUCTURED_SCOPED_APPROVAL_TOOL_IMPLEMENTED_SOURCE_VERIFIED_ACTION_REFRESH_PENDING",
+  "bridge_commit": "25c47f1",
+  "tool_name": "forgepilot_record_structured_human_approval",
+  "verification": {
+    "pnpm_build": "PASS",
+    "pnpm_test": "PASS",
+    "typescript": "PASS"
+  },
+  "runtime_availability": "ACTION_REFRESH_PENDING",
+  "safety_boundary": {
+    "execution_enabled": false,
+    "approval_consumed": false,
+    "runner_start_endpoint_contacted": false,
+    "opencode_started": false,
+    "request_artifact_mutated": false
+  }
+}

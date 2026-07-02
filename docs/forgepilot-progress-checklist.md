@@ -314,3 +314,5 @@ These may be considered after V1 evidence/reporting surfaces stabilize:
 | Structured human approval UX dry-run | `SAFE_BUT_NOT_MIGRATION_READY` | `FP-MCP-160` | Tested popup-style structured approval using existing non-authorizing dry-run fixture. Fixture remained unusable for execution but hardcoded scope to FP-MCP-036, so a new structured approval tool is required. | No execution enabled; no approval usable for execution; no OpenCode started. |
 
 | Structured scoped approval tool contract | `CONTRACT_DEFINED` | `FP-MCP-161` | Defines create-only structured approval tool contract separating approval recorder packet from execution target packet and forbidding execution, consumption, runner start, or disable override. | No implementation yet; next packet should implement and test the tool. |
+
+| Structured scoped approval tool implementation | `SOURCE_VERIFIED_ACTION_REFRESH_PENDING` | `FP-MCP-162` | Implemented forgepilot_record_structured_human_approval in bridge commit 25c47f1 with pnpm build/test passing. | Operator refresh required before live availability check. |

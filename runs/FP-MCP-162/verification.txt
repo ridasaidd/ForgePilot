@@ -1,0 +1,28 @@
+FP-MCP-162 verification
+
+Bridge repository:
+/home/ridasaidd/forgepilot-chatgpt-mcp
+
+Bridge commit:
+25c47f1 Add structured human approval tool
+
+Verification commands:
+pnpm build
+pnpm test
+
+Results:
+pnpm build PASS
+tsc PASS
+pnpm test PASS
+
+Notes:
+pnpm test delegates to pnpm build in package.json.
+
+Runtime availability:
+ACTION_REFRESH_PENDING
+
+Safety observations:
+No execution enabled.
+No approval consumed.
+No runner start endpoint contacted.
+No OpenCode process started.
