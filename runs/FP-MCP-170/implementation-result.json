@@ -1,0 +1,25 @@
+{
+  "packet_id": "FP-MCP-170",
+  "result": "REAL_CONSUMING_ACTION_NO_CONTACT_SOURCE_VERIFIED_RUNNER_UNREACHABLE",
+  "bridge_commit": "2273e73",
+  "implemented_tool": "forgepilot_evaluate_consuming_action_no_contact",
+  "required_contact_confirmation": "CONTACT_RUNNER_START_ENDPOINT_ONCE",
+  "source_verified_behavior": {
+    "re_runs_scoped_clearance_validation": true,
+    "requires_exact_contact_confirmation": true,
+    "records_only_non_authorizing_readiness_evidence": true,
+    "real_consumption_recorded": false,
+    "runner_contact_reachable": false,
+    "runner_start_endpoint_contacted": false,
+    "opencode_started": false,
+    "execution_permitted": false,
+    "request_artifact_mutated": false,
+    "next_real_action_requires_fp027_canary": true
+  },
+  "verification": {
+    "pnpm_test": "PASS",
+    "pnpm_build": "PASS",
+    "typescript": "PASS"
+  },
+  "runtime_status": "ACTION_REFRESH_PENDING"
+}

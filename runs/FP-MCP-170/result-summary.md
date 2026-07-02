@@ -1,11 +1,15 @@
 # FP-MCP-170 Result Summary
 
-## Initial status
+## Result
 
 ```text
-PACKET_DEFINED_IMPLEMENTATION_PENDING
+REAL_CONSUMING_ACTION_NO_CONTACT_SOURCE_VERIFIED_RUNNER_UNREACHABLE
 ```
 
-FP-MCP-170 authorizes a narrow direct-source exception for no-contact consuming-action gate logic only.
+## Bridge commit
 
-No source implementation has been recorded yet.
+```text
+2273e73 Add no-contact consuming action evaluator
+```
+
+Source implementation is complete and build-verified. Runtime confirmation is pending refresh.
