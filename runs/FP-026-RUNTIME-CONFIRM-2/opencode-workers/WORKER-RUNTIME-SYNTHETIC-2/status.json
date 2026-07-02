@@ -1,0 +1,38 @@
+{
+  "workerId": "WORKER-RUNTIME-SYNTHETIC-2",
+  "packetId": "FP-026-RUNTIME-CONFIRM-2",
+  "requestId": null,
+  "modelId": "deepseek-v4-pro-high",
+  "targetWorkspaceId": "forgepilot-chatgpt-mcp",
+  "workspacePath": "/home/ridasaidd/forgepilot-chatgpt-mcp",
+  "promptFile": "/home/ridasaidd/forgepilot/runs/FP-024/executor-prompts/first-shadow-extraction.md",
+  "promptFileSha256": "synthetic-runtime-confirmation-fixture-2",
+  "pid": 750371,
+  "status": "ABORTED",
+  "startedAt": "2026-07-02T13:25:20.006Z",
+  "updatedAt": "2026-07-02T13:25:43.598Z",
+  "completedAt": "2026-07-02T13:25:43.598Z",
+  "abortRequestedAt": "2026-07-02T13:25:43.598Z",
+  "abortedAt": "2026-07-02T13:25:43.598Z",
+  "abortSignal": "SIGTERM",
+  "timeoutSeconds": 60,
+  "stdoutPath": "/home/ridasaidd/forgepilot/runs/FP-026-RUNTIME-CONFIRM-2/opencode-workers/WORKER-RUNTIME-SYNTHETIC-2/stdout.log",
+  "stderrPath": "/home/ridasaidd/forgepilot/runs/FP-026-RUNTIME-CONFIRM-2/opencode-workers/WORKER-RUNTIME-SYNTHETIC-2/stderr.log",
+  "statusPath": "/home/ridasaidd/forgepilot/runs/FP-026-RUNTIME-CONFIRM-2/opencode-workers/WORKER-RUNTIME-SYNTHETIC-2/status.json",
+  "startRequestPath": "/home/ridasaidd/forgepilot/runs/FP-026-RUNTIME-CONFIRM-2/opencode-workers/WORKER-RUNTIME-SYNTHETIC-2/start-request.json",
+  "workerDir": "/home/ridasaidd/forgepilot/runs/FP-026-RUNTIME-CONFIRM-2/opencode-workers/WORKER-RUNTIME-SYNTHETIC-2",
+  "approvalSource": "CHATGPT_MCP_TOOL_APPROVAL",
+  "approvedToolName": "forgepilot_start_opencode_worker",
+  "command": {
+    "executable": "/home/ridasaidd/.nvm/versions/node/v24.4.1/bin/opencode",
+    "args": [
+      "synthetic-runtime-confirmation-2"
+    ]
+  },
+  "reasons": [
+    "SYNTHETIC_RUNTIME_CONFIRMATION_FIXTURE_2",
+    "ABORT_REQUESTED",
+    "ABORT_SIGNAL_SENT_SIGTERM_PROCESS_GROUP",
+    "PARTIAL_WORKSPACE_ROLLBACK_NOT_PERFORMED"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "packetId": "FP-026-RUNTIME-CONFIRM-2",
+  "workerId": "WORKER-RUNTIME-SYNTHETIC-2",
+  "synthetic": true,
+  "purpose": "FP-026 live runtime confirmation fixture; no OpenCode worker started"
+}

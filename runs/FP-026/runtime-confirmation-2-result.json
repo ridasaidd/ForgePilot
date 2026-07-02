@@ -1,0 +1,27 @@
+{
+  "packet_id": "FP-026",
+  "runtime_confirm_packet_id": "FP-026-RUNTIME-CONFIRM-2",
+  "worker_id": "WORKER-RUNTIME-SYNTHETIC-2",
+  "pid": 750371,
+  "process_active_before_live_call": true,
+  "process_active_after_live_call": false,
+  "ps_after_live_call": "",
+  "status": "ABORTED",
+  "completedAtSet": true,
+  "abortRequestedAtSet": true,
+  "abortedAtSet": true,
+  "abortSignal": "SIGTERM",
+  "reasons": [
+    "SYNTHETIC_RUNTIME_CONFIRMATION_FIXTURE_2",
+    "ABORT_REQUESTED",
+    "ABORT_SIGNAL_SENT_SIGTERM_PROCESS_GROUP",
+    "PARTIAL_WORKSPACE_ROLLBACK_NOT_PERFORMED"
+  ],
+  "statusArtifactExists": true,
+  "startRequestArtifactExists": true,
+  "stdoutArtifactExists": true,
+  "stderrArtifactExists": true,
+  "partialWorkspaceRollbackPerformed": false,
+  "scope_boundary": "Live MCP runtime confirmation used a synthetic recorded running process; no OpenCode worker was started.",
+  "result": "FP_026_RUNTIME_ABORT_CONFIRMED_LIVE_MCP_SYNTHETIC_WORKER"
+}

@@ -1,0 +1,11 @@
+{
+  "packet_id": "FP-026-RUNTIME-CONFIRM-2",
+  "worker_id": "WORKER-RUNTIME-SYNTHETIC-2",
+  "pid": 750371,
+  "process_active_before_live_call": true,
+  "status_path": "/home/ridasaidd/forgepilot/runs/FP-026-RUNTIME-CONFIRM-2/opencode-workers/WORKER-RUNTIME-SYNTHETIC-2/status.json",
+  "start_request_path": "/home/ridasaidd/forgepilot/runs/FP-026-RUNTIME-CONFIRM-2/opencode-workers/WORKER-RUNTIME-SYNTHETIC-2/start-request.json",
+  "stdout_path": "/home/ridasaidd/forgepilot/runs/FP-026-RUNTIME-CONFIRM-2/opencode-workers/WORKER-RUNTIME-SYNTHETIC-2/stdout.log",
+  "stderr_path": "/home/ridasaidd/forgepilot/runs/FP-026-RUNTIME-CONFIRM-2/opencode-workers/WORKER-RUNTIME-SYNTHETIC-2/stderr.log",
+  "scope_boundary": "Synthetic recorded running process; no OpenCode worker started."
+}

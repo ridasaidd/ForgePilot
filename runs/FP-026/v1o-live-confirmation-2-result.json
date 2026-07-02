@@ -1,0 +1,18 @@
+{
+  "packet_id": "FP-026",
+  "result": "FP_026_LIVE_CONFIRMATION_2_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 13,
+  "run_id": "FP-026-LIVE-CONFIRMATION-2",
+  "generic_admission_event_id": 13,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_026_LIVE_CONFIRMATION_2_PASSED_SYNTHETIC_RECORDED_WORKER",
+  "artifact_paths": [
+    "runs/FP-026/live-confirmation-2-summary.md",
+    "runs/FP-026/runtime-confirmation-fixture-2-before.json",
+    "runs/FP-026/runtime-confirmation-2-result.json",
+    "runs/FP-026-RUNTIME-CONFIRM-2/opencode-workers/WORKER-RUNTIME-SYNTHETIC-2/status.json",
+    "runs/FP-026-RUNTIME-CONFIRM-2/opencode-workers/WORKER-RUNTIME-SYNTHETIC-2/start-request.json"
+  ]
+}
