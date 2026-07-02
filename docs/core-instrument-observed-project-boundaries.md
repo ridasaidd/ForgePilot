@@ -151,6 +151,13 @@ instrument-projects/forgepilot-chatgpt-mcp/
 
 A future root ForgePilot packet may define general shadow-refactor rules, but the concrete `server.ts` refactor packets should be project-specific.
 
+Shadow refactors must follow:
+
+```text
+docs/shadow-refactor-rules.md
+```
+
+
 ## Model Roster Boundary
 
 Global model roster and profiling rules belong in ForgePilot core because they define observatory policy.

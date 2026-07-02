@@ -1,0 +1,5 @@
+ M docs/core-instrument-observed-project-boundaries.md
+ M docs/forgepilot-progress-checklist.md
+ M instrument-projects/forgepilot-chatgpt-mcp/README.md
+?? docs/shadow-refactor-rules.md
+?? runs/FP-META-027/

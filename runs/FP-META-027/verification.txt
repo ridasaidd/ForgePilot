@@ -1,0 +1,32 @@
+FP-META-027 verification
+
+Shadow refactor rules document exists:
+PASS
+- docs/shadow-refactor-rules.md
+
+Required rules covered:
+PASS
+- live entrypoint preservation
+- candidate entrypoint naming
+- rollback preservation
+- planning-only phase
+- implementation phase boundaries
+- verification gates before switch
+- direct operational proof before old entrypoint removal
+- model participation constraints
+- forbidden changes
+- evidence requirements
+
+Instrument project README reference:
+PASS
+- instrument-projects/forgepilot-chatgpt-mcp/README.md references docs/shadow-refactor-rules.md
+
+Progress checklist reference:
+PASS
+- docs/forgepilot-progress-checklist.md references FP-META-027
+
+Scope:
+PASS
+- no MCP bridge files changed
+- no implementation code files changed
+- no service entrypoint changed
