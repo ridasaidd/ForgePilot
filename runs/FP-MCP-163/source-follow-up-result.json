@@ -1,0 +1,23 @@
+{
+  "result": "LEGACY_REASON_STRINGS_NOT_INERT_SOURCE_FIXED_REFRESH_PENDING",
+  "classification": "NOT_A_BYPASS_IN_CURRENT_BOOLEAN_GATE_PATH_BUT_NOT_INERT_ENOUGH_TO_IGNORE",
+  "source_findings": {
+    "guarded_report_gate_booleans": "preStartEvidenceComplete && preStartEvidenceValid; stateSnapshotComplete && stateSnapshotValid",
+    "start_path_blocks_on_booleans": "!preStartEvidenceValid || !stateSnapshotValid || !humanApprovalEvidenceGatePassed",
+    "approval_id_propagation_gap_found": true
+  },
+  "bridge_fix_commit": "1c42e6c",
+  "verification": {
+    "pnpm_test": "PASS",
+    "pnpm_build": "PASS",
+    "typescript": "PASS"
+  },
+  "runtime_status": "ACTION_REFRESH_PENDING",
+  "safety_boundary": {
+    "execution_enabled": false,
+    "opencode_started": false,
+    "runner_start_endpoint_contacted": false,
+    "approval_consumed": false,
+    "request_artifact_mutated": false
+  }
+}

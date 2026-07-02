@@ -1,0 +1,45 @@
+{
+  "result": "HASH_SANITY_CHECK_PASSED_ALL_REPORTED_ARTIFACT_HASHES_VALID",
+  "checks": [
+    {
+      "name": "approval artifact",
+      "path": "runs/FP-MCP-163/approvals/APPROVAL-20260702T165836932Z-e4191e1a.json",
+      "expected": "4f4b74a075d97589f576e9dbf62508b11c97dddf928114131bdf860067c36a0d",
+      "expected_len": 64,
+      "expected_hex64": true,
+      "matches_actual_sha256": true
+    },
+    {
+      "name": "request artifact",
+      "path": "runs/FP-MCP-159/opencode-requests/REQ-20260702T143631238Z-4e3b750e.json",
+      "expected": "bf251b29b2294963e54e6c075656d32cc0142c92a10a49cb80a4d7c2391ed3e9",
+      "expected_len": 64,
+      "expected_hex64": true,
+      "matches_actual_sha256": true
+    },
+    {
+      "name": "pre-start evidence",
+      "path": "runs/FP-MCP-159/pre-start-evidence/REQ-20260702T143631238Z-4e3b750e.json",
+      "expected": "7e85dc2b30529019391c56634d70c9614ec2eb8f68e3887782fcca2502b68297",
+      "expected_len": 64,
+      "expected_hex64": true,
+      "matches_actual_sha256": true
+    },
+    {
+      "name": "pre-start snapshot",
+      "path": "runs/FP-MCP-159/start-state-snapshots/REQ-20260702T143631238Z-4e3b750e/ATTEMPT-20260702T165943947Z-5af33331/pre-start-state.json",
+      "expected": "2ff76844ad617e5174970627aeca720f1673ad35be71abfa407563a3134267b9",
+      "expected_len": 64,
+      "expected_hex64": true,
+      "matches_actual_sha256": true
+    },
+    {
+      "name": "post-start snapshot",
+      "path": "runs/FP-MCP-159/start-state-snapshots/REQ-20260702T143631238Z-4e3b750e/ATTEMPT-20260702T165943947Z-5af33331/post-start-state.json",
+      "expected": "968fb2c73845496e313db80700b4f02def6b28c3e88f290648339a29539b8457",
+      "expected_len": 64,
+      "expected_hex64": true,
+      "matches_actual_sha256": true
+    }
+  ]
+}
