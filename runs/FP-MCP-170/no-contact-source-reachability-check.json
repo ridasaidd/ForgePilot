@@ -1,0 +1,54 @@
+{
+  "packet_id": "FP-MCP-170",
+  "result": "NO_CONTACT_EVALUATOR_RUNNER_CONTACT_UNREACHABLE_BY_CONSTRUCTION_SOURCE_CONFIRMED",
+  "bridge_commit_under_check": "2273e73",
+  "checked_function": {
+    "name": "evaluateNoContactConsumingAction",
+    "lines": "3129-3254",
+    "contains_runner_start_endpoint_call": false,
+    "contains_fetch_or_http_call": false,
+    "contains_opencode_start_call": false,
+    "only_runner_terms_are_false_status_fields": true,
+    "calls_validateScopedExecutionClearance": true
+  },
+  "checked_helper_chain": [
+    {
+      "name": "validateScopedExecutionClearance",
+      "lines": "2993-3114",
+      "contains_runner_start_endpoint_call": false,
+      "contains_fetch_or_http_call": false,
+      "only_runner_terms_are_false_status_fields": true
+    },
+    {
+      "name": "getGuardedStartPreflightReport",
+      "lines": "8828-9315",
+      "contains_runner_start_endpoint_call": false,
+      "contains_fetch_or_http_call": false,
+      "contains_start_run_capability_string_check": true,
+      "start_run_capability_string_is_not_contact_call": true
+    },
+    {
+      "name": "validateExecutionPreflight",
+      "lines": "2524-2971",
+      "contains_runner_start_endpoint_call": false,
+      "contains_fetch_or_http_call": false
+    },
+    {
+      "name": "validatePreStartEvidence",
+      "lines": "7175-7475",
+      "contains_runner_start_endpoint_call": false,
+      "contains_fetch_or_http_call": false
+    },
+    {
+      "name": "validateStartRequestStateSnapshot",
+      "lines": "7846-8125",
+      "contains_runner_start_endpoint_call": false,
+      "contains_fetch_or_http_call": false
+    }
+  ],
+  "conclusion": {
+    "runnerContactReachable_false_reason": "unreachable_by_construction_in_this_tool_path",
+    "not_merely_gated": true,
+    "canary_will_be_first_runner_contacting_code_path_after_this_checkpoint": true
+  }
+}
