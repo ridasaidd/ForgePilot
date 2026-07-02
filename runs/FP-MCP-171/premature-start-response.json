@@ -1,0 +1,54 @@
+{
+  "packet_id": "FP-MCP-171",
+  "result": "PRE_CANARY_SEQUENCE_VIOLATION_BLOCKED_BEFORE_RUNNER_CONTACT",
+  "premature_invocation": {
+    "tool": "forgepilot_start_remote_runner_request",
+    "packetId": "FP-MCP-159",
+    "requestId": "REQ-20260702T143631238Z-4e3b750e",
+    "approvalId": null,
+    "approval": "START_REMOTE_RUNNER_REQUEST",
+    "targetWorkspaceId": "forgepilot-chatgpt-mcp"
+  },
+  "observed_safety_outcome": {
+    "started": false,
+    "accepted": false,
+    "approvalAccepted": true,
+    "runnerConfigured": true,
+    "runnerContacted": false,
+    "startEndpointContacted": false,
+    "executionStarted": false,
+    "opencodeStarted": false,
+    "executionAllowedNow": false,
+    "runnerRunId": null,
+    "localValidationPassed": true,
+    "remoteValidationPassed": false,
+    "disableSwitchActive": true,
+    "effectiveDisableReason": "EXECUTION_DISABLED_GLOBAL",
+    "effectiveDisableScope": "GLOBAL",
+    "humanApprovalEvidenceGatePassed": false,
+    "humanApprovalEvidenceId": null,
+    "approvalValidationEvaluated": false,
+    "approvalConsumed": false,
+    "consumptionEvidencePresent": false
+  },
+  "reasons": [
+    "START_REQUEST_BLOCKED_BY_DISABLE_SWITCH",
+    "EXECUTION_DISABLED_GLOBAL",
+    "RUNNER_EXECUTION_DISABLED",
+    "OPENCODE_EXECUTION_DISABLED",
+    "DISABLE_SWITCH_ACTIVE",
+    "EXECUTION_NOT_ALLOWED",
+    "EXECUTION_DISABLED",
+    "START_ENDPOINT_NOT_CONTACTED",
+    "OPENCODE_NOT_STARTED",
+    "HUMAN_APPROVAL_EVIDENCE_MISSING",
+    "EXECUTION_PREFLIGHT_HUMAN_APPROVAL_EVIDENCE_GATE_BLOCKED",
+    "HUMAN_APPROVAL_EVIDENCE_NOT_USABLE_FOR_EXECUTION",
+    "START_REQUEST_HUMAN_APPROVAL_EVIDENCE_GATE_BLOCKED"
+  ],
+  "disposition": {
+    "canary_run": false,
+    "retry_attempted": false,
+    "must_restart_canary_sequence": true
+  }
+}
