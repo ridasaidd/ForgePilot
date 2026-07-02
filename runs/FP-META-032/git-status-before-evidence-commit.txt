@@ -1,0 +1,4 @@
+ M docs/forgepilot-progress-checklist.md
+ M docs/model-roster-and-profiling-rules.md
+?? docs/task-class-scoped-model-trust.md
+?? runs/FP-META-032/

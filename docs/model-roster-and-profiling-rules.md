@@ -177,3 +177,30 @@ These rules do not implement routing, scoring, global ranking, model automation,
 This document defines model participation rules.
 
 It does not run models, select a winner, authorize implementation, or change any project source code.
+
+## FP-META-032 Scoping Amendment
+
+FP-META-032 narrows all trust labels in this document.
+
+A trust state such as `OBSERVED_AUDIT_USEFUL`, `OBSERVED_SAFE_SMALL_CHANGE`, or `PROMOTED_FOR_EXECUTION` is not global.
+
+It must be interpreted through:
+
+- model id,
+- provider/source,
+- observed name,
+- provider version or `UNKNOWN`,
+- observed date range,
+- task class,
+- role,
+- project/context,
+- protected risk boundaries,
+- evidence references,
+- assigned_by,
+- assignment_method.
+
+The initial roster entries for `Qwen3.7 Max` and `DeepSeek V4 Pro High` are historical scoped observations, not blanket authority.
+
+If provider version/snapshot is unknown, the trust assignment is version-unpinned and must be re-observed after any known upstream provider model update.
+
+No model trust state authorizes code modification without a scoped packet.

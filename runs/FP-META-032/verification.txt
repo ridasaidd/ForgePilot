@@ -1,0 +1,37 @@
+FP-META-032 verification
+
+Task-class-scoped model trust document exists:
+PASS
+- docs/task-class-scoped-model-trust.md
+
+Source/docs search artifact exists:
+PASS
+- runs/FP-META-032/model-trust-source-search.txt
+
+Required concepts defined:
+PASS
+- task-class-scoped trust
+- model identity and provider/version/date-range fields
+- project/context scope
+- evidence reference requirements
+- assigned_by/corrected_by provenance
+- assignment method
+- promotion/demotion as append-only transitions
+- provider update/re-observation rule
+- initial correction to broad FP-META-029 trust statements
+
+Current implementation status recorded:
+PASS
+- TASK_CLASS_SCOPED_TRUST_RULE_DEFINED_IMPLEMENTATION_NOT_PRESENT
+
+Trust tier recorded:
+PASS
+- TIER_1_STATIC_SOURCE_INSPECTION
+
+Scope:
+PASS
+- no model execution performed
+- no routing/model scoring implemented
+- no trust database implemented
+- no MCP bridge code changed
+- no implementation code changed
