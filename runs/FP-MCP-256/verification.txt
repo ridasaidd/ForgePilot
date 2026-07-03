@@ -1,0 +1,15 @@
+FP-MCP-256 verification
+
+Checkpoint type:
+- HTTP_LIFECYCLE_PLAN_ARTIFACT_RESULT
+
+Claim:
+- FP_MCP_256_HTTP_LIFECYCLE_PLAN_ARTIFACT_RECORDED_WITHOUT_INVOCATION
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
