@@ -1,0 +1,15 @@
+FP-MCP-239 verification
+
+Checkpoint type:
+- TOOLING_HARDENING_RESULT
+
+Claim:
+- FP_MCP_239_HARDCODED_PACKET_ID_LINT_IMPLEMENTED
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
