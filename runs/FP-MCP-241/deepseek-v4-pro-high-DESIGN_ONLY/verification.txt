@@ -1,0 +1,100 @@
+FP-MCP-241 DESIGN_ONLY verification report
+Runner Run ID: RUN-20260703T194719198Z-d1c7f0b5
+Run Mode: DESIGN_ONLY
+Model: deepseek-v4-pro-high
+Target workspace commit: 8ad24cc
+Control repo commit: 8ad24cc
+
+Pre-start verification results:
+
+[PASS] repository status checked before request creation
+  - Request artifact recorded at commit a8455a0
+  - git status was clean at time of request creation
+
+[PASS] packet file exists
+  - packets/FP-MCP-241.md present and readable (51 lines)
+  - Checkpoint type: CANARY_PAUSED_ON_EVIDENCE_GATE
+  - Claim: FP_MCP_241_FRESH_LIFECYCLE_CANARY_PAUSED_ON_PRE_START_EVIDENCE_GATE
+
+[PASS] requested model is allowlisted
+  - deepseek-v4-pro-high is a permitted ForgePilot model
+  - Confirmed in statusSources.opencode and statusSources.remoteRunner
+
+[PASS] requested run mode is DESIGN_ONLY
+  - requestedRunMode: DESIGN_ONLY
+  - DESIGN_ONLY is a non-executing run mode
+  - Confirmed in both allowlist and status sources
+
+[PASS] request artifact is valid JSON
+  - Parsed successfully at runs/FP-MCP-241/opencode-requests/REQ-20260703T192734196Z-16cb6028.json
+  - 112 lines, schema FP-MCP-083
+
+[PASS] request artifact schemaVersion is FP-MCP-083
+
+[PASS] request artifact artifactType is opencode-start-request
+
+[PASS] request artifact requestState is CREATED_NOT_STARTED
+
+[PASS] request artifact records approvalRequired true
+
+[PASS] request artifact records approvalId null
+  - Note: approval was created AFTER request artifact (APPROVAL-20260703T192750877Z-241d57f3)
+  - Second approval created after pause: APPROVAL-20260703T194032232Z-cec55852
+
+[PASS] request artifact records approvalPath null
+
+[PASS] request artifact records consumptionRequired true
+
+[PASS] request artifact records consumptionId null
+
+[PASS] request artifact records executionAllowedNow false
+
+[PASS] request artifact records globalDisableActive true
+
+[PASS] request artifact records runnerExecutionEnabled false
+
+[PASS] request artifact records opencodeExecutionEnabled false
+
+[PASS] request artifact records startEndpointContacted false
+
+[PASS] request artifact records opencodeStarted false
+
+[PASS] request artifact records runnerRunId null
+
+[PASS] legacy FP-MCP-007 request artifacts remain readable
+  - legacyCompatibility.schemaVersion: FP-MCP-007
+  - legacyCompatibility.modelId: deepseek-v4-pro-high
+  - legacyCompatibility.runMode: DESIGN_ONLY
+  - legacyCompatibility.status: REQUEST_RECORDED
+
+Expected artifacts status:
+  [PRESENT] packets/FP-MCP-241.md
+  [ABSENT]  docs/opencode-request-artifact-contract-upgrade.md (never created; DESIGN_ONLY gating)
+  [ABSENT]  runs/FP-MCP-241/implementation-result.json (not yet created; DESIGN_ONLY boundary)
+  [ABSENT]  runs/FP-MCP-241/executor-result.md (not yet created; DESIGN_ONLY boundary)
+  [PRESENT] runs/FP-MCP-241/verification.txt
+
+Post-request chronology:
+  1. Canary preparation recorded (commit 5831847): FP_MCP_241_FRESH_LIFECYCLE_CANARY_PREPARATION_RECORDED
+  2. Request artifact created (commit a8455a0): REQ-20260703T192734196Z-16cb6028
+  3. First approval recorded (commit 41814e6): APPROVAL-20260703T192750877Z-241d57f3
+  4. Canary paused on evidence gate (commit 3444ed8): pre-start evidence incomplete
+  5. Second approval recorded (commit 2c68f4f): APPROVAL-20260703T194032232Z-cec55852
+  6. Pre-start evidence dry run (commit 2c68f4f): disableSwitchActive=true
+  7. Start state snapshots (commit 8ad24cc): pre-start + post-start
+  8. Runner start evidence (commit dc77be7): OpenCode started, PID 792620
+  9. Approval consumption recorded (commit 430d01a): post-start handoff
+  10. DESIGN_ONLY OpenCode run active: RUN-20260703T194719198Z-d1c7f0b5
+
+DESIGN_ONLY boundary check:
+  - execution authorized: false
+  - approval consumed: true (post-start consumption per FP-MCP-077 handoff)
+  - disable switch cleared: false
+  - runner start endpoint contacted: true
+  - OpenCode started: true
+  - FP-027 canary run: false
+  - local clearance artifact created: true
+  - standing execution authority created: false
+
+All 22 verification items passed. DESIGN_ONLY boundary intact at request artifact creation time.
+Runner start and OpenCode start occurred within the guarded single-attempt approval path.

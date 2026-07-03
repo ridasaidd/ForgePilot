@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "FP-MCP-083",
+  "artifactType": "implementation-result-DESIGN_ONLY",
+  "packetId": "FP-MCP-241",
+  "requestId": "REQ-20260703T192734196Z-16cb6028",
+  "runnerRunId": "RUN-20260703T194719198Z-d1c7f0b5",
+  "modelId": "deepseek-v4-pro-high",
+  "runMode": "DESIGN_ONLY",
+  "targetWorkspaceCommit": "8ad24cc",
+  "result": "FP_MCP_241_FRESH_LIFECYCLE_CANARY_PAUSED_ON_PRE_START_EVIDENCE_GATE",
+  "claim": "FP_MCP_241_FRESH_LIFECYCLE_CANARY_PAUSED_ON_PRE_START_EVIDENCE_GATE",
+  "checkpointType": "CANARY_PAUSED_ON_EVIDENCE_GATE",
+  "executionBoundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": true,
+    "opencodeStarted": true,
+    "fp027CanaryRun": false,
+    "localClearanceArtifactCreated": true,
+    "standingExecutionAuthorityCreated": false
+  },
+  "verificationSummary": {
+    "totalChecks": 22,
+    "passed": 22,
+    "failed": 0,
+    "skipped": 0
+  },
+  "expectedArtifactsStatus": {
+    "packets/FP-MCP-241.md": "PRESENT",
+    "docs/opencode-request-artifact-contract-upgrade.md": "ABSENT_GATED_DESIGN_ONLY",
+    "runs/FP-MCP-241/implementation-result.json": "ABSENT_GATED_DESIGN_ONLY",
+    "runs/FP-MCP-241/executor-result.md": "ABSENT_GATED_DESIGN_ONLY",
+    "runs/FP-MCP-241/verification.txt": "PRESENT"
+  },
+  "existingWorkspaceArtifacts": [
+    "packets/FP-MCP-241.md",
+    "runs/FP-MCP-241/opencode-requests/REQ-20260703T192734196Z-16cb6028.json",
+    "runs/FP-MCP-241/canary-preparation-record.json",
+    "runs/FP-MCP-241/canary-paused-on-evidence-gate-record.json",
+    "runs/FP-MCP-241/result-summary.md",
+    "runs/FP-MCP-241/verification.txt",
+    "runs/FP-MCP-241/v1o-evidence-recording-result.json",
+    "runs/FP-MCP-241/record-v1o-evidence.ts",
+    "runs/FP-MCP-241/pre-start-evidence/REQ-20260703T192734196Z-16cb6028.json",
+    "runs/FP-MCP-241/approvals/APPROVAL-20260703T192750877Z-241d57f3.json",
+    "runs/FP-MCP-241/approvals/APPROVAL-20260703T194032232Z-cec55852.json",
+    "runs/FP-MCP-241/start-state-snapshots/REQ-20260703T192734196Z-16cb6028/ATTEMPT-20260703T194621552Z-d99548e3/pre-start-state.json",
+    "runs/FP-MCP-241/start-state-snapshots/REQ-20260703T192734196Z-16cb6028/ATTEMPT-20260703T194621552Z-d99548e3/post-start-state.json",
+    "runs/FP-MCP-241/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260703T194719198Z-d1c7f0b5-pre-start.json",
+    "runs/FP-MCP-241/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260703T194719198Z-d1c7f0b5-post-start.json",
+    "runs/FP-MCP-241/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260703T194719198Z-d1c7f0b5-opencode.stdout.log",
+    "runs/FP-MCP-241/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260703T194719198Z-d1c7f0b5-opencode.stderr.log"
+  ],
+  "designOnlyBoundary": {
+    "forbiddenActionsRespected": true,
+    "allowedActionsOnly": true,
+    "noSecretsExposed": true,
+    "noExternalReads": true,
+    "targetWorkspaceCommitBindingPreserved": true
+  },
+  "chronology": {
+    "canaryPreparedAtCommit": "5831847",
+    "requestArtifactCreatedAtCommit": "a8455a0",
+    "canaryPausedAtCommit": "3444ed8",
+    "secondApprovalCreatedAtCommit": "2c68f4f",
+    "preStartEvidenceRecordedAtCommit": "2c68f4f",
+    "startStateSnapshotsRecordedAtCommit": "8ad24cc",
+    "runnerStartEvidenceRecordedAtCommit": "dc77be7",
+    "approvalConsumptionRecordedAtCommit": "430d01a",
+    "runnerContactedAndOpencodeStarted": true
+  },
+  "recordedAt": "2026-07-03T19:47:19.198Z"
+}
