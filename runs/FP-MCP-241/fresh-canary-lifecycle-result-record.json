@@ -1,0 +1,120 @@
+{
+  "packetId": "FP-MCP-241",
+  "title": "Fresh Guarded Start Full Lifecycle Closure",
+  "checkpointType": "FRESH_CANARY_LIFECYCLE_RESULT",
+  "claim": "FP_MCP_241_FRESH_GUARDED_START_FULL_LIFECYCLE_CLOSED",
+  "summary": "Record the FP-MCP-241 fresh guarded DESIGN_ONLY lifecycle canary as closed. The run used request REQ-20260703T192734196Z-16cb6028, fresh committed approval APPROVAL-20260703T194032232Z-cec55852, approved pre-start evidence, committed state snapshots, popup-mediated local clearance CLEARANCE-20260703T194709589Z-dfaa4f5b, and mandatory FP-MCP-240 pre-contact canary discipline. The runner start was accepted as RUN-20260703T194719198Z-d1c7f0b5, OpenCode started, approval consumption was recorded as CONSUMPTION-20260703T194857979Z-5859fa84 and committed, and all three DESIGN_ONLY output artifacts were copied from the task bundle and committed to the canonical run directory. Verification.txt reports all 22 checks passed. The lifecycle is closed with evidence admission and without a second runner-contacting start attempt.",
+  "caveats": [
+    "An earlier start call before state snapshots returned runnerContacted=false and startEndpointContacted=false; it exposed a missing gate and did not start execution.",
+    "The first approval consumption attempt after accepted start was blocked by DIRTY_WORKING_TREE because the runner created start evidence files; consumption was successfully recorded after committing those start artifacts.",
+    "Several accidental uncommitted duplicate approval artifacts were created by tool-selection error and then removed before continuation; they were never committed and are not used as approval evidence.",
+    "The OpenCode stdout/stderr logs were updated while the worker was still producing output, so multiple log snapshots were committed before final DESIGN_ONLY outputs were copied and committed.",
+    "The task bundle under .forgepilot remains ignored; canonical evidence is the copied and committed files under runs/FP-MCP-241/deepseek-v4-pro-high-DESIGN_ONLY/."
+  ],
+  "boundaries": [
+    "no second runner-contacting start attempt recorded",
+    "approval consumption recorded: true",
+    "disable switch cleared: false",
+    "standing execution authority created: false",
+    "approval artifact mutated: false",
+    "approval reused after consumption: false"
+  ],
+  "structuredRecord": {
+    "request": {
+      "packetId": "FP-MCP-241",
+      "requestId": "REQ-20260703T192734196Z-16cb6028",
+      "modelId": "deepseek-v4-pro-high",
+      "runMode": "DESIGN_ONLY",
+      "executionBaseCommit": "a8455a0"
+    },
+    "approval": {
+      "approvalId": "APPROVAL-20260703T194032232Z-cec55852",
+      "approvalCommit": "2c68f4f",
+      "approvalUsableAtStart": true,
+      "singleUse": true
+    },
+    "preStartEvidence": {
+      "commit": "47ffb69",
+      "preStartEvidenceComplete": true,
+      "preStartEvidenceValid": true,
+      "requestArtifactHashConsistent": true
+    },
+    "stateSnapshots": {
+      "attemptId": "ATTEMPT-20260703T194621552Z-d99548e3",
+      "commit": "8ad24cc",
+      "stateSnapshotComplete": true,
+      "stateSnapshotValid": true
+    },
+    "localClearance": {
+      "clearanceId": "CLEARANCE-20260703T194709589Z-dfaa4f5b",
+      "requestArtifactCommit": "8ad24cc",
+      "eligibleForGuardedAttempt": true
+    },
+    "preContactCanaryDiscipline": {
+      "evaluated": true,
+      "valid": true,
+      "path": "/home/ridasaidd/forgepilot-chatgpt-mcp/.local/forgepilot/pre-contact-canary-discipline/FP-MCP-241-REQ-20260703T192734196Z-16cb6028-20260703T194719122Z.json",
+      "sha256": "0b2a4f3202d111f4f3cb88512de0c0912bb8d2ddd4f99fb9c58da88a03b7fec1",
+      "processTreeSnapshotRecorded": true,
+      "abortReadinessChecked": true,
+      "noRetryStateMarkerRecorded": true,
+      "noChainingBoundaryMarkerRecorded": true,
+      "preContactTargetWorkspaceClean": true,
+      "approvalClearanceFreshAtContact": true
+    },
+    "runnerStart": {
+      "runnerRunId": "RUN-20260703T194719198Z-d1c7f0b5",
+      "runnerContacted": true,
+      "startEndpointContacted": true,
+      "accepted": true,
+      "started": true,
+      "executionStarted": true,
+      "opencodeStarted": true,
+      "runnerProtocolVersion": "forgepilot-runner-v1",
+      "runnerStartEvidenceCommit": "dc77be7"
+    },
+    "approvalConsumption": {
+      "consumptionId": "CONSUMPTION-20260703T194857979Z-5859fa84",
+      "consumptionCommit": "430d01a",
+      "approvalConsumptionRecorded": true,
+      "firstAttemptBlockedBy": "DIRTY_WORKING_TREE",
+      "successfulAfterStartArtifactsCommitted": true
+    },
+    "outputs": {
+      "canonicalRunDirectory": "runs/FP-MCP-241/deepseek-v4-pro-high-DESIGN_ONLY/",
+      "outputsCommit": "e58ef2e",
+      "files": [
+        "implementation-result.json",
+        "executor-result.md",
+        "verification.txt",
+        "RUN-20260703T194719198Z-d1c7f0b5-pre-start.json",
+        "RUN-20260703T194719198Z-d1c7f0b5-post-start.json",
+        "RUN-20260703T194719198Z-d1c7f0b5-opencode.stdout.log",
+        "RUN-20260703T194719198Z-d1c7f0b5-opencode.stderr.log"
+      ],
+      "verificationSummary": "verification.txt reports all 22 checks passed"
+    },
+    "chronologyCommits": [
+      "a8455a0 Record FP-MCP-241 lifecycle canary preparation",
+      "3444ed8 Record FP-MCP-241 request artifact",
+      "08c67ce Record FP-MCP-241 pause on pre-start evidence gate",
+      "2c68f4f Record fresh FP-MCP-241 structured approval",
+      "47ffb69 Record FP-MCP-241 approved pre-start evidence",
+      "8ad24cc Record FP-MCP-241 start state snapshots",
+      "dc77be7 Record FP-MCP-241 runner start evidence",
+      "430d01a Record FP-MCP-241 approval consumption",
+      "13c538d Record FP-MCP-241 OpenCode logs",
+      "aa689f4 Update FP-MCP-241 OpenCode logs",
+      "e58ef2e Record FP-MCP-241 DESIGN_ONLY outputs"
+    ]
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_241_FRESH_GUARDED_START_FULL_LIFECYCLE_CLOSED"
+}
