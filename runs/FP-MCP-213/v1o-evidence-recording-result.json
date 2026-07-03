@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-213",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 81,
+  "run_id": "FP-MCP-213-RETROACTIVE-TOOL-SURFACE-EQUIVALENCE-AUDIT",
+  "generic_admission_event_id": 81,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_MCP_213_RETROACTIVE_TOOL_SURFACE_EQUIVALENCE_AUDIT_RECORDED",
+  "artifact_paths": [
+    "packets/FP-MCP-213.md",
+    "runs/FP-MCP-213/retroactive-tool-surface-equivalence-audit-record.json",
+    "runs/FP-MCP-213/result-summary.md",
+    "runs/FP-MCP-213/verification.txt"
+  ]
+}

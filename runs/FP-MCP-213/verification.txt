@@ -1,0 +1,15 @@
+FP-MCP-213 verification
+
+Checkpoint type:
+- RETROACTIVE_TOOL_SURFACE_EQUIVALENCE_AUDIT
+
+Claim:
+- FP_MCP_213_RETROACTIVE_TOOL_SURFACE_EQUIVALENCE_AUDIT_RECORDED
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

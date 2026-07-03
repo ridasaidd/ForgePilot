@@ -1,0 +1,206 @@
+{
+  "packetId": "FP-MCP-213",
+  "title": "Retroactive Tool Surface Equivalence Audit",
+  "checkpointType": "RETROACTIVE_TOOL_SURFACE_EQUIVALENCE_AUDIT",
+  "claim": "FP_MCP_213_RETROACTIVE_TOOL_SURFACE_EQUIVALENCE_AUDIT_RECORDED",
+  "summary": "Record a retroactive FP-MCP-194-style equivalence and safety audit for the new tool surfaces added since FP-MCP-199: packet checkpoint recording, runtime diagnostics, execution gate orientation, and workspace change inspection. The audit distinguishes read-only surfaces from the non-executing packet-evidence recorder and checks whether any newly added surface structurally feeds execution authority.",
+  "caveats": [
+    "This is a retroactive audit; the tools were already implemented before this explicit FP-MCP-194-style equivalence record was written.",
+    "The packet checkpoint tool is not read-only: it writes packet/evidence artifacts and commits expected files. Its equivalence class is non-executing packet/evidence recorder, not inspection.",
+    "The runtime diagnostics, execution gate orientation, and workspace change inspection tools are read-only/status/inspection surfaces.",
+    "The audit found a usability gap in gate orientation scope semantics: request artifacts are located by execution packet id, not approval packet id. That is a read-only orientation ambiguity, not an execution-authority path.",
+    "This checkpoint does not modify MCP bridge code; it records the audit result only."
+  ],
+  "boundaries": [
+    "execution authorized: false",
+    "approval consumed: false",
+    "disable switch cleared: false",
+    "runner start endpoint contacted: false",
+    "OpenCode started: false",
+    "FP-027 canary run: false",
+    "request artifact created: false",
+    "approval artifact created: false",
+    "MCP bridge code modified: false"
+  ],
+  "structuredRecord": {
+    "auditBasis": {
+      "rule": "FP-MCP-194 standing rule for new tool surfaces: do not presume equivalence to a safer surface without explicit structural reasoning.",
+      "method": "Trace each new tool's implementation module and server registration for request artifact creation/mutation, approval creation/mutation/consumption, disable-switch mutation, runner start endpoint contact, OpenCode start, FP-027/canary execution, network calls, writes, git mutation, and delegated dependencies.",
+      "auditedBridgeCommit": "551d7af",
+      "auditedBridgeBranch": "feature/oauth-auth0",
+      "forgePilotCommitAtAudit": "6bbfdf4"
+    },
+    "toolSurfaces": [
+      {
+        "tool": "forgepilot_record_packet_checkpoint",
+        "implementedBy": [
+          "src/packet-checkpoint.ts",
+          "src/server.ts"
+        ],
+        "introducedBy": [
+          "FP-MCP-199",
+          "FP-MCP-200",
+          "FP-MCP-202",
+          "FP-MCP-205"
+        ],
+        "classification": "NON_EXECUTING_PACKET_EVIDENCE_RECORDER",
+        "readOnly": false,
+        "writesFiles": true,
+        "gitMutation": true,
+        "observedWritePaths": [
+          "packets/<packetId>.md",
+          "runs/<packetId>/* checkpoint/evidence artifacts"
+        ],
+        "observedCommandPaths": [
+          "pnpm --version",
+          "pnpm tsx runs/<packetId>/record-v1o-evidence.ts",
+          "git status --short",
+          "git rev-parse --short HEAD",
+          "git add <expected files>",
+          "git commit -m <packet-scoped message>"
+        ],
+        "structuralExecutionAuthorityTrace": {
+          "createsRequestArtifacts": false,
+          "createsApprovalArtifacts": false,
+          "consumesApproval": false,
+          "clearsDisableSwitch": false,
+          "contactsRunnerStartEndpoint": false,
+          "startsOpenCode": false,
+          "runsFp027OrCanary": false,
+          "mutatesExistingApprovalOrRequestState": false
+        },
+        "reasoning": "Although this tool writes and commits artifacts, its generated packet/result/verification text and returned boundary fields hard-code non-execution boundary observations. Its evidence script records packet/evidence/admission rows only. It does not import or call request-artifact creation, approval creation/consumption, disable-switch mutation, runner start, OpenCode start, or canary functions."
+      },
+      {
+        "tool": "forgepilot_get_mcp_runtime_diagnostics",
+        "implementedBy": [
+          "src/runtime-diagnostics.ts",
+          "src/server.ts"
+        ],
+        "introducedBy": [
+          "FP-MCP-207"
+        ],
+        "classification": "READ_ONLY_RUNTIME_DIAGNOSTICS",
+        "readOnly": true,
+        "writesFiles": false,
+        "gitMutation": false,
+        "observedCommandPaths": [
+          "node --version",
+          "pnpm --version",
+          "configured pnpm --version",
+          "optional opencode checks skipped unless configured"
+        ],
+        "structuralExecutionAuthorityTrace": {
+          "createsRequestArtifacts": false,
+          "createsApprovalArtifacts": false,
+          "consumesApproval": false,
+          "clearsDisableSwitch": false,
+          "contactsRunnerStartEndpoint": false,
+          "startsOpenCode": false,
+          "runsFp027OrCanary": false,
+          "mutatesExistingApprovalOrRequestState": false
+        },
+        "reasoning": "The tool executes bounded binary availability/version checks and reads process/environment shape without dumping secrets. It returns boundary fields false for approval consumption, disable-switch clearance, runner-start contact, OpenCode start, and FP-027/canary. It contains no request/approval mutation path and no runner start dependency."
+      },
+      {
+        "tool": "forgepilot_get_execution_gate_orientation",
+        "implementedBy": [
+          "src/execution-gate-orientation.ts",
+          "src/server.ts"
+        ],
+        "introducedBy": [
+          "FP-MCP-207"
+        ],
+        "classification": "READ_ONLY_EXECUTION_GATE_ORIENTATION",
+        "readOnly": true,
+        "writesFiles": false,
+        "gitMutation": false,
+        "delegatedDependencies": [
+          "getOpenCodeStatus",
+          "getOpencodeCapabilities",
+          "getRemoteRunnerStatus",
+          "getExecutionDisableSwitchStatus",
+          "getExecutionEnablementStatus",
+          "validateRemoteRunnerRequest",
+          "getGuardedStartPreflightReport",
+          "readOpencodeRunRequest"
+        ],
+        "structuralExecutionAuthorityTrace": {
+          "createsRequestArtifacts": false,
+          "createsApprovalArtifacts": false,
+          "consumesApproval": false,
+          "clearsDisableSwitch": false,
+          "contactsRunnerStartEndpoint": false,
+          "startsOpenCode": false,
+          "runsFp027OrCanary": false,
+          "mutatesExistingApprovalOrRequestState": false
+        },
+        "reasoning": "The tool composes read/status/validation/preflight-report functions and returns aggregate orientation. It does not call request-artifact creation, approval creation/consumption, disable-switch mutation, runner start, or OpenCode start. The live observed orientation also returned boundary.readOnly true and mutation/execution fields false.",
+        "observedScopeAmbiguity": "If called with approval packet id instead of execution packet id, request artifact lookup can return REQUEST_ARTIFACT_NOT_FOUND. Correct use requires execution packet id. This is a read-only orientation usability gap, not an execution path."
+      },
+      {
+        "tool": "forgepilot_get_workspace_change_inspection",
+        "implementedBy": [
+          "src/workspace-change-inspection.ts",
+          "src/server.ts"
+        ],
+        "introducedBy": [
+          "FP-MCP-208"
+        ],
+        "classification": "READ_ONLY_MODEL_CHANGE_INSPECTION",
+        "readOnly": true,
+        "writesFiles": false,
+        "gitMutation": false,
+        "observedCommandPaths": [
+          "git branch --show-current",
+          "git rev-parse --short HEAD",
+          "git rev-parse --is-inside-work-tree",
+          "git status --short",
+          "git diff --numstat",
+          "git diff --cached --numstat",
+          "git diff -- <file>",
+          "git diff --cached -- <file>",
+          "optional bounded cat for safe untracked text excerpts"
+        ],
+        "structuralExecutionAuthorityTrace": {
+          "createsRequestArtifacts": false,
+          "createsApprovalArtifacts": false,
+          "consumesApproval": false,
+          "clearsDisableSwitch": false,
+          "contactsRunnerStartEndpoint": false,
+          "startsOpenCode": false,
+          "runsFp027OrCanary": false,
+          "mutatesExistingApprovalOrRequestState": false
+        },
+        "reasoning": "The tool shells out only to read-only git inspection commands and optional bounded cat for non-secret untracked excerpts. It does not write files, stage, commit, contact network, consume approval, clear disable switch, start runner/OpenCode, or create execution artifacts."
+      }
+    ],
+    "auditConclusion": {
+      "equivalenceCheckPassed": true,
+      "newExecutionAuthorityIntroduced": false,
+      "newApprovalAuthorityIntroduced": false,
+      "newDisableSwitchAuthorityIntroduced": false,
+      "newRunnerStartAuthorityIntroduced": false,
+      "newOpenCodeStartAuthorityIntroduced": false,
+      "newCanaryAuthorityIntroduced": false,
+      "toolsRequireFurtherCodeChangeBeforeExecutionPathContinues": false,
+      "recommendedFollowUp": "Defer fixing READ_ONLY_ORIENTATION_SCOPE_AMBIGUITY unless it becomes operationally confusing; continue to use execution packet id for request artifact lookup."
+    },
+    "observedCurrentExecutionBoundary": {
+      "disableSwitchCleared": false,
+      "approvalConsumed": false,
+      "runnerStartEndpointContacted": false,
+      "opencodeStarted": false,
+      "fp027CanaryRun": false
+    }
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_213_RETROACTIVE_TOOL_SURFACE_EQUIVALENCE_AUDIT_RECORDED"
+}
