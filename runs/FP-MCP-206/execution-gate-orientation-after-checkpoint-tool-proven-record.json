@@ -1,0 +1,149 @@
+{
+  "packetId": "FP-MCP-206",
+  "title": "Post-Checkpoint-Tool Execution Gate Orientation",
+  "checkpointType": "EXECUTION_GATE_ORIENTATION_AFTER_CHECKPOINT_TOOL_PROVEN",
+  "claim": "FP_MCP_206_POST_CHECKPOINT_TOOL_EXECUTION_GATE_ORIENTATION_RECORDED",
+  "summary": "Record the read-only execution gate orientation after the packet checkpoint tool was proven in FP-MCP-205. The runner is reachable and guarded start capability is callable, but execution remains globally disabled and no request, approval, consumption, runner start, OpenCode start, or FP-027 canary has occurred.",
+  "caveats": [
+    "Two premature request-artifact tool invocations were attempted for FP-MCP-206 before the packet existed; both failed closed with UNKNOWN_PACKET and created no request artifact.",
+    "This checkpoint records orientation only and does not authorize or begin execution.",
+    "The old FP-MCP-183 approval is expired and bound to a stale commit; it must not be reused.",
+    "A fresh execution request/approval/preflight path is required before any future guarded start attempt."
+  ],
+  "boundaries": [
+    "execution authorized: false",
+    "approval consumed: false",
+    "disable switch cleared: false",
+    "runner start endpoint contacted: false",
+    "OpenCode started: false",
+    "FP-027 canary run: false",
+    "request artifact created: false",
+    "human approval created: false",
+    "terminal packet creation used: false"
+  ],
+  "structuredRecord": {
+    "readOnlyOrientation": {
+      "opencodeCapabilities": {
+        "runnerReachable": false,
+        "opencodeHarnessConfigured": true,
+        "opencodeHarnessReachable": false,
+        "executionEnabled": false,
+        "supportedRunModes": [
+          "DESIGN_ONLY"
+        ],
+        "allowedModels": [
+          "deepseek-v4-pro-high",
+          "qwen-3.7-max"
+        ],
+        "reasons": [
+          "LIVE_RUNNER_NOT_CHECKED",
+          "LIVE_OPENCODE_NOT_CHECKED",
+          "EXECUTION_DISABLED"
+        ]
+      },
+      "opencodeStatus": {
+        "opencodeDiscoveryConfigured": true,
+        "opencodeExecutionEnabled": false,
+        "supportedRunModes": [
+          "DESIGN_ONLY"
+        ],
+        "allowedModels": [
+          "deepseek-v4-pro-high",
+          "qwen-3.7-max"
+        ],
+        "executionDisabledReason": "FP-MCP-002 is read-only discovery only. Executor start tools are not implemented."
+      },
+      "remoteRunnerStatus": {
+        "runnerConfigured": true,
+        "runnerReachable": true,
+        "executionEnabled": false,
+        "startCapabilityAdvertised": true,
+        "startCapabilityCallable": true,
+        "startEndpointState": "CALLABLE_GUARDED",
+        "startRequiresApprovalEvidence": true,
+        "startRequiresPreflight": true,
+        "startRequiresDisableSwitchClear": true,
+        "startRequiresRequestArtifactHash": true,
+        "startRequiresTargetExecutionCommit": true,
+        "startRequiresEvidenceLedgerValidation": true,
+        "supportedRunModes": [
+          "DESIGN_ONLY"
+        ],
+        "allowedModels": [
+          "deepseek-v4-pro-high",
+          "qwen-3.7-max"
+        ]
+      },
+      "disableSwitchStatus": {
+        "disableSwitchActive": true,
+        "executionAllowedNow": false,
+        "runnerExecutionEnabled": false,
+        "opencodeExecutionEnabled": false,
+        "globalDisableActive": true,
+        "effectiveDisableReason": "EXECUTION_DISABLED_GLOBAL",
+        "reasons": [
+          "EXECUTION_DISABLED_GLOBAL",
+          "RUNNER_EXECUTION_DISABLED",
+          "OPENCODE_EXECUTION_DISABLED",
+          "DISABLE_SWITCH_ACTIVE",
+          "EXECUTION_NOT_ALLOWED"
+        ]
+      },
+      "executionEnablementStatus": {
+        "executionAllowedNow": false,
+        "runnerExecutionEnabled": false,
+        "opencodeExecutionEnabled": false,
+        "blockingReasons": [
+          "OPENCODE_BOUNDARY_UNSATISFIED",
+          "SECRET_BOUNDARY_UNSATISFIED",
+          "NETWORK_BOUNDARY_UNSATISFIED",
+          "HUMAN_APPROVAL_NOT_RECORDED",
+          "RUNNER_EXECUTION_DISABLED",
+          "OPENCODE_EXECUTION_DISABLED"
+        ],
+        "repoCommitObserved": "e46db60",
+        "workingTreeClean": true
+      }
+    },
+    "prematureRequestArtifactCalls": [
+      {
+        "packetId": "FP-MCP-206",
+        "modelId": "deepseek-v4-pro-high",
+        "runMode": "DESIGN_ONLY",
+        "created": false,
+        "reason": "UNKNOWN_PACKET",
+        "executionStarted": false,
+        "runnerStartEndpointContacted": false,
+        "opencodeStarted": false,
+        "approvalConsumed": false
+      },
+      {
+        "packetId": "FP-MCP-206",
+        "modelId": "deepseek-v4-pro-high",
+        "runMode": "DESIGN_ONLY",
+        "created": false,
+        "reason": "UNKNOWN_PACKET",
+        "executionStarted": false,
+        "runnerStartEndpointContacted": false,
+        "opencodeStarted": false,
+        "approvalConsumed": false
+      }
+    ],
+    "nextRequiredBeforeExecution": [
+      "fresh known execution packet/request artifact",
+      "fresh human approval bound to current target commit",
+      "preflight validation",
+      "disable switch clearance if policy allows",
+      "explicit guarded start approval"
+    ]
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_206_POST_CHECKPOINT_TOOL_EXECUTION_GATE_ORIENTATION_RECORDED"
+}

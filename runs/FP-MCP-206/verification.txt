@@ -1,0 +1,15 @@
+FP-MCP-206 verification
+
+Checkpoint type:
+- EXECUTION_GATE_ORIENTATION_AFTER_CHECKPOINT_TOOL_PROVEN
+
+Claim:
+- FP_MCP_206_POST_CHECKPOINT_TOOL_EXECUTION_GATE_ORIENTATION_RECORDED
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

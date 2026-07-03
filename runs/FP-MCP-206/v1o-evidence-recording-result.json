@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-206",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 74,
+  "run_id": "FP-MCP-206-EXECUTION-GATE-ORIENTATION-AFTER-CHECKPOINT-TOOL-PROVEN",
+  "generic_admission_event_id": 74,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_MCP_206_POST_CHECKPOINT_TOOL_EXECUTION_GATE_ORIENTATION_RECORDED",
+  "artifact_paths": [
+    "packets/FP-MCP-206.md",
+    "runs/FP-MCP-206/execution-gate-orientation-after-checkpoint-tool-proven-record.json",
+    "runs/FP-MCP-206/result-summary.md",
+    "runs/FP-MCP-206/verification.txt"
+  ]
+}
