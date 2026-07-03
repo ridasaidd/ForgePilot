@@ -1,0 +1,49 @@
+{
+  "packetId": "FP-MCP-223",
+  "title": "Fresh Request Tuple for Operator-Local Clearance Path",
+  "checkpointType": "FRESH_REQUEST_TUPLE_PREPARATION",
+  "claim": "FP_MCP_223_FRESH_REQUEST_TUPLE_PREPARATION_RECORDED",
+  "summary": "Create the FP-MCP-223 non-executing packet anchor so a fresh request artifact can be recorded against current ForgePilot HEAD after FP-MCP-222. The prior FP-MCP-209 request and FP-MCP-216 approval tuple is stale and must not be used for operator-local clearance. This checkpoint records preparation only and does not create local clearance, consume approval, clear the disable switch, contact the runner start endpoint, start OpenCode, or run FP-027.",
+  "caveats": [
+    "Several attempted non-executing request artifact recordings for FP-MCP-223 failed closed with UNKNOWN_PACKET before this packet anchor existed; those attempts created no request artifact and did not authorize or start execution.",
+    "The old FP-MCP-209 tuple remains stale because its target execution commit is 4bd1977, while ForgePilot HEAD after FP-MCP-222 is 219fe9d before this checkpoint.",
+    "Fresh request and fresh approval must be bound to the post-checkpoint current HEAD, not to the old FP-MCP-209 tuple.",
+    "This checkpoint does not create the operator-local clearance artifact; that remains a human-local act outside the model-callable MCP surface under FP-MCP-217."
+  ],
+  "boundaries": [
+    "execution authorized: false",
+    "approval consumed: false",
+    "disable switch cleared: false",
+    "runner start endpoint contacted: false",
+    "OpenCode started: false",
+    "FP-027 canary run: false",
+    "local clearance artifact created: false",
+    "standing execution authority created: false"
+  ],
+  "structuredRecord": {
+    "previousStaleTuple": {
+      "executionPacketId": "FP-MCP-209",
+      "requestId": "REQ-20260703T113456847Z-a68aa89e",
+      "approvalPacketId": "FP-MCP-216",
+      "approvalId": "APPROVAL-20260703T120153710Z-10683ad6",
+      "targetExecutionCommit": "4bd1977",
+      "status": "STALE_DO_NOT_USE"
+    },
+    "nextIntendedNonExecutingSteps": [
+      "record fresh request artifact for FP-MCP-223 bound to current HEAD",
+      "validate fresh request artifact",
+      "create fresh structured human approval only with explicit operator approval fields",
+      "validate approval",
+      "observe operator-local clearance only after human creates local artifact outside MCP"
+    ]
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_223_FRESH_REQUEST_TUPLE_PREPARATION_RECORDED"
+}

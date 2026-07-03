@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-223",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 91,
+  "run_id": "FP-MCP-223-FRESH-REQUEST-TUPLE-PREPARATION",
+  "generic_admission_event_id": 91,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_MCP_223_FRESH_REQUEST_TUPLE_PREPARATION_RECORDED",
+  "artifact_paths": [
+    "packets/FP-MCP-223.md",
+    "runs/FP-MCP-223/fresh-request-tuple-preparation-record.json",
+    "runs/FP-MCP-223/result-summary.md",
+    "runs/FP-MCP-223/verification.txt"
+  ]
+}
