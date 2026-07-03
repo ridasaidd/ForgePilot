@@ -1,0 +1,91 @@
+{
+  "packetId": "FP-MCP-237",
+  "title": "FP-MCP-233 Guarded Start Integrity Review",
+  "checkpointType": "HISTORICAL_INTEGRITY_REVIEW",
+  "claim": "FP_MCP_237_FP_MCP_233_GUARDED_START_INTEGRITY_REVIEW_RECORDED",
+  "summary": "Record an integrity review of the first successful guarded OpenCode execution path from FP-MCP-233. The engineering result remains real: popup-mediated local clearance was created, the remote runner accepted the guarded start, OpenCode started, and DESIGN_ONLY outputs were produced and committed. The governance and lifecycle result is not clean: popup-mediated clearance was used before FP-MCP-217 reconciliation was recorded, full FP-027 canary discipline evidence was not captured for the actual first start, approval consumption failed after start due the hardcoded FP-MCP-036 scope bug, and a bounded approval reuse window existed until the approval and local clearance expired. This packet records the historical truth without erasing the successful run or laundering the integrity gaps.",
+  "caveats": [
+    "FP-MCP-233 was technically successful but governance-incomplete at the moment it ran.",
+    "Popup-mediated clearance was later adopted explicitly by FP-MCP-236, but that decision came after the FP-MCP-233 start and therefore does not retroactively make the original start clean.",
+    "The evidence does not prove process-tree snapshot immediately before runner contact, live abort-readiness check immediately before contact, or a formal no-retry/no-chaining state-machine gate for the actual first real start.",
+    "Approval consumption was not recorded after the successful start; the single-use guarantee did not mechanically close immediately after execution.",
+    "The approval and clearance reuse risk was bounded by expiry and by the requirement for another popup/tool call, but bounded risk is not the same as a fulfilled guarantee.",
+    "No evidence indicates that a second start was attempted with the same approval.",
+    "This packet is historical review only; it does not attempt retroactive consumption or any new start."
+  ],
+  "boundaries": [
+    "execution authorized by this packet: false",
+    "approval created: false",
+    "approval consumed: false",
+    "local clearance created: false",
+    "runner start endpoint contacted: false",
+    "OpenCode started: false",
+    "FP-027 canary run: false",
+    "historical start erased: false",
+    "historical integrity gaps hidden: false"
+  ],
+  "structuredRecord": {
+    "reviewedRun": {
+      "sourcePacket": "FP-MCP-233",
+      "executionPacketId": "FP-MCP-223",
+      "requestId": "REQ-20260703T125101090Z-8535b3c0",
+      "runnerRunId": "RUN-20260703T174527866Z-8630e8a1",
+      "modelId": "deepseek-v4-pro-high",
+      "runMode": "DESIGN_ONLY",
+      "startResult": {
+        "started": true,
+        "accepted": true,
+        "runnerContacted": true,
+        "startEndpointContacted": true,
+        "executionStarted": true,
+        "opencodeStarted": true
+      },
+      "committedEvidence": [
+        "19ca8c5 Record FP-MCP-223 runner start evidence",
+        "684e8a8 Record FP-MCP-223 OpenCode run outputs",
+        "b12fa32 Record FP-MCP-233 guarded start result"
+      ],
+      "outputSummary": "OpenCode produced verification.txt, implementation-result.json, and executor-result.md; executor reported 22/22 verification checks passed."
+    },
+    "integrityFindings": {
+      "engineeringMilestoneValid": true,
+      "governanceMilestoneClean": false,
+      "popupClearanceReconciliationTiming": "FP-MCP-236 adopted popup-mediated clearance after FP-MCP-233 ran; FP-MCP-233 therefore remains historically governance-incomplete.",
+      "fpMcp217BoundaryStatusAtRun": "unreconciled conflict between FP-MCP-217 outside-MCP local clearance and FP-MCP-232 MCP-created popup clearance",
+      "canaryDisciplineEvidenceStatus": "insufficiently evidenced for actual first start",
+      "approvalConsumptionStatus": "failed after start; approval not mechanically consumed",
+      "approvalReuseWindowStatus": "bounded reuse window existed until approval/clearance expiry",
+      "secondStartObserved": false
+    },
+    "missingOrInsufficientEvidence": [
+      "process-tree snapshot immediately before runner start endpoint contact",
+      "abort-readiness live and checked immediately before runner start endpoint contact",
+      "explicit no-retry/no-chaining state-machine evidence at the contact boundary",
+      "mechanical approval consumption immediately after successful start"
+    ],
+    "approvalAndClearance": {
+      "approvalPacketId": "FP-MCP-233",
+      "approvalId": "APPROVAL-20260703T174342607Z-f2cdb96f",
+      "approvalExpiresAt": "2026-07-03T17:57:00.000Z",
+      "clearanceId": "CLEARANCE-20260703T174408245Z-58646d48",
+      "clearanceExpiresAt": "2026-07-03T17:54:08.245Z",
+      "consumptionRecorded": false,
+      "reuseRiskWindow": "from successful start until expiry, bounded by requirement for another popup/tool invocation and matching workspace gates",
+      "currentExpectedStatus": "expired and unusable, to be proven by FP-MCP-238 live validation rather than asserted from timestamps only"
+    },
+    "policyFollowUp": {
+      "popupClearancePolicy": "FP-MCP-236 adopted popup-mediated clearance with explicit threat-model revision",
+      "remainingRequiredPacket": "FP-MCP-238 must activate and verify the approval consumption fix and prove the old approval/clearance are expired/unusable with live evidence"
+    },
+    "standingRuleCandidate": "Any hardcoded FP-* or FP-MCP-* packet id inside generalized gate, approval, clearance, runner, or recorder logic is presumptively a bug unless explicitly documented as legacy fixture behavior."
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_237_FP_MCP_233_GUARDED_START_INTEGRITY_REVIEW_RECORDED"
+}

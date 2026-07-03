@@ -1,0 +1,15 @@
+FP-MCP-237 verification
+
+Checkpoint type:
+- HISTORICAL_INTEGRITY_REVIEW
+
+Claim:
+- FP_MCP_237_FP_MCP_233_GUARDED_START_INTEGRITY_REVIEW_RECORDED
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-237",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 105,
+  "run_id": "FP-MCP-237-HISTORICAL-INTEGRITY-REVIEW",
+  "generic_admission_event_id": 105,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_MCP_237_FP_MCP_233_GUARDED_START_INTEGRITY_REVIEW_RECORDED",
+  "artifact_paths": [
+    "packets/FP-MCP-237.md",
+    "runs/FP-MCP-237/historical-integrity-review-record.json",
+    "runs/FP-MCP-237/result-summary.md",
+    "runs/FP-MCP-237/verification.txt"
+  ]
+}
