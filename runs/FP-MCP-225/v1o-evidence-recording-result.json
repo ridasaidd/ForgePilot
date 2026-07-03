@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-225",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 93,
+  "run_id": "FP-MCP-225-COMMIT-BINDING-POLICY-CLARIFICATION",
+  "generic_admission_event_id": 93,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_MCP_225_OPERATOR_LOCAL_CLEARANCE_COMMIT_BINDING_POLICY_CLARIFIED",
+  "artifact_paths": [
+    "packets/FP-MCP-225.md",
+    "runs/FP-MCP-225/commit-binding-policy-clarification-record.json",
+    "runs/FP-MCP-225/result-summary.md",
+    "runs/FP-MCP-225/verification.txt"
+  ]
+}
