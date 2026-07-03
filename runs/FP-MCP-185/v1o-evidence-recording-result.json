@@ -1,0 +1,23 @@
+{
+  "packet_id": "FP-MCP-185",
+  "result": "FP_MCP_185_RUNTIME_STALE_HALT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 55,
+  "run_id": "FP-MCP-185-VALIDATE-PREFLIGHT-DISABLED-REASON-NORMALIZATION-LIVE-STALLED",
+  "generic_admission_event_id": 55,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "VALIDATE_EXECUTION_PREFLIGHT_DISABLED_REASON_NORMALIZATION_NOT_PROVEN_RUNTIME_STILL_EMITS_LEGACY_EXECUTION_DISABLED",
+  "positive_claim_not_admitted": "VALIDATE_EXECUTION_PREFLIGHT_DISABLED_REASON_NORMALIZATION_LIVE_CONFIRMED_NO_LEGACY_EXECUTION_DISABLED",
+  "total_evidence_records": 55,
+  "total_generic_evidence_record_admission_events": 55,
+  "artifact_paths": [
+    "packets/FP-MCP-185.md",
+    "runs/FP-MCP-185/expected-live-confirmation.json",
+    "runs/FP-MCP-185/disable-switch-status.json",
+    "runs/FP-MCP-185/live-preflight-observation.json",
+    "runs/FP-MCP-185/result-summary.md",
+    "runs/FP-MCP-185/verification.txt",
+    "runs/FP-MCP-182/opencode-requests/REQ-20260702T210007524Z-4ba16774.json"
+  ]
+}

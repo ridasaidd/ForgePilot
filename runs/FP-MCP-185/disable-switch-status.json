@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "FP-MCP-044",
+  "packetId": "FP-MCP-185",
+  "disableSwitchStatusEvaluated": true,
+  "disableSwitchDefined": true,
+  "disableSwitchActive": true,
+  "executionAllowedNow": false,
+  "executionStarted": false,
+  "startEndpointContacted": false,
+  "opencodeStarted": false,
+  "runnerExecutionEnabled": false,
+  "opencodeExecutionEnabled": false,
+  "globalDisableActive": true,
+  "effectiveDisableReason": "EXECUTION_DISABLED_GLOBAL",
+  "effectiveDisableScope": "GLOBAL",
+  "checkedAt": "2026-07-03T07:06:54.203Z",
+  "statusSource": "ForgePilot execution disable switch status policy",
+  "boundaryVersion": "FP-MCP-044",
+  "reasons": [
+    "EXECUTION_DISABLED_GLOBAL",
+    "RUNNER_EXECUTION_DISABLED",
+    "OPENCODE_EXECUTION_DISABLED",
+    "DISABLE_SWITCH_ACTIVE",
+    "EXECUTION_NOT_ALLOWED"
+  ],
+  "legacyAggregateExecutionDisabledPresent": false
+}
