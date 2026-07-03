@@ -1,0 +1,15 @@
+FP-MCP-211 verification
+
+Checkpoint type:
+- FRESH_SCOPED_HUMAN_APPROVAL_EVIDENCE_PREPARATION
+
+Claim:
+- FP_MCP_211_FRESH_SCOPED_HUMAN_APPROVAL_EVIDENCE_PREPARATION_RECORDED
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

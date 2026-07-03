@@ -1,0 +1,60 @@
+{
+  "packetId": "FP-MCP-211",
+  "title": "Fresh Scoped Human Approval Evidence Preparation",
+  "checkpointType": "FRESH_SCOPED_HUMAN_APPROVAL_EVIDENCE_PREPARATION",
+  "claim": "FP_MCP_211_FRESH_SCOPED_HUMAN_APPROVAL_EVIDENCE_PREPARATION_RECORDED",
+  "summary": "Create a known approval packet for recording fresh scoped human approval evidence bound to the FP-MCP-209 request artifact and target execution commit. This checkpoint itself does not create approval evidence, consume approval, clear the disable switch, contact the runner start endpoint, start OpenCode, or run FP-027.",
+  "caveats": [
+    "This checkpoint is preparation only; the approval evidence artifact is created in a separate explicit tool call.",
+    "The approval must be scoped to FP-MCP-209, request REQ-20260703T113456847Z-a68aa89e, model deepseek-v4-pro-high, run mode DESIGN_ONLY, branch main, and commit 4bd1977.",
+    "Creating approval evidence still does not authorize execution by itself; future consumption/preflight/disable-switch gates remain separate.",
+    "Execution remains globally disabled before and after this checkpoint."
+  ],
+  "boundaries": [
+    "execution authorized: false",
+    "approval consumed: false",
+    "human approval evidence created by this checkpoint: false",
+    "disable switch cleared: false",
+    "runner start endpoint contacted: false",
+    "OpenCode started: false",
+    "FP-027 canary run: false",
+    "request artifact mutated: false",
+    "terminal packet creation used: false"
+  ],
+  "structuredRecord": {
+    "approvalScopeToPrepare": {
+      "approvalPacketId": "FP-MCP-211",
+      "executionPacketId": "FP-MCP-209",
+      "requestId": "REQ-20260703T113456847Z-a68aa89e",
+      "modelId": "deepseek-v4-pro-high",
+      "runMode": "DESIGN_ONLY",
+      "repoCommit": "4bd1977",
+      "branch": "main",
+      "singleUse": true
+    },
+    "requestArtifactState": {
+      "requestArtifactCommit": "e2055c4",
+      "requestEligibleForFutureRemoteRunnerHandoff": true,
+      "requestArtifactPresent": true,
+      "preflightPassableNow": false
+    },
+    "remainingGatesAfterApprovalEvidence": [
+      "approval validation",
+      "pre-start evidence",
+      "state snapshots",
+      "evidence ledger readiness",
+      "disable-switch clearance",
+      "approval consumption",
+      "guarded start request"
+    ]
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_211_FRESH_SCOPED_HUMAN_APPROVAL_EVIDENCE_PREPARATION_RECORDED"
+}
