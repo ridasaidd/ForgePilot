@@ -1,0 +1,15 @@
+FP-MCP-259 verification
+
+Checkpoint type:
+- HTTP_LIFECYCLE_INVOCATION_EXECUTION_GATE_DESIGN
+
+Claim:
+- FP_MCP_259_HTTP_LIFECYCLE_INVOCATION_EXECUTION_GATE_CONTRACT_DEFINED_WITHOUT_IMPLEMENTATION
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

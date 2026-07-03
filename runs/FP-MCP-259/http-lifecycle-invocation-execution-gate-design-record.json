@@ -1,0 +1,93 @@
+{
+  "packetId": "FP-MCP-259",
+  "title": "HTTP Lifecycle Invocation Execution Gate Design",
+  "checkpointType": "HTTP_LIFECYCLE_INVOCATION_EXECUTION_GATE_DESIGN",
+  "claim": "FP_MCP_259_HTTP_LIFECYCLE_INVOCATION_EXECUTION_GATE_CONTRACT_DEFINED_WITHOUT_IMPLEMENTATION",
+  "summary": "FP-MCP-259 defines the contract for a future real OpenCode HTTP lifecycle invocation gate without implementing or invoking it. The future gate may only run after a persisted lifecycle plan has passed the FP-MCP-257 reader/validator and the FP-MCP-258 artifact-only dry-run gate. The gate must require an exact plan id, exact source request id, exact plan artifact path, exact promptText and expectedText whose SHA-256 values match the persisted plan, exact lifecycle approval literal RUN_OPENCODE_HTTP_LIFECYCLE_ORCHESTRATOR, and a separate future invocation approval literal that is distinct from dry-run evaluation. Immediately before any lifecycle action, the future gate must re-read the plan, re-read the source request artifact, re-evaluate dry-run eligibility, confirm the plan remains PLAN_RECORDED_NOT_INVOKED, confirm the source request remains CREATED_NOT_STARTED, confirm lifecycleToolName is forgepilot_run_opencode_http_lifecycle_orchestrator, confirm cleanup is explicit, confirm prompt and expected text hashes match, and confirm no prior approval consumption, runner start contact, OpenCode start, or lifecycle invocation is recorded in the plan. If any check fails, the gate must return blocked without touching OpenCode. The first allowed real lifecycle action would be a direct call equivalent to the already-proven bounded lifecycle orchestrator, not the legacy worker path and not the remote runner start endpoint. The execution gate must produce an append-only invocation attempt artifact before and after the lifecycle, including session id if created, completion state, cleanup result, and final boundary booleans.",
+  "caveats": [
+    "This packet records a design contract only; no real invocation tool was implemented.",
+    "Dry-run eligibility remains non-authorizing and must not be treated as permission.",
+    "A future invocation tool must perform a fresh final preflight at invocation time, not rely on old FP-MCP-258 output.",
+    "The design intentionally keeps the future HTTP lifecycle path separate from legacy worker tools and remote runner start tools.",
+    "Prompt text may be accepted by a future invocation gate only if its SHA-256 matches the persisted plan; the plan artifact itself stores only hashes."
+  ],
+  "boundaries": [
+    "No OpenCode session was created.",
+    "No prompt was submitted.",
+    "No wait endpoint was called.",
+    "No session was deleted.",
+    "No OpenCode process was started.",
+    "No runner start endpoint was contacted.",
+    "No approval was consumed.",
+    "No lifecycle was invoked.",
+    "No source code was changed for a real invocation path."
+  ],
+  "structuredRecord": {
+    "designOnly": true,
+    "implementedInvocationTool": false,
+    "futureToolName": "forgepilot_invoke_opencode_http_lifecycle_plan",
+    "futureApprovalLiteral": "INVOKE_OPENCODE_HTTP_LIFECYCLE_PLAN",
+    "requiredPriorTools": [
+      "forgepilot_read_opencode_http_lifecycle_plan",
+      "forgepilot_evaluate_opencode_http_lifecycle_plan_invocation_dry_run"
+    ],
+    "requiredInputs": [
+      "packetId",
+      "planId",
+      "requestId",
+      "planArtifactPath",
+      "promptText",
+      "expectedText",
+      "cleanup",
+      "approval"
+    ],
+    "requiredHashChecks": [
+      "sha256(promptText) == plan.promptTextSha256",
+      "sha256(expectedText) == plan.expectedTextSha256"
+    ],
+    "requiredArtifactChecks": [
+      "planReadable == true",
+      "planValid == true",
+      "sourceRequestReadable == true",
+      "planMatchesSourceRequest == true",
+      "lifecyclePlanReady == true",
+      "requestState == CREATED_NOT_STARTED",
+      "plan.status == PLAN_RECORDED_NOT_INVOKED"
+    ],
+    "requiredBindingChecks": [
+      "lifecycleToolName == forgepilot_run_opencode_http_lifecycle_orchestrator",
+      "lifecycleApprovalRequired == RUN_OPENCODE_HTTP_LIFECYCLE_ORCHESTRATOR",
+      "cleanup policy explicit",
+      "packetId matches",
+      "planId matches",
+      "requestId matches source"
+    ],
+    "requiredNegativeChecks": [
+      "executionAuthorized == false before invocation",
+      "approvalConsumed == false before invocation",
+      "runnerStartEndpointContacted == false before invocation",
+      "opencodeStarted == false before invocation",
+      "lifecycleInvoked == false before invocation"
+    ],
+    "requiredPreActionArtifact": "append-only invocation attempt artifact with state PREPARED_NOT_STARTED",
+    "requiredPostActionArtifact": "append-only invocation result artifact with lifecycle outcome, session id, completion state, cleanup state, and boundary booleans",
+    "forbiddenPaths": [
+      "legacy OpenCode worker path",
+      "remote runner start endpoint",
+      "wait endpoint",
+      "terminal OpenCode invocation"
+    ],
+    "firstAllowedAction": "bounded OpenCode HTTP lifecycle orchestrator equivalent after final preflight",
+    "failureRule": "return WOULD_BE_BLOCKED and write no invocation action when any precondition fails",
+    "recommendedNextPacket": "FP-MCP-260 — HTTP Lifecycle Invocation Attempt Artifact Schema"
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_259_HTTP_LIFECYCLE_INVOCATION_EXECUTION_GATE_CONTRACT_DEFINED_WITHOUT_IMPLEMENTATION"
+}

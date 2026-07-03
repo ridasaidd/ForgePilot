@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-259",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 131,
+  "run_id": "FP-MCP-259-HTTP-LIFECYCLE-INVOCATION-EXECUTION-GATE-DESIGN",
+  "generic_admission_event_id": 131,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_MCP_259_HTTP_LIFECYCLE_INVOCATION_EXECUTION_GATE_CONTRACT_DEFINED_WITHOUT_IMPLEMENTATION",
+  "artifact_paths": [
+    "packets/FP-MCP-259.md",
+    "runs/FP-MCP-259/http-lifecycle-invocation-execution-gate-design-record.json",
+    "runs/FP-MCP-259/result-summary.md",
+    "runs/FP-MCP-259/verification.txt"
+  ]
+}
