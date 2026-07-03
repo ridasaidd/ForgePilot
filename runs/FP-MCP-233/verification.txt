@@ -1,0 +1,15 @@
+FP-MCP-233 verification
+
+Checkpoint type:
+- FRESH_POPUP_CLEARANCE_CANARY_PREPARATION
+
+Claim:
+- FP_MCP_233_FRESH_POPUP_CLEARANCE_CANARY_PREPARATION_RECORDED
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

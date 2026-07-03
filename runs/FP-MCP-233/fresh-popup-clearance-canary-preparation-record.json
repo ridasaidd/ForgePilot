@@ -1,0 +1,56 @@
+{
+  "packetId": "FP-MCP-233",
+  "title": "Fresh Popup-Clearance Canary Attempt Preparation",
+  "checkpointType": "FRESH_POPUP_CLEARANCE_CANARY_PREPARATION",
+  "claim": "FP_MCP_233_FRESH_POPUP_CLEARANCE_CANARY_PREPARATION_RECORDED",
+  "summary": "Prepare a fresh approval and popup-created local clearance cycle after FP-MCP-231 fixed guarded start evidence ordering and FP-MCP-232 introduced popup-approved local clearance creation. This checkpoint creates the FP-MCP-233 packet namespace only; it does not create approval evidence, local clearance, consume approval, contact runner start, start OpenCode, or run FP-027.",
+  "caveats": [
+    "The first FP-MCP-233 approval attempt failed safely because the packet did not exist yet; no approval artifact was created.",
+    "A fresh structured approval must be recorded next under FP-MCP-233.",
+    "The popup-approved local clearance should bind requestArtifactCommit to the current ForgePilot HEAD after the approval artifact is committed.",
+    "No start attempt is authorized by this checkpoint itself."
+  ],
+  "boundaries": [
+    "execution authorized: false",
+    "approval created by this checkpoint: false",
+    "approval consumed: false",
+    "disable switch cleared: false",
+    "runner start endpoint contacted: false",
+    "OpenCode started: false",
+    "FP-027 canary run: false",
+    "local clearance artifact created: false",
+    "standing execution authority created: false"
+  ],
+  "structuredRecord": {
+    "freshScope": {
+      "executionPacketId": "FP-MCP-223",
+      "requestId": "REQ-20260703T125101090Z-8535b3c0",
+      "modelId": "deepseek-v4-pro-high",
+      "runMode": "DESIGN_ONLY",
+      "executionBaseCommit": "6fb3a32",
+      "requestArtifactCommitAtPreparation": "3242ae1",
+      "branch": "main",
+      "targetWorkspaceId": "forgepilot"
+    },
+    "activeFixes": [
+      "FP-MCP-231 guarded start no longer dirties target workspace before runner validation",
+      "FP-MCP-232 popup-approved local clearance creation tool is exposed after service restart"
+    ],
+    "requiredNextSteps": [
+      "record fresh structured approval in FP-MCP-233 with repoCommit 6fb3a32",
+      "commit and validate the approval",
+      "create popup-approved local clearance with current HEAD as requestArtifactCommit",
+      "observe clearance eligible",
+      "make at most one guarded start attempt if all gates remain valid"
+    ]
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_233_FRESH_POPUP_CLEARANCE_CANARY_PREPARATION_RECORDED"
+}
