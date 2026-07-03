@@ -1,0 +1,15 @@
+FP-MCP-250 verification
+
+Checkpoint type:
+- ASSISTANT_COMPLETION_PROBE_RESULT
+
+Claim:
+- FP_MCP_250_OPENCODE_HTTP_ROLE_AWARE_ASSISTANT_COMPLETION_OBSERVED
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
