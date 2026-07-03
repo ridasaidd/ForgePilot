@@ -1,0 +1,29 @@
+FP-MCP-202 verification
+
+DeepSeek/OpenCode report checked against live bridge state.
+
+Observed:
+- changed file: src/packet-checkpoint.ts
+- pnpm build PASS
+- bridge commit: 085589d Fix checkpoint pnpm command resolution
+- bridge post-commit git status --short: clean
+
+Source inspection confirmed:
+- resolvePnpmBin() exists
+- FORGEPILOT_PNPM_BIN is supported
+- fallback is pnpm, not pnmpm
+- preflightPnpmAvailability() exists
+- PNPM_COMMAND_NOT_FOUND reason exists
+- EVIDENCE_EXECUTION_FAILED reason exists
+- PARTIAL_ARTIFACTS_WRITTEN reason exists
+
+Boundary:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started by this result-recording step: false
+- FP-027 canary run: false
+
+Expected result:
+- FP_MCP_202_CHECKPOINT_TOOL_RUNTIME_COMMAND_RESOLUTION_FIXED

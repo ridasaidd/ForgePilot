@@ -1,0 +1,21 @@
+{
+  "packetId": "FP-MCP-202",
+  "result": "FP_MCP_202_DEEPSEEK_CHECKPOINT_TOOL_RUNTIME_FIX_PROMPT_PREPARED",
+  "handoffType": "DEEPSEEK_OPENCODE_IMPLEMENTATION_PROMPT",
+  "sourceModificationPerformed": false,
+  "observedFailurePacket": "FP-MCP-201",
+  "observedFailure": "spawn pnpm ENOENT",
+  "targetTool": "forgepilot_record_packet_checkpoint",
+  "targetModule": "src/packet-checkpoint.ts",
+  "targetWorkspace": "forgepilot-chatgpt-mcp",
+  "goal": "Fix checkpoint tool command resolution so the MCP service runtime can execute evidence recording without relying on pnpm being on PATH.",
+  "boundary": {
+    "authorizesExecution": false,
+    "consumesApproval": false,
+    "clearsDisableSwitch": false,
+    "contactsRunnerStartEndpoint": false,
+    "startsOpenCode": false,
+    "runsFp027": false,
+    "modifiesMcpServerSourceNow": false
+  }
+}

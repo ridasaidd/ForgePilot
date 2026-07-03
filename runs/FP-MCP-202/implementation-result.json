@@ -1,0 +1,37 @@
+{
+  "packetId": "FP-MCP-202",
+  "result": "FP_MCP_202_CHECKPOINT_TOOL_RUNTIME_COMMAND_RESOLUTION_FIXED",
+  "bridgeCommit": "085589d",
+  "bridgeBranch": "feature/oauth-auth0",
+  "changedFiles": [
+    "src/packet-checkpoint.ts"
+  ],
+  "buildCommand": "pnpm build",
+  "buildPassed": true,
+  "fixSummary": [
+    "Added resolvePnpmBin() using FORGEPILOT_PNPM_BIN with fallback to pnpm.",
+    "Added preflightPnpmAvailability() to run pnpm --version before artifact writes.",
+    "Added PNPM_COMMAND_NOT_FOUND fail-closed behavior before checkpoint artifacts are written.",
+    "Wrapped evidence execution failures with EVIDENCE_EXECUTION_FAILED and PARTIAL_ARTIFACTS_WRITTEN reasons plus git status reporting."
+  ],
+  "forgedPilotPnpmBinSupported": true,
+  "preflightCommandAvailabilityAdded": true,
+  "partialArtifactBehaviorImproved": true,
+  "reportCorrection": {
+    "deepSeekReportSaidFallback": "pnmpm",
+    "verifiedSourceFallback": "pnpm",
+    "interpretation": "report typo, not implementation bug"
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "caveats": [
+    "PARTIAL_ARTIFACTS_WRITTEN path reports artifacts and blocked state but does not auto-cleanup written files.",
+    "Live tool smoke test still requires bridge service/action refresh before retesting."
+  ]
+}
