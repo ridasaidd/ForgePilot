@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "FP-MCP-142",
+  "artifactType": "runner-post-start-state",
+  "packetId": "FP-MCP-223",
+  "requestId": "REQ-20260703T125101090Z-8535b3c0",
+  "runnerRunId": "RUN-20260703T174527866Z-8630e8a1",
+  "executionEnabled": true,
+  "startEndpointContacted": true,
+  "executionStarted": true,
+  "opencodeStarted": true,
+  "opencodePid": 788061,
+  "opencodeBin": "/home/ridasaidd/.nvm/versions/node/v24.4.1/bin/opencode",
+  "opencodeModel": null,
+  "opencodeArgs": [
+    "run",
+    "--dir",
+    "/home/ridasaidd/forgepilot",
+    "--title",
+    "ForgePilot FP-MCP-223 RUN-20260703T174527866Z-8630e8a1",
+    "ForgePilot guarded DESIGN_ONLY execution request.\nPacket: FP-MCP-223\nRequest: REQ-20260703T125101090Z-8535b3c0\nModel: deepseek-v4-pro-high\nRun mode: DESIGN_ONLY\nControl repo commit: 2ad7ad1\nTarget workspace id: forgepilot\nTarget workspace commit: 2ad7ad1\n\nRead .forgepilot/tasks/RUN-20260703T174527866Z-8630e8a1/instructions.md.\nThe packet has been staged at .forgepilot/tasks/RUN-20260703T174527866Z-8630e8a1/packet.md.\nThe request artifact has been staged at .forgepilot/tasks/RUN-20260703T174527866Z-8630e8a1/request.json.\nThe execution context has been staged at .forgepilot/tasks/RUN-20260703T174527866Z-8630e8a1/context.json.\nWrite outputs to .forgepilot/tasks/RUN-20260703T174527866Z-8630e8a1/outputs/.\nDo not read outside the current workspace.\nDo not expose secrets. Preserve ForgePilot evidence discipline."
+  ],
+  "controlRepoCommit": "2ad7ad1",
+  "targetWorkspaceId": "forgepilot",
+  "targetWorkspaceCommit": "2ad7ad1",
+  "opencodeWorkingDirectory": "/home/ridasaidd/forgepilot",
+  "taskBundleCreated": true,
+  "taskBundlePath": "/home/ridasaidd/forgepilot/.forgepilot/tasks/RUN-20260703T174527866Z-8630e8a1",
+  "taskBundleRelativePath": ".forgepilot/tasks/RUN-20260703T174527866Z-8630e8a1",
+  "stdoutPath": "/home/ridasaidd/forgepilot/runs/FP-MCP-223/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260703T174527866Z-8630e8a1-opencode.stdout.log",
+  "stderrPath": "/home/ridasaidd/forgepilot/runs/FP-MCP-223/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260703T174527866Z-8630e8a1-opencode.stderr.log",
+  "recordedAt": "2026-07-03T17:45:27.870Z"
+}

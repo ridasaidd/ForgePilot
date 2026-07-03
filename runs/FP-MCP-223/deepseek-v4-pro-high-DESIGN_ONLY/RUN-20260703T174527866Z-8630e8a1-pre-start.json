@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "FP-MCP-142",
+  "artifactType": "runner-pre-start-state",
+  "packetId": "FP-MCP-223",
+  "requestId": "REQ-20260703T125101090Z-8535b3c0",
+  "runnerRunId": "RUN-20260703T174527866Z-8630e8a1",
+  "executionEnabled": true,
+  "startEndpointContacted": true,
+  "executionStarted": false,
+  "opencodeStarted": false,
+  "controlRepoCommit": "2ad7ad1",
+  "targetWorkspaceId": "forgepilot",
+  "targetWorkspaceCommit": "2ad7ad1",
+  "opencodeWorkingDirectory": "/home/ridasaidd/forgepilot",
+  "taskBundleCreated": true,
+  "taskBundlePath": "/home/ridasaidd/forgepilot/.forgepilot/tasks/RUN-20260703T174527866Z-8630e8a1",
+  "taskBundleRelativePath": ".forgepilot/tasks/RUN-20260703T174527866Z-8630e8a1",
+  "taskBundleFiles": [
+    "packet.md",
+    "request.json",
+    "context.json",
+    "instructions.md",
+    "outputs/"
+  ],
+  "recordedAt": "2026-07-03T17:45:27.868Z"
+}
