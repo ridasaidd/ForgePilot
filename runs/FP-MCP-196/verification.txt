@@ -1,0 +1,39 @@
+FP-MCP-196 verification
+
+Pre-state:
+- ForgePilot clean at 5e57770 Record FP-MCP-195 conservative MCP cadence policy
+- canonical evidence/admission before packet: 65/65
+
+Source alignment:
+- OpenAI support guidance asks for issue description, steps, timestamps/time zone, request/completion IDs if applicable, screenshots/code snippets where useful, environment details, workspace/org ID if applicable, and exact safety/policy flag message plus associated request ID if available.
+
+Report contents:
+- Exact block text included.
+- FP-MCP-187 included with attempted tool and redacted task description.
+- FP-MCP-195 included with attempted command and bounded timestamp window.
+- Missing OpenAI request IDs marked unavailable, not invented.
+- Missing MCP request evidence paths explained as blocked before bridge receipt.
+- Account/workspace/environment fields left as OPERATOR_TO_FILL.
+- Root cause marked unresolved.
+- Cadence marked not confirmed.
+- Content/schema sensitivity marked not confirmed.
+
+Boundary:
+- Did not submit report.
+- Did not retry blocked calls.
+- Did not create request artifact.
+- Did not create or consume approval evidence.
+- Did not contact runner start endpoint.
+- Did not start OpenCode.
+- Did not run FP-027 canary.
+
+Expected result:
+- FP_MCP_196_OPENAI_PLATFORM_BLOCK_FEEDBACK_REPORT_PACKAGE_ASSEMBLED_NOT_SUBMITTED
+
+Post-recording verification:
+- evidence_records: 66
+- generic evidence_record admission events: 66
+- latest_evidence_id: 66
+- latest_generic_event_id: 66
+- canonical_state: ADMITTED
+- admitted_claim: FP_MCP_196_OPENAI_PLATFORM_BLOCK_FEEDBACK_REPORT_PACKAGE_ASSEMBLED_NOT_SUBMITTED

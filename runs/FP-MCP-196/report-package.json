@@ -1,0 +1,66 @@
+{
+  "packetId": "FP-MCP-196",
+  "submissionStatus": "NOT_SUBMITTED",
+  "exactBlockMessage": "This tool call was blocked by OpenAI's safety checks. Please double check what you are sending.",
+  "openAiSupportGuidanceFields": [
+    "descriptionOfIssue",
+    "accountEmailAndPlan",
+    "stepsToReproduce",
+    "timestampsWithTimezone",
+    "requestOrCompletionIdsIfApplicable",
+    "screenshotsOrCodeSnippetsIfUseful",
+    "avoidSensitiveData",
+    "environmentDetails",
+    "workspaceOrOrganizationIdIfApplicable",
+    "exactSafetyOrPolicyFlagMessageAndAssociatedRequestIdIfAvailable"
+  ],
+  "incidents": [
+    {
+      "id": "FP-MCP-187",
+      "kind": "ENABLEMENT_ADJACENT_REQUEST_ARTIFACT_CREATION_BLOCK",
+      "redactedTaskDescription": "Creating a scoped, human-approved request artifact for a sandboxed execution test.",
+      "attemptedTool": "forgepilot_create_opencode_run_request",
+      "attemptedArguments": {
+        "packetId": "FP-MCP-183",
+        "modelId": "deepseek-v4-pro-high",
+        "runMode": "DESIGN_ONLY",
+        "approval": "CREATE_REQUEST_ARTIFACT"
+      },
+      "localMcpRequestEvidencePath": null,
+      "reasonRequestEvidenceUnavailable": "Blocked before ForgePilot MCP bridge received the call.",
+      "openAiRequestId": null,
+      "openAiRequestIdStatus": "UNAVAILABLE_TO_OPERATOR",
+      "boundary": {
+        "requestArtifactCreated": false,
+        "approvalCreated": false,
+        "approvalConsumed": false,
+        "runnerStartEndpointContacted": false,
+        "opencodeStarted": false,
+        "fp027CanaryRun": false
+      }
+    },
+    {
+      "id": "FP-MCP-195",
+      "kind": "SINGLE_PURPOSE_TERMINAL_VALIDATION_BLOCK",
+      "redactedTaskDescription": "Running a single-purpose repository whitespace/diff validation command while recording operational policy evidence.",
+      "attemptedCommand": "git diff --check",
+      "packetId": "FP-MCP-195",
+      "boundedTimestampWindowUtc": {
+        "after": "2026-07-03T08:26:26Z",
+        "before": "2026-07-03T08:26:48Z"
+      },
+      "localMcpRequestEvidencePath": null,
+      "reasonRequestEvidenceUnavailable": "Blocked before ForgePilot MCP bridge received the call.",
+      "openAiRequestId": null,
+      "openAiRequestIdStatus": "UNAVAILABLE_TO_OPERATOR",
+      "classification": "CONSISTENT_WITH_CADENCE_HYPOTHESIS_NOT_CONFIRMATION"
+    }
+  ],
+  "rootCauseStatus": {
+    "openAiTriggerResolved": false,
+    "cadenceConfirmed": false,
+    "contentOrSchemaConfirmed": false,
+    "safetyBlockStillUnresolved": true
+  },
+  "observedResult": "FP_MCP_196_OPENAI_PLATFORM_BLOCK_FEEDBACK_REPORT_PACKAGE_ASSEMBLED_NOT_SUBMITTED"
+}

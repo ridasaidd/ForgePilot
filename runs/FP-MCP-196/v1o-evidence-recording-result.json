@@ -1,0 +1,20 @@
+{
+  "packet_id": "FP-MCP-196",
+  "result": "FP_MCP_196_REPORT_PACKAGE_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 66,
+  "run_id": "FP-MCP-196-OPENAI-PLATFORM-BLOCK-FEEDBACK-REPORT-PACKAGE",
+  "generic_admission_event_id": 66,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_MCP_196_OPENAI_PLATFORM_BLOCK_FEEDBACK_REPORT_PACKAGE_ASSEMBLED_NOT_SUBMITTED",
+  "total_evidence_records": 66,
+  "total_generic_evidence_record_admission_events": 66,
+  "artifact_paths": [
+    "packets/FP-MCP-196.md",
+    "runs/FP-MCP-196/openai-feedback-report.md",
+    "runs/FP-MCP-196/report-package.json",
+    "runs/FP-MCP-196/result-summary.md",
+    "runs/FP-MCP-196/verification.txt"
+  ]
+}
