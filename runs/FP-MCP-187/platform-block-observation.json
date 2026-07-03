@@ -1,0 +1,22 @@
+{
+  "packetId": "FP-MCP-187",
+  "observedAt": "2026-07-03T07:23:02Z",
+  "attemptedPrimaryTool": "forgepilot_create_opencode_run_request",
+  "attemptedArguments": {
+    "packetId": "FP-MCP-183",
+    "modelId": "deepseek-v4-pro-high",
+    "runMode": "DESIGN_ONLY",
+    "approval": "CREATE_REQUEST_ARTIFACT"
+  },
+  "blockedBeforeForgePilotReceivedCall": true,
+  "toolResponse": "This tool call was blocked by OpenAI's safety checks. Please double check what you are sending.",
+  "requestCreated": false,
+  "approvalCreated": false,
+  "approvalConsumed": false,
+  "runnerStartEndpointContacted": false,
+  "opencodeStarted": false,
+  "fp027CanaryRun": false,
+  "fpMcp183EnablementAuthorized": false,
+  "manualBypassUsed": false,
+  "observedResult": "FP_MCP_187_FPMCP183_FRESH_TUPLE_REQUEST_CREATION_BLOCKED_BEFORE_FORGEPILOT_NO_ENABLEMENT"
+}

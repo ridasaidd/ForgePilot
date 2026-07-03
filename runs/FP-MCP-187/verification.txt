@@ -1,0 +1,36 @@
+FP-MCP-187 verification
+
+Repository state before attempt:
+- ForgePilot clean at dd626bc Clarify FP-MCP-185 and FP-MCP-186 sequence
+- MCP bridge clean at 9e01c73 Normalize execution preflight disabled reasons
+- canonical evidence/admission before attempt: 56/56
+
+Attempt:
+- primary MCP tool: forgepilot_create_opencode_run_request
+- packetId: FP-MCP-183
+- modelId: deepseek-v4-pro-high
+- runMode: DESIGN_ONLY
+- approval literal: CREATE_REQUEST_ARTIFACT
+
+Observation:
+- tool call blocked by platform safety checks before ForgePilot received it
+- no request artifact created under FP-MCP-183
+- no approval created
+- no approval consumed
+- no runner start endpoint contact
+- no OpenCode start
+- no FP-027 canary run
+- no manual bypass used
+
+Conclusion:
+- FP-MCP-183 remains ungranted.
+- Fresh tuple preparation is blocked at the primary MCP request artifact creation step in this ChatGPT tool surface.
+
+Post-recording verification:
+- FP-MCP-183 opencode request count checked via primary MCP list tool: 0
+- evidence_records: 57
+- generic evidence_record admission events: 57
+- latest_evidence_id: 57
+- latest_generic_event_id: 57
+- canonical_state: ADMITTED
+- admitted_claim: FP_MCP_187_FPMCP183_FRESH_TUPLE_REQUEST_CREATION_BLOCKED_BEFORE_FORGEPILOT_NO_ENABLEMENT

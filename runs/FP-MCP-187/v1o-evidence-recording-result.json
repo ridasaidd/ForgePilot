@@ -1,0 +1,19 @@
+{
+  "packet_id": "FP-MCP-187",
+  "result": "FP_MCP_187_PLATFORM_BLOCK_OBSERVATION_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 57,
+  "run_id": "FP-MCP-187-FPMCP183-FRESH-TUPLE-REQUEST-CREATION-PLATFORM-BLOCKED",
+  "generic_admission_event_id": 57,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_MCP_187_FPMCP183_FRESH_TUPLE_REQUEST_CREATION_BLOCKED_BEFORE_FORGEPILOT_NO_ENABLEMENT",
+  "total_evidence_records": 57,
+  "total_generic_evidence_record_admission_events": 57,
+  "artifact_paths": [
+    "packets/FP-MCP-187.md",
+    "runs/FP-MCP-187/platform-block-observation.json",
+    "runs/FP-MCP-187/result-summary.md",
+    "runs/FP-MCP-187/verification.txt"
+  ]
+}
