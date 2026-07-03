@@ -1,0 +1,20 @@
+{
+  "packet_id": "FP-MCP-193",
+  "result": "FP_MCP_193_SOURCE_GUIDANCE_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 63,
+  "run_id": "FP-MCP-193-SOURCE-BACKED-MCP-SERVER-DESIGN-GUIDANCE",
+  "generic_admission_event_id": 63,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_MCP_193_SOURCE_BACKED_MCP_SERVER_DESIGN_GUIDANCE_RECORDED",
+  "total_evidence_records": 63,
+  "total_generic_evidence_record_admission_events": 63,
+  "artifact_paths": [
+    "packets/FP-MCP-193.md",
+    "docs/operations/mcp-server-design-guidance.md",
+    "runs/FP-MCP-193/source-review.json",
+    "runs/FP-MCP-193/result-summary.md",
+    "runs/FP-MCP-193/verification.txt"
+  ]
+}

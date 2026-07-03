@@ -1,0 +1,39 @@
+FP-MCP-193 verification
+
+Pre-state:
+- ForgePilot clean at 53a5c40 Record FP-MCP-192 non-executing artifact live confirmation
+- MCP bridge clean at 679ef93 Clarify non-executing request artifact contract
+- canonical evidence/admission before packet: 62/62
+
+Source review:
+- OpenAI Apps SDK Reference reviewed for annotation semantics.
+- OpenAI Apps SDK Security & Privacy reviewed for least privilege, explicit consent, defense in depth, server-side validation, and audit logs.
+- OpenAI MCP and Connectors guide reviewed for approvals, sensitive actions, prompt injection caution, and trusted servers.
+- MCP Tools specification reviewed for model-controlled tool semantics and human-in-the-loop recommendation.
+- MCP Resources specification reviewed for application-driven context semantics.
+- MCP Prompts specification reviewed for user-controlled workflow semantics.
+- modelcontextprotocol/servers reviewed as reference implementation collection with explicit non-production warning.
+
+Artifacts:
+- packets/FP-MCP-193.md
+- docs/operations/mcp-server-design-guidance.md
+- runs/FP-MCP-193/source-review.json
+- runs/FP-MCP-193/result-summary.md
+- runs/FP-MCP-193/verification.txt
+
+Boundary:
+- No execution enablement.
+- No FP-MCP-183 request artifact creation.
+- No approval creation.
+- No approval consumption.
+- No runner start endpoint contact.
+- No OpenCode start.
+- No FP-027 canary run.
+
+Post-recording verification:
+- evidence_records: 63
+- generic evidence_record admission events: 63
+- latest_evidence_id: 63
+- latest_generic_event_id: 63
+- canonical_state: ADMITTED
+- admitted_claim: FP_MCP_193_SOURCE_BACKED_MCP_SERVER_DESIGN_GUIDANCE_RECORDED

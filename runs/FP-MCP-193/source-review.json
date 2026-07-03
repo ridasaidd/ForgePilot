@@ -1,0 +1,48 @@
+{
+  "packetId": "FP-MCP-193",
+  "sources": [
+    {
+      "name": "OpenAI Apps SDK Reference",
+      "url": "https://developers.openai.com/apps-sdk/reference/",
+      "usedFor": "Tool annotation meanings and requirement that server still enforces authorization."
+    },
+    {
+      "name": "OpenAI Apps SDK Security & Privacy",
+      "url": "https://developers.openai.com/apps-sdk/guides/security-privacy/",
+      "usedFor": "Least privilege, explicit consent, defense in depth, server-side validation, audit logs, write-tool caution."
+    },
+    {
+      "name": "OpenAI MCP and Connectors Guide",
+      "url": "https://developers.openai.com/api/docs/guides/tools-connectors-mcp",
+      "usedFor": "Approvals, sensitive-action approval flows, trusted servers, prompt injection caution."
+    },
+    {
+      "name": "MCP Tools Specification",
+      "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/tools",
+      "usedFor": "Tools are model-controlled; human-in-the-loop is recommended for trust and safety."
+    },
+    {
+      "name": "MCP Resources Specification",
+      "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/resources",
+      "usedFor": "Resources are application-driven context."
+    },
+    {
+      "name": "MCP Prompts Specification",
+      "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/prompts",
+      "usedFor": "Prompts are user-controlled workflows/templates."
+    },
+    {
+      "name": "modelcontextprotocol/servers",
+      "url": "https://github.com/modelcontextprotocol/servers",
+      "usedFor": "Reference implementations are educational examples, not production-ready safety proofs."
+    }
+  ],
+  "recommendedDesignDirection": [
+    "Move read-only observatory access to MCP resources.",
+    "Move recurring operator workflows to MCP prompts.",
+    "Keep mutating operations as narrow typed tools with truthful annotations.",
+    "Keep terminal as secondary debugging/development control.",
+    "Preserve ForgePilot's evidence/admission ledger as the server-side safety authority."
+  ],
+  "observedResult": "FP_MCP_193_SOURCE_BACKED_MCP_SERVER_DESIGN_GUIDANCE_RECORDED"
+}
