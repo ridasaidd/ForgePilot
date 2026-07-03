@@ -1,0 +1,20 @@
+{
+  "packet_id": "FP-MCP-195",
+  "result": "FP_MCP_195_CADENCE_POLICY_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 65,
+  "run_id": "FP-MCP-195-CONSERVATIVE-MCP-INVOCATION-CADENCE-POLICY",
+  "generic_admission_event_id": 65,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_MCP_195_CONSERVATIVE_MCP_INVOCATION_CADENCE_POLICY_RECORDED",
+  "total_evidence_records": 65,
+  "total_generic_evidence_record_admission_events": 65,
+  "artifact_paths": [
+    "packets/FP-MCP-195.md",
+    "docs/operations/platform-tool-block-pattern.md",
+    "runs/FP-MCP-195/cadence-policy.json",
+    "runs/FP-MCP-195/result-summary.md",
+    "runs/FP-MCP-195/verification.txt"
+  ]
+}

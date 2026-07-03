@@ -132,3 +132,24 @@ During FP-027 pre-spec work, platform-side blocks also affected read-only policy
 This weakens any hypothesis that the pattern is limited to large write commands.
 
 It remains compatible with timing/cadence, content/schema sensitivity, and intermittent platform-side evaluation.
+
+
+## Conservative MCP invocation cadence rule
+
+Operator observation reinforced by FP-MCP-195: rapid MCP tool calls and multi-command terminal invocations can appear to trigger OpenAI platform safety checks, including checks that fire before the ForgePilot MCP bridge receives the call.
+
+This remains a hypothesis, not a confirmed root cause. The handling rule is conservative because false positives can obscure real safety findings and create confusing ledger artifacts.
+
+Default invocation discipline:
+
+```text
+1. Prefer one MCP tool call at a time.
+2. Prefer one logical operation per terminal invocation.
+3. Avoid chaining multiple terminal commands with && when a single-purpose call is sufficient.
+4. Avoid rapid back-to-back calls around enablement-adjacent tools.
+5. Insert an operator-visible pause/update between sensitive tool calls when practical.
+6. Treat platform blocks as observations, not as noise to retry away.
+7. Do not rephrase or restructure enablement-adjacent calls solely to get past a platform block.
+```
+
+This cadence rule does not relax any no-bypass, equivalence, approval, execution-disable, or runner-start boundary.

@@ -1,0 +1,28 @@
+{
+  "packetId": "FP-MCP-195",
+  "observation": "Rapid MCP tool calls and multi-command terminal invocations can appear to trigger OpenAI platform safety checks before ForgePilot receives the call.",
+  "classification": "OPERATIONAL_FALSE_POSITIVE_RISK_HYPOTHESIS",
+  "rootCauseProven": false,
+  "policy": [
+    "Prefer one MCP tool call at a time.",
+    "Prefer one logical operation per terminal invocation.",
+    "Avoid chaining multiple terminal commands when a single-purpose call is sufficient.",
+    "Avoid rapid back-to-back calls around enablement-adjacent tools.",
+    "Insert an operator-visible pause/update between sensitive tool calls when practical.",
+    "Treat platform blocks as observations, not as noise to retry away.",
+    "Do not rephrase or restructure enablement-adjacent calls solely to get past a platform block."
+  ],
+  "preservedBoundaries": {
+    "openAiTriggerResolved": false,
+    "fpMcp187Downgraded": false,
+    "equivalentCapabilityRuleRelaxed": false,
+    "fpMcp183Authorized": false,
+    "requestArtifactCreated": false,
+    "approvalCreated": false,
+    "approvalConsumed": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_195_CONSERVATIVE_MCP_INVOCATION_CADENCE_POLICY_RECORDED"
+}
