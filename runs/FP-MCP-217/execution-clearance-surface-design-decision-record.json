@@ -1,0 +1,96 @@
+{
+  "packetId": "FP-MCP-217",
+  "title": "Execution Clearance Surface Design Decision",
+  "checkpointType": "EXECUTION_CLEARANCE_SURFACE_DESIGN_DECISION",
+  "claim": "FP_MCP_217_EXECUTION_CLEARANCE_SURFACE_DESIGN_DECISION_RECORDED",
+  "summary": "Record the design decision not to implement a broad MCP-invocable global disable-switch clearing tool as the next step. Execution clearance is the highest-risk surface in the bridge and must not be treated like a normal convenience tool. The preferred first implementation direction is human-local operator-controlled clearance outside the model-callable MCP surface, with MCP tools limited to observing and validating that clearance rather than creating it.",
+  "caveats": [
+    "This packet is a design decision only; no MCP bridge code is modified.",
+    "This packet does not create an execution-clearance tool.",
+    "This packet does not clear the disable switch.",
+    "This packet does not consume approval.",
+    "This packet does not contact the runner start endpoint, start OpenCode, or run FP-027.",
+    "The fresh FP-MCP-216 approval remains valid only until its expiry and must not be consumed while execution remains disabled.",
+    "A future implementation packet must separately design and verify the operator-local clearance mechanism before any execution attempt."
+  ],
+  "boundaries": [
+    "execution clearance tool implemented: false",
+    "MCP-invocable global disable-switch clearing approved: false",
+    "execution grant issued by this packet: false",
+    "execution authorized: false",
+    "approval consumed: false",
+    "disable switch cleared: false",
+    "runner start endpoint contacted: false",
+    "OpenCode started: false",
+    "FP-027 canary run: false",
+    "standing execution authority created: false"
+  ],
+  "structuredRecord": {
+    "decision": "DO_NOT_IMPLEMENT_BROAD_MCP_INVOKABLE_GLOBAL_DISABLE_SWITCH_CLEAR_TOOL_NOW",
+    "riskRationale": {
+      "coreConcern": "A tool that clears the actual execution disable switch is the most consequential surface in the bridge. Treating it as a normal MCP-invocable action would put the final execution-enable act inside the same model-driven conversation channel that has already observed platform invocation blocks and surrounding field/packet scope ambiguities.",
+      "fp025Constraint": "Execution enablement must remain packet-scoped, target-workspace-scoped, model-scoped, run-mode-scoped, time-boxed, human-approved, abortable, observable, and reversible. A broad boolean-like MCP tool would not satisfy that standard by construction.",
+      "fp194Constraint": "New tool surfaces cannot be presumed safe merely because surrounding practice is careful. Execution-clearance tooling requires explicit structural reasoning before implementation, with stricter scrutiny than read-only diagnostic tools."
+    },
+    "preferredFirstDesign": {
+      "clearanceCreationSurface": "human-local operator-controlled mechanism outside model-callable MCP tool surface",
+      "examples": [
+        "manual local CLI command executed by operator on the machine",
+        "file-based signed or explicit local flag written by operator outside MCP",
+        "environment/local runner control state set by operator outside ChatGPT tool invocation"
+      ],
+      "mcpRole": "observe and validate clearance state only; do not create or relax it",
+      "requiredProperties": [
+        "packet-scoped",
+        "request-scoped",
+        "approval-scoped",
+        "target-workspace-scoped",
+        "model-scoped",
+        "run-mode-scoped",
+        "target-commit-scoped",
+        "time-boxed",
+        "single-use or attempt-scoped",
+        "audit-trailed",
+        "abortable",
+        "observable",
+        "reversible",
+        "fails closed if stale or mismatched"
+      ]
+    },
+    "ifMcpToolEverConsidered": {
+      "minimumConstraints": [
+        "the clearance tool itself must require a fresh approval tuple",
+        "must be single-use and attempt-scoped",
+        "must refuse global standing enablement",
+        "must refuse missing/mismatched request id, approval id, model id, run mode, workspace, branch, and target commit",
+        "must write append-only clearance evidence rather than mutating existing approval/request artifacts",
+        "must include explicit expiration and automatic invalidation on repo commit drift",
+        "must not call runner start or consume approval in the same action",
+        "must be audited before use under FP-MCP-194-style structural equivalence rules"
+      ],
+      "status": "NOT_APPROVED_FOR_IMPLEMENTATION_NOW"
+    },
+    "currentExecutionPathState": {
+      "freshApprovalPacketId": "FP-MCP-216",
+      "freshApprovalId": "APPROVAL-20260703T120153710Z-10683ad6",
+      "freshApprovalUsableForExecution": true,
+      "scopedClearanceEligible": true,
+      "consumptionWouldBeAllowed": true,
+      "executionPermitted": false,
+      "executionStillDisabledByPolicy": true,
+      "approvalConsumed": false,
+      "runnerStartEndpointContacted": false,
+      "opencodeStarted": false
+    },
+    "nextImplementationDirection": "Design operator-local clearance mechanism and MCP read-only validation of that mechanism; do not build a model-callable clearance mutator as the next step."
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_217_EXECUTION_CLEARANCE_SURFACE_DESIGN_DECISION_RECORDED"
+}
