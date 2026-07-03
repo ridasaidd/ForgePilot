@@ -1,0 +1,53 @@
+{
+  "packetId": "FP-MCP-245",
+  "title": "OpenCode HTTP Session Status Shape Reader Direct Verification",
+  "checkpointType": "TOOL_DIRECT_LIVE_VERIFICATION_UPDATE",
+  "claim": "FP_MCP_245_OPENCODE_HTTP_SESSION_STATUS_SHAPE_READER_DIRECTLY_VERIFIED",
+  "summary": "The newly implemented read-only MCP tool forgepilot_get_opencode_http_session_status_shape became callable from the ChatGPT tool surface and was directly invoked. It authenticated to the already-running local OpenCode HTTP server, read /session/status only, and returned sessionStatusReachable=true, sessionStatusHttpStatus=200, content-type application/json, topLevelType=object, topLevelEntryCount=0, topLevelKeys=[], sessionLikeEntryCount=0, sessionLikeIds=[], and observedEntryShapes=[]. This confirms the current /session/status shape is an empty object when no session-like entries are visible through this endpoint.",
+  "caveats": [
+    "An earlier FP-MCP-245 checkpoint recorded schema-surface pending because the new tool was present in source and dist but not yet surfaced in this ChatGPT session; this follow-up supersedes that caveat for direct tool availability.",
+    "The observed empty object means no session-like entries were visible at the time of observation; it does not prove OpenCode has no historical sessions or that all UI state is exposed through /session/status.",
+    "No OpenCode session was created, no prompt was sent, no message contents were read, and /api/session/{sessionID}/wait was not called."
+  ],
+  "boundaries": [
+    "This checkpoint records direct read-only verification only.",
+    "No OpenCode prompt was submitted.",
+    "No OpenCode session was created, modified, waited on, or aborted.",
+    "No OpenCode message contents were read.",
+    "No ForgePilot runner start endpoint was contacted.",
+    "No execution approval was created, consumed, or authorized.",
+    "No local execution clearance was created.",
+    "No completion semantics are admitted yet beyond observing the empty /session/status shape."
+  ],
+  "structuredRecord": {
+    "toolName": "forgepilot_get_opencode_http_session_status_shape",
+    "toolCallableFromChatGptSurface": true,
+    "directInvocationSucceeded": true,
+    "opencodeHttpConfigured": true,
+    "authConfigured": true,
+    "sessionStatusReachable": true,
+    "sessionStatusHttpStatus": 200,
+    "sessionStatusContentType": "application/json",
+    "topLevelType": "object",
+    "topLevelEntryCount": 0,
+    "topLevelKeys": [],
+    "arrayLength": null,
+    "sessionLikeEntryCount": 0,
+    "sessionLikeIds": [],
+    "observedEntryShapes": [],
+    "toolReasons": [
+      "OPENCODE_HTTP_SESSION_STATUS_REACHABLE"
+    ],
+    "boundaryVersion": "OPENCODE_HTTP_SESSION_STATUS_SHAPE_READER_V1",
+    "recommendedNextPacket": "FP-MCP-246 — OpenCode HTTP Minimal Session Canary"
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_245_OPENCODE_HTTP_SESSION_STATUS_SHAPE_READER_DIRECTLY_VERIFIED"
+}

@@ -3,12 +3,12 @@
 ## Result
 
 ```text
-FP_MCP_245_OPENCODE_HTTP_SESSION_STATUS_SHAPE_READER_IMPLEMENTED_SCHEMA_SURFACE_PENDING
+FP_MCP_245_OPENCODE_HTTP_SESSION_STATUS_SHAPE_READER_DIRECTLY_VERIFIED
 ```
 
 ## Summary
 
-Implemented and committed a read-only MCP tool, forgepilot_get_opencode_http_session_status_shape, intended to authenticate to the already-running local OpenCode HTTP server and summarize the /session/status JSON shape without creating sessions, sending prompts, reading message contents, calling wait, aborting sessions, starting OpenCode, or contacting the ForgePilot runner start endpoint. The bridge build and packet-id lint passed, the service was restarted, and compiled dist/server.js contains the new registration. However, the ChatGPT callable tool schema did not surface the new function in this session, so direct invocation from the assistant was not possible yet. The existing FP-MCP-244 HTTP status tool remained live and healthy after restart, returning authenticated=true, docReachable=true, sessionStatusReachable=true, sessionStatusHttpStatus=200, docPathCount=113, and sessionStatusTopLevelKeys=[].
+The newly implemented read-only MCP tool forgepilot_get_opencode_http_session_status_shape became callable from the ChatGPT tool surface and was directly invoked. It authenticated to the already-running local OpenCode HTTP server, read /session/status only, and returned sessionStatusReachable=true, sessionStatusHttpStatus=200, content-type application/json, topLevelType=object, topLevelEntryCount=0, topLevelKeys=[], sessionLikeEntryCount=0, sessionLikeIds=[], and observedEntryShapes=[]. This confirms the current /session/status shape is an empty object when no session-like entries are visible through this endpoint.
 
 ## Boundary
 

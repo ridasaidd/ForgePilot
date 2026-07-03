@@ -1,39 +1,37 @@
-# FP-MCP-245 — OpenCode HTTP Session Status Shape Reader
+# FP-MCP-245 — OpenCode HTTP Session Status Shape Reader Direct Verification
 
 ## Checkpoint Type
 
 ```text
-TOOL_IMPLEMENTATION_PARTIAL_LIVE_VERIFICATION
+TOOL_DIRECT_LIVE_VERIFICATION_UPDATE
 ```
 
 ## Summary
 
-Implemented and committed a read-only MCP tool, forgepilot_get_opencode_http_session_status_shape, intended to authenticate to the already-running local OpenCode HTTP server and summarize the /session/status JSON shape without creating sessions, sending prompts, reading message contents, calling wait, aborting sessions, starting OpenCode, or contacting the ForgePilot runner start endpoint. The bridge build and packet-id lint passed, the service was restarted, and compiled dist/server.js contains the new registration. However, the ChatGPT callable tool schema did not surface the new function in this session, so direct invocation from the assistant was not possible yet. The existing FP-MCP-244 HTTP status tool remained live and healthy after restart, returning authenticated=true, docReachable=true, sessionStatusReachable=true, sessionStatusHttpStatus=200, docPathCount=113, and sessionStatusTopLevelKeys=[].
+The newly implemented read-only MCP tool forgepilot_get_opencode_http_session_status_shape became callable from the ChatGPT tool surface and was directly invoked. It authenticated to the already-running local OpenCode HTTP server, read /session/status only, and returned sessionStatusReachable=true, sessionStatusHttpStatus=200, content-type application/json, topLevelType=object, topLevelEntryCount=0, topLevelKeys=[], sessionLikeEntryCount=0, sessionLikeIds=[], and observedEntryShapes=[]. This confirms the current /session/status shape is an empty object when no session-like entries are visible through this endpoint.
 
 ## Claim
 
 ```text
-FP_MCP_245_OPENCODE_HTTP_SESSION_STATUS_SHAPE_READER_IMPLEMENTED_SCHEMA_SURFACE_PENDING
+FP_MCP_245_OPENCODE_HTTP_SESSION_STATUS_SHAPE_READER_DIRECTLY_VERIFIED
 ```
 
 ## Caveats
 
-- Direct live invocation of forgepilot_get_opencode_http_session_status_shape was not possible because the ChatGPT tool schema cache did not expose the newly registered function, despite source and dist containing the registration.
-- The implementation commit a2aaa20 passed pnpm test and hardcoded packet-id lint before service restart.
-- A read-only grep confirmed src/server.ts and dist/server.js contain forgepilot_get_opencode_http_session_status_shape and OPENCODE_HTTP_SESSION_STATUS_SHAPE_READER_V1.
-- The existing forgepilot_get_opencode_http_session_status tool was invoked after restart and confirmed HTTP auth and /session/status access remained healthy.
-- No new OpenCode sessions were created and no prompt was sent.
+- An earlier FP-MCP-245 checkpoint recorded schema-surface pending because the new tool was present in source and dist but not yet surfaced in this ChatGPT session; this follow-up supersedes that caveat for direct tool availability.
+- The observed empty object means no session-like entries were visible at the time of observation; it does not prove OpenCode has no historical sessions or that all UI state is exposed through /session/status.
+- No OpenCode session was created, no prompt was sent, no message contents were read, and /api/session/{sessionID}/wait was not called.
 
 ## Boundaries
 
-- This checkpoint records implementation and partial live verification only.
+- This checkpoint records direct read-only verification only.
 - No OpenCode prompt was submitted.
 - No OpenCode session was created, modified, waited on, or aborted.
 - No OpenCode message contents were read.
 - No ForgePilot runner start endpoint was contacted.
 - No execution approval was created, consumed, or authorized.
 - No local execution clearance was created.
-- The shape-reader output must not be treated as directly observed from the MCP callable surface until the tool schema exposes the function and a direct invocation succeeds.
+- No completion semantics are admitted yet beyond observing the empty /session/status shape.
 
 ## Non-Execution Boundary
 
@@ -49,5 +47,5 @@ FP-027 canary run: false
 ## Expected Result
 
 ```text
-FP_MCP_245_OPENCODE_HTTP_SESSION_STATUS_SHAPE_READER_IMPLEMENTED_SCHEMA_SURFACE_PENDING
+FP_MCP_245_OPENCODE_HTTP_SESSION_STATUS_SHAPE_READER_DIRECTLY_VERIFIED
 ```
