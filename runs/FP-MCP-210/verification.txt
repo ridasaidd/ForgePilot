@@ -1,0 +1,15 @@
+FP-MCP-210 verification
+
+Checkpoint type:
+- FRESH_REQUEST_ARTIFACT_VALIDATION_CHECKPOINT
+
+Claim:
+- FP_MCP_210_FRESH_REQUEST_ARTIFACT_VALIDATION_CHECKPOINT_RECORDED
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

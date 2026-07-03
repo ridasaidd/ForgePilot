@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-210",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 78,
+  "run_id": "FP-MCP-210-FRESH-REQUEST-ARTIFACT-VALIDATION-CHECKPOINT",
+  "generic_admission_event_id": 78,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_MCP_210_FRESH_REQUEST_ARTIFACT_VALIDATION_CHECKPOINT_RECORDED",
+  "artifact_paths": [
+    "packets/FP-MCP-210.md",
+    "runs/FP-MCP-210/fresh-request-artifact-validation-checkpoint-record.json",
+    "runs/FP-MCP-210/result-summary.md",
+    "runs/FP-MCP-210/verification.txt"
+  ]
+}

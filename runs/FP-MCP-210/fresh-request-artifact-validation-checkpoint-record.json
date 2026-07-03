@@ -1,0 +1,92 @@
+{
+  "packetId": "FP-MCP-210",
+  "title": "Fresh Request Artifact Validation Checkpoint",
+  "checkpointType": "FRESH_REQUEST_ARTIFACT_VALIDATION_CHECKPOINT",
+  "claim": "FP_MCP_210_FRESH_REQUEST_ARTIFACT_VALIDATION_CHECKPOINT_RECORDED",
+  "summary": "Record the validated state of the fresh FP-MCP-209 non-executing request artifact before any human approval evidence or execution-gate action. The request artifact is committed and locally eligible for future remote-runner handoff, while execution remains globally disabled and no approval, consumption, runner start, OpenCode start, or FP-027 canary has occurred.",
+  "caveats": [
+    "This checkpoint does not create human approval evidence.",
+    "This checkpoint does not authorize execution.",
+    "The endpoint request validation call was blocked at the OpenAI invocation layer before ForgePilot received it and was not retried.",
+    "The fresh request artifact is valid and committed, but preflight is not passable while the global disable switch and execution-disabled states remain active.",
+    "The next execution-path step would require fresh scoped human approval evidence and later disable-switch clearance if policy allows."
+  ],
+  "boundaries": [
+    "execution authorized: false",
+    "approval consumed: false",
+    "human approval created by this checkpoint: false",
+    "disable switch cleared: false",
+    "runner start endpoint contacted: false",
+    "OpenCode started: false",
+    "FP-027 canary run: false",
+    "request artifact created by this checkpoint: false",
+    "request artifact mutated by this checkpoint: false",
+    "terminal packet creation used: false"
+  ],
+  "structuredRecord": {
+    "validatedRequest": {
+      "packetId": "FP-MCP-209",
+      "requestId": "REQ-20260703T113456847Z-a68aa89e",
+      "requestArtifactPath": "runs/FP-MCP-209/opencode-requests/REQ-20260703T113456847Z-a68aa89e.json",
+      "requestArtifactCommit": "e2055c4",
+      "requestCreationCommit": "4bd1977",
+      "currentCommitAtValidation": "e2055c4",
+      "modelId": "deepseek-v4-pro-high",
+      "runMode": "DESIGN_ONLY",
+      "targetExecutionCommit": "4bd1977",
+      "approvedTargetExecutionCommit": "4bd1977"
+    },
+    "localRemoteRunnerEligibility": {
+      "eligible": true,
+      "workingTreeClean": true,
+      "baseCommitMatches": true,
+      "creationCommitExists": true,
+      "artifactCommitExists": true,
+      "creationCommitAncestorOfArtifactCommit": true,
+      "artifactCommitReachableFromHead": true,
+      "safeArtifactDir": true,
+      "executionStarted": false,
+      "runnerContacted": false
+    },
+    "gateOrientationWithRequest": {
+      "requestArtifactPresent": true,
+      "preflightPassableNow": false,
+      "runnerReachable": true,
+      "runnerStartCapabilityCallable": true,
+      "executionAllowedNow": false,
+      "globalDisableActive": true,
+      "runnerExecutionEnabled": false,
+      "opencodeExecutionEnabled": false,
+      "humanApprovalPresent": null,
+      "blockingReasons": [
+        "GLOBAL_DISABLE_ACTIVE",
+        "RUNNER_EXECUTION_DISABLED",
+        "OPENCODE_EXECUTION_DISABLED"
+      ],
+      "preflightMissingOrFailed": [
+        "HUMAN_APPROVAL_EVIDENCE_MISSING",
+        "PRE_START_EVIDENCE_LEDGER_ENTRY_MISSING",
+        "STATE_SNAPSHOT_LEDGER_ENTRY_MISSING"
+      ]
+    },
+    "blockedObservation": {
+      "tool": "forgepilot_validate_remote_runner_endpoint_request",
+      "blockedAt": "OpenAI invocation layer",
+      "forgepilotReceivedCall": false,
+      "retried": false
+    },
+    "nextOptions": [
+      "record fresh scoped human approval evidence",
+      "or stop before approval and continue tooling hardening"
+    ]
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_210_FRESH_REQUEST_ARTIFACT_VALIDATION_CHECKPOINT_RECORDED"
+}
