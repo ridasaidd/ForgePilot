@@ -1,0 +1,45 @@
+{
+  "packetId": "FP-MCP-183",
+  "requestId": "REQ-20260703T084910198Z-9cad4fa6",
+  "approvalId": "APPROVAL-20260703T085443106Z-0080768e",
+  "result": "PREFLIGHT_BLOCKED_BY_GLOBAL_DISABLE_SWITCH",
+  "preflightEligible": false,
+  "executionPermitted": false,
+  "executionStarted": false,
+  "startEndpointContacted": false,
+  "opencodeStarted": false,
+  "approvalValid": true,
+  "approvalUsableForExecution": true,
+  "approvalConsumed": false,
+  "passedGates": [
+    "requestArtifact",
+    "lifecycle",
+    "packet",
+    "model",
+    "runMode",
+    "runnerIdentity",
+    "runnerCapability",
+    "humanApprovalEvidence",
+    "opencodeBoundary",
+    "secretsBoundary",
+    "networkExposure"
+  ],
+  "blockedGates": [
+    "disableSwitch",
+    "executionEnablement"
+  ],
+  "blockingReasons": [
+    "EXECUTION_DISABLED_GLOBAL",
+    "RUNNER_EXECUTION_DISABLED",
+    "OPENCODE_EXECUTION_DISABLED",
+    "DISABLE_SWITCH_ACTIVE",
+    "EXECUTION_NOT_ALLOWED"
+  ],
+  "interpretation": "Fresh request and committed scoped approval validated, but guarded execution preflight correctly refused execution because the global disable/execution enablement gates remain closed.",
+  "boundary": {
+    "startEndpointContacted": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  }
+}
