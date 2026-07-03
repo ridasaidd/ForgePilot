@@ -1,0 +1,33 @@
+{
+  "packetId": "FP-MCP-207",
+  "result": "FP_MCP_207_DEEPSEEK_RUNTIME_DIAGNOSTICS_AND_GATE_ORIENTATION_TOOL_PROMPT_PREPARED",
+  "handoffType": "DEEPSEEK_OPENCODE_IMPLEMENTATION_PROMPT",
+  "sourceModificationPerformed": false,
+  "toolGaps": [
+    {
+      "name": "runtime diagnostics",
+      "classification": "REPEATED_OPERATIONAL_DEBUG_PATTERN",
+      "proposedTool": "forgepilot_get_mcp_runtime_diagnostics"
+    },
+    {
+      "name": "execution gate orientation aggregation",
+      "classification": "REPEATED_READ_ONLY_ORIENTATION_PATTERN",
+      "proposedTool": "forgepilot_get_execution_gate_orientation"
+    }
+  ],
+  "deferredToolGap": {
+    "name": "safe request-path orchestration",
+    "reason": "write-path tool requires stronger contract before implementation"
+  },
+  "boundary": {
+    "authorizesExecution": false,
+    "consumesApproval": false,
+    "clearsDisableSwitch": false,
+    "contactsRunnerStartEndpoint": false,
+    "startsOpenCode": false,
+    "runsFp027": false,
+    "createsRequestArtifacts": false,
+    "createsApprovalArtifacts": false,
+    "modifiesMcpServerSourceNow": false
+  }
+}
