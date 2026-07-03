@@ -7,11 +7,11 @@ import { recordEvidenceAdmission, getAdmissionEvents } from "../../src/db/eviden
 import { getCanonicalEvidenceRecordAdmission } from "../../src/db/validation-admission.js";
 
 const packetPath = "packets/FP-MCP-241.md";
-const runId = "FP-MCP-241-CANARY-PREPARATION";
-const admittedClaim = "FP_MCP_241_FRESH_LIFECYCLE_CANARY_PREPARATION_RECORDED";
+const runId = "FP-MCP-241-CANARY-PAUSED-ON-EVIDENCE-GATE";
+const admittedClaim = "FP_MCP_241_FRESH_LIFECYCLE_CANARY_PAUSED_ON_PRE_START_EVIDENCE_GATE";
 const artifacts = [
   "packets/FP-MCP-241.md",
-  "runs/FP-MCP-241/canary-preparation-record.json",
+  "runs/FP-MCP-241/canary-paused-on-evidence-gate-record.json",
   "runs/FP-MCP-241/result-summary.md",
   "runs/FP-MCP-241/verification.txt"
 ];
@@ -37,12 +37,12 @@ if (!evidence) {
     model_id: "none",
     model_role: "packet_checkpoint_recorder",
     branch: "main",
-    commit_sha: "5831847",
+    commit_sha: "41814e6",
     executor_result: admittedClaim,
     verification_result: "PACKET_CHECKPOINT_RECORDED;NON_EXECUTING_BOUNDARY_PRESERVED",
     audit_result: "NOT_APPLICABLE_PACKET_CHECKPOINT",
     comparison_result: "NOT_APPLICABLE_PACKET_CHECKPOINT",
-    metrics_path: "runs/FP-MCP-241/canary-preparation-record.json",
+    metrics_path: "runs/FP-MCP-241/canary-paused-on-evidence-gate-record.json",
     artifact_paths: artifacts,
     trust_tier: "TIER_2_VERIFIED_ARTIFACT",
     validation_state: "VALID",

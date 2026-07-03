@@ -1,16 +1,16 @@
 {
   "packet_id": "FP-MCP-241",
   "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
-  "evidence_id": 110,
-  "run_id": "FP-MCP-241-CANARY-PREPARATION",
-  "generic_admission_event_id": 110,
+  "evidence_id": 111,
+  "run_id": "FP-MCP-241-CANARY-PAUSED-ON-EVIDENCE-GATE",
+  "generic_admission_event_id": 111,
   "canonical_status": "GENERIC_EVENT_CANONICAL",
   "canonical_surface": "evidence_admission_events",
   "canonical_state": "ADMITTED",
-  "admitted_claim": "FP_MCP_241_FRESH_LIFECYCLE_CANARY_PREPARATION_RECORDED",
+  "admitted_claim": "FP_MCP_241_FRESH_LIFECYCLE_CANARY_PAUSED_ON_PRE_START_EVIDENCE_GATE",
   "artifact_paths": [
     "packets/FP-MCP-241.md",
-    "runs/FP-MCP-241/canary-preparation-record.json",
+    "runs/FP-MCP-241/canary-paused-on-evidence-gate-record.json",
     "runs/FP-MCP-241/result-summary.md",
     "runs/FP-MCP-241/verification.txt"
   ]

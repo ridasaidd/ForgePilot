@@ -3,12 +3,12 @@
 ## Result
 
 ```text
-FP_MCP_241_FRESH_LIFECYCLE_CANARY_PREPARATION_RECORDED
+FP_MCP_241_FRESH_LIFECYCLE_CANARY_PAUSED_ON_PRE_START_EVIDENCE_GATE
 ```
 
 ## Summary
 
-Prepare a fresh DESIGN_ONLY lifecycle verification after FP-MCP-240. The planned sequence is fresh request artifact, fresh approval, popup local clearance, pre-contact discipline gate, one guarded start attempt, immediate approval consumption, output preservation, and final admitted evidence. This checkpoint is only a preparation record.
+Record that the FP-MCP-241 fresh lifecycle canary was prepared but intentionally not started because pre-start evidence validation was incomplete. Request artifact, structured approval, and popup local clearance were created successfully, but the pre-start evidence validator reported missing pre-start evidence artifact and request-artifact-hash evidence. The runner start endpoint was not contacted and OpenCode was not started. This is a disciplined pause, not a failed execution.
 
 ## Boundary
 
