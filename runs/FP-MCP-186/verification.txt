@@ -1,0 +1,46 @@
+FP-MCP-186 verification
+
+Repository verification before packet work:
+- ForgePilot status clean at 784e274 Record FP-MCP-185 stale runtime evidence
+- MCP bridge status clean at 9e01c73 Normalize execution preflight disabled reasons
+
+Canonical ledger before packet work:
+- evidence_records: 55
+- generic evidence_record admission events: 55
+- latest_evidence_id: 55
+- latest_generic_event_id: 55
+
+Direct disable switch status observation:
+- RUNNER_EXECUTION_DISABLED present
+- OPENCODE_EXECUTION_DISABLED present
+- EXECUTION_DISABLED aggregate absent from direct disable-switch reasons
+- EXECUTION_DISABLED_GLOBAL present as canonical global disable reason
+- executionAllowedNow false
+- executionStarted false
+- startEndpointContacted false
+- opencodeStarted false
+
+Live validate_execution_preflight observation after service restart/action refresh:
+- request context: FP-MCP-182 / REQ-20260702T210007524Z-4ba16774
+- RUNNER_EXECUTION_DISABLED present
+- OPENCODE_EXECUTION_DISABLED present
+- EXECUTION_DISABLED legacy aggregate absent
+- executionPermitted false
+- executionStarted false
+- startEndpointContacted false
+- opencodeStarted false
+- approvalConsumed false
+
+Conclusion:
+- Expected live-confirmed positive claim is admitted.
+- FP-MCP-184 disabled-reason normalization is live-confirmed after MCP service refresh.
+- FP-MCP-183 enablement remains not authorized.
+
+Canonical ledger after FP-MCP-186 recording:
+- evidence_records: 56
+- generic evidence_record admission events: 56
+- latest_evidence_id: 56
+- latest_generic_event_id: 56
+- canonical_state: ADMITTED
+- admitted_claim: VALIDATE_EXECUTION_PREFLIGHT_DISABLED_REASON_NORMALIZATION_LIVE_CONFIRMED_NO_LEGACY_EXECUTION_DISABLED
+- preceding stale-runtime evidence_id: 55

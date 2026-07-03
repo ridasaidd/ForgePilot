@@ -1,0 +1,25 @@
+{
+  "packetId": "FP-MCP-186",
+  "expectedResult": "VALIDATE_EXECUTION_PREFLIGHT_DISABLED_REASON_NORMALIZATION_LIVE_CONFIRMED_NO_LEGACY_EXECUTION_DISABLED",
+  "expectedReasonsPresent": [
+    "RUNNER_EXECUTION_DISABLED",
+    "OPENCODE_EXECUTION_DISABLED"
+  ],
+  "expectedReasonsAbsent": [
+    "EXECUTION_DISABLED"
+  ],
+  "requiredSafetyFields": {
+    "executionStarted": false,
+    "startEndpointContacted": false,
+    "opencodeStarted": false,
+    "approvalConsumed": false
+  },
+  "forbiddenActions": [
+    "authorize FP-MCP-183 enablement",
+    "create fresh FP-MCP-183 tuple",
+    "consume approval evidence",
+    "contact runner start endpoint",
+    "start OpenCode",
+    "run FP-027 canary"
+  ]
+}

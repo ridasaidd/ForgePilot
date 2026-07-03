@@ -1,0 +1,23 @@
+{
+  "packet_id": "FP-MCP-186",
+  "result": "FP_MCP_186_POST_REFRESH_LIVE_CONFIRMATION_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 56,
+  "run_id": "FP-MCP-186-VALIDATE-PREFLIGHT-DISABLED-REASON-NORMALIZATION-LIVE-CONFIRMED",
+  "generic_admission_event_id": 56,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "VALIDATE_EXECUTION_PREFLIGHT_DISABLED_REASON_NORMALIZATION_LIVE_CONFIRMED_NO_LEGACY_EXECUTION_DISABLED",
+  "preceding_stale_runtime_evidence_id": 55,
+  "total_evidence_records": 56,
+  "total_generic_evidence_record_admission_events": 56,
+  "artifact_paths": [
+    "packets/FP-MCP-186.md",
+    "runs/FP-MCP-186/expected-live-confirmation.json",
+    "runs/FP-MCP-186/disable-switch-status.json",
+    "runs/FP-MCP-186/live-preflight-observation.json",
+    "runs/FP-MCP-186/result-summary.md",
+    "runs/FP-MCP-186/verification.txt",
+    "runs/FP-MCP-182/opencode-requests/REQ-20260702T210007524Z-4ba16774.json"
+  ]
+}
