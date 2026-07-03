@@ -1,0 +1,15 @@
+FP-MCP-246 verification
+
+Checkpoint type:
+- SESSION_LIFECYCLE_CANARY_RESULT
+
+Claim:
+- FP_MCP_246_OPENCODE_HTTP_MINIMAL_SESSION_CANARY_SUCCEEDED_WITH_EMPTY_STATUS_MAP
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
