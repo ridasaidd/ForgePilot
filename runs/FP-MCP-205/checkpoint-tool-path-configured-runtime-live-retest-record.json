@@ -1,0 +1,56 @@
+{
+  "packetId": "FP-MCP-205",
+  "title": "Packet Checkpoint Tool PATH-Configured Runtime Live Retest",
+  "checkpointType": "CHECKPOINT_TOOL_PATH_CONFIGURED_RUNTIME_LIVE_RETEST",
+  "claim": "FP_MCP_205_PACKET_CHECKPOINT_TOOL_PATH_CONFIGURED_RUNTIME_LIVE_RETEST_PASSED",
+  "summary": "Retest forgepilot_record_packet_checkpoint after configuring both FORGEPILOT_PNPM_BIN and PATH in the MCP service environment, proving the typed checkpoint tool can complete packet creation, evidence admission, and commit without terminal packet creation.",
+  "caveats": [
+    "This validates the checkpoint tool configured runtime path only; it does not authorize or test execution gates.",
+    "This checkpoint does not run FP-027 or any canary.",
+    "The configured PATH and pnpm path are service-runtime configuration, not repository code.",
+    "FP-MCP-204 previously showed that FORGEPILOT_PNPM_BIN alone was insufficient because the pnpm shim uses /usr/bin/env node."
+  ],
+  "boundaries": [
+    "execution authorized: false",
+    "approval consumed: false",
+    "disable switch cleared: false",
+    "runner start endpoint contacted: false",
+    "OpenCode started: false",
+    "FP-027 canary run: false",
+    "no execution gate modified",
+    "no approval artifact mutated",
+    "no request artifact mutated outside this checkpoint's declared artifacts",
+    "terminal packet creation used: false"
+  ],
+  "structuredRecord": {
+    "toolTested": "forgepilot_record_packet_checkpoint",
+    "retestOf": "FP-MCP-204 PNPM_COMMAND_NOT_FOUND after FORGEPILOT_PNPM_BIN-only configuration",
+    "configurationApplied": {
+      "envFile": "~/.config/forgepilot-chatgpt-mcp/env",
+      "variables": [
+        "PATH",
+        "FORGEPILOT_PNPM_BIN"
+      ],
+      "pnpmBin": "/home/ridasaidd/.nvm/versions/node/v24.4.1/bin/pnpm",
+      "pathIncludes": "/home/ridasaidd/.nvm/versions/node/v24.4.1/bin",
+      "serviceRestarted": true,
+      "actionsRefreshed": true
+    },
+    "expectedFix": "checkpoint tool can run the pnpm shim because node is now resolvable on the service PATH",
+    "terminalPacketCreationUsed": false,
+    "expectedPostState": {
+      "forgepilotWorkingTreeClean": true,
+      "evidenceAdmitted": true,
+      "commitCreated": true
+    }
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_205_PACKET_CHECKPOINT_TOOL_PATH_CONFIGURED_RUNTIME_LIVE_RETEST_PASSED"
+}

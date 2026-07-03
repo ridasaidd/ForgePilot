@@ -1,0 +1,15 @@
+FP-MCP-205 verification
+
+Checkpoint type:
+- CHECKPOINT_TOOL_PATH_CONFIGURED_RUNTIME_LIVE_RETEST
+
+Claim:
+- FP_MCP_205_PACKET_CHECKPOINT_TOOL_PATH_CONFIGURED_RUNTIME_LIVE_RETEST_PASSED
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-205",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 73,
+  "run_id": "FP-MCP-205-CHECKPOINT-TOOL-PATH-CONFIGURED-RUNTIME-LIVE-RETEST",
+  "generic_admission_event_id": 73,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_MCP_205_PACKET_CHECKPOINT_TOOL_PATH_CONFIGURED_RUNTIME_LIVE_RETEST_PASSED",
+  "artifact_paths": [
+    "packets/FP-MCP-205.md",
+    "runs/FP-MCP-205/checkpoint-tool-path-configured-runtime-live-retest-record.json",
+    "runs/FP-MCP-205/result-summary.md",
+    "runs/FP-MCP-205/verification.txt"
+  ]
+}
