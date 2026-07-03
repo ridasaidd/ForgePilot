@@ -1,0 +1,21 @@
+FP-MCP-198 verification
+
+Recorded correction:
+- operationally understood -> operationally characterized.
+- OpenAI internal cause remains unconfirmed.
+- cadence is not proven as root cause.
+- content/schema sensitivity is not ruled out.
+- external AI/search response is not authoritative.
+
+Safety boundary:
+- observed platform blocks occurred before ForgePilot bridge receipt.
+- residual uncertainty is invocation-layer reach uncertainty.
+- ForgePilot guarded pipeline remains independently enforced after receipt.
+
+Execution boundary:
+- FP-MCP-183 authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

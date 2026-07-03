@@ -1,0 +1,21 @@
+{
+  "packetId": "FP-MCP-198",
+  "clarifiesPacketId": "FP-MCP-197",
+  "overstrongLabel": "operationally understood",
+  "correctedClassification": "operationally characterized",
+  "openAiInternalClassifierCauseConfirmed": false,
+  "cadenceConfirmedAsRootCause": false,
+  "contentOrSchemaSensitivityRuledOut": false,
+  "externalAiSearchResponseAuthoritative": false,
+  "residualUncertaintyScope": "invocation-layer reach uncertainty",
+  "recordedBlocksOccurredBeforeForgePilotReceipt": true,
+  "forgePilotPipelineSafetyAfterReceiptIndependentlyEnforced": true,
+  "pipelineCorruptionEvidenceObserved": false,
+  "doesAuthorizeFpMcp183": false,
+  "doesConsumeApproval": false,
+  "doesClearDisableSwitch": false,
+  "doesContactRunnerStartEndpoint": false,
+  "doesStartOpenCode": false,
+  "doesRunFp027": false,
+  "observedResult": "FP_MCP_198_PLATFORM_TRIGGER_RECLASSIFIED_OPERATIONALLY_CHARACTERIZED_INTERNAL_CAUSE_UNCONFIRMED"
+}
