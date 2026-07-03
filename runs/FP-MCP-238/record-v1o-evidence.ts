@@ -7,11 +7,11 @@ import { recordEvidenceAdmission, getAdmissionEvents } from "../../src/db/eviden
 import { getCanonicalEvidenceRecordAdmission } from "../../src/db/validation-admission.js";
 
 const packetPath = "packets/FP-MCP-238.md";
-const runId = "FP-MCP-238-FIX-ACTIVATION-PARTIAL-REVIEW";
-const admittedClaim = "FP_MCP_238_APPROVAL_CONSUMPTION_REUSE_RISK_CLOSED_BY_EXPIRY_FIX_NOT_YET_LIVE";
+const runId = "FP-MCP-238-FIX-ACTIVATION-VERIFIED";
+const admittedClaim = "FP_MCP_238_APPROVAL_CONSUMPTION_SCOPE_FIX_ACTIVE_OLD_APPROVAL_UNUSABLE";
 const artifacts = [
   "packets/FP-MCP-238.md",
-  "runs/FP-MCP-238/fix-activation-partial-review-record.json",
+  "runs/FP-MCP-238/fix-activation-verified-record.json",
   "runs/FP-MCP-238/result-summary.md",
   "runs/FP-MCP-238/verification.txt"
 ];
@@ -37,12 +37,12 @@ if (!evidence) {
     model_id: "none",
     model_role: "packet_checkpoint_recorder",
     branch: "main",
-    commit_sha: "ec2e661",
+    commit_sha: "cf86d81",
     executor_result: admittedClaim,
     verification_result: "PACKET_CHECKPOINT_RECORDED;NON_EXECUTING_BOUNDARY_PRESERVED",
     audit_result: "NOT_APPLICABLE_PACKET_CHECKPOINT",
     comparison_result: "NOT_APPLICABLE_PACKET_CHECKPOINT",
-    metrics_path: "runs/FP-MCP-238/fix-activation-partial-review-record.json",
+    metrics_path: "runs/FP-MCP-238/fix-activation-verified-record.json",
     artifact_paths: artifacts,
     trust_tier: "TIER_2_VERIFIED_ARTIFACT",
     validation_state: "VALID",

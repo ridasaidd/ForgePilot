@@ -1,16 +1,16 @@
 {
   "packet_id": "FP-MCP-238",
   "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
-  "evidence_id": 106,
-  "run_id": "FP-MCP-238-FIX-ACTIVATION-PARTIAL-REVIEW",
-  "generic_admission_event_id": 106,
+  "evidence_id": 107,
+  "run_id": "FP-MCP-238-FIX-ACTIVATION-VERIFIED",
+  "generic_admission_event_id": 107,
   "canonical_status": "GENERIC_EVENT_CANONICAL",
   "canonical_surface": "evidence_admission_events",
   "canonical_state": "ADMITTED",
-  "admitted_claim": "FP_MCP_238_APPROVAL_CONSUMPTION_REUSE_RISK_CLOSED_BY_EXPIRY_FIX_NOT_YET_LIVE",
+  "admitted_claim": "FP_MCP_238_APPROVAL_CONSUMPTION_SCOPE_FIX_ACTIVE_OLD_APPROVAL_UNUSABLE",
   "artifact_paths": [
     "packets/FP-MCP-238.md",
-    "runs/FP-MCP-238/fix-activation-partial-review-record.json",
+    "runs/FP-MCP-238/fix-activation-verified-record.json",
     "runs/FP-MCP-238/result-summary.md",
     "runs/FP-MCP-238/verification.txt"
   ]
