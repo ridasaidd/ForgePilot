@@ -1,0 +1,91 @@
+{
+  "packetId": "FP-MCP-240",
+  "title": "Pre-Contact Canary Discipline Gate",
+  "checkpointType": "GUARD_IMPLEMENTATION_RESULT",
+  "claim": "FP_MCP_240_PRE_CONTACT_CANARY_DISCIPLINE_GATE_IMPLEMENTED",
+  "summary": "Implement a mandatory pre-contact canary discipline gate in the MCP bridge remote-runner start path. Immediately before contacting the runner start endpoint, the bridge now records a local non-target-workspace pre-contact canary discipline artifact under the bridge .local directory. The artifact records a process-tree/process snapshot, abort-readiness, no-retry marker, no-chaining marker, target workspace cleanliness, and approval/clearance freshness at contact time. If the discipline artifact is not valid, the start path returns before runner contact with PRE_CONTACT_CANARY_DISCIPLINE_FAILED. The artifact is written outside the ForgePilot target workspace so it does not dirty the workspace before runner validation. The start request now carries preContactCanaryDiscipline metadata and boundaryVersion FP-MCP-240. Verification passed with pnpm test, including TypeScript build and hardcoded packet-id lint. Bridge commit 1d906c3 records the implementation.",
+  "caveats": [
+    "This implementation changes the start path but has not yet been exercised by a fresh real guarded start.",
+    "The pre-contact discipline artifact is local to the MCP bridge .local directory to avoid dirtying the ForgePilot target workspace before runner validation; a later output-promotion or run-result reader packet may make these artifacts easier to collect into canonical run evidence.",
+    "The process snapshot is bounded and filtered to relevant process lines; it is a practical guard artifact, not a full forensic process dump.",
+    "Abort-readiness records that AbortController exists and the 10-second timeout policy is armed before contact; it does not by itself prove an operator can manually abort after contact.",
+    "No retry/no-chaining are recorded as explicit state markers for the single start call path; future multi-attempt orchestration would require separate policy and tooling.",
+    "The MCP service must be restarted before FP-MCP-240 is active in the live runtime."
+  ],
+  "boundaries": [
+    "execution authorized: false",
+    "approval created: false",
+    "approval consumed: false",
+    "local clearance created: false",
+    "runner start endpoint contacted by this packet: false",
+    "OpenCode started: false",
+    "FP-027 canary run: false",
+    "disable switch cleared: false",
+    "standing execution authority created: false"
+  ],
+  "structuredRecord": {
+    "bridgeImplementation": {
+      "commit": "1d906c3",
+      "message": "Add pre-contact canary discipline gate",
+      "files": [
+        "src/server.ts",
+        "scripts/hardcoded-packet-id-allowlist.json"
+      ],
+      "verification": [
+        "pnpm test PASS",
+        "TypeScript build PASS",
+        "hardcoded packet-id lint PASS"
+      ],
+      "allowlistObservedReferences": 169
+    },
+    "preContactGate": {
+      "artifactType": "pre-contact-canary-discipline",
+      "schemaVersion": "FP-MCP-240",
+      "artifactLocation": "forgepilot-chatgpt-mcp/.local/forgepilot/pre-contact-canary-discipline/",
+      "targetWorkspaceDirtyingAvoided": true,
+      "mandatoryBeforeStartEndpointContact": true,
+      "failureReason": "PRE_CONTACT_CANARY_DISCIPLINE_FAILED",
+      "records": [
+        "processTreeSnapshotRecorded",
+        "abortReadinessChecked",
+        "noRetryStateMarkerRecorded",
+        "noChainingBoundaryMarkerRecorded",
+        "preContactTargetWorkspaceClean",
+        "approvalClearanceFreshAtContact"
+      ],
+      "blocksRunnerContactIfInvalid": true
+    },
+    "startPathChanges": {
+      "boundaryVersion": "FP-MCP-240",
+      "startRequestIncludes": "preContactCanaryDiscipline metadata",
+      "finalResultIncludes": [
+        "preContactCanaryDisciplineEvaluated",
+        "preContactCanaryDisciplineValid",
+        "preContactCanaryDisciplinePath",
+        "preContactCanaryDisciplineSha256",
+        "processTreeSnapshotRecorded",
+        "abortReadinessChecked",
+        "noRetryStateMarkerRecorded",
+        "noChainingBoundaryMarkerRecorded",
+        "preContactTargetWorkspaceClean",
+        "approvalClearanceFreshAtContact",
+        "preContactCanaryDisciplineReasons"
+      ],
+      "runnerContactBeforeGate": false
+    },
+    "motivation": {
+      "sourceGap": "FP-MCP-237 found that FP-MCP-233 did not sufficiently evidence process-tree snapshot, live abort-readiness, no-retry, and no-chaining at the actual first start contact boundary.",
+      "policyObjective": "A future fresh guarded start must not contact the runner start endpoint unless the pre-contact discipline evidence is recorded and valid."
+    },
+    "nextRecommendedPacket": "FP-MCP-241 — Fresh Guarded Start With Full Lifecycle Closure, after service restart to activate FP-MCP-240."
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_240_PRE_CONTACT_CANARY_DISCIPLINE_GATE_IMPLEMENTED"
+}

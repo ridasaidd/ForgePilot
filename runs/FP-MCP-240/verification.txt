@@ -1,0 +1,15 @@
+FP-MCP-240 verification
+
+Checkpoint type:
+- GUARD_IMPLEMENTATION_RESULT
+
+Claim:
+- FP_MCP_240_PRE_CONTACT_CANARY_DISCIPLINE_GATE_IMPLEMENTED
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
