@@ -1,0 +1,19 @@
+{
+  "packetId": "FP-MCP-200",
+  "result": "FP_MCP_200_DEEPSEEK_MCP_CHECKPOINT_TOOL_HARDENING_PROMPT_PREPARED",
+  "handoffType": "DEEPSEEK_OPENCODE_IMPLEMENTATION_PROMPT",
+  "sourceModificationPerformed": false,
+  "bridgeCommitToStartFrom": "958fc91",
+  "targetTool": "forgepilot_record_packet_checkpoint",
+  "targetWorkspace": "forgepilot-chatgpt-mcp",
+  "preferredImplementationDirection": "Extract packet checkpoint implementation from src/server.ts into src/packet-checkpoint.ts while keeping server.ts registration-only glue.",
+  "boundary": {
+    "authorizesExecution": false,
+    "consumesApproval": false,
+    "clearsDisableSwitch": false,
+    "contactsRunnerStartEndpoint": false,
+    "startsOpenCode": false,
+    "runsFp027": false,
+    "modifiesMcpServerSourceNow": false
+  }
+}
