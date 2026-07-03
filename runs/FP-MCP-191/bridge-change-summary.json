@@ -1,0 +1,39 @@
+{
+  "packetId": "FP-MCP-191",
+  "bridgeCommit": "679ef93",
+  "bridgeCommitSubject": "Clarify non-executing request artifact contract",
+  "changedFile": "src/server.ts",
+  "legacyToolPreserved": "forgepilot_create_opencode_run_request",
+  "newToolAlias": "forgepilot_record_non_executing_run_request_artifact",
+  "newConfirmationField": "artifactRecordingConfirmation",
+  "newConfirmationLiteral": "RECORD_NON_EXECUTING_REQUEST_ARTIFACT",
+  "honestAnnotations": {
+    "readOnlyHint": false,
+    "destructiveHint": false,
+    "idempotentHint": false,
+    "openWorldHint": false
+  },
+  "explicitOutputBoundaryFields": {
+    "executionAuthorized": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "approvalConsumed": false,
+    "artifactOnly": true,
+    "requestArtifactOnly": true
+  },
+  "verification": {
+    "pnpmBuild": "PASS"
+  },
+  "nonBypassBoundary": {
+    "blockedRequestCreationRetried": false,
+    "liveAliasTestAttempted": false,
+    "manualRequestArtifactConstructed": false,
+    "approvalCreated": false,
+    "approvalConsumed": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false,
+    "fpMcp183EnablementGranted": false
+  },
+  "observedResult": "FP_MCP_191_REQUEST_ARTIFACT_TOOL_CONTRACT_SAFETY_ALIGNED_SOURCE_VERIFIED_NO_LIVE_RETRY"
+}

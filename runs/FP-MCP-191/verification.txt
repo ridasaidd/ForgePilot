@@ -1,0 +1,44 @@
+FP-MCP-191 verification
+
+Pre-state:
+- ForgePilot clean at 3c3a313 Diagnose FP-MCP-187 platform block contract
+- MCP bridge clean at 9e01c73 Normalize execution preflight disabled reasons
+- canonical evidence/admission before packet: 60/60
+
+Bridge source change:
+- Modified /home/ridasaidd/forgepilot-chatgpt-mcp/src/server.ts
+- Added RECORD_NON_EXECUTING_REQUEST_ARTIFACT confirmation literal.
+- Added forgepilot_record_non_executing_run_request_artifact alias.
+- Preserved forgepilot_create_opencode_run_request legacy tool.
+- Updated legacy description to clarify non-executing local request artifact behavior.
+- Kept readOnlyHint false.
+- Kept destructiveHint false.
+- Kept idempotentHint false.
+- Kept openWorldHint false.
+- Added explicit output boundary fields.
+
+Bridge verification:
+- pnpm build PASS
+- bridge commit 679ef93 Clarify non-executing request artifact contract
+- bridge working tree clean after commit
+
+Safety boundary:
+- Did not retry forgepilot_create_opencode_run_request.
+- Did not call forgepilot_record_non_executing_run_request_artifact live.
+- Did not rephrase a live call to avoid the platform block.
+- Did not manually construct a request artifact.
+- Did not create or consume approval evidence.
+- Did not contact runner start endpoint.
+- Did not start OpenCode.
+- Did not run FP-027 canary.
+
+Conclusion:
+- Contract is source-verified and build-verified.
+- Live confirmation requires MCP service restart/action refresh.
+
+Post-recording verification:
+- evidence_records: 61
+- generic evidence_record admission events: 61
+- latest_evidence_id: 61
+- latest_generic_event_id: 61
+- canonical_state: ADMITTED
