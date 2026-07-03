@@ -1,0 +1,15 @@
+FP-MCP-230 verification
+
+Checkpoint type:
+- FRESH_ONE_SHOT_CANARY_CLEARANCE_PREPARATION
+
+Claim:
+- FP_MCP_230_FRESH_ONE_SHOT_CANARY_CLEARANCE_PREPARATION_RECORDED
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

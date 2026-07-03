@@ -1,0 +1,54 @@
+# FP-MCP-230 — Fresh Approval and Local Clearance for One-Shot Canary Attempt
+
+## Checkpoint Type
+
+```text
+FRESH_ONE_SHOT_CANARY_CLEARANCE_PREPARATION
+```
+
+## Summary
+
+Prepare a fresh approval and operator-local clearance cycle after FP-MCP-229 implemented the one-shot tuple-bound guarded start clearance gate and the previous FP-MCP-227 approval/local clearance became stale. This preparation binds the next approval to the FP-MCP-223 request execution base commit 6fb3a32 and requires the subsequent operator-local clearance artifact to bind requestArtifactCommit to the current ForgePilot HEAD 832b41f or whatever exact HEAD is current at the time of local clearance creation. This checkpoint does not create approval evidence, local clearance, consume approval, contact runner start, start OpenCode, or run FP-027.
+
+## Claim
+
+```text
+FP_MCP_230_FRESH_ONE_SHOT_CANARY_CLEARANCE_PREPARATION_RECORDED
+```
+
+## Caveats
+
+- The prior local clearance CLEARANCE-20260703T131230944Z-b1665978 expired and was bound to requestArtifactCommit cc06a07, so it must not be reused.
+- The prior approval APPROVAL-20260703T131004235Z-e664d735 expired at 2026-07-03T13:30:00.000Z and should not be consumed if expired.
+- The fresh structured approval recorder still uses repoCommit as the backward-compatible execution base commit field, so it should bind repoCommit to 6fb3a32.
+- The operator-local clearance artifact must be created manually outside MCP and should use requestArtifactCommit equal to the exact current ForgePilot HEAD at clearance time.
+- No canary or runner start is authorized by this preparation packet.
+
+## Boundaries
+
+- execution authorized: false
+- approval created by this checkpoint: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
+- local clearance artifact created: false
+- standing execution authority created: false
+
+## Non-Execution Boundary
+
+```text
+execution authorized: false
+approval consumed: false
+disable switch cleared: false
+runner start endpoint contacted: false
+OpenCode started: false
+FP-027 canary run: false
+```
+
+## Expected Result
+
+```text
+FP_MCP_230_FRESH_ONE_SHOT_CANARY_CLEARANCE_PREPARATION_RECORDED
+```

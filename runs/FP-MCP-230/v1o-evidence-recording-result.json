@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-230",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 98,
+  "run_id": "FP-MCP-230-FRESH-ONE-SHOT-CANARY-CLEARANCE-PREPARATION",
+  "generic_admission_event_id": 98,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_MCP_230_FRESH_ONE_SHOT_CANARY_CLEARANCE_PREPARATION_RECORDED",
+  "artifact_paths": [
+    "packets/FP-MCP-230.md",
+    "runs/FP-MCP-230/fresh-one-shot-canary-clearance-preparation-record.json",
+    "runs/FP-MCP-230/result-summary.md",
+    "runs/FP-MCP-230/verification.txt"
+  ]
+}
