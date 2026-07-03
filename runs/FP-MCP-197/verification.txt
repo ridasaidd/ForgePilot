@@ -1,0 +1,51 @@
+FP-MCP-197 verification
+
+Pre-state:
+- ForgePilot clean at 4945428 Record FP-MCP-196 OpenAI feedback report package.
+- canonical evidence/admission before packet: 66/66.
+
+Decision recorded:
+- submit OpenAI support ticket before proceeding: false
+- wait for OpenAI response before considering FP-MCP-183: false
+- operator observation accepted as local operational guidance: true
+- external AI/search response treated as corroboration: true
+- external AI/search response treated as authoritative proof: false
+- OpenAI internal classifier cause confirmed: false
+
+Accepted operational observations:
+- rapid MCP tool calls can trigger platform safety checks.
+- chained terminal commands can trigger platform safety checks.
+- single-purpose terminal commands may still be blocked after high MCP-call cadence.
+
+Required mitigations preserved:
+- one MCP tool call at a time.
+- one logical terminal command at a time.
+- no chained shell commands when avoidable.
+- operator-visible pause/update between sensitive calls.
+- platform blocks treated as observations.
+- no rephrasing or restructuring enablement-adjacent calls solely to get past a block.
+- typed tools preferred over raw terminal strings.
+- human approval preserved.
+- server-side gates preserved.
+- abort primitive preserved.
+
+Boundary:
+- Did not submit OpenAI report.
+- Did not retry blocked calls.
+- Did not create request artifact.
+- Did not create or consume approval evidence.
+- Did not contact runner start endpoint.
+- Did not start OpenCode.
+- Did not run FP-027 canary.
+- Did not authorize FP-MCP-183.
+
+Expected result:
+- FP_MCP_197_PROCEED_WITH_PLATFORM_TRIGGER_OPERATIONALLY_UNDERSTOOD_INTERNAL_CAUSE_UNCONFIRMED
+
+Post-recording verification:
+- evidence_records: 67
+- generic evidence_record admission events: 67
+- latest_evidence_id: 67
+- latest_generic_event_id: 67
+- canonical_state: ADMITTED
+- admitted_claim: FP_MCP_197_PROCEED_WITH_PLATFORM_TRIGGER_OPERATIONALLY_UNDERSTOOD_INTERNAL_CAUSE_UNCONFIRMED
