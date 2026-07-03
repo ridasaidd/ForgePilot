@@ -1,0 +1,15 @@
+FP-MCP-212 verification
+
+Checkpoint type:
+- FRESH_APPROVAL_VALIDATION_CHECKPOINT
+
+Claim:
+- FP_MCP_212_FRESH_APPROVAL_VALIDATION_CHECKPOINT_RECORDED
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

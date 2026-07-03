@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-212",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 80,
+  "run_id": "FP-MCP-212-FRESH-APPROVAL-VALIDATION-CHECKPOINT",
+  "generic_admission_event_id": 80,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_MCP_212_FRESH_APPROVAL_VALIDATION_CHECKPOINT_RECORDED",
+  "artifact_paths": [
+    "packets/FP-MCP-212.md",
+    "runs/FP-MCP-212/fresh-approval-validation-checkpoint-record.json",
+    "runs/FP-MCP-212/result-summary.md",
+    "runs/FP-MCP-212/verification.txt"
+  ]
+}

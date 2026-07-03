@@ -1,0 +1,98 @@
+{
+  "packetId": "FP-MCP-212",
+  "title": "Fresh Approval Validation Checkpoint",
+  "checkpointType": "FRESH_APPROVAL_VALIDATION_CHECKPOINT",
+  "claim": "FP_MCP_212_FRESH_APPROVAL_VALIDATION_CHECKPOINT_RECORDED",
+  "summary": "Record that the fresh FP-MCP-211 scoped human approval evidence for the FP-MCP-209 request has been committed and validated. The request artifact is present, the approval is usable for execution, and the guarded start preflight still does not pass because execution remains globally disabled and pre-start/state-snapshot ledger entries are missing.",
+  "caveats": [
+    "This checkpoint does not consume approval.",
+    "This checkpoint does not authorize execution.",
+    "This checkpoint does not clear the disable switch.",
+    "This checkpoint does not contact the runner start endpoint.",
+    "This checkpoint does not start OpenCode or run FP-027.",
+    "The approval is time-limited and expires at 2026-07-03T11:55:10.000Z.",
+    "Gate orientation must be called with the execution packet FP-MCP-209, not only the approval packet FP-MCP-211, to locate the request artifact correctly."
+  ],
+  "boundaries": [
+    "execution authorized: false",
+    "approval consumed: false",
+    "disable switch cleared: false",
+    "runner start endpoint contacted: false",
+    "OpenCode started: false",
+    "FP-027 canary run: false",
+    "request artifact mutated: false",
+    "approval artifact mutated: false",
+    "terminal packet creation used: false"
+  ],
+  "structuredRecord": {
+    "request": {
+      "executionPacketId": "FP-MCP-209",
+      "requestId": "REQ-20260703T113456847Z-a68aa89e",
+      "requestArtifactCommit": "e2055c4",
+      "requestArtifactPresent": true,
+      "modelId": "deepseek-v4-pro-high",
+      "runMode": "DESIGN_ONLY",
+      "targetExecutionCommit": "4bd1977",
+      "branch": "main"
+    },
+    "approval": {
+      "approvalPacketId": "FP-MCP-211",
+      "approvalId": "APPROVAL-20260703T114020549Z-a9bbde3d",
+      "approvalArtifactCommit": "03c1972",
+      "approvalValid": true,
+      "approvalUsableForExecution": true,
+      "approvalConsumed": false,
+      "expiresAt": "2026-07-03T11:55:10.000Z",
+      "singleUse": true
+    },
+    "gateOrientation": {
+      "requestArtifactPresent": true,
+      "humanApprovalPresent": true,
+      "preflightPassableNow": false,
+      "executionAllowedNow": false,
+      "globalDisableActive": true,
+      "runnerExecutionEnabled": false,
+      "opencodeExecutionEnabled": false,
+      "blockingReasons": [
+        "GLOBAL_DISABLE_ACTIVE",
+        "RUNNER_EXECUTION_DISABLED",
+        "OPENCODE_EXECUTION_DISABLED"
+      ],
+      "guardedStartPreflightPassedGates": [
+        "repository",
+        "requestArtifact",
+        "commitBinding",
+        "modelAndRunMode",
+        "runnerCapabilityState",
+        "humanApprovalEvidence"
+      ],
+      "guardedStartPreflightFailedOrIncompleteGates": [
+        "disableSwitch",
+        "opencodeReadiness",
+        "preStartEvidence",
+        "stateSnapshotEvidence",
+        "evidenceLedgerReadiness"
+      ]
+    },
+    "observedToolGap": {
+      "tool": "forgepilot_get_execution_gate_orientation",
+      "issue": "When called with approval packet FP-MCP-211 it looked for the request artifact under FP-MCP-211 and reported REQUEST_ARTIFACT_NOT_FOUND; calling with execution packet FP-MCP-209 returned the correct request/approval orientation.",
+      "classification": "READ_ONLY_ORIENTATION_SCOPE_AMBIGUITY",
+      "deferFix": true
+    },
+    "nextPossibleSteps": [
+      "pre-start evidence/state snapshot dry-run or recorder path",
+      "disable-switch clearance only if policy allows",
+      "approval consumption and guarded start remain separate future gates"
+    ]
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_212_FRESH_APPROVAL_VALIDATION_CHECKPOINT_RECORDED"
+}
