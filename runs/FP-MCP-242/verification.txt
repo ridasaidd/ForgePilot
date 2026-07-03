@@ -1,0 +1,15 @@
+FP-MCP-242 verification
+
+Checkpoint type:
+- MCP_TOOL_REPAIR_RESULT
+
+Claim:
+- FP_MCP_242_APPROVED_PRE_START_EVIDENCE_RECORDER_IMPLEMENTED
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

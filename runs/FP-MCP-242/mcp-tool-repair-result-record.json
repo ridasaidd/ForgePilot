@@ -1,0 +1,76 @@
+{
+  "packetId": "FP-MCP-242",
+  "title": "Repair Approved Pre-Start Evidence Recording Path",
+  "checkpointType": "MCP_TOOL_REPAIR_RESULT",
+  "claim": "FP_MCP_242_APPROVED_PRE_START_EVIDENCE_RECORDER_IMPLEMENTED",
+  "summary": "Repair the FP-MCP-241 blocked pre-start evidence path by adding a narrower MCP tool, forgepilot_record_approved_pre_start_evidence_artifact. The existing recorder implementation already supported approval-scoped pre-start evidence, but the prior tool invocation shape with approvalId was blocked before MCP execution. The new tool uses an explicit approved-evidence artifact workflow, calls the same non-executing recorder logic with RECORD_PRE_START_EVIDENCE_DRY_RUN internally, writes only the pre-start evidence artifact, and never contacts the runner start endpoint, starts OpenCode, consumes approval, or clears the disable switch. Verification passed with pnpm test, including TypeScript build and hardcoded packet-id lint. Bridge commit c5f90af records the implementation.",
+  "caveats": [
+    "The new MCP tool is committed but requires an MCP service restart before it is available in the live runtime.",
+    "FP-MCP-241's existing approval and clearance may expire before the repaired tool is live; if expired, they must not be reused.",
+    "This repair does not itself create FP-MCP-241 pre-start evidence; it only makes the approved path available after restart.",
+    "The tool reuses existing recorder logic and does not weaken the pre-start gate.",
+    "A future FP-MCP-241 continuation must revalidate freshness and may need a fresh approval/clearance tuple."
+  ],
+  "boundaries": [
+    "execution authorized: false",
+    "approval created: false",
+    "approval consumed: false",
+    "local clearance created: false",
+    "runner start endpoint contacted: false",
+    "OpenCode started: false",
+    "FP-027 canary run: false",
+    "disable switch cleared: false"
+  ],
+  "structuredRecord": {
+    "bridgeImplementation": {
+      "commit": "c5f90af",
+      "message": "Add approved pre-start evidence recorder",
+      "files": [
+        "src/server.ts",
+        "scripts/hardcoded-packet-id-allowlist.json"
+      ],
+      "verification": [
+        "pnpm test PASS",
+        "TypeScript build PASS",
+        "hardcoded packet-id lint PASS"
+      ],
+      "allowlistObservedReferences": 170
+    },
+    "newTool": {
+      "name": "forgepilot_record_approved_pre_start_evidence_artifact",
+      "purpose": "Record a non-executing pre-start evidence artifact for an already-approved request through a safer tool-call shape.",
+      "inputs": [
+        "packetId",
+        "requestId",
+        "humanApprovalEvidenceId",
+        "confirmation = RECORD_APPROVED_PRE_START_EVIDENCE_ARTIFACT"
+      ],
+      "internalRecorder": "recordPreStartEvidenceDryRun(packetId, requestId, RECORD_PRE_START_EVIDENCE_DRY_RUN_APPROVAL, humanApprovalEvidenceId)",
+      "writes": [
+        "runs/<packetId>/pre-start-evidence/<requestId>.json"
+      ],
+      "neverDoes": [
+        "runner start endpoint contact",
+        "OpenCode start",
+        "approval consumption",
+        "disable switch clear",
+        "clearance creation"
+      ]
+    },
+    "sourceIssue": {
+      "blockedTool": "forgepilot_record_pre_start_evidence_dry_run with approvalId",
+      "observedDuring": "FP-MCP-241 fresh lifecycle canary preparation",
+      "effect": "preStartEvidenceComplete remained false and runner start was correctly not attempted"
+    },
+    "nextRequiredStep": "Restart MCP service, verify new tool is visible, then continue FP-MCP-241 only with fresh/valid approval and clearance state."
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_242_APPROVED_PRE_START_EVIDENCE_RECORDER_IMPLEMENTED"
+}
