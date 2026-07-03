@@ -1,0 +1,15 @@
+FP-MCP-252 verification
+
+Checkpoint type:
+- HTTP_FIRST_TOOL_BOUNDARY_REVIEW
+
+Claim:
+- FP_MCP_252_HTTP_FIRST_MCP_TOOL_BOUNDARY_REVIEW_COMPLETED
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

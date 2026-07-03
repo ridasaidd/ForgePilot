@@ -1,0 +1,95 @@
+{
+  "packetId": "FP-MCP-252",
+  "title": "MCP Tool Inventory and HTTP-First Boundary Review",
+  "checkpointType": "HTTP_FIRST_TOOL_BOUNDARY_REVIEW",
+  "claim": "FP_MCP_252_HTTP_FIRST_MCP_TOOL_BOUNDARY_REVIEW_COMPLETED",
+  "summary": "FP-MCP-252 reviewed the MCP bridge tool surface after the OpenCode HTTP experiments FP-MCP-244 through FP-MCP-251. Source inventory found 49 registered tools in src/server.ts at bridge commit c11bbda. Eight tools are now classified as HTTP-primary for OpenCode lifecycle learning and future model execution orchestration: forgepilot_get_opencode_http_session_status, forgepilot_get_opencode_http_session_status_shape, forgepilot_run_opencode_http_minimal_session_canary, forgepilot_run_opencode_http_minimal_async_prompt_canary, forgepilot_run_opencode_http_wait_endpoint_probe, forgepilot_run_opencode_http_message_shape_probe, forgepilot_run_opencode_http_assistant_completion_probe, and forgepilot_read_opencode_http_assistant_completion. The evidence-backed lifecycle path is: POST /session for session creation, POST /session/{id}/prompt_async for prompt submission, and GET /session/{id}/message with role-aware assistant text parsing for completion. Terminal access remains secondary scaffolding for repo inspection, source edits, builds, commits, and diagnostics; it should not be the primary OpenCode model lifecycle mechanism now that HTTP behavior is observed. Remote runner and request/approval/pre-start tools remain safety-gated infrastructure rather than the primary local model lifecycle path. Existing OpenCode worker tools visible in the action surface should be treated as legacy or secondary pending a later migration decision, because HTTP session/prompt/message semantics are now directly observed and cleaner than terminal-based OpenCode invocation.",
+  "caveats": [
+    "This packet is a boundary review and classification checkpoint only; it does not remove, rename, or deprecate any tools in code.",
+    "The source inventory reported 49 registered tools from src/server.ts; the ChatGPT action surface can expose additional or differently filtered views depending on discovery query, including OpenCode worker tools.",
+    "The wait endpoint remains negative/unreliable based on FP-MCP-248 and should not be promoted to primary completion semantics yet.",
+    "A canary OpenCode session from FP-MCP-251 remains because it was intentionally left alive to verify the read-only completion reader.",
+    "Terminal access remains necessary for now because repo edits, build verification, commits, service diagnostics, and source inspections are not yet covered by HTTP lifecycle tools."
+  ],
+  "boundaries": [
+    "No source code was changed by this packet.",
+    "No OpenCode session was created by this packet.",
+    "No OpenCode prompt was submitted by this packet.",
+    "No OpenCode wait endpoint was called by this packet.",
+    "No ForgePilot runner start endpoint was contacted by this packet.",
+    "No execution approval was created, consumed, or authorized by this packet.",
+    "No local execution clearance was created by this packet.",
+    "This packet records classification guidance only."
+  ],
+  "structuredRecord": {
+    "bridgeCommitAtReview": "c11bbda Add OpenCode HTTP assistant completion reader",
+    "sourceRegisteredToolCount": 49,
+    "httpPrimaryTools": [
+      "forgepilot_get_opencode_http_session_status",
+      "forgepilot_get_opencode_http_session_status_shape",
+      "forgepilot_run_opencode_http_minimal_session_canary",
+      "forgepilot_run_opencode_http_minimal_async_prompt_canary",
+      "forgepilot_run_opencode_http_wait_endpoint_probe",
+      "forgepilot_run_opencode_http_message_shape_probe",
+      "forgepilot_run_opencode_http_assistant_completion_probe",
+      "forgepilot_read_opencode_http_assistant_completion"
+    ],
+    "terminalScaffoldTools": [
+      "forgepilot_status",
+      "forgepilot_get_workspace_change_inspection",
+      "forgepilot_execute_terminal_command"
+    ],
+    "remoteRunnerGatedTools": [
+      "forgepilot_get_remote_runner_status",
+      "forgepilot_validate_remote_runner_request",
+      "forgepilot_validate_remote_runner_endpoint_request",
+      "forgepilot_start_remote_runner_request"
+    ],
+    "requestApprovalGateToolCount": 23,
+    "observabilityReadOnlyToolCount": 10,
+    "checkpointEvidenceTools": [
+      "forgepilot_record_packet_checkpoint"
+    ],
+    "uncategorizedOrDryRunTools": [
+      "forgepilot_record_execution_artifact_dry_run",
+      "forgepilot_verify_execution_artifact_dry_run",
+      "forgepilot_record_start_state_snapshot_dry_run",
+      "forgepilot_get_execution_gate_orientation"
+    ],
+    "actionSurfaceSecondaryWorkerToolsObserved": [
+      "forgepilot_start_opencode_worker",
+      "forgepilot_get_opencode_worker_status",
+      "forgepilot_read_opencode_worker_result",
+      "forgepilot_abort_opencode_worker",
+      "forgepilot_capture_opencode_worker_telemetry",
+      "forgepilot_persist_opencode_worker_telemetry",
+      "forgepilot_query_persisted_opencode_worker_telemetry",
+      "forgepilot_read_opencode_worker_telemetry",
+      "forgepilot_read_persisted_opencode_worker_telemetry"
+    ],
+    "evidenceBackedHttpLifecycle": {
+      "createSession": "POST /session",
+      "submitPrompt": "POST /session/{id}/prompt_async",
+      "completionReader": "GET /session/{id}/message",
+      "completionRule": "message.info.role == assistant AND parts[*].type == text AND parts[*].text contains expected text",
+      "statusEndpointRole": "useful for busy observation but not reliable as completion source",
+      "waitEndpointRole": "negative/unreliable so far"
+    },
+    "classificationDecision": {
+      "openCodeModelLifecyclePrimary": "OpenCode HTTP API tools",
+      "terminalRole": "secondary scaffolding and debugging only",
+      "remoteRunnerRole": "safety-gated infrastructure, not the immediate local HTTP lifecycle path",
+      "workerToolsRole": "legacy or secondary pending migration review",
+      "nextRecommendedPacket": "FP-MCP-253 — OpenCode HTTP Session Cleanup Tool or FP-MCP-253 — HTTP Lifecycle Orchestrator Skeleton"
+    }
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_252_HTTP_FIRST_MCP_TOOL_BOUNDARY_REVIEW_COMPLETED"
+}
