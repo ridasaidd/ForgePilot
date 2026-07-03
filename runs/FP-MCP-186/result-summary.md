@@ -61,3 +61,7 @@ FP-MCP-186 post-refresh live confirmation: confirmed
 ## Next required work
 
 FP-MCP-183 canary enablement remains ungranted. Before any consuming action, create a fresh scoped tuple and require explicit authorization under the FP-MCP-183 boundary.
+
+## Sequence Reconciliation
+
+FP-MCP-185 was not skipped or renumbered; it recorded the pre-refresh stale-runtime observation where `validate_execution_preflight` still emitted legacy `EXECUTION_DISABLED`, while FP-MCP-186 recorded the post-refresh positive live confirmation where the legacy reason was absent and precise reasons remained present.

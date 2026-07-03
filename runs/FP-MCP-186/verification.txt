@@ -44,3 +44,8 @@ Canonical ledger after FP-MCP-186 recording:
 - canonical_state: ADMITTED
 - admitted_claim: VALIDATE_EXECUTION_PREFLIGHT_DISABLED_REASON_NORMALIZATION_LIVE_CONFIRMED_NO_LEGACY_EXECUTION_DISABLED
 - preceding stale-runtime evidence_id: 55
+
+Sequence reconciliation:
+- FP-MCP-185 was used for the pre-refresh stale-runtime observation.
+- FP-MCP-186 was used for the post-refresh positive live confirmation.
+- No packet id was skipped or renumbered.
