@@ -1,0 +1,81 @@
+{
+  "packetId": "FP-MCP-232",
+  "title": "Add Popup-Approved Local Clearance Creation Tool",
+  "checkpointType": "TOOL_IMPLEMENTATION_RESULT",
+  "claim": "FP_MCP_232_POPUP_APPROVED_LOCAL_CLEARANCE_TOOL_IMPLEMENTED",
+  "summary": "Implemented a popup-approved MCP tool to create one short-lived, single-use operator-local execution clearance artifact without requiring the operator to paste and run a Python script. The tool validates the structured approval evidence first, refuses if approval is invalid, expired, unusable, or consumed, checks target workspace branch/commit/clean state and request artifact commit binding, writes only .local/forgepilot/execution-clearance.json in the MCP bridge workspace, and immediately reuses the read-only observer to validate that the created clearance is eligible. The tool does not consume approval, clear the disable switch, contact the runner start endpoint, start OpenCode, or run FP-027.",
+  "caveats": [
+    "The running MCP service must be restarted before this new tool is available in ChatGPT.",
+    "This tool intentionally relaxes the earlier strict FP-MCP-217 manual-shell boundary in favor of explicit popup-approved local clearance creation.",
+    "The created clearance remains local, short-lived, exact-scoped, single-use, and bound to approval/request/model/run mode/branch/commits/workspace.",
+    "The tool may overwrite an existing local clearance artifact; this is reported as clearanceMutated true.",
+    "No canary or runner start was attempted by this packet.",
+    "Existing FP-MCP-230 approval and local clearances are expired and must not be reused."
+  ],
+  "boundaries": [
+    "approval consumed: false",
+    "disable switch cleared: false",
+    "runner start endpoint contacted: false",
+    "OpenCode started: false",
+    "FP-027 canary run: false",
+    "standing execution authority created: false",
+    "broad clearance scope allowed: false"
+  ],
+  "structuredRecord": {
+    "bridgeImplementation": {
+      "repository": "/home/ridasaidd/forgepilot-chatgpt-mcp",
+      "branch": "feature/oauth-auth0",
+      "commit": "9201856",
+      "commitMessage": "Add popup-approved local clearance tool",
+      "filesChanged": [
+        "src/operator-local-clearance.ts",
+        "src/server.ts"
+      ],
+      "build": "pnpm build passed"
+    },
+    "newTool": {
+      "name": "forgepilot_create_operator_local_execution_clearance",
+      "approvalLiteral": "CREATE_OPERATOR_LOCAL_CLEARANCE",
+      "writes": [
+        "/home/ridasaidd/forgepilot-chatgpt-mcp/.local/forgepilot/execution-clearance.json"
+      ],
+      "maxExpiresInMinutes": 10,
+      "singleUse": true,
+      "validatesBeforeWrite": [
+        "structured approval evidence",
+        "approval not consumed",
+        "approval usable for execution",
+        "current target branch matches",
+        "current target HEAD equals requestArtifactCommit",
+        "target workspace clean",
+        "request artifact exists and execution base matches",
+        "executionBaseCommit ancestor of requestArtifactCommit",
+        "clearance path gitignored"
+      ],
+      "postWriteValidation": "getOperatorLocalExecutionClearanceStatus"
+    },
+    "uxChange": {
+      "old": "operator manually ran generated Python script to create local clearance",
+      "new": "operator approves one MCP tool popup to create local clearance for exact scoped tuple"
+    },
+    "safetyProperties": [
+      "no approval consumption",
+      "no disable switch clearing",
+      "no runner start contact",
+      "no OpenCode start",
+      "no FP-027 canary run",
+      "no wildcard/broad scope",
+      "short-lived clearance",
+      "exact tuple binding"
+    ]
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_232_POPUP_APPROVED_LOCAL_CLEARANCE_TOOL_IMPLEMENTED"
+}
