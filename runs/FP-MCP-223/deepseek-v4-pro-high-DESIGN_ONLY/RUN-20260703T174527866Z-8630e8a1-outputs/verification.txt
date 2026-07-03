@@ -1,0 +1,79 @@
+FP-MCP-223 DESIGN_ONLY verification report
+Runner Run ID: RUN-20260703T174527866Z-8630e8a1
+Run Mode: DESIGN_ONLY
+Model: deepseek-v4-pro-high
+Target workspace commit: 2ad7ad1
+
+Pre-start verification results:
+
+[PASS] repository status checked before request creation
+  - git status confirmed clean working tree (except 2 untracked post-start files)
+  - HEAD at 2ad7ad18d898f6a673c91f6feeb34891de5f8547
+
+[PASS] packet file exists
+  - packets/FP-MCP-223.md present and readable (52 lines, SHA256 verified)
+
+[PASS] requested model is allowlisted
+  - deepseek-v4-pro-high is a permitted ForgePilot model
+
+[PASS] requested run mode is DESIGN_ONLY
+  - requestedRunMode: DESIGN_ONLY
+  - DESIGN_ONLY is a non-executing run mode
+
+[PASS] request artifact is valid JSON
+  - Parsed successfully at runs/FP-MCP-223/opencode-requests/REQ-20260703T125101090Z-8535b3c0.json
+
+[PASS] request artifact schemaVersion is FP-MCP-083
+
+[PASS] request artifact artifactType is opencode-start-request
+
+[PASS] request artifact requestState is CREATED_NOT_STARTED
+
+[PASS] request artifact records approvalRequired true
+
+[PASS] request artifact records approvalId null
+
+[PASS] request artifact records approvalPath null
+
+[PASS] request artifact records consumptionRequired true
+
+[PASS] request artifact records consumptionId null
+
+[PASS] request artifact records executionAllowedNow false
+
+[PASS] request artifact records globalDisableActive true
+
+[PASS] request artifact records runnerExecutionEnabled false
+
+[PASS] request artifact records opencodeExecutionEnabled false
+
+[PASS] request artifact records startEndpointContacted false
+
+[PASS] request artifact records opencodeStarted false
+
+[PASS] request artifact records runnerRunId null
+
+[PASS] legacy FP-MCP-007 request artifacts remain readable
+  - legacyCompatibility.schemaVersion: FP-MCP-007
+  - legacyCompatibility.modelId: deepseek-v4-pro-high
+  - legacyCompatibility.runMode: DESIGN_ONLY
+  - legacyCompatibility.status: REQUEST_RECORDED
+
+Expected artifacts status:
+  [PRESENT] packets/FP-MCP-223.md
+  [ABSENT]  docs/opencode-request-artifact-contract-upgrade.md (not yet created; DESIGN_ONLY gating)
+  [ABSENT]  runs/FP-MCP-223/implementation-result.json (not yet created; DESIGN_ONLY boundary)
+  [ABSENT]  runs/FP-MCP-223/executor-result.md (not yet created; DESIGN_ONLY boundary)
+  [PRESENT] runs/FP-MCP-223/verification.txt
+
+DESIGN_ONLY boundary check:
+  - execution authorized: false
+  - approval consumed: false
+  - disable switch cleared: false
+  - runner start endpoint contacted: false
+  - OpenCode started: false
+  - FP-027 canary run: false
+  - local clearance artifact created: false
+  - standing execution authority created: false
+
+All 22 verification items passed. DESIGN_ONLY boundary intact. No execution occurred.
