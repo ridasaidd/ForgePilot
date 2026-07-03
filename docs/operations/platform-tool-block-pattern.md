@@ -69,11 +69,15 @@ Plausible contributors:
 
 ```text
 cadence / rapid sequencing after action refresh
+rapid back-to-back tool calls
+multiple terminal operations combined into a single tool invocation
 large combined command shape
 sensitive process-control terminology in command text, rationale, path names, or action schema
 interaction between action discovery and immediate invocation
 intermittent platform-side policy evaluation
 ```
+
+Operator observation added by FP-MCP-189: rapid tool calls or multi-operation terminal batches sometimes appear to trigger the platform safety check. This is a plausible explanation for many generic platform-tool blocks, but it does not by itself explain or downgrade FP-MCP-187 because that block happened on the enablement-adjacent request-creation path and remains separately classified until understood.
 
 No single cause has been isolated.
 

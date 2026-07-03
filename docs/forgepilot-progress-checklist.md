@@ -295,7 +295,7 @@ These may be considered after V1 evidence/reporting surfaces stabilize:
 - routing policy,
 - model scoring/ranking.
 
-| Platform tool block pattern | `OPEN_OPERATIONAL_PATTERN` | `FP-017/FP-020/SHADOW-REF-006/FP-026/FP-MCP-187` | Central note distinguishes recurring evidence-recording/tooling blocks from FP-MCP-187's enablement-adjacent request-creation block. | Generic trigger unresolved; FP-MCP-187 must remain separately classified as `ENABLEMENT_ADJACENT_REQUEST_CREATION_PLATFORM_BLOCK`, with no rephrase-to-avoid-trigger or manual artifact bypass. |
+| Platform tool block pattern | `OPEN_OPERATIONAL_PATTERN` | `FP-017/FP-020/SHADOW-REF-006/FP-026/FP-MCP-187/FP-MCP-189` | Central note distinguishes recurring evidence-recording/tooling blocks from FP-MCP-187's enablement-adjacent request-creation block. | Operator observation: rapid back-to-back tool calls or multi-operation terminal batches may trigger checks; generic trigger unresolved; FP-MCP-187 remains separately classified as `ENABLEMENT_ADJACENT_REQUEST_CREATION_PLATFORM_BLOCK`, with no rephrase-to-avoid-trigger or manual artifact bypass. |
 
 | Scoped OpenCode process-tree canary specification | `SPEC_DEFINED_BLOCKED` | `FP-027` | Defines a DESIGN_ONLY, single-worker, no-source-edit canary with mechanical process-group and descendant checks before FP-024 extraction retry. | Not run. Blocked by missing scoped enablement proof, fresh human approval, global execution disable, and source-inspection requirement for boundary flags. |
 
