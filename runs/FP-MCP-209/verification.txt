@@ -1,0 +1,15 @@
+FP-MCP-209 verification
+
+Checkpoint type:
+- FRESH_GUARDED_REQUEST_PATH_PREPARATION
+
+Claim:
+- FP_MCP_209_FRESH_GUARDED_REQUEST_PATH_PREPARATION_RECORDED
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

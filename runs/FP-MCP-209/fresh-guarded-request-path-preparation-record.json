@@ -1,0 +1,60 @@
+{
+  "packetId": "FP-MCP-209",
+  "title": "Fresh Guarded Request Path Preparation",
+  "checkpointType": "FRESH_GUARDED_REQUEST_PATH_PREPARATION",
+  "claim": "FP_MCP_209_FRESH_GUARDED_REQUEST_PATH_PREPARATION_RECORDED",
+  "summary": "Record the decision to prepare a fresh non-executing guarded request path after FP-MCP-208 completed the workspace change inspection tool. The old FP-MCP-183 request/approval path is stale and must not be reused. This checkpoint creates a known packet before any request artifact creation attempt.",
+  "caveats": [
+    "This checkpoint does not create a request artifact yet; it creates a known packet for the next request-artifact step.",
+    "The old FP-MCP-183 approval is expired and bound to a stale target commit; it must not be reused.",
+    "Execution remains globally disabled at this point.",
+    "A future request artifact must be fresh and bound to the current target commit.",
+    "A future approval must be fresh, scoped, single-use, and bound exactly to the fresh request artifact and commit."
+  ],
+  "boundaries": [
+    "execution authorized: false",
+    "approval consumed: false",
+    "disable switch cleared: false",
+    "runner start endpoint contacted: false",
+    "OpenCode started: false",
+    "FP-027 canary run: false",
+    "request artifact created by this checkpoint: false",
+    "human approval created by this checkpoint: false",
+    "terminal packet creation used: false"
+  ],
+  "structuredRecord": {
+    "gateOrientationBeforeRequestPath": {
+      "runnerReachable": true,
+      "runnerStartCapabilityCallable": true,
+      "executionAllowedNow": false,
+      "globalDisableActive": true,
+      "runnerExecutionEnabled": false,
+      "opencodeExecutionEnabled": false,
+      "nextRequiredActions": [
+        "DISABLE_SWITCH_CLEARANCE_REQUIRED"
+      ],
+      "blockingReasons": [
+        "GLOBAL_DISABLE_ACTIVE",
+        "RUNNER_EXECUTION_DISABLED",
+        "OPENCODE_EXECUTION_DISABLED"
+      ]
+    },
+    "freshPathRationale": {
+      "oldPath": "FP-MCP-183 request/approval path",
+      "oldPathReusable": false,
+      "reason": "expired approval and stale target commit",
+      "nextIntendedStep": "create fresh non-executing request artifact for this known packet"
+    },
+    "targetModel": "deepseek-v4-pro-high",
+    "targetRunMode": "DESIGN_ONLY"
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_209_FRESH_GUARDED_REQUEST_PATH_PREPARATION_RECORDED"
+}
