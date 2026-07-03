@@ -7,11 +7,11 @@ import { recordEvidenceAdmission, getAdmissionEvents } from "../../src/db/eviden
 import { getCanonicalEvidenceRecordAdmission } from "../../src/db/validation-admission.js";
 
 const packetPath = "packets/FP-MCP-233.md";
-const runId = "FP-MCP-233-FRESH-POPUP-CLEARANCE-CANARY-PREPARATION";
-const admittedClaim = "FP_MCP_233_FRESH_POPUP_CLEARANCE_CANARY_PREPARATION_RECORDED";
+const runId = "FP-MCP-233-GUARDED-START-RESULT";
+const admittedClaim = "FP_MCP_233_POPUP_CLEARANCE_GUARDED_START_ACCEPTED_AND_DESIGN_ONLY_OUTPUTS_RECORDED";
 const artifacts = [
   "packets/FP-MCP-233.md",
-  "runs/FP-MCP-233/fresh-popup-clearance-canary-preparation-record.json",
+  "runs/FP-MCP-233/guarded-start-result-record.json",
   "runs/FP-MCP-233/result-summary.md",
   "runs/FP-MCP-233/verification.txt"
 ];
@@ -37,12 +37,12 @@ if (!evidence) {
     model_id: "none",
     model_role: "packet_checkpoint_recorder",
     branch: "main",
-    commit_sha: "3242ae1",
+    commit_sha: "684e8a8",
     executor_result: admittedClaim,
     verification_result: "PACKET_CHECKPOINT_RECORDED;NON_EXECUTING_BOUNDARY_PRESERVED",
     audit_result: "NOT_APPLICABLE_PACKET_CHECKPOINT",
     comparison_result: "NOT_APPLICABLE_PACKET_CHECKPOINT",
-    metrics_path: "runs/FP-MCP-233/fresh-popup-clearance-canary-preparation-record.json",
+    metrics_path: "runs/FP-MCP-233/guarded-start-result-record.json",
     artifact_paths: artifacts,
     trust_tier: "TIER_2_VERIFIED_ARTIFACT",
     validation_state: "VALID",

@@ -1,0 +1,81 @@
+{
+  "packetId": "FP-MCP-233",
+  "title": "Fresh Popup-Clearance Canary Attempt Result",
+  "checkpointType": "GUARDED_START_RESULT",
+  "claim": "FP_MCP_233_POPUP_CLEARANCE_GUARDED_START_ACCEPTED_AND_DESIGN_ONLY_OUTPUTS_RECORDED",
+  "summary": "A fresh FP-MCP-233 structured approval was recorded, committed, and validated. The new FP-MCP-232 popup-approved local clearance tool created a short-lived local clearance for the exact tuple without manual Python scripting. A guarded start request for FP-MCP-223 was then accepted by the remote runner. OpenCode started successfully with runnerRunId RUN-20260703T174527866Z-8630e8a1 and completed a DESIGN_ONLY run. Runner pre/post start evidence, stdout/stderr logs, and the produced DESIGN_ONLY outputs were committed under runs/FP-MCP-223/deepseek-v4-pro-high-DESIGN_ONLY/. Approval consumption recording was attempted after start, but the existing consumption recorder refused due an approval-scope/text contract mismatch; this remains a follow-up fix and no duplicate start was attempted.",
+  "caveats": [
+    "Approval consumption evidence was not recorded because forgepilot_record_human_approval_consumption refused with APPROVAL_SCOPE_MISMATCH, APPROVAL_REQUEST_BINDING_INVALID, and APPROVAL_TEXT_INVALID.",
+    "The failed approval-consumption recorder behavior appears to be a contract mismatch separate from the guarded start path.",
+    "The OpenCode run output claims DESIGN_ONLY boundary preserved, but the start itself necessarily contacted the runner start endpoint and started OpenCode as intended for this canary.",
+    "No second guarded start attempt was made after the successful start.",
+    "The popup-created local clearance expires and must not be reused."
+  ],
+  "boundaries": [
+    "runner start endpoint contacted: true",
+    "OpenCode started: true",
+    "FP-027 canary/guarded DESIGN_ONLY run started: true",
+    "approval consumed: false due recorder mismatch",
+    "disable switch cleared as standing state: false",
+    "standing execution authority created: false",
+    "second start attempt after success: false"
+  ],
+  "structuredRecord": {
+    "freshApproval": {
+      "approvalPacketId": "FP-MCP-233",
+      "approvalId": "APPROVAL-20260703T174342607Z-f2cdb96f",
+      "approvalCommit": "2ad7ad1",
+      "approvalValid": true,
+      "approvalUsableForExecution": true,
+      "approvalConsumed": false
+    },
+    "popupClearance": {
+      "tool": "forgepilot_create_operator_local_execution_clearance",
+      "clearanceId": "CLEARANCE-20260703T174408245Z-58646d48",
+      "requestArtifactCommit": "2ad7ad1",
+      "executionBaseCommit": "6fb3a32",
+      "eligibleForGuardedAttempt": true,
+      "manualPythonScriptRequired": false
+    },
+    "guardedStart": {
+      "packetId": "FP-MCP-223",
+      "requestId": "REQ-20260703T125101090Z-8535b3c0",
+      "runnerRunId": "RUN-20260703T174527866Z-8630e8a1",
+      "started": true,
+      "accepted": true,
+      "runnerContacted": true,
+      "startEndpointContacted": true,
+      "executionStarted": true,
+      "opencodeStarted": true,
+      "boundaryVersion": "FP-MCP-231",
+      "reasons": []
+    },
+    "committedEvidence": {
+      "runnerStartEvidenceCommit": "19ca8c5",
+      "runnerOutputCommit": "684e8a8",
+      "files": [
+        "runs/FP-MCP-223/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260703T174527866Z-8630e8a1-pre-start.json",
+        "runs/FP-MCP-223/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260703T174527866Z-8630e8a1-post-start.json",
+        "runs/FP-MCP-223/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260703T174527866Z-8630e8a1-opencode.stdout.log",
+        "runs/FP-MCP-223/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260703T174527866Z-8630e8a1-opencode.stderr.log",
+        "runs/FP-MCP-223/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260703T174527866Z-8630e8a1-outputs/executor-result.md",
+        "runs/FP-MCP-223/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260703T174527866Z-8630e8a1-outputs/implementation-result.json",
+        "runs/FP-MCP-223/deepseek-v4-pro-high-DESIGN_ONLY/RUN-20260703T174527866Z-8630e8a1-outputs/verification.txt"
+      ]
+    },
+    "opencodeOutputSummary": {
+      "stdout": "DESIGN_ONLY execution complete. Produced verification.txt, implementation-result.json, executor-result.md.",
+      "verification": "All 22 verification checks passed according to executor output."
+    },
+    "followUp": "Fix approval consumption recorder contract so successful starts can mark scoped approval consumed without mismatch."
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_233_POPUP_CLEARANCE_GUARDED_START_ACCEPTED_AND_DESIGN_ONLY_OUTPUTS_RECORDED"
+}
