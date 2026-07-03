@@ -1,0 +1,15 @@
+{
+  "packetId": "FP-MCP-194",
+  "legacyTool": "forgepilot_create_opencode_run_request",
+  "clarifiedAlias": "forgepilot_record_non_executing_run_request_artifact",
+  "sameUnderlyingImplementationPath": true,
+  "createsSameClassOfRequestArtifact": true,
+  "requestArtifactCanFeedLaterExecutionWorkflow": true,
+  "structurallyIncapableOfFeedingExecution": false,
+  "classification": "PRESUMED_EQUIVALENT_REQUEST_CREATION_CAPABILITY",
+  "doesAliasSuccessResolveOriginalPlatformBlock": false,
+  "doesAliasSuccessProveOriginalBlockBenign": false,
+  "safetyTriggerResolved": false,
+  "standingRuleRecorded": true,
+  "observedResult": "FP_MCP_194_ALIAS_EQUIVALENCE_RECONCILED_STANDING_RULE_RECORDED_SAFETY_TRIGGER_UNRESOLVED"
+}

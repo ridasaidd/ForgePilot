@@ -61,6 +61,25 @@ Handling rule for this category:
 5. Keep FP-MCP-183 enablement closed unless an explicit future packet and operator authorization clear the boundary.
 ```
 
+
+## Equivalent capability rule
+
+A renamed, aliased, reshaped, or semantically narrowed tool surface introduced after a platform safety block must be presumed equivalent to the blocked capability unless it is demonstrated to be structurally incapable of feeding the same downstream authority.
+
+Intent is not sufficient evidence. Passing through a renamed or rephrased surface is not proof that the original safety block was benign or resolved.
+
+Structural separation requires evidence that the new surface cannot participate in the same downstream enablement path, not merely that it has clearer wording, a different confirmation literal, or explicit non-execution boundary fields.
+
+For request-artifact creation specifically:
+
+```text
+same underlying request-artifact creation path
++ request artifact remains usable by later approval/preflight/consumption/start gates
+= presumed equivalent request-creation capability
+```
+
+When this rule applies, the ledger must record the equivalence before using the renamed or reshaped capability as evidence of safety progress.
+
 ## Current hypothesis
 
 The trigger is unresolved.
