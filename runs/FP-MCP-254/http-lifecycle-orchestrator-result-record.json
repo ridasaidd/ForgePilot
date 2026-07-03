@@ -1,0 +1,68 @@
+{
+  "packetId": "FP-MCP-254",
+  "title": "OpenCode HTTP Lifecycle Orchestrator Skeleton",
+  "checkpointType": "HTTP_LIFECYCLE_ORCHESTRATOR_RESULT",
+  "claim": "FP_MCP_254_OPENCODE_HTTP_LIFECYCLE_ORCHESTRATOR_COMPLETED_CANARY_WITH_CLEANUP",
+  "summary": "The FP-MCP-254 OpenCode HTTP lifecycle orchestrator skeleton was implemented, exposed, and verified with a bounded canary lifecycle. The tool created one titled OpenCode session, submitted the canary prompt through /session/{id}/prompt_async, observed role-aware assistant completion through /session/{id}/message, and cleaned up the created session. Result: lifecycleRan=true, sessionCreated=true, promptAsyncSubmitted=true, assistantCompletionObserved=true, expectedTextObservedInAssistant=true, completionState=COMPLETED, cleanupAttempted=true, sessionDeleted=true, createHttpStatus=200, promptAsyncHttpStatus=204, finalMessagesHttpStatus=200, deleteHttpStatus=200, pollCount=6, assistantTextPaths=[\"[1].parts[2].text\"], boundedAssistantTextExcerpts=[\"OPENCODE_HTTP_CANARY_OK\"].",
+  "caveats": [
+    "Verified only with a tiny canary prompt.",
+    "The observed assistant text path is an example shape, not a fixed index contract.",
+    "The tool uses role-aware assistant text scanning as the completion rule."
+  ],
+  "boundaries": [
+    "No wait endpoint call.",
+    "No runner start contact.",
+    "No OpenCode process start by this tool.",
+    "No approval consumption.",
+    "No file-changing task requested.",
+    "Only the created canary session was cleaned up."
+  ],
+  "structuredRecord": {
+    "toolName": "forgepilot_run_opencode_http_lifecycle_orchestrator",
+    "bridgeImplementationCommit": "7dfb60a Add OpenCode HTTP lifecycle orchestrator skeleton",
+    "lifecycleRan": true,
+    "sessionCreated": true,
+    "promptAsyncSubmitted": true,
+    "assistantCompletionObserved": true,
+    "expectedTextObservedInAssistant": true,
+    "cleanupAttempted": true,
+    "sessionDeleted": true,
+    "messageEndpointCalled": true,
+    "waitEndpointCalled": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "sessionId": "ses_0d5c29601ffejMDFnCOkKGH1CG",
+    "promptTextSha256": "2849ed87d773e5c34abb872cf41130ac5e31efa608f2a72173eeba8b748d09e0",
+    "expectedTextSha256": "dcfda23cb4744de7083cbab781ae07eb86d25dba3701f86cf4fd41b8819a36f5",
+    "createHttpStatus": 200,
+    "promptAsyncHttpStatus": 204,
+    "finalMessagesHttpStatus": 200,
+    "deleteHttpStatus": 200,
+    "pollCount": 6,
+    "completionState": "COMPLETED",
+    "finalMessagesCount": 2,
+    "assistantMessageCount": 1,
+    "assistantTextPartCount": 1,
+    "userTextPartCount": 1,
+    "assistantTextPaths": [
+      "[1].parts[2].text"
+    ],
+    "userTextPaths": [
+      "[0].parts[0].text"
+    ],
+    "boundedAssistantTextExcerpts": [
+      "OPENCODE_HTTP_CANARY_OK"
+    ],
+    "boundaryVersion": "OPENCODE_HTTP_LIFECYCLE_ORCHESTRATOR_V1",
+    "recommendedNextPacket": "FP-MCP-255 — HTTP Lifecycle Request Artifact Adapter"
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_254_OPENCODE_HTTP_LIFECYCLE_ORCHESTRATOR_COMPLETED_CANARY_WITH_CLEANUP"
+}

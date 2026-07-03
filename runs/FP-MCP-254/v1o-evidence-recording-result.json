@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-254",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 126,
+  "run_id": "FP-MCP-254-HTTP-LIFECYCLE-ORCHESTRATOR-RESULT",
+  "generic_admission_event_id": 126,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_MCP_254_OPENCODE_HTTP_LIFECYCLE_ORCHESTRATOR_COMPLETED_CANARY_WITH_CLEANUP",
+  "artifact_paths": [
+    "packets/FP-MCP-254.md",
+    "runs/FP-MCP-254/http-lifecycle-orchestrator-result-record.json",
+    "runs/FP-MCP-254/result-summary.md",
+    "runs/FP-MCP-254/verification.txt"
+  ]
+}
