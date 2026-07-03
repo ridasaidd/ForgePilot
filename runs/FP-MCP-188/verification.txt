@@ -1,0 +1,33 @@
+FP-MCP-188 verification
+
+Pre-state:
+- ForgePilot clean at 83f997a Record FP-MCP-187 request creation platform block
+- MCP bridge clean at 9e01c73 Normalize execution preflight disabled reasons
+- canonical evidence/admission before packet: 57/57
+
+Documentation update:
+- docs/operations/platform-tool-block-pattern.md now lists FP-MCP-187 in observed instances.
+- docs/operations/platform-tool-block-pattern.md adds a distinct enablement-adjacent category section.
+- docs/forgepilot-progress-checklist.md updates the platform tool block row to include FP-MCP-187 with separate classification.
+
+Safety boundary:
+- Did not retry forgepilot_create_opencode_run_request.
+- Did not rephrase or restructure the blocked primary request-creation call.
+- Did not manually construct a request artifact.
+- Did not create approval evidence.
+- Did not consume approval evidence.
+- Did not contact the runner start endpoint.
+- Did not start OpenCode.
+- Did not run the FP-027 canary.
+
+Conclusion:
+- FP-MCP-187 is recorded as ENABLEMENT_ADJACENT_REQUEST_CREATION_PLATFORM_BLOCK.
+- FP-MCP-183 remains ungranted.
+
+Post-recording verification:
+- evidence_records: 58
+- generic evidence_record admission events: 58
+- latest_evidence_id: 58
+- latest_generic_event_id: 58
+- canonical_state: ADMITTED
+- admitted_claim: FP_MCP_188_ENABLEMENT_ADJACENT_PLATFORM_BLOCK_CATEGORY_DOCUMENTED_NO_RETRY_NO_BYPASS
