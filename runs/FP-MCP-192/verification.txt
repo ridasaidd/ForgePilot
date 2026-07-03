@@ -20,3 +20,50 @@ Interpretation:
 - No runner start endpoint was contacted.
 - No OpenCode process was started.
 - No FP-027 canary ran.
+
+Attempt 2:
+- Precondition fixed by committing FP-MCP-192 packet setup at a802fda.
+- Tool: forgepilot_record_non_executing_run_request_artifact
+- Confirmation literal: RECORD_NON_EXECUTING_REQUEST_ARTIFACT
+- Result: created true, valid true
+- Request id: REQ-20260703T080123132Z-67da4239
+- Request artifact path: runs/FP-MCP-192/opencode-requests/REQ-20260703T080123132Z-67da4239.json
+- Output boundary fields: executionEnabled false, executionStarted false, executionAuthorized false, runnerStartEndpointContacted false, opencodeStarted false, approvalConsumed false, artifactOnly true, requestArtifactOnly true
+
+Readback:
+- createdByTool: forgepilot_record_non_executing_run_request_artifact
+- requestState: CREATED_NOT_STARTED
+- artifactRecordingConfirmation: RECORD_NON_EXECUTING_REQUEST_ARTIFACT
+- approvalRequired true, approvalId null, approvalPath null
+- consumptionRequired true, consumptionId null
+- runnerStartEndpointContactAuthorized false
+- executionEnablementAuthorized false
+- executionAllowedNow false
+- startEndpointContacted false
+- opencodeStarted false
+- runnerRunId null
+
+Conclusion:
+- FP-MCP-191 clarified tool surface is live-confirmed after service restart/action refresh.
+- The new alias records only a non-executing local request artifact.
+- FP-MCP-183 was not used.
+- No approval was created or consumed.
+- No runner start endpoint was contacted.
+- No OpenCode process was started.
+- No FP-027 canary ran.
+
+Evidence recording attempt 1:
+- record-v1o-evidence.ts failed before writing evidence.
+- Cause: script incorrectly assumed the packet intent row already existed in SQLite after git commit.
+- Classification: evidence-recording script bug, not request-artifact tool failure.
+- No approval was created or consumed.
+- No runner start endpoint was contacted.
+- No OpenCode process was started.
+
+Post-recording verification:
+- evidence_records: 62
+- generic evidence_record admission events: 62
+- latest_evidence_id: 62
+- latest_generic_event_id: 62
+- canonical_state: ADMITTED
+- admitted_claim: FP_MCP_192_NON_EXECUTING_REQUEST_ARTIFACT_TOOL_SURFACE_LIVE_CONFIRMED_NO_EXECUTION
