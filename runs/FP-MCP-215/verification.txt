@@ -1,0 +1,15 @@
+FP-MCP-215 verification
+
+Checkpoint type:
+- RESUME_FRESHNESS_VERIFICATION
+
+Claim:
+- FP_MCP_215_RESUME_FRESHNESS_VERIFICATION_RECORDED
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

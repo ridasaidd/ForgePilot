@@ -1,0 +1,112 @@
+{
+  "packetId": "FP-MCP-215",
+  "title": "Resume Freshness Verification",
+  "checkpointType": "RESUME_FRESHNESS_VERIFICATION",
+  "claim": "FP_MCP_215_RESUME_FRESHNESS_VERIFICATION_RECORDED",
+  "summary": "Record the freshness verification performed after the FP-MCP-214 execution-grant deferral. Both repositories are clean and canonical evidence remains 82/82 before this checkpoint. The FP-MCP-209 request artifact is still present and valid, but the old FP-MCP-211 approval has expired and must not be used for any execution grant or start attempt.",
+  "caveats": [
+    "This checkpoint does not renew approval evidence.",
+    "This checkpoint does not issue an execution grant.",
+    "This checkpoint does not consume approval.",
+    "This checkpoint does not clear the disable switch.",
+    "This checkpoint does not contact the runner start endpoint.",
+    "This checkpoint does not start OpenCode or run FP-027.",
+    "The old approval APPROVAL-20260703T114020549Z-a9bbde3d is present but expired; it is not usable for execution.",
+    "Any future execution attempt requires fresh scoped approval evidence and a fresh deliberate grant decision."
+  ],
+  "boundaries": [
+    "execution grant issued: false",
+    "execution authorized: false",
+    "approval consumed: false",
+    "disable switch cleared: false",
+    "runner start endpoint contacted: false",
+    "OpenCode started: false",
+    "FP-027 canary run: false",
+    "standing execution authority created: false"
+  ],
+  "structuredRecord": {
+    "verifiedAt": "2026-07-03T11:59:52.952Z",
+    "repositoryState": {
+      "forgepilot": {
+        "branch": "main",
+        "headCommit": "46b54e1",
+        "workingTreeClean": true,
+        "latestCommitMessage": "Record FP-MCP-214 execution grant deferral"
+      },
+      "mcpBridge": {
+        "branch": "feature/oauth-auth0",
+        "headCommit": "551d7af",
+        "workingTreeClean": true,
+        "latestCommitMessage": "Add workspace change inspection tool"
+      }
+    },
+    "canonicalEvidenceBeforeCheckpoint": {
+      "evidenceRecords": 82,
+      "evidenceRecordAdmissionEvents": 82
+    },
+    "resumedExecutionContext": {
+      "executionPacketId": "FP-MCP-209",
+      "requestId": "REQ-20260703T113456847Z-a68aa89e",
+      "requestArtifactPresent": true,
+      "requestArtifactValid": true,
+      "requestArtifactPath": "runs/FP-MCP-209/opencode-requests/REQ-20260703T113456847Z-a68aa89e.json",
+      "requestArtifactSha256": "08a18d6b507dfe8e4862c7c54c06b3067e3bee930370b3c58976b4a989339cd8",
+      "modelId": "deepseek-v4-pro-high",
+      "runMode": "DESIGN_ONLY",
+      "targetExecutionCommit": "4bd1977",
+      "currentCommit": "46b54e1"
+    },
+    "approvalFreshness": {
+      "oldApprovalPacketId": "FP-MCP-211",
+      "oldApprovalId": "APPROVAL-20260703T114020549Z-a9bbde3d",
+      "oldApprovalPresent": true,
+      "oldApprovalUsableForExecutionNow": false,
+      "oldApprovalFailureReason": "APPROVAL_EXPIRED",
+      "oldApprovalExpiresAt": "2026-07-03T11:55:10.000Z"
+    },
+    "gateOrientation": {
+      "runnerReachable": true,
+      "runnerStartCapabilityCallable": true,
+      "executionAllowedNow": false,
+      "globalDisableActive": true,
+      "runnerExecutionEnabled": false,
+      "opencodeExecutionEnabled": false,
+      "requestArtifactPresent": true,
+      "humanApprovalPresent": true,
+      "preflightPassableNow": false,
+      "passedGates": [
+        "repository",
+        "requestArtifact",
+        "commitBinding",
+        "modelAndRunMode",
+        "runnerCapabilityState",
+        "preStartEvidence",
+        "stateSnapshotEvidence",
+        "evidenceLedgerReadiness"
+      ],
+      "failedGates": [
+        "disableSwitch",
+        "opencodeReadiness",
+        "humanApprovalEvidence"
+      ],
+      "humanApprovalEvidenceReasons": [
+        "APPROVAL_EXPIRED"
+      ],
+      "blockingReasons": [
+        "GLOBAL_DISABLE_ACTIVE",
+        "RUNNER_EXECUTION_DISABLED",
+        "OPENCODE_EXECUTION_DISABLED"
+      ]
+    },
+    "nextRequiredAction": "Create fresh scoped approval evidence only if continuing toward a fresh grant decision; otherwise defer again."
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_215_RESUME_FRESHNESS_VERIFICATION_RECORDED"
+}
