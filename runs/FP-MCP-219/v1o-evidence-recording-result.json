@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-219",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 87,
+  "run_id": "FP-MCP-219-OPERATOR-LOCAL-EXECUTION-CLEARANCE-MECHANISM-DESIGN",
+  "generic_admission_event_id": 87,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_MCP_219_OPERATOR_LOCAL_EXECUTION_CLEARANCE_MECHANISM_DESIGN_RECORDED",
+  "artifact_paths": [
+    "packets/FP-MCP-219.md",
+    "runs/FP-MCP-219/operator-local-execution-clearance-mechanism-design-record.json",
+    "runs/FP-MCP-219/result-summary.md",
+    "runs/FP-MCP-219/verification.txt"
+  ]
+}

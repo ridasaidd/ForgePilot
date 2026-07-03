@@ -1,0 +1,140 @@
+{
+  "packetId": "FP-MCP-219",
+  "title": "Operator-Local Execution Clearance Mechanism Design",
+  "checkpointType": "OPERATOR_LOCAL_EXECUTION_CLEARANCE_MECHANISM_DESIGN",
+  "claim": "FP_MCP_219_OPERATOR_LOCAL_EXECUTION_CLEARANCE_MECHANISM_DESIGN_RECORDED",
+  "summary": "Record the design for an operator-local execution clearance mechanism after FP-MCP-217 decided that execution clearance must remain outside the model-callable MCP surface. Current source inspection found the global disable switch is hard-coded active and no local clearance mechanism exists yet. This packet chooses a three-layer direction: design a human-created local clearance artifact, then implement MCP read-only observation/validation of that artifact, and only later wire guarded execution to require the validated local clearance state.",
+  "caveats": [
+    "This is a design packet only; no MCP bridge code is modified.",
+    "No local clearance artifact is created by this packet.",
+    "No MCP tool to create or clear execution state is approved.",
+    "The current disable switch remains hard-coded active until a later implementation changes the status policy to observe a local operator-created clearance artifact.",
+    "The fresh FP-MCP-216 approval is time-boxed and may expire before any future implementation is ready; it must be freshly validated or renewed before consumption.",
+    "This packet does not consume approval, contact the runner start endpoint, start OpenCode, or run FP-027."
+  ],
+  "boundaries": [
+    "execution clearance created: false",
+    "execution clearance observed: false",
+    "MCP clearance mutation approved: false",
+    "implementation performed: false",
+    "execution authorized: false",
+    "approval consumed: false",
+    "disable switch cleared: false",
+    "runner start endpoint contacted: false",
+    "OpenCode started: false",
+    "FP-027 canary run: false",
+    "standing execution authority created: false"
+  ],
+  "structuredRecord": {
+    "observedProblem": {
+      "currentDisableSwitchImplementation": "src/server.ts getExecutionDisableSwitchStatus hard-codes globalDisableActive = true and returns disableSwitchActive: true, executionAllowedNow: false.",
+      "operatorLocalMechanismExists": false,
+      "consequence": "The FP-MCP-217 architecture is correct, but there is currently no hands-on-keyboard local clearance mechanism for the operator to use."
+    },
+    "layeredPlan": {
+      "layer1DesignPacket": "FP-MCP-219 records the operator-local clearance design before implementation.",
+      "layer2ClearanceArtifactDesign": "Define a local, gitignored, human-created, time-boxed, scoped clearance artifact.",
+      "layer3ObserverFirstImplementation": "Implement only read-only MCP observation/validation of the local artifact before any execution policy wiring or guarded start attempt."
+    },
+    "selectedMechanism": {
+      "artifactType": "operator-local execution clearance artifact",
+      "creator": "human operator outside MCP/model-callable tool surface",
+      "recommendedPath": ".local/forgepilot/execution-clearance.json",
+      "gitTracking": "must be gitignored / local-only",
+      "mcpRole": "observe and validate only",
+      "mcpMustNot": [
+        "create the artifact",
+        "mutate the artifact",
+        "delete the artifact",
+        "clear the disable switch",
+        "consume approval in the same action as observing clearance",
+        "contact runner start endpoint in the same action as observing clearance"
+      ]
+    },
+    "requiredArtifactFields": [
+      "clearanceId",
+      "artifactType",
+      "createdAt",
+      "expiresAt",
+      "executionPacketId",
+      "requestId",
+      "approvalPacketId",
+      "approvalId",
+      "modelId",
+      "runMode",
+      "targetExecutionCommit",
+      "currentExpectedBranch",
+      "targetWorkspaceId",
+      "singleUse",
+      "operatorStatement",
+      "operatorLocalConfirmation"
+    ],
+    "requiredScope": {
+      "executionPacketId": "FP-MCP-209",
+      "requestId": "REQ-20260703T113456847Z-a68aa89e",
+      "modelId": "deepseek-v4-pro-high",
+      "runMode": "DESIGN_ONLY",
+      "targetExecutionCommit": "4bd1977",
+      "targetWorkspaceId": "forgepilot",
+      "branch": "main"
+    },
+    "validationRules": [
+      "artifact path must be local-only and outside tracked evidence/packet directories",
+      "artifact JSON must parse",
+      "artifactType must equal operator-local-execution-clearance",
+      "clearanceId must use a controlled CLEARANCE timestamp/id format",
+      "expiresAt must be in the future and within a short maximum lifetime",
+      "singleUse must be true",
+      "operatorStatement must explicitly authorize one guarded attempt only",
+      "executionPacketId/requestId/approvalId/modelId/runMode/targetWorkspaceId/branch/targetExecutionCommit must match the validated request and approval tuple",
+      "current repository branch and commit must match the artifact scope or fail closed",
+      "approval must still be valid and unconsumed at the time of validation",
+      "no standing or wildcard scope is allowed",
+      "stale, missing, malformed, broad, expired, or mismatched clearance fails closed"
+    ],
+    "futureReadOnlyToolCandidate": {
+      "name": "forgepilot_get_operator_local_execution_clearance_status",
+      "classification": "READ_ONLY_OPERATOR_LOCAL_CLEARANCE_OBSERVER",
+      "allowedBehavior": [
+        "read the single local clearance artifact path",
+        "validate JSON shape and scope",
+        "compare artifact scope to request/approval/current repo state",
+        "return eligibleForGuardedAttempt true/false with reasons"
+      ],
+      "forbiddenBehavior": [
+        "write files",
+        "stage files",
+        "commit files",
+        "create clearance",
+        "mutate clearance",
+        "delete clearance",
+        "consume approval",
+        "clear disable switch",
+        "contact runner start endpoint",
+        "start OpenCode",
+        "run FP-027"
+      ]
+    },
+    "futureExecutionPolicyDirection": {
+      "status": "not implemented by this packet",
+      "principle": "guarded start may only proceed if local clearance observer reports an exact, fresh, single-use, scoped clearance that matches current request/approval/repo state",
+      "separation": "clearance observation, approval consumption, and runner start remain separate actions"
+    },
+    "currentExecutionBoundary": {
+      "approvalConsumed": false,
+      "disableSwitchCleared": false,
+      "runnerStartEndpointContacted": false,
+      "opencodeStarted": false,
+      "fp027CanaryRun": false
+    }
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_219_OPERATOR_LOCAL_EXECUTION_CLEARANCE_MECHANISM_DESIGN_RECORDED"
+}
