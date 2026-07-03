@@ -1,0 +1,43 @@
+{
+  "packetId": "FP-MCP-207",
+  "result": "FP_MCP_207_RUNTIME_DIAGNOSTICS_AND_GATE_ORIENTATION_TOOLS_IMPLEMENTED",
+  "bridgeCommit": "f45054e",
+  "bridgeBranch": "feature/oauth-auth0",
+  "changedFiles": [
+    "src/runtime-diagnostics.ts",
+    "src/execution-gate-orientation.ts",
+    "src/server.ts"
+  ],
+  "buildCommand": "pnpm build",
+  "buildPassed": true,
+  "newTools": [
+    "forgepilot_get_mcp_runtime_diagnostics",
+    "forgepilot_get_execution_gate_orientation"
+  ],
+  "implementationSummary": [
+    "Added read-only runtime diagnostics module and tool registration.",
+    "Added read-only execution gate orientation module and tool registration.",
+    "Runtime diagnostics intentionally skips OpenCode command execution and records OPENCODE_CHECK_SKIPPED.",
+    "Gate orientation respects missing requestId by leaving request/preflight fields null or unchecked.",
+    "No write-path orchestration tool was created."
+  ],
+  "reportCorrections": [
+    "DeepSeek report listed bridge commit as 085589d, but implementation was uncommitted at report time and was committed as f45054e.",
+    "Observed module line counts differ from report: runtime-diagnostics.ts 333 lines, execution-gate-orientation.ts 287 lines. Build passed."
+  ],
+  "boundary": {
+    "readOnlyTools": true,
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false,
+    "requestArtifactCreated": false,
+    "approvalArtifactCreated": false
+  },
+  "caveats": [
+    "Tools require bridge service/action refresh before they are visible to ChatGPT.",
+    "Live validation through refreshed action surface remains pending."
+  ]
+}

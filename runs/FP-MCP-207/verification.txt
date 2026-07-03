@@ -1,0 +1,35 @@
+FP-MCP-207 verification
+
+DeepSeek/OpenCode report checked against live bridge state.
+
+Observed before commit:
+- src/server.ts modified
+- src/runtime-diagnostics.ts untracked
+- src/execution-gate-orientation.ts untracked
+- pnpm build PASS
+- server.ts imports runtime-diagnostics and execution-gate-orientation modules
+- server.ts registers forgepilot_get_mcp_runtime_diagnostics
+- server.ts registers forgepilot_get_execution_gate_orientation
+
+Observed module sizes:
+- src/runtime-diagnostics.ts: 333 lines
+- src/execution-gate-orientation.ts: 287 lines
+
+Bridge commit:
+- f45054e Add runtime diagnostics and gate orientation tools
+
+Post-commit bridge state:
+- git status --short: clean
+
+Boundary:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
+- request artifact created: false
+- approval artifact created: false
+
+Expected result:
+- FP_MCP_207_RUNTIME_DIAGNOSTICS_AND_GATE_ORIENTATION_TOOLS_IMPLEMENTED
