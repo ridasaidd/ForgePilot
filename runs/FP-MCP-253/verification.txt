@@ -1,0 +1,15 @@
+FP-MCP-253 verification
+
+Checkpoint type:
+- SESSION_CLEANUP_RESULT
+
+Claim:
+- FP_MCP_253_OPENCODE_HTTP_EXPLICIT_SESSION_CLEANUP_SUCCEEDED
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

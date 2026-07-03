@@ -1,0 +1,54 @@
+{
+  "packetId": "FP-MCP-253",
+  "title": "OpenCode HTTP Session Cleanup Tool",
+  "checkpointType": "SESSION_CLEANUP_RESULT",
+  "claim": "FP_MCP_253_OPENCODE_HTTP_EXPLICIT_SESSION_CLEANUP_SUCCEEDED",
+  "summary": "The FP-MCP-253 explicit OpenCode HTTP session cleanup tool was implemented, exposed, and verified against the intentionally retained FP-MCP-251 canary session. The tool deleted exactly session ses_0d5e10bf0fferWGbj7B9Hk8Ec8 after requiring sessionId and confirmSessionId to match and requiring approval DELETE_OPENCODE_HTTP_SESSION. The deletion returned deleteRan=true, explicitSessionIdMatched=true, sessionDeleted=true, deleteHttpStatus=200, deleteContentType=application/json, and authConfigured=true. The tool also confirmed sessionCreated=false, promptSubmitted=false, messageEndpointCalled=false, waitEndpointCalled=false, runnerStartEndpointContacted=false, and opencodeStarted=false. This closes the intentional leftover session caveat from FP-MCP-251 and establishes an explicit, guarded cleanup mechanism for future HTTP lifecycle tools.",
+  "caveats": [
+    "The cleanup tool is intentionally destructive for the explicitly named session, so it requires duplicate session-id confirmation plus a fixed approval literal.",
+    "The tool does not verify post-delete absence via a follow-up read; it records the DELETE /session/{id} HTTP result only.",
+    "The cleanup target was the intentionally retained canary session from FP-MCP-251, not an arbitrary or discovered session."
+  ],
+  "boundaries": [
+    "No OpenCode session was created by the cleanup tool.",
+    "No prompt was submitted by the cleanup tool.",
+    "No message endpoint was read by the cleanup tool.",
+    "No wait endpoint was called by the cleanup tool.",
+    "No OpenCode process was started by the cleanup tool.",
+    "No ForgePilot runner start endpoint was contacted by the cleanup tool.",
+    "No execution approval was created, consumed, or authorized by the cleanup tool.",
+    "Only the explicitly named session id was targeted."
+  ],
+  "structuredRecord": {
+    "toolName": "forgepilot_delete_opencode_http_session",
+    "bridgeImplementationCommit": "87d10c6 Add OpenCode HTTP session cleanup tool",
+    "deletedSessionId": "ses_0d5e10bf0fferWGbj7B9Hk8Ec8",
+    "deleteRan": true,
+    "explicitSessionIdMatched": true,
+    "sessionDeleted": true,
+    "deleteHttpStatus": 200,
+    "deleteContentType": "application/json",
+    "authConfigured": true,
+    "sessionCreated": false,
+    "promptSubmitted": false,
+    "messageEndpointCalled": false,
+    "waitEndpointCalled": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "toolReasons": [
+      "SESSION_DELETE_REACHABLE"
+    ],
+    "boundaryVersion": "OPENCODE_HTTP_DELETE_SESSION_V1",
+    "closedPriorCaveatFromPacket": "FP-MCP-251 retained live canary session for read-only completion reader verification",
+    "recommendedNextPacket": "FP-MCP-254 — OpenCode HTTP Lifecycle Orchestrator Skeleton"
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_253_OPENCODE_HTTP_EXPLICIT_SESSION_CLEANUP_SUCCEEDED"
+}
