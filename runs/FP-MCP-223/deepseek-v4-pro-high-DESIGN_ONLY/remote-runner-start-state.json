@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "FP-MCP-022",
+  "packetId": "FP-MCP-223",
+  "requestId": "REQ-20260703T125101090Z-8535b3c0",
+  "runnerRunId": null,
+  "runnerContacted": true,
+  "executionStarted": false,
+  "status": "REJECTED",
+  "reasons": [
+    "DIRTY_WORKING_TREE"
+  ],
+  "recordedAt": "2026-07-03T13:32:57.837Z",
+  "controlRepoCommit": null,
+  "targetWorkspaceId": null,
+  "targetWorkspaceCommit": null,
+  "opencodeWorkingDirectory": null,
+  "taskBundleCreated": false,
+  "taskBundlePath": null,
+  "taskBundleRelativePath": null
+}
