@@ -1,0 +1,10 @@
+FP-MCP-184 verification
+
+Bridge source inspection: PASS
+Legacy aggregate provenance classified: PASS
+Source normalization applied: PASS
+Bridge pnpm build: PASS
+Runner start endpoint contacted: false
+OpenCode started: false
+Approval consumed: false
+Enablement authorized: false

@@ -1,0 +1,30 @@
+{
+  "packetId": "FP-MCP-184",
+  "bridgeCommitBefore": "d3471d4",
+  "bridgeCommitAfter": "9e01c73",
+  "classification": "LEGACY_EXECUTION_DISABLED_WAS_INDEPENDENT_AGGREGATE_RUNNER_OR_OPENCODE_DISABLED_REASON",
+  "canonicalDisableSwitchFunction": "getExecutionDisableSwitchStatus",
+  "preflightFunction": "validateExecutionPreflight",
+  "sourceObservation": {
+    "validateExecutionPreflightCallsGetExecutionDisableSwitchStatus": true,
+    "validateExecutionPreflightPreviouslyEmittedAggregateExecutionDisabledIndependently": true,
+    "aggregatePredicateBefore": "!runnerExecutionEnabled || !opencodeExecutionEnabled",
+    "couldDivergeFromDisableSwitchSurface": true
+  },
+  "normalization": {
+    "removedFromValidateExecutionPreflight": "EXECUTION_DISABLED aggregate reason for runner/OpenCode disabled state",
+    "addedToValidateExecutionPreflight": [
+      "RUNNER_EXECUTION_DISABLED",
+      "OPENCODE_EXECUTION_DISABLED"
+    ],
+    "preciseReasonCodesMatchExistingEnablementAndDisableSwitchSurfaces": true
+  },
+  "verification": {
+    "bridgeBuild": "PASS",
+    "command": "pnpm build",
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "approvalConsumed": false,
+    "enablementAuthorized": false
+  }
+}
