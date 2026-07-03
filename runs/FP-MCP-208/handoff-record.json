@@ -1,0 +1,26 @@
+{
+  "packetId": "FP-MCP-208",
+  "result": "FP_MCP_208_DEEPSEEK_WORKSPACE_CHANGE_INSPECTION_TOOL_PROMPT_PREPARED",
+  "handoffType": "DEEPSEEK_OPENCODE_IMPLEMENTATION_PROMPT",
+  "sourceModificationPerformed": false,
+  "toolGap": {
+    "name": "workspace change inspection",
+    "classification": "READ_ONLY_MODEL_CHANGE_INSPECTION",
+    "proposedTool": "forgepilot_get_workspace_change_inspection",
+    "reason": "Model-made workspace changes require repeated structured inspection before acceptance and commit."
+  },
+  "boundary": {
+    "readOnlyToolRequested": true,
+    "authorizesExecution": false,
+    "consumesApproval": false,
+    "clearsDisableSwitch": false,
+    "contactsRunnerStartEndpoint": false,
+    "startsOpenCode": false,
+    "runsFp027": false,
+    "createsRequestArtifacts": false,
+    "createsApprovalArtifacts": false,
+    "stagesFiles": false,
+    "commitsFiles": false,
+    "modifiesMcpServerSourceNow": false
+  }
+}
