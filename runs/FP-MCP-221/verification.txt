@@ -1,0 +1,15 @@
+FP-MCP-221 verification
+
+Checkpoint type:
+- TOOL_DISCOVERY_MISMATCH_AFTER_SERVICE_RESTART
+
+Claim:
+- FP_MCP_221_OPERATOR_CLEARANCE_OBSERVER_DISCOVERY_MISMATCH_RECORDED
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
