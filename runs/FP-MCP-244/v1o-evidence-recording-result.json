@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-244",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 115,
+  "run_id": "FP-MCP-244-TOOL-IMPLEMENTATION-LIVE-VERIFICATION",
+  "generic_admission_event_id": 115,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_MCP_244_OPENCODE_HTTP_SESSION_STATUS_TOOL_LIVE_VERIFIED",
+  "artifact_paths": [
+    "packets/FP-MCP-244.md",
+    "runs/FP-MCP-244/tool-implementation-live-verification-record.json",
+    "runs/FP-MCP-244/result-summary.md",
+    "runs/FP-MCP-244/verification.txt"
+  ]
+}
