@@ -1,0 +1,46 @@
+{
+  "packetId": "FP-MCP-241",
+  "title": "Fresh Guarded Start Lifecycle Preparation",
+  "checkpointType": "CANARY_PREPARATION",
+  "claim": "FP_MCP_241_FRESH_LIFECYCLE_CANARY_PREPARATION_RECORDED",
+  "summary": "Prepare a fresh DESIGN_ONLY lifecycle verification after FP-MCP-240. The planned sequence is fresh request artifact, fresh approval, popup local clearance, pre-contact discipline gate, one guarded start attempt, immediate approval consumption, output preservation, and final admitted evidence. This checkpoint is only a preparation record.",
+  "caveats": [
+    "Preparation only.",
+    "No request artifact is created by this checkpoint.",
+    "No approval is created by this checkpoint.",
+    "No clearance is created by this checkpoint.",
+    "No runner contact or OpenCode start occurs in this checkpoint.",
+    "The later start attempt must be exactly one attempt and must verify immediate approval consumption."
+  ],
+  "boundaries": [
+    "execution authorized: false",
+    "approval consumed: false",
+    "disable switch cleared: false",
+    "runner start endpoint contacted: false",
+    "OpenCode started: false",
+    "FP-027 canary run: false"
+  ],
+  "structuredRecord": {
+    "expectedModel": "deepseek-v4-pro-high",
+    "expectedRunMode": "DESIGN_ONLY",
+    "baseCommitAtPreparation": "5831847",
+    "plannedChecks": [
+      "fresh request artifact",
+      "fresh approval",
+      "popup local clearance",
+      "pre-contact discipline valid",
+      "one start attempt",
+      "approval consumption recorded immediately",
+      "outputs and logs preserved"
+    ]
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_241_FRESH_LIFECYCLE_CANARY_PREPARATION_RECORDED"
+}
