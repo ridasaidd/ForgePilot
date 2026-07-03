@@ -1,0 +1,99 @@
+{
+  "packetId": "FP-MCP-238",
+  "title": "Approval Consumption Fix Activation Review",
+  "checkpointType": "FIX_ACTIVATION_PARTIAL_REVIEW",
+  "claim": "FP_MCP_238_APPROVAL_CONSUMPTION_REUSE_RISK_CLOSED_BY_EXPIRY_FIX_NOT_YET_LIVE",
+  "summary": "Review the FP-MCP-234 approval-consumption scope fix and the FP-MCP-233 unconsumed approval state. The bridge fix exists at commit e4797c6, but the MCP service restart could not be performed from the MCP terminal environment because the user systemd bus was unavailable. Runtime diagnostics showed the live process still had the old PID, so the fix is not yet active in the running MCP service. Live validation proved the FP-MCP-233 approval is expired and unusable, and the popup-created local clearance is expired, stale against current HEAD, and not eligible. A consumption-recorder probe did not write consumption; it showed APPROVAL_EXPIRED plus the old APPROVAL_SCOPE_MISMATCH/APPROVAL_REQUEST_BINDING_INVALID/APPROVAL_TEXT_INVALID reasons, confirming the old service code is still live. The immediate reuse risk from the FP-MCP-233 unconsumed approval is closed by expiry and stale clearance, but the FP-MCP-234 fix still requires an external service restart and a fresh future-path verification.",
+  "caveats": [
+    "The FP-MCP-234 bridge fix has been committed but is not yet active in the live MCP service.",
+    "The MCP terminal environment could not run systemctl --user restart because it could not connect to the user bus: No medium found.",
+    "The FP-MCP-233 approval was not retroactively consumed and cannot be treated as mechanically consumed.",
+    "The old approval is expired and unusable by live validator evidence, not merely inferred from timestamps.",
+    "The old local clearance is expired and stale against current HEAD by live observer evidence.",
+    "The consumption-recorder probe was non-writing because approval was unusable; it confirmed old service code still emits the hardcoded-scope mismatch reasons.",
+    "A later packet must restart the MCP service outside the MCP terminal environment and verify the consumption fix with a fresh non-starting fixture or the next fresh guarded start lifecycle."
+  ],
+  "boundaries": [
+    "execution authorized: false",
+    "approval created: false",
+    "approval consumed: false",
+    "local clearance created: false",
+    "runner start endpoint contacted: false",
+    "OpenCode started: false",
+    "FP-027 canary run: false",
+    "disable switch cleared: false",
+    "retroactive consumption claimed: false"
+  ],
+  "structuredRecord": {
+    "bridgeFix": {
+      "commit": "e4797c6",
+      "message": "Fix approval consumption scope binding",
+      "status": "committed_not_live",
+      "reasonNotLive": "systemctl --user restart failed inside MCP terminal environment with: Failed to connect to bus: No medium found",
+      "runtimePidObserved": "787440",
+      "runtimeStatus": "old process still live"
+    },
+    "oldApprovalValidation": {
+      "approvalPacketId": "FP-MCP-233",
+      "approvalId": "APPROVAL-20260703T174342607Z-f2cdb96f",
+      "approvalEvidenceValid": false,
+      "approvalValid": false,
+      "approvalUsableForExecution": false,
+      "approvalConsumed": false,
+      "reason": "APPROVAL_EXPIRED",
+      "checkedAt": "2026-07-03T18:59:06.885Z"
+    },
+    "oldClearanceValidation": {
+      "clearanceId": "CLEARANCE-20260703T174408245Z-58646d48",
+      "eligibleForGuardedAttempt": false,
+      "expirationInFuture": false,
+      "currentCommitMatches": false,
+      "currentRepositoryCommit": "ec2e661",
+      "expectedRequestArtifactCommit": "2ad7ad1",
+      "reasons": [
+        "EXPIRATION_IN_FUTURE_FAILED",
+        "CURRENT_COMMIT_MATCHES_FAILED",
+        "OPERATOR_LOCAL_CLEARANCE_NOT_ELIGIBLE"
+      ],
+      "checkedAt": "2026-07-03T18:59:16.193Z"
+    },
+    "consumptionProbe": {
+      "approvalConsumptionRecorded": false,
+      "approvalUsableForExecution": false,
+      "reasons": [
+        "APPROVAL_NOT_USABLE_FOR_CONSUMPTION",
+        "APPROVAL_SCOPE_MISMATCH",
+        "APPROVAL_REQUEST_BINDING_INVALID",
+        "APPROVAL_TEXT_INVALID",
+        "APPROVAL_EXPIRED",
+        "EXECUTION_DISABLED_GLOBAL",
+        "RUNNER_EXECUTION_DISABLED",
+        "OPENCODE_EXECUTION_DISABLED",
+        "DISABLE_SWITCH_ACTIVE",
+        "EXECUTION_NOT_ALLOWED"
+      ],
+      "interpretation": "Non-writing probe proved approval is unusable and old service code is still active; it did not validate the fixed code path."
+    },
+    "reuseRiskAssessment": {
+      "oldApprovalReusableNow": false,
+      "oldClearanceReusableNow": false,
+      "secondStartObserved": false,
+      "riskWindowClosedBy": "approval expiry plus clearance expiry/stale commit",
+      "singleUseLifecycleClosedMechanically": false
+    },
+    "requiredNextStep": {
+      "operatorAction": "restart MCP service from a shell with access to the user systemd bus",
+      "command": "systemctl --user restart forgepilot-chatgpt-mcp.service",
+      "then": "verify runtime PID changed and rerun consumption-scope probe or fresh fixture to confirm APPROVAL_SCOPE_MISMATCH no longer appears when scope otherwise matches"
+    }
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_238_APPROVAL_CONSUMPTION_REUSE_RISK_CLOSED_BY_EXPIRY_FIX_NOT_YET_LIVE"
+}

@@ -1,0 +1,15 @@
+FP-MCP-238 verification
+
+Checkpoint type:
+- FIX_ACTIVATION_PARTIAL_REVIEW
+
+Claim:
+- FP_MCP_238_APPROVAL_CONSUMPTION_REUSE_RISK_CLOSED_BY_EXPIRY_FIX_NOT_YET_LIVE
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
