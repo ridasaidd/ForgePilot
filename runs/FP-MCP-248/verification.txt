@@ -1,0 +1,15 @@
+FP-MCP-248 verification
+
+Checkpoint type:
+- WAIT_ENDPOINT_PROBE_RESULT
+
+Claim:
+- FP_MCP_248_OPENCODE_HTTP_WAIT_ENDPOINT_RETURNED_503_MESSAGE_ENDPOINT_REMAINED_REACHABLE
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

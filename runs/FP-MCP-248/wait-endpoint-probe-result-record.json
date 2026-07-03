@@ -1,0 +1,72 @@
+{
+  "packetId": "FP-MCP-248",
+  "title": "OpenCode HTTP Wait Endpoint Semantics Probe",
+  "checkpointType": "WAIT_ENDPOINT_PROBE_RESULT",
+  "claim": "FP_MCP_248_OPENCODE_HTTP_WAIT_ENDPOINT_RETURNED_503_MESSAGE_ENDPOINT_REMAINED_REACHABLE",
+  "summary": "The FP-MCP-248 OpenCode HTTP wait endpoint semantics probe ran with cleanup enabled. It created one titled OpenCode session, submitted the tiny canary prompt through /session/{id}/prompt_async, called /api/session/{id}/wait once with a bounded timeout, read /session/{id}/message after wait, and deleted only the created canary session. The probe returned sessionCreated=true, promptAsyncSubmitted=true, promptAsyncHttpStatus=204, waitEndpointCalled=true, waitEndpointSucceeded=false, waitEndpointTimedOut=false, waitHttpStatus=503, waitContentType=application/json, messagesAfterWaitHttpStatus=200, messagesAfterWaitCount=2, assistantMessageCountAfterWait=1, assistantTextObservedAfterWait=false, canaryTextObservedAfterWait=false, sessionDeleted=true, deleteHttpStatus=200. This is a useful negative observation: /api/session/{id}/wait as invoked did not provide a successful completion boundary, while the message endpoint remained reachable after the wait failure.",
+  "caveats": [
+    "The probe used POST /api/session/{id}/wait; the observed 503 may indicate wrong endpoint variant, wrong method, missing prerequisite state, or OpenCode server-side wait unavailability.",
+    "The message endpoint returned two messages and one assistant message after wait, but the current parser did not observe assistant text or the exact canary string in that response shape.",
+    "This does not invalidate the FP-MCP-247 result where message-based completion observed OPENCODE_HTTP_CANARY_OK without using wait.",
+    "Further inspection should compare message response shapes and possibly test documented non-api wait endpoint variants before using wait as a completion source."
+  ],
+  "boundaries": [
+    "A tiny OpenCode prompt was submitted via /session/{id}/prompt_async.",
+    "The wait endpoint was called once with bounded timeout.",
+    "No ForgePilot runner start endpoint was contacted.",
+    "No OpenCode process was started by this probe.",
+    "No execution approval was created, consumed, or authorized.",
+    "No local execution clearance was created.",
+    "Only the probe-created session was deleted.",
+    "No file-editing task was requested from the model."
+  ],
+  "structuredRecord": {
+    "toolName": "forgepilot_run_opencode_http_wait_endpoint_probe",
+    "bridgeImplementationCommit": "92fb41a Add OpenCode HTTP wait endpoint probe",
+    "probeRan": true,
+    "cleanup": true,
+    "sessionCreated": true,
+    "promptAsyncSubmitted": true,
+    "promptTextSha256": "2849ed87d773e5c34abb872cf41130ac5e31efa608f2a72173eeba8b748d09e0",
+    "sessionDeleted": true,
+    "sessionId": "ses_0d5fd6ddbfferVuh6eeEFydMUH",
+    "sessionTitle": "ForgePilot HTTP wait endpoint probe 2026-07-03T22:03:59.386Z",
+    "createHttpStatus": 200,
+    "promptAsyncHttpStatus": 204,
+    "waitEndpointCalled": true,
+    "waitEndpointSucceeded": false,
+    "waitEndpointTimedOut": false,
+    "waitHttpStatus": 503,
+    "waitContentType": "application/json",
+    "waitTopLevelType": "null",
+    "waitTopLevelKeys": [],
+    "messagesAfterWaitHttpStatus": 200,
+    "messagesAfterWaitCount": 2,
+    "assistantMessageCountAfterWait": 1,
+    "assistantTextObservedAfterWait": false,
+    "canaryTextObservedAfterWait": false,
+    "boundedAssistantTextExcerptAfterWait": null,
+    "deleteHttpStatus": 200,
+    "messageEndpointCalled": true,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "toolReasons": [
+      "SESSION_CREATE_REACHABLE",
+      "PROMPT_ASYNC_ACCEPTED",
+      "WAIT_OPENCODE_HTTP_PROTOCOL_ERROR",
+      "MESSAGES_AFTER_WAIT_REACHABLE",
+      "SESSION_DELETE_REACHABLE"
+    ],
+    "boundaryVersion": "OPENCODE_HTTP_WAIT_ENDPOINT_PROBE_V1",
+    "recommendedNextPacket": "FP-MCP-249 — OpenCode HTTP Message Shape Probe"
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_248_OPENCODE_HTTP_WAIT_ENDPOINT_RETURNED_503_MESSAGE_ENDPOINT_REMAINED_REACHABLE"
+}
