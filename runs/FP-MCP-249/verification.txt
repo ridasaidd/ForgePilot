@@ -1,0 +1,15 @@
+FP-MCP-249 verification
+
+Checkpoint type:
+- MESSAGE_SHAPE_PROBE_RESULT
+
+Claim:
+- FP_MCP_249_OPENCODE_HTTP_MESSAGE_SHAPE_PROBE_OBSERVED_USER_TEXT_PATH_AND_EMPTY_ASSISTANT_PARTS
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
