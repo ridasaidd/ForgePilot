@@ -1,0 +1,82 @@
+{
+  "packetId": "FP-MCP-214",
+  "title": "Defer Deliberate Execution Grant",
+  "checkpointType": "DELIBERATE_EXECUTION_GRANT_DEFERRED",
+  "claim": "FP_MCP_214_DELIBERATE_EXECUTION_GRANT_DEFERRED",
+  "summary": "Record the deliberate decision not to grant execution authority at this point, despite the FP-MCP-209 fresh preparation cycle having request, approval, pre-start evidence, state snapshots, and audited tooling in place. The decision is a real deferral: do not let preparation momentum substitute for a deliberate execution grant.",
+  "caveats": [
+    "This is not a vague pause and not an implicit denial forever; it is a deliberate deferral of the execution grant decision.",
+    "The fresh FP-MCP-211 approval evidence was intentionally short-lived and must not be assumed usable after its expiry window.",
+    "The long session included tooling additions, ledger accounting repair, and a retroactive FP-MCP-194 tool-surface audit; crossing into execution immediately after that would risk momentum substituting for a fresh grant decision.",
+    "A future execution attempt requires a new explicit grant decision and, if the existing approval is expired, fresh scoped approval evidence bound to the then-current request/commit tuple.",
+    "The unresolved OpenAI invocation-layer trigger remains operationally characterized but internally unconfirmed; this is not itself a ForgePilot execution blocker, but it is part of the reason to avoid rushing the first guarded execution attempt at the end of a long session."
+  ],
+  "boundaries": [
+    "execution grant issued: false",
+    "execution authorized: false",
+    "approval consumed: false",
+    "disable switch cleared: false",
+    "runner start endpoint contacted: false",
+    "OpenCode started: false",
+    "FP-027 canary run: false",
+    "request artifact mutated: false",
+    "approval artifact mutated: false",
+    "standing execution authority created: false"
+  ],
+  "structuredRecord": {
+    "decision": "DEFER_EXECUTION_GRANT",
+    "decisionScope": {
+      "freshPreparationCycle": "FP-MCP-209",
+      "requestId": "REQ-20260703T113456847Z-a68aa89e",
+      "approvalPacketId": "FP-MCP-211",
+      "approvalId": "APPROVAL-20260703T114020549Z-a9bbde3d",
+      "modelId": "deepseek-v4-pro-high",
+      "runMode": "DESIGN_ONLY",
+      "targetExecutionCommit": "4bd1977",
+      "branch": "main"
+    },
+    "reasoning": {
+      "primaryReasons": [
+        "The deliberate execution grant is a human/operator-level boundary and should not be crossed merely because all preparatory gates have been staged.",
+        "The approval evidence was deliberately short-lived and should not be assumed live for a later execution decision.",
+        "The session included multiple tooling and ledger-accounting corrections; a fresh execution decision should happen from a clean orientation rather than at the end of accumulated momentum."
+      ],
+      "secondaryReasons": [
+        "The OpenAI invocation-layer trigger is operationally characterized but internally unconfirmed; it has been handled correctly as outside ForgePilot pipeline state, but it remains a caution against rushing.",
+        "A clean future grant packet can explicitly rebind any fresh approval, request, and commit tuple before FP-027."
+      ]
+    },
+    "preparedStateAtDeferral": {
+      "toolSurfacesAuditedBy": "FP-MCP-213",
+      "canonicalEvidenceAtPriorCheckpoint": 81,
+      "requestArtifactPresent": true,
+      "humanApprovalPreviouslyValidated": true,
+      "preStartEvidenceValidated": true,
+      "stateSnapshotsValidated": true,
+      "nonDisableGatesPrepared": true,
+      "remainingExecutionBoundary": [
+        "disable switch clearance",
+        "approval consumption",
+        "runner start endpoint contact",
+        "OpenCode start",
+        "FP-027 canary discipline"
+      ]
+    },
+    "futureResumeConditions": [
+      "Re-orient with forgepilot_get_execution_gate_orientation using the execution packet id.",
+      "Verify current repository commit and request/approval freshness.",
+      "If approval expired or commit moved, create fresh scoped approval evidence and/or fresh request artifact as required.",
+      "Record a new explicit grant packet only if the operator deliberately authorizes one bounded attempt.",
+      "Run FP-027 with no retry, no chaining, process-tree snapshot before, explicit contact confirmation, and abort-readiness available."
+    ]
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_214_DELIBERATE_EXECUTION_GRANT_DEFERRED"
+}

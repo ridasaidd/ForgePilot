@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-214",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 82,
+  "run_id": "FP-MCP-214-DELIBERATE-EXECUTION-GRANT-DEFERRED",
+  "generic_admission_event_id": 82,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_MCP_214_DELIBERATE_EXECUTION_GRANT_DEFERRED",
+  "artifact_paths": [
+    "packets/FP-MCP-214.md",
+    "runs/FP-MCP-214/deliberate-execution-grant-deferred-record.json",
+    "runs/FP-MCP-214/result-summary.md",
+    "runs/FP-MCP-214/verification.txt"
+  ]
+}
