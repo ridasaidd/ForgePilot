@@ -1,0 +1,27 @@
+{
+  "packetId": "FP-MCP-192",
+  "attempt": 1,
+  "tool": "forgepilot_record_non_executing_run_request_artifact",
+  "artifactRecordingConfirmation": "RECORD_NON_EXECUTING_REQUEST_ARTIFACT",
+  "created": false,
+  "valid": false,
+  "executionEnabled": false,
+  "executionStarted": false,
+  "executionAuthorized": false,
+  "runnerStartEndpointContacted": false,
+  "opencodeStarted": false,
+  "approvalConsumed": false,
+  "artifactOnly": true,
+  "requestArtifactOnly": true,
+  "approvalAccepted": true,
+  "requestId": null,
+  "requestArtifactPath": null,
+  "baseCommit": "b8977ca",
+  "boundaryVersion": "FP-MCP-081",
+  "implementationBoundaryVersion": "FP-MCP-083",
+  "statusSource": "ForgePilot request-artifact policy",
+  "reasons": [
+    "DIRTY_WORKING_TREE"
+  ],
+  "classification": "NEW_ALIAS_LIVE_SURFACE_CONFIRMED_AND_CLEAN_TREE_GATE_FAILED_CLOSED"
+}

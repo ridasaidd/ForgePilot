@@ -1,0 +1,23 @@
+{
+  "packetId": "FP-MCP-192",
+  "expectedTool": "forgepilot_record_non_executing_run_request_artifact",
+  "expectedConfirmationLiteral": "RECORD_NON_EXECUTING_REQUEST_ARTIFACT",
+  "expectedCreated": true,
+  "expectedBoundaryFields": {
+    "executionAuthorized": false,
+    "executionEnabled": false,
+    "executionStarted": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "approvalConsumed": false,
+    "artifactOnly": true,
+    "requestArtifactOnly": true
+  },
+  "forbiddenScope": {
+    "fpMcp183Used": false,
+    "approvalCreated": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  }
+}

@@ -1,0 +1,22 @@
+FP-MCP-192 verification
+
+Pre-live packet setup:
+- Created packet and expected-live-confirmation artifacts.
+
+Attempt 1:
+- Tool: forgepilot_record_non_executing_run_request_artifact
+- Confirmation literal accepted: RECORD_NON_EXECUTING_REQUEST_ARTIFACT
+- Result: created false, valid false
+- Reason: DIRTY_WORKING_TREE
+- Boundary fields: executionEnabled false, executionStarted false, executionAuthorized false, runnerStartEndpointContacted false, opencodeStarted false, approvalConsumed false, artifactOnly true, requestArtifactOnly true
+
+Interpretation:
+- Refreshed action surface exposes the new alias.
+- The new alias accepts the artifact-only confirmation literal.
+- The operation failed closed because ForgePilot core had uncommitted FP-MCP-192 setup artifacts.
+- No request artifact was created during attempt 1.
+- No FP-MCP-183 scope was used.
+- No approval was created or consumed.
+- No runner start endpoint was contacted.
+- No OpenCode process was started.
+- No FP-027 canary ran.
