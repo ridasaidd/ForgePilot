@@ -1,0 +1,15 @@
+FP-MCP-235 verification
+
+Checkpoint type:
+- POLICY_RECONCILIATION_OPENED
+
+Claim:
+- FP_MCP_235_FP_MCP_217_POPUP_CLEARANCE_RECONCILIATION_RECORDED
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

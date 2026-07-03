@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-235",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 103,
+  "run_id": "FP-MCP-235-POLICY-RECONCILIATION-OPENED",
+  "generic_admission_event_id": 103,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_MCP_235_FP_MCP_217_POPUP_CLEARANCE_RECONCILIATION_RECORDED",
+  "artifact_paths": [
+    "packets/FP-MCP-235.md",
+    "runs/FP-MCP-235/policy-reconciliation-opened-record.json",
+    "runs/FP-MCP-235/result-summary.md",
+    "runs/FP-MCP-235/verification.txt"
+  ]
+}
