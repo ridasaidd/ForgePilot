@@ -1,0 +1,15 @@
+FP-MCP-228 verification
+
+Checkpoint type:
+- ONE_SHOT_DISABLE_CLEARANCE_POLICY_DECISION
+
+Claim:
+- FP_MCP_228_ONE_SHOT_DISABLE_CLEARANCE_POLICY_RECORDED
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

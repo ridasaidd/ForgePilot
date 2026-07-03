@@ -1,0 +1,113 @@
+{
+  "packetId": "FP-MCP-228",
+  "title": "One-Shot Disable-Switch Clearance Policy for Guarded Canary",
+  "checkpointType": "ONE_SHOT_DISABLE_CLEARANCE_POLICY_DECISION",
+  "claim": "FP_MCP_228_ONE_SHOT_DISABLE_CLEARANCE_POLICY_RECORDED",
+  "summary": "Record the policy decision for the final deliberate execution blocker after FP-MCP-227 produced valid approval evidence and valid operator-local clearance, while guarded preflight remained blocked only by the deliberate disable/execution-enable policy. The disable switch must not become a standing enable mode. Any future clearance must be one-shot, tuple-bound, and self-revoking: validate the request artifact, approval, operator-local clearance, and guarded preflight; clear execution only for the exact validated attempt; contact the runner start endpoint at most once; record approval consumption and pre/post state; then immediately restore disabled state or otherwise make the tuple unusable for any second attempt. This packet is a policy decision only and does not implement or perform execution enablement.",
+  "caveats": [
+    "The FP-MCP-227 approval and operator-local clearance were valid at observation time but are time-boxed and may expire before implementation is ready.",
+    "The existing local clearance artifact expires at 2026-07-03T13:22:30.944357Z and must not be reused after expiry.",
+    "The existing approval expires at 2026-07-03T13:30:00.000Z and must not be consumed after expiry.",
+    "No standing execution authority is approved by this policy.",
+    "No generic global disable-switch clearing tool is approved.",
+    "The next implementation must preserve FP-MCP-217: execution authorization remains human-local and outside the model-callable MCP surface; MCP may observe/validate but must not create local clearance.",
+    "If implementation cannot complete before expiry, a fresh approval and fresh local clearance must be created and observed before any canary attempt."
+  ],
+  "boundaries": [
+    "execution authorized by this packet: false",
+    "approval consumed: false",
+    "disable switch cleared: false",
+    "runner start endpoint contacted: false",
+    "OpenCode started: false",
+    "FP-027 canary run: false",
+    "local clearance artifact created: false",
+    "local clearance artifact mutated: false",
+    "standing execution authority created: false",
+    "global execution enablement approved: false"
+  ],
+  "structuredRecord": {
+    "currentValidatedInputs": {
+      "executionPacketId": "FP-MCP-223",
+      "requestId": "REQ-20260703T125101090Z-8535b3c0",
+      "approvalPacketId": "FP-MCP-227",
+      "approvalId": "APPROVAL-20260703T131004235Z-e664d735",
+      "clearanceId": "CLEARANCE-20260703T131230944Z-b1665978",
+      "modelId": "deepseek-v4-pro-high",
+      "runMode": "DESIGN_ONLY",
+      "executionBaseCommit": "6fb3a32",
+      "requestArtifactCommit": "cc06a07",
+      "branch": "main",
+      "targetWorkspaceId": "forgepilot",
+      "approvalExpiresAt": "2026-07-03T13:30:00.000Z",
+      "clearanceExpiresAt": "2026-07-03T13:22:30.944357Z"
+    },
+    "lastObservedGateState": {
+      "operatorLocalClearanceEligible": true,
+      "approvalValid": true,
+      "approvalUsableForExecution": true,
+      "guardedPreflightHumanApprovalEvidence": "PASSED",
+      "guardedPreflightBlockedBy": [
+        "EXECUTION_DISABLED_GLOBAL",
+        "RUNNER_EXECUTION_DISABLED",
+        "OPENCODE_EXECUTION_DISABLED",
+        "DISABLE_SWITCH_ACTIVE",
+        "EXECUTION_NOT_ALLOWED"
+      ],
+      "canaryRun": false
+    },
+    "policy": {
+      "mode": "ONE_SHOT_TUPLE_BOUND_SELF_REVOKING_CLEARANCE",
+      "mustValidateBeforeEnable": [
+        "request artifact still valid",
+        "approval still valid and unconsumed",
+        "operator-local clearance still present, unexpired, exact-scoped, and eligible",
+        "target workspace branch/commit/clean state still matches clearance",
+        "guarded preflight passes except deliberate disable gate"
+      ],
+      "enablementScope": [
+        "executionPacketId",
+        "requestId",
+        "approvalId",
+        "clearanceId",
+        "modelId",
+        "runMode",
+        "executionBaseCommit",
+        "requestArtifactCommit",
+        "branch",
+        "targetWorkspaceId"
+      ],
+      "requiredExecutionSequence": [
+        "record pre-clearance state",
+        "clear execution only for the exact tuple and attempt id",
+        "contact runner start endpoint at most once",
+        "record runner response and runnerRunId if any",
+        "record approval consumption evidence if start is accepted or attempted according to policy",
+        "restore disabled state immediately or mark tuple unusable",
+        "record post-start/post-disable state"
+      ],
+      "mustFailClosedOn": [
+        "expired approval",
+        "expired local clearance",
+        "dirty workspace",
+        "commit mismatch",
+        "branch mismatch",
+        "approval already consumed",
+        "missing local clearance",
+        "broad or standing clearance flags",
+        "runner capability mismatch",
+        "unexpected model or run mode",
+        "second use of same tuple"
+      ]
+    },
+    "recommendedNextPacket": "FP-MCP-229 — Implement one-shot tuple-bound execution enablement path or narrower disable-clearance mechanism."
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_228_ONE_SHOT_DISABLE_CLEARANCE_POLICY_RECORDED"
+}

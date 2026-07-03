@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-228",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 96,
+  "run_id": "FP-MCP-228-ONE-SHOT-DISABLE-CLEARANCE-POLICY-DECISION",
+  "generic_admission_event_id": 96,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_MCP_228_ONE_SHOT_DISABLE_CLEARANCE_POLICY_RECORDED",
+  "artifact_paths": [
+    "packets/FP-MCP-228.md",
+    "runs/FP-MCP-228/one-shot-disable-clearance-policy-decision-record.json",
+    "runs/FP-MCP-228/result-summary.md",
+    "runs/FP-MCP-228/verification.txt"
+  ]
+}
