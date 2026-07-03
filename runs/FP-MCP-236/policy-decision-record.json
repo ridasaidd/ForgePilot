@@ -1,0 +1,95 @@
+{
+  "packetId": "FP-MCP-236",
+  "title": "Adopt Popup-Mediated Local Clearance Policy",
+  "checkpointType": "POLICY_DECISION",
+  "claim": "FP_MCP_236_POPUP_MEDIATED_LOCAL_CLEARANCE_POLICY_ADOPTED",
+  "summary": "Resolve the FP-MCP-235 reconciliation by explicitly adopting popup-mediated local clearance for ForgePilot MCP guarded starts. This decision supersedes the FP-MCP-217 prohibition on MCP-created local clearance for this scoped use case. The reason is operational: the operator is mostly on mobile, approvals are time-limited, and requiring a separately pasted local Python/script command made the clearance window brittle and error-prone. The adopted posture is not equivalent to hands-on-keyboard outside-MCP clearance; it is a deliberate weaker but accepted posture with explicit compensating controls. The forgepilot_create_operator_local_execution_clearance tool may create one exact, short-lived, single-use local clearance only after explicit ChatGPT/MCP popup approval and validation of committed approval evidence, current target HEAD, branch, clean workspace, request artifact, execution-base ancestry, gitignored clearance path, model, run mode, request id, and target workspace. This packet records policy only and does not create clearance, consume approval, contact runner start, start OpenCode, or run FP-027.",
+  "caveats": [
+    "This is a deliberate revision of FP-MCP-217, not a UX-only restatement.",
+    "A ChatGPT/MCP popup remains inside the model-callable tool surface; the operator approves a model-proposed action rather than independently initiating the clearance outside MCP.",
+    "The successful FP-MCP-233 run is not used as proof that the policy was already clean; it remains historically governance-incomplete until FP-MCP-237 records its integrity review.",
+    "This policy adoption does not retroactively mark the FP-MCP-233 approval consumed.",
+    "The approval-consumption fix must still be activated and verified in a later packet.",
+    "Popup-mediated clearance is permitted only through the exact scoped tool contract; any broad, wildcard, standing, or long-lived clearance remains forbidden."
+  ],
+  "boundaries": [
+    "execution authorized: false",
+    "approval created: false",
+    "approval consumed: false",
+    "local clearance created: false",
+    "runner start endpoint contacted: false",
+    "OpenCode started: false",
+    "FP-027 canary run: false",
+    "standing execution authority created: false",
+    "broad clearance scope allowed: false"
+  ],
+  "structuredRecord": {
+    "decision": "ADOPT_POPUP_MEDIATED_LOCAL_CLEARANCE",
+    "supersedes": {
+      "packet": "FP-MCP-217",
+      "previousRule": "MCP may observe and validate operator-local clearance but must not create it; clearance creation is a hands-on-keyboard act outside the model-callable MCP surface.",
+      "supersededForScope": "ForgePilot MCP guarded starts using the exact popup-mediated clearance creation tool contract."
+    },
+    "adoptedRule": {
+      "tool": "forgepilot_create_operator_local_execution_clearance",
+      "rule": "MCP may create one local execution-clearance.json artifact only after explicit ChatGPT/MCP popup approval and only for the exact validated tuple supplied to the tool.",
+      "scope": "Guarded ForgePilot MCP remote-runner starts; initially DESIGN_ONLY/dev canary style starts unless a later packet broadens or restricts the policy.",
+      "notAllowed": [
+        "standing authority",
+        "wildcard packet/request/model/run mode",
+        "global enablement",
+        "expiry over 10 minutes",
+        "creation without committed valid approval evidence",
+        "creation when target workspace is dirty",
+        "creation when current HEAD does not equal requestArtifactCommit",
+        "creation when executionBaseCommit is not ancestor of requestArtifactCommit"
+      ]
+    },
+    "rationale": {
+      "operatorContext": "operator is mostly on mobile",
+      "timingConstraint": "structured approvals and clearances expire quickly",
+      "uxProblem": "manual shell/Python clearance creation consumed the approval window and increased operator error risk",
+      "acceptedTradeoff": "weaker than outside-MCP hands-on-keyboard clearance but operationally usable with strong tuple and state gates"
+    },
+    "threatModelRevision": {
+      "oldThreatControl": "model-callable MCP surface could not create final clearance artifact",
+      "newThreatControl": "model can propose a clearance-writing call, but the user must approve the popup and the tool validates exact committed approval and live workspace state before writing",
+      "residualRisk": "user may approve model-proposed clearance creation inside ChatGPT without an independent out-of-band local action",
+      "acceptedRisk": true
+    },
+    "compensatingControls": [
+      "explicit MCP approval popup",
+      "committed structured approval evidence required",
+      "approval must be valid, unexpired, unconsumed, unrevoked, and unquarantined",
+      "single-use local clearance artifact",
+      "short expiry with max expiresInMinutes <= 10",
+      "exact executionPacketId/requestId/approvalPacketId/approvalId/modelId/runMode binding",
+      "executionBaseCommit and requestArtifactCommit binding",
+      "current target branch and HEAD must match",
+      "target workspace must be clean",
+      "request artifact must exist and bind to execution base",
+      "executionBaseCommit must be ancestor of requestArtifactCommit",
+      "clearance path must be gitignored",
+      "tool does not consume approval",
+      "tool does not clear disable switch",
+      "tool does not contact runner start endpoint",
+      "tool does not start OpenCode",
+      "tool does not run FP-027"
+    ],
+    "requiredNextPackets": [
+      "FP-MCP-237: Record FP-MCP-233 guarded start integrity review, including missing FP-027 canary discipline evidence and bounded approval reuse window.",
+      "FP-MCP-238: Activate and verify approval consumption fix; prove old approval/clearance are expired and unusable and verify future consumption path.",
+      "FP-MCP-239: Add hardcoded packet-id lint/check with legacy allowlist."
+    ],
+    "policyStatus": "ADOPTED_WITH_EXPLICIT_THREAT_MODEL_REVISION"
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_236_POPUP_MEDIATED_LOCAL_CLEARANCE_POLICY_ADOPTED"
+}
