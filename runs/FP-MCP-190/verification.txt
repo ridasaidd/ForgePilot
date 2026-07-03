@@ -1,0 +1,43 @@
+FP-MCP-190 verification
+
+Pre-state:
+- ForgePilot clean at d74f378 Document platform block cadence hypothesis
+- MCP bridge clean at 9e01c73 Normalize execution preflight disabled reasons
+- canonical evidence/admission before packet: 59/59
+
+Source/schema inspection:
+- Located forgepilot_create_opencode_run_request registration in src/server.ts.
+- Observed description: Create a durable ForgePilot OpenCode run request artifact without starting OpenCode.
+- Observed input fields: packetId, modelId, runMode, approval.
+- Observed approval literal description: Must exactly equal CREATE_REQUEST_ARTIFACT.
+- Observed annotations: readOnlyHint false, destructiveHint false, idempotentHint false, openWorldHint false.
+
+Diagnosis-time platform blocks:
+- Combined bridge git status/log terminal command blocked before execution.
+- Split single-purpose bridge git status command succeeded.
+- Split single-purpose bridge git log command succeeded.
+- Adjacent source-read command blocked before execution.
+
+Conclusion:
+- Trigger remains unresolved.
+- Plausible contributors: cadence, combined command shape, sensitive wording, non-read-only mutation annotation, execution-authority-adjacent semantics, platform classifier uncertainty.
+- FP-MCP-187 remains safety-relevant and separately classified.
+
+Safety boundary:
+- Did not retry forgepilot_create_opencode_run_request.
+- Did not rephrase or restructure the blocked request-creation call.
+- Did not manually construct a request artifact.
+- Did not create or consume approval evidence.
+- Did not contact the runner start endpoint.
+- Did not start OpenCode.
+- Did not run FP-027 canary.
+
+Additional diagnosis-time block:
+- Attempt to update standing platform-block documentation for FP-MCP-190 was blocked before execution.
+
+Post-recording verification:
+- evidence_records: 60
+- generic evidence_record admission events: 60
+- latest_evidence_id: 60
+- latest_generic_event_id: 60
+- canonical_state: ADMITTED

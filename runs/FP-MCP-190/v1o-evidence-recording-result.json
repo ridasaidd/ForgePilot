@@ -1,0 +1,19 @@
+{
+  "packet_id": "FP-MCP-190",
+  "result": "FP_MCP_190_DIAGNOSIS_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 60,
+  "run_id": "FP-MCP-190-ENABLEMENT-ADJACENT-PLATFORM-BLOCK-DIAGNOSIS",
+  "generic_admission_event_id": 60,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_MCP_190_ENABLEMENT_ADJACENT_PLATFORM_BLOCK_DIAGNOSED_UNRESOLVED_SAFETY_RELEVANT_NO_RETRY_NO_BYPASS",
+  "total_evidence_records": 60,
+  "total_generic_evidence_record_admission_events": 60,
+  "artifact_paths": [
+    "packets/FP-MCP-190.md",
+    "runs/FP-MCP-190/diagnosis-observations.json",
+    "runs/FP-MCP-190/result-summary.md",
+    "runs/FP-MCP-190/verification.txt"
+  ]
+}

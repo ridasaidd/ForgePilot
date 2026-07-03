@@ -1,0 +1,59 @@
+{
+  "packetId": "FP-MCP-190",
+  "result": "FP_MCP_190_ENABLEMENT_ADJACENT_PLATFORM_BLOCK_DIAGNOSED_UNRESOLVED_SAFETY_RELEVANT_NO_RETRY_NO_BYPASS",
+  "sourceSchemaObserved": {
+    "toolName": "forgepilot_create_opencode_run_request",
+    "description": "Create a durable ForgePilot OpenCode run request artifact without starting OpenCode.",
+    "inputs": {
+      "packetId": "Known ForgePilot packet id, for example FP-MCP-007.",
+      "modelId": "Allowed OpenCode model id.",
+      "runMode": "Allowed ForgePilot run mode. Initially only DESIGN_ONLY is allowed.",
+      "approval": "Must exactly equal CREATE_REQUEST_ARTIFACT."
+    },
+    "annotations": {
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": false,
+      "openWorldHint": false
+    }
+  },
+  "diagnosisBlocksObserved": [
+    {
+      "attempt": "combined bridge git status/log command",
+      "blockedBeforeExecution": true
+    },
+    {
+      "attempt": "adjacent source-read command",
+      "blockedBeforeExecution": true
+    }
+  ],
+  "successfulSinglePurposeChecks": [
+    "bridge git status --short",
+    "bridge git log --oneline -5",
+    "grep for forgepilot_create_opencode_run_request",
+    "sed for create request tool schema"
+  ],
+  "plausibleContributors": [
+    "cadence / rapid sequencing",
+    "combined terminal command shape",
+    "sensitive source/action wording",
+    "non-read-only mutation annotation",
+    "execution-authority-adjacent semantics",
+    "platform classifier uncertainty"
+  ],
+  "recommendation": {
+    "pathA": "same-content future retry only with explicit operator authorization, serialized as one call, no rephrasing, recorded as a new observation",
+    "pathB": "normal tool-contract adjustment packet if repeated same-content attempts indicate persistent schema/surface block"
+  },
+  "safetyBoundary": {
+    "requestCreationRetried": false,
+    "rephraseToAvoidTriggerUsed": false,
+    "manualRequestArtifactConstructed": false,
+    "approvalCreated": false,
+    "approvalConsumed": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false,
+    "fpMcp183EnablementGranted": false
+  }
+}
