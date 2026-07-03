@@ -1,0 +1,19 @@
+{
+  "packet_id": "FP-MCP-199",
+  "result": "FP_MCP_199_IMPLEMENTATION_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 69,
+  "run_id": "FP-MCP-199-DEDICATED-PACKET-CHECKPOINT-TOOL",
+  "generic_admission_event_id": 69,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_MCP_199_DEDICATED_PACKET_CHECKPOINT_TOOL_IMPLEMENTED",
+  "total_evidence_records": 69,
+  "total_generic_evidence_record_admission_events": 69,
+  "artifact_paths": [
+    "packets/FP-MCP-199.md",
+    "runs/FP-MCP-199/implementation-result.json",
+    "runs/FP-MCP-199/result-summary.md",
+    "runs/FP-MCP-199/verification.txt"
+  ]
+}

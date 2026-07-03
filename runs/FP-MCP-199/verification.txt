@@ -1,0 +1,21 @@
+FP-MCP-199 verification
+
+Bridge implementation:
+- tool: forgepilot_record_packet_checkpoint
+- commit: 958fc91 Add packet checkpoint recording tool
+- branch: feature/oauth-auth0
+
+Build:
+- pnpm build: PASS
+
+Boundary:
+- authorizes execution: false
+- consumes approval: false
+- clears disable switch: false
+- contacts runner start endpoint: false
+- starts OpenCode: false
+- runs FP-027: false
+
+Operational note:
+- The tool is implemented and committed in the bridge.
+- It requires MCP bridge service/action refresh before ChatGPT can call it directly.
