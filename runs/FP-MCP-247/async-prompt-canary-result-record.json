@@ -1,0 +1,195 @@
+{
+  "packetId": "FP-MCP-247",
+  "title": "OpenCode HTTP Minimal Async Prompt Canary",
+  "checkpointType": "ASYNC_PROMPT_CANARY_RESULT",
+  "claim": "FP_MCP_247_OPENCODE_HTTP_ASYNC_PROMPT_CANARY_SUCCEEDED_MESSAGE_COMPLETION_OBSERVED",
+  "summary": "The FP-MCP-247 minimal OpenCode HTTP async prompt canary ran successfully with cleanup enabled. It created one titled OpenCode session, submitted the tiny prompt through /session/{id}/prompt_async, read messages before and after, polled /session/status, observed the exact assistant text OPENCODE_HTTP_CANARY_OK, and deleted only the created canary session. The canary returned sessionCreated=true, promptAsyncSubmitted=true, promptAsyncHttpStatus=204, messagesAfterHttpStatus=200, messagesAfterCount=2, assistantMessageCountAfter=1, assistantTextObserved=true, canaryTextObserved=true, boundedAssistantTextExcerpt=OPENCODE_HTTP_CANARY_OK, cleanupAttempted=true, sessionDeleted=true, and deleteHttpStatus=200. It also confirmed waitEndpointCalled=false, runnerStartEndpointContacted=false, and opencodeStarted=false. The status timeline briefly reported sessionStatusType=busy on attempts 1 and 2, then returned null rather than idle; therefore completion was observed from /session/{id}/message contents, not from /session/status reaching idle.",
+  "caveats": [
+    "This was the first canary that submitted an OpenCode model prompt, but the prompt was deliberately tiny and bounded: Return exactly: OPENCODE_HTTP_CANARY_OK.",
+    "The tool did not call /api/session/{id}/wait or any wait endpoint, so wait semantics remain unverified.",
+    "The status timeline observed busy briefly, but did not observe idle; /session/status should not yet be used as the sole completion source.",
+    "The created canary session was deleted after observation; retained evidence is the ForgePilot checkpoint and structured record, not the OpenCode session itself."
+  ],
+  "boundaries": [
+    "A tiny OpenCode prompt was submitted via /session/{id}/prompt_async.",
+    "No OpenCode wait endpoint was called.",
+    "No ForgePilot runner start endpoint was contacted.",
+    "No OpenCode process was started by this canary.",
+    "No execution approval was created, consumed, or authorized.",
+    "No local execution clearance was created.",
+    "Only the canary-created session was deleted.",
+    "No file-editing task was requested from the model."
+  ],
+  "structuredRecord": {
+    "toolName": "forgepilot_run_opencode_http_minimal_async_prompt_canary",
+    "bridgeImplementationCommit": "f3d5355 Add OpenCode HTTP minimal async prompt canary",
+    "canaryRan": true,
+    "cleanup": true,
+    "sessionCreated": true,
+    "promptAsyncSubmitted": true,
+    "promptSubmitted": true,
+    "promptTextSha256": "2849ed87d773e5c34abb872cf41130ac5e31efa608f2a72173eeba8b748d09e0",
+    "sessionDeleted": true,
+    "sessionId": "ses_0d606f530ffeAy3hcL803L7e2c",
+    "sessionTitle": "ForgePilot HTTP async prompt canary 2026-07-03T21:53:34.916Z",
+    "createHttpStatus": 200,
+    "promptAsyncHttpStatus": 204,
+    "messagesBeforeHttpStatus": 200,
+    "messagesAfterHttpStatus": 200,
+    "deleteHttpStatus": 200,
+    "statusPollCount": 20,
+    "observedBusy": true,
+    "observedIdle": false,
+    "terminalObservation": "CANARY_TEXT_OBSERVED",
+    "messagesBeforeCount": 0,
+    "messagesAfterCount": 2,
+    "assistantMessageCountAfter": 1,
+    "assistantTextObserved": true,
+    "canaryTextObserved": true,
+    "boundedAssistantTextExcerpt": "OPENCODE_HTTP_CANARY_OK",
+    "statusTimeline": [
+      {
+        "attempt": 0,
+        "httpStatus": 200,
+        "reachable": true,
+        "sessionStatusType": null
+      },
+      {
+        "attempt": 1,
+        "httpStatus": 200,
+        "reachable": true,
+        "sessionStatusType": "busy"
+      },
+      {
+        "attempt": 2,
+        "httpStatus": 200,
+        "reachable": true,
+        "sessionStatusType": "busy"
+      },
+      {
+        "attempt": 3,
+        "httpStatus": 200,
+        "reachable": true,
+        "sessionStatusType": null
+      },
+      {
+        "attempt": 4,
+        "httpStatus": 200,
+        "reachable": true,
+        "sessionStatusType": null
+      },
+      {
+        "attempt": 5,
+        "httpStatus": 200,
+        "reachable": true,
+        "sessionStatusType": null
+      },
+      {
+        "attempt": 6,
+        "httpStatus": 200,
+        "reachable": true,
+        "sessionStatusType": null
+      },
+      {
+        "attempt": 7,
+        "httpStatus": 200,
+        "reachable": true,
+        "sessionStatusType": null
+      },
+      {
+        "attempt": 8,
+        "httpStatus": 200,
+        "reachable": true,
+        "sessionStatusType": null
+      },
+      {
+        "attempt": 9,
+        "httpStatus": 200,
+        "reachable": true,
+        "sessionStatusType": null
+      },
+      {
+        "attempt": 10,
+        "httpStatus": 200,
+        "reachable": true,
+        "sessionStatusType": null
+      },
+      {
+        "attempt": 11,
+        "httpStatus": 200,
+        "reachable": true,
+        "sessionStatusType": null
+      },
+      {
+        "attempt": 12,
+        "httpStatus": 200,
+        "reachable": true,
+        "sessionStatusType": null
+      },
+      {
+        "attempt": 13,
+        "httpStatus": 200,
+        "reachable": true,
+        "sessionStatusType": null
+      },
+      {
+        "attempt": 14,
+        "httpStatus": 200,
+        "reachable": true,
+        "sessionStatusType": null
+      },
+      {
+        "attempt": 15,
+        "httpStatus": 200,
+        "reachable": true,
+        "sessionStatusType": null
+      },
+      {
+        "attempt": 16,
+        "httpStatus": 200,
+        "reachable": true,
+        "sessionStatusType": null
+      },
+      {
+        "attempt": 17,
+        "httpStatus": 200,
+        "reachable": true,
+        "sessionStatusType": null
+      },
+      {
+        "attempt": 18,
+        "httpStatus": 200,
+        "reachable": true,
+        "sessionStatusType": null
+      },
+      {
+        "attempt": 19,
+        "httpStatus": 200,
+        "reachable": true,
+        "sessionStatusType": null
+      }
+    ],
+    "messageEndpointCalled": true,
+    "waitEndpointCalled": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "toolReasons": [
+      "SESSION_CREATE_REACHABLE",
+      "MESSAGES_BEFORE_REACHABLE",
+      "PROMPT_ASYNC_ACCEPTED",
+      "MESSAGES_AFTER_REACHABLE",
+      "SESSION_DELETE_REACHABLE"
+    ],
+    "boundaryVersion": "OPENCODE_HTTP_MINIMAL_ASYNC_PROMPT_CANARY_V1",
+    "recommendedNextPacket": "FP-MCP-248 — OpenCode HTTP Wait Endpoint Semantics Probe"
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_247_OPENCODE_HTTP_ASYNC_PROMPT_CANARY_SUCCEEDED_MESSAGE_COMPLETION_OBSERVED"
+}
