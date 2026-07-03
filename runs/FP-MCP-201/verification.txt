@@ -1,0 +1,30 @@
+FP-MCP-201 verification
+
+Live tool invoked:
+- forgepilot_record_packet_checkpoint
+
+Observed result:
+- tool visible in refreshed action surface: true
+- tool invocation reached bridge: true
+- partial artifacts written: true
+- failure: spawn pnpm ENOENT
+- stage: evidence script execution inside checkpoint tool runtime
+
+Tool did not complete:
+- evidence result artifact from tool: false
+- commit by tool: false
+- post-tool clean state by tool: false
+
+Recovery classification:
+- CHECKPOINT_TOOL_SMOKE_TEST_FAILED_RUNTIME_PATH
+
+Admitted claim to record:
+- FP_MCP_201_PACKET_CHECKPOINT_TOOL_SMOKE_TEST_FAILED_PNPM_ENOENT
+
+Boundary:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

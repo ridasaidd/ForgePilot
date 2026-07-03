@@ -1,0 +1,19 @@
+{
+  "packet_id": "FP-MCP-201",
+  "result": "FP_MCP_201_FAILURE_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 71,
+  "run_id": "FP-MCP-201-CHECKPOINT-TOOL-SMOKE-TEST-PNPM-ENOENT",
+  "generic_admission_event_id": 71,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_MCP_201_PACKET_CHECKPOINT_TOOL_SMOKE_TEST_FAILED_PNPM_ENOENT",
+  "total_evidence_records": 71,
+  "total_generic_evidence_record_admission_events": 71,
+  "artifact_paths": [
+    "packets/FP-MCP-201.md",
+    "runs/FP-MCP-201/checkpoint-tool-smoke-test-and-terminal-to-tool-rule-record.json",
+    "runs/FP-MCP-201/result-summary.md",
+    "runs/FP-MCP-201/verification.txt"
+  ]
+}

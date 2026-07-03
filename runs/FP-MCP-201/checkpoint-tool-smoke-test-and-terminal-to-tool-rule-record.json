@@ -1,0 +1,47 @@
+{
+  "packetId": "FP-MCP-201",
+  "classification": "CHECKPOINT_TOOL_SMOKE_TEST_FAILED_RUNTIME_PATH",
+  "claim": "FP_MCP_201_PACKET_CHECKPOINT_TOOL_SMOKE_TEST_FAILED_PNPM_ENOENT",
+  "toolTested": "forgepilot_record_packet_checkpoint",
+  "toolVisibleInActionSurface": true,
+  "toolInvocationReachedBridge": true,
+  "failure": {
+    "message": "spawn pnpm ENOENT",
+    "stage": "evidence script execution inside checkpoint tool runtime",
+    "evidenceResultWrittenByTool": false,
+    "commitCompletedByTool": false
+  },
+  "partialArtifactsObserved": [
+    "packets/FP-MCP-201.md",
+    "runs/FP-MCP-201/checkpoint-tool-smoke-test-and-terminal-to-tool-rule-record.json",
+    "runs/FP-MCP-201/result-summary.md",
+    "runs/FP-MCP-201/verification.txt",
+    "runs/FP-MCP-201/record-v1o-evidence.ts"
+  ],
+  "terminalToToolPromotionRule": {
+    "terminalAllowedFor": [
+      "exploration",
+      "debugging",
+      "inspection",
+      "development",
+      "recovery",
+      "one-off scaffolding"
+    ],
+    "candidateDedicatedToolWhen": [
+      "same terminal sequence repeats",
+      "inputs and outputs are stable",
+      "operation is bounded",
+      "operation is operationally meaningful",
+      "operation has a clear fail-closed contract",
+      "operation affects packet state, evidence state, admission state, approval state, execution gating, or repository commits"
+    ]
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  }
+}
