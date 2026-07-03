@@ -1,0 +1,15 @@
+FP-MCP-258 verification
+
+Checkpoint type:
+- HTTP_LIFECYCLE_INVOCATION_DRY_RUN_GATE_RESULT
+
+Claim:
+- FP_MCP_258_HTTP_LIFECYCLE_PLAN_INVOCATION_DRY_RUN_ELIGIBLE_WITHOUT_INVOCATION
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
