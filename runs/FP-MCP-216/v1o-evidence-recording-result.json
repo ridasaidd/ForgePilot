@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-216",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 84,
+  "run_id": "FP-MCP-216-FRESH-SCOPED-APPROVAL-EVIDENCE-RENEWAL-PREPARATION",
+  "generic_admission_event_id": 84,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_MCP_216_FRESH_SCOPED_APPROVAL_EVIDENCE_RENEWAL_PREPARATION_RECORDED",
+  "artifact_paths": [
+    "packets/FP-MCP-216.md",
+    "runs/FP-MCP-216/fresh-scoped-approval-evidence-renewal-preparation-record.json",
+    "runs/FP-MCP-216/result-summary.md",
+    "runs/FP-MCP-216/verification.txt"
+  ]
+}
