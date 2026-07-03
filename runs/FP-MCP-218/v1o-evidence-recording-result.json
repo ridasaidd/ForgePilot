@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-218",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 86,
+  "run_id": "FP-MCP-218-RESUME-OBSERVATION-BLOCKED-BY-LOCAL-CLEARANCE-ABSENT",
+  "generic_admission_event_id": 86,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_MCP_218_RESUME_OBSERVATION_BLOCKED_BY_LOCAL_CLEARANCE_ABSENT_RECORDED",
+  "artifact_paths": [
+    "packets/FP-MCP-218.md",
+    "runs/FP-MCP-218/resume-observation-blocked-by-local-clearance-absent-record.json",
+    "runs/FP-MCP-218/result-summary.md",
+    "runs/FP-MCP-218/verification.txt"
+  ]
+}

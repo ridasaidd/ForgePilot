@@ -1,0 +1,15 @@
+FP-MCP-218 verification
+
+Checkpoint type:
+- RESUME_OBSERVATION_BLOCKED_BY_LOCAL_CLEARANCE_ABSENT
+
+Claim:
+- FP_MCP_218_RESUME_OBSERVATION_BLOCKED_BY_LOCAL_CLEARANCE_ABSENT_RECORDED
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

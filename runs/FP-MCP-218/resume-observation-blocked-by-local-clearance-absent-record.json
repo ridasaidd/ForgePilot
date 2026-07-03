@@ -1,0 +1,102 @@
+{
+  "packetId": "FP-MCP-218",
+  "title": "Resume Observation Blocked by Local Clearance",
+  "checkpointType": "RESUME_OBSERVATION_BLOCKED_BY_LOCAL_CLEARANCE_ABSENT",
+  "claim": "FP_MCP_218_RESUME_OBSERVATION_BLOCKED_BY_LOCAL_CLEARANCE_ABSENT_RECORDED",
+  "summary": "Record the resume observation after FP-MCP-217. Both repositories were clean and canonical evidence remained 85/85 before this checkpoint. The FP-MCP-209 request path and FP-MCP-216 approval were observed, but execution clearance was not present: the global disable switch remained active, runner execution and OpenCode execution remained disabled, and the guarded start path remained blocked. Under FP-MCP-217, no approval consumption or runner start is allowed until operator-local clearance exists outside the model-callable MCP surface.",
+  "caveats": [
+    "This checkpoint records observation only; it does not create or clear local execution clearance.",
+    "The user's 'proceed' instruction is not treated as local hands-on-keyboard clearance because FP-MCP-217 requires clearance outside the model-callable MCP surface.",
+    "The fresh FP-MCP-216 approval is time-boxed and must be revalidated before any future consumption attempt.",
+    "No approval was consumed, no disable switch was cleared, no runner start endpoint was contacted, no OpenCode process was started, and FP-027 did not run.",
+    "The next eligible step remains external/local: operator must clear execution locally outside MCP, then MCP may observe and validate that state."
+  ],
+  "boundaries": [
+    "execution clearance observed: false",
+    "execution authorized: false",
+    "approval consumed: false",
+    "disable switch cleared by MCP: false",
+    "runner start endpoint contacted: false",
+    "OpenCode started: false",
+    "FP-027 canary run: false",
+    "standing execution authority created: false"
+  ],
+  "structuredRecord": {
+    "verifiedAt": "2026-07-03T12:11:05.627Z",
+    "repositoryState": {
+      "forgepilot": {
+        "branch": "main",
+        "headCommit": "cd0a838",
+        "workingTreeClean": true,
+        "canonicalEvidenceBeforeCheckpoint": {
+          "evidenceRecords": 85,
+          "evidenceRecordAdmissionEvents": 85
+        }
+      },
+      "mcpBridge": {
+        "branch": "feature/oauth-auth0",
+        "headCommit": "551d7af",
+        "workingTreeClean": true
+      }
+    },
+    "executionContext": {
+      "executionPacketId": "FP-MCP-209",
+      "requestId": "REQ-20260703T113456847Z-a68aa89e",
+      "approvalPacketId": "FP-MCP-216",
+      "approvalId": "APPROVAL-20260703T120153710Z-10683ad6",
+      "modelId": "deepseek-v4-pro-high",
+      "runMode": "DESIGN_ONLY"
+    },
+    "observedGateState": {
+      "runnerReachable": true,
+      "runnerStartCapabilityCallable": true,
+      "requestArtifactPresent": true,
+      "humanApprovalPresent": true,
+      "preflightPassableNow": false,
+      "executionAllowedNow": false,
+      "globalDisableActive": true,
+      "disableSwitchActive": true,
+      "runnerExecutionEnabled": false,
+      "opencodeExecutionEnabled": false,
+      "effectiveDisableReason": "EXECUTION_DISABLED_GLOBAL",
+      "effectiveDisableScope": "GLOBAL",
+      "blockingReasons": [
+        "GLOBAL_DISABLE_ACTIVE",
+        "RUNNER_EXECUTION_DISABLED",
+        "OPENCODE_EXECUTION_DISABLED"
+      ]
+    },
+    "passedGates": [
+      "requestArtifact",
+      "commitBinding",
+      "modelAndRunMode",
+      "runnerCapabilityState",
+      "preStartEvidence",
+      "stateSnapshotEvidence",
+      "humanApprovalEvidence",
+      "evidenceLedgerReadiness"
+    ],
+    "failedGates": [
+      "disableSwitch",
+      "opencodeReadiness"
+    ],
+    "fpMcp217BoundaryApplied": {
+      "clearanceMustBeCreatedOutsideMcp": true,
+      "mcpMayObserveClearance": true,
+      "mcpMayNotCreateClearance": true,
+      "userProceedTextIsNotLocalClearance": true,
+      "approvalConsumptionRefusedBecauseClearanceAbsent": true,
+      "runnerStartRefusedBecauseClearanceAbsent": true
+    },
+    "nextRequiredAction": "Operator-local execution clearance outside MCP/model-callable tool surface, followed by fresh observation, approval freshness validation, scoped clearance validation, approval consumption if eligible, and one guarded FP-027 canary attempt."
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_218_RESUME_OBSERVATION_BLOCKED_BY_LOCAL_CLEARANCE_ABSENT_RECORDED"
+}
