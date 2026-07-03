@@ -1,0 +1,15 @@
+FP-MCP-222 verification
+
+Checkpoint type:
+- OPERATOR_CLEARANCE_OBSERVER_CALLABLE_FAIL_CLOSED_RESULT
+
+Claim:
+- FP_MCP_222_OPERATOR_CLEARANCE_OBSERVER_CALLABLE_FAIL_CLOSED_RECORDED
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

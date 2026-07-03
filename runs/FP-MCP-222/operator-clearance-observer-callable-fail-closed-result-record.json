@@ -1,0 +1,77 @@
+{
+  "packetId": "FP-MCP-222",
+  "title": "Operator Clearance Observer Callable Fail-Closed Result",
+  "checkpointType": "OPERATOR_CLEARANCE_OBSERVER_CALLABLE_FAIL_CLOSED_RESULT",
+  "claim": "FP_MCP_222_OPERATOR_CLEARANCE_OBSERVER_CALLABLE_FAIL_CLOSED_RECORDED",
+  "summary": "Record the operator-reported result that forgepilot_get_operator_local_execution_clearance_status became available through the Actions tab and was called successfully. The observer returned not eligible for guarded attempt because the operator-local clearance artifact was missing at .local/forgepilot/execution-clearance.json and the old FP-MCP-209 target execution commit 4bd1977 no longer matched the current ForgePilot HEAD 0f4ff5e. This resolves the prior FP-MCP-221 tool-discovery mismatch operationally and confirms the observer fails closed without side effects.",
+  "caveats": [
+    "The assistant's current callable namespace still did not expose the observer directly; this checkpoint records the user's reported Actions-tab invocation result.",
+    "Because the observer was not directly callable from this assistant turn, the result is recorded as operator-reported observation rather than assistant-invoked tool output.",
+    "The old FP-MCP-209 request tuple is stale relative to current ForgePilot HEAD and should not be used for a new local clearance artifact as-is.",
+    "A fresh request and fresh approval bound to current HEAD are required before any future local clearance should be created.",
+    "No approval was consumed, no disable switch was cleared, no runner start endpoint was contacted, no OpenCode process was started, and FP-027 did not run."
+  ],
+  "boundaries": [
+    "observer callable through Actions tab: true",
+    "guarded attempt eligible: false",
+    "local clearance artifact present: false",
+    "execution authorized: false",
+    "approval consumed: false",
+    "disable switch cleared: false",
+    "runner start endpoint contacted: false",
+    "OpenCode started: false",
+    "FP-027 canary run: false",
+    "standing execution authority created: false"
+  ],
+  "structuredRecord": {
+    "priorMismatch": "FP-MCP-221 recorded that source/dist/service had the observer but ChatGPT callable discovery did not expose it.",
+    "operatorReportedObserverCall": {
+      "toolName": "forgepilot_get_operator_local_execution_clearance_status",
+      "toolSurface": "Actions tab",
+      "callSucceeded": true,
+      "eligibleForGuardedAttempt": false,
+      "clearanceArtifactPresent": false,
+      "clearanceRelativePath": ".local/forgepilot/execution-clearance.json",
+      "clearancePathGitignored": true,
+      "currentWorkspaceClean": true,
+      "currentBranch": "main",
+      "currentCommit": "0f4ff5e",
+      "expectedTargetExecutionCommit": "4bd1977",
+      "importantReasons": [
+        "CLEARANCE_ARTIFACT_MISSING",
+        "CURRENT_COMMIT_MATCHES_FAILED",
+        "OPERATOR_LOCAL_CLEARANCE_NOT_ELIGIBLE"
+      ]
+    },
+    "observedSideEffects": {
+      "approvalConsumed": false,
+      "disableSwitchCleared": false,
+      "runnerStartEndpointContacted": false,
+      "opencodeStarted": false,
+      "fp027CanaryRun": false
+    },
+    "interpretation": {
+      "toolDiscoveryMismatchResolvedOperationally": true,
+      "observerFailClosedConfirmed": true,
+      "oldFpMcp209TupleStale": true,
+      "clearanceShouldNotBeCreatedForOldTuple": true
+    },
+    "nextRequiredStateForFp027": {
+      "freshRequestRequired": true,
+      "freshApprovalRequired": true,
+      "localClearanceRequiredAfterFreshTuple": true,
+      "observerValidationRequiredAfterLocalClearance": true,
+      "approvalConsumptionStillSeparate": true,
+      "runnerStartStillSeparate": true
+    }
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_222_OPERATOR_CLEARANCE_OBSERVER_CALLABLE_FAIL_CLOSED_RECORDED"
+}
