@@ -1,0 +1,28 @@
+{
+  "packetId": "FP-MCP-183",
+  "requestId": "REQ-20260703T084910198Z-9cad4fa6",
+  "attempt": "structured-human-approval-1",
+  "approvalCreated": false,
+  "approvalId": null,
+  "approvalArtifactPath": null,
+  "classification": "FAIL_CLOSED_APPROVAL_RECORDER_OBSERVATION",
+  "actionableReasons": [
+    "APPROVAL_LIFETIME_TOO_LONG",
+    "DIRTY_WORKING_TREE"
+  ],
+  "expectedExecutionBlockers": [
+    "EXECUTION_DISABLED_GLOBAL",
+    "RUNNER_EXECUTION_DISABLED",
+    "OPENCODE_EXECUTION_DISABLED",
+    "DISABLE_SWITCH_ACTIVE",
+    "EXECUTION_NOT_ALLOWED"
+  ],
+  "interpretation": "Structured approval recorder correctly refused to create approval evidence when requested lifetime was too long and repository state was dirty after request artifact creation.",
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  }
+}
