@@ -1,0 +1,15 @@
+FP-MCP-224 verification
+
+Checkpoint type:
+- FRESH_REQUEST_ARTIFACT_COMMIT_BINDING_GAP
+
+Claim:
+- FP_MCP_224_FRESH_REQUEST_ARTIFACT_COMMIT_BINDING_GAP_RECORDED
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

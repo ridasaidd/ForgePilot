@@ -1,0 +1,60 @@
+{
+  "packetId": "FP-MCP-224",
+  "title": "Fresh Request Artifact Commit-Binding Gap",
+  "checkpointType": "FRESH_REQUEST_ARTIFACT_COMMIT_BINDING_GAP",
+  "claim": "FP_MCP_224_FRESH_REQUEST_ARTIFACT_COMMIT_BINDING_GAP_RECORDED",
+  "summary": "Record the FP-MCP-223 fresh request artifact result and the newly observed commit-binding gap in the operator-local clearance path. FP-MCP-223 successfully created and committed a fresh non-executing request artifact, and the remote-runner request validator accepts it because the request base commit is an ancestor of the artifact commit. However, the operator-local clearance observer requires the current workspace commit to exactly match the clearance targetExecutionCommit. Because committing the request artifact moved HEAD from the request target commit 6fb3a32 to artifact commit d1607d4, creating a fresh approval and local clearance immediately may recreate a stale-tuple failure unless the commit-binding policy is clarified.",
+  "caveats": [
+    "FP-MCP-223 request artifact REQ-20260703T125101090Z-8535b3c0 was created non-executingly and committed at d1607d4.",
+    "The request artifact target/base commit is 6fb3a32, while current HEAD after committing the request artifact is d1607d4.",
+    "forgepilot_validate_remote_runner_request returned eligible true for the request artifact because creation commit 6fb3a32 is an ancestor of artifact commit d1607d4 and the artifact commit is reachable from HEAD.",
+    "forgepilot_validate_pre_start_evidence without approval returned invalid/incomplete as expected: human approval missing, global disable active, pre-start evidence missing, and no execution permitted.",
+    "No fresh approval was created because the exact target commit to bind for operator-local clearance requires policy clarification.",
+    "No local clearance artifact was created or modified through MCP."
+  ],
+  "boundaries": [
+    "execution authorized: false",
+    "approval consumed: false",
+    "fresh approval created: false",
+    "disable switch cleared: false",
+    "runner start endpoint contacted: false",
+    "OpenCode started: false",
+    "FP-027 canary run: false",
+    "local clearance artifact created: false",
+    "standing execution authority created: false"
+  ],
+  "structuredRecord": {
+    "freshRequest": {
+      "packetId": "FP-MCP-223",
+      "requestId": "REQ-20260703T125101090Z-8535b3c0",
+      "modelId": "deepseek-v4-pro-high",
+      "runMode": "DESIGN_ONLY",
+      "requestBaseCommit": "6fb3a32",
+      "requestArtifactCommit": "d1607d4",
+      "requestValidationEligible": true
+    },
+    "observedGap": {
+      "remoteRunnerRequestValidationPolicy": "accepts request base commit when it is ancestor of committed request artifact",
+      "operatorLocalClearanceObserverPolicy": "requires current workspace commit to exactly match targetExecutionCommit",
+      "risk": "fresh approval/local clearance may fail closed if bound to request target commit after request artifact commit advances HEAD"
+    },
+    "preStartValidation": {
+      "approvalObserved": false,
+      "approvalUsableForExecution": false,
+      "preStartEvidenceComplete": false,
+      "preStartEvidenceValid": false,
+      "executionPermitted": false,
+      "disableSwitchActive": true
+    },
+    "recommendedNextStep": "Clarify or implement commit-binding policy for operator-local clearance before recording fresh approval for FP-MCP-223."
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_224_FRESH_REQUEST_ARTIFACT_COMMIT_BINDING_GAP_RECORDED"
+}

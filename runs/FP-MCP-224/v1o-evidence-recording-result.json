@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-224",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 92,
+  "run_id": "FP-MCP-224-FRESH-REQUEST-ARTIFACT-COMMIT-BINDING-GAP",
+  "generic_admission_event_id": 92,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_MCP_224_FRESH_REQUEST_ARTIFACT_COMMIT_BINDING_GAP_RECORDED",
+  "artifact_paths": [
+    "packets/FP-MCP-224.md",
+    "runs/FP-MCP-224/fresh-request-artifact-commit-binding-gap-record.json",
+    "runs/FP-MCP-224/result-summary.md",
+    "runs/FP-MCP-224/verification.txt"
+  ]
+}
