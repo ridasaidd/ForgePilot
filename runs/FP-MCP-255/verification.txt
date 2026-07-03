@@ -1,0 +1,15 @@
+FP-MCP-255 verification
+
+Checkpoint type:
+- HTTP_LIFECYCLE_REQUEST_ADAPTER_RESULT
+
+Claim:
+- FP_MCP_255_HTTP_LIFECYCLE_REQUEST_ADAPTER_PLANNED_VALID_REQUEST_WITHOUT_LIFECYCLE_INVOCATION
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
