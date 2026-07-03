@@ -1,0 +1,77 @@
+{
+  "packetId": "FP-MCP-208",
+  "result": "FP_MCP_208_WORKSPACE_CHANGE_INSPECTION_TOOL_IMPLEMENTED",
+  "bridgeCommit": "551d7af",
+  "bridgeBranch": "feature/oauth-auth0",
+  "changedFiles": [
+    "src/workspace-change-inspection.ts",
+    "src/server.ts"
+  ],
+  "buildCommand": "pnpm build",
+  "buildPassed": true,
+  "newTool": "forgepilot_get_workspace_change_inspection",
+  "classification": "READ_ONLY_MODEL_CHANGE_INSPECTION",
+  "implementationSummary": [
+    "Added read-only workspace change inspection module and MCP tool registration.",
+    "Implemented structured git status, summary, file entries, classifications, risk hints, bounded patch excerpts, and boundary fields.",
+    "Implemented secret-like file/content safety behavior with redaction and no-content excerpts for known secret files.",
+    "No write-path behavior was added."
+  ],
+  "fileClassificationsImplemented": [
+    "SOURCE_CODE",
+    "TEST",
+    "DOCS",
+    "PACKET",
+    "EVIDENCE_ARTIFACT",
+    "CONFIG",
+    "SERVICE_DEFINITION",
+    "LOCKFILE",
+    "PACKAGE_MANIFEST",
+    "GENERATED_ARTIFACT",
+    "SECRET_LIKE_OR_ENV",
+    "SCRIPT_OR_EXECUTABLE",
+    "MIGRATION",
+    "DATABASE_ARTIFACT",
+    "UNKNOWN"
+  ],
+  "riskHintsImplemented": [
+    "TOUCHES_EXECUTION_PATH",
+    "TOUCHES_APPROVAL_PATH",
+    "TOUCHES_DISABLE_SWITCH_PATH",
+    "TOUCHES_RUNNER_START_PATH",
+    "TOUCHES_TERMINAL_AUTHORITY",
+    "TOUCHES_SERVICE_ENVIRONMENT",
+    "TOUCHES_PACKAGE_OR_DEPENDENCY",
+    "TOUCHES_LOCKFILE",
+    "TOUCHES_DATABASE_OR_MIGRATION",
+    "ADDS_UNTRACKED_FILE",
+    "ADDS_SCRIPT_OR_EXECUTABLE",
+    "SECRET_LIKE_PATTERN_DETECTED",
+    "LARGE_DIFF",
+    "GENERATED_FILE_LIKE_CHANGE",
+    "BINARY_OR_UNREADABLE_FILE",
+    "PATCH_EXCERPT_TRUNCATED"
+  ],
+  "reportCorrections": [
+    "DeepSeek reported bridge commit f45054e, but implementation was uncommitted at report time and was committed as 551d7af.",
+    "Observed module line count is 641 lines, while report described 501 compiled lines. Build passed."
+  ],
+  "boundary": {
+    "readOnlyTool": true,
+    "filesWritten": false,
+    "filesStaged": false,
+    "filesCommittedByTool": false,
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "caveats": [
+    "Tool requires git available on the host.",
+    "Untracked file excerpts require cat available and fall back gracefully.",
+    "File classification uses path/name heuristics aside from secret detection in excerpts.",
+    "Tool requires bridge service/action refresh before it is visible to ChatGPT."
+  ]
+}

@@ -1,0 +1,34 @@
+FP-MCP-208 verification
+
+DeepSeek/OpenCode report checked against live bridge state.
+
+Observed before commit:
+- src/server.ts modified
+- src/workspace-change-inspection.ts untracked
+- pnpm build PASS
+- server.ts imports workspace-change-inspection module
+- server.ts registers forgepilot_get_workspace_change_inspection
+
+Observed module size:
+- src/workspace-change-inspection.ts: 641 lines
+
+Bridge commit:
+- 551d7af Add workspace change inspection tool
+
+Post-commit bridge state:
+- git status --short: clean
+
+Boundary:
+- read-only inspection tool: true
+- files written by tool: false
+- files staged by tool: false
+- files committed by tool: false
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
+
+Expected result:
+- FP_MCP_208_WORKSPACE_CHANGE_INSPECTION_TOOL_IMPLEMENTED
