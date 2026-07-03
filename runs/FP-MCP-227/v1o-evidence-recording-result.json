@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-227",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 95,
+  "run_id": "FP-MCP-227-FRESH-SCOPED-APPROVAL-PREPARATION",
+  "generic_admission_event_id": 95,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_MCP_227_FRESH_SCOPED_APPROVAL_PREPARATION_RECORDED",
+  "artifact_paths": [
+    "packets/FP-MCP-227.md",
+    "runs/FP-MCP-227/fresh-scoped-approval-preparation-record.json",
+    "runs/FP-MCP-227/result-summary.md",
+    "runs/FP-MCP-227/verification.txt"
+  ]
+}
