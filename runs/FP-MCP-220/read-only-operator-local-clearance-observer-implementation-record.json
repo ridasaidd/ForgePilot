@@ -1,0 +1,123 @@
+{
+  "packetId": "FP-MCP-220",
+  "title": "Operator-Local Clearance Observer Implementation",
+  "checkpointType": "READ_ONLY_OPERATOR_LOCAL_CLEARANCE_OBSERVER_IMPLEMENTATION",
+  "claim": "FP_MCP_220_OPERATOR_LOCAL_CLEARANCE_OBSERVER_IMPLEMENTED",
+  "summary": "Record implementation of the FP-MCP-219 layer-3 read-only observer for the operator-local execution clearance artifact. The MCP bridge now has a read-only tool registration for forgepilot_get_operator_local_execution_clearance_status and a module that reads only the gitignored local path .local/forgepilot/execution-clearance.json, validates its shape, scope, expiration, single-use marker, current branch/commit, workspace cleanliness, and fails closed when missing or mismatched. The implementation does not create clearance, mutate clearance, consume approval, clear the disable switch, contact the runner start endpoint, start OpenCode, or run FP-027.",
+  "caveats": [
+    "This checkpoint records implementation result only; the live MCP service may need restart before the new tool is available through ChatGPT tool discovery.",
+    "The observer is read-only; it does not wire the result into execution enablement policy yet.",
+    "The implementation intentionally gitignores .local/ so the operator-created clearance artifact remains local-only.",
+    "No local clearance artifact was created during implementation.",
+    "A direct live-scope smoke invocation was blocked at the OpenAI invocation layer before ForgePilot received it; it was not retried exactly.",
+    "One simplified smoke test initially failed due to tsx top-level await harness behavior; the wrapped rerun passed and is recorded as the meaningful smoke result.",
+    "The current FP-MCP-209 request target commit 4bd1977 is stale relative to current ForgePilot HEAD, so future exact clearance may fail closed unless a fresh request/tuple is created or the target commit policy is deliberately revisited."
+  ],
+  "boundaries": [
+    "implementation creates observer only: true",
+    "execution clearance created: false",
+    "execution clearance mutated: false",
+    "execution clearance deleted: false",
+    "execution authorized: false",
+    "approval consumed: false",
+    "disable switch cleared: false",
+    "runner start endpoint contacted: false",
+    "OpenCode started: false",
+    "FP-027 canary run: false",
+    "standing execution authority created: false"
+  ],
+  "structuredRecord": {
+    "bridgeImplementation": {
+      "branch": "feature/oauth-auth0",
+      "commit": "02ce465",
+      "commitMessage": "Add operator-local clearance observer",
+      "filesChanged": [
+        ".gitignore",
+        "src/server.ts",
+        "src/operator-local-clearance.ts"
+      ],
+      "newTool": "forgepilot_get_operator_local_execution_clearance_status",
+      "classification": "READ_ONLY_OPERATOR_LOCAL_CLEARANCE_OBSERVER"
+    },
+    "implementedBehavior": {
+      "clearancePath": ".local/forgepilot/execution-clearance.json",
+      "clearancePathGitignored": true,
+      "readsOnly": true,
+      "createsClearance": false,
+      "mutatesClearance": false,
+      "deletesClearance": false,
+      "writesFiles": false,
+      "consumesApproval": false,
+      "clearsDisableSwitch": false,
+      "contactsRunnerStartEndpoint": false,
+      "startsOpenCode": false,
+      "runsFp027": false,
+      "validates": [
+        "artifact presence",
+        "gitignored local path",
+        "JSON object shape",
+        "artifactType operator-local-execution-clearance",
+        "CLEARANCE timestamp/id format",
+        "createdAt and expiresAt",
+        "expiration in future",
+        "lifetime <= 15 minutes",
+        "singleUse true",
+        "operator statement present",
+        "operator local confirmation present",
+        "execution packet id",
+        "request id",
+        "approval packet id",
+        "approval id",
+        "model id",
+        "run mode",
+        "target execution commit",
+        "expected branch",
+        "target workspace id",
+        "current branch",
+        "current commit",
+        "target workspace clean",
+        "absence of broad or standing scope flags"
+      ]
+    },
+    "verification": {
+      "pnpmBuild": "PASS",
+      "firstSimplifiedSmoke": "FAILED_HARNESS_TOP_LEVEL_AWAIT_ONLY",
+      "simplifiedSmokeWrapped": "PASS_FAIL_CLOSED",
+      "simplifiedSmokeObserved": {
+        "clearanceArtifactPresent": false,
+        "clearancePathGitignored": true,
+        "eligibleForGuardedAttempt": false,
+        "boundaryReadOnly": true,
+        "approvalConsumed": false,
+        "runnerStartEndpointContacted": false,
+        "targetWorkspaceClean": true
+      },
+      "bridgeCleanAfterCommit": true
+    },
+    "observedBlocks": [
+      {
+        "where": "OpenAI invocation layer",
+        "toolOrCommand": "forgepilot_get_workspace_change_inspection / direct smoke with live identifiers equivalent context",
+        "effect": "Call blocked before ForgePilot received it; not counted as ForgePilot execution or observer failure."
+      }
+    ],
+    "separationFromExecutionPolicy": {
+      "observerImplemented": true,
+      "executionPolicyWiringImplemented": false,
+      "disableSwitchHardCodeChanged": false,
+      "guardedStartChanged": false,
+      "approvalConsumptionChanged": false,
+      "runnerStartChanged": false
+    },
+    "nextRecommendedStep": "Restart/reload MCP bridge service so the new observer tool can be discovered, then validate the observer through the tool surface. Only after that should a separate packet consider wiring local clearance observation into execution enablement policy."
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_220_OPERATOR_LOCAL_CLEARANCE_OBSERVER_IMPLEMENTED"
+}

@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-220",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 88,
+  "run_id": "FP-MCP-220-READ-ONLY-OPERATOR-LOCAL-CLEARANCE-OBSERVER-IMPLEMENTATION",
+  "generic_admission_event_id": 88,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP_MCP_220_OPERATOR_LOCAL_CLEARANCE_OBSERVER_IMPLEMENTED",
+  "artifact_paths": [
+    "packets/FP-MCP-220.md",
+    "runs/FP-MCP-220/read-only-operator-local-clearance-observer-implementation-record.json",
+    "runs/FP-MCP-220/result-summary.md",
+    "runs/FP-MCP-220/verification.txt"
+  ]
+}
