@@ -1,0 +1,28 @@
+FP-MCP-200 verification
+
+DeepSeek/OpenCode report checked against live bridge state.
+
+Observed before commit:
+- src/server.ts modified
+- src/packet-checkpoint.ts untracked
+- pnpm build PASS
+- src/packet-checkpoint.ts line count: 238
+- server.ts imports ./packet-checkpoint.js
+- server.ts registers forgepilot_record_packet_checkpoint and calls recordPacketCheckpoint(input, REPO)
+
+Bridge commit:
+- 9c355e7 Refactor packet checkpoint recorder
+
+Post-commit bridge state:
+- git status --short: clean
+
+Boundary:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started by this result-recording step: false
+- FP-027 canary run: false
+
+Expected result:
+- FP_MCP_200_PACKET_CHECKPOINT_TOOL_REFACTORED_AND_HARDENED

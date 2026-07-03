@@ -1,0 +1,28 @@
+{
+  "packetId": "FP-MCP-200",
+  "result": "FP_MCP_200_PACKET_CHECKPOINT_TOOL_REFACTORED_AND_HARDENED",
+  "bridgeCommit": "9c355e7",
+  "bridgeBranch": "feature/oauth-auth0",
+  "changedFiles": [
+    "src/server.ts",
+    "src/packet-checkpoint.ts"
+  ],
+  "buildCommand": "pnpm build",
+  "buildPassed": true,
+  "implementationSummary": [
+    "Moved checkpoint implementation from src/server.ts into src/packet-checkpoint.ts.",
+    "Kept src/server.ts as registration/glue with REPO parameter pass-through.",
+    "Preserved structured-input checkpoint recording behavior from FP-MCP-199.",
+    "Added fail-closed validation reason codes for empty title, checkpoint type, claim, and summary.",
+    "Preserved post-commit clean-state verification and POST_COMMIT_DIRTY_WORKING_TREE reason code."
+  ],
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "caveats": []
+}
