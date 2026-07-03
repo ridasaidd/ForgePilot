@@ -1,0 +1,20 @@
+{
+  "packet_id": "FP-MCP-184",
+  "result": "FP_MCP_184_DISABLED_REASON_PROVENANCE_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 54,
+  "run_id": "FP-MCP-184-VALIDATE-PREFLIGHT-DISABLED-REASON-PROVENANCE",
+  "generic_admission_event_id": 54,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "VALIDATE_EXECUTION_PREFLIGHT_DISABLED_REASON_PROVENANCE_NORMALIZED_SOURCE_VERIFIED_ENABLEMENT_STILL_NOT_AUTHORIZED",
+  "bridge_commit": "9e01c73",
+  "total_evidence_records": 54,
+  "total_generic_evidence_record_admission_events": 54,
+  "artifact_paths": [
+    "packets/FP-MCP-184.md",
+    "runs/FP-MCP-184/result-summary.md",
+    "runs/FP-MCP-184/source-provenance.json",
+    "runs/FP-MCP-184/verification.txt"
+  ]
+}
