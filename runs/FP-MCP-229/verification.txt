@@ -1,0 +1,15 @@
+FP-MCP-229 verification
+
+Checkpoint type:
+- TOOL_IMPLEMENTATION_RESULT
+
+Claim:
+- FP_MCP_229_ONE_SHOT_TUPLE_BOUND_START_CLEARANCE_GATE_IMPLEMENTED
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
