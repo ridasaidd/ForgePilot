@@ -1,0 +1,36 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T123056745Z-6f43c838",
+  "recordedAt": "2026-07-04T12:30:56.745Z",
+  "packetId": "FP-MCP-282",
+  "workflowId": "FP-MCP-282-operator-chat-approval-evidence",
+  "phase": "FAIL_CLOSED_VALIDATION",
+  "stepIndex": 1,
+  "intendedAction": "Record that operator chat approval was observed but no approval artifact was created.",
+  "intendedToolName": "approval evidence recorders",
+  "actualToolName": "mixed blocked and fail-closed attempts",
+  "toolMatchedIntent": false,
+  "approvalLiteral": null,
+  "workflowAdvanced": true,
+  "deviationType": "RECOVERY_ACTION_REQUIRED",
+  "sideEffects": [],
+  "notes": [
+    "Operator chat approval observed for scoped FP-MCP-276 request.",
+    "No validation-usable approval artifact was created.",
+    "One compact real-approval attempt reached ForgePilot and failed closed because the approval text path was incompatible with the current scope.",
+    "Structured approval retry was platform-blocked.",
+    "No clearance, consumption, disable change, runner contact, or OpenCode action occurred."
+  ],
+  "recoveryAction": "Record final hold and fix or replace approval evidence recorder before clearance preview.",
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}
