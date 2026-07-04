@@ -83,6 +83,33 @@ V1 is not complete merely because individual components exist.
 
 V1 is complete when a new operator or agent can inspect the repository and supported query surfaces and reconstruct what happened without relying on a previous ChatGPT session.
 
+
+## Current Architecture-Level Currency
+
+The latest architecture-level reconciliation is:
+
+- `FP-MCP-289` — Auditor Architectural Reconciliation and Evidence Accounting
+
+Current direct OpenCode HTTP status:
+
+- Direct HTTP is provisional for design/canary use only.
+- Direct HTTP is not accepted as safety-equivalent to the guarded-runner FP-027 path.
+- Session deletion is not admitted as equivalent to a proven abort primitive.
+- The keyword-like prompt boundary is treated as a soft heuristic until structurally proven.
+- FP-027 remains open and unsatisfied.
+
+Required named decision before direct HTTP can carry implementation execution authority:
+
+```text
+Decide whether direct HTTP is being pursued toward eventual FP-027-equivalent safety parity, or whether it is permanently narrower-scoped as a design/canary/planning tool that never carries execution authority for real code edits.
+```
+
+Master-plan currency rule:
+
+```text
+After every architecture-level packet, verify whether docs/forgepilot-master-plan.md and this progress checklist need an orientation update. Do not let roadmap text compete with admitted ledger evidence.
+```
+
 ## Current FP-027 Steering Checklist
 
 FP-027 guarded-runner-start steering is now tracked by the admitted FP-MCP-277 checklist artifacts:

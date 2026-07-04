@@ -425,6 +425,24 @@ Current forbidden actions before missing gates pass:
 - approval consumption,
 - disable-switch change before explicit gate.
 
+
+## 15a. Direct OpenCode HTTP provisional status
+
+FP-MCP-289 reconciles the FP-MCP-287/288 direct-HTTP pivot with the existing FP-027 guarded-runner safety architecture.
+
+Direct OpenCode HTTP is currently a **provisional design/canary path only**. It has proven authenticated reachability, session creation, async prompt submission, assistant-role completion detection, and cleanup for bounded canary/design runs. It has **not** proven safety equivalence with the guarded-runner FP-027 path.
+
+Do not treat session deletion as equivalent to a proven abort primitive. Direct HTTP has not yet proven process-tree/state evidence, live abort-readiness, no-retry/no-chaining discipline, approval-consumption coupling, post-start evidence, or FP-027 admission criteria.
+
+The prompt boundary that blocked operation-like wording is a useful fail-closed observation, but it is a soft heuristic until structurally proven.
+
+Before any direct-HTTP path may carry implementation execution authority for real code edits, ForgePilot must record a named decision choosing one of these paths:
+
+1. pursue direct HTTP toward eventual FP-027-equivalent safety parity, with explicit proofs for abort semantics and boundary evidence; or
+2. keep direct HTTP permanently narrower-scoped as a design/canary/planning tool that does not carry execution authority for real code edits.
+
+Until that decision is recorded and admitted, direct HTTP may inform planning only. It must not be used to bypass the FP-027 guarded-runner checklist or to declare FP-027 satisfied by resemblance.
+
 ## 16. Conditions before routing or automation
 
 Before routing or automation can influence decisions, ForgePilot must have:
