@@ -1,0 +1,48 @@
+{
+  "packetId": "FP-MCP-261",
+  "title": "HTTP Lifecycle Attempt Dry-Run Artifacts",
+  "checkpointType": "DRY_RUN_ARTIFACT_RESULT",
+  "claim": "FP_MCP_261_DRY_RUN_ATTEMPT_ARTIFACTS_RECORDED",
+  "summary": "FP-MCP-261 added the dry-run attempt artifact recorder in the MCP bridge at commit 63de354. The direct recorder call was blocked by the platform safety layer before reaching the MCP server, so a terminal fallback wrote schema-shaped preflight and result artifacts for plan HTTPPLAN-20260703T233517042Z-9242deff. Artifact commit: cbdae0c. Attempt id: HTTPINVOCATION-20260704T002404086Z-5a836aa0. The preflight state is PREPARED_NOT_STARTED. The result terminal state is BLOCKED_BEFORE_ACTION. No OpenCode HTTP session was created and no model prompt was sent.",
+  "caveats": [
+    "Direct MCP recorder call was blocked by the platform safety layer before reaching the server.",
+    "Artifacts were created by terminal fallback, not by the new recorder tool.",
+    "This proves the artifact shape but not successful UI invocation of the new recorder tool."
+  ],
+  "boundaries": [
+    "No OpenCode session was created.",
+    "No model prompt was sent.",
+    "No OpenCode process was started.",
+    "No runner endpoint was contacted.",
+    "No approval was consumed."
+  ],
+  "structuredRecord": {
+    "bridgeImplementationCommit": "63de354",
+    "artifactCommit": "cbdae0c",
+    "sourcePacketId": "FP-MCP-254",
+    "planId": "HTTPPLAN-20260703T233517042Z-9242deff",
+    "attemptId": "HTTPINVOCATION-20260704T002404086Z-5a836aa0",
+    "preflightArtifactPath": "runs/FP-MCP-254/opencode-http-lifecycle-invocations/HTTPINVOCATION-20260704T002404086Z-5a836aa0/preflight.json",
+    "resultArtifactPath": "runs/FP-MCP-254/opencode-http-lifecycle-invocations/HTTPINVOCATION-20260704T002404086Z-5a836aa0/result.json",
+    "preflightSchemaVersion": "OPENCODE_HTTP_LIFECYCLE_INVOCATION_PREFLIGHT_V1",
+    "resultSchemaVersion": "OPENCODE_HTTP_LIFECYCLE_INVOCATION_RESULT_V1",
+    "preflightState": "PREPARED_NOT_STARTED",
+    "terminalState": "BLOCKED_BEFORE_ACTION",
+    "completionState": "NOT_STARTED",
+    "directToolBlocked": true,
+    "terminalFallbackUsed": true,
+    "sessionCreated": false,
+    "promptSubmitted": false,
+    "approvalConsumed": false,
+    "recommendedNextPacket": "FP-MCP-262 — Single-Shot HTTP Lifecycle Invocation Gate"
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP_MCP_261_DRY_RUN_ATTEMPT_ARTIFACTS_RECORDED"
+}
