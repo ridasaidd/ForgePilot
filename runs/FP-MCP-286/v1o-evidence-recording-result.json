@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-286",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 163,
+  "run_id": "FP-MCP-286-SESSION-HANDOFF",
+  "generic_admission_event_id": 163,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP-MCP-286 saves the current approval-validation state for continuation in a fresh ChatGPT session: approval evidence exists and is committed, the recorder fix and validator fix are committed in the MCP bridge, but the live validator still returned APPROVAL_TEXT_INVALID in this session, likely due to tool/runtime staleness.",
+  "artifact_paths": [
+    "packets/FP-MCP-286.md",
+    "runs/FP-MCP-286/session-handoff-record.json",
+    "runs/FP-MCP-286/result-summary.md",
+    "runs/FP-MCP-286/verification.txt"
+  ]
+}

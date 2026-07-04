@@ -1,0 +1,15 @@
+FP-MCP-286 verification
+
+Checkpoint type:
+- SESSION_HANDOFF
+
+Claim:
+- FP-MCP-286 saves the current approval-validation state for continuation in a fresh ChatGPT session: approval evidence exists and is committed, the recorder fix and validator fix are committed in the MCP bridge, but the live validator still returned APPROVAL_TEXT_INVALID in this session, likely due to tool/runtime staleness.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
