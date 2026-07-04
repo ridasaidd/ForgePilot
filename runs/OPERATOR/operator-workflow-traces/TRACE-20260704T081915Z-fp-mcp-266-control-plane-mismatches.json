@@ -1,0 +1,86 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V0_MANUAL",
+  "workflowId": "FP-MCP-266-session-orientation",
+  "packetId": "OPERATOR",
+  "recordedAtSource": "terminal-date-utc",
+  "phase": "ORIENTATION",
+  "workflowAdvanced": false,
+  "summary": "Manual trace recorded after declared intended tool/action diverged from actual tool calls during FP-MCP-266 orientation.",
+  "events": [
+    {
+      "stepIndex": 1,
+      "intendedAction": "Verify MCP bridge branch, HEAD, and clean working tree with read-only git inspection.",
+      "intendedToolName": "forgepilot_execute_terminal_command",
+      "actualToolName": "forgepilot_execute_terminal_command",
+      "toolMatchedIntent": true,
+      "declaredExpectedSideEffects": [
+        "read_only_git_inspection"
+      ],
+      "actualObservedSideEffects": [
+        "read_only_git_inspection",
+        "terminal_request_artifact_written",
+        "terminal_result_artifact_written",
+        "terminal_stdout_log_written"
+      ],
+      "deviationType": "UNEXPECTED_SIDE_EFFECT",
+      "notes": "The command was read-only, but the MCP terminal wrapper intentionally wrote OPERATOR terminal-command evidence artifacts. Future side-effect declarations must include wrapper evidence writes."
+    },
+    {
+      "stepIndex": 2,
+      "intendedAction": "Write manual operator workflow trace for the side-effect mismatch.",
+      "intendedToolName": "forgepilot_execute_terminal_command",
+      "actualToolName": "api_tool.list_resources",
+      "toolMatchedIntent": false,
+      "declaredExpectedSideEffects": [
+        "operator_workflow_trace_written",
+        "terminal_request_artifact_written",
+        "terminal_result_artifact_written",
+        "terminal_stdout_log_written"
+      ],
+      "actualObservedSideEffects": [
+        "tool_surface_discovery_only"
+      ],
+      "deviationType": "WRONG_ADJACENT_TOOL_CALLED",
+      "notes": "The declared tool/action and actual tool call diverged. No live OpenCode action occurred."
+    },
+    {
+      "stepIndex": 3,
+      "intendedAction": "Write manual operator workflow trace after noticing the second mismatch.",
+      "intendedToolName": "forgepilot_execute_terminal_command",
+      "actualToolName": "api_tool.list_resources",
+      "toolMatchedIntent": false,
+      "declaredExpectedSideEffects": [
+        "operator_workflow_trace_written",
+        "terminal_request_artifact_written",
+        "terminal_result_artifact_written",
+        "terminal_stdout_log_written"
+      ],
+      "actualObservedSideEffects": [
+        "tool_surface_discovery_only"
+      ],
+      "deviationType": "WRONG_ADJACENT_TOOL_CALLED",
+      "notes": "A second discovery call occurred after stating the next call would be a telemetry write. This supports FP-MCP-266's premise that intended-vs-actual control-plane tracing is needed."
+    }
+  ],
+  "deviationCounts": {
+    "UNEXPECTED_SIDE_EFFECT": 1,
+    "WRONG_ADJACENT_TOOL_CALLED": 2
+  },
+  "sideEffectsObserved": [
+    "terminal_request_artifact_written",
+    "terminal_result_artifact_written",
+    "terminal_stdout_log_written",
+    "tool_surface_discovery_only"
+  ],
+  "safetyBoundaries": {
+    "opencodeStarted": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "sessionCreated": false,
+    "promptSubmitted": false,
+    "secretsRead": false
+  },
+  "recoveryActionRequired": true,
+  "recommendedRecovery": "Do not implement FP-MCP-266 in the same rapid sequence. First verify repo state, then continue with single explicit tool calls whose expected side effects include terminal-wrapper evidence artifacts.",
+  "recordedAt": "2026-07-04T08:19:15Z"
+}

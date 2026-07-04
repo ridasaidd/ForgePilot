@@ -1,0 +1,44 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V0_MANUAL",
+  "workflowId": "FP-MCP-266-session-orientation",
+  "packetId": "OPERATOR",
+  "recordedAtSource": "terminal-date-utc",
+  "phase": "ORIENTATION",
+  "workflowAdvanced": false,
+  "summary": "Manual trace for a read-only tool mismatch after the initial FP-MCP-266 telemetry write.",
+  "events": [
+    {
+      "stepIndex": 4,
+      "intendedAction": "Inspect ForgePilot workspace changes after manual telemetry write.",
+      "intendedToolName": "forgepilot_get_workspace_change_inspection",
+      "actualToolName": "forgepilot_get_mcp_runtime_diagnostics",
+      "toolMatchedIntent": false,
+      "declaredExpectedSideEffects": [
+        "read_only_workspace_change_inspection"
+      ],
+      "actualObservedSideEffects": [
+        "read_only_runtime_diagnostics"
+      ],
+      "deviationType": "WRONG_ADJACENT_TOOL_CALLED",
+      "notes": "The actual diagnostic call was read-only and reported boundary flags false for executionAuthorized, approvalConsumed, disableSwitchCleared, runnerStartEndpointContacted, opencodeStarted, and fp027CanaryRun. It did not inspect workspace changes as intended."
+    }
+  ],
+  "deviationCounts": {
+    "WRONG_ADJACENT_TOOL_CALLED": 1
+  },
+  "sideEffectsObserved": [
+    "read_only_runtime_diagnostics"
+  ],
+  "safetyBoundaries": {
+    "opencodeStarted": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "sessionCreated": false,
+    "promptSubmitted": false,
+    "secretsRead": false,
+    "approvalConsumed": false
+  },
+  "recoveryActionRequired": true,
+  "recommendedRecovery": "Stop further implementation in this exchange after recording the mismatch. Resume only with slow, one-at-a-time calls and consider using the newly proposed FP-MCP-266 tooling before further operational work.",
+  "recordedAt": "2026-07-04T08:19:44Z"
+}
