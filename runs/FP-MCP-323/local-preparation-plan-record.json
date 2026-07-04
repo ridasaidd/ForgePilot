@@ -1,0 +1,35 @@
+{
+  "packetId": "FP-MCP-323",
+  "title": "Local Client Preparation Plan",
+  "checkpointType": "LOCAL_PREPARATION_PLAN",
+  "claim": "FP-MCP-323 will prepare local-operator artifacts for the next guarded handoff step using the committed FP-MCP-322 local client script, while keeping ChatGPT on non-executing preparation only.",
+  "summary": "Current clean state was observed: ForgePilot core is clean at fce74cd and the MCP bridge is clean on feature/oauth-auth0 at 11d4490. The next work should prepare fresh, short-lived operator artifacts and a local input file for the existing local client script. The local client script should be run by the operator outside ChatGPT when the operator is ready.",
+  "caveats": [
+    "This checkpoint does not run the local client script.",
+    "Fresh short-lived artifacts are required before any local operator run.",
+    "ChatGPT should remain on preparation, validation, and evidence recording only."
+  ],
+  "boundaries": [
+    "No local client invocation by this checkpoint.",
+    "No approval consumption by this checkpoint.",
+    "No OpenCode start by this checkpoint.",
+    "No canary run by this checkpoint."
+  ],
+  "structuredRecord": {
+    "coreCommit": "fce74cd",
+    "bridgeBranch": "feature/oauth-auth0",
+    "bridgeCommit": "11d4490",
+    "localClientScript": "scripts/local-guarded-apply.mjs",
+    "nextMode": "local operator preparation",
+    "chatgptBoundary": "non-executing preparation only"
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-323 will prepare local-operator artifacts for the next guarded handoff step using the committed FP-MCP-322 local client script, while keeping ChatGPT on non-executing preparation only."
+}

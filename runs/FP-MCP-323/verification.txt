@@ -1,0 +1,15 @@
+FP-MCP-323 verification
+
+Checkpoint type:
+- LOCAL_PREPARATION_PLAN
+
+Claim:
+- FP-MCP-323 will prepare local-operator artifacts for the next guarded handoff step using the committed FP-MCP-322 local client script, while keeping ChatGPT on non-executing preparation only.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-323",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 205,
+  "run_id": "FP-MCP-323-LOCAL-PREPARATION-PLAN",
+  "generic_admission_event_id": 205,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP-MCP-323 will prepare local-operator artifacts for the next guarded handoff step using the committed FP-MCP-322 local client script, while keeping ChatGPT on non-executing preparation only.",
+  "artifact_paths": [
+    "packets/FP-MCP-323.md",
+    "runs/FP-MCP-323/local-preparation-plan-record.json",
+    "runs/FP-MCP-323/result-summary.md",
+    "runs/FP-MCP-323/verification.txt"
+  ]
+}
