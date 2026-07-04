@@ -1,0 +1,15 @@
+FP-MCP-305 verification
+
+Checkpoint type:
+- TOOL_IMPLEMENTATION_RESULT
+
+Claim:
+- FP-MCP-305 implemented the MCP bridge scoped execution enablement tool surface: preview, create, and status tools for a short-lived exact-tuple local enablement artifact. The implementation is committed in the MCP bridge at 36c3d5a, tests pass, and no guarded run was attempted.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
