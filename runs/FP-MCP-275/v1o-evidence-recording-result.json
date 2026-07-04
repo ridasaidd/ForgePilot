@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-275",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 149,
+  "run_id": "FP-MCP-275-READINESS-REVIEW-RESULT",
+  "generic_admission_event_id": 149,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "Guarded runner start remains blocked after FP-MCP-274: the preview tool is live, but execution is not ready because global execution disable is active, runner/OpenCode execution are disabled, and no fresh request, approval, clearance, or preflight tuple exists for a future guarded start.",
+  "artifact_paths": [
+    "packets/FP-MCP-275.md",
+    "runs/FP-MCP-275/readiness-review-result-record.json",
+    "runs/FP-MCP-275/result-summary.md",
+    "runs/FP-MCP-275/verification.txt"
+  ]
+}

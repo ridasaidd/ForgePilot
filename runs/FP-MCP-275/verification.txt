@@ -1,0 +1,15 @@
+FP-MCP-275 verification
+
+Checkpoint type:
+- READINESS_REVIEW_RESULT
+
+Claim:
+- Guarded runner start remains blocked after FP-MCP-274: the preview tool is live, but execution is not ready because global execution disable is active, runner/OpenCode execution are disabled, and no fresh request, approval, clearance, or preflight tuple exists for a future guarded start.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
