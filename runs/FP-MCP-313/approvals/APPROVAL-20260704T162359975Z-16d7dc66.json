@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "FP-MCP-067",
+  "boundaryVersion": "FP-MCP-067",
+  "artifactType": "human-approval-evidence",
+  "artifactVersion": "human-approval-evidence-v1",
+  "approvalId": "APPROVAL-20260704T162359975Z-16d7dc66",
+  "approvalKind": "EXECUTION_ENABLEMENT",
+  "approvedAction": "ALLOW_ONE_GUARDED_REMOTE_RUNNER_EXECUTION_ATTEMPT",
+  "approvalState": "RECORDED",
+  "fixture": false,
+  "dryRun": false,
+  "humanApprovalRecorded": true,
+  "approvalUsableForExecution": false,
+  "approvalUsabilityDerivedByRecorder": false,
+  "approvalUsabilityRequiresValidation": true,
+  "scope": {
+    "packetId": "FP-MCP-295",
+    "requestId": "REQ-20260704T142232816Z-a82a42b6",
+    "modelId": "deepseek-v4-pro-high",
+    "runMode": "DESIGN_ONLY",
+    "repoCommit": "5c0ab8b",
+    "branch": "main"
+  },
+  "canonicalApprovalText": "I approve one guarded ForgePilot remote-runner start attempt for packet FP-MCP-295, request REQ-20260704T142232816Z-a82a42b6, model deepseek-v4-pro-high, run mode DESIGN_ONLY, repository commit 5c0ab8b, branch main. This approval is single-use, expires at 2026-07-04T16:32:30.000Z, and does not override the global disable switch or any other ForgePilot safety gate.",
+  "approvalText": "I approve this exact scoped FP-MCP-295 request artifact for one minimal guarded canary attempt only: request REQ-20260704T142232816Z-a82a42b6, model deepseek-v4-pro-high, run mode DESIGN_ONLY, branch main, execution base commit 5c0ab8b. This approval is for continuation through the enforced next-gate executor only. It does not authorize direct HTTP execution authority, source edits, shell commands, git operations, retries, chaining, runner start before all gates, approval consumption before the guarded start transition, or broad/standing execution scope.",
+  "approvalTextCanonical": false,
+  "approvalTextExplicit": true,
+  "approvalSemanticSource": "EXPLICIT_OPERATOR_CHAT_STATEMENT",
+  "approvalRecorderPacketId": "FP-MCP-313",
+  "approvedBy": {
+    "operatorId": "human-operator",
+    "operatorHandle": "ridasaidd",
+    "operatorEmailHash": null
+  },
+  "createdAt": "2026-07-04T16:23:59.943Z",
+  "expiresAt": "2026-07-04T16:32:30.000Z",
+  "singleUse": true,
+  "consumed": false,
+  "consumedAt": null,
+  "revoked": false,
+  "revokedAt": null,
+  "quarantined": false,
+  "quarantinedAt": null,
+  "preconditions": {
+    "requestArtifactValidated": true,
+    "preStartEvidenceValidated": true,
+    "stateSnapshotValidated": true,
+    "humanApprovalGateRequired": true,
+    "globalDisableSwitchNotOverridden": true
+  },
+  "secretBoundary": {
+    "containsSecrets": false,
+    "secretMaterialRedacted": true
+  },
+  "createdByTool": "forgepilot_record_real_human_approval_evidence",
+  "createdByBoundaryVersion": "FP-MCP-067",
+  "recordedAt": "2026-07-04T16:23:59.943Z",
+  "executionAllowedNow": false,
+  "executionStarted": false,
+  "startEndpointContacted": false,
+  "opencodeStarted": false,
+  "approvalConsumed": false,
+  "notes": [
+    "Enforced executor returned RECORD_APPROVAL because FP-MCP-310 approval expired.",
+    "Current ForgePilot HEAD before approval creation: 94d25c4.",
+    "Canary task remains docs/forgepilot-master-plan.md structure summary only."
+  ]
+}
