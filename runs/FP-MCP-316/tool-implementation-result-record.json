@@ -1,0 +1,53 @@
+{
+  "packetId": "FP-MCP-316",
+  "title": "Guarded Canary Scoped Enablement Executor Implementation Result",
+  "checkpointType": "TOOL_IMPLEMENTATION_RESULT",
+  "claim": "FP-MCP-316 was implemented in the MCP bridge by extending forgepilot_apply_guarded_canary_next_gate to support the sequencer-selected scoped enablement preview/create gate only, while preserving the stop-before-runner-start boundary.",
+  "summary": "The MCP bridge implementation on branch feature/oauth-auth0 added one executor branch for forgepilot_preview_operator_local_scoped_execution_enablement_review_manifest. The branch builds typed scoped enablement preview/create arguments from sequencer output, previews the scoped enablement review manifest, optionally applies the follow-on scoped enablement creation when applyPreviewFollowOn is true and preview has no reasons, and reports PREVIEW_AND_CREATE_SCOPED_ENABLEMENT boundary fields. No runner-start path, approval consumption, OpenCode start, or canary execution path was added.",
+  "caveats": [
+    "The running MCP service may need to be rebuilt/restarted before the new executor branch is live.",
+    "This implementation result records code and verification only; it does not create a fresh approval, clearance, or scoped enablement.",
+    "A live FP-MCP-316 functional test still requires fresh approval, fresh clearance, fresh runner capability observation, and then invoking only forgepilot_apply_guarded_canary_next_gate."
+  ],
+  "boundaries": [
+    "No runner start endpoint contact was implemented or performed.",
+    "No approval consumption was implemented or performed.",
+    "No OpenCode start was implemented or performed.",
+    "No canary execution was implemented or performed.",
+    "Adjacent manual enablement tools remain outside the default narrowed guarded surface; the executor routes through the sequencer-selected gate."
+  ],
+  "structuredRecord": {
+    "bridgeRepo": "/home/ridasaidd/forgepilot-chatgpt-mcp",
+    "bridgeBranch": "feature/oauth-auth0",
+    "bridgeBaseCommit": "0c2d3cb",
+    "bridgeImplementationCommit": "c463264",
+    "bridgeImplementationCommitFull": "c4632647cc713056ab77ed38c397a4789cead470",
+    "bridgeCommitMessage": "Implement FP-MCP-316 scoped enablement executor gate",
+    "modifiedFiles": [
+      "src/guarded-canary-gate-executor.ts"
+    ],
+    "changeSummary": [
+      "Added typedScopedEnablementArgs.",
+      "Added typedScopedEnablementCreateArgs.",
+      "Added executor support for forgepilot_preview_operator_local_scoped_execution_enablement_review_manifest.",
+      "Added follow-on call to createOperatorLocalScopedExecutionEnablement when applyPreviewFollowOn is true and preview succeeds.",
+      "Preserved unsupported-gate fallback for later runner-start gates."
+    ],
+    "verification": {
+      "typescriptNoEmit": "PASS",
+      "packetIdLint": "PASS",
+      "packetIdLintOutput": "Hardcoded packet-id lint passed: 169 observed source references matched allowlist.",
+      "bridgePostCommitClean": true
+    },
+    "expectedNextTest": "After rebuilding/restarting the MCP service, use fresh approval and fresh clearance for the FP-MCP-295 tuple, then call only forgepilot_apply_guarded_canary_next_gate with applyPreviewFollowOn=true and enablementExpiresInMinutes=5. Expected stop point: scoped enablement created; no runner start."
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-316 was implemented in the MCP bridge by extending forgepilot_apply_guarded_canary_next_gate to support the sequencer-selected scoped enablement preview/create gate only, while preserving the stop-before-runner-start boundary."
+}

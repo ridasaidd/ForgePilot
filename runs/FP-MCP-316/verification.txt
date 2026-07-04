@@ -1,10 +1,10 @@
 FP-MCP-316 verification
 
 Checkpoint type:
-- CLEAN_STATE_NOTE
+- TOOL_IMPLEMENTATION_RESULT
 
 Claim:
-- The controlled checkpoint recorder reported empty preGitStatusShort and postGitStatusShort while committing FP-MCP-316 final evidence observations, preserving the evidence-only boundary and leaving no reported tracked or untracked residue from those recorder operations.
+- FP-MCP-316 was implemented in the MCP bridge by extending forgepilot_apply_guarded_canary_next_gate to support the sequencer-selected scoped enablement preview/create gate only, while preserving the stop-before-runner-start boundary.
 
 Boundaries:
 - execution authorized: false
