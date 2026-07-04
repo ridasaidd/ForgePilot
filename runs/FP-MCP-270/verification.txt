@@ -1,0 +1,15 @@
+FP-MCP-270 verification
+
+Checkpoint type:
+- FEASIBILITY_VERIFICATION_RESULT
+
+Claim:
+- FP-MCP-270 confirms that FP-MCP-269's popup human-attention requirements are not yet proven satisfied by the current ChatGPT/MCP approval surface: the clearance tool contract exposes many required fields, but the assistant/MCP server cannot directly verify the actual popup rendering or friction, so FP-027 planning must not assume compliance without a later implementation/verification or explicit risk exception.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
