@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-291",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 168,
+  "run_id": "FP-MCP-291-ARCHITECTURE-SCOPE-DECISION",
+  "generic_admission_event_id": 168,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP-MCP-291 chooses the lower-risk Option B: direct OpenCode HTTP is permanently narrower-scoped as a design, canary, endpoint-shape, assistant-completion, and planning tool, and must not carry implementation execution authority for real workspace-changing code edits; real workspace-changing work remains assigned to the guarded/worker path and its safety gates.",
+  "artifact_paths": [
+    "packets/FP-MCP-291.md",
+    "runs/FP-MCP-291/architecture-scope-decision-record.json",
+    "runs/FP-MCP-291/result-summary.md",
+    "runs/FP-MCP-291/verification.txt"
+  ]
+}

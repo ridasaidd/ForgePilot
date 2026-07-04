@@ -1,0 +1,74 @@
+{
+  "packetId": "FP-MCP-291",
+  "title": "Direct OpenCode HTTP Scope Decision",
+  "checkpointType": "ARCHITECTURE_SCOPE_DECISION",
+  "claim": "FP-MCP-291 chooses the lower-risk Option B: direct OpenCode HTTP is permanently narrower-scoped as a design, canary, endpoint-shape, assistant-completion, and planning tool, and must not carry implementation execution authority for real workspace-changing code edits; real workspace-changing work remains assigned to the guarded/worker path and its safety gates.",
+  "summary": "FP-MCP-291 resolves the fork left open by FP-MCP-289 and FP-MCP-290. The decision rejects maintaining two independent proven-safe execution paths indefinitely. Direct HTTP remains useful for bounded planning and canary interactions, but it is not safety-equivalent to FP-027 and must not be used to satisfy FP-027 by resemblance. The abort question for direct HTTP is closed by scope rather than by equivalence: session deletion remains not admitted as a proven abort primitive, but no direct-HTTP abort primitive is required while direct HTTP remains outside real workspace-changing work. Any future attempt to expand direct HTTP beyond this scope is an architecture reversal requiring a new auditor-reviewed packet and missing safety-property proofs before scope changes. Steering docs were updated in commit dc6b6d3. No implementation, execution, approval consumption, disable switch change, OpenCode start, runner-start contact, or server.ts refactor is authorized by this packet.",
+  "caveats": [
+    "This decision does not prove or implement direct-HTTP abort semantics.",
+    "This decision does not weaken FP-027; FP-027 remains open and unsatisfied.",
+    "This decision forecloses incremental direct-HTTP capability creep: expansion requires a new architecture-reversal packet.",
+    "Direct HTTP can still be used for bounded design/canary/planning interactions that do not perform real workspace-changing work.",
+    "The server.ts refactor must use the accepted guarded/worker path or human/GPT manual maintenance under explicit packet boundaries, not direct-HTTP execution authority."
+  ],
+  "boundaries": [
+    "decision-only packet",
+    "no implementation changes beyond steering documentation",
+    "no MCP bridge source changes",
+    "no OpenCode session created",
+    "no prompt submitted",
+    "no runner start endpoint contact",
+    "no approval consumed",
+    "no disable switch cleared",
+    "no FP-027 canary run",
+    "no server.ts refactor"
+  ],
+  "structuredRecord": {
+    "selectedOption": "OPTION_B_PERMANENTLY_NARROW_DIRECT_HTTP",
+    "rejectedOption": "OPTION_A_PARITY_PATH_FOR_DIRECT_HTTP",
+    "decisionRationale": [
+      "lower long-term safety-maintenance burden",
+      "avoids maintaining two parallel proven-safe run paths",
+      "preserves guarded/worker path as the code-edit execution authority path",
+      "keeps direct HTTP useful without expanding its risk surface"
+    ],
+    "directHttpAllowedUses": [
+      "bounded design memos",
+      "canaries",
+      "endpoint-shape checks",
+      "assistant-completion probes",
+      "lifecycle-shape probes",
+      "planning interactions without real workspace-changing work"
+    ],
+    "directHttpForbiddenUses": [
+      "real workspace-changing code edits",
+      "implementation execution authority",
+      "satisfying FP-027 by resemblance",
+      "bypassing guarded/worker safety gates",
+      "quiet capability accumulation without architecture reversal"
+    ],
+    "abortPrimitiveDecision": {
+      "directHttpAbortPrimitiveRequired": false,
+      "reason": "closed by narrowed scope, not by equivalence",
+      "sessionDeleteEquivalentToAbort": false,
+      "futureExpansionRequirement": "any future direct-HTTP execution-authority proposal must prove or build abort-equivalent semantics before scope expansion"
+    },
+    "fp027Status": "OPEN_UNSATISFIED",
+    "docsCommit": "dc6b6d3",
+    "updatedDocs": [
+      "docs/forgepilot-master-plan.md",
+      "docs/forgepilot-progress-checklist.md"
+    ],
+    "refactorAllowedViaDirectHttp": false,
+    "nextEligibleRefactorPath": "guarded/worker path or explicit human/GPT manual maintenance packet, not direct-HTTP execution authority"
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-291 chooses the lower-risk Option B: direct OpenCode HTTP is permanently narrower-scoped as a design, canary, endpoint-shape, assistant-completion, and planning tool, and must not carry implementation execution authority for real workspace-changing code edits; real workspace-changing work remains assigned to the guarded/worker path and its safety gates."
+}

@@ -1,0 +1,15 @@
+FP-MCP-291 verification
+
+Checkpoint type:
+- ARCHITECTURE_SCOPE_DECISION
+
+Claim:
+- FP-MCP-291 chooses the lower-risk Option B: direct OpenCode HTTP is permanently narrower-scoped as a design, canary, endpoint-shape, assistant-completion, and planning tool, and must not carry implementation execution authority for real workspace-changing code edits; real workspace-changing work remains assigned to the guarded/worker path and its safety gates.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
