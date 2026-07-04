@@ -1,10 +1,10 @@
 FP-MCP-282 verification
 
 Checkpoint type:
-- APPROVAL_RECORDING_BOUNDARY
+- APPROVAL_ARTIFACT_BLOCKED_RESULT
 
 Claim:
-- FP-MCP-282 opens a scoped approval-evidence packet for the operator's chat approval of the FP-MCP-276 request; this boundary checkpoint does not itself record approval or authorize execution.
+- FP-MCP-282 records that the operator approved the scoped FP-MCP-276 request in chat, but no validation-usable approval artifact was created; the request remains blocked before clearance preview.
 
 Boundaries:
 - execution authorized: false
