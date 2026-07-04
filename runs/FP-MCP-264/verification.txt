@@ -1,0 +1,15 @@
+FP-MCP-264 verification
+
+Checkpoint type:
+- FAIL_CLOSED_VALIDATION_RESULT
+
+Claim:
+- The surfaced OpenCode HTTP lifecycle single-shot gate fails closed when caller-supplied prompt and expected text hashes do not match the validated lifecycle plan, without creating an attempt artifact, creating a session, submitting a prompt, invoking the lifecycle, contacting the runner start endpoint, starting OpenCode, or consuming approval.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
