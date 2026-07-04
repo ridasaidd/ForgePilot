@@ -1,0 +1,36 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T090917060Z-5aaf69ea",
+  "recordedAt": "2026-07-04T09:09:17.060Z",
+  "packetId": "FP-MCP-267",
+  "workflowId": "FP-MCP-267-legacy-trace-normalization",
+  "phase": "ORIENTATION",
+  "stepIndex": 1,
+  "intendedAction": "Begin FP-MCP-267 as a non-executing follow-up to normalize legacy/manual operator workflow traces in the summarizer.",
+  "intendedToolName": "forgepilot_record_operator_workflow_trace",
+  "actualToolName": "forgepilot_record_operator_workflow_trace",
+  "toolMatchedIntent": true,
+  "approvalLiteral": null,
+  "workflowAdvanced": true,
+  "deviationType": "NONE",
+  "sideEffects": [
+    "artifact_written"
+  ],
+  "notes": [
+    "FP-MCP-266 surfaced and executed successfully.",
+    "Observed gap: earlier manual V0 OPERATOR traces were found by the summarizer but classified as UNKNOWN because their data shape predates OPERATOR_WORKFLOW_TRACE_V1.",
+    "FP-MCP-267 will avoid live OpenCode actions and focus on summarizer normalization/compatibility."
+  ],
+  "recoveryAction": "No recovery required.",
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}
