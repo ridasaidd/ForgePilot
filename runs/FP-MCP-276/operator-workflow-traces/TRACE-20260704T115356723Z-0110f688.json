@@ -1,0 +1,37 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T115356723Z-0110f688",
+  "recordedAt": "2026-07-04T11:53:56.723Z",
+  "packetId": "FP-MCP-276",
+  "workflowId": "FP-MCP-276-fresh-scoped-tuple-preparation",
+  "phase": "ORIENTATION",
+  "stepIndex": 1,
+  "intendedAction": "Begin fresh scoped guarded-start tuple preparation without treating this as human approval or execution authorization.",
+  "intendedToolName": "forgepilot_record_operator_workflow_trace",
+  "actualToolName": "forgepilot_record_operator_workflow_trace",
+  "toolMatchedIntent": true,
+  "approvalLiteral": null,
+  "workflowAdvanced": true,
+  "deviationType": "NONE",
+  "sideEffects": [
+    "artifact_written"
+  ],
+  "notes": [
+    "FP-MCP-276 will prepare a fresh request and approval path only.",
+    "Human approval will not be recorded merely from the user saying proceed; approval requires a later explicit approval after reviewing the request and manifest.",
+    "Planned sequence: create packet boundary, create non-executing request artifact, validate/read request, prepare approval text/path, then stop before approval unless explicitly authorized.",
+    "No clearance creation, approval consumption, disable-switch clearing, runner start contact, OpenCode start, prompt submission, wait call, or canary execution is in scope."
+  ],
+  "recoveryAction": null,
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}
