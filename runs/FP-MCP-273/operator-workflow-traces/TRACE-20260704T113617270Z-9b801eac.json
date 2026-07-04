@@ -1,0 +1,35 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T113617270Z-9b801eac",
+  "recordedAt": "2026-07-04T11:36:17.270Z",
+  "packetId": "FP-MCP-273",
+  "workflowId": "FP-MCP-273-clearance-review-manifest-preview-tool",
+  "phase": "ORIENTATION",
+  "stepIndex": 1,
+  "intendedAction": "Inspect clearance implementation and server registration source ranges for implementing a non-mutating clearance review manifest preview tool.",
+  "intendedToolName": "forgepilot_execute_terminal_command",
+  "actualToolName": "forgepilot_execute_terminal_command",
+  "toolMatchedIntent": true,
+  "approvalLiteral": "EXECUTE_TERMINAL_COMMAND",
+  "workflowAdvanced": false,
+  "deviationType": "RECOVERY_ACTION_REQUIRED",
+  "sideEffects": [],
+  "notes": [
+    "The terminal command failed before reading source because Bash printf treated a leading --- format string as an option.",
+    "Exit code was 2.",
+    "No source files were modified; git pre/post status was clean.",
+    "No OpenCode action, runner contact, wait endpoint, approval consumption, or secret read occurred."
+  ],
+  "recoveryAction": "Retry source inspection using printf '%s\\n' headers rather than leading-dash printf format strings.",
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}

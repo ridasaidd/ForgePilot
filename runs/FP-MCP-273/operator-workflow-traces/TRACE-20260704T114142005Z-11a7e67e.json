@@ -1,0 +1,36 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T114142005Z-11a7e67e",
+  "recordedAt": "2026-07-04T11:41:42.005Z",
+  "packetId": "FP-MCP-273",
+  "workflowId": "FP-MCP-273-clearance-review-manifest-preview-tool",
+  "phase": "PLAN_VALIDATION",
+  "stepIndex": 4,
+  "intendedAction": "Record successful MCP bridge validation for the clearance review manifest preview implementation.",
+  "intendedToolName": "forgepilot_execute_terminal_command",
+  "actualToolName": "forgepilot_execute_terminal_command",
+  "toolMatchedIntent": true,
+  "approvalLiteral": "EXECUTE_TERMINAL_COMMAND",
+  "workflowAdvanced": true,
+  "deviationType": "NONE",
+  "sideEffects": [],
+  "notes": [
+    "pnpm build passed.",
+    "pnpm test passed.",
+    "Hardcoded packet-id lint passed with 170 observed source references matched to the allowlist.",
+    "Direct built-module preview invocation returned previewOnly true, read-only boundary flags, no clearance creation, no clearance mutation, no clearance deletion, no approval consumption, no disable-switch clearing, no runner contact, and no OpenCode start.",
+    "Direct preview surfaced existingClearanceArtifactPresent true and followOnToolWouldMutateExistingClearanceFile true for the current stale local clearance file."
+  ],
+  "recoveryAction": null,
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}

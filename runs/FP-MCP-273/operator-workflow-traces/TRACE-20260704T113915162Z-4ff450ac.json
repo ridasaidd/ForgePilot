@@ -1,0 +1,35 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T113915162Z-4ff450ac",
+  "recordedAt": "2026-07-04T11:39:15.162Z",
+  "packetId": "FP-MCP-273",
+  "workflowId": "FP-MCP-273-clearance-review-manifest-preview-tool",
+  "phase": "PLAN_VALIDATION",
+  "stepIndex": 2,
+  "intendedAction": "Validate the MCP bridge implementation with pnpm build and pnpm test after adding the clearance review manifest preview tool.",
+  "intendedToolName": "forgepilot_execute_terminal_command",
+  "actualToolName": "forgepilot_execute_terminal_command",
+  "toolMatchedIntent": true,
+  "approvalLiteral": "EXECUTE_TERMINAL_COMMAND",
+  "workflowAdvanced": false,
+  "deviationType": "RECOVERY_ACTION_REQUIRED",
+  "sideEffects": [],
+  "notes": [
+    "pnpm build/typecheck completed, but pnpm test failed on scripts/check-hardcoded-packet-ids.mjs.",
+    "The hardcoded packet-id lint flagged FP-027 in the new tool description.",
+    "Source files remained modified but uncommitted.",
+    "No OpenCode action, runner contact, wait endpoint, approval consumption, or secret read occurred."
+  ],
+  "recoveryAction": "Replace concrete FP-027 text in the new source description with generic guarded-runner canary wording, then rerun build and tests.",
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}

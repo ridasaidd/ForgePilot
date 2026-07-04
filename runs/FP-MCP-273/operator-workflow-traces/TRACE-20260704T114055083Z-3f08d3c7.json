@@ -1,0 +1,35 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T114055083Z-3f08d3c7",
+  "recordedAt": "2026-07-04T11:40:55.083Z",
+  "packetId": "FP-MCP-273",
+  "workflowId": "FP-MCP-273-clearance-review-manifest-preview-tool",
+  "phase": "PLAN_VALIDATION",
+  "stepIndex": 3,
+  "intendedAction": "Classify the existing local clearance file observed during direct preview validation using read-only clearance-status validation, then decide whether preview output needs to surface existing-file mutation risk.",
+  "intendedToolName": "forgepilot_get_operator_local_execution_clearance_status",
+  "actualToolName": "forgepilot_get_operator_local_execution_clearance_status",
+  "toolMatchedIntent": true,
+  "approvalLiteral": null,
+  "workflowAdvanced": true,
+  "deviationType": "NONE",
+  "sideEffects": [],
+  "notes": [
+    "Read-only clearance status showed a local clearance artifact exists, is gitignored, JSON-valid, old, expired, and not eligible for the stale FP-MCP-223/FP-MCP-233 tuple.",
+    "The parsed existing clearance belongs to a different packet/request tuple and expired on 2026-07-03.",
+    "The status tool boundary confirmed no clearance creation, mutation, deletion, approval consumption, disable-switch clearing, runner contact, OpenCode start, or guarded canary run.",
+    "Preview output should explicitly tell the operator whether the follow-on clearance tool would create a new clearance file or mutate an existing local clearance file."
+  ],
+  "recoveryAction": "Enhance preview output with existingClearanceArtifactPresent and create-vs-mutate side-effect fields before committing.",
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}
