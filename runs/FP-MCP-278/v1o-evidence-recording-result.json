@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-278",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 153,
+  "run_id": "FP-MCP-278-OBSERVED-WORKLOAD-DECISION",
+  "generic_admission_event_id": 153,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP-MCP-278 records that the MCP bridge server refactor should become an observed open-weight model workload, not silent GPT/operator maintenance before observation; GPT/operator should prepare the packet, constraints, tests, audit checklist, and comparison criteria, while open-weight models perform the refactor under ForgePilot observation.",
+  "artifact_paths": [
+    "packets/FP-MCP-278.md",
+    "runs/FP-MCP-278/observed-workload-decision-record.json",
+    "runs/FP-MCP-278/result-summary.md",
+    "runs/FP-MCP-278/verification.txt"
+  ]
+}

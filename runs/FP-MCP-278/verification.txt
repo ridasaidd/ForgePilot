@@ -1,0 +1,15 @@
+FP-MCP-278 verification
+
+Checkpoint type:
+- OBSERVED_WORKLOAD_DECISION
+
+Claim:
+- FP-MCP-278 records that the MCP bridge server refactor should become an observed open-weight model workload, not silent GPT/operator maintenance before observation; GPT/operator should prepare the packet, constraints, tests, audit checklist, and comparison criteria, while open-weight models perform the refactor under ForgePilot observation.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

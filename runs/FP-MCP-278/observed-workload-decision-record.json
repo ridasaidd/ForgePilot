@@ -1,0 +1,97 @@
+{
+  "packetId": "FP-MCP-278",
+  "title": "MCP Refactor as First Observed Workload Decision",
+  "checkpointType": "OBSERVED_WORKLOAD_DECISION",
+  "claim": "FP-MCP-278 records that the MCP bridge server refactor should become an observed open-weight model workload, not silent GPT/operator maintenance before observation; GPT/operator should prepare the packet, constraints, tests, audit checklist, and comparison criteria, while open-weight models perform the refactor under ForgePilot observation.",
+  "summary": "The project has reached the transition from building observatory controls toward using ForgePilot to observe real work. The MCP bridge server still needs refactoring, but that refactor should not be removed from the evidence stream by doing it manually as ordinary maintenance. It is a valuable first serious observed workload: real codebase, real architectural pressure, real regression risk, measurable outcomes, and clear cross-model comparison potential. This decision updates the sequence implied by FP-MCP-277: the master plan refresh should state that the MCP refactor is a planned observed workload. Before broad data gathering, FP-027 still must be completed end-to-end once and the observed refactor packet must define success criteria, forbidden changes, test commands, audit requirements, and comparison standards. No execution, approval, clearance, or runner contact is authorized by this decision.",
+  "caveats": [
+    "This decision does not start the MCP refactor.",
+    "This decision does not authorize a model run.",
+    "This decision does not approve FP-MCP-276 execution.",
+    "This decision does not create local clearance or consume approval.",
+    "The MCP refactor should be packetized before model execution, with exact module boundaries and behavior-preservation requirements.",
+    "Broad data gathering should still wait until guarded execution and observation workflow are proven repeatable."
+  ],
+  "boundaries": [
+    "human approval not recorded",
+    "local clearance not created",
+    "approval not consumed",
+    "disable switch not cleared",
+    "runner start endpoint not contacted",
+    "OpenCode not started",
+    "OpenCode session not created",
+    "prompt not submitted",
+    "wait not called",
+    "canary not run",
+    "MCP bridge source not modified"
+  ],
+  "structuredRecord": {
+    "schema": "FP_MCP_278_OBSERVED_WORKLOAD_DECISION_V1",
+    "decision": "MCP_SERVER_REFACTOR_IS_OBSERVED_WORKLOAD",
+    "rationale": [
+      "The MCP bridge refactor is real software work with measurable architectural and regression risk.",
+      "Doing the refactor manually before observation would discard valuable model-performance evidence.",
+      "GPT/operator should prepare experiment boundaries rather than silently perform the implementation.",
+      "Open-weight model execution of the refactor can provide early evidence for implementation quality, audit quality, and comparison workflow."
+    ],
+    "operatorRole": [
+      "define packet scope",
+      "define module boundaries",
+      "define forbidden behavior changes",
+      "define test commands",
+      "define audit checklist",
+      "define comparison criteria",
+      "admit or reject evidence"
+    ],
+    "modelRole": [
+      "perform bounded implementation on assigned branch",
+      "preserve behavior",
+      "pass tests",
+      "produce artifacts for verification and audit"
+    ],
+    "futureObservedWorkload": {
+      "candidatePacket": "FP-MCP-279-or-later",
+      "task": "MCP bridge server.ts modular refactor",
+      "models": [
+        "deepseek-v4-pro-high",
+        "qwen-3.7-max"
+      ],
+      "comparisonMode": "same bounded refactor packet executed separately and cross-audited",
+      "successSignals": [
+        "behavior preserved",
+        "server.ts complexity reduced",
+        "tool groups isolated into modules",
+        "policy drift avoided",
+        "build and tests pass",
+        "tool schemas remain stable or changes explicitly recorded"
+      ]
+    },
+    "sequenceAdjustment": {
+      "nextPacket": "FP-MCP-279",
+      "recommendedTitle": "Master Plan Orientation Refresh",
+      "requiredMasterPlanChange": "state that MCP refactor is a planned observed workload, not pre-observation maintenance",
+      "mustPointTo": [
+        "ledger",
+        "FP-MCP-277 checklist"
+      ],
+      "mustNotBecome": "competing current-state source"
+    },
+    "stillRequiredBeforeObservedRefactorExecution": [
+      "complete or explicitly stage FP-027 guarded path enough for safe observed execution",
+      "fresh explicit approval when needed",
+      "clearance preview against fresh tuple",
+      "local clearance if needed",
+      "disable-switch and execution enablement gates",
+      "pre-start evidence and state snapshots"
+    ]
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-278 records that the MCP bridge server refactor should become an observed open-weight model workload, not silent GPT/operator maintenance before observation; GPT/operator should prepare the packet, constraints, tests, audit checklist, and comparison criteria, while open-weight models perform the refactor under ForgePilot observation."
+}
