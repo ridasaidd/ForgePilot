@@ -1,0 +1,219 @@
+{
+  "packetId": "FP-MCP-304",
+  "title": "Scoped Execution Enablement Gate Design",
+  "checkpointType": "ENABLEMENT_GATE_DESIGN",
+  "claim": "FP-MCP-304 defines the missing scoped execution enablement gate needed after local clearance and before any guarded runner start: execution enablement must be represented as a short-lived, single-use, exact-tuple local artifact that can make executionAllowedNow true only for one approved FP-MCP-295 guarded-run attempt, without globally disabling safety, without standing authorization, without direct HTTP execution authority, and without contacting runner start by itself.",
+  "summary": "FP-MCP-303 proved the FP-027 path now reaches a valid local clearance but remains correctly blocked by GLOBAL_DISABLE_ACTIVE, RUNNER_EXECUTION_DISABLED, and OPENCODE_EXECUTION_DISABLED. FP-MCP-304 records the design contract for the missing bridge between eligible local clearance and guarded runner start. The enablement gate should be a scoped, local, short-lived, single-use artifact bound to packet, requestId, approvalId, clearanceId, modelId, runMode, workspace, branch, execution base commit, current request-artifact/evidence HEAD, pre-start evidence hash, state snapshot attempt/hash pair, and runner capability observation. It must never clear execution broadly, never create a standing global unlock, never authorize direct HTTP execution, and never start OpenCode or contact the runner start endpoint when it is created. A future guarded start may proceed only when fresh orientation reports executionAllowedNow true, preflightPassableNow true, disableSwitch passed, opencodeReadiness passed, and all prior evidence gates remain valid.",
+  "caveats": [
+    "This packet is design/contract only; it does not implement the enablement tool.",
+    "No disable switch is cleared by this packet.",
+    "No runner/OpenCode execution is enabled by this packet.",
+    "Existing FP-MCP-302 approval and CLEARANCE-20260704T145411583Z-29b22ae0 should be treated as expired for any future run unless tool validation proves otherwise, and practically should be refreshed.",
+    "The exact implementation may choose different tool names, but must preserve the scoped semantics and refusal cases recorded here.",
+    "The enablement mechanism must be auditable before runner start; it must not hide enablement inside start-run."
+  ],
+  "boundaries": [
+    "non-executing design checkpoint only",
+    "no approval created",
+    "no approval consumed",
+    "no clearance created",
+    "no scoped enablement artifact created",
+    "no disable switch cleared",
+    "no runner execution enabled",
+    "no OpenCode execution enabled",
+    "no runner start endpoint contact",
+    "no OpenCode session or worker started",
+    "no prompt submitted",
+    "no FP-027 canary run",
+    "no source edits",
+    "no MCP bridge source inspection or refactor",
+    "no direct HTTP execution authority"
+  ],
+  "structuredRecord": {
+    "problemStatement": "FP-MCP-303 reached valid local clearance but aggregate orientation still reported executionAllowedNow false because GLOBAL_DISABLE_ACTIVE, RUNNER_EXECUTION_DISABLED, and OPENCODE_EXECUTION_DISABLED remained active. Without a scoped enablement artifact/tool, approval and clearance cycles expire at the same final blocker.",
+    "proposedToolNames": [
+      "forgepilot_create_scoped_execution_enablement",
+      "forgepilot_clear_disable_switch_for_scoped_attempt",
+      "forgepilot_create_operator_local_execution_enablement"
+    ],
+    "preferredToolName": "forgepilot_create_scoped_execution_enablement",
+    "artifactType": "operator-local-scoped-execution-enablement",
+    "artifactPathRecommendation": "/home/ridasaidd/forgepilot-chatgpt-mcp/.local/forgepilot/execution-enablement.json",
+    "artifactStorageRules": {
+      "localOnly": true,
+      "gitignored": true,
+      "shortLived": true,
+      "singleUse": true,
+      "overwriteRequiresExactScope": true,
+      "appendEvidenceInForgePilotRepo": false,
+      "reason": "The enablement artifact is a local operator brake/release for one attempt, while admitted evidence about its creation should be recorded separately by checkpoint/result artifacts."
+    },
+    "requiredInputs": {
+      "executionPacketId": "exact target packet, e.g. FP-MCP-295",
+      "requestId": "exact request artifact id",
+      "approvalPacketId": "packet containing approval artifact",
+      "approvalId": "exact unexpired approval artifact id",
+      "clearanceId": "exact validated local clearance id",
+      "modelId": "exact allowed model",
+      "runMode": "exact allowed run mode, initially DESIGN_ONLY",
+      "targetWorkspaceId": "exact workspace id, e.g. forgepilot",
+      "branch": "exact branch",
+      "executionBaseCommit": "commit from which execution is authorized to start, e.g. 5c0ab8b",
+      "requestArtifactCommit": "current clean HEAD containing request/approval/clearance evidence, must match workspace HEAD at creation",
+      "preStartEvidenceSha256": "hash of validated pre-start evidence artifact",
+      "stateSnapshotAttemptId": "validated snapshot attempt id",
+      "preStartSnapshotSha256": "validated pre-start snapshot hash",
+      "postStartSnapshotSha256": "validated post-start/dry-run snapshot hash",
+      "runnerCapabilityObservation": "fresh capabilities observation proving guarded start is available",
+      "expiresInMinutes": "short positive lifetime no more than 5 minutes by default, hard cap 10 minutes"
+    },
+    "requiredPreconditions": [
+      "ForgePilot workspace current branch matches tuple",
+      "ForgePilot workspace current HEAD equals requestArtifactCommit",
+      "ForgePilot working tree clean",
+      "request artifact exists, is valid, and remains CREATED_NOT_STARTED",
+      "request artifact model/runMode/commit tuple matches expected scope",
+      "approval artifact exists, is committed, unexpired, unconsumed, unrevoked, unquarantined, and exact-scope valid",
+      "operator-local clearance exists, is gitignored, unexpired, single-use, exact-scope valid, and eligibleForGuardedAttempt true",
+      "pre-start evidence exists and validates for the same request and approval",
+      "state snapshot evidence exists and validates for the same request",
+      "runner capabilities endpoint is reachable and advertises guarded start-run",
+      "OpenCode readiness can be checked without starting a new unbounded process",
+      "no direct HTTP execution authority is used",
+      "no existing broad or standing enablement artifact is active"
+    ],
+    "refusalCases": [
+      "approval expired",
+      "approval consumed",
+      "approval scope mismatch",
+      "approval not committed",
+      "clearance expired",
+      "clearance scope mismatch",
+      "clearance broad or standing",
+      "current HEAD mismatch",
+      "working tree dirty",
+      "request artifact missing or mutated",
+      "request state not CREATED_NOT_STARTED",
+      "pre-start evidence missing or invalid",
+      "state snapshot evidence missing or invalid",
+      "runner capabilities unreachable",
+      "runner no longer advertises guarded start",
+      "OpenCode readiness not established",
+      "target workspace mismatch",
+      "branch mismatch",
+      "model or run mode not allowed",
+      "existing enablement artifact uses different tuple",
+      "requested lifetime too long",
+      "attempt would enable more than one request",
+      "attempt would clear global disable without scoped artifact",
+      "attempt would authorize direct HTTP execution",
+      "attempt would consume approval or contact runner start during enablement creation"
+    ],
+    "sideEffectsAllowedForCreation": [
+      "write or overwrite exactly one gitignored local scoped enablement artifact",
+      "return structured validation status",
+      "record no approval consumption",
+      "record no runner start contact",
+      "record no OpenCode start"
+    ],
+    "sideEffectsForbiddenForCreation": [
+      "consume approval",
+      "clear global disable broadly",
+      "mutate request artifact",
+      "mutate approval artifact",
+      "mutate clearance artifact except read/validate",
+      "contact runner start endpoint",
+      "start OpenCode",
+      "create OpenCode HTTP session",
+      "submit prompt",
+      "call wait",
+      "run FP-027",
+      "edit source",
+      "inspect/refactor MCP bridge source"
+    ],
+    "postCreationValidationRequirements": [
+      "read enablement artifact independently",
+      "verify exact tuple matches expected",
+      "verify expiration in future and within lifetime limit",
+      "verify singleUse true",
+      "verify noBroadOrStandingScope true",
+      "verify current HEAD and branch still match",
+      "verify workspace clean",
+      "verify approval and clearance still valid",
+      "verify pre-start evidence and snapshots still valid",
+      "verify runner capability still reachable",
+      "return eligibleForGuardedStartEnablement true only if all checks pass"
+    ],
+    "interactionWithDisableSwitch": {
+      "principle": "The global disable switch remains a default-deny policy. The scoped enablement artifact is a narrow exception for one validated tuple, not a global state mutation.",
+      "expectedOrientationAfterCreation": "A fresh orientation should report executionAllowedNow true only when it sees valid scoped enablement plus all prior gates. It should still report globalDisableActive true as background policy if implemented that way, but disableSwitch gate should pass for the exact scoped attempt only.",
+      "forbiddenInterpretation": "Do not treat scoped enablement as permanently clearing EXECUTION_DISABLED_GLOBAL."
+    },
+    "interactionWithGuardedStart": {
+      "startMayBeContactedOnlyIf": [
+        "scoped enablement validates",
+        "guarded preflight reports eligible/passable now",
+        "disableSwitch gate passes for exact tuple",
+        "opencodeReadiness gate passes",
+        "live stop-readiness evidence exists",
+        "no-retry/no-chaining evidence exists",
+        "approval is still unconsumed immediately before start",
+        "current HEAD and workspace clean still match",
+        "runner start contact has not occurred before for this tuple"
+      ],
+      "startMustConsumeOrInvalidate": [
+        "local clearance",
+        "scoped enablement",
+        "approval consumption evidence only on successful guarded-start transition, according to the existing consuming-action contract"
+      ],
+      "startMustRecord": [
+        "pre-start state immediately before contact",
+        "runner run id or failed contact result",
+        "post-start state",
+        "approval consumption outcome",
+        "no retry/no chaining observation"
+      ]
+    },
+    "minimumFutureImplementationPlan": [
+      "FP-MCP-305 implement scoped enablement artifact create/read/validate tools without runner start contact",
+      "FP-MCP-306 negative tests: expired approval, expired clearance, dirty tree, HEAD mismatch, stale snapshots, broad scope, duplicate enablement, direct HTTP misuse",
+      "FP-MCP-307 fresh end-to-end dry path through approval, clearance, enablement, orientation showing blockers resolved without start contact",
+      "Only after FP-MCP-307, attempt one guarded runner start if fresh orientation says executionAllowedNow true and preflightPassableNow true"
+    ],
+    "currentKnownStateFromFPMCP303": {
+      "latestHeadBeforeThisPacket": "28ec1e3",
+      "latestEvidenceIdBeforeThisPacket": 180,
+      "fp027CanaryStatus": "NOT_RUN",
+      "localClearanceReached": true,
+      "blockedAt": [
+        "GLOBAL_DISABLE_ACTIVE",
+        "RUNNER_EXECUTION_DISABLED",
+        "OPENCODE_EXECUTION_DISABLED"
+      ],
+      "passedGates": [
+        "repository",
+        "requestArtifact",
+        "commitBinding",
+        "modelAndRunMode",
+        "runnerCapabilityState",
+        "preStartEvidence",
+        "stateSnapshotEvidence",
+        "humanApprovalEvidence",
+        "evidenceLedgerReadiness"
+      ],
+      "failedGates": [
+        "disableSwitch",
+        "opencodeReadiness"
+      ]
+    }
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-304 defines the missing scoped execution enablement gate needed after local clearance and before any guarded runner start: execution enablement must be represented as a short-lived, single-use, exact-tuple local artifact that can make executionAllowedNow true only for one approved FP-MCP-295 guarded-run attempt, without globally disabling safety, without standing authorization, without direct HTTP execution authority, and without contacting runner start by itself."
+}

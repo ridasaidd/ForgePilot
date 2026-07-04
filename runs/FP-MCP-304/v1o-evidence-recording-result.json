@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-304",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 181,
+  "run_id": "FP-MCP-304-ENABLEMENT-GATE-DESIGN",
+  "generic_admission_event_id": 181,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP-MCP-304 defines the missing scoped execution enablement gate needed after local clearance and before any guarded runner start: execution enablement must be represented as a short-lived, single-use, exact-tuple local artifact that can make executionAllowedNow true only for one approved FP-MCP-295 guarded-run attempt, without globally disabling safety, without standing authorization, without direct HTTP execution authority, and without contacting runner start by itself.",
+  "artifact_paths": [
+    "packets/FP-MCP-304.md",
+    "runs/FP-MCP-304/enablement-gate-design-record.json",
+    "runs/FP-MCP-304/result-summary.md",
+    "runs/FP-MCP-304/verification.txt"
+  ]
+}

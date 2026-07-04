@@ -1,0 +1,15 @@
+FP-MCP-304 verification
+
+Checkpoint type:
+- ENABLEMENT_GATE_DESIGN
+
+Claim:
+- FP-MCP-304 defines the missing scoped execution enablement gate needed after local clearance and before any guarded runner start: execution enablement must be represented as a short-lived, single-use, exact-tuple local artifact that can make executionAllowedNow true only for one approved FP-MCP-295 guarded-run attempt, without globally disabling safety, without standing authorization, without direct HTTP execution authority, and without contacting runner start by itself.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
