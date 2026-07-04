@@ -1,10 +1,10 @@
 FP-MCP-295 verification
 
 Checkpoint type:
-- REQUEST_ARTIFACT_PREPARATION_BOUNDARY
+- REQUEST_ARTIFACT_RESULT
 
 Claim:
-- FP-MCP-295 opens the fresh minimal FP-027 guarded/worker canary request-artifact preparation boundary for the boring docs/forgepilot-master-plan.md structure-summary task selected by FP-MCP-294; this boundary exists so a fresh non-executing request artifact can be created against a current clean ForgePilot HEAD rather than reusing stale FP-MCP-276 artifacts.
+- FP-MCP-295 created and committed a fresh non-executing request artifact for the minimal FP-027 guarded/worker canary: request REQ-20260704T142232816Z-a82a42b6, model deepseek-v4-pro-high, run mode DESIGN_ONLY, request state CREATED_NOT_STARTED, request artifact SHA-256 c2079e334ddf916024c5e99229a65c134b9b9b959128d7d0f8ec0fbd378f8054; local validation and the runner validate-request endpoint accepted the request without contacting runner start, starting OpenCode, consuming approval, or authorizing execution.
 
 Boundaries:
 - execution authorized: false

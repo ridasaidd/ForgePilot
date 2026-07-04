@@ -3,12 +3,12 @@
 ## Result
 
 ```text
-FP-MCP-295 opens the fresh minimal FP-027 guarded/worker canary request-artifact preparation boundary for the boring docs/forgepilot-master-plan.md structure-summary task selected by FP-MCP-294; this boundary exists so a fresh non-executing request artifact can be created against a current clean ForgePilot HEAD rather than reusing stale FP-MCP-276 artifacts.
+FP-MCP-295 created and committed a fresh non-executing request artifact for the minimal FP-027 guarded/worker canary: request REQ-20260704T142232816Z-a82a42b6, model deepseek-v4-pro-high, run mode DESIGN_ONLY, request state CREATED_NOT_STARTED, request artifact SHA-256 c2079e334ddf916024c5e99229a65c134b9b9b959128d7d0f8ec0fbd378f8054; local validation and the runner validate-request endpoint accepted the request without contacting runner start, starting OpenCode, consuming approval, or authorizing execution.
 ```
 
 ## Summary
 
-FP-MCP-295 establishes the packet boundary required before recording a fresh non-executing OpenCode request artifact. The future request remains restricted to one worker, DESIGN_ONLY, deepseek-v4-pro-high, a boring non-refactor document-structure summary task against docs/forgepilot-master-plan.md, no source edits, no src/server.ts or MCP bridge source contact, no shell/git/workspace mutation, no retry, and no chaining. This checkpoint itself does not create the request artifact, record approval, create clearance, clear disable switches, contact the runner start endpoint, start OpenCode, submit prompts, or run FP-027. After this checkpoint is committed, the next step inside FP-MCP-295 is to record a fresh non-executing request artifact bound to the new clean HEAD.
+FP-MCP-295 completed the fresh request-artifact preparation step for the boring non-refactor canary selected by FP-MCP-294. The request artifact was created after the FP-MCP-295 boundary commit, committed at 5d14349, read back successfully, locally validated as eligible for future remote runner handoff, and accepted by the remote runner validate-request endpoint. The guarded-start orientation remains blocked as expected: no human approval evidence, global disable active, runner execution disabled, OpenCode execution disabled, and no pre-start/state evidence. The request remains non-executing and CREATED_NOT_STARTED. Runner start was not contacted; OpenCode was not started; no prompt was submitted; approval was not consumed.
 
 ## Boundary
 

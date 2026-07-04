@@ -7,11 +7,11 @@ import { recordEvidenceAdmission, getAdmissionEvents } from "../../src/db/eviden
 import { getCanonicalEvidenceRecordAdmission } from "../../src/db/validation-admission.js";
 
 const packetPath = "packets/FP-MCP-295.md";
-const runId = "FP-MCP-295-REQUEST-ARTIFACT-PREPARATION-BOUNDARY";
-const admittedClaim = "FP-MCP-295 opens the fresh minimal FP-027 guarded/worker canary request-artifact preparation boundary for the boring docs/forgepilot-master-plan.md structure-summary task selected by FP-MCP-294; this boundary exists so a fresh non-executing request artifact can be created against a current clean ForgePilot HEAD rather than reusing stale FP-MCP-276 artifacts.";
+const runId = "FP-MCP-295-REQUEST-ARTIFACT-RESULT";
+const admittedClaim = "FP-MCP-295 created and committed a fresh non-executing request artifact for the minimal FP-027 guarded/worker canary: request REQ-20260704T142232816Z-a82a42b6, model deepseek-v4-pro-high, run mode DESIGN_ONLY, request state CREATED_NOT_STARTED, request artifact SHA-256 c2079e334ddf916024c5e99229a65c134b9b9b959128d7d0f8ec0fbd378f8054; local validation and the runner validate-request endpoint accepted the request without contacting runner start, starting OpenCode, consuming approval, or authorizing execution.";
 const artifacts = [
   "packets/FP-MCP-295.md",
-  "runs/FP-MCP-295/request-artifact-preparation-boundary-record.json",
+  "runs/FP-MCP-295/request-artifact-result-record.json",
   "runs/FP-MCP-295/result-summary.md",
   "runs/FP-MCP-295/verification.txt"
 ];
@@ -37,12 +37,12 @@ if (!evidence) {
     model_id: "none",
     model_role: "packet_checkpoint_recorder",
     branch: "main",
-    commit_sha: "d28aed6",
+    commit_sha: "5d14349",
     executor_result: admittedClaim,
     verification_result: "PACKET_CHECKPOINT_RECORDED;NON_EXECUTING_BOUNDARY_PRESERVED",
     audit_result: "NOT_APPLICABLE_PACKET_CHECKPOINT",
     comparison_result: "NOT_APPLICABLE_PACKET_CHECKPOINT",
-    metrics_path: "runs/FP-MCP-295/request-artifact-preparation-boundary-record.json",
+    metrics_path: "runs/FP-MCP-295/request-artifact-result-record.json",
     artifact_paths: artifacts,
     trust_tier: "TIER_2_VERIFIED_ARTIFACT",
     validation_state: "VALID",
