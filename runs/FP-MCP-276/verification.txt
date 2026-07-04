@@ -1,10 +1,10 @@
 FP-MCP-276 verification
 
 Checkpoint type:
-- PREPARATION_BOUNDARY
+- FRESH_TUPLE_PREPARATION_RESULT
 
 Claim:
-- FP-MCP-276 is authorized only to prepare a fresh non-executing request and approval path for a future guarded start; it does not itself authorize human approval, clearance creation, disable-switch changes, runner contact, OpenCode start, prompt submission, wait calls, or canary execution.
+- FP-MCP-276 prepared a fresh non-executing guarded-start request and approval path, but did not record human approval, create clearance, clear the disable switch, contact the runner start endpoint, start OpenCode, submit a prompt, call wait, or run a canary.
 
 Boundaries:
 - execution authorized: false

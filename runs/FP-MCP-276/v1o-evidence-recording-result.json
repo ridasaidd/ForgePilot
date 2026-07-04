@@ -1,16 +1,16 @@
 {
   "packet_id": "FP-MCP-276",
   "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
-  "evidence_id": 150,
-  "run_id": "FP-MCP-276-PREPARATION-BOUNDARY",
-  "generic_admission_event_id": 150,
+  "evidence_id": 151,
+  "run_id": "FP-MCP-276-FRESH-TUPLE-PREPARATION-RESULT",
+  "generic_admission_event_id": 151,
   "canonical_status": "GENERIC_EVENT_CANONICAL",
   "canonical_surface": "evidence_admission_events",
   "canonical_state": "ADMITTED",
-  "admitted_claim": "FP-MCP-276 is authorized only to prepare a fresh non-executing request and approval path for a future guarded start; it does not itself authorize human approval, clearance creation, disable-switch changes, runner contact, OpenCode start, prompt submission, wait calls, or canary execution.",
+  "admitted_claim": "FP-MCP-276 prepared a fresh non-executing guarded-start request and approval path, but did not record human approval, create clearance, clear the disable switch, contact the runner start endpoint, start OpenCode, submit a prompt, call wait, or run a canary.",
   "artifact_paths": [
     "packets/FP-MCP-276.md",
-    "runs/FP-MCP-276/preparation-boundary-record.json",
+    "runs/FP-MCP-276/fresh-tuple-preparation-result-record.json",
     "runs/FP-MCP-276/result-summary.md",
     "runs/FP-MCP-276/verification.txt"
   ]

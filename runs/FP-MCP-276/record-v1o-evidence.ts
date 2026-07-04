@@ -7,11 +7,11 @@ import { recordEvidenceAdmission, getAdmissionEvents } from "../../src/db/eviden
 import { getCanonicalEvidenceRecordAdmission } from "../../src/db/validation-admission.js";
 
 const packetPath = "packets/FP-MCP-276.md";
-const runId = "FP-MCP-276-PREPARATION-BOUNDARY";
-const admittedClaim = "FP-MCP-276 is authorized only to prepare a fresh non-executing request and approval path for a future guarded start; it does not itself authorize human approval, clearance creation, disable-switch changes, runner contact, OpenCode start, prompt submission, wait calls, or canary execution.";
+const runId = "FP-MCP-276-FRESH-TUPLE-PREPARATION-RESULT";
+const admittedClaim = "FP-MCP-276 prepared a fresh non-executing guarded-start request and approval path, but did not record human approval, create clearance, clear the disable switch, contact the runner start endpoint, start OpenCode, submit a prompt, call wait, or run a canary.";
 const artifacts = [
   "packets/FP-MCP-276.md",
-  "runs/FP-MCP-276/preparation-boundary-record.json",
+  "runs/FP-MCP-276/fresh-tuple-preparation-result-record.json",
   "runs/FP-MCP-276/result-summary.md",
   "runs/FP-MCP-276/verification.txt"
 ];
@@ -37,12 +37,12 @@ if (!evidence) {
     model_id: "none",
     model_role: "packet_checkpoint_recorder",
     branch: "main",
-    commit_sha: "61134d5",
+    commit_sha: "709e5de",
     executor_result: admittedClaim,
     verification_result: "PACKET_CHECKPOINT_RECORDED;NON_EXECUTING_BOUNDARY_PRESERVED",
     audit_result: "NOT_APPLICABLE_PACKET_CHECKPOINT",
     comparison_result: "NOT_APPLICABLE_PACKET_CHECKPOINT",
-    metrics_path: "runs/FP-MCP-276/preparation-boundary-record.json",
+    metrics_path: "runs/FP-MCP-276/fresh-tuple-preparation-result-record.json",
     artifact_paths: artifacts,
     trust_tier: "TIER_2_VERIFIED_ARTIFACT",
     validation_state: "VALID",

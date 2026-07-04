@@ -3,12 +3,12 @@
 ## Result
 
 ```text
-FP-MCP-276 is authorized only to prepare a fresh non-executing request and approval path for a future guarded start; it does not itself authorize human approval, clearance creation, disable-switch changes, runner contact, OpenCode start, prompt submission, wait calls, or canary execution.
+FP-MCP-276 prepared a fresh non-executing guarded-start request and approval path, but did not record human approval, create clearance, clear the disable switch, contact the runner start endpoint, start OpenCode, submit a prompt, call wait, or run a canary.
 ```
 
 ## Summary
 
-This packet establishes the boundary for fresh scoped tuple preparation after FP-MCP-275 showed guarded runner start is still blocked. FP-MCP-276 may create a non-executing request artifact, validate and read that request, and prepare the exact approval text/path that a competent operator would later review. It must stop before recording real human approval unless the operator explicitly approves after reviewing the request and manifest. It must also stop before clearance creation, approval consumption, disable-switch handling, runner start contact, OpenCode start, prompt submission, wait calls, or any canary execution.
+FP-MCP-276 created and committed one fresh non-executing request artifact for packet FP-MCP-276, model deepseek-v4-pro-high, and run mode DESIGN_ONLY. The request id is REQ-20260704T115428653Z-fc0b6275. The request records executionBaseCommit/targetExecutionCommit 3a62f84 and was later committed in the request artifact commit lineage. Local remote-runner validation passed. The remote runner validate-request endpoint accepted the request without contacting the start endpoint. A clean read-only guarded preflight then showed repository, request artifact, commit binding, model/run mode, and runner capability gates passing. Remaining blockers are expected: global execution disable is active, runner/OpenCode execution are disabled, human approval evidence is missing, pre-start evidence is incomplete, and state snapshot evidence is incomplete. This packet prepares the approval path only: future approval, if explicitly granted by the operator after review, should bind packet FP-MCP-276, request REQ-20260704T115428653Z-fc0b6275, model deepseek-v4-pro-high, run mode DESIGN_ONLY, branch main, and execution base commit 3a62f84. The requestArtifactCommit for preview/clearance should be the then-current clean ForgePilot HEAD containing the request artifact and preparation evidence.
 
 ## Boundary
 

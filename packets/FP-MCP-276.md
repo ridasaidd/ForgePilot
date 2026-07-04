@@ -3,40 +3,40 @@
 ## Checkpoint Type
 
 ```text
-PREPARATION_BOUNDARY
+FRESH_TUPLE_PREPARATION_RESULT
 ```
 
 ## Summary
 
-This packet establishes the boundary for fresh scoped tuple preparation after FP-MCP-275 showed guarded runner start is still blocked. FP-MCP-276 may create a non-executing request artifact, validate and read that request, and prepare the exact approval text/path that a competent operator would later review. It must stop before recording real human approval unless the operator explicitly approves after reviewing the request and manifest. It must also stop before clearance creation, approval consumption, disable-switch handling, runner start contact, OpenCode start, prompt submission, wait calls, or any canary execution.
+FP-MCP-276 created and committed one fresh non-executing request artifact for packet FP-MCP-276, model deepseek-v4-pro-high, and run mode DESIGN_ONLY. The request id is REQ-20260704T115428653Z-fc0b6275. The request records executionBaseCommit/targetExecutionCommit 3a62f84 and was later committed in the request artifact commit lineage. Local remote-runner validation passed. The remote runner validate-request endpoint accepted the request without contacting the start endpoint. A clean read-only guarded preflight then showed repository, request artifact, commit binding, model/run mode, and runner capability gates passing. Remaining blockers are expected: global execution disable is active, runner/OpenCode execution are disabled, human approval evidence is missing, pre-start evidence is incomplete, and state snapshot evidence is incomplete. This packet prepares the approval path only: future approval, if explicitly granted by the operator after review, should bind packet FP-MCP-276, request REQ-20260704T115428653Z-fc0b6275, model deepseek-v4-pro-high, run mode DESIGN_ONLY, branch main, and execution base commit 3a62f84. The requestArtifactCommit for preview/clearance should be the then-current clean ForgePilot HEAD containing the request artifact and preparation evidence.
 
 ## Claim
 
 ```text
-FP-MCP-276 is authorized only to prepare a fresh non-executing request and approval path for a future guarded start; it does not itself authorize human approval, clearance creation, disable-switch changes, runner contact, OpenCode start, prompt submission, wait calls, or canary execution.
+FP-MCP-276 prepared a fresh non-executing guarded-start request and approval path, but did not record human approval, create clearance, clear the disable switch, contact the runner start endpoint, start OpenCode, submit a prompt, call wait, or run a canary.
 ```
 
 ## Caveats
 
-- Proceeding with preparation is not approval to execute.
-- Human approval requires a later explicit approval after reviewing the fresh request and manifest.
-- Any future clearance must be preceded by the FP-MCP-273 preview tool against the fresh tuple.
-- Global disable and execution enablement blockers from FP-MCP-275 remain active.
+- This checkpoint is not human approval.
+- The operator has not yet approved execution.
+- Any future approval must be explicit and must occur after reviewing the request artifact and preview manifest.
+- Because additional evidence commits change HEAD, future preview/clearance must use the current clean ForgePilot HEAD as requestArtifactCommit at that time.
+- Disable-switch and execution enablement blockers remain active.
+- Runner validate-request contact occurred, but runner start endpoint contact did not occur.
 
 ## Boundaries
 
-- request artifact preparation allowed
-- request validation/read allowed
-- approval path preparation allowed
-- real human approval not authorized by this checkpoint
-- clearance creation not authorized
-- approval consumption not authorized
-- disable switch change not authorized
-- runner start contact not authorized
-- OpenCode start not authorized
-- prompt submission not authorized
-- wait call not authorized
-- canary execution not authorized
+- human approval not recorded
+- local clearance not created
+- approval not consumed
+- disable switch not cleared
+- runner start endpoint not contacted
+- OpenCode not started
+- OpenCode session not created
+- prompt not submitted
+- wait not called
+- canary not run
 
 ## Non-Execution Boundary
 
@@ -52,5 +52,5 @@ FP-027 canary run: false
 ## Expected Result
 
 ```text
-FP-MCP-276 is authorized only to prepare a fresh non-executing request and approval path for a future guarded start; it does not itself authorize human approval, clearance creation, disable-switch changes, runner contact, OpenCode start, prompt submission, wait calls, or canary execution.
+FP-MCP-276 prepared a fresh non-executing guarded-start request and approval path, but did not record human approval, create clearance, clear the disable switch, contact the runner start endpoint, start OpenCode, submit a prompt, call wait, or run a canary.
 ```
