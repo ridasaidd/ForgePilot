@@ -1,0 +1,15 @@
+FP-MCP-339 verification
+
+Checkpoint type:
+- WRAPPER_PROGRESS_CHARACTERIZATION
+
+Claim:
+- The exposed guarded next-gate wrapper was allowed by the ChatGPT host with a fresh valid approval, but repeated calls returned PREVIEW_CLEARANCE and did not create clearance.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

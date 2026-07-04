@@ -1,0 +1,49 @@
+{
+  "packetId": "FP-MCP-339",
+  "title": "Guarded Wrapper Repeats Clearance Preview",
+  "checkpointType": "WRAPPER_PROGRESS_CHARACTERIZATION",
+  "claim": "The exposed guarded next-gate wrapper was allowed by the ChatGPT host with a fresh valid approval, but repeated calls returned PREVIEW_CLEARANCE and did not create clearance.",
+  "summary": "Record that FP-MCP-338 created and validated a fresh approval, then called forgepilot_apply_guarded_canary_next_gate twice. Both wrapper calls were allowed by the host. The first call returned preview-only PREVIEW_CLEARANCE as expected. The second call also returned PREVIEW_CLEARANCE, wrote no files, consumed no approval, did not clear controls, did not contact the runner start endpoint, and did not start OpenCode. This suggests the wrapper does not currently advance from preview to clearance creation without an additional confirmation signal or implementation change.",
+  "caveats": [
+    "This is not a ChatGPT host block.",
+    "This is not a ForgePilot approval validation failure.",
+    "This does not create clearance.",
+    "This does not test enablement.",
+    "This does not reach final guarded execution.",
+    "This does not start OpenCode."
+  ],
+  "boundaries": [
+    "No files written by the wrapper.",
+    "No approval consumed.",
+    "No clearance artifact written.",
+    "No runner contact.",
+    "No OpenCode start.",
+    "No token handling."
+  ],
+  "structuredRecord": {
+    "freshSession": true,
+    "approvalPacketId": "FP-MCP-338",
+    "approvalId": "APPROVAL-20260704T214410614Z-7eca4194",
+    "approvalValid": true,
+    "firstWrapperHostAllowed": true,
+    "firstWrapperPhase": "PREVIEW_CLEARANCE",
+    "firstWrapperPreviewOnly": true,
+    "secondWrapperHostAllowed": true,
+    "secondWrapperPhase": "PREVIEW_CLEARANCE",
+    "secondWrapperFilesWritten": false,
+    "secondWrapperApprovalConsumed": false,
+    "clearanceArtifactWritten": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "probableFinding": "wrapper_repeats_preview_without_follow_on_confirmation_or_state_transition"
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "The exposed guarded next-gate wrapper was allowed by the ChatGPT host with a fresh valid approval, but repeated calls returned PREVIEW_CLEARANCE and did not create clearance."
+}

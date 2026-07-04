@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-339",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 216,
+  "run_id": "FP-MCP-339-WRAPPER-PROGRESS-CHARACTERIZATION",
+  "generic_admission_event_id": 216,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "The exposed guarded next-gate wrapper was allowed by the ChatGPT host with a fresh valid approval, but repeated calls returned PREVIEW_CLEARANCE and did not create clearance.",
+  "artifact_paths": [
+    "packets/FP-MCP-339.md",
+    "runs/FP-MCP-339/wrapper-progress-characterization-record.json",
+    "runs/FP-MCP-339/result-summary.md",
+    "runs/FP-MCP-339/verification.txt"
+  ]
+}
