@@ -1,0 +1,36 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T111055239Z-1d1238db",
+  "recordedAt": "2026-07-04T11:10:55.239Z",
+  "packetId": "FP-MCP-269",
+  "workflowId": "FP-MCP-269-popup-human-attention-requirements",
+  "phase": "ORIENTATION",
+  "stepIndex": 1,
+  "intendedAction": "Begin a non-executing policy requirements packet for popup-mediated clearance human-attention display and friction requirements before relying on popup clearance for FP-027 end-to-end canary work.",
+  "intendedToolName": "forgepilot_record_operator_workflow_trace",
+  "actualToolName": "forgepilot_record_operator_workflow_trace",
+  "toolMatchedIntent": true,
+  "approvalLiteral": null,
+  "workflowAdvanced": true,
+  "deviationType": "NONE",
+  "sideEffects": [
+    "artifact_written"
+  ],
+  "notes": [
+    "FP-MCP-268 recorded that FP-MCP-236 deliberately revised FP-MCP-217 but left an open human-attention/UX control gap.",
+    "FP-MCP-269 will specify what popup approval must display and what behavioral friction is required to avoid reflexive one-tap approval.",
+    "FP-MCP-269 will not implement UI changes or execute any lifecycle/canary action."
+  ],
+  "recoveryAction": "No recovery required.",
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}
