@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-322",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 203,
+  "run_id": "FP-MCP-322-NEXT-PACKET-PROPOSAL",
+  "generic_admission_event_id": 203,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP-MCP-322 should add a local-only MCP bridge CLI that can execute the existing guarded canary sequencer/executor path from the operator host, write a full result JSON artifact, and preserve the same one-gate-at-a-time and one-final-attempt boundaries without routing the final execution boundary through ChatGPT tools.",
+  "artifact_paths": [
+    "packets/FP-MCP-322.md",
+    "runs/FP-MCP-322/next-packet-proposal-record.json",
+    "runs/FP-MCP-322/result-summary.md",
+    "runs/FP-MCP-322/verification.txt"
+  ]
+}

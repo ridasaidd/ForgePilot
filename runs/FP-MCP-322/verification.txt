@@ -1,0 +1,15 @@
+FP-MCP-322 verification
+
+Checkpoint type:
+- NEXT_PACKET_PROPOSAL
+
+Claim:
+- FP-MCP-322 should add a local-only MCP bridge CLI that can execute the existing guarded canary sequencer/executor path from the operator host, write a full result JSON artifact, and preserve the same one-gate-at-a-time and one-final-attempt boundaries without routing the final execution boundary through ChatGPT tools.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
