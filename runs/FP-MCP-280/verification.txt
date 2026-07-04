@@ -1,0 +1,15 @@
+FP-MCP-280 verification
+
+Checkpoint type:
+- APPROVAL_BOUNDARY_PREPARATION
+
+Claim:
+- FP-MCP-280 establishes that operator responsibility is the authority model and that structured human approval evidence may be recorded through the native MCP approval modal after review; approval recording does not create clearance, consume approval, clear disable switches, contact runner start, start OpenCode, submit prompts, call wait, or run a canary.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

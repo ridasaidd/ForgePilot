@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-280",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 155,
+  "run_id": "FP-MCP-280-APPROVAL-BOUNDARY-PREPARATION",
+  "generic_admission_event_id": 155,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP-MCP-280 establishes that operator responsibility is the authority model and that structured human approval evidence may be recorded through the native MCP approval modal after review; approval recording does not create clearance, consume approval, clear disable switches, contact runner start, start OpenCode, submit prompts, call wait, or run a canary.",
+  "artifact_paths": [
+    "packets/FP-MCP-280.md",
+    "runs/FP-MCP-280/approval-boundary-preparation-record.json",
+    "runs/FP-MCP-280/result-summary.md",
+    "runs/FP-MCP-280/verification.txt"
+  ]
+}

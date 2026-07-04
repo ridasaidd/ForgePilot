@@ -1,0 +1,82 @@
+{
+  "packetId": "FP-MCP-280",
+  "title": "Operator Responsibility Structured Approval Modal Decision",
+  "checkpointType": "APPROVAL_BOUNDARY_PREPARATION",
+  "claim": "FP-MCP-280 establishes that operator responsibility is the authority model and that structured human approval evidence may be recorded through the native MCP approval modal after review; approval recording does not create clearance, consume approval, clear disable switches, contact runner start, start OpenCode, submit prompts, call wait, or run a canary.",
+  "summary": "FP-MCP-280 prepares the structured human approval boundary for the FP-MCP-276 request REQ-20260704T115428653Z-fc0b6275. The operator responsibility doctrine applies: the human operator owns authorization, policy judgment, and final responsibility. GPT prepares scope and evidence; ForgePilot records and enforces boundaries; the MCP approval modal is the final brake after review. This checkpoint exists so FP-MCP-280 can serve as the approval packet before a structured approval recorder retry. A prior full structured approval invocation was platform-blocked before reaching MCP; a compact retry reached MCP but correctly failed closed because FP-MCP-280 did not yet exist and the workspace was dirty. This checkpoint does not record approval itself.",
+  "caveats": [
+    "This checkpoint is not human approval evidence.",
+    "This checkpoint does not create local clearance.",
+    "This checkpoint does not consume approval.",
+    "This checkpoint does not clear the disable switch or enable execution.",
+    "This checkpoint does not contact runner start or start OpenCode.",
+    "A structured approval retry may still fail or be denied by the operator through the native MCP modal."
+  ],
+  "boundaries": [
+    "human approval not recorded by this checkpoint",
+    "local clearance not created",
+    "approval not consumed",
+    "disable switch not cleared",
+    "runner start endpoint not contacted",
+    "OpenCode not started",
+    "OpenCode session not created",
+    "prompt not submitted",
+    "wait not called",
+    "canary not run"
+  ],
+  "structuredRecord": {
+    "schema": "FP_MCP_280_APPROVAL_BOUNDARY_PREPARATION_V1",
+    "operatorResponsibilityDoctrine": {
+      "humanOperatorOwns": [
+        "authorization",
+        "policy judgment",
+        "final responsibility"
+      ],
+      "gptRole": [
+        "prepare review package",
+        "identify scope and blockers",
+        "avoid hidden escalation",
+        "record evidence"
+      ],
+      "forgePilotRole": [
+        "expose scope",
+        "enforce boundaries",
+        "record decisions",
+        "preserve auditability"
+      ],
+      "modalRole": "final brake after review, not the review itself"
+    },
+    "approvalScopePrepared": {
+      "approvalPacketId": "FP-MCP-280",
+      "executionPacketId": "FP-MCP-276",
+      "requestId": "REQ-20260704T115428653Z-fc0b6275",
+      "modelId": "deepseek-v4-pro-high",
+      "runMode": "DESIGN_ONLY",
+      "repoCommit": "3a62f84",
+      "branch": "main",
+      "singleUse": true
+    },
+    "previousApprovalAttempts": [
+      {
+        "attempt": "full_payload",
+        "result": "PLATFORM_SAFETY_BLOCK_BEFORE_MCP",
+        "approvalRecorded": false
+      },
+      {
+        "attempt": "compact_payload_before_boundary",
+        "result": "FAIL_CLOSED_UNKNOWN_APPROVAL_PACKET_AND_DIRTY_WORKING_TREE",
+        "approvalRecorded": false
+      }
+    ],
+    "nextStep": "retry compact structured human approval from clean state before expiry if operator allows native MCP modal"
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-280 establishes that operator responsibility is the authority model and that structured human approval evidence may be recorded through the native MCP approval modal after review; approval recording does not create clearance, consume approval, clear disable switches, contact runner start, start OpenCode, submit prompts, call wait, or run a canary."
+}
