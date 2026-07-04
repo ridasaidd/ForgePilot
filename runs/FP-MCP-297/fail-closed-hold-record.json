@@ -1,0 +1,73 @@
+{
+  "packetId": "FP-MCP-297",
+  "title": "Pre-Start Evidence Sequencing Hold",
+  "checkpointType": "FAIL_CLOSED_HOLD",
+  "claim": "FP-MCP-297 records that the FP-MCP-295 minimal canary did not advance past approval into pre-start evidence or state snapshots: repeated non-executing state-snapshot dry-run attempts failed closed because approved pre-start evidence was missing, so the operator stopped rather than rushing toward the approval expiration window; no runner start endpoint was contacted, no OpenCode worker/session was started, no approval was consumed, no disable switch was cleared, no snapshots were recorded, and FP-027 did not run.",
+  "summary": "After FP-MCP-296 approval validation, the next intended phase was approved pre-start evidence followed by state snapshot evidence. Instead, the state-snapshot dry-run tool was invoked before approved pre-start evidence existed. Each attempt failed closed with PRE_START_EVIDENCE_INVALID, PRE_START_EVIDENCE_INCOMPLETE, ARTIFACT_HASH_MISSING, STATE_SNAPSHOT_NOT_RECORDED, and execution-disabled reasons. The failures were non-executing: startEndpointContacted false, opencodeStarted false, runnerContactedForStart false, preStartSnapshotRecorded false, postStartSnapshotRecorded false. Because the approval was short-lived and the sequence had already deviated, the correct action is to hold, allow the approval to expire if necessary, and resume later with a fresh approval and the correct order: record approved pre-start evidence first, validate it, then record/validate state snapshots immediately before any future start-boundary work.",
+  "caveats": [
+    "The sequencing deviation was operator-side: state snapshot dry-run was attempted before the approved pre-start evidence artifact existed.",
+    "No state snapshot artifacts were recorded by the failed attempts.",
+    "The existing approval expires at 2026-07-04T14:40:00.000Z and should be treated as expired if continuation occurs after that time.",
+    "Do not rush remaining gates to beat expiration; fresh approval is acceptable and preferred if timing is no longer clean.",
+    "The next session should not infer that pre-start evidence exists."
+  ],
+  "boundaries": [
+    "hold checkpoint only",
+    "no approved pre-start evidence recorded",
+    "no state snapshots recorded",
+    "no approval consumed",
+    "no clearance created",
+    "no disable switch cleared",
+    "no runner start endpoint contact",
+    "no OpenCode session or worker started",
+    "no prompt submitted",
+    "no FP-027 canary run",
+    "no source edits",
+    "no MCP bridge source inspection or refactor"
+  ],
+  "structuredRecord": {
+    "requestId": "REQ-20260704T142232816Z-a82a42b6",
+    "approvalId": "APPROVAL-20260704T142523179Z-10b0b6f3",
+    "approvalExpiresAt": "2026-07-04T14:40:00.000Z",
+    "failedAttemptType": "state_snapshot_dry_run_before_pre_start_evidence",
+    "commonReasons": [
+      "PRE_START_EVIDENCE_INVALID",
+      "PRE_START_EVIDENCE_INCOMPLETE",
+      "ARTIFACT_HASH_MISSING",
+      "STATE_SNAPSHOT_NOT_RECORDED",
+      "EXECUTION_DISABLED_GLOBAL",
+      "RUNNER_EXECUTION_DISABLED",
+      "OPENCODE_EXECUTION_DISABLED",
+      "DISABLE_SWITCH_ACTIVE",
+      "EXECUTION_NOT_ALLOWED"
+    ],
+    "observedNonExecutionProperties": {
+      "executionStarted": false,
+      "startEndpointContacted": false,
+      "opencodeStarted": false,
+      "runnerContactedForStart": false,
+      "preStartSnapshotRecorded": false,
+      "postStartSnapshotRecorded": false
+    },
+    "correctNextOrder": [
+      "if approval expired, record a fresh scoped approval",
+      "record approved pre-start evidence artifact",
+      "validate approved pre-start evidence",
+      "record start state snapshot dry-run/evidence only after pre-start evidence is valid",
+      "validate state snapshot evidence",
+      "continue to clearance/disable/stop-readiness gates only after auditor review"
+    ],
+    "preStartEvidenceExists": false,
+    "stateSnapshotsExist": false,
+    "fp027CanaryStatus": "NOT_RUN"
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-297 records that the FP-MCP-295 minimal canary did not advance past approval into pre-start evidence or state snapshots: repeated non-executing state-snapshot dry-run attempts failed closed because approved pre-start evidence was missing, so the operator stopped rather than rushing toward the approval expiration window; no runner start endpoint was contacted, no OpenCode worker/session was started, no approval was consumed, no disable switch was cleared, no snapshots were recorded, and FP-027 did not run."
+}

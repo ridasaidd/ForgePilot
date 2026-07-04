@@ -1,0 +1,15 @@
+FP-MCP-297 verification
+
+Checkpoint type:
+- FAIL_CLOSED_HOLD
+
+Claim:
+- FP-MCP-297 records that the FP-MCP-295 minimal canary did not advance past approval into pre-start evidence or state snapshots: repeated non-executing state-snapshot dry-run attempts failed closed because approved pre-start evidence was missing, so the operator stopped rather than rushing toward the approval expiration window; no runner start endpoint was contacted, no OpenCode worker/session was started, no approval was consumed, no disable switch was cleared, no snapshots were recorded, and FP-027 did not run.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

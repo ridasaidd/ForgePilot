@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-297",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 175,
+  "run_id": "FP-MCP-297-FAIL-CLOSED-HOLD",
+  "generic_admission_event_id": 175,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP-MCP-297 records that the FP-MCP-295 minimal canary did not advance past approval into pre-start evidence or state snapshots: repeated non-executing state-snapshot dry-run attempts failed closed because approved pre-start evidence was missing, so the operator stopped rather than rushing toward the approval expiration window; no runner start endpoint was contacted, no OpenCode worker/session was started, no approval was consumed, no disable switch was cleared, no snapshots were recorded, and FP-027 did not run.",
+  "artifact_paths": [
+    "packets/FP-MCP-297.md",
+    "runs/FP-MCP-297/fail-closed-hold-record.json",
+    "runs/FP-MCP-297/result-summary.md",
+    "runs/FP-MCP-297/verification.txt"
+  ]
+}
