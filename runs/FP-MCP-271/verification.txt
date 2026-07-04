@@ -1,0 +1,15 @@
+FP-MCP-271 verification
+
+Checkpoint type:
+- POPUP_SURFACE_OBSERVATION_RESULT
+
+Claim:
+- FP-MCP-271 records direct operator screenshot evidence of the actual popup-mediated clearance approval modal and finds it partially informative but not compliant with FP-MCP-269: it summarizes clearance creation, workspace, commit, and non-execution, but does not visibly present the full required scope tuple or eliminate Always allow for clearance-creating tools.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

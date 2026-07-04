@@ -1,0 +1,143 @@
+{
+  "packetId": "FP-MCP-271",
+  "title": "Popup Clearance Approval Modal Observation",
+  "checkpointType": "POPUP_SURFACE_OBSERVATION_RESULT",
+  "claim": "FP-MCP-271 records direct operator screenshot evidence of the actual popup-mediated clearance approval modal and finds it partially informative but not compliant with FP-MCP-269: it summarizes clearance creation, workspace, commit, and non-execution, but does not visibly present the full required scope tuple or eliminate Always allow for clearance-creating tools.",
+  "summary": "The operator captured mobile screenshots of the actual forgepilot_create_operator_local_execution_clearance approval modal after invoking the stale FP-MCP-233 clearance tuple and then denying the request. The modal title was generic: Allow ChatGPT to use ForgePilot MCP? The summary stated that it creates a short-lived operator-local execution clearance artifact for ForgePilot using provided execution and approval packet IDs, workspace 'forgepilot', and commit '2ad7ad1'; it also stated no execution is started and only a local clearance file is written. This is better than the baseline terminal popup because it gives a clearance-specific summary and names workspace, commit, and non-execution. However, it still falls short of FP-MCP-269: the visible main surface does not show the full required tuple, including requestId, approvalPacketId, modelId, runMode, branch, executionBaseCommit/requestArtifactCommit distinction, expiry timestamp/countdown, approval consumption status, disable-switch state, or complete side-effect checklist. The modal remains scroll-heavy on mobile and includes Deny, Allow once, and Always allow. Always allow is unacceptable for clearance-creating tools under FP-MCP-269 unless the platform prevents it or an explicit risk exception is recorded. The actual tool path was declined; no clearance was created.",
+  "caveats": [
+    "This result is based on operator-supplied screenshots of the mobile ChatGPT approval modal, not an automated UI introspection API.",
+    "The screenshots are conversation evidence and are summarized here as observations; the image files themselves are not copied into the ForgePilot repo by this checkpoint.",
+    "The observed modal may reflect current ChatGPT mobile UI behavior and may change over time.",
+    "The modal is partially informative and clearance-specific, so it is not a generic rubber stamp; however, it is not sufficient for FP-MCP-269 compliance.",
+    "The presence of Always allow is a serious concern for clearance-creating tools; if the platform cannot suppress it, future FP-027 work requires explicit risk exception and compensating controls.",
+    "The operator denied the popup, and the MCP tool result reported the path was declined; no clearance creation occurred."
+  ],
+  "boundaries": [
+    "execution authorized: false",
+    "approval created: false",
+    "approval consumed: false",
+    "local clearance created: false",
+    "runner start endpoint contacted: false",
+    "OpenCode started: false",
+    "OpenCode HTTP session created: false",
+    "prompt submitted: false",
+    "wait endpoint called: false",
+    "disable switch cleared: false",
+    "FP-027 canary run: false",
+    "popup approved: false"
+  ],
+  "structuredRecord": {
+    "schema": "FP_MCP_271_POPUP_CLEARANCE_MODAL_OBSERVATION_V1",
+    "sourceContext": {
+      "requirementsPacket": "FP-MCP-269",
+      "feasibilityPacket": "FP-MCP-270",
+      "observedTool": "forgepilot_create_operator_local_execution_clearance",
+      "observationMethod": "operator-supplied mobile screenshots of approval modal",
+      "operatorAction": "denied popup after screenshot",
+      "clearanceTupleUsed": "stale FP-MCP-233/FP-MCP-223 tuple previously proven expired/stale/unusable"
+    },
+    "observedModal": {
+      "appName": "ForgePilot MCP",
+      "title": "Allow ChatGPT to use ForgePilot MCP?",
+      "summaryTextObserved": "Creates a short-lived operator-local execution clearance artifact for ForgePilot using provided execution and approval packet IDs, workspace 'forgepilot', and commit '2ad7ad1'. No execution is started; only a local clearance file is written.",
+      "detailsLinkVisible": true,
+      "sharingDataIncludesVisible": [
+        "AccessTokens",
+        "Name",
+        "PhysicalAddress"
+      ],
+      "buttonsVisible": [
+        "Deny",
+        "Allow once",
+        "Always allow"
+      ],
+      "mobileScrollRequired": true,
+      "actualToolDeclined": true
+    },
+    "fpMcp269FieldAssessment": {
+      "visibleOrPartiallyVisible": [
+        "tool/app name",
+        "clearance creation action",
+        "workspace forgepilot",
+        "commit 2ad7ad1",
+        "non-execution statement",
+        "local clearance file write statement",
+        "some approval/clearance/session identifiers under AccessTokens",
+        "physical workspace paths under PhysicalAddress"
+      ],
+      "notVisibleOnMainObservedSurface": [
+        "executionPacketId as a structured field",
+        "requestId",
+        "approvalPacketId",
+        "approvalId as structured approval field rather than AccessTokens bucket",
+        "modelId",
+        "runMode",
+        "targetWorkspaceId as structured field",
+        "branch",
+        "current HEAD commit",
+        "executionBaseCommit",
+        "requestArtifactCommit",
+        "expiry timestamp",
+        "expiry countdown or remaining lifetime",
+        "single-use status",
+        "approval consumed status",
+        "approval revoked/quarantined status",
+        "disable switch status",
+        "whether approval will be consumed by this approval",
+        "whether disable switch will be cleared by this approval",
+        "whether OpenCode HTTP session will be created",
+        "whether prompt will be submitted",
+        "whether wait endpoint will be called",
+        "complete side-effect checklist"
+      ],
+      "forbiddenPatternObserved": [
+        "Always allow option visible for clearance-creating tool",
+        "generic title Allow ChatGPT to use ForgePilot MCP? rather than exact clearance tuple title",
+        "scope details require scrolling and/or are grouped under generic data-sharing categories"
+      ],
+      "positivePropertiesObserved": [
+        "clearance-specific natural-language summary present",
+        "workspace and commit included in summary",
+        "explicit statement that no execution is started",
+        "explicit statement that only a local clearance file is written",
+        "Deny button visible"
+      ]
+    },
+    "classification": {
+      "fpMcp269Compliance": "NOT_COMPLIANT_AS_OBSERVED",
+      "modalQuality": "PARTIAL_CLEARANCE_SPECIFIC_SUMMARY_BUT_INCOMPLETE_SCOPE_AND_UNSAFE_ALWAYS_ALLOW",
+      "platformLimitationLikely": true,
+      "requiresImplementationOrExceptionBeforeFp027": true
+    },
+    "riskExceptionGuidance": {
+      "ifPlatformCannotSuppressAlwaysAllow": "Record explicit risk exception before FP-027 and require the operator to never use Always allow for clearance tools; prefer clearing any persistent permission state before guarded starts if possible.",
+      "compensatingControlsNeeded": [
+        "assistant-authored pre-approval checklist immediately before invoking clearance tool",
+        "separate preview artifact or preview tool that displays full FP-MCP-269 tuple before real popup",
+        "tool-side refusal for broad/wildcard/long-lived/multi-use clearance remains mandatory",
+        "post-denial/approval artifact recording what was shown and what was clicked",
+        "manual operator statement confirming Deny/Allow once/Always allow choice for high-significance clearance"
+      ],
+      "preferredNextImplementation": "add a non-mutating clearance approval preview tool or enhance the clearance tool description/request text to include the full FP-MCP-269 tuple in visible natural-language form before the platform popup."
+    },
+    "fp027PlanningStatus": {
+      "status": "STILL_DEFERRED",
+      "reason": "Actual clearance popup observed but not compliant with FP-MCP-269; FP-027 planning should wait for a compensating preview/implementation or explicit risk exception.",
+      "notSatisfiedByThisObservation": true
+    },
+    "recommendedNextPacket": {
+      "packetId": "FP-MCP-272",
+      "title": "Clearance Approval Preview Tool or Risk Exception",
+      "purpose": "implement and verify a non-mutating full-scope clearance approval preview, or record a platform-limitation risk exception if the popup cannot be made compliant."
+    }
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-271 records direct operator screenshot evidence of the actual popup-mediated clearance approval modal and finds it partially informative but not compliant with FP-MCP-269: it summarizes clearance creation, workspace, commit, and non-execution, but does not visibly present the full required scope tuple or eliminate Always allow for clearance-creating tools."
+}
