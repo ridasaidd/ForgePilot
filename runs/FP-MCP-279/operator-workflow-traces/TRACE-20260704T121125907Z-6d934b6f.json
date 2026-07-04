@@ -1,0 +1,34 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T121125907Z-6d934b6f",
+  "recordedAt": "2026-07-04T12:11:25.907Z",
+  "packetId": "FP-MCP-279",
+  "workflowId": "FP-MCP-279-master-plan-orientation-refresh",
+  "phase": "ORIENTATION",
+  "stepIndex": 1,
+  "intendedAction": "Verify MCP bridge clean state before FP-MCP-279 master plan orientation refresh.",
+  "intendedToolName": "forgepilot_execute_terminal_command",
+  "actualToolName": "NONE",
+  "toolMatchedIntent": false,
+  "approvalLiteral": "EXECUTE_TERMINAL_COMMAND",
+  "workflowAdvanced": false,
+  "deviationType": "PLATFORM_SAFETY_BLOCK",
+  "sideEffects": [],
+  "notes": [
+    "The platform blocked the bridge git-status terminal check before it reached ForgePilot MCP.",
+    "No command executed and no repository state changed.",
+    "The last verified MCP bridge state from FP-MCP-278 was feature/oauth-auth0 at 1ff559e with a clean working tree."
+  ],
+  "recoveryAction": "Proceed with ForgePilot-only orientation refresh from clean ForgePilot state; retry bridge status later only if needed.",
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}

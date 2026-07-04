@@ -83,6 +83,15 @@ V1 is not complete merely because individual components exist.
 
 V1 is complete when a new operator or agent can inspect the repository and supported query surfaces and reconstruct what happened without relying on a previous ChatGPT session.
 
+## Current FP-027 Steering Checklist
+
+FP-027 guarded-runner-start steering is now tracked by the admitted FP-MCP-277 checklist artifacts:
+
+- `runs/FP-MCP-277/fp027-master-checklist.md`
+- `runs/FP-MCP-277/fp027-master-checklist.json`
+
+Use those checklist artifacts for current FP-027 status. This progress checklist remains a general V1 capability checklist and must not override admitted FP-MCP-277 steering evidence.
+
 ## Current Baseline
 
 Last updated by:

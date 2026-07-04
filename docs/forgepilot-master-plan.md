@@ -1,5 +1,24 @@
 # ForgePilot Master Plan
 
+## 0. Orientation contract
+
+This document orients the project. It is not the current-state ledger.
+
+Current-state truth must be derived from admitted evidence in the ForgePilot repository. Active FP-027 guarded-runner-start steering is tracked by:
+
+- `runs/FP-MCP-277/fp027-master-checklist.md`
+- `runs/FP-MCP-277/fp027-master-checklist.json`
+
+The operating rule is:
+
+```text
+The master plan orients.
+The ledger proves.
+The checklist steers.
+```
+
+Do not treat stale roadmap text as authority over admitted packet evidence.
+
 ## 1. Purpose
 
 ForgePilot is a software production observatory for AI-assisted development.
@@ -68,6 +87,8 @@ It exposes tools for reading state, creating request artifacts, requesting appro
 
 The MCP bridge is not the observatory. It is an interface to the observatory and workspace.
 
+The mechanism of human approval and clearance is part of the policy surface, not an implementation detail. Popup-mediated local clearance is allowed only as a scoped, short-lived, single-use, operator-reviewed mechanism, and only when the relevant review manifest and evidence gates are satisfied.
+
 ### OpenCode
 
 OpenCode is the execution harness.
@@ -87,6 +108,12 @@ They may execute packets, audit implementations, compare outputs, classify failu
 The human operator owns authorization, policy judgment, and final responsibility.
 
 Human approval may authorize bounded execution, but human approval alone does not convert output into admitted evidence.
+
+Operator competence is a precondition. ForgePilot does not attempt to make execution safe for unqualified use; it exposes scope, provenance, side effects, and state so a competent operator can make an informed decision.
+
+Approval is not one undifferentiated action. Current evidence separates operator review, human approval evidence, final popup confirmation, local clearance, approval consumption, guarded start contact, and evidence admission. The approval popup is a final brake after review, not the review itself.
+
+Creation of execution clearance is itself a tracked policy boundary. FP-MCP-217 originally kept local clearance creation outside MCP; FP-MCP-236 revised that boundary for popup-mediated, short-lived, single-use, exact-scope local clearance under compensating controls.
 
 ### Server workspace
 
@@ -300,6 +327,8 @@ Routing is not the current goal. Evidence collection is the current goal.
 
 Routing becomes valid only when ForgePilot has enough admitted evidence to support recommendations.
 
+The minimum admitted-evidence threshold per model, task class, condition, and confidence level is not yet defined. That threshold is a known future standard, not something this plan silently assumes.
+
 Routing must not use raw model claims, unvalidated telemetry, rejected artifacts, quarantined records, or narrative summaries without evidence.
 
 Future routing may answer:
@@ -361,43 +390,40 @@ ForgePilot and the MCP bridge need these tool families:
 11. Model outcome and task classification tools.
 12. Handoff and GPT house orientation tools.
 
-## 15. Near-term roadmap
+## 15. Current steering pointers
 
-### FP-MCP-148 — Terminal MCP Practical Hardening
+This section is an orientation pointer, not the current-state source of truth.
 
-Implement terminal kill switch, Node/pnpm PATH fix, and container-engine command blocks.
+The older FP-MCP-148 through FP-MCP-156 roadmap represented an earlier phase of the MCP work. It is now superseded for steering purposes by admitted evidence in the FP-MCP ledger and by the FP-MCP-277 checklist.
 
-### FP-MCP-149 — OpenCode Local Telemetry Inventory
+Current FP-027 standing rule, carried forward verbatim from FP-MCP-268:
 
-Inventory local OpenCode telemetry metadata before stopping or restarting the long-running OpenCode server.
+> Do not declare FP-027 satisfied by resemblance to any OpenCode HTTP execution path. It requires the guarded runner start path with the original boundary evidence present at the moment of runner contact.
 
-### FP-MCP-150 — ForgePilot Master Plan
+Current steering artifacts:
 
-Record this comprehensive plan before further expansion.
+- `runs/FP-MCP-277/fp027-master-checklist.md`
+- `runs/FP-MCP-277/fp027-master-checklist.json`
 
-### FP-MCP-151 — Terminal Rate Limiting and Command Shaping
+Current orientation decisions:
 
-Reduce rapid-fire command patterns and force large tasks toward worker runs.
+- FP-MCP-277 reconstructs the FP-027 master checklist from admitted evidence.
+- FP-MCP-278 records that the MCP bridge server refactor should become an observed open-weight model workload, not silent GPT/operator maintenance before observation.
+- The MCP refactor should be packetized with constraints, success criteria, forbidden changes, test commands, audit checklist, and comparison criteria.
+- Open-weight models should perform the implementation under ForgePilot observation. GPT/operator should prepare the experiment and evaluate evidence.
 
-### FP-MCP-152 — Workspace State Snapshot
+Current next allowed FP-027 action:
 
-Capture live server workspace state as operational truth: repos, services, processes, listeners, OpenCode state, and GPT house state.
+- operator reviews the prepared FP-MCP-276 request and manifest, then explicitly approves or holds/denies.
 
-### FP-MCP-153 — OpenCode Worker Invocation v1
+Current forbidden actions before missing gates pass:
 
-Allow GPT to create and monitor bounded OpenCode worker tasks through MCP.
-
-### FP-MCP-154 — OpenCode Telemetry Capture v1
-
-Capture token, cost, duration, model, and tool-use telemetry into ForgePilot evidence where available.
-
-### FP-MCP-155 — Executor/Auditor Harness v1
-
-Run one model as executor and another as auditor under a controlled ForgePilot packet.
-
-### FP-MCP-156 — Evidence Admission Query v1
-
-Expose admitted evidence queries for future routing and orchestration decisions.
+- runner start endpoint contact,
+- OpenCode start,
+- prompt submission,
+- wait call,
+- approval consumption,
+- disable-switch change before explicit gate.
 
 ## 16. Conditions before routing or automation
 
@@ -417,6 +443,8 @@ Before routing or automation can influence decisions, ForgePilot must have:
 12. Human override and review paths.
 
 Until those conditions are met, GPT may recommend next steps, but ForgePilot must not present routing as evidence-based automation.
+
+A later standard must define how much admitted evidence is enough for a routing recommendation by model, task class, operating condition, and confidence level. Until that standard exists, routing remains advisory and explicitly non-authoritative.
 
 ## 17. North star
 

@@ -1,0 +1,42 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T121251929Z-532064b9",
+  "recordedAt": "2026-07-04T12:12:51.929Z",
+  "packetId": "FP-MCP-279",
+  "workflowId": "FP-MCP-279-master-plan-orientation-refresh",
+  "phase": "PLAN_VALIDATION",
+  "stepIndex": 2,
+  "intendedAction": "Record successful master plan and progress checklist orientation refresh edits and validation.",
+  "intendedToolName": "forgepilot_execute_terminal_command",
+  "actualToolName": "forgepilot_execute_terminal_command",
+  "toolMatchedIntent": true,
+  "approvalLiteral": "EXECUTE_TERMINAL_COMMAND",
+  "workflowAdvanced": true,
+  "deviationType": "NONE",
+  "sideEffects": [
+    "artifact_written"
+  ],
+  "notes": [
+    "Updated docs/forgepilot-master-plan.md with an Orientation contract stating that the master plan orients, the ledger proves, and the checklist steers.",
+    "Added pointers to runs/FP-MCP-277/fp027-master-checklist.md and .json as current FP-027 steering artifacts.",
+    "Preserved the FP-MCP-268 standing rule verbatim in the master plan.",
+    "Added human operator and MCP-role language for operator competence, final-brake popup semantics, and popup-mediated local clearance as a tracked policy boundary.",
+    "Replaced stale FP-MCP-148 through FP-MCP-156 near-term roadmap with current steering pointers.",
+    "Recorded FP-MCP-278 decision that MCP bridge refactor is a planned observed open-weight model workload, not silent operator maintenance.",
+    "Marked minimum admitted-evidence threshold for routing by model/task/condition/confidence as an unresolved future standard.",
+    "Updated docs/forgepilot-progress-checklist.md to point to FP-MCP-277 for current FP-027 steering.",
+    "Validation greps passed and git diff --check passed."
+  ],
+  "recoveryAction": null,
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}
