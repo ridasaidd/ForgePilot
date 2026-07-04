@@ -1,0 +1,49 @@
+{
+  "packetId": "FP-MCP-337",
+  "title": "Fresh Approval Wrapper Clearance Creation Expired",
+  "checkpointType": "HOST_BOUNDARY_CHARACTERIZATION",
+  "claim": "A fresh ChatGPT session could invoke the exposed guarded next-gate wrapper for clearance creation, and ForgePilot safely blocked progression because the approval had expired.",
+  "summary": "Record that the Step 4 wrapper call was allowed by the ChatGPT host, but ForgePilot did not apply the gate because the FP-MCP-335 approval was expired or invalid. No clearance artifact was written, no approval was consumed, no runner endpoint was contacted, and OpenCode was not started.",
+  "caveats": [
+    "This does not create clearance.",
+    "This does not test enablement.",
+    "This does not reach final guarded execution.",
+    "This does not start OpenCode.",
+    "The result is dominated by approval expiration timing."
+  ],
+  "boundaries": [
+    "No files written by the wrapper.",
+    "No approval consumed.",
+    "No clearance artifact written.",
+    "No runner contact.",
+    "No OpenCode start.",
+    "No token handling."
+  ],
+  "structuredRecord": {
+    "freshSession": true,
+    "approvalPacketId": "FP-MCP-335",
+    "approvalId": "APPROVAL-20260704T213314824Z-2261d9c0",
+    "wrapperHostAllowed": true,
+    "applied": false,
+    "phase": "BLOCKED_MANUAL_APPROVAL_REQUIRED",
+    "nextRequiredGate": "RECORD_APPROVAL",
+    "nextToolName": "forgepilot_record_real_human_approval_evidence",
+    "approvalValid": false,
+    "approvalInvalidReason": "APPROVAL_EXPIRED_OR_INVALID",
+    "filesWritten": false,
+    "approvalConsumed": false,
+    "clearanceArtifactWritten": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "guardedCanaryRun": false
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "A fresh ChatGPT session could invoke the exposed guarded next-gate wrapper for clearance creation, and ForgePilot safely blocked progression because the approval had expired."
+}

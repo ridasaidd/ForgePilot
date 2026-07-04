@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-337",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 215,
+  "run_id": "FP-MCP-337-HOST-BOUNDARY-CHARACTERIZATION",
+  "generic_admission_event_id": 215,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "A fresh ChatGPT session could invoke the exposed guarded next-gate wrapper for clearance creation, and ForgePilot safely blocked progression because the approval had expired.",
+  "artifact_paths": [
+    "packets/FP-MCP-337.md",
+    "runs/FP-MCP-337/host-boundary-characterization-record.json",
+    "runs/FP-MCP-337/result-summary.md",
+    "runs/FP-MCP-337/verification.txt"
+  ]
+}
