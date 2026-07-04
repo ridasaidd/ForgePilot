@@ -1,0 +1,15 @@
+FP-MCP-269 verification
+
+Checkpoint type:
+- POLICY_REQUIREMENTS
+
+Claim:
+- FP-MCP-269 defines human-attention display and friction requirements for popup-mediated local clearance so FP-MCP-236's weaker popup posture is not treated as a reflexive one-tap approval, before relying on it for future FP-027 guarded-runner-start work.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-269",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 143,
+  "run_id": "FP-MCP-269-POLICY-REQUIREMENTS",
+  "generic_admission_event_id": 143,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP-MCP-269 defines human-attention display and friction requirements for popup-mediated local clearance so FP-MCP-236's weaker popup posture is not treated as a reflexive one-tap approval, before relying on it for future FP-027 guarded-runner-start work.",
+  "artifact_paths": [
+    "packets/FP-MCP-269.md",
+    "runs/FP-MCP-269/policy-requirements-record.json",
+    "runs/FP-MCP-269/result-summary.md",
+    "runs/FP-MCP-269/verification.txt"
+  ]
+}

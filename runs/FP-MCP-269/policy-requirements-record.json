@@ -1,0 +1,156 @@
+{
+  "packetId": "FP-MCP-269",
+  "title": "Popup Clearance Human-Attention Display Requirements",
+  "checkpointType": "POLICY_REQUIREMENTS",
+  "claim": "FP-MCP-269 defines human-attention display and friction requirements for popup-mediated local clearance so FP-MCP-236's weaker popup posture is not treated as a reflexive one-tap approval, before relying on it for future FP-027 guarded-runner-start work.",
+  "summary": "Record explicit requirements for what any popup-mediated local clearance approval must show and how it must behave. FP-MCP-236 deliberately revised FP-MCP-217 by allowing popup-mediated clearance under artifact/scope/binding controls, but those controls did not address the human-attention risk: an approval popup may be technically correct but too vague or frictionless to support real judgment. FP-MCP-269 closes the requirements gap by requiring popup displays to surface exact packet, request, approval, model, run mode, workspace, branch, HEAD, execution base, request artifact commit, expiry, and action side effects, and by requiring behavioral friction that distinguishes clearance creation from runner start or execution.",
+  "caveats": [
+    "This packet defines policy/requirements only; it does not implement UI changes in the MCP bridge or ChatGPT platform.",
+    "This packet does not weaken FP-MCP-236's artifact/scope/binding controls; it adds a human-attention layer above them.",
+    "This packet does not authorize any guarded runner start and does not run FP-027.",
+    "Some popup UI behavior may be constrained by the ChatGPT/MCP client surface; if exact display control is not available, the MCP tool response/request text must compensate by making scope and side effects explicit before approval.",
+    "Until these requirements are implemented or otherwise satisfied, popup-mediated clearance remains policy-adopted but human-attention-hardening-incomplete for future high-significance guarded starts."
+  ],
+  "boundaries": [
+    "execution authorized: false",
+    "approval created: false",
+    "approval consumed: false",
+    "local clearance created: false",
+    "runner start endpoint contacted: false",
+    "OpenCode started: false",
+    "OpenCode HTTP session created: false",
+    "prompt submitted: false",
+    "wait endpoint called: false",
+    "disable switch cleared: false",
+    "FP-027 canary run: false",
+    "UI implementation changed: false"
+  ],
+  "structuredRecord": {
+    "schema": "FP_MCP_269_POPUP_HUMAN_ATTENTION_REQUIREMENTS_V1",
+    "sourceContext": {
+      "fromPacket": "FP-MCP-268",
+      "policyBasis": "FP-MCP-236 adopted popup-mediated local clearance as a deliberate weaker revision of FP-MCP-217 with artifact/scope/binding compensating controls.",
+      "identifiedGap": "artifact/scope/binding correctness does not guarantee the human sees enough specific information, or experiences enough friction, to make a real non-reflexive approval judgment.",
+      "riskStatement": "A well-formed artifact behind an uninformative one-tap popup can still become a rubber stamp."
+    },
+    "applicability": {
+      "appliesTo": [
+        "forgepilot_create_operator_local_execution_clearance",
+        "any successor tool that creates local execution clearance through a model-callable MCP surface",
+        "any future popup-mediated clearance used before guarded runner start or FP-027 work"
+      ],
+      "doesNotApplyTo": [
+        "pure read-only observers",
+        "non-executing checkpoint recorders",
+        "workflow trace writers that do not create execution clearance",
+        "OpenCode HTTP canaries that do not create local execution clearance"
+      ]
+    },
+    "mandatoryPopupDisplayFields": {
+      "identity": [
+        "executionPacketId",
+        "requestId",
+        "approvalPacketId",
+        "approvalId",
+        "modelId",
+        "runMode",
+        "targetWorkspaceId"
+      ],
+      "repositoryState": [
+        "targetWorkspaceId",
+        "branch",
+        "current HEAD commit",
+        "executionBaseCommit",
+        "requestArtifactCommit",
+        "whether current HEAD equals required requestArtifactCommit",
+        "whether executionBaseCommit is ancestor of requestArtifactCommit",
+        "whether workspace is clean"
+      ],
+      "approvalState": [
+        "approval validity",
+        "approval expiry timestamp",
+        "approval expiry countdown or remaining lifetime",
+        "approval consumed status",
+        "approval revoked/quarantined status",
+        "approval binding status"
+      ],
+      "clearanceState": [
+        "clearance lifetime requested",
+        "clearance expiry timestamp",
+        "single-use status",
+        "gitignored clearance path status",
+        "whether clearance creation itself contacts runner start endpoint",
+        "whether clearance creation itself starts OpenCode",
+        "whether clearance creation itself consumes approval",
+        "whether clearance creation itself clears disable switch"
+      ],
+      "actionSideEffects": [
+        "files to be written",
+        "whether local clearance artifact will be created",
+        "whether runner start endpoint will be contacted by this approval",
+        "whether OpenCode process will be started by this approval",
+        "whether an OpenCode HTTP session will be created by this approval",
+        "whether a prompt will be submitted by this approval",
+        "whether wait endpoint will be called by this approval",
+        "whether approval will be consumed by this approval",
+        "whether disable switch will be cleared by this approval"
+      ],
+      "riskContext": [
+        "explicit statement that popup-mediated clearance is weaker than outside-MCP hands-on-keyboard clearance",
+        "explicit distinction between clearance creation and execution start",
+        "explicit statement that approval is exact-scope and not standing authority",
+        "explicit statement that broad, wildcard, long-lived, or multi-use clearance is forbidden"
+      ]
+    },
+    "mandatoryBehavioralFriction": {
+      "scopeComparison": "popup/request text must make it easy to compare the requested tuple against the committed request and approval artifact tuple before approval",
+      "nonGenericConfirmation": "approval text must not be generic-only when creating clearance; it must include at least packet id, request id, model id, run mode, target commit, and expiry",
+      "dangerDifferentiation": "actions that create clearance, contact runner start, start OpenCode, submit prompts, clear disable switch, or consume approval must be visually/textually distinguishable from read-only actions",
+      "noHiddenEscalation": "a popup for clearance creation must not bundle runner start, OpenCode start, prompt submission, disable-switch clearing, or approval consumption unless explicitly displayed and separately named",
+      "shortLifetimeVisible": "remaining approval and clearance lifetime must be visible enough that the operator can detect stale or rushed approvals",
+      "mobileLegibility": "the scope summary must remain readable on mobile without requiring opening hidden JSON or scrolling through unrelated boilerplate",
+      "blockReasonVisibility": "if approval is blocked or ineligible, specific block reasons must be shown rather than collapsed to a generic denial",
+      "reflexPrevention": "the UI/request should require enough specific recognition that approving cannot reasonably be reduced to a blind one-tap habit for high-significance clearance creation"
+    },
+    "forbiddenPopupPatterns": [
+      "Approve clearance without displaying exact packet/request/model/runMode/commit/expiry tuple",
+      "Generic approval copy such as 'Allow tool?' as the only visible context for clearance creation",
+      "Hiding material side effects behind collapsed JSON or inaccessible logs",
+      "Combining clearance creation with runner start in the same ambiguous approval",
+      "Treating a ChatGPT/MCP popup as equivalent to outside-MCP hands-on-keyboard clearance",
+      "Allowing wildcard packet, wildcard model, wildcard commit, standing clearance, multi-use clearance, or long-lived clearance",
+      "Using a successful previous run as substitute for showing current approval scope"
+    ],
+    "minimumAcceptanceCriteriaForImplementation": {
+      "artifactScopeControlsPreserved": true,
+      "popupDisplayIncludesRequiredIdentityFields": true,
+      "popupDisplayIncludesCommitAndBranchFields": true,
+      "popupDisplayIncludesExpiryAndSingleUseFields": true,
+      "popupDisplayIncludesActionSideEffects": true,
+      "clearanceCreationAndExecutionStartDistinguished": true,
+      "mobileReadableScopeSummary": true,
+      "genericOneTapOnlyApprovalForbidden": true,
+      "blockedOrIneligibleReasonsVisible": true,
+      "noRunnerStartOrOpenCodeStartHiddenInsideClearanceApproval": true
+    },
+    "relationshipToFp027": {
+      "fp027Status": "still OPEN_UNSATISFIED_END_TO_END from FP-MCP-268",
+      "requirementBeforeFp027Retry": "Before a future FP-027 guarded-runner-start canary relies on popup-mediated clearance, the operator approval step should satisfy FP-MCP-269's human-attention requirements or record an explicit exception and risk acceptance.",
+      "reason": "FP-027 is the flagship safety milestone; its human authorization step should not rely on a vague or reflexive mobile popup."
+    },
+    "recommendedNextPacket": {
+      "packetId": "FP-MCP-270",
+      "title": "FP-027 Guarded Runner Start End-to-End Canary Plan",
+      "precondition": "carry FP-MCP-269 requirements into the canary plan, either as implemented controls, observed platform limitations with compensating text, or an explicit risk exception."
+    }
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-269 defines human-attention display and friction requirements for popup-mediated local clearance so FP-MCP-236's weaker popup posture is not treated as a reflexive one-tap approval, before relying on it for future FP-027 guarded-runner-start work."
+}
