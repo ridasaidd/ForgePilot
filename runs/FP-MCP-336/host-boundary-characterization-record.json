@@ -1,0 +1,50 @@
+{
+  "packetId": "FP-MCP-336",
+  "title": "Fresh Approval Wrapper Clearance Preview",
+  "checkpointType": "HOST_BOUNDARY_CHARACTERIZATION",
+  "claim": "A fresh ChatGPT session could invoke the exposed guarded next-gate wrapper with a fresh valid approval and receive a clearance-preview manifest without host blocking or operational side effects.",
+  "summary": "Record that FP-MCP-335 validated approval allowed forgepilot_apply_guarded_canary_next_gate to apply the PREVIEW_CLEARANCE wrapper phase. The result was preview-only, wrote no files, consumed no approval, did not clear controls, did not contact the runner start endpoint, and did not start OpenCode.",
+  "caveats": [
+    "This does not create clearance.",
+    "This does not test enablement.",
+    "This does not reach final guarded execution.",
+    "This does not start OpenCode."
+  ],
+  "boundaries": [
+    "Preview only.",
+    "No files written by the wrapper.",
+    "No approval consumed.",
+    "No runner contact.",
+    "No OpenCode start.",
+    "No token handling."
+  ],
+  "structuredRecord": {
+    "freshSession": true,
+    "approvalPacketId": "FP-MCP-335",
+    "approvalId": "APPROVAL-20260704T213314824Z-2261d9c0",
+    "wrapperHostAllowed": true,
+    "applied": true,
+    "phase": "PREVIEW_CLEARANCE",
+    "previewOnly": true,
+    "followOnApplied": false,
+    "nextRequiredGate": "PREVIEW_CLEARANCE",
+    "nextToolName": "forgepilot_preview_operator_local_execution_clearance_review_manifest",
+    "eligibleToInvokeClearancePopup": true,
+    "followOnTool": "forgepilot_create_operator_local_execution_clearance",
+    "filesWritten": false,
+    "approvalConsumed": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "guardedCanaryRun": false,
+    "clearanceOutputPath": ".local/forgepilot/execution-clearance.json"
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "A fresh ChatGPT session could invoke the exposed guarded next-gate wrapper with a fresh valid approval and receive a clearance-preview manifest without host blocking or operational side effects."
+}
