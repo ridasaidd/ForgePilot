@@ -1,0 +1,41 @@
+{
+  "packetId": "FP-MCP-332",
+  "title": "Fresh Session Approval Validation Probe",
+  "checkpointType": "HOST_BOUNDARY_CHARACTERIZATION",
+  "claim": "A fresh ChatGPT session can record and validate a real human approval artifact for the FP-MCP-295 request tuple without host blocking.",
+  "summary": "Record that FP-MCP-331 approval evidence was created, committed locally, and validated successfully through ChatGPT MCP. The approval is usable for execution but remains unconsumed. No clearance, enablement, guarded apply, runner contact, or OpenCode start occurred.",
+  "caveats": [
+    "This does not test clearance.",
+    "This does not test enablement.",
+    "This does not call guarded apply.",
+    "This does not contact the runner start endpoint.",
+    "This does not start OpenCode."
+  ],
+  "boundaries": [
+    "Approval validation only.",
+    "Approval remains unconsumed.",
+    "Execution remains disabled.",
+    "No operational action was requested."
+  ],
+  "structuredRecord": {
+    "freshSession": true,
+    "approvalPacketId": "FP-MCP-331",
+    "approvalId": "APPROVAL-20260704T205936956Z-1d134e12",
+    "approvalValid": true,
+    "approvalUsableForExecution": true,
+    "approvalConsumed": false,
+    "executionAllowedNow": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "hostBlocked": false
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "A fresh ChatGPT session can record and validate a real human approval artifact for the FP-MCP-295 request tuple without host blocking."
+}

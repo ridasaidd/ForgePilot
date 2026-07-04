@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-332",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 211,
+  "run_id": "FP-MCP-332-HOST-BOUNDARY-CHARACTERIZATION",
+  "generic_admission_event_id": 211,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "A fresh ChatGPT session can record and validate a real human approval artifact for the FP-MCP-295 request tuple without host blocking.",
+  "artifact_paths": [
+    "packets/FP-MCP-332.md",
+    "runs/FP-MCP-332/host-boundary-characterization-record.json",
+    "runs/FP-MCP-332/result-summary.md",
+    "runs/FP-MCP-332/verification.txt"
+  ]
+}
