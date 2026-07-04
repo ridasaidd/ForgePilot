@@ -1,0 +1,106 @@
+{
+  "packetId": "FP-MCP-306",
+  "title": "Scoped Enablement Tool Discovery and Negative Checks",
+  "checkpointType": "NEGATIVE_TOOL_CHECK_RESULT",
+  "claim": "FP-MCP-306 verified that the FP-MCP-305 scoped enablement tools are discoverable after bridge restart and that stale inputs fail closed: preview was read-only and ineligible, create refused without writing the enablement artifact, and status reported no usable enablement artifact. No guarded run was attempted.",
+  "summary": "After the operator restarted the MCP bridge service and refreshed actions, api_tool discovery found the new scoped enablement tools: preview, create, and status. A stale FP-MCP-295 tuple using expired FP-MCP-302 approval, expired local clearance CLEARANCE-20260704T145411583Z-29b22ae0, current ForgePilot HEAD 638fbe3, and stale runner capability timestamp 2026-07-04T14:54:29.547Z was used for negative testing. The preview result was read-only and returned eligibleToInvokeEnablementPopup false with reasons including APPROVAL_EXPIRED, CLEARANCE_VALID_FAILED, and RUNNER_CAPABILITY_OBSERVATION_FRESH_FAILED. The create result returned enablementCreated false, enablementMutated false, filesWritten false, approvalUsableForExecution false, and reasons APPROVAL_NOT_USABLE_FOR_SCOPED_ENABLEMENT plus APPROVAL_EXPIRED. The status result reported enablementArtifactPresent false, eligibleForScopedExecutionEnablement false, and no usable local enablement. A terminal check confirmed the MCP bridge working tree is clean at 36c3d5a and .local/forgepilot/execution-enablement.json is absent.",
+  "caveats": [
+    "Only stale/expired negative checks were run; no fresh approval, clearance, or positive enablement was created.",
+    "The previous local clearance file still exists but is expired and bound to requestArtifactCommit 9a0b6b7, so it is not usable for current HEAD 638fbe3.",
+    "This packet does not integrate scoped enablement into aggregate orientation or guarded preflight reporting.",
+    "No attempt was made to contact runner start or start OpenCode."
+  ],
+  "boundaries": [
+    "tool discovery and negative checks only",
+    "no fresh approval created",
+    "no local enablement artifact created",
+    "no approval consumed",
+    "no runner start contact",
+    "no OpenCode session or worker started",
+    "no prompt submitted",
+    "no guarded canary run",
+    "no direct HTTP execution authority"
+  ],
+  "structuredRecord": {
+    "discovery": {
+      "newToolsDiscovered": true,
+      "tools": [
+        "forgepilot_preview_operator_local_scoped_execution_enablement_review_manifest",
+        "forgepilot_create_operator_local_scoped_execution_enablement",
+        "forgepilot_get_operator_local_scoped_execution_enablement_status"
+      ]
+    },
+    "negativeInput": {
+      "executionPacketId": "FP-MCP-295",
+      "requestId": "REQ-20260704T142232816Z-a82a42b6",
+      "approvalPacketId": "FP-MCP-302",
+      "approvalId": "APPROVAL-20260704T145343543Z-8a4d2a6f",
+      "clearanceId": "CLEARANCE-20260704T145411583Z-29b22ae0",
+      "modelId": "deepseek-v4-pro-high",
+      "runMode": "DESIGN_ONLY",
+      "executionBaseCommit": "5c0ab8b",
+      "requestArtifactCommit": "638fbe3",
+      "branch": "main",
+      "targetWorkspaceId": "forgepilot",
+      "preStartEvidenceSha256": "51cf00f1954880744b16f19e7a1b81e6993300632cd14752090626570206ca53",
+      "stateSnapshotAttemptId": "ATTEMPT-20260704T143856516Z-0fb5d745",
+      "preStartSnapshotSha256": "52a3d09e8eef033636f37eb2772c679c45a7839703be16ddbe9636296bd12183",
+      "postStartSnapshotSha256": "11ed1cbe6ee07f035387fbfc482b80e218e11ad2ed597e73a05fc4d37ce33320",
+      "runnerCapabilityCheckedAt": "2026-07-04T14:54:29.547Z"
+    },
+    "previewResult": {
+      "previewOnly": true,
+      "eligibleToInvokeEnablementPopup": false,
+      "filesWritten": false,
+      "approvalUsableForExecution": false,
+      "reasons": [
+        "APPROVAL_EXPIRED",
+        "CLEARANCE_VALID_FAILED",
+        "RUNNER_CAPABILITY_OBSERVATION_FRESH_FAILED"
+      ]
+    },
+    "createResult": {
+      "enablementCreated": false,
+      "enablementMutated": false,
+      "filesWritten": false,
+      "approvalUsableForExecution": false,
+      "approvalConsumed": false,
+      "reasons": [
+        "APPROVAL_NOT_USABLE_FOR_SCOPED_ENABLEMENT",
+        "APPROVAL_EXPIRED"
+      ]
+    },
+    "statusResult": {
+      "enablementArtifactPresent": false,
+      "enablementPathGitignored": true,
+      "eligibleForScopedExecutionEnablement": false,
+      "approvalUsableForExecution": false
+    },
+    "terminalVerification": {
+      "forgepilot": {
+        "branch": "main",
+        "head": "638fbe3",
+        "clean": true
+      },
+      "mcpBridge": {
+        "branch": "feature/oauth-auth0",
+        "head": "36c3d5a",
+        "clean": true,
+        "enablementFile": "absent",
+        "clearanceFile": "present_expired",
+        "clearanceExpiresAt": "2026-07-04T14:59:11.583Z",
+        "clearanceRequestArtifactCommit": "9a0b6b7"
+      }
+    },
+    "nextRecommendedPacket": "fresh positive path: renew approval, recreate clearance for current HEAD, then create scoped enablement and verify status; after that separately decide orientation/preflight integration"
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-306 verified that the FP-MCP-305 scoped enablement tools are discoverable after bridge restart and that stale inputs fail closed: preview was read-only and ineligible, create refused without writing the enablement artifact, and status reported no usable enablement artifact. No guarded run was attempted."
+}

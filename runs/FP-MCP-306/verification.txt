@@ -1,0 +1,15 @@
+FP-MCP-306 verification
+
+Checkpoint type:
+- NEGATIVE_TOOL_CHECK_RESULT
+
+Claim:
+- FP-MCP-306 verified that the FP-MCP-305 scoped enablement tools are discoverable after bridge restart and that stale inputs fail closed: preview was read-only and ineligible, create refused without writing the enablement artifact, and status reported no usable enablement artifact. No guarded run was attempted.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
