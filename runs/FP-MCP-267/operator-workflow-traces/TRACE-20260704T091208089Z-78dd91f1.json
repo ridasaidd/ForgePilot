@@ -1,0 +1,37 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T091208089Z-78dd91f1",
+  "recordedAt": "2026-07-04T09:12:08.089Z",
+  "packetId": "FP-MCP-267",
+  "workflowId": "FP-MCP-267-legacy-trace-normalization",
+  "phase": "CLEAN_STATE_VERIFICATION",
+  "stepIndex": 2,
+  "intendedAction": "Record FP-MCP-267 bridge implementation and validation result after committing legacy/manual trace normalization.",
+  "intendedToolName": "forgepilot_record_operator_workflow_trace",
+  "actualToolName": "forgepilot_record_operator_workflow_trace",
+  "toolMatchedIntent": true,
+  "approvalLiteral": null,
+  "workflowAdvanced": true,
+  "deviationType": "NONE",
+  "sideEffects": [
+    "artifact_written"
+  ],
+  "notes": [
+    "MCP bridge commit f2817a3 normalizes legacy/manual operator workflow trace records in the summarizer.",
+    "pnpm build passed.",
+    "pnpm test passed, including hardcoded packet-id lint.",
+    "Direct built-module validation against OPERATOR V0 traces returned traceCount 4, WRONG_ADJACENT_TOOL_CALLED 3, and UNEXPECTED_SIDE_EFFECT 1, replacing the prior UNKNOWN-only summary."
+  ],
+  "recoveryAction": "No recovery required.",
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}
