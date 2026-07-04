@@ -1,0 +1,38 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T120806204Z-e0676de0",
+  "recordedAt": "2026-07-04T12:08:06.204Z",
+  "packetId": "FP-MCP-278",
+  "workflowId": "FP-MCP-278-mcp-refactor-observed-workload-decision",
+  "phase": "ORIENTATION",
+  "stepIndex": 1,
+  "intendedAction": "Record orientation for deciding that the MCP bridge server refactor should be an observed open-weight model workload rather than manual pre-observation maintenance.",
+  "intendedToolName": "forgepilot_record_operator_workflow_trace",
+  "actualToolName": "forgepilot_record_operator_workflow_trace",
+  "toolMatchedIntent": true,
+  "approvalLiteral": null,
+  "workflowAdvanced": true,
+  "deviationType": "NONE",
+  "sideEffects": [
+    "artifact_written"
+  ],
+  "notes": [
+    "User clarified that the MCP server refactor should be done by open-weight models and observed so ForgePilot can gather data.",
+    "This changes the sequence: the MCP refactor is not silent operator maintenance before observation; it becomes one of the first real observed workloads after the guarded runner path is proven safe enough.",
+    "Manual GPT/operator work should prepare packet constraints, success criteria, forbidden changes, test commands, audit checklist, and comparison criteria.",
+    "Open-weight models should perform the implementation, with ForgePilot recording verification, audit, comparison, and admission evidence.",
+    "No approval, clearance creation, approval consumption, disable-switch change, runner start contact, OpenCode start, prompt submission, wait call, or canary execution is in scope for this decision packet."
+  ],
+  "recoveryAction": null,
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}
