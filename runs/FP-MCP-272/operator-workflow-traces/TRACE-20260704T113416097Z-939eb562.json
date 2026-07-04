@@ -1,0 +1,37 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T113416097Z-939eb562",
+  "recordedAt": "2026-07-04T11:34:16.097Z",
+  "packetId": "FP-MCP-272",
+  "workflowId": "FP-MCP-272-operator-review-final-brake-doctrine",
+  "phase": "ORIENTATION",
+  "stepIndex": 1,
+  "intendedAction": "Record orientation for a non-executing doctrine checkpoint clarifying that ForgePilot assumes competent operators, that review happens before approval, and that the approval popup is a final brake rather than a substitute for review.",
+  "intendedToolName": "forgepilot_record_operator_workflow_trace",
+  "actualToolName": "forgepilot_record_operator_workflow_trace",
+  "toolMatchedIntent": true,
+  "approvalLiteral": null,
+  "workflowAdvanced": true,
+  "deviationType": "NONE",
+  "sideEffects": [
+    "artifact_written"
+  ],
+  "notes": [
+    "User clarified that ForgePilot is not consumer hand-holding or a magical black box; it is an operator system for competent domain operators.",
+    "User clarified that no amount of UI hand-holding prevents ignorant decisions; ForgePilot should expose scope and evidence rather than pretend to eliminate bad judgment.",
+    "User clarified that the popup is a break/final confirmation after human review, analogous to a file deletion confirmation: if the operator hits yes, the bounded action proceeds.",
+    "FP-MCP-272 should distinguish operator review responsibility from popup/UI requirements and should not frame Always allow as universally bad; persistent approval is inappropriate only for fresh-scoped high-significance actions requiring current judgment."
+  ],
+  "recoveryAction": null,
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}
