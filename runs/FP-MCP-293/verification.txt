@@ -1,0 +1,15 @@
+FP-MCP-293 verification
+
+Checkpoint type:
+- NEXT_WORK_SELECTION
+
+Claim:
+- FP-MCP-293 selects Path A after the auditor accepted FP-MCP-292: the next real work should be a minimal FP-027 guarded/worker canary on a boring non-refactor task before any model-executed MCP bridge server.ts registration-extraction refactor is attempted.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

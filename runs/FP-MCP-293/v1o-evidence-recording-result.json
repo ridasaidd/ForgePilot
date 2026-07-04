@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-293",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 170,
+  "run_id": "FP-MCP-293-NEXT-WORK-SELECTION",
+  "generic_admission_event_id": 170,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP-MCP-293 selects Path A after the auditor accepted FP-MCP-292: the next real work should be a minimal FP-027 guarded/worker canary on a boring non-refactor task before any model-executed MCP bridge server.ts registration-extraction refactor is attempted.",
+  "artifact_paths": [
+    "packets/FP-MCP-293.md",
+    "runs/FP-MCP-293/next-work-selection-record.json",
+    "runs/FP-MCP-293/result-summary.md",
+    "runs/FP-MCP-293/verification.txt"
+  ]
+}
