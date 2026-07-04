@@ -1,0 +1,15 @@
+FP-MCP-311 verification
+
+Checkpoint type:
+- FAIL_CLOSED_HOLD
+
+Claim:
+- FP-MCP-311 confirmed the sequencer and clearance preview worked, then recorded that the wrong follow-on tool was selected. The wrong call refused and made no usable artifact.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

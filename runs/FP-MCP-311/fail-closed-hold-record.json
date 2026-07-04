@@ -1,0 +1,40 @@
+{
+  "packetId": "FP-MCP-311",
+  "title": "Sequencer Follow-On Mismatch",
+  "checkpointType": "FAIL_CLOSED_HOLD",
+  "claim": "FP-MCP-311 confirmed the sequencer and clearance preview worked, then recorded that the wrong follow-on tool was selected. The wrong call refused and made no usable artifact.",
+  "summary": "The sequencer returned PREVIEW_CLEARANCE for FP-MCP-295 with FP-MCP-310 approval. The returned clearance preview tool was called and passed. The intended follow-on was clearance creation, but scoped enablement creation was selected instead. It refused with CLEARANCE_VALID_FAILED and CLEARANCE_ID_MATCHES_FAILED. No approval was consumed and no canary ran.",
+  "caveats": [
+    "No fresh clearance was created.",
+    "No scoped enablement was created.",
+    "The canary did not run.",
+    "Continuation must start from the sequencer again."
+  ],
+  "boundaries": [
+    "fail-closed hold",
+    "no approval consumed",
+    "no clearance created",
+    "no enablement created",
+    "no model run started"
+  ],
+  "structuredRecord": {
+    "sequencerNextGate": "PREVIEW_CLEARANCE",
+    "previewPassed": true,
+    "intendedFollowOnTool": "forgepilot_create_operator_local_execution_clearance",
+    "actualTool": "forgepilot_create_operator_local_scoped_execution_enablement",
+    "actualReasons": [
+      "CLEARANCE_VALID_FAILED",
+      "CLEARANCE_ID_MATCHES_FAILED"
+    ],
+    "expectedBehaviorConfirmed": true
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-311 confirmed the sequencer and clearance preview worked, then recorded that the wrong follow-on tool was selected. The wrong call refused and made no usable artifact."
+}

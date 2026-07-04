@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-311",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 188,
+  "run_id": "FP-MCP-311-FAIL-CLOSED-HOLD",
+  "generic_admission_event_id": 188,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP-MCP-311 confirmed the sequencer and clearance preview worked, then recorded that the wrong follow-on tool was selected. The wrong call refused and made no usable artifact.",
+  "artifact_paths": [
+    "packets/FP-MCP-311.md",
+    "runs/FP-MCP-311/fail-closed-hold-record.json",
+    "runs/FP-MCP-311/result-summary.md",
+    "runs/FP-MCP-311/verification.txt"
+  ]
+}
