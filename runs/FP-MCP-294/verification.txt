@@ -1,0 +1,15 @@
+FP-MCP-294 verification
+
+Checkpoint type:
+- CANARY_PREPARATION
+
+Claim:
+- FP-MCP-294 prepares the minimal FP-027 guarded/worker canary as a fresh, boring, non-refactor task and explicitly forbids reusing stale FP-MCP-276 request/approval artifacts: the future canary must create a fresh request bound to the then-current clean ForgePilot HEAD before any approval, clearance, runner-start contact, OpenCode start, prompt submission, or approval consumption.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

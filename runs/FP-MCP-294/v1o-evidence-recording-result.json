@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-294",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 171,
+  "run_id": "FP-MCP-294-CANARY-PREPARATION",
+  "generic_admission_event_id": 171,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP-MCP-294 prepares the minimal FP-027 guarded/worker canary as a fresh, boring, non-refactor task and explicitly forbids reusing stale FP-MCP-276 request/approval artifacts: the future canary must create a fresh request bound to the then-current clean ForgePilot HEAD before any approval, clearance, runner-start contact, OpenCode start, prompt submission, or approval consumption.",
+  "artifact_paths": [
+    "packets/FP-MCP-294.md",
+    "runs/FP-MCP-294/canary-preparation-record.json",
+    "runs/FP-MCP-294/result-summary.md",
+    "runs/FP-MCP-294/verification.txt"
+  ]
+}
