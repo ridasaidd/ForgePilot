@@ -1,0 +1,15 @@
+FP-MCP-310 verification
+
+Checkpoint type:
+- FAIL_CLOSED_HOLD
+
+Claim:
+- FP-MCP-310 recorded, committed, and validated a fresh approval, then stopped before clearance because the operator selected the guarded preflight report tool instead of the sequencer tool. No clearance, enablement, or canary run occurred.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
