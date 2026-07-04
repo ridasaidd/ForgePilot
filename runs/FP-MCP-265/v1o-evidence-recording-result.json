@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-265",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 137,
+  "run_id": "FP-MCP-265-POSITIVE-INVOCATION-RESULT",
+  "generic_admission_event_id": 137,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "The surfaced OpenCode HTTP lifecycle single-shot gate successfully invoked a hash-matching single-shot lifecycle from the validated FP-MCP-254 plan, created one OpenCode HTTP session, submitted one bounded prompt, observed the expected assistant-role text, deleted the session, wrote preflight/result artifacts, and did not call wait, contact the ForgePilot runner start endpoint, start OpenCode from terminal, or consume approval.",
+  "artifact_paths": [
+    "packets/FP-MCP-265.md",
+    "runs/FP-MCP-265/positive-invocation-result-record.json",
+    "runs/FP-MCP-265/result-summary.md",
+    "runs/FP-MCP-265/verification.txt"
+  ]
+}

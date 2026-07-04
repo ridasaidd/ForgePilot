@@ -1,0 +1,15 @@
+FP-MCP-265 verification
+
+Checkpoint type:
+- POSITIVE_INVOCATION_RESULT
+
+Claim:
+- The surfaced OpenCode HTTP lifecycle single-shot gate successfully invoked a hash-matching single-shot lifecycle from the validated FP-MCP-254 plan, created one OpenCode HTTP session, submitted one bounded prompt, observed the expected assistant-role text, deleted the session, wrote preflight/result artifacts, and did not call wait, contact the ForgePilot runner start endpoint, start OpenCode from terminal, or consume approval.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
