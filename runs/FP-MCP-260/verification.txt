@@ -1,0 +1,15 @@
+FP-MCP-260 verification
+
+Checkpoint type:
+- HTTP_LIFECYCLE_INVOCATION_ATTEMPT_SCHEMA
+
+Claim:
+- FP_MCP_260_HTTP_LIFECYCLE_INVOCATION_ATTEMPT_ARTIFACT_SCHEMA_DEFINED_WITHOUT_IMPLEMENTATION
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
