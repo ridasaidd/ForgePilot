@@ -3,12 +3,12 @@
 ## Result
 
 ```text
-FP-MCP-318 should extend forgepilot_apply_guarded_canary_next_gate by exactly one final guarded stage: when valid approval, valid operator-local clearance, valid scoped execution enablement, fresh runner capability observation, and valid evidence/preflight bindings exist for the FP-MCP-295 canary tuple, the enforced executor may perform one bounded runner-start attempt and then stop.
+FP-MCP-318 was implemented in the MCP bridge by extending forgepilot_apply_guarded_canary_next_gate to support the sequencer-selected final runner-start attempt stage through the existing startRemoteRunnerRequest contract, while preserving the narrowed guarded surface.
 ```
 
 ## Summary
 
-FP-MCP-317 proved the live FP-MCP-316 executor can advance from fresh approval through clearance and scoped enablement while stopping before runner start. FP-MCP-318 is the next implementation target and should route the final runner-start gate through the same single enforced executor path. It must preserve the narrowed default action surface, prevent direct operator selection of adjacent runner-start tools, and make runner start a sequencer-selected, preflight-bound, one-attempt action only.
+The MCP bridge implementation on branch feature/oauth-auth0 added dependency injection for the existing startRemoteRunnerRequest handler and a guarded executor branch for the sequencer state FRESH_ORIENTATION_BEFORE_START when the follow-on is forgepilot_start_remote_runner_request. With applyPreviewFollowOn=false it returns a preview-only runner-start boundary. With applyPreviewFollowOn=true it invokes the registered start handler once with START_REMOTE_RUNNER_REQUEST and reports a RUNNER_START_ATTEMPT boundary derived from the existing start result. The implementation reuses the existing server-side runner-start gates instead of reimplementing runner contact logic in the executor.
 
 ## Boundary
 

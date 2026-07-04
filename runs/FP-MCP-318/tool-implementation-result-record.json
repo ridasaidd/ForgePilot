@@ -1,0 +1,61 @@
+{
+  "packetId": "FP-MCP-318",
+  "title": "Guarded Canary Runner Start Executor Implementation Result",
+  "checkpointType": "TOOL_IMPLEMENTATION_RESULT",
+  "claim": "FP-MCP-318 was implemented in the MCP bridge by extending forgepilot_apply_guarded_canary_next_gate to support the sequencer-selected final runner-start attempt stage through the existing startRemoteRunnerRequest contract, while preserving the narrowed guarded surface.",
+  "summary": "The MCP bridge implementation on branch feature/oauth-auth0 added dependency injection for the existing startRemoteRunnerRequest handler and a guarded executor branch for the sequencer state FRESH_ORIENTATION_BEFORE_START when the follow-on is forgepilot_start_remote_runner_request. With applyPreviewFollowOn=false it returns a preview-only runner-start boundary. With applyPreviewFollowOn=true it invokes the registered start handler once with START_REMOTE_RUNNER_REQUEST and reports a RUNNER_START_ATTEMPT boundary derived from the existing start result. The implementation reuses the existing server-side runner-start gates instead of reimplementing runner contact logic in the executor.",
+  "caveats": [
+    "The running MCP service must be restarted before the rebuilt dist output becomes live.",
+    "This implementation result records code and verification only; it does not perform a runner-start test.",
+    "A live FP-MCP-318 functional test requires fresh approval, fresh clearance, fresh scoped enablement, and fresh runner capability observation.",
+    "The final live test may contact the runner start endpoint by design; that must be explicitly authorized in the test approval and must remain one bounded attempt."
+  ],
+  "boundaries": [
+    "No runner start endpoint was contacted during implementation.",
+    "No approval was consumed during implementation.",
+    "OpenCode was not started during implementation.",
+    "The canary did not run during implementation.",
+    "Direct forgepilot_start_remote_runner_request remains hidden from the default narrowed guarded surface; the final start path is routed through forgepilot_apply_guarded_canary_next_gate."
+  ],
+  "structuredRecord": {
+    "bridgeRepo": "/home/ridasaidd/forgepilot-chatgpt-mcp",
+    "bridgeBranch": "feature/oauth-auth0",
+    "bridgeBaseCommit": "c463264",
+    "bridgeImplementationCommit": "663dc62",
+    "bridgeImplementationCommitMessage": "Implement FP-MCP-318 guarded runner start gate",
+    "modifiedFiles": [
+      "src/guarded-canary-gate-executor.ts",
+      "src/server.ts"
+    ],
+    "changeSummary": [
+      "Added GuardedRunnerStartHandler dependency injection to guarded-canary-gate-executor.",
+      "Added setGuardedRunnerStartHandler export.",
+      "Added executor branch for FRESH_ORIENTATION_BEFORE_START with followOnAfterSuccess forgepilot_start_remote_runner_request.",
+      "The branch returns PREVIEW_RUNNER_START when applyPreviewFollowOn is false.",
+      "The branch invokes the existing startRemoteRunnerRequest handler once when applyPreviewFollowOn is true.",
+      "server.ts registers startRemoteRunnerRequest with setGuardedRunnerStartHandler.",
+      "Rebuilt untracked dist output and verified dist contains RUNNER_START_ATTEMPT and setGuardedRunnerStartHandler."
+    ],
+    "verification": {
+      "typescriptNoEmit": "PASS",
+      "packetIdLint": "PASS",
+      "packetIdLintOutput": "Hardcoded packet-id lint passed: 169 observed source references matched allowlist.",
+      "distRebuild": "PASS",
+      "distMarkers": [
+        "dist/guarded-canary-gate-executor.js contains RUNNER_START_ATTEMPT",
+        "dist/server.js contains setGuardedRunnerStartHandler(startRemoteRunnerRequest)"
+      ],
+      "bridgePostCommitClean": true
+    },
+    "expectedNextTest": "After restarting the MCP service, create fresh approval, clearance, scoped enablement, and runner capability observation for the FP-MCP-295 tuple, then call only forgepilot_apply_guarded_canary_next_gate with applyPreviewFollowOn=true. Expected stop point: one bounded runner-start attempt result."
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-318 was implemented in the MCP bridge by extending forgepilot_apply_guarded_canary_next_gate to support the sequencer-selected final runner-start attempt stage through the existing startRemoteRunnerRequest contract, while preserving the narrowed guarded surface."
+}

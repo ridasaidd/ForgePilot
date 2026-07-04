@@ -1,10 +1,10 @@
 FP-MCP-318 verification
 
 Checkpoint type:
-- NEXT_PACKET_PROPOSAL
+- TOOL_IMPLEMENTATION_RESULT
 
 Claim:
-- FP-MCP-318 should extend forgepilot_apply_guarded_canary_next_gate by exactly one final guarded stage: when valid approval, valid operator-local clearance, valid scoped execution enablement, fresh runner capability observation, and valid evidence/preflight bindings exist for the FP-MCP-295 canary tuple, the enforced executor may perform one bounded runner-start attempt and then stop.
+- FP-MCP-318 was implemented in the MCP bridge by extending forgepilot_apply_guarded_canary_next_gate to support the sequencer-selected final runner-start attempt stage through the existing startRemoteRunnerRequest contract, while preserving the narrowed guarded surface.
 
 Boundaries:
 - execution authorized: false
