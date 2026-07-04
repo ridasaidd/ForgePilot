@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-333",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 212,
+  "run_id": "FP-MCP-333-TOOL-SURFACE-CHARACTERIZATION",
+  "generic_admission_event_id": 212,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "The fresh ChatGPT session reached PREVIEW_CLEARANCE through the read-only guarded sequencer, but the named clearance-preview tool was not exposed in the available ForgePilot MCP tool surface.",
+  "artifact_paths": [
+    "packets/FP-MCP-333.md",
+    "runs/FP-MCP-333/tool-surface-characterization-record.json",
+    "runs/FP-MCP-333/result-summary.md",
+    "runs/FP-MCP-333/verification.txt"
+  ]
+}

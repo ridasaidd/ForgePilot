@@ -1,0 +1,15 @@
+FP-MCP-333 verification
+
+Checkpoint type:
+- TOOL_SURFACE_CHARACTERIZATION
+
+Claim:
+- The fresh ChatGPT session reached PREVIEW_CLEARANCE through the read-only guarded sequencer, but the named clearance-preview tool was not exposed in the available ForgePilot MCP tool surface.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
