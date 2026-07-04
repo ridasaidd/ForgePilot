@@ -1,0 +1,15 @@
+FP-MCP-283 verification
+
+Checkpoint type:
+- MCP_BRIDGE_BUG_FIX_RESULT
+
+Claim:
+- FP-MCP-283 fixes the MCP bridge real-human approval recorder bug: approval scope is no longer hardcoded to FP-MCP-036, executionPacketId can bind approval scope separately from the recorder packet, simple scoped operator chat approval text is accepted, and the approval review window is now two hours.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
