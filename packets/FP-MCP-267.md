@@ -1,26 +1,26 @@
-# FP-MCP-267 — Operator Workflow Trace Legacy Normalization
+# FP-MCP-267 — Operator Workflow Trace Legacy Normalization Live Surfacing
 
 ## Checkpoint Type
 
 ```text
-TOOL_IMPLEMENTATION_RESULT
+POST_RELOAD_TOOL_SURFACING_RESULT
 ```
 
 ## Summary
 
-Updated the operator workflow trace summarizer to normalize both OPERATOR_WORKFLOW_TRACE_V1 records and earlier manual V0 trace artifacts with nested events arrays. The summarizer now expands legacy event entries, preserves root workflow metadata, counts event-level deviations, counts actual or declared side effects, lists tool mismatches, and adds review focus for missing or unrecognized deviation fields only when needed. Build and test passed, and a direct built-module validation against existing OPERATOR V0 traces returned four normalized events with WRONG_ADJACENT_TOOL_CALLED: 3 and UNEXPECTED_SIDE_EFFECT: 1.
+After MCP reload, the live forgepilot_summarize_operator_workflow_traces tool was called for packetId OPERATOR and workflowId FP-MCP-266-session-orientation. It returned traceCount 4, deviationCounts WRONG_ADJACENT_TOOL_CALLED: 3 and UNEXPECTED_SIDE_EFFECT: 1, side-effect counts, tool mismatch listings, and read-only boundary flags. A V1 workflow trace recording this live-surface proof was written and committed before this checkpoint.
 
 ## Claim
 
 ```text
-FP-MCP-267 implemented legacy/manual operator workflow trace normalization in the MCP bridge summarizer, replacing UNKNOWN-only summaries for V0 manual trace artifacts with normalized deviation and side-effect counts.
+FP-MCP-267 legacy/manual trace normalization is now visible through the live ChatGPT MCP summarizer: older V0 OPERATOR traces summarize as event-level deviations instead of UNKNOWN-only records.
 ```
 
 ## Caveats
 
-- This implementation was validated through build/test and direct built-module execution, but the running MCP service may need reload before the updated summarizer behavior is visible through ChatGPT MCP.
-- The packet does not change the writer schema and does not mutate historical V0 trace files.
-- The workspace inspection tool continued to display a path as rc/operator-workflow-trace.ts and staged status for raw M status; raw git status was used as source of truth.
+- The live result confirms summarizer normalization behavior is visible through ChatGPT MCP, but it also preserves the underlying control-plane deviations from the historical traces.
+- This checkpoint does not mutate historical V0 trace files; it records read-only summarizer behavior.
+- No live OpenCode lifecycle action was performed.
 
 ## Boundaries
 
@@ -32,7 +32,6 @@ FP-MCP-267 implemented legacy/manual operator workflow trace normalization in th
 - No execution approval was consumed.
 - No disable switch was cleared.
 - No secrets or .env files were read.
-- Terminal was used only for repo inspection, source edit, build/test, direct module validation, and commit scaffolding.
 
 ## Non-Execution Boundary
 
@@ -48,5 +47,5 @@ FP-027 canary run: false
 ## Expected Result
 
 ```text
-FP-MCP-267 implemented legacy/manual operator workflow trace normalization in the MCP bridge summarizer, replacing UNKNOWN-only summaries for V0 manual trace artifacts with normalized deviation and side-effect counts.
+FP-MCP-267 legacy/manual trace normalization is now visible through the live ChatGPT MCP summarizer: older V0 OPERATOR traces summarize as event-level deviations instead of UNKNOWN-only records.
 ```

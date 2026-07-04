@@ -1,0 +1,78 @@
+{
+  "packetId": "FP-MCP-267",
+  "title": "Operator Workflow Trace Legacy Normalization Live Surfacing",
+  "checkpointType": "POST_RELOAD_TOOL_SURFACING_RESULT",
+  "claim": "FP-MCP-267 legacy/manual trace normalization is now visible through the live ChatGPT MCP summarizer: older V0 OPERATOR traces summarize as event-level deviations instead of UNKNOWN-only records.",
+  "summary": "After MCP reload, the live forgepilot_summarize_operator_workflow_traces tool was called for packetId OPERATOR and workflowId FP-MCP-266-session-orientation. It returned traceCount 4, deviationCounts WRONG_ADJACENT_TOOL_CALLED: 3 and UNEXPECTED_SIDE_EFFECT: 1, side-effect counts, tool mismatch listings, and read-only boundary flags. A V1 workflow trace recording this live-surface proof was written and committed before this checkpoint.",
+  "caveats": [
+    "The live result confirms summarizer normalization behavior is visible through ChatGPT MCP, but it also preserves the underlying control-plane deviations from the historical traces.",
+    "This checkpoint does not mutate historical V0 trace files; it records read-only summarizer behavior.",
+    "No live OpenCode lifecycle action was performed."
+  ],
+  "boundaries": [
+    "No OpenCode process was started.",
+    "No OpenCode HTTP session was created.",
+    "No prompt was submitted.",
+    "No wait endpoint was called.",
+    "No ForgePilot runner start endpoint was contacted.",
+    "No execution approval was consumed.",
+    "No disable switch was cleared.",
+    "No secrets or .env files were read."
+  ],
+  "structuredRecord": {
+    "schema": "FP_MCP_267_LIVE_SUMMARIZER_SURFACING_RESULT_V1",
+    "bridge": {
+      "repo": "/home/ridasaidd/forgepilot-chatgpt-mcp",
+      "branch": "feature/oauth-auth0",
+      "implementationCommit": "f2817a3",
+      "committedBehavior": "Normalize legacy operator workflow traces"
+    },
+    "forgepilot": {
+      "implementationCheckpointCommit": "9471b75",
+      "liveSurfacingTraceCommit": "d433d81",
+      "liveTraceArtifact": "runs/FP-MCP-267/operator-workflow-traces/TRACE-20260704T105052466Z-795131e2.json"
+    },
+    "liveMcpSummarizerResult": {
+      "toolName": "forgepilot_summarize_operator_workflow_traces",
+      "packetId": "OPERATOR",
+      "workflowId": "FP-MCP-266-session-orientation",
+      "traceCount": 4,
+      "deviationCounts": {
+        "WRONG_ADJACENT_TOOL_CALLED": 3,
+        "UNEXPECTED_SIDE_EFFECT": 1
+      },
+      "sideEffectCounts": {
+        "read_only_runtime_diagnostics": 1,
+        "read_only_git_inspection": 1,
+        "terminal_request_artifact_written": 1,
+        "terminal_result_artifact_written": 1,
+        "terminal_stdout_log_written": 1,
+        "tool_surface_discovery_only": 2
+      },
+      "toolMismatchCount": 3,
+      "reviewFocus": [
+        "Review intended-vs-actual tool selection mismatches.",
+        "Review side-effect declarations against wrapper/tool behavior."
+      ]
+    },
+    "safetyBoundaries": {
+      "opencodeStarted": false,
+      "runnerStartEndpointContacted": false,
+      "waitEndpointCalled": false,
+      "sessionCreated": false,
+      "promptSubmitted": false,
+      "approvalConsumed": false,
+      "disableSwitchCleared": false,
+      "secretsRead": false
+    }
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-267 legacy/manual trace normalization is now visible through the live ChatGPT MCP summarizer: older V0 OPERATOR traces summarize as event-level deviations instead of UNKNOWN-only records."
+}

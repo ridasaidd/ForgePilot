@@ -1,10 +1,10 @@
 FP-MCP-267 verification
 
 Checkpoint type:
-- TOOL_IMPLEMENTATION_RESULT
+- POST_RELOAD_TOOL_SURFACING_RESULT
 
 Claim:
-- FP-MCP-267 implemented legacy/manual operator workflow trace normalization in the MCP bridge summarizer, replacing UNKNOWN-only summaries for V0 manual trace artifacts with normalized deviation and side-effect counts.
+- FP-MCP-267 legacy/manual trace normalization is now visible through the live ChatGPT MCP summarizer: older V0 OPERATOR traces summarize as event-level deviations instead of UNKNOWN-only records.
 
 Boundaries:
 - execution authorized: false
