@@ -1,0 +1,15 @@
+FP-MCP-307 verification
+
+Checkpoint type:
+- FAIL_CLOSED_HOLD
+
+Claim:
+- FP-MCP-307 advanced the fresh positive path through a committed and validated approval plus a fresh valid local clearance, but stopped before scoped enablement and before runner start because the operator repeatedly selected the adjacent clearance-preview tool instead of the scoped enablement preview tool. No enablement artifact was created, no approval was consumed, no runner start endpoint was contacted, and no OpenCode process was started.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

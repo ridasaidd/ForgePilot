@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-307",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 184,
+  "run_id": "FP-MCP-307-FAIL-CLOSED-HOLD",
+  "generic_admission_event_id": 184,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP-MCP-307 advanced the fresh positive path through a committed and validated approval plus a fresh valid local clearance, but stopped before scoped enablement and before runner start because the operator repeatedly selected the adjacent clearance-preview tool instead of the scoped enablement preview tool. No enablement artifact was created, no approval was consumed, no runner start endpoint was contacted, and no OpenCode process was started.",
+  "artifact_paths": [
+    "packets/FP-MCP-307.md",
+    "runs/FP-MCP-307/fail-closed-hold-record.json",
+    "runs/FP-MCP-307/result-summary.md",
+    "runs/FP-MCP-307/verification.txt"
+  ]
+}
