@@ -1,0 +1,15 @@
+FP-MCP-308 verification
+
+Checkpoint type:
+- TOOL_IMPLEMENTATION_RESULT
+
+Claim:
+- FP-MCP-308 added a read-only next-gate sequencer tool in the MCP bridge. Bridge commit 6b6fcc3 contains the implementation and tests pass.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

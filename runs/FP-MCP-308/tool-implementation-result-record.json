@@ -1,0 +1,59 @@
+{
+  "packetId": "FP-MCP-308",
+  "title": "Gate Sequencer Implementation",
+  "checkpointType": "TOOL_IMPLEMENTATION_RESULT",
+  "claim": "FP-MCP-308 added a read-only next-gate sequencer tool in the MCP bridge. Bridge commit 6b6fcc3 contains the implementation and tests pass.",
+  "summary": "Implemented src/guarded-canary-gate-sequencer.ts and registered forgepilot_get_guarded_canary_next_gate in src/server.ts. The tool inspects current state and returns nextRequiredGate, nextToolName, nextToolArguments, followOnAfterSuccess, reasons, and boundary. MCP bridge pnpm build passed and pnpm test passed.",
+  "caveats": [
+    "The MCP service may need restart or action refresh before the new tool is available in chat.",
+    "This packet records implementation only.",
+    "The tool is read-only."
+  ],
+  "boundaries": [
+    "no state-changing gate action performed by this checkpoint",
+    "no model task performed",
+    "no direct HTTP path used"
+  ],
+  "structuredRecord": {
+    "mcpBridge": {
+      "branch": "feature/oauth-auth0",
+      "headBefore": "36c3d5a",
+      "headAfter": "6b6fcc3",
+      "commitMessage": "Add guarded canary gate sequencer",
+      "workingTreeAfterCommit": "clean",
+      "changedFiles": [
+        "src/guarded-canary-gate-sequencer.ts",
+        "src/server.ts"
+      ]
+    },
+    "forgepilotCore": {
+      "branch": "main",
+      "headBeforeCheckpoint": "c23f21e",
+      "workingTreeBeforeCheckpoint": "clean"
+    },
+    "implementedTool": "forgepilot_get_guarded_canary_next_gate",
+    "outputs": [
+      "nextRequiredGate",
+      "nextToolName",
+      "nextToolArguments",
+      "followOnAfterSuccess",
+      "reasons",
+      "boundary"
+    ],
+    "validation": {
+      "pnpmBuild": "PASS",
+      "pnpmTest": "PASS",
+      "packetIdLint": "PASS"
+    },
+    "nextRecommendedPacket": "FP-MCP-309 discovery and first sequencer read"
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-308 added a read-only next-gate sequencer tool in the MCP bridge. Bridge commit 6b6fcc3 contains the implementation and tests pass."
+}
