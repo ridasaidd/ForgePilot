@@ -111,6 +111,24 @@ Master-plan currency rule:
 After every architecture-level packet, verify whether docs/forgepilot-master-plan.md and this progress checklist need an orientation update. Do not let roadmap text compete with admitted ledger evidence.
 ```
 
+
+## Current Refactor Ordering Rule
+
+Latest ordering decision:
+
+- `FP-MCP-292` — Refactor Execution Ordering Decision
+
+The MCP bridge `server.ts` registration-extraction refactor has two valid paths:
+
+1. Model-executed observed workload: first complete and admit a minimal FP-027 guarded/worker canary on a boring non-refactor task, then use the guarded/worker path for the refactor as the second real use.
+2. Human/GPT manual maintenance: explicitly packetize the refactor as manual maintenance, not as guarded/worker model execution and not as direct-HTTP execution authority.
+
+Invalid path:
+
+```text
+Do not make the real server.ts refactor the first live proof of the guarded/worker safety chain.
+```
+
 ## Current FP-027 Steering Checklist
 
 FP-027 guarded-runner-start steering is now tracked by the admitted FP-MCP-277 checklist artifacts:

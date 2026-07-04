@@ -440,6 +440,17 @@ The prompt wording boundary is a useful fail-closed observation, but it remains 
 
 Any future proposal to expand direct HTTP beyond this scope is an architecture reversal. It must reopen FP-MCP-291 in a new auditor-reviewed packet and prove the missing safety properties before the scope changes.
 
+
+## 15b. Refactor execution ordering
+
+FP-MCP-292 resolves the ordering question after FP-MCP-291. The MCP bridge `server.ts` registration-extraction refactor must not be the first real test of the guarded/worker execution safety chain.
+
+If the refactor is executed by a model through the guarded/worker path, a minimal FP-027 canary must be completed first on a boring, non-refactor task. That canary must prove the planned discipline on the real path: one worker, DESIGN_ONLY, no source edits, process/state evidence at the contact boundary, live stop-readiness, no retry, no chaining, and admitted result evidence.
+
+Only after that canary is admitted may the registration-extraction packet become the second real use of the guarded/worker path.
+
+If the operator chooses to do the registration extraction before FP-027, it must be explicitly scoped as human/GPT manual maintenance, not model execution through the guarded/worker path and not direct-HTTP execution authority.
+
 ## 16. Conditions before routing or automation
 
 Before routing or automation can influence decisions, ForgePilot must have:
