@@ -86,22 +86,23 @@ V1 is complete when a new operator or agent can inspect the repository and suppo
 
 ## Current Architecture-Level Currency
 
-The latest architecture-level reconciliation is:
+The latest architecture-level decision is:
 
-- `FP-MCP-289` — Auditor Architectural Reconciliation and Evidence Accounting
+- `FP-MCP-291` — Direct OpenCode HTTP Scope Decision
 
 Current direct OpenCode HTTP status:
 
-- Direct HTTP is provisional for design/canary use only.
-- Direct HTTP is not accepted as safety-equivalent to the guarded-runner FP-027 path.
-- Session deletion is not admitted as equivalent to a proven abort primitive.
-- The keyword-like prompt boundary is treated as a soft heuristic until structurally proven.
+- Direct HTTP is permanently narrower-scoped as a design/canary/planning tool.
+- Direct HTTP is not safety-equivalent to FP-027.
+- Direct HTTP does not need its own abort primitive because it is not a real workspace-changing run path.
+- Session deletion remains not admitted as a proven abort primitive.
+- The prompt wording boundary remains a soft heuristic until structurally proven.
 - FP-027 remains open and unsatisfied.
 
-Required named decision before direct HTTP can carry implementation execution authority:
+No soft middle ground:
 
 ```text
-Decide whether direct HTTP is being pursued toward eventual FP-027-equivalent safety parity, or whether it is permanently narrower-scoped as a design/canary/planning tool that never carries execution authority for real code edits.
+Direct HTTP may not quietly accumulate broader capability. Any future expansion is an architecture reversal requiring a new auditor-reviewed packet and missing safety-property proofs before scope changes.
 ```
 
 Master-plan currency rule:
