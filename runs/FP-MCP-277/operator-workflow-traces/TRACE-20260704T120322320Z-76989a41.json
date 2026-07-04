@@ -1,0 +1,38 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T120322320Z-76989a41",
+  "recordedAt": "2026-07-04T12:03:22.320Z",
+  "packetId": "FP-MCP-277",
+  "workflowId": "FP-MCP-277-fp027-master-checklist-reconciliation",
+  "phase": "PLAN_VALIDATION",
+  "stepIndex": 2,
+  "intendedAction": "Record creation and validation of the FP-027 master checklist artifacts derived from admitted evidence.",
+  "intendedToolName": "forgepilot_execute_terminal_command",
+  "actualToolName": "forgepilot_execute_terminal_command",
+  "toolMatchedIntent": true,
+  "approvalLiteral": "EXECUTE_TERMINAL_COMMAND",
+  "workflowAdvanced": true,
+  "deviationType": "NONE",
+  "sideEffects": [
+    "artifact_written"
+  ],
+  "notes": [
+    "Created runs/FP-MCP-277/fp027-master-checklist.md and runs/FP-MCP-277/fp027-master-checklist.json.",
+    "Checklist preserves the FP-MCP-268 standing rule verbatim: Do not declare FP-027 satisfied by resemblance to any OpenCode HTTP execution path. It requires the guarded runner start path with the original boundary evidence present at the moment of runner contact.",
+    "Checklist status summary is DONE 12, COMPENSATED 1, BLOCKED 2, NOT_STARTED 14, OPEN 1.",
+    "Current next allowed action is operator review of prepared request and manifest, followed by explicit approval or hold/denial.",
+    "Forbidden before missing gates pass: runner start contact, OpenCode start, prompt submission, wait call, approval consumption, and disable-switch change."
+  ],
+  "recoveryAction": null,
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}

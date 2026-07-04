@@ -1,0 +1,37 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T120136978Z-9e8ee3ce",
+  "recordedAt": "2026-07-04T12:01:36.978Z",
+  "packetId": "FP-MCP-277",
+  "workflowId": "FP-MCP-277-fp027-master-checklist-reconciliation",
+  "phase": "ORIENTATION",
+  "stepIndex": 1,
+  "intendedAction": "Begin FP-027 master checklist reconciliation from admitted evidence rather than memory or narrative plan text.",
+  "intendedToolName": "forgepilot_record_operator_workflow_trace",
+  "actualToolName": "forgepilot_record_operator_workflow_trace",
+  "toolMatchedIntent": true,
+  "approvalLiteral": null,
+  "workflowAdvanced": true,
+  "deviationType": "NONE",
+  "sideEffects": [
+    "artifact_written"
+  ],
+  "notes": [
+    "User asked whether the master plan and checklist are still being followed and accepted the model: plan orients, ledger proves, checklist steers.",
+    "FP-MCP-277 will reconstruct a canonical FP-027 checklist from admitted packet evidence and current state.",
+    "The checklist must preserve the FP-MCP-268 standing rule: FP-027 is not satisfied by resemblance to any HTTP execution path and requires guarded runner start with boundary evidence present at the moment of contact.",
+    "This packet is reconciliation only: no approval recording, no clearance creation, no approval consumption, no disable-switch clearing, no runner start contact, no OpenCode start, no prompt submission, no wait call, and no canary execution."
+  ],
+  "recoveryAction": null,
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}

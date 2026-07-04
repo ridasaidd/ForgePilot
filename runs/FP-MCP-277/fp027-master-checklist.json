@@ -1,0 +1,39 @@
+{
+  "schema": "FP_MCP_277_FP027_MASTER_CHECKLIST_V1",
+  "packetId": "FP-MCP-277",
+  "derivedFromAdmittedEvidence": true,
+  "standingRule": "Do not declare FP-027 satisfied by resemblance to any OpenCode HTTP execution path. It requires the guarded runner start path with the original boundary evidence present at the moment of runner contact.",
+  "fp027Status": "OPEN_UNSATISFIED_END_TO_END",
+  "currentTuple": {
+    "executionPacketId": "FP-MCP-276",
+    "requestId": "REQ-20260704T115428653Z-fc0b6275",
+    "requestArtifactPath": "runs/FP-MCP-276/opencode-requests/REQ-20260704T115428653Z-fc0b6275.json",
+    "modelId": "deepseek-v4-pro-high",
+    "runMode": "DESIGN_ONLY",
+    "branch": "main",
+    "executionBaseCommit": "3a62f84",
+    "latestKnownRequestArtifactCommitAtFpMcp276Close": "dd90b96",
+    "targetWorkspaceId": "forgepilot"
+  },
+  "summaryCounts": {
+    "DONE": 12,
+    "COMPENSATED": 1,
+    "BLOCKED": 2,
+    "NOT_STARTED": 14,
+    "OPEN": 1
+  },
+  "nextAllowedAction": "operator reviews the prepared request and manifest, then explicitly approves or holds/denies",
+  "nextForbiddenActions": [
+    "runner start endpoint contact",
+    "OpenCode start",
+    "prompt submission",
+    "wait call",
+    "approval consumption",
+    "disable-switch change before explicit gate"
+  ],
+  "masterPlanFollowUp": {
+    "nextPacket": "FP-MCP-278",
+    "purpose": "refresh master plan orientation so it points to ledger and checklist instead of becoming a competing source of current-state truth",
+    "knownFutureGap": "minimum admitted-evidence threshold for trustworthy routing per model/task-class remains undetermined"
+  }
+}
