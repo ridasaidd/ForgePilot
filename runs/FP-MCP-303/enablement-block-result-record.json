@@ -1,0 +1,106 @@
+{
+  "packetId": "FP-MCP-303",
+  "title": "Guarded Canary Blocked at Execution Enablement",
+  "checkpointType": "ENABLEMENT_BLOCK_RESULT",
+  "claim": "FP-MCP-303 records that the FP-MCP-295 minimal FP-027 guarded/worker canary advanced through fresh approval, refreshed clearance preview, local clearance creation, and independent local clearance validation, but did not proceed to runner start because the aggregate execution orientation still reported executionAllowedNow false, globalDisableActive true, runnerExecutionEnabled false, opencodeExecutionEnabled false, and guarded preflight failed the disableSwitch and opencodeReadiness gates; no exposed scoped disable-clear or execution-enable tool was available, so no runner start endpoint was contacted and OpenCode was not started.",
+  "summary": "The operator requested proceeding until actually running ForgePilot OpenCode. A fresh approval was recorded as FP-MCP-302 approval APPROVAL-20260704T145343543Z-8a4d2a6f, committed at 9a0b6b7, and validated. A refreshed clearance preview at current HEAD 9a0b6b7 passed and local clearance CLEARANCE-20260704T145411583Z-29b22ae0 was created by mutating only the gitignored MCP bridge local clearance file. Independent clearance validation reported eligibleForGuardedAttempt true. However, the read-only execution gate orientation still reported the execution enablement blockers: GLOBAL_DISABLE_ACTIVE, RUNNER_EXECUTION_DISABLED, and OPENCODE_EXECUTION_DISABLED. Guarded preflight showed request artifact, commit binding, model/run mode, runner capability, pre-start evidence, state snapshot evidence, human approval evidence, and evidence ledger readiness passed, but disableSwitch failed and opencodeReadiness failed. Because there is no available scoped tool to clear the disable switch or enable runner/OpenCode execution, and because runner start is forbidden before those gates pass, the correct endpoint is a blocked-at-enablement checkpoint rather than contacting runner start.",
+  "caveats": [
+    "The local clearance artifact is gitignored and lives in the MCP bridge workspace, not the ForgePilot repository.",
+    "The local clearance expires at 2026-07-04T14:59:11.583Z and must not be reused after expiration.",
+    "FP-MCP-302 approval expires at 2026-07-04T15:02:00.000Z and must not be reused after expiration.",
+    "An attempted dedicated disable-status read was blocked by platform safety; the aggregate orientation result still provided the relevant disable and enablement status.",
+    "No exposed scoped tool was available to clear the global disable switch or enable runner/OpenCode execution.",
+    "Runner start remains forbidden until executionAllowedNow/preflight pass in a fresh orientation."
+  ],
+  "boundaries": [
+    "blocked-at-enablement checkpoint only",
+    "no approval consumed",
+    "no disable switch cleared",
+    "no runner start endpoint contact",
+    "no OpenCode session or worker started",
+    "no prompt submitted",
+    "no FP-027 canary run",
+    "no source edits",
+    "no MCP bridge source inspection or refactor",
+    "no direct HTTP execution authority",
+    "no attempt to bypass global disable"
+  ],
+  "structuredRecord": {
+    "requestId": "REQ-20260704T142232816Z-a82a42b6",
+    "freshApproval": {
+      "approvalPacketId": "FP-MCP-302",
+      "approvalId": "APPROVAL-20260704T145343543Z-8a4d2a6f",
+      "approvalArtifactCommit": "9a0b6b7",
+      "approvalSha256": "258492528d8a6462f419bfd825991138eff7d56a66bb0766d1e0b94bf8173e52",
+      "expiresAt": "2026-07-04T15:02:00.000Z",
+      "validation": {
+        "approvalUsableForExecution": true,
+        "scopeMatchesExpected": true,
+        "artifactCommitted": true,
+        "notConsumed": true
+      }
+    },
+    "localClearance": {
+      "clearanceId": "CLEARANCE-20260704T145411583Z-29b22ae0",
+      "clearancePath": "/home/ridasaidd/forgepilot-chatgpt-mcp/.local/forgepilot/execution-clearance.json",
+      "clearanceMutatedExistingFile": true,
+      "expiresAt": "2026-07-04T14:59:11.583Z",
+      "requestArtifactCommit": "9a0b6b7",
+      "executionBaseCommit": "5c0ab8b",
+      "eligibleForGuardedAttempt": true,
+      "validatedAt": "2026-07-04T14:54:20.276Z"
+    },
+    "orientationAfterClearance": {
+      "checkedAt": "2026-07-04T14:54:29.547Z",
+      "summary": {
+        "runnerReachable": true,
+        "runnerStartCapabilityCallable": true,
+        "executionAllowedNow": false,
+        "globalDisableActive": true,
+        "runnerExecutionEnabled": false,
+        "opencodeExecutionEnabled": false,
+        "humanApprovalPresent": true,
+        "requestArtifactPresent": true,
+        "preflightPassableNow": false
+      },
+      "passedGates": [
+        "repository",
+        "requestArtifact",
+        "commitBinding",
+        "modelAndRunMode",
+        "runnerCapabilityState",
+        "preStartEvidence",
+        "stateSnapshotEvidence",
+        "humanApprovalEvidence",
+        "evidenceLedgerReadiness"
+      ],
+      "failedGates": [
+        "disableSwitch",
+        "opencodeReadiness"
+      ],
+      "blockingReasons": [
+        "GLOBAL_DISABLE_ACTIVE",
+        "RUNNER_EXECUTION_DISABLED",
+        "OPENCODE_EXECUTION_DISABLED"
+      ],
+      "nextRequiredActions": [
+        "DISABLE_SWITCH_CLEARANCE_REQUIRED"
+      ]
+    },
+    "fp027CanaryStatus": "NOT_RUN",
+    "runnerStartContacted": false,
+    "opencodeStarted": false,
+    "approvalConsumed": false,
+    "executionAllowedNow": false,
+    "nextLegalRequirement": "an explicit scoped disable/enablement mechanism must exist and pass before any runner start contact"
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-303 records that the FP-MCP-295 minimal FP-027 guarded/worker canary advanced through fresh approval, refreshed clearance preview, local clearance creation, and independent local clearance validation, but did not proceed to runner start because the aggregate execution orientation still reported executionAllowedNow false, globalDisableActive true, runnerExecutionEnabled false, opencodeExecutionEnabled false, and guarded preflight failed the disableSwitch and opencodeReadiness gates; no exposed scoped disable-clear or execution-enable tool was available, so no runner start endpoint was contacted and OpenCode was not started."
+}

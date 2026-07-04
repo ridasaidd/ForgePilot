@@ -1,0 +1,15 @@
+FP-MCP-303 verification
+
+Checkpoint type:
+- ENABLEMENT_BLOCK_RESULT
+
+Claim:
+- FP-MCP-303 records that the FP-MCP-295 minimal FP-027 guarded/worker canary advanced through fresh approval, refreshed clearance preview, local clearance creation, and independent local clearance validation, but did not proceed to runner start because the aggregate execution orientation still reported executionAllowedNow false, globalDisableActive true, runnerExecutionEnabled false, opencodeExecutionEnabled false, and guarded preflight failed the disableSwitch and opencodeReadiness gates; no exposed scoped disable-clear or execution-enable tool was available, so no runner start endpoint was contacted and OpenCode was not started.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
