@@ -1,0 +1,88 @@
+{
+  "packetId": "FP-MCP-299",
+  "title": "FP-027 Pre-Start and Snapshot Evidence Result",
+  "checkpointType": "PRE_START_AND_SNAPSHOT_RESULT",
+  "claim": "FP-MCP-299 records that the FP-MCP-298 sequence guard prevented the prior ordering mistake: approved pre-start evidence for FP-MCP-295 / REQ-20260704T142232816Z-a82a42b6 was recorded first, committed, and validated before state snapshot evidence was recorded, committed, and validated; both pre-start evidence and start state snapshot evidence are valid, and no runner start endpoint was contacted, no OpenCode worker/session was started, no approval was consumed, no disable switch was cleared, and FP-027 did not run.",
+  "summary": "After checking the FP-MCP-298 sequence guard and confirming approval APPROVAL-20260704T142523179Z-10b0b6f3 was still unexpired at 2026-07-04T14:38:02Z, the next legal action was approved pre-start evidence recording. The pre-start evidence artifact was recorded at runs/FP-MCP-295/pre-start-evidence/REQ-20260704T142232816Z-a82a42b6.json, committed at c292830, and validated with preStartEvidenceComplete true, preStartEvidenceValid true, artifactHashesPresent true, artifactHashesConsistent true, startEndpointContacted false, and opencodeStarted false. Only after that validation passed, state snapshot evidence was recorded for attempt ATTEMPT-20260704T143856516Z-0fb5d745, committed at 482780a, and validated with stateSnapshotComplete true, stateSnapshotValid true, preStartSnapshotValid true, and postStartSnapshotValid true. Because the approval window was near expiry, the operator stopped after admitting the evidence result rather than proceeding into clearance, disable/enablement, live stop-readiness, or runner-start-adjacent gates.",
+  "caveats": [
+    "The approval expires at 2026-07-04T14:40:00.000Z and should be treated as expired for any later continuation after that timestamp.",
+    "This packet does not create clearance, clear disable switches, consume approval, contact runner start, or run FP-027.",
+    "The snapshot validation tool reported human approval evidence missing in its generic reasons because that validator does not take an approvalId; pre-start validation with approvalId had already passed before snapshot recording.",
+    "Future continuation should begin by checking approval expiration and likely recording fresh scoped approval before clearance/start-adjacent gates.",
+    "FP-027 canary remains not run."
+  ],
+  "boundaries": [
+    "evidence-result checkpoint only",
+    "no approval consumed",
+    "no clearance created",
+    "no disable switch cleared",
+    "no runner start endpoint contact",
+    "no OpenCode session or worker started",
+    "no prompt submitted",
+    "no FP-027 canary run",
+    "no source edits",
+    "no MCP bridge source inspection or refactor",
+    "no direct HTTP execution authority"
+  ],
+  "structuredRecord": {
+    "requestId": "REQ-20260704T142232816Z-a82a42b6",
+    "approvalId": "APPROVAL-20260704T142523179Z-10b0b6f3",
+    "approvalExpiresAt": "2026-07-04T14:40:00.000Z",
+    "sequenceGuard": "FP-MCP-298",
+    "preStartEvidence": {
+      "path": "runs/FP-MCP-295/pre-start-evidence/REQ-20260704T142232816Z-a82a42b6.json",
+      "sha256": "51cf00f1954880744b16f19e7a1b81e6993300632cd14752090626570206ca53",
+      "commit": "c292830",
+      "recordedAt": "2026-07-04T14:38:30.204Z",
+      "validatedAt": "2026-07-04T14:38:46.785Z",
+      "preStartEvidenceComplete": true,
+      "preStartEvidenceValid": true,
+      "artifactHashesPresent": true,
+      "artifactHashesConsistent": true,
+      "approvalEvidenceValid": true,
+      "approvalUsableForExecution": true,
+      "startEndpointContacted": false,
+      "opencodeStarted": false,
+      "runnerContactedForStart": false
+    },
+    "stateSnapshots": {
+      "attemptId": "ATTEMPT-20260704T143856516Z-0fb5d745",
+      "basePath": "runs/FP-MCP-295/start-state-snapshots/REQ-20260704T142232816Z-a82a42b6/ATTEMPT-20260704T143856516Z-0fb5d745",
+      "commit": "482780a",
+      "recordedAt": "2026-07-04T14:38:56.516Z",
+      "validatedAt": "2026-07-04T14:39:14.938Z",
+      "preStartSnapshotPath": "runs/FP-MCP-295/start-state-snapshots/REQ-20260704T142232816Z-a82a42b6/ATTEMPT-20260704T143856516Z-0fb5d745/pre-start-state.json",
+      "preStartSnapshotSha256": "52a3d09e8eef033636f37eb2772c679c45a7839703be16ddbe9636296bd12183",
+      "postStartSnapshotPath": "runs/FP-MCP-295/start-state-snapshots/REQ-20260704T142232816Z-a82a42b6/ATTEMPT-20260704T143856516Z-0fb5d745/post-start-state.json",
+      "postStartSnapshotSha256": "11ed1cbe6ee07f035387fbfc482b80e218e11ad2ed597e73a05fc4d37ce33320",
+      "stateSnapshotComplete": true,
+      "stateSnapshotValid": true,
+      "preStartSnapshotValid": true,
+      "postStartSnapshotValid": true,
+      "startEndpointContacted": false,
+      "opencodeStarted": false,
+      "runnerContactedForStart": false
+    },
+    "orderedGateStatus": {
+      "approvedPreStartEvidenceExists": "SATISFIED",
+      "approvedPreStartEvidenceValidates": "SATISFIED",
+      "stateSnapshotEvidenceExists": "SATISFIED",
+      "stateSnapshotEvidenceValidates": "SATISFIED",
+      "clearancePreview": "NEXT_BUT_REQUIRES_FRESH_EXPIRY_CHECK_OR_FRESH_APPROVAL",
+      "localClearance": "FORBIDDEN_UNTIL_CLEARANCE_PREVIEW_REVIEWED",
+      "disableEnablementGate": "FORBIDDEN_UNTIL_CLEARANCE_VALIDATES",
+      "liveStopReadiness": "FORBIDDEN_UNTIL_DISABLE_ENABLEMENT_GATE_PASSES",
+      "runnerStartOnce": "FORBIDDEN_UNTIL_ALL_PRIOR_GATES_PASS"
+    },
+    "fp027CanaryStatus": "NOT_RUN"
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-299 records that the FP-MCP-298 sequence guard prevented the prior ordering mistake: approved pre-start evidence for FP-MCP-295 / REQ-20260704T142232816Z-a82a42b6 was recorded first, committed, and validated before state snapshot evidence was recorded, committed, and validated; both pre-start evidence and start state snapshot evidence are valid, and no runner start endpoint was contacted, no OpenCode worker/session was started, no approval was consumed, no disable switch was cleared, and FP-027 did not run."
+}

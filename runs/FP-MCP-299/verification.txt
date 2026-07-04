@@ -1,0 +1,15 @@
+FP-MCP-299 verification
+
+Checkpoint type:
+- PRE_START_AND_SNAPSHOT_RESULT
+
+Claim:
+- FP-MCP-299 records that the FP-MCP-298 sequence guard prevented the prior ordering mistake: approved pre-start evidence for FP-MCP-295 / REQ-20260704T142232816Z-a82a42b6 was recorded first, committed, and validated before state snapshot evidence was recorded, committed, and validated; both pre-start evidence and start state snapshot evidence are valid, and no runner start endpoint was contacted, no OpenCode worker/session was started, no approval was consumed, no disable switch was cleared, and FP-027 did not run.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
