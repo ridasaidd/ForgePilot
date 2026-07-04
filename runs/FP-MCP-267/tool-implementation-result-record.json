@@ -1,0 +1,93 @@
+{
+  "packetId": "FP-MCP-267",
+  "title": "Operator Workflow Trace Legacy Normalization",
+  "checkpointType": "TOOL_IMPLEMENTATION_RESULT",
+  "claim": "FP-MCP-267 implemented legacy/manual operator workflow trace normalization in the MCP bridge summarizer, replacing UNKNOWN-only summaries for V0 manual trace artifacts with normalized deviation and side-effect counts.",
+  "summary": "Updated the operator workflow trace summarizer to normalize both OPERATOR_WORKFLOW_TRACE_V1 records and earlier manual V0 trace artifacts with nested events arrays. The summarizer now expands legacy event entries, preserves root workflow metadata, counts event-level deviations, counts actual or declared side effects, lists tool mismatches, and adds review focus for missing or unrecognized deviation fields only when needed. Build and test passed, and a direct built-module validation against existing OPERATOR V0 traces returned four normalized events with WRONG_ADJACENT_TOOL_CALLED: 3 and UNEXPECTED_SIDE_EFFECT: 1.",
+  "caveats": [
+    "This implementation was validated through build/test and direct built-module execution, but the running MCP service may need reload before the updated summarizer behavior is visible through ChatGPT MCP.",
+    "The packet does not change the writer schema and does not mutate historical V0 trace files.",
+    "The workspace inspection tool continued to display a path as rc/operator-workflow-trace.ts and staged status for raw M status; raw git status was used as source of truth."
+  ],
+  "boundaries": [
+    "No OpenCode process was started.",
+    "No OpenCode HTTP session was created.",
+    "No prompt was submitted.",
+    "No wait endpoint was called.",
+    "No ForgePilot runner start endpoint was contacted.",
+    "No execution approval was consumed.",
+    "No disable switch was cleared.",
+    "No secrets or .env files were read.",
+    "Terminal was used only for repo inspection, source edit, build/test, direct module validation, and commit scaffolding."
+  ],
+  "structuredRecord": {
+    "schema": "FP_MCP_267_LEGACY_TRACE_NORMALIZATION_RESULT_V1",
+    "bridge": {
+      "repo": "/home/ridasaidd/forgepilot-chatgpt-mcp",
+      "branch": "feature/oauth-auth0",
+      "implementationCommit": "f2817a3",
+      "commitMessage": "Normalize legacy operator workflow traces",
+      "workingTreeCleanAfterCommit": true
+    },
+    "forgepilot": {
+      "preCheckpointHead": "ce094f4",
+      "orientationTraceCommit": "eddeeb1",
+      "validationTraceCommit": "ce094f4"
+    },
+    "changedFiles": [
+      "src/operator-workflow-trace.ts"
+    ],
+    "normalizationBehavior": {
+      "supportsV1DirectRecords": true,
+      "supportsManualV0NestedEvents": true,
+      "eventLevelDeviationCounts": true,
+      "eventLevelToolMismatchListing": true,
+      "actualObservedSideEffectsPreferred": true,
+      "declaredExpectedSideEffectsFallback": true,
+      "historicalFilesMutated": false
+    },
+    "verification": {
+      "pnpmBuild": "PASS",
+      "pnpmTest": "PASS",
+      "hardcodedPacketIdLint": "PASS",
+      "directBuiltModuleValidation": "PASS",
+      "legacyValidationResult": {
+        "packetId": "OPERATOR",
+        "workflowId": "FP-MCP-266-session-orientation",
+        "traceCount": 4,
+        "deviationCounts": {
+          "WRONG_ADJACENT_TOOL_CALLED": 3,
+          "UNEXPECTED_SIDE_EFFECT": 1
+        },
+        "sideEffectCounts": {
+          "read_only_runtime_diagnostics": 1,
+          "read_only_git_inspection": 1,
+          "terminal_request_artifact_written": 1,
+          "terminal_result_artifact_written": 1,
+          "terminal_stdout_log_written": 1,
+          "tool_surface_discovery_only": 2
+        },
+        "toolMismatchCount": 3
+      }
+    },
+    "safetyBoundaries": {
+      "opencodeStarted": false,
+      "runnerStartEndpointContacted": false,
+      "waitEndpointCalled": false,
+      "sessionCreated": false,
+      "promptSubmitted": false,
+      "approvalConsumed": false,
+      "disableSwitchCleared": false,
+      "secretsRead": false
+    }
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-267 implemented legacy/manual operator workflow trace normalization in the MCP bridge summarizer, replacing UNKNOWN-only summaries for V0 manual trace artifacts with normalized deviation and side-effect counts."
+}
