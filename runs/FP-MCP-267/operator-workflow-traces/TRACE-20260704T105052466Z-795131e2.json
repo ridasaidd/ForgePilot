@@ -1,0 +1,39 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T105052466Z-795131e2",
+  "recordedAt": "2026-07-04T10:50:52.466Z",
+  "packetId": "FP-MCP-267",
+  "workflowId": "FP-MCP-267-live-summarizer-surfacing",
+  "phase": "CLEAN_STATE_VERIFICATION",
+  "stepIndex": 1,
+  "intendedAction": "Record that the updated FP-MCP-267 summarizer behavior is visible through the live ChatGPT MCP tool surface.",
+  "intendedToolName": "forgepilot_summarize_operator_workflow_traces",
+  "actualToolName": "forgepilot_summarize_operator_workflow_traces",
+  "toolMatchedIntent": true,
+  "approvalLiteral": null,
+  "workflowAdvanced": true,
+  "deviationType": "NONE",
+  "sideEffects": [
+    "read_only_trace_summary"
+  ],
+  "notes": [
+    "api_tool discovery found forgepilot_summarize_operator_workflow_traces after reload.",
+    "The live MCP summarizer was called for packetId OPERATOR and workflowId FP-MCP-266-session-orientation.",
+    "The live result normalized older manual V0 trace events instead of reporting UNKNOWN-only fields.",
+    "Live result traceCount was 4.",
+    "Live result deviationCounts were WRONG_ADJACENT_TOOL_CALLED: 3 and UNEXPECTED_SIDE_EFFECT: 1.",
+    "Live result boundary reported readOnly true and false for filesWritten, openCodeInvoked, runnerStartEndpointContacted, waitEndpointCalled, approvalConsumed, disableSwitchCleared, opencodeProcessStarted, and secretsRead."
+  ],
+  "recoveryAction": "No recovery required.",
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}
