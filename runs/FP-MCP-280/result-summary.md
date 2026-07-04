@@ -3,12 +3,12 @@
 ## Result
 
 ```text
-FP-MCP-280 establishes that operator responsibility is the authority model and that structured human approval evidence may be recorded through the native MCP approval modal after review; approval recording does not create clearance, consume approval, clear disable switches, contact runner start, start OpenCode, submit prompts, call wait, or run a canary.
+FP-MCP-280 records that operator responsibility remains the approval authority, but structured human approval evidence was not recorded: the full approval payload was platform-blocked, the compact pre-boundary retry failed closed inside ForgePilot, and the compact post-boundary retry was platform-blocked before reaching MCP; the prepared FP-MCP-276 request remains unapproved and on hold.
 ```
 
 ## Summary
 
-FP-MCP-280 prepares the structured human approval boundary for the FP-MCP-276 request REQ-20260704T115428653Z-fc0b6275. The operator responsibility doctrine applies: the human operator owns authorization, policy judgment, and final responsibility. GPT prepares scope and evidence; ForgePilot records and enforces boundaries; the MCP approval modal is the final brake after review. This checkpoint exists so FP-MCP-280 can serve as the approval packet before a structured approval recorder retry. A prior full structured approval invocation was platform-blocked before reaching MCP; a compact retry reached MCP but correctly failed closed because FP-MCP-280 did not yet exist and the workspace was dirty. This checkpoint does not record approval itself.
+FP-MCP-280 attempted to use the native MCP approval modal as the final confirmation for recording structured human approval evidence, rather than requiring typed APPROVE/HOLD/DENY in chat. The operator responsibility doctrine was recorded: the human operator owns authorization, policy judgment, and final responsibility; GPT prepares scope and evidence; ForgePilot records decisions and enforces boundaries. The first full structured approval tool call was blocked by the platform before reaching MCP. A compact retry reached ForgePilot but correctly failed closed because FP-MCP-280 did not yet exist and the workspace was dirty. FP-MCP-280 then created an approval boundary checkpoint so the approval packet existed and the workspace returned clean. A final compact retry was again platform-blocked before reaching MCP. No structured human approval evidence was created. No local clearance was created. No approval was consumed. No disable switch was cleared. No runner start endpoint was contacted. No OpenCode action occurred. The request REQ-20260704T115428653Z-fc0b6275 remains prepared but unapproved.
 
 ## Boundary
 

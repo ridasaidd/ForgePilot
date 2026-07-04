@@ -1,16 +1,16 @@
 {
   "packet_id": "FP-MCP-280",
   "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
-  "evidence_id": 155,
-  "run_id": "FP-MCP-280-APPROVAL-BOUNDARY-PREPARATION",
-  "generic_admission_event_id": 155,
+  "evidence_id": 156,
+  "run_id": "FP-MCP-280-APPROVAL-MODAL-BLOCK-HOLD-RESULT",
+  "generic_admission_event_id": 156,
   "canonical_status": "GENERIC_EVENT_CANONICAL",
   "canonical_surface": "evidence_admission_events",
   "canonical_state": "ADMITTED",
-  "admitted_claim": "FP-MCP-280 establishes that operator responsibility is the authority model and that structured human approval evidence may be recorded through the native MCP approval modal after review; approval recording does not create clearance, consume approval, clear disable switches, contact runner start, start OpenCode, submit prompts, call wait, or run a canary.",
+  "admitted_claim": "FP-MCP-280 records that operator responsibility remains the approval authority, but structured human approval evidence was not recorded: the full approval payload was platform-blocked, the compact pre-boundary retry failed closed inside ForgePilot, and the compact post-boundary retry was platform-blocked before reaching MCP; the prepared FP-MCP-276 request remains unapproved and on hold.",
   "artifact_paths": [
     "packets/FP-MCP-280.md",
-    "runs/FP-MCP-280/approval-boundary-preparation-record.json",
+    "runs/FP-MCP-280/approval-modal-block-hold-result-record.json",
     "runs/FP-MCP-280/result-summary.md",
     "runs/FP-MCP-280/verification.txt"
   ]

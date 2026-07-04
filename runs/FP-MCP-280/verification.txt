@@ -1,10 +1,10 @@
 FP-MCP-280 verification
 
 Checkpoint type:
-- APPROVAL_BOUNDARY_PREPARATION
+- APPROVAL_MODAL_BLOCK_HOLD_RESULT
 
 Claim:
-- FP-MCP-280 establishes that operator responsibility is the authority model and that structured human approval evidence may be recorded through the native MCP approval modal after review; approval recording does not create clearance, consume approval, clear disable switches, contact runner start, start OpenCode, submit prompts, call wait, or run a canary.
+- FP-MCP-280 records that operator responsibility remains the approval authority, but structured human approval evidence was not recorded: the full approval payload was platform-blocked, the compact pre-boundary retry failed closed inside ForgePilot, and the compact post-boundary retry was platform-blocked before reaching MCP; the prepared FP-MCP-276 request remains unapproved and on hold.
 
 Boundaries:
 - execution authorized: false

@@ -7,11 +7,11 @@ import { recordEvidenceAdmission, getAdmissionEvents } from "../../src/db/eviden
 import { getCanonicalEvidenceRecordAdmission } from "../../src/db/validation-admission.js";
 
 const packetPath = "packets/FP-MCP-280.md";
-const runId = "FP-MCP-280-APPROVAL-BOUNDARY-PREPARATION";
-const admittedClaim = "FP-MCP-280 establishes that operator responsibility is the authority model and that structured human approval evidence may be recorded through the native MCP approval modal after review; approval recording does not create clearance, consume approval, clear disable switches, contact runner start, start OpenCode, submit prompts, call wait, or run a canary.";
+const runId = "FP-MCP-280-APPROVAL-MODAL-BLOCK-HOLD-RESULT";
+const admittedClaim = "FP-MCP-280 records that operator responsibility remains the approval authority, but structured human approval evidence was not recorded: the full approval payload was platform-blocked, the compact pre-boundary retry failed closed inside ForgePilot, and the compact post-boundary retry was platform-blocked before reaching MCP; the prepared FP-MCP-276 request remains unapproved and on hold.";
 const artifacts = [
   "packets/FP-MCP-280.md",
-  "runs/FP-MCP-280/approval-boundary-preparation-record.json",
+  "runs/FP-MCP-280/approval-modal-block-hold-result-record.json",
   "runs/FP-MCP-280/result-summary.md",
   "runs/FP-MCP-280/verification.txt"
 ];
@@ -37,12 +37,12 @@ if (!evidence) {
     model_id: "none",
     model_role: "packet_checkpoint_recorder",
     branch: "main",
-    commit_sha: "7d13156",
+    commit_sha: "4ba8428",
     executor_result: admittedClaim,
     verification_result: "PACKET_CHECKPOINT_RECORDED;NON_EXECUTING_BOUNDARY_PRESERVED",
     audit_result: "NOT_APPLICABLE_PACKET_CHECKPOINT",
     comparison_result: "NOT_APPLICABLE_PACKET_CHECKPOINT",
-    metrics_path: "runs/FP-MCP-280/approval-boundary-preparation-record.json",
+    metrics_path: "runs/FP-MCP-280/approval-modal-block-hold-result-record.json",
     artifact_paths: artifacts,
     trust_tier: "TIER_2_VERIFIED_ARTIFACT",
     validation_state: "VALID",
