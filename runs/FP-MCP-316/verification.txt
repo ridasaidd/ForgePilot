@@ -1,0 +1,15 @@
+FP-MCP-316 verification
+
+Checkpoint type:
+- NEXT_PACKET_PROPOSAL
+
+Claim:
+- FP-MCP-316 should extend forgepilot_apply_guarded_canary_next_gate by exactly one guarded stage: when a valid scoped approval and valid operator-local clearance already exist for the FP-MCP-295 canary tuple, the enforced executor may internally preview and create scoped execution enablement, then stop before runner start.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

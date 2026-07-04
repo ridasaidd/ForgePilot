@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-316",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 194,
+  "run_id": "FP-MCP-316-NEXT-PACKET-PROPOSAL",
+  "generic_admission_event_id": 194,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP-MCP-316 should extend forgepilot_apply_guarded_canary_next_gate by exactly one guarded stage: when a valid scoped approval and valid operator-local clearance already exist for the FP-MCP-295 canary tuple, the enforced executor may internally preview and create scoped execution enablement, then stop before runner start.",
+  "artifact_paths": [
+    "packets/FP-MCP-316.md",
+    "runs/FP-MCP-316/next-packet-proposal-record.json",
+    "runs/FP-MCP-316/result-summary.md",
+    "runs/FP-MCP-316/verification.txt"
+  ]
+}
