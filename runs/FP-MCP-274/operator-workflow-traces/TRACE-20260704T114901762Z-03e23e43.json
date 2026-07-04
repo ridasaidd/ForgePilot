@@ -1,0 +1,36 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T114901762Z-03e23e43",
+  "recordedAt": "2026-07-04T11:49:01.762Z",
+  "packetId": "FP-MCP-274",
+  "workflowId": "FP-MCP-274-clearance-preview-live-surfacing",
+  "phase": "CLEAN_STATE_VERIFICATION",
+  "stepIndex": 2,
+  "intendedAction": "Verify ForgePilot clean state after FP-MCP-274 checkpoint admission.",
+  "intendedToolName": "forgepilot_status",
+  "actualToolName": "forgepilot_record_operator_workflow_trace",
+  "toolMatchedIntent": false,
+  "approvalLiteral": null,
+  "workflowAdvanced": false,
+  "deviationType": "WRONG_ADJACENT_TOOL_CALLED",
+  "sideEffects": [
+    "artifact_written"
+  ],
+  "notes": [
+    "I declared a ForgePilot status read but invoked the workflow trace writer instead.",
+    "This trace records the mismatch before performing the intended read-only status check.",
+    "No execution, clearance, approval consumption, runner contact, or OpenCode action occurred."
+  ],
+  "recoveryAction": "Call forgepilot_status next, then verify bridge status.",
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}
