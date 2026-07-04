@@ -7,11 +7,11 @@ import { recordEvidenceAdmission, getAdmissionEvents } from "../../src/db/eviden
 import { getCanonicalEvidenceRecordAdmission } from "../../src/db/validation-admission.js";
 
 const packetPath = "packets/FP-MCP-316.md";
-const runId = "FP-MCP-316-FINAL-STATE-OBSERVATION";
-const admittedClaim = "FP-MCP-316 session work ended with evidence-only checkpointing and proposal/handoff admission; no execution authorization, approval consumption, runner contact, OpenCode start, or canary execution occurred.";
+const runId = "FP-MCP-316-CLEAN-STATE-NOTE";
+const admittedClaim = "The controlled checkpoint recorder reported empty preGitStatusShort and postGitStatusShort while committing FP-MCP-316 final evidence observations, preserving the evidence-only boundary and leaving no reported tracked or untracked residue from those recorder operations.";
 const artifacts = [
   "packets/FP-MCP-316.md",
-  "runs/FP-MCP-316/final-state-observation-record.json",
+  "runs/FP-MCP-316/clean-state-note-record.json",
   "runs/FP-MCP-316/result-summary.md",
   "runs/FP-MCP-316/verification.txt"
 ];
@@ -37,12 +37,12 @@ if (!evidence) {
     model_id: "none",
     model_role: "packet_checkpoint_recorder",
     branch: "main",
-    commit_sha: "87a4cff",
+    commit_sha: "457d106",
     executor_result: admittedClaim,
     verification_result: "PACKET_CHECKPOINT_RECORDED;NON_EXECUTING_BOUNDARY_PRESERVED",
     audit_result: "NOT_APPLICABLE_PACKET_CHECKPOINT",
     comparison_result: "NOT_APPLICABLE_PACKET_CHECKPOINT",
-    metrics_path: "runs/FP-MCP-316/final-state-observation-record.json",
+    metrics_path: "runs/FP-MCP-316/clean-state-note-record.json",
     artifact_paths: artifacts,
     trust_tier: "TIER_2_VERIFIED_ARTIFACT",
     validation_state: "VALID",

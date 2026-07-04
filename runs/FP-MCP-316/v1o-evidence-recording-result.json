@@ -1,16 +1,16 @@
 {
   "packet_id": "FP-MCP-316",
   "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
-  "evidence_id": 196,
-  "run_id": "FP-MCP-316-FINAL-STATE-OBSERVATION",
-  "generic_admission_event_id": 196,
+  "evidence_id": 197,
+  "run_id": "FP-MCP-316-CLEAN-STATE-NOTE",
+  "generic_admission_event_id": 197,
   "canonical_status": "GENERIC_EVENT_CANONICAL",
   "canonical_surface": "evidence_admission_events",
   "canonical_state": "ADMITTED",
-  "admitted_claim": "FP-MCP-316 session work ended with evidence-only checkpointing and proposal/handoff admission; no execution authorization, approval consumption, runner contact, OpenCode start, or canary execution occurred.",
+  "admitted_claim": "The controlled checkpoint recorder reported empty preGitStatusShort and postGitStatusShort while committing FP-MCP-316 final evidence observations, preserving the evidence-only boundary and leaving no reported tracked or untracked residue from those recorder operations.",
   "artifact_paths": [
     "packets/FP-MCP-316.md",
-    "runs/FP-MCP-316/final-state-observation-record.json",
+    "runs/FP-MCP-316/clean-state-note-record.json",
     "runs/FP-MCP-316/result-summary.md",
     "runs/FP-MCP-316/verification.txt"
   ]

@@ -1,10 +1,10 @@
 FP-MCP-316 verification
 
 Checkpoint type:
-- FINAL_STATE_OBSERVATION
+- CLEAN_STATE_NOTE
 
 Claim:
-- FP-MCP-316 session work ended with evidence-only checkpointing and proposal/handoff admission; no execution authorization, approval consumption, runner contact, OpenCode start, or canary execution occurred.
+- The controlled checkpoint recorder reported empty preGitStatusShort and postGitStatusShort while committing FP-MCP-316 final evidence observations, preserving the evidence-only boundary and leaving no reported tracked or untracked residue from those recorder operations.
 
 Boundaries:
 - execution authorized: false
