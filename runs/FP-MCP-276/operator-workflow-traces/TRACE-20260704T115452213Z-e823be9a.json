@@ -1,0 +1,38 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T115452213Z-e823be9a",
+  "recordedAt": "2026-07-04T11:54:52.213Z",
+  "packetId": "FP-MCP-276",
+  "workflowId": "FP-MCP-276-fresh-scoped-tuple-preparation",
+  "phase": "PLAN_VALIDATION",
+  "stepIndex": 2,
+  "intendedAction": "Record creation and readback of the fresh non-executing request artifact for future guarded start preparation.",
+  "intendedToolName": "forgepilot_record_non_executing_run_request_artifact and forgepilot_read_opencode_run_request",
+  "actualToolName": "forgepilot_record_non_executing_run_request_artifact and forgepilot_read_opencode_run_request",
+  "toolMatchedIntent": true,
+  "approvalLiteral": null,
+  "workflowAdvanced": true,
+  "deviationType": "NONE",
+  "sideEffects": [
+    "artifact_written"
+  ],
+  "notes": [
+    "Created request artifact REQ-20260704T115428653Z-fc0b6275 under runs/FP-MCP-276/opencode-requests/.",
+    "The request is for model deepseek-v4-pro-high and run mode DESIGN_ONLY.",
+    "The request records requestState CREATED_NOT_STARTED, approvalRequired true, consumptionRequired true, executionAllowedNow false, globalDisableActive true, runnerExecutionEnabled false, and opencodeExecutionEnabled false.",
+    "The request records baseCommit, targetExecutionCommit, and approvedTargetExecutionCommit as 3a62f84.",
+    "Readback returned a valid non-executing request artifact and did not start OpenCode, contact runner start, create approval, consume approval, create clearance, submit a prompt, or call wait."
+  ],
+  "recoveryAction": "Commit the request artifact and trace, then validate the committed request and prepare approval path without recording approval.",
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}
