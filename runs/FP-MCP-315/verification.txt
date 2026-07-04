@@ -1,0 +1,15 @@
+FP-MCP-315 verification
+
+Checkpoint type:
+- GUARDED_EXECUTOR_CLEARANCE_GATE_RESULT
+
+Claim:
+- FP-MCP-315 recorded and validated a fresh scoped approval for the FP-MCP-295 canary tuple, then the narrowed guarded executor successfully performed the V1 clearance preview/create gate without consuming approval, contacting the runner start endpoint, starting OpenCode, creating scoped enablement, or running the canary.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

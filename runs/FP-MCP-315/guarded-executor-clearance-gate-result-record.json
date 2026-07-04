@@ -1,0 +1,52 @@
+{
+  "packetId": "FP-MCP-315",
+  "title": "Guarded Canary V1 Clearance Gate Checkpoint",
+  "checkpointType": "GUARDED_EXECUTOR_CLEARANCE_GATE_RESULT",
+  "claim": "FP-MCP-315 recorded and validated a fresh scoped approval for the FP-MCP-295 canary tuple, then the narrowed guarded executor successfully performed the V1 clearance preview/create gate without consuming approval, contacting the runner start endpoint, starting OpenCode, creating scoped enablement, or running the canary.",
+  "summary": "The live narrowed MCP surface exposed only the guarded sequencer and enforced executor for guarded continuation. A fresh FP-MCP-315 approval was recorded, committed at 20efcb7, validated as usable for execution scope, and then used by forgepilot_apply_guarded_canary_next_gate. The executor internally previewed the clearance gate and replaced the expired local clearance with CLEARANCE-20260704T175836214Z-8a2a72ac, expiring at 2026-07-04T18:03:36.214Z, while stopping before enablement or runner start.",
+  "caveats": [
+    "The created clearance was intentionally short-lived and should now be treated as expired for future work.",
+    "The executor result reported clearanceCreated=false and clearanceMutated=true because an expired local clearance file already existed at .local/forgepilot/execution-clearance.json and was replaced.",
+    "FP-MCP-315 did not prove scoped enablement creation, final preflight, runner start, OpenCode start, approval consumption, or canary execution."
+  ],
+  "boundaries": [
+    "No approval was consumed.",
+    "No runner start endpoint was contacted.",
+    "OpenCode was not started.",
+    "No scoped enablement was created.",
+    "The guarded canary did not run.",
+    "This checkpoint records evidence only and does not authorize execution."
+  ],
+  "structuredRecord": {
+    "executionPacketId": "FP-MCP-295",
+    "requestId": "REQ-20260704T142232816Z-a82a42b6",
+    "modelId": "deepseek-v4-pro-high",
+    "runMode": "DESIGN_ONLY",
+    "executionBaseCommit": "5c0ab8b",
+    "branch": "main",
+    "targetWorkspaceId": "forgepilot",
+    "approvalPacketId": "FP-MCP-315",
+    "approvalId": "APPROVAL-20260704T175800750Z-5659ab79",
+    "approvalArtifactSha256": "ebac5c7d93acf7b80f6ba52f4bbe754120252fe595f2ad8723409986adf52038",
+    "approvalCommit": "20efcb7",
+    "guardedExecutor": "forgepilot_apply_guarded_canary_next_gate",
+    "guardedExecutorPhase": "PREVIEW_AND_CREATE_CLEARANCE",
+    "clearanceId": "CLEARANCE-20260704T175836214Z-8a2a72ac",
+    "clearanceExpiresAt": "2026-07-04T18:03:36.214Z",
+    "clearancePath": ".local/forgepilot/execution-clearance.json",
+    "followOnApplied": true,
+    "approvalConsumed": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "guardedCanaryRun": false
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-315 recorded and validated a fresh scoped approval for the FP-MCP-295 canary tuple, then the narrowed guarded executor successfully performed the V1 clearance preview/create gate without consuming approval, contacting the runner start endpoint, starting OpenCode, creating scoped enablement, or running the canary."
+}
