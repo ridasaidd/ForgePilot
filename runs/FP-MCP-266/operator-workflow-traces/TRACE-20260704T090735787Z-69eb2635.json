@@ -1,0 +1,36 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T090735787Z-69eb2635",
+  "recordedAt": "2026-07-04T09:07:35.787Z",
+  "packetId": "FP-MCP-266",
+  "workflowId": "FP-MCP-266-post-reload-tool-surfacing",
+  "phase": "CHECKPOINT_ADMISSION",
+  "stepIndex": 4,
+  "intendedAction": "Record a correction for the previous checkpoint-admission trace because the declared intended checkpoint call diverged from the actual workflow trace writer call.",
+  "intendedToolName": "forgepilot_record_operator_workflow_trace",
+  "actualToolName": "forgepilot_record_operator_workflow_trace",
+  "toolMatchedIntent": true,
+  "approvalLiteral": null,
+  "workflowAdvanced": false,
+  "deviationType": "RECOVERY_ACTION_REQUIRED",
+  "sideEffects": [
+    "artifact_written"
+  ],
+  "notes": [
+    "Immediately before this trace, I declared intent to call forgepilot_record_packet_checkpoint but actually called forgepilot_record_operator_workflow_trace.",
+    "The prior trace artifact TRACE-20260704T090713927Z-6045ea04 recorded the halted checkpoint state, but its actualToolName field said NONE even though the workflow trace writer executed.",
+    "This correction makes the control-plane record explicit before committing the new trace artifacts."
+  ],
+  "recoveryAction": "Commit both newly written correction/checkpoint-admission trace artifacts, rediscover the checkpoint tool, then call the checkpoint tool only after it is visible.",
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}
