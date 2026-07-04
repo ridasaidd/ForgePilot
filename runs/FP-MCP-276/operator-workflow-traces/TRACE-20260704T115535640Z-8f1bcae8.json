@@ -1,0 +1,37 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T115535640Z-8f1bcae8",
+  "recordedAt": "2026-07-04T11:55:35.640Z",
+  "packetId": "FP-MCP-276",
+  "workflowId": "FP-MCP-276-fresh-scoped-tuple-preparation",
+  "phase": "PLAN_VALIDATION",
+  "stepIndex": 3,
+  "intendedAction": "Record local and runner validate-request results for the committed fresh request artifact.",
+  "intendedToolName": "forgepilot_validate_remote_runner_request and forgepilot_validate_remote_runner_endpoint_request",
+  "actualToolName": "forgepilot_validate_remote_runner_request and forgepilot_validate_remote_runner_endpoint_request",
+  "toolMatchedIntent": true,
+  "approvalLiteral": null,
+  "workflowAdvanced": true,
+  "deviationType": "NONE",
+  "sideEffects": [],
+  "notes": [
+    "Local validation returned eligible true for request REQ-20260704T115428653Z-fc0b6275.",
+    "Local validation observed packetExists true, requestExists true, requestArtifactValid true, modelAllowed true, runModeAllowed true, workingTreeClean true, baseCommitMatches true, creationCommitAncestorOfArtifactCommit true, and artifactCommitReachableFromHead true.",
+    "Local validation did not contact the runner and did not start execution.",
+    "Runner validate-request endpoint returned valid true, runnerAccepted true, and runnerContacted true for validation only.",
+    "Runner validate-request did not contact the start endpoint, did not start execution, did not start OpenCode, and executionAllowedNow remained false.",
+    "Committed tuple values are executionBaseCommit 3a62f84 and requestArtifactCommit abe6d86."
+  ],
+  "recoveryAction": "Prepare approval path and stop before recording human approval unless explicitly authorized after review.",
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}

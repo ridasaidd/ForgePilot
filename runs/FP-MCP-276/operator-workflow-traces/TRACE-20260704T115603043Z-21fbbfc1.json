@@ -1,0 +1,38 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T115603043Z-21fbbfc1",
+  "recordedAt": "2026-07-04T11:56:03.043Z",
+  "packetId": "FP-MCP-276",
+  "workflowId": "FP-MCP-276-fresh-scoped-tuple-preparation",
+  "phase": "PLAN_VALIDATION",
+  "stepIndex": 4,
+  "intendedAction": "Record read-only guarded preflight report for the fresh request before approval exists.",
+  "intendedToolName": "forgepilot_get_guarded_start_preflight_report",
+  "actualToolName": "forgepilot_get_guarded_start_preflight_report",
+  "toolMatchedIntent": true,
+  "approvalLiteral": null,
+  "workflowAdvanced": true,
+  "deviationType": "NONE",
+  "sideEffects": [],
+  "notes": [
+    "Read-only guarded preflight evaluated request REQ-20260704T115428653Z-fc0b6275.",
+    "Request artifact, commit binding, model/run mode, and runner capability gates passed.",
+    "Human approval evidence was missing, as expected because approval has not been requested or recorded yet.",
+    "Disable switch gate failed because global execution disable remains active and runner/OpenCode execution are disabled.",
+    "Pre-start evidence and state snapshot evidence were incomplete because approval and execution readiness are not in place yet.",
+    "Repository gate failed because FP-MCP-276 trace artifacts were intentionally uncommitted at the time of this preflight read; this will be rechecked after committing traces.",
+    "No runner start endpoint contact, OpenCode start, approval consumption, clearance creation, prompt submission, or wait call occurred."
+  ],
+  "recoveryAction": "Commit traces, rerun preflight from a clean repo, then record preparation result and approval path.",
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}
