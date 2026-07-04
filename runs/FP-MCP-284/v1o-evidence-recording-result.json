@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-284",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 161,
+  "run_id": "FP-MCP-284-APPROVAL-RECORDING-BOUNDARY",
+  "generic_admission_event_id": 161,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP-MCP-284 opens a clean approval-recording packet for the operator's fresh scoped approval of FP-MCP-276 request REQ-20260704T115428653Z-fc0b6275; this boundary does not itself record approval or authorize execution.",
+  "artifact_paths": [
+    "packets/FP-MCP-284.md",
+    "runs/FP-MCP-284/approval-recording-boundary-record.json",
+    "runs/FP-MCP-284/result-summary.md",
+    "runs/FP-MCP-284/verification.txt"
+  ]
+}

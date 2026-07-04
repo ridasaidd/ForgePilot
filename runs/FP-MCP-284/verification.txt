@@ -1,0 +1,15 @@
+FP-MCP-284 verification
+
+Checkpoint type:
+- APPROVAL_RECORDING_BOUNDARY
+
+Claim:
+- FP-MCP-284 opens a clean approval-recording packet for the operator's fresh scoped approval of FP-MCP-276 request REQ-20260704T115428653Z-fc0b6275; this boundary does not itself record approval or authorize execution.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
