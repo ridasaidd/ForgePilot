@@ -1,36 +1,35 @@
-# FP-MCP-316 — Guarded Canary Scoped Enablement Executor Extension
+# FP-MCP-316 — Guarded Canary Scoped Enablement Executor Extension Handoff
 
 ## Checkpoint Type
 
 ```text
-NEXT_PACKET_PROPOSAL
+SESSION_HANDOFF
 ```
 
 ## Summary
 
-This packet is the next implementation target after FP-MCP-315. It should preserve the narrowed action surface and prevent operator selection of adjacent manual enablement tools by routing the next enablement gate through the sequencer-selected enforced executor path only. The extension must not contact runner start, consume approval, start OpenCode, or run the canary.
+FP-MCP-315 is admitted at evidence/admission 193 with commit a4b3645. FP-MCP-316 is admitted at evidence/admission 194 with commit 8d9d818. The next implementation work should occur in /home/ridasaidd/forgepilot-chatgpt-mcp on branch feature/oauth-auth0, preserving the narrowed default action surface introduced by bridge commit 0c2d3cb. FP-MCP-316 should not implement runner start; it should only add the next guarded executor segment for scoped enablement creation when a valid scoped clearance exists.
 
 ## Claim
 
 ```text
-FP-MCP-316 should extend forgepilot_apply_guarded_canary_next_gate by exactly one guarded stage: when a valid scoped approval and valid operator-local clearance already exist for the FP-MCP-295 canary tuple, the enforced executor may internally preview and create scoped execution enablement, then stop before runner start.
+After admitting FP-MCP-315 as the guarded clearance-gate result and FP-MCP-316 as the scoped-enablement-only extension proposal, the next session should implement FP-MCP-316 in the MCP bridge by extending forgepilot_apply_guarded_canary_next_gate to handle the sequencer-selected scoped enablement preview/create gate only, then stop before runner start.
 ```
 
 ## Caveats
 
-- This is a packet proposal/checkpoint for the next implementation target, not the implementation itself.
-- Any FP-MCP-315 clearance must be treated as expired and not reused.
-- Runner start remains explicitly out of scope for FP-MCP-316.
+- This handoff records the intended next implementation scope only; it is not the bridge implementation.
+- All previous approvals and clearances should be treated as expired before testing.
+- Fresh approval and fresh clearance will be needed before any FP-MCP-316 enablement-gate test.
 
 ## Boundaries
 
-- Must not contact the runner start endpoint.
-- Must not consume approval.
-- Must not start OpenCode.
-- Must not run the canary.
-- Must not create or expose broad/standing enablement.
-- Must not proceed beyond scoped enablement creation.
-- Must keep adjacent manual enablement tools hidden from the default narrowed action surface.
+- Do not contact the runner start endpoint.
+- Do not consume approval.
+- Do not start OpenCode.
+- Do not run the canary.
+- Do not expose adjacent manual enablement tools in the default narrowed surface.
+- Do not proceed beyond scoped enablement creation.
 
 ## Non-Execution Boundary
 
@@ -46,5 +45,5 @@ FP-027 canary run: false
 ## Expected Result
 
 ```text
-FP-MCP-316 should extend forgepilot_apply_guarded_canary_next_gate by exactly one guarded stage: when a valid scoped approval and valid operator-local clearance already exist for the FP-MCP-295 canary tuple, the enforced executor may internally preview and create scoped execution enablement, then stop before runner start.
+After admitting FP-MCP-315 as the guarded clearance-gate result and FP-MCP-316 as the scoped-enablement-only extension proposal, the next session should implement FP-MCP-316 in the MCP bridge by extending forgepilot_apply_guarded_canary_next_gate to handle the sequencer-selected scoped enablement preview/create gate only, then stop before runner start.
 ```
