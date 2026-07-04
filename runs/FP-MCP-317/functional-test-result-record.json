@@ -1,0 +1,69 @@
+{
+  "packetId": "FP-MCP-317",
+  "title": "FP-MCP-316 Functional Test Result",
+  "checkpointType": "FUNCTIONAL_TEST_RESULT",
+  "claim": "The live FP-MCP-316 guarded executor successfully advanced the FP-MCP-295 canary tuple through fresh approval, fresh operator-local clearance, fresh runner capability observation, and scoped execution enablement creation, then stopped before runner start, approval consumption, OpenCode start, or canary execution.",
+  "summary": "A fresh scoped approval was recorded under FP-MCP-317, committed at b3a9a59, and validated as usable for the FP-MCP-295 tuple. The live guarded executor first created/replaced operator-local clearance CLEARANCE-20260704T182447350Z-35c8785e. A fresh remote runner capabilities observation was read at 2026-07-04T18:24:51.882Z. The live guarded executor then selected PREVIEW_SCOPED_ENABLEMENT, internally previewed the scoped enablement manifest, and created scoped execution enablement ENABLEMENT-20260704T182458075Z-bf415295. The executor boundary reported PREVIEW_AND_CREATE_SCOPED_ENABLEMENT with enablementCreated=true and no runner-start, approval-consumption, OpenCode-start, or canary-run side effects.",
+  "caveats": [
+    "The local clearance and enablement were intentionally short-lived and should be treated as expired for future work.",
+    "The remote runner capability observation contacted only the capabilities endpoint, not the runner start endpoint.",
+    "This test does not prove runner start; runner start remains out of scope and requires a later packet."
+  ],
+  "boundaries": [
+    "No approval was consumed.",
+    "No runner start endpoint was contacted.",
+    "OpenCode was not started.",
+    "The canary did not run.",
+    "No final runner-start gate was invoked.",
+    "Scoped enablement was the intended and final stop point for this test."
+  ],
+  "structuredRecord": {
+    "testedImplementationPacket": "FP-MCP-316",
+    "functionalTestPacket": "FP-MCP-317",
+    "executionPacketId": "FP-MCP-295",
+    "requestId": "REQ-20260704T142232816Z-a82a42b6",
+    "modelId": "deepseek-v4-pro-high",
+    "runMode": "DESIGN_ONLY",
+    "executionBaseCommit": "5c0ab8b",
+    "branch": "main",
+    "targetWorkspaceId": "forgepilot",
+    "approvalPacketId": "FP-MCP-317",
+    "approvalId": "APPROVAL-20260704T182430570Z-c534c349",
+    "approvalArtifactSha256": "2534fe11691bdf074c12215b068057e2ff75369af98c5bf14c099e60e0dc79ec",
+    "approvalCommit": "b3a9a59",
+    "clearanceId": "CLEARANCE-20260704T182447350Z-35c8785e",
+    "clearanceExpiresAt": "2026-07-04T18:29:47.350Z",
+    "runnerCapabilityCheckedAt": "2026-07-04T18:24:51.882Z",
+    "enablementId": "ENABLEMENT-20260704T182458075Z-bf415295",
+    "enablementExpiresAt": "2026-07-04T18:29:58.075Z",
+    "guardedExecutor": "forgepilot_apply_guarded_canary_next_gate",
+    "executorPhases": [
+      "PREVIEW_AND_CREATE_CLEARANCE",
+      "PREVIEW_AND_CREATE_SCOPED_ENABLEMENT"
+    ],
+    "finalBoundary": {
+      "phase": "PREVIEW_AND_CREATE_SCOPED_ENABLEMENT",
+      "filesWritten": true,
+      "approvalConsumed": false,
+      "runnerStartEndpointContacted": false,
+      "opencodeStarted": false,
+      "guardedCanaryRun": false,
+      "enablementCreated": true,
+      "enablementMutated": false
+    },
+    "evidenceHashes": {
+      "preStartEvidenceSha256": "51cf00f1954880744b16f19e7a1b81e6993300632cd14752090626570206ca53",
+      "preStartSnapshotSha256": "52a3d09e8eef033636f37eb2772c679c45a7839703be16ddbe9636296bd12183",
+      "postStartSnapshotSha256": "11ed1cbe6ee07f035387fbfc482b80e218e11ad2ed597e73a05fc4d37ce33320"
+    }
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "The live FP-MCP-316 guarded executor successfully advanced the FP-MCP-295 canary tuple through fresh approval, fresh operator-local clearance, fresh runner capability observation, and scoped execution enablement creation, then stopped before runner start, approval consumption, OpenCode start, or canary execution."
+}

@@ -1,0 +1,15 @@
+FP-MCP-317 verification
+
+Checkpoint type:
+- FUNCTIONAL_TEST_RESULT
+
+Claim:
+- The live FP-MCP-316 guarded executor successfully advanced the FP-MCP-295 canary tuple through fresh approval, fresh operator-local clearance, fresh runner capability observation, and scoped execution enablement creation, then stopped before runner start, approval consumption, OpenCode start, or canary execution.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
