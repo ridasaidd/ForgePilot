@@ -1,0 +1,57 @@
+{
+  "packetId": "FP-MCP-344",
+  "title": "Guarded Wrapper Follow-On Flag Isolation",
+  "checkpointType": "HOST_BOUNDARY_CHARACTERIZATION",
+  "claim": "The applyPreviewFollowOn flag alone does not trigger a ChatGPT host block when used with debug context.",
+  "summary": "Record that forgepilot_apply_guarded_canary_next_gate was allowed by the ChatGPT host when called with debug packet/request/approval context and applyPreviewFollowOn: true. ForgePilot safely rejected the call because the request artifact was missing or invalid and the next gate was unsupported by the executor. No files were written, no approval was consumed, no runner endpoint was contacted, and OpenCode was not started.",
+  "caveats": [
+    "This did not use the real FP-MCP-295 request tuple.",
+    "This did not use a valid approval.",
+    "This does not prove the real late-gate follow-on path is host-allowed.",
+    "This does not create clearance.",
+    "This does not test enablement.",
+    "This does not reach final guarded execution."
+  ],
+  "boundaries": [
+    "Debug context only.",
+    "No files written.",
+    "No approval consumed.",
+    "No runner contact.",
+    "No OpenCode start.",
+    "No token handling."
+  ],
+  "structuredRecord": {
+    "debugContext": true,
+    "wrapperTool": "forgepilot_apply_guarded_canary_next_gate",
+    "applyPreviewFollowOn": true,
+    "wrapperHostAllowed": true,
+    "applied": false,
+    "phase": "UNSUPPORTED_GATE",
+    "nextRequiredGate": "BLOCKED_REQUEST_ARTIFACT",
+    "nextToolName": null,
+    "topLevelReason": "NEXT_GATE_NOT_SUPPORTED_BY_EXECUTOR_V1",
+    "decisionReasons": [
+      "REQUEST_ARTIFACT_MISSING_OR_INVALID",
+      "REQUEST_PACKET_MISMATCH",
+      "REQUEST_ID_MISMATCH",
+      "REQUEST_MODEL_MISMATCH",
+      "REQUEST_RUN_MODE_MISMATCH",
+      "REQUEST_STATE_NOT_CREATED_NOT_STARTED",
+      "REQUEST_EXECUTION_BASE_MISMATCH"
+    ],
+    "filesWritten": false,
+    "approvalConsumed": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "guardedCanaryRun": false
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "The applyPreviewFollowOn flag alone does not trigger a ChatGPT host block when used with debug context."
+}

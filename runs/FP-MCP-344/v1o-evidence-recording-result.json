@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-344",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 218,
+  "run_id": "FP-MCP-344-HOST-BOUNDARY-CHARACTERIZATION",
+  "generic_admission_event_id": 218,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "The applyPreviewFollowOn flag alone does not trigger a ChatGPT host block when used with debug context.",
+  "artifact_paths": [
+    "packets/FP-MCP-344.md",
+    "runs/FP-MCP-344/host-boundary-characterization-record.json",
+    "runs/FP-MCP-344/result-summary.md",
+    "runs/FP-MCP-344/verification.txt"
+  ]
+}
