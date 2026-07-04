@@ -1,0 +1,15 @@
+FP-MCP-330 verification
+
+Checkpoint type:
+- HOST_BOUNDARY_SUMMARY
+
+Claim:
+- Fresh-session characterization indicates the prior ChatGPT MCP block was not caused by the real request tuple, checkpoint recording, OpenCode read-only probes, or the read-only guarded sequencer itself.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

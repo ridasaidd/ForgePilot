@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-330",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 210,
+  "run_id": "FP-MCP-330-HOST-BOUNDARY-SUMMARY",
+  "generic_admission_event_id": 210,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "Fresh-session characterization indicates the prior ChatGPT MCP block was not caused by the real request tuple, checkpoint recording, OpenCode read-only probes, or the read-only guarded sequencer itself.",
+  "artifact_paths": [
+    "packets/FP-MCP-330.md",
+    "runs/FP-MCP-330/host-boundary-summary-record.json",
+    "runs/FP-MCP-330/result-summary.md",
+    "runs/FP-MCP-330/verification.txt"
+  ]
+}
