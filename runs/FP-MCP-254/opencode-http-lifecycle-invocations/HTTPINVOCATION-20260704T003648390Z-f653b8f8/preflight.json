@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "OPENCODE_HTTP_LIFECYCLE_INVOCATION_PREFLIGHT_V1",
+  "artifactType": "opencode-http-lifecycle-invocation-preflight",
+  "state": "PREPARED_NOT_STARTED",
+  "attemptId": "HTTPINVOCATION-20260704T003648390Z-f653b8f8",
+  "packetId": "FP-MCP-254",
+  "planId": "HTTPPLAN-20260703T233517042Z-9242deff",
+  "requestId": "REQ-20260703T231957999Z-32fcb25f",
+  "planArtifactPath": "runs/FP-MCP-254/opencode-http-lifecycle-plans/HTTPPLAN-20260703T233517042Z-9242deff.json",
+  "requestArtifactPath": "runs/FP-MCP-254/opencode-requests/REQ-20260703T231957999Z-32fcb25f.json",
+  "promptTextSha256": "2849ed87d773e5c34abb872cf41130ac5e31efa608f2a72173eeba8b748d09e0",
+  "expectedTextSha256": "dcfda23cb4744de7083cbab781ae07eb86d25dba3701f86cf4fd41b8819a36f5",
+  "lifecycleToolName": "forgepilot_run_opencode_http_lifecycle_orchestrator",
+  "lifecycleApprovalRequired": "RUN_OPENCODE_HTTP_LIFECYCLE_ORCHESTRATOR",
+  "lifecycleCleanupDefault": true,
+  "dryRunGateDecision": "WOULD_BE_ELIGIBLE",
+  "invocationEligible": true,
+  "finalPreflightDecision": "BLOCKED_BEFORE_ACTION_DRY_RUN",
+  "blockReasons": [
+    "DRY_RUN_RECORDER_BLOCKED_BEFORE_ACTION"
+  ],
+  "executionAuthorizedBefore": false,
+  "approvalConsumedBefore": false,
+  "runnerStartEndpointContactedBefore": false,
+  "opencodeStartedBefore": false,
+  "lifecycleInvokedBefore": false,
+  "createdAt": "2026-07-04T00:36:48.389Z",
+  "createdByTool": "forgepilot_record_opencode_http_lifecycle_invocation_attempt_dry_run",
+  "boundaryVersion": "OPENCODE_HTTP_LIFECYCLE_INVOCATION_PREFLIGHT_V1"
+}
