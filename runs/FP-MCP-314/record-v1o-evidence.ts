@@ -7,11 +7,11 @@ import { recordEvidenceAdmission, getAdmissionEvents } from "../../src/db/eviden
 import { getCanonicalEvidenceRecordAdmission } from "../../src/db/validation-admission.js";
 
 const packetPath = "packets/FP-MCP-314.md";
-const runId = "FP-MCP-314-TOOL-IMPLEMENTATION-RESULT";
-const admittedClaim = "FP-MCP-314 narrowed the guarded canary action surface in the MCP bridge by default. Adjacent manual canary gate tools are no longer registered unless FORGEPILOT_CANARY_ACTION_SURFACE_NARROWED=0 is set. Bridge commit 0c2d3cb contains the implementation.";
+const runId = "FP-MCP-314-TOOL-SURFACE-HARDENING-RESULT";
+const admittedClaim = "FP-MCP-314 narrowed the default MCP bridge canary action surface so adjacent manual guarded canary tools are hidden unless FORGEPILOT_CANARY_ACTION_SURFACE_NARROWED=0. The enforced executor remains registered by default. Bridge commit 0c2d3cb contains the implementation.";
 const artifacts = [
   "packets/FP-MCP-314.md",
-  "runs/FP-MCP-314/tool-implementation-result-record.json",
+  "runs/FP-MCP-314/tool-surface-hardening-result-record.json",
   "runs/FP-MCP-314/result-summary.md",
   "runs/FP-MCP-314/verification.txt"
 ];
@@ -37,12 +37,12 @@ if (!evidence) {
     model_id: "none",
     model_role: "packet_checkpoint_recorder",
     branch: "main",
-    commit_sha: "93327eb",
+    commit_sha: "cd11f4c",
     executor_result: admittedClaim,
     verification_result: "PACKET_CHECKPOINT_RECORDED;NON_EXECUTING_BOUNDARY_PRESERVED",
     audit_result: "NOT_APPLICABLE_PACKET_CHECKPOINT",
     comparison_result: "NOT_APPLICABLE_PACKET_CHECKPOINT",
-    metrics_path: "runs/FP-MCP-314/tool-implementation-result-record.json",
+    metrics_path: "runs/FP-MCP-314/tool-surface-hardening-result-record.json",
     artifact_paths: artifacts,
     trust_tier: "TIER_2_VERIFIED_ARTIFACT",
     validation_state: "VALID",

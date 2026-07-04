@@ -1,10 +1,10 @@
 FP-MCP-314 verification
 
 Checkpoint type:
-- TOOL_IMPLEMENTATION_RESULT
+- TOOL_SURFACE_HARDENING_RESULT
 
 Claim:
-- FP-MCP-314 narrowed the guarded canary action surface in the MCP bridge by default. Adjacent manual canary gate tools are no longer registered unless FORGEPILOT_CANARY_ACTION_SURFACE_NARROWED=0 is set. Bridge commit 0c2d3cb contains the implementation.
+- FP-MCP-314 narrowed the default MCP bridge canary action surface so adjacent manual guarded canary tools are hidden unless FORGEPILOT_CANARY_ACTION_SURFACE_NARROWED=0. The enforced executor remains registered by default. Bridge commit 0c2d3cb contains the implementation.
 
 Boundaries:
 - execution authorized: false

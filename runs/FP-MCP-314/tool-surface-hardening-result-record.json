@@ -1,0 +1,62 @@
+{
+  "packetId": "FP-MCP-314",
+  "title": "Canary Action Surface Narrowing",
+  "checkpointType": "TOOL_SURFACE_HARDENING_RESULT",
+  "claim": "FP-MCP-314 narrowed the default MCP bridge canary action surface so adjacent manual guarded canary tools are hidden unless FORGEPILOT_CANARY_ACTION_SURFACE_NARROWED=0. The enforced executor remains registered by default. Bridge commit 0c2d3cb contains the implementation.",
+  "summary": "The MCP bridge repository feature/oauth-auth0 advanced to 0c2d3cb with commit 'Narrow guarded canary action surface'. The change adds CANARY_ACTION_SURFACE_NARROWED defaulting to true and wraps adjacent guarded canary manual tool registrations behind if (!CANARY_ACTION_SURFACE_NARROWED). The enforced executor tool forgepilot_apply_guarded_canary_next_gate remains registered outside the narrow-surface guard. TypeScript compilation passed after the change.",
+  "caveats": [
+    "The MCP service must be restarted or actions refreshed before the narrowed surface appears in chat.",
+    "The narrowed action surface is controlled by FORGEPILOT_CANARY_ACTION_SURFACE_NARROWED and defaults to narrowed unless set to 0.",
+    "This packet does not run the canary.",
+    "This packet does not create a new approval, clearance, or enablement."
+  ],
+  "boundaries": [
+    "implementation result only",
+    "no approval created",
+    "no approval consumed",
+    "no clearance created",
+    "no enablement created",
+    "no runner start contact",
+    "no OpenCode start",
+    "no prompt submitted",
+    "no canary run"
+  ],
+  "structuredRecord": {
+    "mcpBridge": {
+      "branch": "feature/oauth-auth0",
+      "headBefore": "5a75db7",
+      "headAfter": "0c2d3cb",
+      "commitMessage": "Narrow guarded canary action surface",
+      "workingTreeAfterCommit": "clean"
+    },
+    "surfacePolicy": {
+      "defaultNarrowed": true,
+      "envOverride": "FORGEPILOT_CANARY_ACTION_SURFACE_NARROWED=0 restores manual adjacent registrations",
+      "executorStillExposed": "forgepilot_apply_guarded_canary_next_gate"
+    },
+    "wrappedTools": [
+      "forgepilot_validate_execution_preflight",
+      "forgepilot_get_guarded_start_preflight_report",
+      "forgepilot_start_remote_runner_request",
+      "forgepilot_preview_operator_local_execution_clearance_review_manifest",
+      "forgepilot_create_operator_local_execution_clearance",
+      "forgepilot_preview_operator_local_scoped_execution_enablement_review_manifest",
+      "forgepilot_create_operator_local_scoped_execution_enablement",
+      "forgepilot_get_operator_local_scoped_execution_enablement_status"
+    ],
+    "validation": {
+      "typescriptCompile": "PASS",
+      "liveActionSurfaceVerification": "PENDING_AFTER_RESTART"
+    },
+    "nextRecommendedPacket": "FP-MCP-315: restart or refresh MCP actions, verify adjacent manual canary tools are hidden and executor remains visible."
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-314 narrowed the default MCP bridge canary action surface so adjacent manual guarded canary tools are hidden unless FORGEPILOT_CANARY_ACTION_SURFACE_NARROWED=0. The enforced executor remains registered by default. Bridge commit 0c2d3cb contains the implementation."
+}
