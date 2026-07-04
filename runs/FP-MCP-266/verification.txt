@@ -1,10 +1,10 @@
 FP-MCP-266 verification
 
 Checkpoint type:
-- TOOL_IMPLEMENTATION_RESULT
+- POST_RELOAD_TOOL_SURFACING_RESULT
 
 Claim:
-- FP-MCP-266 implemented append-only operator workflow trace recording and read-only trace summarization in the MCP bridge without invoking live OpenCode actions.
+- FP-MCP-266 operator workflow trace tools surfaced after MCP reload and executed through ChatGPT MCP: the V1 writer wrote trace artifacts and the read-only summarizer summarized them.
 
 Boundaries:
 - execution authorized: false

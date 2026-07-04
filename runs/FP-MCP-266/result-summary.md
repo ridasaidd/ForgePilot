@@ -3,12 +3,12 @@
 ## Result
 
 ```text
-FP-MCP-266 implemented append-only operator workflow trace recording and read-only trace summarization in the MCP bridge without invoking live OpenCode actions.
+FP-MCP-266 operator workflow trace tools surfaced after MCP reload and executed through ChatGPT MCP: the V1 writer wrote trace artifacts and the read-only summarizer summarized them.
 ```
 
 ## Summary
 
-Added MCP bridge support for OPERATOR_WORKFLOW_TRACE_V1. The writer records intended action versus actual tool call, phase, step index, approval literal, workflow advancement, deviation taxonomy, side effects, notes, recovery action, and safety boundaries under runs/<packetId>/operator-workflow-traces/. The summarizer reads trace artifacts, counts deviations and side effects, lists tool mismatches, and recommends review focus. Bridge build passed and pnpm test passed after removing hardcoded packet-id examples.
+After reload, api_tool discovery found forgepilot_record_operator_workflow_trace and forgepilot_summarize_operator_workflow_traces. The summarizer executed successfully. The writer then recorded an OPERATOR_WORKFLOW_TRACE_V1 post-reload trace, and the summarizer read it with deviationCounts NONE: 1. During follow-up cleanup, one additional read-only tool-selection mismatch and one checkpoint-admission mismatch were recorded as V1 traces, including a correction trace. All trace artifacts were committed before this checkpoint.
 
 ## Boundary
 

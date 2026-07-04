@@ -1,0 +1,82 @@
+{
+  "packetId": "FP-MCP-266",
+  "title": "Operator Workflow Trace Tool Surfacing Result",
+  "checkpointType": "POST_RELOAD_TOOL_SURFACING_RESULT",
+  "claim": "FP-MCP-266 operator workflow trace tools surfaced after MCP reload and executed through ChatGPT MCP: the V1 writer wrote trace artifacts and the read-only summarizer summarized them.",
+  "summary": "After reload, api_tool discovery found forgepilot_record_operator_workflow_trace and forgepilot_summarize_operator_workflow_traces. The summarizer executed successfully. The writer then recorded an OPERATOR_WORKFLOW_TRACE_V1 post-reload trace, and the summarizer read it with deviationCounts NONE: 1. During follow-up cleanup, one additional read-only tool-selection mismatch and one checkpoint-admission mismatch were recorded as V1 traces, including a correction trace. All trace artifacts were committed before this checkpoint.",
+  "caveats": [
+    "The post-reload surfacing result is now proven, but the workflow trace log also records that tool-selection mismatches can still occur in the operator control plane.",
+    "Earlier manual V0 OPERATOR traces are readable by the summarizer but appear with UNKNOWN deviation fields because they predate OPERATOR_WORKFLOW_TRACE_V1.",
+    "This checkpoint does not run any live OpenCode lifecycle action."
+  ],
+  "boundaries": [
+    "No OpenCode process was started.",
+    "No OpenCode HTTP session was created.",
+    "No prompt was submitted.",
+    "No wait endpoint was called.",
+    "No ForgePilot runner start endpoint was contacted.",
+    "No execution approval was consumed.",
+    "No disable switch was cleared.",
+    "No secrets or .env files were read."
+  ],
+  "structuredRecord": {
+    "schema": "FP_MCP_266_POST_RELOAD_TOOL_SURFACING_RESULT_V1",
+    "bridge": {
+      "repo": "/home/ridasaidd/forgepilot-chatgpt-mcp",
+      "branch": "feature/oauth-auth0",
+      "implementationCommit": "269c658",
+      "implementedTools": [
+        "forgepilot_record_operator_workflow_trace",
+        "forgepilot_summarize_operator_workflow_traces"
+      ]
+    },
+    "forgepilot": {
+      "implementationCheckpointCommit": "7da4c6a",
+      "postReloadTraceCommit": "fdbe64a",
+      "checkpointWorkflowTraceCommit": "2b26e45"
+    },
+    "postReloadObservations": {
+      "toolDiscoveryFound": [
+        "forgepilot_record_operator_workflow_trace",
+        "forgepilot_summarize_operator_workflow_traces"
+      ],
+      "writerExecuted": true,
+      "summarizerExecuted": true,
+      "v1TraceArtifact": "runs/FP-MCP-266/operator-workflow-traces/TRACE-20260704T090602743Z-e9887e7d.json",
+      "summarizerResult": {
+        "traceCount": 1,
+        "deviationCounts": {
+          "NONE": 1
+        },
+        "sideEffectCounts": {
+          "read_only_trace_summary": 1
+        },
+        "toolMismatches": []
+      }
+    },
+    "additionalWorkflowTraces": [
+      "runs/FP-MCP-266/operator-workflow-traces/TRACE-20260704T090645269Z-fbd7a582.json",
+      "runs/FP-MCP-266/operator-workflow-traces/TRACE-20260704T090713927Z-6045ea04.json",
+      "runs/FP-MCP-266/operator-workflow-traces/TRACE-20260704T090735787Z-69eb2635.json"
+    ],
+    "safetyBoundaries": {
+      "opencodeStarted": false,
+      "runnerStartEndpointContacted": false,
+      "waitEndpointCalled": false,
+      "sessionCreated": false,
+      "promptSubmitted": false,
+      "approvalConsumed": false,
+      "disableSwitchCleared": false,
+      "secretsRead": false
+    }
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-266 operator workflow trace tools surfaced after MCP reload and executed through ChatGPT MCP: the V1 writer wrote trace artifacts and the read-only summarizer summarized them."
+}
