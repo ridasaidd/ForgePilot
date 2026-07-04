@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-287",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 164,
+  "run_id": "FP-MCP-287-EXECUTION-PATH-DECISION",
+  "generic_admission_event_id": 164,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "ForgePilot MCP should treat the remote runner as legacy optional infrastructure for now; the preferred near-term path for OpenCode model lifecycle work is the direct OpenCode HTTP API from the MCP bridge, with runner-start no longer required for the first HTTP-based model runs.",
+  "artifact_paths": [
+    "packets/FP-MCP-287.md",
+    "runs/FP-MCP-287/execution-path-decision-record.json",
+    "runs/FP-MCP-287/result-summary.md",
+    "runs/FP-MCP-287/verification.txt"
+  ]
+}

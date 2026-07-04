@@ -1,0 +1,15 @@
+FP-MCP-287 verification
+
+Checkpoint type:
+- EXECUTION_PATH_DECISION
+
+Claim:
+- ForgePilot MCP should treat the remote runner as legacy optional infrastructure for now; the preferred near-term path for OpenCode model lifecycle work is the direct OpenCode HTTP API from the MCP bridge, with runner-start no longer required for the first HTTP-based model runs.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
