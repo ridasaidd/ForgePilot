@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-268",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 142,
+  "run_id": "FP-MCP-268-LEDGER-RECONCILIATION-AND-OPEN-SAFETY-STATUS",
+  "generic_admission_event_id": 142,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP-MCP-268 records a coherent reconciliation of evidence IDs 103 through 141, explicitly confirming that FP-MCP-217 was revised by FP-MCP-236, the FP-MCP-233 approval reuse window was closed by live expiry/stale-clearance evidence, FP-MCP-265 was an HTTP single-shot canary rather than a guarded runner start, and original FP-027 guarded-start discipline remains unsatisfied end-to-end.",
+  "artifact_paths": [
+    "packets/FP-MCP-268.md",
+    "runs/FP-MCP-268/ledger-reconciliation-and-open-safety-status-record.json",
+    "runs/FP-MCP-268/result-summary.md",
+    "runs/FP-MCP-268/verification.txt"
+  ]
+}

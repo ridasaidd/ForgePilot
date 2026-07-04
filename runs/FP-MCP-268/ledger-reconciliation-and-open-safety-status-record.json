@@ -1,0 +1,251 @@
+{
+  "packetId": "FP-MCP-268",
+  "title": "Evidence 103-141 Safety Reconciliation and FP-027 Open Status",
+  "checkpointType": "LEDGER_RECONCILIATION_AND_OPEN_SAFETY_STATUS",
+  "claim": "FP-MCP-268 records a coherent reconciliation of evidence IDs 103 through 141, explicitly confirming that FP-MCP-217 was revised by FP-MCP-236, the FP-MCP-233 approval reuse window was closed by live expiry/stale-clearance evidence, FP-MCP-265 was an HTTP single-shot canary rather than a guarded runner start, and original FP-027 guarded-start discipline remains unsatisfied end-to-end.",
+  "summary": "Record the reviewer-accepted accounting for the omitted evidence range 103 through 141 before any further lifecycle work. This checkpoint names FP-MCP-235 as the reconciliation opener, FP-MCP-236 as the deliberate popup-mediated clearance policy revision, FP-MCP-237 as the historical integrity review of FP-MCP-233, FP-MCP-238 as the live approval-death/fix-activation verification, FP-MCP-239 through FP-MCP-265 as the HTTP tooling and lifecycle chain, and FP-MCP-266/267 as operator workflow trace instrumentation and legacy normalization. It also records two open safety items: the popup-mediated clearance posture needs explicit human-attention/UX display requirements, and the original FP-027 guarded-runner-start discipline has still never been fully satisfied end-to-end with process-tree snapshot and live abort-readiness at the moment of runner start contact.",
+  "caveats": [
+    "This checkpoint is an accounting/reconciliation record, not new implementation work.",
+    "This checkpoint does not revise FP-MCP-236; it records an additional follow-up requirement for popup approval human-attention/UX controls.",
+    "This checkpoint does not run FP-027 and does not contact the runner start endpoint.",
+    "This checkpoint does not declare FP-027 satisfied by FP-MCP-233 or by FP-MCP-265.",
+    "This checkpoint does not mutate or rewrite prior evidence files, including overwritten per-packet v1o result artifacts that remain recoverable through git history."
+  ],
+  "boundaries": [
+    "execution authorized: false",
+    "approval created: false",
+    "approval consumed: false",
+    "local clearance created: false",
+    "runner start endpoint contacted: false",
+    "OpenCode started: false",
+    "OpenCode HTTP session created: false",
+    "prompt submitted: false",
+    "wait endpoint called: false",
+    "disable switch cleared: false",
+    "FP-027 canary run: false",
+    "historical evidence rewritten: false"
+  ],
+  "structuredRecord": {
+    "schema": "FP_MCP_268_EVIDENCE_103_141_RECONCILIATION_V1",
+    "scope": {
+      "evidenceRange": "103-141",
+      "purpose": "coherent safety-relevant accounting before further lifecycle work",
+      "nonExecutionCheckpoint": true
+    },
+    "policyReconciliation": {
+      "fpMcp235": {
+        "evidenceId": 103,
+        "classification": "POLICY_RECONCILIATION_OPENED",
+        "outcome": "opened explicit conflict between FP-MCP-217 outside-MCP clearance boundary and FP-MCP-232 popup-mediated MCP clearance writer",
+        "ratifiedPopupClearance": false
+      },
+      "fpMcp236": {
+        "evidenceId": 104,
+        "classification": "POLICY_DECISION",
+        "outcome": "ADOPT_POPUP_MEDIATED_LOCAL_CLEARANCE",
+        "fpMcp217BoundaryStatus": "deliberately revised for scoped guarded starts, not restored",
+        "postureStrength": "weaker than hands-on-keyboard outside-MCP clearance and explicitly acknowledged as such",
+        "acceptedReason": "operator mobile constraint and brittle/time-limited manual local command workflow",
+        "artifactAndScopeCompensatingControls": [
+          "explicit MCP approval popup",
+          "committed structured approval evidence required",
+          "approval valid/unexpired/unconsumed/unrevoked/unquarantined",
+          "single-use local clearance artifact",
+          "short expiry, max 10 minutes",
+          "exact executionPacketId/requestId/approvalPacketId/approvalId/modelId/runMode binding",
+          "executionBaseCommit and requestArtifactCommit binding",
+          "current branch and HEAD must match",
+          "target workspace clean",
+          "request artifact exists and binds to execution base",
+          "executionBaseCommit ancestor of requestArtifactCommit",
+          "clearance path gitignored",
+          "clearance tool does not consume approval",
+          "clearance tool does not clear disable switch",
+          "clearance tool does not contact runner start endpoint",
+          "clearance tool does not start OpenCode",
+          "clearance tool does not run FP-027"
+        ],
+        "newFollowUpRequired": "define popup human-attention/UX controls so approval is not an uninformative reflexive one-tap action"
+      },
+      "popupHumanAttentionUxGap": {
+        "status": "OPEN",
+        "reason": "FP-MCP-236 compensating controls validate artifact/scope/binding correctness but do not guarantee the approval popup contains enough information for a real human judgment or enough friction to resist reflexive approval.",
+        "requiredPopupDisplayFields": [
+          "execution packet id",
+          "request id",
+          "approval id",
+          "model id",
+          "run mode",
+          "target workspace",
+          "current branch",
+          "exact current commit/HEAD",
+          "execution base commit",
+          "request artifact commit",
+          "clearance expiry timestamp and countdown",
+          "whether runner start endpoint will be contacted by the requested action",
+          "whether OpenCode will be started by the requested action",
+          "whether approval will be consumed by the requested action",
+          "whether disable switch will be cleared by the requested action"
+        ],
+        "requiredBehavioralControls": [
+          "clear distinction between clearance creation and execution start",
+          "explicit warning that popup-mediated clearance is weaker than outside-MCP local clearance",
+          "reject broad/wildcard/standing/long-lived clearance requests",
+          "display block reasons rather than collapsing them into generic failure",
+          "avoid ambiguous one-word approval copy where scope details are hidden"
+        ]
+      }
+    },
+    "historicalIntegrity": {
+      "fpMcp237": {
+        "evidenceId": 105,
+        "reviewedRun": "FP-MCP-233 / FP-MCP-223 guarded runner start",
+        "engineeringMilestoneValid": true,
+        "governanceMilestoneClean": false,
+        "findings": [
+          "popup clearance reconciliation happened after FP-MCP-233",
+          "FP-MCP-217 boundary conflict was unreconciled at run time",
+          "FP-027 canary discipline evidence insufficient for actual first start",
+          "approval consumption failed after start",
+          "bounded approval reuse window existed until approval/clearance expiry",
+          "no second start observed from that stale approval window"
+        ],
+        "missingOrInsufficientEvidence": [
+          "process-tree snapshot immediately before runner start endpoint contact",
+          "abort-readiness live and checked immediately before runner start endpoint contact",
+          "explicit no-retry/no-chaining state-machine evidence at contact boundary",
+          "mechanical approval consumption immediately after successful start"
+        ]
+      },
+      "fpMcp238": {
+        "evidenceIds": [
+          106,
+          107
+        ],
+        "outcome": "old FP-MCP-233 approval and clearance proven unusable by live validation; hardcoded-scope bug observed fixed after service restart",
+        "oldApprovalStatus": "unconsumed but expired and unusable",
+        "oldClearanceStatus": "expired, stale against current HEAD, and ineligible",
+        "reuseWindowStatus": "closed by live expiry and stale-clearance evidence, not timestamp inference alone",
+        "fixActivationEvidence": [
+          "runtime PID changed from old service to restarted service",
+          "post-restart probe no longer emitted APPROVAL_SCOPE_MISMATCH",
+          "post-restart probe no longer emitted APPROVAL_REQUEST_BINDING_INVALID",
+          "post-restart probe no longer emitted APPROVAL_TEXT_INVALID"
+        ],
+        "remainingOpenCaveat": "fresh valid approval consumption after a fresh successful start still needs proof"
+      }
+    },
+    "evidenceAccounting": {
+      "notes": [
+        "Some evidence IDs are not visible in current per-packet v1o-evidence-recording-result.json files because later checkpoints in the same packet overwrote that result file.",
+        "The overwritten IDs are recoverable in git history and do not indicate missing ledger work.",
+        "This is a recap/tooling quirk rather than a ledger-integrity failure."
+      ],
+      "currentOrHistoricalMap": {
+        "103": "FP-MCP-235 policy reconciliation opened",
+        "104": "FP-MCP-236 popup-mediated clearance policy adopted",
+        "105": "FP-MCP-237 guarded start integrity review",
+        "106": "FP-MCP-238 activation review, historical result overwritten by later FP-MCP-238 result",
+        "107": "FP-MCP-238 fix activation verified / old approval unusable",
+        "108": "FP-MCP-239 hardcoded packet-id lint implemented",
+        "109": "FP-MCP-240 pre-contact canary discipline gate implemented",
+        "110": "FP-MCP-241 lifecycle canary preparation, historical result overwritten",
+        "111": "FP-MCP-241 full lifecycle closure, historical result overwritten",
+        "112": "FP-MCP-242 approved pre-start evidence recorder implemented",
+        "113": "FP-MCP-241 paused on pre-start evidence gate",
+        "114": "FP-MCP-243 OpenCode HTTP API discovered",
+        "115": "FP-MCP-244 HTTP session status tool live verified",
+        "116": "FP-MCP-245 shape reader implementation/direct verification historical result overwritten",
+        "117": "FP-MCP-245 direct shape reader verification",
+        "118": "FP-MCP-246 minimal session lifecycle canary",
+        "119": "FP-MCP-247 async prompt canary",
+        "120": "FP-MCP-248 wait endpoint probe",
+        "121": "FP-MCP-249 message shape probe",
+        "122": "FP-MCP-250 role-aware assistant completion probe",
+        "123": "FP-MCP-251 assistant completion reader",
+        "124": "FP-MCP-252 HTTP-first tool boundary review",
+        "125": "FP-MCP-253 explicit session cleanup",
+        "126": "FP-MCP-254 HTTP lifecycle orchestrator canary",
+        "127": "FP-MCP-255 request adapter",
+        "128": "FP-MCP-256 lifecycle plan artifact",
+        "129": "FP-MCP-257 plan reader/validator",
+        "130": "FP-MCP-258 invocation dry-run gate",
+        "131": "FP-MCP-259 execution gate contract design",
+        "132": "FP-MCP-260 invocation attempt artifact schema",
+        "133": "FP-MCP-261 dry-run attempt artifacts",
+        "134": "FP-MCP-262 dry-run recorder UI compatibility",
+        "135": "FP-MCP-263 single-shot gate implementation",
+        "136": "FP-MCP-264 single-shot gate fail-closed validation",
+        "137": "FP-MCP-265 positive HTTP single-shot invocation",
+        "138": "FP-MCP-266 workflow trace implementation, historical result overwritten by post-reload result",
+        "139": "FP-MCP-266 post-reload workflow trace surfacing",
+        "140": "FP-MCP-267 legacy trace normalization implementation, historical result overwritten by live surfacing result",
+        "141": "FP-MCP-267 live summarizer surfacing"
+      }
+    },
+    "httpLifecycleClarification": {
+      "fpMcp265": {
+        "evidenceId": 137,
+        "classification": "positive OpenCode HTTP single-shot canary invocation",
+        "isRealOpenCodePromptExecution": true,
+        "isGuardedRunnerStart": false,
+        "prompt": "Return exactly: OPENCODE_HTTP_CANARY_OK",
+        "expectedText": "OPENCODE_HTTP_CANARY_OK",
+        "sessionCreated": true,
+        "promptSubmitted": true,
+        "assistantCompletionObserved": true,
+        "sessionDeleted": true,
+        "runnerStartEndpointContacted": false,
+        "opencodeProcessStartedByForgePilot": false,
+        "waitEndpointCalled": false,
+        "approvalConsumed": false,
+        "fp027DisciplineSatisfied": false
+      },
+      "distinction": "FP-MCP-265 proves the HTTP single-shot transport/control path under its own boundaries; it does not satisfy or substitute for FP-027 guarded-runner-start discipline."
+    },
+    "fp027OpenStatus": {
+      "status": "OPEN_UNSATISFIED_END_TO_END",
+      "originalRequiredDiscipline": [
+        "guarded runner start path",
+        "process-tree snapshot immediately before runner start endpoint contact",
+        "live abort-readiness checked immediately before runner start endpoint contact",
+        "explicit no-retry/no-chaining state-machine evidence at contact boundary",
+        "mechanical approval consumption immediately after successful start"
+      ],
+      "closestAttempt": "FP-MCP-233",
+      "whyClosestAttemptInsufficient": [
+        "process-tree snapshot at the exact contact boundary was not captured",
+        "live abort-readiness at the exact contact boundary was not captured",
+        "explicit no-retry/no-chaining boundary evidence was insufficient",
+        "approval consumption failed after successful start"
+      ],
+      "notSatisfiedBy": [
+        "FP-MCP-265 HTTP single-shot canary",
+        "FP-MCP-247/250 tiny prompt canaries",
+        "FP-MCP-254 HTTP lifecycle orchestrator canary"
+      ],
+      "standingRule": "Do not declare FP-027 satisfied by resemblance to any OpenCode HTTP execution path. It requires the guarded runner start path with the original boundary evidence present at the moment of runner contact."
+    },
+    "nextRecommendedPackets": [
+      {
+        "packetId": "FP-MCP-269",
+        "title": "Popup Clearance Human-Attention Display Requirements",
+        "purpose": "define exact popup/approval UI information and behavioral friction requirements for popup-mediated clearance"
+      },
+      {
+        "packetId": "FP-MCP-270",
+        "title": "FP-027 Guarded Runner Start End-to-End Canary Plan",
+        "purpose": "prepare the explicit plan for a future guarded runner start proving process-tree snapshot, abort-readiness, no-retry/no-chaining, and immediate approval consumption at the correct boundary"
+      }
+    ]
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-268 records a coherent reconciliation of evidence IDs 103 through 141, explicitly confirming that FP-MCP-217 was revised by FP-MCP-236, the FP-MCP-233 approval reuse window was closed by live expiry/stale-clearance evidence, FP-MCP-265 was an HTTP single-shot canary rather than a guarded runner start, and original FP-027 guarded-start discipline remains unsatisfied end-to-end."
+}

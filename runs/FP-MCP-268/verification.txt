@@ -1,0 +1,15 @@
+FP-MCP-268 verification
+
+Checkpoint type:
+- LEDGER_RECONCILIATION_AND_OPEN_SAFETY_STATUS
+
+Claim:
+- FP-MCP-268 records a coherent reconciliation of evidence IDs 103 through 141, explicitly confirming that FP-MCP-217 was revised by FP-MCP-236, the FP-MCP-233 approval reuse window was closed by live expiry/stale-clearance evidence, FP-MCP-265 was an HTTP single-shot canary rather than a guarded runner start, and original FP-027 guarded-start discipline remains unsatisfied end-to-end.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
