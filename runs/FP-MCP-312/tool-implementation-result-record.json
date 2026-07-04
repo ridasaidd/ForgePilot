@@ -1,0 +1,65 @@
+{
+  "packetId": "FP-MCP-312",
+  "title": "Sequencer-Enforced Gate Executor V1",
+  "checkpointType": "TOOL_IMPLEMENTATION_RESULT",
+  "claim": "FP-MCP-312 implemented a V1 enforced next-gate executor in the MCP bridge. The new executor calls the sequencer internally and supports the clearance preview/create segment without manual follow-on tool selection. Bridge commit 5a75db7 contains the implementation.",
+  "summary": "The MCP bridge repository feature/oauth-auth0 advanced from 6b6fcc3 to 5a75db7 with commit 'Add guarded canary next-gate executor'. The implementation adds src/guarded-canary-gate-executor.ts and registers forgepilot_apply_guarded_canary_next_gate in server.ts. V1 asks the sequencer internally, blocks if the sequencer requires fresh human approval, supports the sequencer-selected clearance preview gate, and when applyPreviewFollowOn is true creates clearance internally only through forgepilot_create_operator_local_execution_clearance. TypeScript compilation passed. Direct packet-id lint/test commands were blocked by the platform filter during this run, but the new executor file was checked for hardcoded packet IDs and contained none.",
+  "caveats": [
+    "V1 intentionally supports only the approval-block and clearance preview/create segment.",
+    "Scoped enablement creation and runner start are not supported by this executor V1.",
+    "The MCP service must be restarted or actions refreshed before the new executor tool is available in chat.",
+    "The general test/lint script could not be run because the platform filtered the command during this run; TypeScript compilation passed.",
+    "No live canary was attempted."
+  ],
+  "boundaries": [
+    "implementation result only",
+    "no approval artifact created by this packet",
+    "no approval consumed",
+    "no clearance created by this packet",
+    "no enablement created by this packet",
+    "no runner start contact",
+    "no OpenCode start",
+    "no prompt submitted",
+    "no canary run"
+  ],
+  "structuredRecord": {
+    "mcpBridge": {
+      "branch": "feature/oauth-auth0",
+      "headBefore": "6b6fcc3",
+      "headAfter": "5a75db7",
+      "commitMessage": "Add guarded canary next-gate executor",
+      "workingTreeAfterCommit": "clean",
+      "changedFiles": [
+        "src/guarded-canary-gate-executor.ts",
+        "src/server.ts"
+      ]
+    },
+    "implementedTool": "forgepilot_apply_guarded_canary_next_gate",
+    "v1SupportedNextTools": [
+      "forgepilot_record_real_human_approval_evidence as block/manual-required",
+      "forgepilot_preview_operator_local_execution_clearance_review_manifest with optional internal clearance creation"
+    ],
+    "v1UnsupportedNextTools": [
+      "forgepilot_preview_operator_local_scoped_execution_enablement_review_manifest",
+      "forgepilot_get_execution_gate_orientation",
+      "forgepilot_start_remote_runner_request"
+    ],
+    "validation": {
+      "typescriptCompile": "PASS",
+      "executorPacketRefs": "none",
+      "packetIdLint": "NOT_RUN_PLATFORM_FILTERED",
+      "pnpmTest": "NOT_RUN_PLATFORM_FILTERED"
+    },
+    "safetyPurpose": "Remove manual adjacent-tool selection for the clearance preview/create segment by dispatching from the sequencer result inside one MCP tool.",
+    "nextRecommendedPacket": "FP-MCP-313: restart or refresh actions, verify forgepilot_apply_guarded_canary_next_gate is visible, then run it against the current state."
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-312 implemented a V1 enforced next-gate executor in the MCP bridge. The new executor calls the sequencer internally and supports the clearance preview/create segment without manual follow-on tool selection. Bridge commit 5a75db7 contains the implementation."
+}

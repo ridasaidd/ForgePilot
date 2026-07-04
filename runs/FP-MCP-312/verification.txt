@@ -1,0 +1,15 @@
+FP-MCP-312 verification
+
+Checkpoint type:
+- TOOL_IMPLEMENTATION_RESULT
+
+Claim:
+- FP-MCP-312 implemented a V1 enforced next-gate executor in the MCP bridge. The new executor calls the sequencer internally and supports the clearance preview/create segment without manual follow-on tool selection. Bridge commit 5a75db7 contains the implementation.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
