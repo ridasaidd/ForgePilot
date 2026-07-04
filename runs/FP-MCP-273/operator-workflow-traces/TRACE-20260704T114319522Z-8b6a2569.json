@@ -1,0 +1,33 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T114319522Z-8b6a2569",
+  "recordedAt": "2026-07-04T11:43:19.522Z",
+  "packetId": "FP-MCP-273",
+  "workflowId": "FP-MCP-273-clearance-review-manifest-preview-tool",
+  "phase": "CHECKPOINT_ADMISSION",
+  "stepIndex": 6,
+  "intendedAction": "Record that the first detailed checkpoint attempt did not reach the MCP tool and needs a smaller retry payload.",
+  "intendedToolName": "forgepilot_record_packet_checkpoint",
+  "actualToolName": "forgepilot_record_packet_checkpoint",
+  "toolMatchedIntent": true,
+  "approvalLiteral": "RECORD_PACKET_CHECKPOINT",
+  "workflowAdvanced": false,
+  "deviationType": "PLATFORM_SAFETY_BLOCK",
+  "sideEffects": [],
+  "notes": [
+    "Detailed checkpoint attempt did not reach the MCP tool.",
+    "No project checkpoint artifact was created by that attempt."
+  ],
+  "recoveryAction": "Retry checkpoint with a compact implementation summary.",
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}
