@@ -1,0 +1,15 @@
+FP-MCP-285 verification
+
+Checkpoint type:
+- MCP_BRIDGE_VALIDATOR_FIX_RESULT
+
+Claim:
+- FP-MCP-285 fixes the MCP bridge human approval validator so explicit scoped operator approval text accepted by the recorder is also accepted by validation; the existing approval artifact APPROVAL-20260704T131745827Z-219382da should be revalidated after MCP service reload.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
