@@ -1,0 +1,183 @@
+{
+  "packetId": "FP-MCP-289",
+  "title": "Auditor Architectural Reconciliation and Evidence Accounting",
+  "checkpointType": "AUDITOR_RECONCILIATION",
+  "claim": "FP-MCP-289 accepts the auditor finding that FP-MCP-287/288 constituted an architectural policy revision, not merely a status update; direct OpenCode HTTP is reclassified as a provisional design/canary path only, not a safety-equivalent replacement for the guarded-runner FP-027 path, until abort semantics, process/state evidence, no-retry/no-chaining discipline, and master-plan reconciliation are explicitly specified and audited.",
+  "summary": "FP-MCP-289 records the auditor-requested reconciliation before any MCP server refactor proceeds. It accounts for admitted evidence IDs 153 through 163, clarifies that FP-MCP-278 became the observed MCP refactor workload decision while FP-MCP-279 performed the master-plan orientation refresh, clarifies the FP-MCP-277 COMPENSATED checklist item, and corrects the direct-HTTP pivot language. The remote-runner guarded-start path retains safety properties that the direct HTTP path has not yet proven: process/state snapshots at contact boundary, live abort-readiness equivalent to process-group abort, no-retry/no-chaining state-machine evidence, approval-consumption coupling, and FP-027 canary discipline. The direct HTTP path has proven authenticated reachability, session creation, async prompt submission, assistant completion detection, and cleanup for bounded canary/design interactions only. No refactor, execution enablement, approval consumption, disable-switch clearance, runner-start contact, OpenCode start, prompt wait call, or code modification is authorized by this reconciliation.",
+  "caveats": [
+    "FP-MCP-287's wording was too strong if read as replacing the guarded-runner safety architecture for execution; FP-MCP-289 narrows it to provisional direct-HTTP design/canary use pending safety parity or explicit accepted tradeoff.",
+    "Session DELETE is not admitted as equivalent to a proven abort primitive; it has not been shown to terminate underlying OpenCode execution if a prompt hangs or misbehaves.",
+    "The presence of a direct HTTP abort endpoint is not enough; no ForgePilot-admitted direct-HTTP abort discipline has been proven here.",
+    "The keyword-like prompt boundary is useful fail-closed behavior but must be treated as a soft heuristic until structural enforcement is proven.",
+    "The master plan/progress checklist may now be stale because FP-MCP-287/288 changed direction; a follow-up refresh must state the provisional status and preserve FP-027 as unsatisfied.",
+    "The existing FP-MCP-276 approval expired after its recorded expiresAt and must not be reused for future gated execution."
+  ],
+  "boundaries": [
+    "non-executing reconciliation only",
+    "no MCP bridge source modification",
+    "no server.ts refactor",
+    "no runner start endpoint contact",
+    "no OpenCode session created by this checkpoint",
+    "no prompt submitted by this checkpoint",
+    "no approval consumed",
+    "no disable switch cleared",
+    "FP-027 remains unsatisfied",
+    "direct HTTP not accepted as safety-equivalent execution path"
+  ],
+  "structuredRecord": {
+    "auditorFindingAccepted": "ACCEPT_PENDING_ARCHITECTURAL_RECONCILIATION",
+    "refactorProceeding": false,
+    "nextRefactorPacketBlocked": true,
+    "fpMcp287Correction": "Reclassified from preferred execution path to provisional direct-HTTP design/canary path pending safety reconciliation.",
+    "fpMcp288Correction": "Demonstrates bounded direct-HTTP canary/design lifecycle only, not code-edit execution safety.",
+    "evidenceAccounting153To163": [
+      {
+        "evidence_id": 153,
+        "admission_event_id": 153,
+        "packet": "FP-MCP-278",
+        "run_id": "FP-MCP-278-OBSERVED-WORKLOAD-DECISION",
+        "commit": "4486fb7",
+        "state": "ADMITTED",
+        "meaning": "MCP bridge server refactor should be an observed open-weight model workload, not silent maintenance."
+      },
+      {
+        "evidence_id": 154,
+        "admission_event_id": 154,
+        "packet": "FP-MCP-279",
+        "run_id": "FP-MCP-279-ORIENTATION-REFRESH-RESULT",
+        "commit": "aa02f6e",
+        "state": "ADMITTED",
+        "meaning": "Master plan orientation refresh; points to FP-MCP-277 checklist and records FP-MCP-278."
+      },
+      {
+        "evidence_id": 155,
+        "admission_event_id": 155,
+        "packet": "FP-MCP-280",
+        "run_id": "FP-MCP-280-APPROVAL-BOUNDARY-PREPARATION",
+        "commit": "7d13156",
+        "state": "ADMITTED",
+        "meaning": "Operator responsibility and structured approval modal boundary preparation."
+      },
+      {
+        "evidence_id": 156,
+        "admission_event_id": 156,
+        "packet": "FP-MCP-280",
+        "run_id": "FP-MCP-280-APPROVAL-MODAL-BLOCK-HOLD-RESULT",
+        "commit": "4ba8428",
+        "state": "ADMITTED",
+        "meaning": "Approval artifact recording blocked/failed closed; request remained on hold."
+      },
+      {
+        "evidence_id": 157,
+        "admission_event_id": 157,
+        "packet": "FP-MCP-281",
+        "run_id": "FP-MCP-281-APPROVAL-EVIDENCE-PATH-DECISION",
+        "commit": "ff948a6",
+        "state": "ADMITTED",
+        "meaning": "Clear operator chat statement may serve as semantic scoped approval evidence; modal approval authorizes tool action only."
+      },
+      {
+        "evidence_id": 158,
+        "admission_event_id": 158,
+        "packet": "FP-MCP-282",
+        "run_id": "FP-MCP-282-APPROVAL-RECORDING-BOUNDARY",
+        "commit": "5569a16",
+        "state": "ADMITTED",
+        "meaning": "Opened scoped approval-recording packet; boundary did not itself record approval or authorize execution."
+      },
+      {
+        "evidence_id": 159,
+        "admission_event_id": 159,
+        "packet": "FP-MCP-282",
+        "run_id": "FP-MCP-282-APPROVAL-ARTIFACT-BLOCKED-RESULT",
+        "commit": "1ad1768",
+        "state": "ADMITTED",
+        "meaning": "Operator approved in chat but no validation-usable approval artifact was created; request remained blocked."
+      },
+      {
+        "evidence_id": 160,
+        "admission_event_id": 160,
+        "packet": "FP-MCP-283",
+        "run_id": "FP-MCP-283-MCP-BRIDGE-BUG-FIX-RESULT",
+        "commit": "84fa038",
+        "state": "ADMITTED",
+        "meaning": "Approval recorder bug fixed; approval scope no longer hardcoded to FP-MCP-036."
+      },
+      {
+        "evidence_id": 161,
+        "admission_event_id": 161,
+        "packet": "FP-MCP-284",
+        "run_id": "FP-MCP-284-APPROVAL-RECORDING-BOUNDARY",
+        "commit": "01039a7",
+        "state": "ADMITTED",
+        "meaning": "Opened clean approval-recording packet for fresh scoped approval of FP-MCP-276 request."
+      },
+      {
+        "evidence_id": 162,
+        "admission_event_id": 162,
+        "packet": "FP-MCP-285",
+        "run_id": "FP-MCP-285-MCP-BRIDGE-VALIDATOR-FIX-RESULT",
+        "commit": "dbe0b1e",
+        "state": "ADMITTED",
+        "meaning": "Validator fixed to accept explicit scoped operator approval text accepted by recorder."
+      },
+      {
+        "evidence_id": 163,
+        "admission_event_id": 163,
+        "packet": "FP-MCP-286",
+        "run_id": "FP-MCP-286-SESSION-HANDOFF",
+        "commit": "d233280",
+        "state": "ADMITTED",
+        "meaning": "Saved approval-validation state for continuation; approval exists and fixes are committed but validation needed rerun."
+      }
+    ],
+    "fpMcp278Status": "FP-MCP-278 exists and did not refresh the master plan; it recorded the MCP refactor-as-observed-workload decision. FP-MCP-279 performed the master-plan orientation refresh.",
+    "compensatedClarification": {
+      "checklistItem": 6,
+      "requirement": "Verify platform popup itself satisfies human-attention requirements.",
+      "status": "COMPENSATED",
+      "clarification": "Actual popup was not compliant by itself; the compensating control is preview/review manifest plus operator doctrine that popup is final brake, not review, and Always Allow is forbidden for fresh-scoped high-significance actions."
+    },
+    "runnerPathSafetyPropertiesNotYetInheritedByDirectHttp": [
+      "process/state evidence immediately before runner contact",
+      "live abort-readiness equivalent to proven process-group abort",
+      "explicit no-retry/no-chaining state-machine evidence",
+      "approval consumption coupled to successful start boundary",
+      "post-start state/runner-run-id evidence",
+      "FP-027 guarded runner canary admission criteria"
+    ],
+    "directHttpPropertiesProven": [
+      "authenticated OpenCode HTTP reachability",
+      "session creation",
+      "async prompt submission",
+      "assistant role completion detection",
+      "created session deletion for bounded canary/design runs",
+      "conservative prompt boundary blocks some operation-like prompts"
+    ],
+    "directHttpPropertiesNotProven": [
+      "delete equals abort",
+      "abort endpoint semantics",
+      "process-tree isolation/monitoring",
+      "hung-session termination guarantee",
+      "no-retry/no-chaining guarantee",
+      "structural prompt-policy enforcement",
+      "safe model-driven code editing"
+    ],
+    "nextRequiredWork": [
+      "refresh master plan/checklist to mark direct HTTP provisional and FP-027 unsatisfied",
+      "define direct HTTP safety requirements or explicitly accept narrower non-equivalence",
+      "prove or reject direct HTTP abort semantics before implementation execution",
+      "treat keyword prompt blocking as presumed insufficient until structuralized",
+      "only then create a small server.ts registration-extraction packet"
+    ]
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-289 accepts the auditor finding that FP-MCP-287/288 constituted an architectural policy revision, not merely a status update; direct OpenCode HTTP is reclassified as a provisional design/canary path only, not a safety-equivalent replacement for the guarded-runner FP-027 path, until abort semantics, process/state evidence, no-retry/no-chaining discipline, and master-plan reconciliation are explicitly specified and audited."
+}

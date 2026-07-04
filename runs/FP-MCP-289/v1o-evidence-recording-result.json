@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-289",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 166,
+  "run_id": "FP-MCP-289-AUDITOR-RECONCILIATION",
+  "generic_admission_event_id": 166,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP-MCP-289 accepts the auditor finding that FP-MCP-287/288 constituted an architectural policy revision, not merely a status update; direct OpenCode HTTP is reclassified as a provisional design/canary path only, not a safety-equivalent replacement for the guarded-runner FP-027 path, until abort semantics, process/state evidence, no-retry/no-chaining discipline, and master-plan reconciliation are explicitly specified and audited.",
+  "artifact_paths": [
+    "packets/FP-MCP-289.md",
+    "runs/FP-MCP-289/auditor-reconciliation-record.json",
+    "runs/FP-MCP-289/result-summary.md",
+    "runs/FP-MCP-289/verification.txt"
+  ]
+}

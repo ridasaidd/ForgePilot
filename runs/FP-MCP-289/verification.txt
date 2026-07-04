@@ -1,0 +1,15 @@
+FP-MCP-289 verification
+
+Checkpoint type:
+- AUDITOR_RECONCILIATION
+
+Claim:
+- FP-MCP-289 accepts the auditor finding that FP-MCP-287/288 constituted an architectural policy revision, not merely a status update; direct OpenCode HTTP is reclassified as a provisional design/canary path only, not a safety-equivalent replacement for the guarded-runner FP-027 path, until abort semantics, process/state evidence, no-retry/no-chaining discipline, and master-plan reconciliation are explicitly specified and audited.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
