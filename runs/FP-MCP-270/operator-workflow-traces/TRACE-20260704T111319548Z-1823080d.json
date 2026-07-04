@@ -1,0 +1,36 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T111319548Z-1823080d",
+  "recordedAt": "2026-07-04T11:13:19.548Z",
+  "packetId": "FP-MCP-270",
+  "workflowId": "FP-MCP-270-popup-approval-surface-feasibility",
+  "phase": "ORIENTATION",
+  "stepIndex": 1,
+  "intendedAction": "Begin a non-executing feasibility/verification packet to determine whether FP-MCP-269 popup human-attention requirements are met by the current approval surface, implementable in the MCP bridge, or require an explicit risk exception before FP-027 planning.",
+  "intendedToolName": "forgepilot_record_operator_workflow_trace",
+  "actualToolName": "forgepilot_record_operator_workflow_trace",
+  "toolMatchedIntent": true,
+  "approvalLiteral": null,
+  "workflowAdvanced": true,
+  "deviationType": "NONE",
+  "sideEffects": [
+    "artifact_written"
+  ],
+  "notes": [
+    "The clearance creation tool schema exposes many required fields as arguments, but that does not prove the ChatGPT/MCP approval popup renders them visibly or with adequate friction.",
+    "The assistant/MCP server cannot directly observe the user's popup UI rendering from the tool response surface.",
+    "This packet will record the fork before any FP-027 canary plan: prove popup display implementation, or record platform limitation and require explicit risk exception."
+  ],
+  "recoveryAction": "No recovery required.",
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}
