@@ -1,0 +1,34 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T114222889Z-d22f4772",
+  "recordedAt": "2026-07-04T11:42:22.889Z",
+  "packetId": "FP-MCP-273",
+  "workflowId": "FP-MCP-273-clearance-review-manifest-preview-tool",
+  "phase": "CLEAN_STATE_VERIFICATION",
+  "stepIndex": 5,
+  "intendedAction": "Check whether the newly committed clearance review manifest preview tool is visible in the active MCP runtime before bridge reload.",
+  "intendedToolName": "api_tool.list_resources",
+  "actualToolName": "api_tool.list_resources",
+  "toolMatchedIntent": true,
+  "approvalLiteral": null,
+  "workflowAdvanced": true,
+  "deviationType": "NONE",
+  "sideEffects": [],
+  "notes": [
+    "api_tool.list_resources with query preview returned no matching active MCP tool after the bridge source commit.",
+    "This is expected before the MCP bridge service is reloaded; the implementation is committed and direct built-module validation passed, but live ChatGPT MCP surfacing is still pending.",
+    "No clearance was created, no approval was consumed, no runner endpoint was contacted, and no OpenCode action occurred."
+  ],
+  "recoveryAction": "After operator reloads the MCP bridge service, verify that forgepilot_preview_operator_local_execution_clearance_review_manifest is visible and run one read-only live preview call.",
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}
