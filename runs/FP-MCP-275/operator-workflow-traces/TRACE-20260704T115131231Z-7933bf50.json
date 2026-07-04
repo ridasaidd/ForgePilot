@@ -1,0 +1,38 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T115131231Z-7933bf50",
+  "recordedAt": "2026-07-04T11:51:31.231Z",
+  "packetId": "FP-MCP-275",
+  "workflowId": "FP-MCP-275-guarded-runner-readiness-review",
+  "phase": "PLAN_VALIDATION",
+  "stepIndex": 2,
+  "intendedAction": "Record read-only execution gate orientation results for guarded runner start readiness.",
+  "intendedToolName": "forgepilot_get_execution_gate_orientation",
+  "actualToolName": "forgepilot_get_execution_gate_orientation",
+  "toolMatchedIntent": true,
+  "approvalLiteral": null,
+  "workflowAdvanced": true,
+  "deviationType": "NONE",
+  "sideEffects": [],
+  "notes": [
+    "Read-only execution gate orientation completed for packet FP-MCP-275, model deepseek-v4-pro-high, run mode DESIGN_ONLY.",
+    "Remote runner capabilities endpoint was reachable and advertised guarded start capability as callable, with preflight, approval evidence, disable-switch clearance, request artifact hash, target execution commit, evidence ledger validation, and pre/post state recording requirements.",
+    "Execution is not allowed now: global disable switch is active, runner execution is disabled, and OpenCode execution is disabled.",
+    "No request artifact, human approval artifact, or guarded preflight exists for FP-MCP-275 yet.",
+    "Enablement status also reported contract incomplete because packet FP-MCP-275 did not exist yet at the time of the orientation call.",
+    "Repository cleanliness in enablement status was false because FP-MCP-275 orientation trace artifacts were intentionally uncommitted at that moment.",
+    "Boundary confirmed read-only: no execution authorization, no approval consumption, no disable-switch clearing, no runner start contact, no OpenCode start, no request artifact creation, and no approval artifact creation."
+  ],
+  "recoveryAction": "Commit FP-MCP-275 traces, then record a readiness checkpoint stating guarded runner start remains blocked until fresh request/approval/clearance/preflight and explicit disable-switch clearance path exist.",
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}

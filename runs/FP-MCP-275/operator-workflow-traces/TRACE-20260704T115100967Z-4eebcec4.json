@@ -1,0 +1,37 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T115100967Z-4eebcec4",
+  "recordedAt": "2026-07-04T11:51:00.967Z",
+  "packetId": "FP-MCP-275",
+  "workflowId": "FP-MCP-275-guarded-runner-readiness-review",
+  "phase": "ORIENTATION",
+  "stepIndex": 1,
+  "intendedAction": "Begin a non-executing guarded runner start readiness review after clearance review preview tooling is live.",
+  "intendedToolName": "forgepilot_record_operator_workflow_trace",
+  "actualToolName": "forgepilot_record_operator_workflow_trace",
+  "toolMatchedIntent": true,
+  "approvalLiteral": null,
+  "workflowAdvanced": true,
+  "deviationType": "NONE",
+  "sideEffects": [
+    "artifact_written"
+  ],
+  "notes": [
+    "Goal is to determine remaining blockers before any guarded runner start canary work.",
+    "This is a readiness review only, not a clearance creation, approval consumption, runner start, OpenCode start, prompt submission, wait call, or canary execution.",
+    "Known prerequisite now satisfied: FP-MCP-273 preview tool implemented and FP-MCP-274 live-surfaced through ChatGPT MCP.",
+    "Expected review topics: current repo cleanliness, MCP bridge cleanliness, execution gate orientation, disable switch state, request/approval/clearance prerequisites, and whether a fresh scoped tuple must be created before any future execution attempt."
+  ],
+  "recoveryAction": null,
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}
