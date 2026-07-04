@@ -1,0 +1,36 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T090602743Z-e9887e7d",
+  "recordedAt": "2026-07-04T09:06:02.743Z",
+  "packetId": "FP-MCP-266",
+  "workflowId": "FP-MCP-266-post-reload-tool-surfacing",
+  "phase": "CLEAN_STATE_VERIFICATION",
+  "stepIndex": 1,
+  "intendedAction": "Verify that the newly implemented operator workflow trace tools surfaced after MCP reload and that the read-only summarizer could execute.",
+  "intendedToolName": "forgepilot_summarize_operator_workflow_traces",
+  "actualToolName": "forgepilot_summarize_operator_workflow_traces",
+  "toolMatchedIntent": true,
+  "approvalLiteral": null,
+  "workflowAdvanced": true,
+  "deviationType": "NONE",
+  "sideEffects": [
+    "read_only_trace_summary"
+  ],
+  "notes": [
+    "api_tool discovery found forgepilot_record_operator_workflow_trace and forgepilot_summarize_operator_workflow_traces after reload.",
+    "The read-only summarizer executed successfully against OPERATOR workflow traces.",
+    "Earlier manual V0 traces were found but classified with UNKNOWN deviation fields because they predate OPERATOR_WORKFLOW_TRACE_V1."
+  ],
+  "recoveryAction": "No recovery required for post-reload tool surfacing verification.",
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}

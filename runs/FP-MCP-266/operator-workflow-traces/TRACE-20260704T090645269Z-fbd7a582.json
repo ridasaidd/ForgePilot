@@ -1,0 +1,35 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T090645269Z-fbd7a582",
+  "recordedAt": "2026-07-04T09:06:45.269Z",
+  "packetId": "FP-MCP-266",
+  "workflowId": "FP-MCP-266-post-reload-tool-surfacing",
+  "phase": "CLEAN_STATE_VERIFICATION",
+  "stepIndex": 2,
+  "intendedAction": "Inspect ForgePilot workspace changes after writing the V1 post-reload trace artifact.",
+  "intendedToolName": "forgepilot_get_workspace_change_inspection",
+  "actualToolName": "forgepilot_summarize_operator_workflow_traces",
+  "toolMatchedIntent": false,
+  "approvalLiteral": null,
+  "workflowAdvanced": false,
+  "deviationType": "WRONG_ADJACENT_TOOL_CALLED",
+  "sideEffects": [
+    "read_only_trace_summary"
+  ],
+  "notes": [
+    "Declared workspace-change inspection but actual call repeated forgepilot_summarize_operator_workflow_traces.",
+    "The actual call was read-only and reported no file writes, no OpenCode invocation, no runner start endpoint contact, no wait endpoint call, no approval consumption, and no secrets read."
+  ],
+  "recoveryAction": "Recorded the mismatch as OPERATOR_WORKFLOW_TRACE_V1 before proceeding to workspace inspection.",
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}
