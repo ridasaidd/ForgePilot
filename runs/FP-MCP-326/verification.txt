@@ -1,0 +1,15 @@
+FP-MCP-326 verification
+
+Checkpoint type:
+- HOST_DEBUG_NEUTRAL
+
+Claim:
+- A fresh ChatGPT session can record a neutral ForgePilot MCP checkpoint.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

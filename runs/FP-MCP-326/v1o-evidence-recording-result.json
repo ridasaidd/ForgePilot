@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-326",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 206,
+  "run_id": "FP-MCP-326-HOST-DEBUG-NEUTRAL",
+  "generic_admission_event_id": 206,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "A fresh ChatGPT session can record a neutral ForgePilot MCP checkpoint.",
+  "artifact_paths": [
+    "packets/FP-MCP-326.md",
+    "runs/FP-MCP-326/host-debug-neutral-record.json",
+    "runs/FP-MCP-326/result-summary.md",
+    "runs/FP-MCP-326/verification.txt"
+  ]
+}

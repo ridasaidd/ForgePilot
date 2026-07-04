@@ -1,0 +1,26 @@
+{
+  "packetId": "FP-MCP-326",
+  "title": "Fresh Session MCP Neutral Checkpoint",
+  "checkpointType": "HOST_DEBUG_NEUTRAL",
+  "claim": "A fresh ChatGPT session can record a neutral ForgePilot MCP checkpoint.",
+  "summary": "Record a neutral checkpoint to test whether checkpoint recording is allowed in a fresh session.",
+  "caveats": [
+    "This is a neutral host-behavior test."
+  ],
+  "boundaries": [
+    "No operational action is requested."
+  ],
+  "structuredRecord": {
+    "freshSession": true,
+    "probe": "neutral_checkpoint"
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "A fresh ChatGPT session can record a neutral ForgePilot MCP checkpoint."
+}
