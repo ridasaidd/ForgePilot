@@ -1,0 +1,71 @@
+{
+  "packetId": "FP-MCP-281",
+  "title": "Simplified Human Approval Evidence Path",
+  "checkpointType": "APPROVAL_EVIDENCE_PATH_DECISION",
+  "claim": "FP-MCP-281 simplifies the human approval model: for scoped ForgePilot approvals, the human operator's clear chat statement may serve as semantic approval evidence, while MCP/tool approval modals authorize the tool action only; the human operator remains the last line of defense and owns authorization, policy judgment, and final responsibility.",
+  "summary": "After FP-MCP-280 showed that the structured approval recorder path was too brittle and could be platform-blocked, FP-MCP-281 records a simpler doctrine. Human approval should not require custom confirmation modals or excessive ceremony. A clear operator statement in chat can be recorded as semantic approval evidence when it is bound to a specific packet/request/model/run mode/commit/branch and when the operator acknowledges responsibility. The MCP modal remains useful as authorization for the evidence-recording tool call, but it is not the semantic approval itself. This packet records the simplified approval evidence path only; it does not approve FP-MCP-276, create clearance, consume approval, clear disable switches, contact runner start, start OpenCode, submit prompts, call wait, or run a canary.",
+  "caveats": [
+    "This packet records the approval-path doctrine only; it is not approval for FP-MCP-276.",
+    "Future approval evidence must still bind to a concrete request scope.",
+    "The human operator's responsibility is not transferred to GPT or ForgePilot.",
+    "The MCP modal authorizes tool use; it should not be treated as the only place where semantic approval can exist.",
+    "Approval still does not prove correctness and does not admit execution evidence."
+  ],
+  "boundaries": [
+    "FP-MCP-276 not approved by this packet",
+    "local clearance not created",
+    "approval not consumed",
+    "disable switch not cleared",
+    "runner start endpoint not contacted",
+    "OpenCode not started",
+    "OpenCode session not created",
+    "prompt not submitted",
+    "wait not called",
+    "canary not run"
+  ],
+  "structuredRecord": {
+    "schema": "FP_MCP_281_SIMPLIFIED_HUMAN_APPROVAL_EVIDENCE_PATH_V1",
+    "decision": "CLEAR_OPERATOR_CHAT_STATEMENT_CAN_BE_SEMANTIC_APPROVAL_EVIDENCE",
+    "reason": "The operator understands that they are the last line of defense and owns authorization, policy judgment, and final responsibility; the approval mechanism should expose scope without turning responsibility into excessive ritual.",
+    "operatorDoctrine": {
+      "humanOperatorOwns": [
+        "authorization",
+        "policy judgment",
+        "final responsibility",
+        "last line of defense"
+      ],
+      "aiAgentDoesNotOwn": [
+        "final authorization",
+        "policy responsibility",
+        "safety guarantee"
+      ],
+      "forgePilotDoes": [
+        "expose scope",
+        "record decision",
+        "preserve auditability",
+        "enforce boundaries"
+      ]
+    },
+    "approvalEvidenceRules": [
+      "Approval must be bound to a specific packet/request/model/run mode/commit/branch when execution is involved.",
+      "Approval may be recorded from a clear chat statement by the operator.",
+      "A casual proceed/continue message is not approval for execution unless it clearly identifies or accepts the scoped action.",
+      "MCP tool modals authorize tool invocation; they are not required to be the semantic approval surface.",
+      "Approval evidence remains separate from clearance creation, approval consumption, execution start, verification, audit, and admission."
+    ],
+    "relationToFpMcp280": {
+      "previousState": "PREPARED_UNAPPROVED_ON_HOLD",
+      "reason": "structured approval tool path blocked or failed closed",
+      "replacementPath": "record semantic approval evidence from explicit operator chat statement in a simpler evidence artifact path"
+    }
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-281 simplifies the human approval model: for scoped ForgePilot approvals, the human operator's clear chat statement may serve as semantic approval evidence, while MCP/tool approval modals authorize the tool action only; the human operator remains the last line of defense and owns authorization, policy judgment, and final responsibility."
+}

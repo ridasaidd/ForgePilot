@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-281",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 157,
+  "run_id": "FP-MCP-281-APPROVAL-EVIDENCE-PATH-DECISION",
+  "generic_admission_event_id": 157,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP-MCP-281 simplifies the human approval model: for scoped ForgePilot approvals, the human operator's clear chat statement may serve as semantic approval evidence, while MCP/tool approval modals authorize the tool action only; the human operator remains the last line of defense and owns authorization, policy judgment, and final responsibility.",
+  "artifact_paths": [
+    "packets/FP-MCP-281.md",
+    "runs/FP-MCP-281/approval-evidence-path-decision-record.json",
+    "runs/FP-MCP-281/result-summary.md",
+    "runs/FP-MCP-281/verification.txt"
+  ]
+}
