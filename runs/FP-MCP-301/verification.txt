@@ -1,0 +1,15 @@
+FP-MCP-301 verification
+
+Checkpoint type:
+- CLEARANCE_PREVIEW_RESULT
+
+Claim:
+- FP-MCP-301 records that the FP-MCP-295 minimal FP-027 guarded/worker canary advanced only through the clearance preview/review gate: the operator-local clearance review manifest for approval APPROVAL-20260704T144127519Z-2d1b4456 was rendered read-only, validated the exact scoped tuple, found the current ForgePilot workspace clean at de05793, found the approval valid and unconsumed, and reported eligibleToInvokeClearancePopup true; no clearance was created, no approval was consumed, no disable switch was cleared, no runner start endpoint was contacted, no OpenCode session/worker was started, and FP-027 did not run.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

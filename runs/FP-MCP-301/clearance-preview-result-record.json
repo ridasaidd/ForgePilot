@@ -1,0 +1,110 @@
+{
+  "packetId": "FP-MCP-301",
+  "title": "Operator-Local Clearance Preview Result",
+  "checkpointType": "CLEARANCE_PREVIEW_RESULT",
+  "claim": "FP-MCP-301 records that the FP-MCP-295 minimal FP-027 guarded/worker canary advanced only through the clearance preview/review gate: the operator-local clearance review manifest for approval APPROVAL-20260704T144127519Z-2d1b4456 was rendered read-only, validated the exact scoped tuple, found the current ForgePilot workspace clean at de05793, found the approval valid and unconsumed, and reported eligibleToInvokeClearancePopup true; no clearance was created, no approval was consumed, no disable switch was cleared, no runner start endpoint was contacted, no OpenCode session/worker was started, and FP-027 did not run.",
+  "summary": "After FP-MCP-300 fresh approval renewal, the next legal gate was clearance preview/review. The preview bound executionPacketId FP-MCP-295, request REQ-20260704T142232816Z-a82a42b6, approvalPacketId FP-MCP-300, approval APPROVAL-20260704T144127519Z-2d1b4456, model deepseek-v4-pro-high, runMode DESIGN_ONLY, targetExecutionCommit/executionBaseCommit 5c0ab8b, requestArtifactCommit/current evidence HEAD de05793, branch main, targetWorkspaceId forgepilot, and expiresInMinutes 5. The manifest reported all preflight checks true, approvalUsableForExecution true, approvalConsumed false, currentWorkspaceClean true, currentCommitMatches true, expiryWithinOperatorLocalLimit true, and eligibleToInvokeClearancePopup true. It also reported existingClearanceArtifactPresent true, so the follow-on clearance creation tool would mutate/overwrite only the existing gitignored local clearance file in the MCP bridge workspace. This checkpoint admits the preview result only; it does not create the clearance.",
+  "caveats": [
+    "This is preview/review evidence only; it is not a local clearance artifact.",
+    "The follow-on clearance creation would mutate an existing gitignored .local/forgepilot/execution-clearance.json file in the MCP bridge workspace.",
+    "The approval expires at 2026-07-04T14:51:00.000Z and must not be used after expiration.",
+    "The next legal step after auditor/operator review is local clearance creation, not runner start.",
+    "Local clearance creation still would not consume approval, clear disable switches, contact runner start, start OpenCode, submit prompts, or run FP-027."
+  ],
+  "boundaries": [
+    "clearance preview/review only",
+    "read-only preview",
+    "no clearance created",
+    "no clearance mutated",
+    "no approval consumed",
+    "no disable switch cleared",
+    "no runner start endpoint contact",
+    "no OpenCode session or worker started",
+    "no prompt submitted",
+    "no FP-027 canary run",
+    "no source edits",
+    "no MCP bridge source inspection or refactor",
+    "no direct HTTP execution authority"
+  ],
+  "structuredRecord": {
+    "previewCheckedAt": "2026-07-04T14:44:02.905Z",
+    "executionPacketId": "FP-MCP-295",
+    "requestId": "REQ-20260704T142232816Z-a82a42b6",
+    "approvalPacketId": "FP-MCP-300",
+    "approvalId": "APPROVAL-20260704T144127519Z-2d1b4456",
+    "modelId": "deepseek-v4-pro-high",
+    "runMode": "DESIGN_ONLY",
+    "targetExecutionCommit": "5c0ab8b",
+    "executionBaseCommit": "5c0ab8b",
+    "requestArtifactCommit": "de05793",
+    "branch": "main",
+    "targetWorkspaceId": "forgepilot",
+    "expiresInMinutes": 5,
+    "preflightChecks": {
+      "targetWorkspaceKnown": true,
+      "targetPacketPresent": true,
+      "approvalArtifactPresent": true,
+      "requestArtifactPresent": true,
+      "requestArtifactJsonValid": true,
+      "requestArtifactExecutionBaseMatches": true,
+      "executionBaseAncestorOfRequestArtifact": true,
+      "clearancePathGitignored": true,
+      "expiryWithinOperatorLocalLimit": true,
+      "currentBranchMatches": true,
+      "currentCommitMatches": true,
+      "currentWorkspaceClean": true
+    },
+    "approvalValidation": {
+      "approvalEvidenceValid": true,
+      "approvalValid": true,
+      "approvalUsableForExecution": true,
+      "approvalConsumed": false,
+      "scopeMatchesExpected": true,
+      "artifactCommitted": true,
+      "notRevoked": true,
+      "notQuarantined": true
+    },
+    "sideEffectReview": {
+      "followOnToolWouldWriteClearanceFile": true,
+      "clearancePath": "/home/ridasaidd/forgepilot-chatgpt-mcp/.local/forgepilot/execution-clearance.json",
+      "existingClearanceArtifactPresent": true,
+      "followOnToolWouldCreateNewClearanceFile": false,
+      "followOnToolWouldMutateExistingClearanceFile": true,
+      "followOnToolWouldConsumeApproval": false,
+      "followOnToolWouldClearDisableSwitch": false,
+      "followOnToolWouldContactRunnerStartEndpoint": false,
+      "followOnToolWouldStartOpenCode": false,
+      "followOnToolWouldCreateOpenCodeHttpSession": false,
+      "followOnToolWouldSubmitPrompt": false,
+      "followOnToolWouldCallWaitEndpoint": false,
+      "followOnToolWouldRunFp027Canary": false
+    },
+    "operatorDecisionRule": {
+      "allowedPopupChoicesForFollowOnTool": [
+        "Deny",
+        "Allow once"
+      ],
+      "forbiddenPopupChoicesForFollowOnTool": [
+        "Always allow"
+      ],
+      "popupRole": "final brake after review, not the review itself"
+    },
+    "eligibleToInvokeClearancePopup": true,
+    "nextLegalGate": "LOCAL_CLEARANCE_CREATION_AFTER_REVIEW",
+    "forbiddenNextActions": [
+      "runner start before local clearance validates and later gates pass",
+      "approval consumption before successful guarded start",
+      "disable switch clearance by implication",
+      "direct HTTP execution authority"
+    ]
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-301 records that the FP-MCP-295 minimal FP-027 guarded/worker canary advanced only through the clearance preview/review gate: the operator-local clearance review manifest for approval APPROVAL-20260704T144127519Z-2d1b4456 was rendered read-only, validated the exact scoped tuple, found the current ForgePilot workspace clean at de05793, found the approval valid and unconsumed, and reported eligibleToInvokeClearancePopup true; no clearance was created, no approval was consumed, no disable switch was cleared, no runner start endpoint was contacted, no OpenCode session/worker was started, and FP-027 did not run."
+}
