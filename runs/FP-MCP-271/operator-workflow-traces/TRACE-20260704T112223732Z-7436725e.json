@@ -1,0 +1,38 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T112223732Z-7436725e",
+  "recordedAt": "2026-07-04T11:22:23.732Z",
+  "packetId": "FP-MCP-271",
+  "workflowId": "FP-MCP-271-popup-clearance-modal-observation",
+  "phase": "CLEAN_STATE_VERIFICATION",
+  "stepIndex": 1,
+  "intendedAction": "Record direct operator screenshot observation of the actual popup-mediated clearance approval modal and classify whether it satisfies FP-MCP-269 human-attention requirements.",
+  "intendedToolName": "forgepilot_record_operator_workflow_trace",
+  "actualToolName": "forgepilot_record_operator_workflow_trace",
+  "toolMatchedIntent": true,
+  "approvalLiteral": null,
+  "workflowAdvanced": true,
+  "deviationType": "NONE",
+  "sideEffects": [
+    "artifact_written"
+  ],
+  "notes": [
+    "Operator supplied screenshots of the actual forgepilot_create_operator_local_execution_clearance approval modal on mobile.",
+    "The modal summary includes that it creates a short-lived operator-local execution clearance artifact, names workspace forgepilot, shows commit 2ad7ad1, states no execution is started, and says only a local clearance file is written.",
+    "The modal does not visibly show the complete FP-MCP-269 required tuple in the main visible approval surface, including requestId, approvalPacketId, modelId, runMode, executionBaseCommit, requestArtifactCommit distinction, branch, expiry countdown, or all explicit side-effect fields.",
+    "The modal includes Deny, Allow once, and Always allow. Always allow is not acceptable for clearance-creating tools under FP-MCP-269.",
+    "The operator declined the tool path; no clearance was created."
+  ],
+  "recoveryAction": "Record FP-MCP-271 as partial-compliance/platform-limitation evidence before FP-027 planning.",
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}
