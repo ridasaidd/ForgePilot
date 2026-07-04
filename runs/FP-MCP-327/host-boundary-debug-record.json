@@ -1,0 +1,31 @@
+{
+  "packetId": "FP-MCP-327",
+  "title": "Fresh Session Host Boundary Checkpoint",
+  "checkpointType": "HOST_BOUNDARY_DEBUG",
+  "claim": "A fresh ChatGPT session can record a host-boundary debugging checkpoint without requesting operational action.",
+  "summary": "Record a fresh-session checkpoint about ChatGPT-hosted MCP boundary characterization.",
+  "caveats": [
+    "This records host behavior only.",
+    "This does not request operational action."
+  ],
+  "boundaries": [
+    "No runner contact.",
+    "No OpenCode start.",
+    "No approval consumption.",
+    "No control change."
+  ],
+  "structuredRecord": {
+    "freshSession": true,
+    "probe": "host_boundary_checkpoint",
+    "priorHotSessionBlockedSimilarTool": true
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "A fresh ChatGPT session can record a host-boundary debugging checkpoint without requesting operational action."
+}

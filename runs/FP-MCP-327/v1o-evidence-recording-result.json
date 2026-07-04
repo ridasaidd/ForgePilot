@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-327",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 207,
+  "run_id": "FP-MCP-327-HOST-BOUNDARY-DEBUG",
+  "generic_admission_event_id": 207,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "A fresh ChatGPT session can record a host-boundary debugging checkpoint without requesting operational action.",
+  "artifact_paths": [
+    "packets/FP-MCP-327.md",
+    "runs/FP-MCP-327/host-boundary-debug-record.json",
+    "runs/FP-MCP-327/result-summary.md",
+    "runs/FP-MCP-327/verification.txt"
+  ]
+}
