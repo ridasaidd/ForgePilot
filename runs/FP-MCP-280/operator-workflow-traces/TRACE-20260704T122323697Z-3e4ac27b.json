@@ -1,0 +1,39 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T122323697Z-3e4ac27b",
+  "recordedAt": "2026-07-04T12:23:23.697Z",
+  "packetId": "FP-MCP-280",
+  "workflowId": "FP-MCP-280-operator-responsibility-structured-approval",
+  "phase": "FAIL_CLOSED_VALIDATION",
+  "stepIndex": 4,
+  "intendedAction": "Retry compact structured human approval recorder after FP-MCP-280 boundary checkpoint created and workspace cleaned.",
+  "intendedToolName": "forgepilot_record_structured_human_approval",
+  "actualToolName": "NONE",
+  "toolMatchedIntent": false,
+  "approvalLiteral": "RECORD_STRUCTURED_HUMAN_APPROVAL",
+  "workflowAdvanced": false,
+  "deviationType": "PLATFORM_SAFETY_BLOCK",
+  "sideEffects": [],
+  "notes": [
+    "After creating the FP-MCP-280 boundary packet and returning to a clean state, the compact structured approval recorder retry was blocked by the platform before reaching ForgePilot MCP.",
+    "No human approval evidence artifact was created.",
+    "No local clearance was created.",
+    "No approval was consumed.",
+    "No disable switch was cleared.",
+    "No runner start endpoint was contacted.",
+    "No OpenCode action occurred.",
+    "Because a full payload was blocked before MCP, a compact pre-boundary payload failed closed inside ForgePilot, and a compact post-boundary payload was blocked before MCP, further retries should stop for this packet."
+  ],
+  "recoveryAction": "Record FP-MCP-280 as HOLD_PLATFORM_APPROVAL_TOOL_BLOCKED and decide in a later packet whether to implement a lower-risk approval-review flow or use a different approval evidence path.",
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}
