@@ -1,0 +1,36 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T160244953Z-842f0b92",
+  "recordedAt": "2026-07-04T16:02:44.953Z",
+  "packetId": "FP-MCP-310",
+  "workflowId": "FP-MCP-310-sequencer-follow",
+  "phase": "FAIL_CLOSED_VALIDATION",
+  "stepIndex": 1,
+  "intendedAction": "Ask the guarded canary sequencer for the next required gate after FP-MCP-310 approval validation.",
+  "intendedToolName": "forgepilot_get_guarded_canary_next_gate",
+  "actualToolName": "forgepilot_get_guarded_start_preflight_report",
+  "toolMatchedIntent": false,
+  "approvalLiteral": null,
+  "workflowAdvanced": false,
+  "deviationType": "WRONG_ADJACENT_TOOL_CALLED",
+  "sideEffects": [
+    "read_only_preflight_report"
+  ],
+  "notes": [
+    "FP-MCP-310 approval was recorded, committed, and validated usable.",
+    "After validation, the operator intended to ask the sequencer but repeatedly selected the adjacent guarded preflight report tool.",
+    "The repeated calls were read-only and did not consume approval, contact runner start, start OpenCode, submit prompts, create clearance, create enablement, or run the canary."
+  ],
+  "recoveryAction": "Stop the positive path, record a fail-closed hold, and require the next continuation to begin with the exact sequencer tool only.",
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}
