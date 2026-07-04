@@ -1,34 +1,34 @@
-# FP-MCP-322 — Local Guarded Executor CLI Proposal
+# FP-MCP-322 — Local Client Script Implementation Result
 
 ## Checkpoint Type
 
 ```text
-NEXT_PACKET_PROPOSAL
+TOOL_IMPLEMENTATION_RESULT
 ```
 
 ## Summary
 
-FP-MCP-321 moved the final runner-start boundary to local operator handoff after repeated ChatGPT platform safety blocks. FP-MCP-322 should implement a narrow local CLI in the MCP bridge that imports existing guarded executor code rather than duplicating gate logic. The CLI should require an input JSON file, call the same guarded executor once, write a result JSON file, and exit. It must not create broad direct runner-start access or unbounded retries.
+The MCP bridge now contains scripts/local-guarded-apply.mjs. The script uses the installed MCP SDK streamable HTTP client, requires the bearer token from the operator environment, allows only forgepilot_apply_guarded_canary_next_gate, accepts input and output file paths, and writes a structured result JSON. The script was syntax-checked with node --check and committed in the bridge as 11d4490.
 
 ## Claim
 
 ```text
-FP-MCP-322 should add a local-only MCP bridge CLI that can execute the existing guarded canary sequencer/executor path from the operator host, write a full result JSON artifact, and preserve the same one-gate-at-a-time and one-final-attempt boundaries without routing the final execution boundary through ChatGPT tools.
+FP-MCP-322 added a local-only MCP client script in the bridge repo that reads a JSON input file, calls exactly one allowed guarded executor tool through the running MCP server, and writes the full MCP result JSON to an explicit output path.
 ```
 
 ## Caveats
 
-- This proposal does not execute the final runner-start attempt.
-- The CLI implementation must not weaken existing approval, clearance, enablement, or sequencer gates.
-- The first use of the CLI for the final attempt must use fresh short-lived artifacts.
+- The script has not been used for the final local attempt in this session.
+- The operator must provide fresh short-lived approval, clearance, capability observation, and scoped enablement before any final use.
+- The bearer token is required from the local operator environment and is not printed or recorded.
 
 ## Boundaries
 
 - No runner start endpoint contact by this checkpoint.
 - No approval consumption by this checkpoint.
 - No OpenCode start by this checkpoint.
-- No canary execution by this checkpoint.
-- The proposed CLI must call the guarded executor once per invocation and then stop.
+- No canary run by this checkpoint.
+- The script is intended to call one MCP tool per invocation and then stop.
 
 ## Non-Execution Boundary
 
@@ -44,5 +44,5 @@ FP-027 canary run: false
 ## Expected Result
 
 ```text
-FP-MCP-322 should add a local-only MCP bridge CLI that can execute the existing guarded canary sequencer/executor path from the operator host, write a full result JSON artifact, and preserve the same one-gate-at-a-time and one-final-attempt boundaries without routing the final execution boundary through ChatGPT tools.
+FP-MCP-322 added a local-only MCP client script in the bridge repo that reads a JSON input file, calls exactly one allowed guarded executor tool through the running MCP server, and writes the full MCP result JSON to an explicit output path.
 ```

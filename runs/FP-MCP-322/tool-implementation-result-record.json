@@ -1,0 +1,42 @@
+{
+  "packetId": "FP-MCP-322",
+  "title": "Local Client Script Implementation Result",
+  "checkpointType": "TOOL_IMPLEMENTATION_RESULT",
+  "claim": "FP-MCP-322 added a local-only MCP client script in the bridge repo that reads a JSON input file, calls exactly one allowed guarded executor tool through the running MCP server, and writes the full MCP result JSON to an explicit output path.",
+  "summary": "The MCP bridge now contains scripts/local-guarded-apply.mjs. The script uses the installed MCP SDK streamable HTTP client, requires the bearer token from the operator environment, allows only forgepilot_apply_guarded_canary_next_gate, accepts input and output file paths, and writes a structured result JSON. The script was syntax-checked with node --check and committed in the bridge as 11d4490.",
+  "caveats": [
+    "The script has not been used for the final local attempt in this session.",
+    "The operator must provide fresh short-lived approval, clearance, capability observation, and scoped enablement before any final use.",
+    "The bearer token is required from the local operator environment and is not printed or recorded."
+  ],
+  "boundaries": [
+    "No runner start endpoint contact by this checkpoint.",
+    "No approval consumption by this checkpoint.",
+    "No OpenCode start by this checkpoint.",
+    "No canary run by this checkpoint.",
+    "The script is intended to call one MCP tool per invocation and then stop."
+  ],
+  "structuredRecord": {
+    "bridgeRepo": "/home/ridasaidd/forgepilot-chatgpt-mcp",
+    "bridgeBranch": "feature/oauth-auth0",
+    "bridgeCommit": "11d4490",
+    "scriptPath": "scripts/local-guarded-apply.mjs",
+    "verification": {
+      "nodeCheck": "PASS",
+      "bridgeWorkingTreeClean": true
+    },
+    "allowedTool": "forgepilot_apply_guarded_canary_next_gate",
+    "inputMode": "JSON file",
+    "outputMode": "JSON file",
+    "authMode": "operator-provided bearer token environment variable"
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-322 added a local-only MCP client script in the bridge repo that reads a JSON input file, calls exactly one allowed guarded executor tool through the running MCP server, and writes the full MCP result JSON to an explicit output path."
+}
