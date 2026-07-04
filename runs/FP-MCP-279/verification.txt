@@ -1,0 +1,15 @@
+FP-MCP-279 verification
+
+Checkpoint type:
+- ORIENTATION_REFRESH_RESULT
+
+Claim:
+- FP-MCP-279 updates the master plan so it orients rather than competes with the ledger: it points to FP-MCP-277 checklist artifacts for current FP-027 steering, preserves the FP-MCP-268 standing rule, records the FP-MCP-278 observed-refactor decision, and marks routing evidence thresholds as an unresolved future standard.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
