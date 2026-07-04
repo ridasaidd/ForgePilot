@@ -1,0 +1,68 @@
+{
+  "packetId": "FP-MCP-263",
+  "title": "HTTP lifecycle single-shot gate implementation",
+  "checkpointType": "TOOL_IMPLEMENTATION_RESULT",
+  "claim": "The MCP bridge now implements a gated OpenCode HTTP lifecycle single-shot tool that validates an existing lifecycle plan, requires caller-supplied prompt and expected text hashes to match the plan, enforces cleanup for V1, writes preflight/result artifacts, and delegates to the bounded HTTP lifecycle orchestrator without contacting the ForgePilot runner start endpoint or starting OpenCode from terminal.",
+  "summary": "Implemented forgepilot_run_opencode_http_lifecycle_single_shot_gate in the MCP bridge. The gate reuses the existing plan invocation dry-run gate, blocks on approval mismatch, prompt/expected hash mismatch, ineligible plans, and cleanup-disabled plans, writes single-shot preflight/result artifacts around the lifecycle, creates at most one OpenCode HTTP session through the existing orchestrator, submits one prompt, attempts cleanup, and preserves V1 boundaries. Verification passed with pnpm test, including tsc and hardcoded packet-id lint. The new tool was not invoked in this session.",
+  "caveats": [
+    "The running MCP server in this ChatGPT session has not been reloaded, so the newly implemented tool may not be surfaced until the bridge service restarts or reloads.",
+    "The implementation was source-verified and build/test-verified, but the real single-shot gate was intentionally not invoked because FP-MCP-263 scoped implementation, not live model execution.",
+    "The gate depends on caller-supplied promptText and expectedText because the lifecycle plan stores hashes, not raw prompt contents.",
+    "If lifecycle cleanup fails after a session is created, the gate classifies the terminal state as CLEANUP_INCOMPLETE rather than treating absence of cleanup as success."
+  ],
+  "boundaries": [
+    "single-shot only",
+    "cleanup required for V1",
+    "no retained sessions by design",
+    "no correction loops",
+    "no multi-turn repair mode",
+    "no wait endpoint call",
+    "no ForgePilot runner start endpoint contact",
+    "no OpenCode process start from terminal",
+    "no approval consumption",
+    "no direct invocation of the new real gate during implementation"
+  ],
+  "structuredRecord": {
+    "bridgeRepo": "/home/ridasaidd/forgepilot-chatgpt-mcp",
+    "bridgeBranch": "feature/oauth-auth0",
+    "bridgeCommit": "ba0fbb1",
+    "previousBridgeCommit": "63de354",
+    "implementedToolName": "forgepilot_run_opencode_http_lifecycle_single_shot_gate",
+    "approvalLiteral": "RUN_OPENCODE_HTTP_LIFECYCLE_SINGLE_SHOT_GATE",
+    "sourceFile": "src/server.ts",
+    "changedFiles": [
+      "src/server.ts"
+    ],
+    "verificationCommand": "pnpm test",
+    "verificationResult": "PASS",
+    "typecheckResult": "PASS",
+    "packetIdLintResult": "PASS",
+    "buildResult": "PASS",
+    "testStdoutSummary": "Hardcoded packet-id lint passed: 170 observed source references matched allowlist.",
+    "sourcePacketId": "FP-MCP-254",
+    "sourceRequestId": "REQ-20260703T231957999Z-32fcb25f",
+    "sourcePlanId": "HTTPPLAN-20260703T233517042Z-9242deff",
+    "priorCompatibilityPacketId": "FP-MCP-262",
+    "priorCompatibilityCommit": "c551f2d",
+    "functionAdded": "runHttpLifecycleSingleShotGate",
+    "schemaAdded": "ForgePilotHttpLifecycleSingleShotGateOutputSchema",
+    "artifactSchemasAdded": [
+      "OPENCODE_HTTP_LIFECYCLE_SINGLE_SHOT_PREFLIGHT_V1",
+      "OPENCODE_HTTP_LIFECYCLE_SINGLE_SHOT_RESULT_V1"
+    ],
+    "realGateInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStartedFromTerminal": false,
+    "approvalConsumed": false,
+    "waitEndpointCalled": false
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "The MCP bridge now implements a gated OpenCode HTTP lifecycle single-shot tool that validates an existing lifecycle plan, requires caller-supplied prompt and expected text hashes to match the plan, enforces cleanup for V1, writes preflight/result artifacts, and delegates to the bounded HTTP lifecycle orchestrator without contacting the ForgePilot runner start endpoint or starting OpenCode from terminal."
+}

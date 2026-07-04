@@ -1,0 +1,15 @@
+FP-MCP-263 verification
+
+Checkpoint type:
+- TOOL_IMPLEMENTATION_RESULT
+
+Claim:
+- The MCP bridge now implements a gated OpenCode HTTP lifecycle single-shot tool that validates an existing lifecycle plan, requires caller-supplied prompt and expected text hashes to match the plan, enforces cleanup for V1, writes preflight/result artifacts, and delegates to the bounded HTTP lifecycle orchestrator without contacting the ForgePilot runner start endpoint or starting OpenCode from terminal.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
