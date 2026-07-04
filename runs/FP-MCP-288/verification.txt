@@ -1,0 +1,15 @@
+FP-MCP-288 verification
+
+Checkpoint type:
+- DIRECT_HTTP_MODEL_LIFECYCLE_RESULT
+
+Claim:
+- The MCP bridge successfully used the direct OpenCode HTTP lifecycle path for a bounded design-only model interaction, without contacting the remote runner start endpoint, starting OpenCode, calling wait, or leaving the created session behind.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
