@@ -1,0 +1,67 @@
+{
+  "packetId": "FP-MCP-319",
+  "title": "Guarded Runner Start Final Test Platform Block",
+  "checkpointType": "FUNCTIONAL_TEST_BLOCKED_AT_PLATFORM",
+  "claim": "FP-MCP-319 successfully prepared the FP-MCP-295 canary tuple through fresh approval, fresh operator-local clearance, fresh runner capability observation, and fresh scoped execution enablement; the read-only sequencer confirmed the next gate was the final runner-start follow-on, but the attempted guarded runner-start executor call was blocked by the platform safety layer before reaching the MCP tool.",
+  "summary": "A fresh FP-MCP-319 approval was recorded, committed at c38ce9b, and validated as usable. The guarded executor created/replaced clearance CLEARANCE-20260704T185325927Z-83b53937 and scoped enablement ENABLEMENT-20260704T185336801Z-2701a18c, both bound to the FP-MCP-295 tuple and current core commit c38ce9b. A fresh runner capability observation at 2026-07-04T18:53:29.009Z confirmed the runner start capability was callable guarded. The final guarded executor call intended to route one bounded runner-start attempt through forgepilot_apply_guarded_canary_next_gate was blocked by OpenAI platform safety checks before MCP execution. A subsequent read-only sequencer check confirmed request, approval, clearance, enablement, and evidence were valid and the next gate was FRESH_ORIENTATION_BEFORE_START with followOnAfterSuccess forgepilot_start_remote_runner_request.",
+  "caveats": [
+    "The final runner-start attempt did not execute.",
+    "No evidence was produced for runner start endpoint contact because the platform blocked the MCP tool call before invocation.",
+    "The local clearance and enablement were short-lived and should now be treated as expired for future testing.",
+    "This result proves readiness up to the final start gate, not a completed runner-start attempt."
+  ],
+  "boundaries": [
+    "No runner start endpoint was contacted by the blocked final attempt.",
+    "No approval was consumed.",
+    "OpenCode was not started.",
+    "The canary did not run.",
+    "The post-block sequencer check was read-only."
+  ],
+  "structuredRecord": {
+    "testedImplementationPacket": "FP-MCP-318",
+    "functionalTestPacket": "FP-MCP-319",
+    "executionPacketId": "FP-MCP-295",
+    "requestId": "REQ-20260704T142232816Z-a82a42b6",
+    "modelId": "deepseek-v4-pro-high",
+    "runMode": "DESIGN_ONLY",
+    "executionBaseCommit": "5c0ab8b",
+    "branch": "main",
+    "targetWorkspaceId": "forgepilot",
+    "approvalPacketId": "FP-MCP-319",
+    "approvalId": "APPROVAL-20260704T185305729Z-3ca2cf61",
+    "approvalArtifactSha256": "d18c22b312b38637abd594a82b71a433f524c5b91835d135f1079dfc255b6392",
+    "approvalCommit": "c38ce9b",
+    "clearanceId": "CLEARANCE-20260704T185325927Z-83b53937",
+    "clearanceExpiresAt": "2026-07-04T18:58:25.927Z",
+    "runnerCapabilityCheckedAt": "2026-07-04T18:53:29.009Z",
+    "enablementId": "ENABLEMENT-20260704T185336801Z-2701a18c",
+    "enablementExpiresAt": "2026-07-04T18:58:36.801Z",
+    "preStartEvidenceSha256": "51cf00f1954880744b16f19e7a1b81e6993300632cd14752090626570206ca53",
+    "preStartSnapshotSha256": "52a3d09e8eef033636f37eb2772c679c45a7839703be16ddbe9636296bd12183",
+    "postStartSnapshotSha256": "11ed1cbe6ee07f035387fbfc482b80e218e11ad2ed597e73a05fc4d37ce33320",
+    "blockedToolAttempt": "forgepilot_apply_guarded_canary_next_gate",
+    "blockedAttemptIntendedPhase": "RUNNER_START_ATTEMPT",
+    "blockSource": "OpenAI platform safety checks before MCP invocation",
+    "postBlockSequencer": {
+      "nextRequiredGate": "FRESH_ORIENTATION_BEFORE_START",
+      "nextToolName": "forgepilot_get_execution_gate_orientation",
+      "followOnAfterSuccess": "forgepilot_start_remote_runner_request",
+      "requestValid": true,
+      "approvalValid": true,
+      "clearanceValid": true,
+      "enablementValid": true,
+      "repositoryClean": true,
+      "repositoryHead": "c38ce9b",
+      "reasons": []
+    }
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-319 successfully prepared the FP-MCP-295 canary tuple through fresh approval, fresh operator-local clearance, fresh runner capability observation, and fresh scoped execution enablement; the read-only sequencer confirmed the next gate was the final runner-start follow-on, but the attempted guarded runner-start executor call was blocked by the platform safety layer before reaching the MCP tool."
+}

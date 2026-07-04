@@ -1,0 +1,15 @@
+FP-MCP-319 verification
+
+Checkpoint type:
+- FUNCTIONAL_TEST_BLOCKED_AT_PLATFORM
+
+Claim:
+- FP-MCP-319 successfully prepared the FP-MCP-295 canary tuple through fresh approval, fresh operator-local clearance, fresh runner capability observation, and fresh scoped execution enablement; the read-only sequencer confirmed the next gate was the final runner-start follow-on, but the attempted guarded runner-start executor call was blocked by the platform safety layer before reaching the MCP tool.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-319",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 202,
+  "run_id": "FP-MCP-319-FUNCTIONAL-TEST-BLOCKED-AT-PLATFORM",
+  "generic_admission_event_id": 202,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP-MCP-319 successfully prepared the FP-MCP-295 canary tuple through fresh approval, fresh operator-local clearance, fresh runner capability observation, and fresh scoped execution enablement; the read-only sequencer confirmed the next gate was the final runner-start follow-on, but the attempted guarded runner-start executor call was blocked by the platform safety layer before reaching the MCP tool.",
+  "artifact_paths": [
+    "packets/FP-MCP-319.md",
+    "runs/FP-MCP-319/functional-test-blocked-at-platform-record.json",
+    "runs/FP-MCP-319/result-summary.md",
+    "runs/FP-MCP-319/verification.txt"
+  ]
+}
