@@ -1,0 +1,15 @@
+FP-MCP-318 verification
+
+Checkpoint type:
+- NEXT_PACKET_PROPOSAL
+
+Claim:
+- FP-MCP-318 should extend forgepilot_apply_guarded_canary_next_gate by exactly one final guarded stage: when valid approval, valid operator-local clearance, valid scoped execution enablement, fresh runner capability observation, and valid evidence/preflight bindings exist for the FP-MCP-295 canary tuple, the enforced executor may perform one bounded runner-start attempt and then stop.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-318",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 200,
+  "run_id": "FP-MCP-318-NEXT-PACKET-PROPOSAL",
+  "generic_admission_event_id": 200,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP-MCP-318 should extend forgepilot_apply_guarded_canary_next_gate by exactly one final guarded stage: when valid approval, valid operator-local clearance, valid scoped execution enablement, fresh runner capability observation, and valid evidence/preflight bindings exist for the FP-MCP-295 canary tuple, the enforced executor may perform one bounded runner-start attempt and then stop.",
+  "artifact_paths": [
+    "packets/FP-MCP-318.md",
+    "runs/FP-MCP-318/next-packet-proposal-record.json",
+    "runs/FP-MCP-318/result-summary.md",
+    "runs/FP-MCP-318/verification.txt"
+  ]
+}

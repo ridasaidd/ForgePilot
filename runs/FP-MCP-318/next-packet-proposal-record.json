@@ -1,0 +1,68 @@
+{
+  "packetId": "FP-MCP-318",
+  "title": "Guarded Canary Runner Start Executor Extension",
+  "checkpointType": "NEXT_PACKET_PROPOSAL",
+  "claim": "FP-MCP-318 should extend forgepilot_apply_guarded_canary_next_gate by exactly one final guarded stage: when valid approval, valid operator-local clearance, valid scoped execution enablement, fresh runner capability observation, and valid evidence/preflight bindings exist for the FP-MCP-295 canary tuple, the enforced executor may perform one bounded runner-start attempt and then stop.",
+  "summary": "FP-MCP-317 proved the live FP-MCP-316 executor can advance from fresh approval through clearance and scoped enablement while stopping before runner start. FP-MCP-318 is the next implementation target and should route the final runner-start gate through the same single enforced executor path. It must preserve the narrowed default action surface, prevent direct operator selection of adjacent runner-start tools, and make runner start a sequencer-selected, preflight-bound, one-attempt action only.",
+  "caveats": [
+    "This is a packet proposal/checkpoint, not the implementation itself.",
+    "All previous approvals, clearances, and scoped enablements should be treated as expired before any runner-start test.",
+    "This is the first extension that may contact the runner start endpoint, so implementation and testing must be stricter than prior local-gate packets."
+  ],
+  "boundaries": [
+    "Must use only forgepilot_apply_guarded_canary_next_gate for the final start path.",
+    "Must not expose forgepilot_start_remote_runner_request directly in the default narrowed guarded surface.",
+    "Must consume approval only if the runner-start attempt is actually invoked according to the existing start contract.",
+    "Must not start arbitrary OpenCode outside the remote runner contract.",
+    "Must perform at most one bounded runner-start attempt.",
+    "Must stop immediately after the runner-start result is returned.",
+    "Must preserve global disable switch and preflight gating behavior.",
+    "Must record or preserve pre-start/post-start evidence according to the existing runner-start contract."
+  ],
+  "structuredRecord": {
+    "previousFunctionalTestPacket": "FP-MCP-317",
+    "previousFunctionalTestEvidenceId": 199,
+    "implementationTarget": "forgepilot_apply_guarded_canary_next_gate",
+    "extensionStage": "RUNNER_START_ATTEMPT_ONLY",
+    "requiredPreconditions": [
+      "valid scoped approval for the FP-MCP-295 tuple",
+      "valid operator-local clearance for the same tuple",
+      "valid operator-local scoped execution enablement for the same tuple",
+      "fresh runner capability observation",
+      "valid pre-start evidence hash",
+      "valid pre/post state snapshot hashes",
+      "clean ForgePilot workspace",
+      "sequencer nextRequiredGate indicates final start stage"
+    ],
+    "expectedStopPoint": "after one bounded runner-start attempt result",
+    "explicitlyOutOfScope": [
+      "unbounded retries",
+      "manual direct runner-start tool exposure",
+      "arbitrary OpenCode start outside runner contract",
+      "continuing beyond the returned runner-start result"
+    ],
+    "referenceCanaryTuple": {
+      "executionPacketId": "FP-MCP-295",
+      "requestId": "REQ-20260704T142232816Z-a82a42b6",
+      "modelId": "deepseek-v4-pro-high",
+      "runMode": "DESIGN_ONLY",
+      "executionBaseCommit": "5c0ab8b",
+      "branch": "main",
+      "targetWorkspaceId": "forgepilot",
+      "stateSnapshotAttemptId": "ATTEMPT-20260704T143856516Z-0fb5d745"
+    },
+    "lastKnownImplementationCommits": {
+      "core": "9b5f796",
+      "bridge": "c463264"
+    }
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-318 should extend forgepilot_apply_guarded_canary_next_gate by exactly one final guarded stage: when valid approval, valid operator-local clearance, valid scoped execution enablement, fresh runner capability observation, and valid evidence/preflight bindings exist for the FP-MCP-295 canary tuple, the enforced executor may perform one bounded runner-start attempt and then stop."
+}
