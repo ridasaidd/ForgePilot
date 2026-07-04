@@ -1,0 +1,42 @@
+{
+  "packetId": "FP-MCP-340",
+  "title": "Guarded Wrapper Preview Follow-On Contract",
+  "checkpointType": "CONTRACT_CLARIFICATION",
+  "claim": "The guarded next-gate wrapper intentionally returns clearance preview only unless applyPreviewFollowOn is true.",
+  "summary": "Record the read-only implementation finding that forgepilot_apply_guarded_canary_next_gate accepts applyPreviewFollowOn?: boolean. At PREVIEW_CLEARANCE, the wrapper returns preview-only when applyPreviewFollowOn is absent or false. It invokes createOperatorLocalExecutionClearance only after a successful preview and applyPreviewFollowOn: true. The repeated-preview result in FP-MCP-339 was therefore caused by a missing follow-on confirmation argument, not by host blocking, approval failure, or raw-tool exposure.",
+  "caveats": [
+    "No code was modified.",
+    "No clearance was created.",
+    "No enablement was tested.",
+    "No runner endpoint was contacted.",
+    "OpenCode was not started."
+  ],
+  "boundaries": [
+    "Contract clarification only.",
+    "Read-only implementation inspection.",
+    "No wrapper invocation in this checkpoint.",
+    "No approval consumption.",
+    "No control change."
+  ],
+  "structuredRecord": {
+    "wrapperTool": "forgepilot_apply_guarded_canary_next_gate",
+    "schemaField": "applyPreviewFollowOn",
+    "schemaFieldType": "boolean_optional",
+    "previewPhase": "PREVIEW_CLEARANCE",
+    "previewOnlyWhenFollowOnFalse": true,
+    "clearanceCreationFunction": "createOperatorLocalExecutionClearance",
+    "clearanceCreationRequiresApplyPreviewFollowOnTrue": true,
+    "finding": "missing_follow_on_confirmation_argument_caused_repeated_preview",
+    "hostBlocked": false,
+    "codeModified": false
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "The guarded next-gate wrapper intentionally returns clearance preview only unless applyPreviewFollowOn is true."
+}

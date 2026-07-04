@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-340",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 217,
+  "run_id": "FP-MCP-340-CONTRACT-CLARIFICATION",
+  "generic_admission_event_id": 217,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "The guarded next-gate wrapper intentionally returns clearance preview only unless applyPreviewFollowOn is true.",
+  "artifact_paths": [
+    "packets/FP-MCP-340.md",
+    "runs/FP-MCP-340/contract-clarification-record.json",
+    "runs/FP-MCP-340/result-summary.md",
+    "runs/FP-MCP-340/verification.txt"
+  ]
+}

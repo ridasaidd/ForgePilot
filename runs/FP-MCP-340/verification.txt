@@ -1,0 +1,15 @@
+FP-MCP-340 verification
+
+Checkpoint type:
+- CONTRACT_CLARIFICATION
+
+Claim:
+- The guarded next-gate wrapper intentionally returns clearance preview only unless applyPreviewFollowOn is true.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
