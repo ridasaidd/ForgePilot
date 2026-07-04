@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "FP-MCP-067",
+  "boundaryVersion": "FP-MCP-067",
+  "artifactType": "human-approval-evidence",
+  "artifactVersion": "human-approval-evidence-v1",
+  "approvalId": "APPROVAL-20260704T145343543Z-8a4d2a6f",
+  "approvalKind": "EXECUTION_ENABLEMENT",
+  "approvedAction": "ALLOW_ONE_GUARDED_REMOTE_RUNNER_EXECUTION_ATTEMPT",
+  "approvalState": "RECORDED",
+  "fixture": false,
+  "dryRun": false,
+  "humanApprovalRecorded": true,
+  "approvalUsableForExecution": false,
+  "approvalUsabilityDerivedByRecorder": false,
+  "approvalUsabilityRequiresValidation": true,
+  "scope": {
+    "packetId": "FP-MCP-295",
+    "requestId": "REQ-20260704T142232816Z-a82a42b6",
+    "modelId": "deepseek-v4-pro-high",
+    "runMode": "DESIGN_ONLY",
+    "repoCommit": "5c0ab8b",
+    "branch": "main"
+  },
+  "canonicalApprovalText": "I approve one guarded ForgePilot remote-runner start attempt for packet FP-MCP-295, request REQ-20260704T142232816Z-a82a42b6, model deepseek-v4-pro-high, run mode DESIGN_ONLY, repository commit 5c0ab8b, branch main. This approval is single-use, expires at 2026-07-04T15:02:00.000Z, and does not override the global disable switch or any other ForgePilot safety gate.",
+  "approvalText": "I approve this exact scoped FP-MCP-295 request artifact for the minimal FP-027 guarded/worker canary only: request REQ-20260704T142232816Z-a82a42b6, model deepseek-v4-pro-high, run mode DESIGN_ONLY, branch main, repo commit 5c0ab8b. This approval replaces expired approval APPROVAL-20260704T144127519Z-2d1b4456 for continuation toward local clearance and later guarded start gates only. It remains single-use in substance and does not authorize reuse of FP-MCP-276, direct HTTP execution authority, src/server.ts or MCP bridge source contact, source edits, shell commands, git operations, retries, chaining, runner start before all gates, approval consumption before successful guarded start, or disable-switch clearance by implication.",
+  "approvalTextCanonical": false,
+  "approvalTextExplicit": true,
+  "approvalSemanticSource": "EXPLICIT_OPERATOR_CHAT_STATEMENT",
+  "approvalRecorderPacketId": "FP-MCP-302",
+  "approvedBy": {
+    "operatorId": "human-operator",
+    "operatorHandle": "ridasaidd",
+    "operatorEmailHash": null
+  },
+  "createdAt": "2026-07-04T14:53:43.515Z",
+  "expiresAt": "2026-07-04T15:02:00.000Z",
+  "singleUse": true,
+  "consumed": false,
+  "consumedAt": null,
+  "revoked": false,
+  "revokedAt": null,
+  "quarantined": false,
+  "quarantinedAt": null,
+  "preconditions": {
+    "requestArtifactValidated": true,
+    "preStartEvidenceValidated": true,
+    "stateSnapshotValidated": true,
+    "humanApprovalGateRequired": true,
+    "globalDisableSwitchNotOverridden": true
+  },
+  "secretBoundary": {
+    "containsSecrets": false,
+    "secretMaterialRedacted": true
+  },
+  "createdByTool": "forgepilot_record_real_human_approval_evidence",
+  "createdByBoundaryVersion": "FP-MCP-067",
+  "recordedAt": "2026-07-04T14:53:43.515Z",
+  "executionAllowedNow": false,
+  "executionStarted": false,
+  "startEndpointContacted": false,
+  "opencodeStarted": false,
+  "approvalConsumed": false,
+  "notes": [
+    "User instructed: proceed till we are at actually running forgepilot opencode; then approved proceeding subject to renewal if expired.",
+    "Prior approval APPROVAL-20260704T144127519Z-2d1b4456 expired at 2026-07-04T14:51:00.000Z and must not be reused.",
+    "FP-MCP-299 admitted valid pre-start evidence and valid start state snapshots.",
+    "FP-MCP-301 admitted clearance preview, but the preview may need refresh against current HEAD before clearance creation.",
+    "Canary task remains boring non-refactor docs/forgepilot-master-plan.md structure summary only."
+  ]
+}
