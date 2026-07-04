@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "FP-MCP-067",
+  "boundaryVersion": "FP-MCP-067",
+  "artifactType": "human-approval-evidence",
+  "artifactVersion": "human-approval-evidence-v1",
+  "approvalId": "APPROVAL-20260704T185305729Z-3ca2cf61",
+  "approvalKind": "EXECUTION_ENABLEMENT",
+  "approvedAction": "ALLOW_ONE_GUARDED_REMOTE_RUNNER_EXECUTION_ATTEMPT",
+  "approvalState": "RECORDED",
+  "fixture": false,
+  "dryRun": false,
+  "humanApprovalRecorded": true,
+  "approvalUsableForExecution": false,
+  "approvalUsabilityDerivedByRecorder": false,
+  "approvalUsabilityRequiresValidation": true,
+  "scope": {
+    "packetId": "FP-MCP-295",
+    "requestId": "REQ-20260704T142232816Z-a82a42b6",
+    "modelId": "deepseek-v4-pro-high",
+    "runMode": "DESIGN_ONLY",
+    "repoCommit": "5c0ab8b",
+    "branch": "main"
+  },
+  "canonicalApprovalText": "I approve one guarded ForgePilot remote-runner start attempt for packet FP-MCP-295, request REQ-20260704T142232816Z-a82a42b6, model deepseek-v4-pro-high, run mode DESIGN_ONLY, repository commit 5c0ab8b, branch main. This approval is single-use, expires at 2026-07-04T19:05:00Z, and does not override the global disable switch or any other ForgePilot safety gate.",
+  "approvalText": "I approve one bounded guarded ForgePilot runner-start attempt for packet FP-MCP-295, request REQ-20260704T142232816Z-a82a42b6, model deepseek-v4-pro-high, run mode DESIGN_ONLY, repository commit 5c0ab8b, branch main, routed only through forgepilot_apply_guarded_canary_next_gate. This approval permits fresh local clearance, fresh scoped enablement, and one runner-start attempt only. It does not authorize unbounded retries, direct manual runner-start tool use, arbitrary OpenCode start outside the runner contract, or continuing beyond the returned runner-start result.",
+  "approvalTextCanonical": false,
+  "approvalTextExplicit": true,
+  "approvalSemanticSource": "EXPLICIT_OPERATOR_CHAT_STATEMENT",
+  "approvalRecorderPacketId": "FP-MCP-319",
+  "approvedBy": {
+    "operatorId": "human-operator",
+    "operatorHandle": "ridasaidd",
+    "operatorEmailHash": null
+  },
+  "createdAt": "2026-07-04T18:53:05.705Z",
+  "expiresAt": "2026-07-04T19:05:00Z",
+  "singleUse": true,
+  "consumed": false,
+  "consumedAt": null,
+  "revoked": false,
+  "revokedAt": null,
+  "quarantined": false,
+  "quarantinedAt": null,
+  "preconditions": {
+    "requestArtifactValidated": true,
+    "preStartEvidenceValidated": true,
+    "stateSnapshotValidated": true,
+    "humanApprovalGateRequired": true,
+    "globalDisableSwitchNotOverridden": true
+  },
+  "secretBoundary": {
+    "containsSecrets": false,
+    "secretMaterialRedacted": true
+  },
+  "createdByTool": "forgepilot_record_real_human_approval_evidence",
+  "createdByBoundaryVersion": "FP-MCP-067",
+  "recordedAt": "2026-07-04T18:53:05.705Z",
+  "executionAllowedNow": false,
+  "executionStarted": false,
+  "startEndpointContacted": false,
+  "opencodeStarted": false,
+  "approvalConsumed": false,
+  "notes": [
+    "Fresh scoped approval for FP-MCP-318 final live functional test only.",
+    "Bound to FP-MCP-295 request tuple and FP-MCP-319 approval packet.",
+    "Authorizes only fresh clearance, fresh scoped enablement, and one guarded runner-start attempt through forgepilot_apply_guarded_canary_next_gate.",
+    "No unbounded retries or direct manual runner-start tool use authorized."
+  ]
+}
