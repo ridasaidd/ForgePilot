@@ -1,0 +1,39 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T122202731Z-308b2d62",
+  "recordedAt": "2026-07-04T12:22:02.731Z",
+  "packetId": "FP-MCP-280",
+  "workflowId": "FP-MCP-280-operator-responsibility-structured-approval",
+  "phase": "PLAN_VALIDATION",
+  "stepIndex": 2,
+  "intendedAction": "Invoke structured human approval recorder using the native MCP approval modal as final operator confirmation.",
+  "intendedToolName": "forgepilot_record_structured_human_approval",
+  "actualToolName": "NONE",
+  "toolMatchedIntent": false,
+  "approvalLiteral": "RECORD_STRUCTURED_HUMAN_APPROVAL",
+  "workflowAdvanced": false,
+  "deviationType": "PLATFORM_SAFETY_BLOCK",
+  "sideEffects": [],
+  "notes": [
+    "The structured approval recorder invocation was blocked by the platform before reaching ForgePilot MCP.",
+    "No human approval evidence artifact was created.",
+    "No local clearance was created.",
+    "No approval was consumed.",
+    "No disable switch was cleared.",
+    "No runner start endpoint was contacted.",
+    "No OpenCode action occurred.",
+    "Attempted scope was approvalPacketId FP-MCP-280, executionPacketId FP-MCP-276, requestId REQ-20260704T115428653Z-fc0b6275, model deepseek-v4-pro-high, run mode DESIGN_ONLY, repoCommit 3a62f84, branch main, singleUse true, expiresAt 2026-07-04T12:41:40Z."
+  ],
+  "recoveryAction": "Retry only with a smaller structured approval payload if operator wants to continue; otherwise record HOLD due to platform block.",
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}

@@ -1,0 +1,37 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T122230180Z-4d51c7ee",
+  "recordedAt": "2026-07-04T12:22:30.180Z",
+  "packetId": "FP-MCP-280",
+  "workflowId": "FP-MCP-280-operator-responsibility-structured-approval",
+  "phase": "FAIL_CLOSED_VALIDATION",
+  "stepIndex": 3,
+  "intendedAction": "Record compact structured approval retry result: tool reached ForgePilot but failed closed before recording approval.",
+  "intendedToolName": "forgepilot_record_structured_human_approval",
+  "actualToolName": "forgepilot_record_structured_human_approval",
+  "toolMatchedIntent": true,
+  "approvalLiteral": "RECORD_STRUCTURED_HUMAN_APPROVAL",
+  "workflowAdvanced": true,
+  "deviationType": "RECOVERY_ACTION_REQUIRED",
+  "sideEffects": [],
+  "notes": [
+    "Compact structured approval retry reached ForgePilot MCP.",
+    "ForgePilot did not record approval evidence.",
+    "structuredHumanApprovalRecorded false, humanApprovalRecorded false, approvalId null.",
+    "Fail-closed reasons included UNKNOWN_APPROVAL_PACKET and DIRTY_WORKING_TREE, plus expected global disable and execution-disabled reasons.",
+    "This confirmed the recorder will not create approval when the approval packet does not exist and the workspace is dirty.",
+    "No local clearance was created, no approval was consumed, no disable switch was cleared, no runner start endpoint was contacted, and no OpenCode action occurred."
+  ],
+  "recoveryAction": "Commit FP-MCP-280 traces, create the FP-MCP-280 boundary packet/checkpoint so approvalPacketId exists, then retry structured approval from a clean state before expiration.",
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}

@@ -1,0 +1,38 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T122129511Z-52bfd35c",
+  "recordedAt": "2026-07-04T12:21:29.511Z",
+  "packetId": "FP-MCP-280",
+  "workflowId": "FP-MCP-280-operator-responsibility-structured-approval",
+  "phase": "ORIENTATION",
+  "stepIndex": 1,
+  "intendedAction": "Begin operator-responsibility structured approval flow using the MCP approval modal as final confirmation, not typed chat approval.",
+  "intendedToolName": "forgepilot_record_operator_workflow_trace",
+  "actualToolName": "forgepilot_record_operator_workflow_trace",
+  "toolMatchedIntent": true,
+  "approvalLiteral": null,
+  "workflowAdvanced": true,
+  "deviationType": "NONE",
+  "sideEffects": [
+    "artifact_written"
+  ],
+  "notes": [
+    "User emphasized that responsibility is on the human operator, not the AI agent.",
+    "FP-MCP-280 will present the prepared request and checklist scope, then use the native MCP approval modal for structured approval evidence if the operator allows it.",
+    "This packet may record structured human approval evidence if the operator chooses Allow once in the modal.",
+    "This packet must not create local clearance, consume approval, clear disable switches, contact runner start, start OpenCode, submit prompts, call wait, or run a canary.",
+    "Approval is operator authority only; it does not prove correctness or admit execution evidence."
+  ],
+  "recoveryAction": null,
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}
