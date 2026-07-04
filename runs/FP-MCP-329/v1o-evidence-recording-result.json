@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-329",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 209,
+  "run_id": "FP-MCP-329-HOST-BOUNDARY-CHARACTERIZATION",
+  "generic_admission_event_id": 209,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "A fresh ChatGPT session can call the read-only guarded sequencer with the real FP-MCP-295 request tuple and receive RECORD_APPROVAL without host blocking.",
+  "artifact_paths": [
+    "packets/FP-MCP-329.md",
+    "runs/FP-MCP-329/host-boundary-characterization-record.json",
+    "runs/FP-MCP-329/result-summary.md",
+    "runs/FP-MCP-329/verification.txt"
+  ]
+}

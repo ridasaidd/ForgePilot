@@ -1,0 +1,38 @@
+{
+  "packetId": "FP-MCP-329",
+  "title": "Fresh Session Real Tuple Readonly Sequencer",
+  "checkpointType": "HOST_BOUNDARY_CHARACTERIZATION",
+  "claim": "A fresh ChatGPT session can call the read-only guarded sequencer with the real FP-MCP-295 request tuple and receive RECORD_APPROVAL without host blocking.",
+  "summary": "Record that the real execution packet id, request id, execution base commit, model id, and run mode did not trigger a host block when used in the read-only sequencer from a fresh session with a synthetic approval id.",
+  "caveats": [
+    "This did not record approval.",
+    "This did not clear controls.",
+    "This did not call guarded apply.",
+    "This did not contact the runner start endpoint.",
+    "This did not start OpenCode."
+  ],
+  "boundaries": [
+    "Read-only sequencer observation only.",
+    "Synthetic approval id was used.",
+    "No operational action was requested."
+  ],
+  "structuredRecord": {
+    "freshSession": true,
+    "realExecutionPacketId": "FP-MCP-295",
+    "realRequestId": "REQ-20260704T142232816Z-a82a42b6",
+    "realExecutionBaseCommit": "5c0ab8b",
+    "modelId": "deepseek-v4-pro-high",
+    "runMode": "DESIGN_ONLY",
+    "observedNextRequiredGate": "RECORD_APPROVAL",
+    "hostBlocked": false
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "A fresh ChatGPT session can call the read-only guarded sequencer with the real FP-MCP-295 request tuple and receive RECORD_APPROVAL without host blocking."
+}
