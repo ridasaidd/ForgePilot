@@ -1,0 +1,188 @@
+{
+  "packetId": "FP-MCP-298",
+  "title": "FP-027 Canary Sequence Guard",
+  "checkpointType": "SEQUENCE_GUARD",
+  "claim": "FP-MCP-298 turns the FP-027 canary order from operator memory into an explicit mechanical sequencing guard: state snapshot recording is forbidden until approved pre-start evidence exists and validates; the next legal action is fresh approval if the prior approval expired, otherwise approved pre-start evidence recording, followed by pre-start validation before any state snapshot attempt.",
+  "summary": "FP-MCP-298 records a non-executing sequence guard after FP-MCP-297 exposed an operator-side out-of-order attempt. The guard defines ordered FP-027 canary gates and a current next-action rule so later steps cannot be treated as interchangeable. It preserves the fact that request artifact FP-MCP-295 / REQ-20260704T142232816Z-a82a42b6 exists and was validated, and approval FP-MCP-296 / APPROVAL-20260704T142523179Z-10b0b6f3 was validated but expires at 2026-07-04T14:40:00.000Z. If continuation occurs after expiration, fresh approval is the only next legal action. If a valid unexpired approval exists, the next legal action is to record approved pre-start evidence, then validate it. State snapshot recording remains forbidden until approved pre-start evidence has both been recorded and validated. This checkpoint does not implement new bridge code, create approval, create pre-start evidence, record snapshots, clear disable switches, create clearance, contact runner start, start OpenCode, consume approval, or run FP-027.",
+  "caveats": [
+    "This is a non-executing guard artifact, not a canary run.",
+    "It does not create or validate pre-start evidence.",
+    "It does not create or validate state snapshots.",
+    "It does not repair the prior sequencing deviation; it prevents silently repeating it by recording the legal order.",
+    "The prior approval must be treated as expired if continuation occurs after 2026-07-04T14:40:00.000Z.",
+    "Future tooling should prefer a real sequencer tool that enforces this artifact mechanically before write-producing gate tools run."
+  ],
+  "boundaries": [
+    "non-executing sequencing guard only",
+    "no approval created",
+    "no approval consumed",
+    "no pre-start evidence recorded",
+    "no state snapshots recorded",
+    "no clearance created",
+    "no disable switch cleared",
+    "no runner start endpoint contact",
+    "no OpenCode session or worker started",
+    "no prompt submitted",
+    "no FP-027 canary run",
+    "no source edits",
+    "no MCP bridge source inspection or refactor"
+  ],
+  "structuredRecord": {
+    "guardVersion": "FP_027_CANARY_SEQUENCE_GUARD_V1",
+    "triggeringEvidence": "FP-MCP-297 fail-closed hold showed state snapshot dry-run attempted before approved pre-start evidence existed",
+    "currentRequest": {
+      "executionPacketId": "FP-MCP-295",
+      "requestId": "REQ-20260704T142232816Z-a82a42b6",
+      "requestArtifactSha256": "c2079e334ddf916024c5e99229a65c134b9b9b959128d7d0f8ec0fbd378f8054",
+      "requestArtifactCommit": "5d14349",
+      "requestScopedRepoCommit": "5c0ab8b",
+      "requestState": "CREATED_NOT_STARTED"
+    },
+    "currentApproval": {
+      "approvalPacketId": "FP-MCP-296",
+      "approvalId": "APPROVAL-20260704T142523179Z-10b0b6f3",
+      "approvalArtifactSha256": "a9aee76fb5ecfb931dcbbb1bdb53ad51aba74d976e4a430c269ec2c56b085dae",
+      "approvalArtifactCommit": "e0b8a08",
+      "validatedUsableAtFP_MCP_296": true,
+      "consumed": false,
+      "expiresAt": "2026-07-04T14:40:00.000Z",
+      "expiryRule": "if current time is after expiresAt, this approval is not usable and fresh scoped approval is the next legal action"
+    },
+    "orderedGates": [
+      {
+        "index": 1,
+        "gate": "REQUEST_ARTIFACT_EXISTS_COMMITTED",
+        "status": "SATISFIED",
+        "evidence": "FP-MCP-295 request artifact committed at 5d14349"
+      },
+      {
+        "index": 2,
+        "gate": "REQUEST_LOCAL_VALIDATION",
+        "status": "SATISFIED",
+        "evidence": "FP-MCP-295 local validation eligible true"
+      },
+      {
+        "index": 3,
+        "gate": "RUNNER_VALIDATE_REQUEST_ENDPOINT",
+        "status": "SATISFIED",
+        "evidence": "FP-MCP-295 runner validate-request accepted; start not contacted"
+      },
+      {
+        "index": 4,
+        "gate": "SCOPED_APPROVAL_EXISTS",
+        "status": "SATISFIED_BUT_TIME_BOUND",
+        "evidence": "FP-MCP-296 approval artifact exists; expires 2026-07-04T14:40:00.000Z"
+      },
+      {
+        "index": 5,
+        "gate": "SCOPED_APPROVAL_VALIDATES",
+        "status": "SATISFIED_BUT_TIME_BOUND",
+        "evidence": "FP-MCP-296 validation approvalUsableForExecution true before expiry"
+      },
+      {
+        "index": 6,
+        "gate": "APPROVED_PRE_START_EVIDENCE_EXISTS",
+        "status": "NOT_SATISFIED",
+        "requiredBefore": [
+          "STATE_SNAPSHOT_EVIDENCE_EXISTS",
+          "CLEARANCE_PREVIEW",
+          "LOCAL_CLEARANCE",
+          "DISABLE_ENABLEMENT_GATE",
+          "LIVE_STOP_READINESS",
+          "NO_RETRY_NO_CHAINING",
+          "RUNNER_START_ONCE"
+        ]
+      },
+      {
+        "index": 7,
+        "gate": "APPROVED_PRE_START_EVIDENCE_VALIDATES",
+        "status": "NOT_SATISFIED",
+        "requiredBefore": [
+          "STATE_SNAPSHOT_EVIDENCE_EXISTS",
+          "CLEARANCE_PREVIEW",
+          "LOCAL_CLEARANCE",
+          "DISABLE_ENABLEMENT_GATE",
+          "LIVE_STOP_READINESS",
+          "NO_RETRY_NO_CHAINING",
+          "RUNNER_START_ONCE"
+        ]
+      },
+      {
+        "index": 8,
+        "gate": "STATE_SNAPSHOT_EVIDENCE_EXISTS",
+        "status": "FORBIDDEN_UNTIL_GATES_6_AND_7_PASS"
+      },
+      {
+        "index": 9,
+        "gate": "STATE_SNAPSHOT_EVIDENCE_VALIDATES",
+        "status": "FORBIDDEN_UNTIL_GATE_8_EXISTS"
+      },
+      {
+        "index": 10,
+        "gate": "CLEARANCE_PREVIEW",
+        "status": "FORBIDDEN_UNTIL_STATE_SNAPSHOT_VALIDATES"
+      },
+      {
+        "index": 11,
+        "gate": "LOCAL_CLEARANCE",
+        "status": "FORBIDDEN_UNTIL_CLEARANCE_PREVIEW_REVIEWED"
+      },
+      {
+        "index": 12,
+        "gate": "CLEARANCE_VALIDATES",
+        "status": "FORBIDDEN_UNTIL_LOCAL_CLEARANCE_EXISTS"
+      },
+      {
+        "index": 13,
+        "gate": "DISABLE_ENABLEMENT_GATE",
+        "status": "FORBIDDEN_UNTIL_CLEARANCE_VALIDATES"
+      },
+      {
+        "index": 14,
+        "gate": "LIVE_STOP_READINESS",
+        "status": "FORBIDDEN_UNTIL_DISABLE_ENABLEMENT_GATE_PASSES"
+      },
+      {
+        "index": 15,
+        "gate": "NO_RETRY_NO_CHAINING_EVIDENCE",
+        "status": "FORBIDDEN_UNTIL_LIVE_STOP_READINESS_PASSES"
+      },
+      {
+        "index": 16,
+        "gate": "RUNNER_START_ONCE",
+        "status": "FORBIDDEN_UNTIL_ALL_PRIOR_GATES_PASS"
+      }
+    ],
+    "nextLegalActionRule": {
+      "ifApprovalExpired": "record fresh scoped approval and validate it; do not use APPROVAL-20260704T142523179Z-10b0b6f3",
+      "ifApprovalStillValid": "record approved pre-start evidence artifact for request REQ-20260704T142232816Z-a82a42b6 and approval APPROVAL-20260704T142523179Z-10b0b6f3",
+      "afterPreStartEvidenceRecorded": "validate approved pre-start evidence",
+      "afterPreStartEvidenceValidates": "record state snapshot evidence",
+      "currentForbiddenActions": [
+        "state snapshot recording before approved pre-start evidence validates",
+        "clearance preview before state snapshot validates",
+        "local clearance before preview review",
+        "disable switch clearance before clearance validates",
+        "runner start before all gates pass"
+      ]
+    },
+    "mustCheckBeforeEveryWriteStep": [
+      "current clean HEAD",
+      "approval expiration status",
+      "previous gate artifact exists",
+      "previous gate validation passed",
+      "write step matches nextLegalActionRule"
+    ],
+    "canaryTaskScope": "Read docs/forgepilot-master-plan.md and summarize high-level document structure only; no src/server.ts, no MCP bridge source, no source edits, no shell/git/workspace mutation, no retry, no chaining.",
+    "fp027CanaryStatus": "NOT_RUN"
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-298 turns the FP-027 canary order from operator memory into an explicit mechanical sequencing guard: state snapshot recording is forbidden until approved pre-start evidence exists and validates; the next legal action is fresh approval if the prior approval expired, otherwise approved pre-start evidence recording, followed by pre-start validation before any state snapshot attempt."
+}

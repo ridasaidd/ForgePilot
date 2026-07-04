@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-298",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 176,
+  "run_id": "FP-MCP-298-SEQUENCE-GUARD",
+  "generic_admission_event_id": 176,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP-MCP-298 turns the FP-027 canary order from operator memory into an explicit mechanical sequencing guard: state snapshot recording is forbidden until approved pre-start evidence exists and validates; the next legal action is fresh approval if the prior approval expired, otherwise approved pre-start evidence recording, followed by pre-start validation before any state snapshot attempt.",
+  "artifact_paths": [
+    "packets/FP-MCP-298.md",
+    "runs/FP-MCP-298/sequence-guard-record.json",
+    "runs/FP-MCP-298/result-summary.md",
+    "runs/FP-MCP-298/verification.txt"
+  ]
+}

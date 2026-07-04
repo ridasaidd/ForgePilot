@@ -1,0 +1,15 @@
+FP-MCP-298 verification
+
+Checkpoint type:
+- SEQUENCE_GUARD
+
+Claim:
+- FP-MCP-298 turns the FP-027 canary order from operator memory into an explicit mechanical sequencing guard: state snapshot recording is forbidden until approved pre-start evidence exists and validates; the next legal action is fresh approval if the prior approval expired, otherwise approved pre-start evidence recording, followed by pre-start validation before any state snapshot attempt.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
