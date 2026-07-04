@@ -1,0 +1,36 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T110337399Z-9be42401",
+  "recordedAt": "2026-07-04T11:03:37.399Z",
+  "packetId": "FP-MCP-268",
+  "workflowId": "FP-MCP-268-103-141-reconciliation",
+  "phase": "ORIENTATION",
+  "stepIndex": 1,
+  "intendedAction": "Begin a non-executing reconciliation/accounting packet for evidence IDs 103 through 141, including FP-MCP-217 boundary status, FP-MCP-236 popup-mediated clearance revision, FP-MCP-238 approval-death verification, FP-MCP-265 HTTP canary distinction, and FP-027 open status.",
+  "intendedToolName": "forgepilot_record_operator_workflow_trace",
+  "actualToolName": "forgepilot_record_operator_workflow_trace",
+  "toolMatchedIntent": true,
+  "approvalLiteral": null,
+  "workflowAdvanced": true,
+  "deviationType": "NONE",
+  "sideEffects": [
+    "artifact_written"
+  ],
+  "notes": [
+    "Reviewer accepted the 103-137 accounting but requested an explicit coherent record before further lifecycle work.",
+    "Reviewer requested that FP-027 canary discipline be restated and explicitly marked as still never satisfied end-to-end.",
+    "Reviewer identified a human-attention/UX gap in popup-mediated clearance controls: popup contents and friction need explicit requirements, not just artifact well-formedness."
+  ],
+  "recoveryAction": "No recovery required.",
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}
