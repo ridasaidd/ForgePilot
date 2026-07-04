@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-282",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 158,
+  "run_id": "FP-MCP-282-APPROVAL-RECORDING-BOUNDARY",
+  "generic_admission_event_id": 158,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP-MCP-282 opens a scoped approval-evidence packet for the operator's chat approval of the FP-MCP-276 request; this boundary checkpoint does not itself record approval or authorize execution.",
+  "artifact_paths": [
+    "packets/FP-MCP-282.md",
+    "runs/FP-MCP-282/approval-recording-boundary-record.json",
+    "runs/FP-MCP-282/result-summary.md",
+    "runs/FP-MCP-282/verification.txt"
+  ]
+}
