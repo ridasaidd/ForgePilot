@@ -1,0 +1,15 @@
+FP-MCP-292 verification
+
+Checkpoint type:
+- EXECUTION_ORDERING_DECISION
+
+Claim:
+- FP-MCP-292 decides that the MCP bridge server.ts registration-extraction refactor must not be the first real test of the guarded/worker execution safety chain: if model-executed, a minimal FP-027 guarded/worker canary on a boring non-refactor task must be completed and admitted first; if done before FP-027, the refactor must be explicitly packetized as human/GPT manual maintenance, not model execution and not direct-HTTP execution authority.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

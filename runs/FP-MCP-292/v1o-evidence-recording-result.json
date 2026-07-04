@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-292",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 169,
+  "run_id": "FP-MCP-292-EXECUTION-ORDERING-DECISION",
+  "generic_admission_event_id": 169,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP-MCP-292 decides that the MCP bridge server.ts registration-extraction refactor must not be the first real test of the guarded/worker execution safety chain: if model-executed, a minimal FP-027 guarded/worker canary on a boring non-refactor task must be completed and admitted first; if done before FP-027, the refactor must be explicitly packetized as human/GPT manual maintenance, not model execution and not direct-HTTP execution authority.",
+  "artifact_paths": [
+    "packets/FP-MCP-292.md",
+    "runs/FP-MCP-292/execution-ordering-decision-record.json",
+    "runs/FP-MCP-292/result-summary.md",
+    "runs/FP-MCP-292/verification.txt"
+  ]
+}

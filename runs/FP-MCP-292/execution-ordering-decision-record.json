@@ -1,0 +1,69 @@
+{
+  "packetId": "FP-MCP-292",
+  "title": "Refactor Execution Ordering Decision",
+  "checkpointType": "EXECUTION_ORDERING_DECISION",
+  "claim": "FP-MCP-292 decides that the MCP bridge server.ts registration-extraction refactor must not be the first real test of the guarded/worker execution safety chain: if model-executed, a minimal FP-027 guarded/worker canary on a boring non-refactor task must be completed and admitted first; if done before FP-027, the refactor must be explicitly packetized as human/GPT manual maintenance, not model execution and not direct-HTTP execution authority.",
+  "summary": "FP-MCP-292 accepts the auditor's ordering correction. The refactor is a real workload and should not be used as the first proof of an unproven safety chain. Model-executed observed refactor work remains desirable, but it must come after a minimal FP-027 canary proves the guarded/worker path discipline on a throwaway task: one worker, DESIGN_ONLY, no source edits, process/state evidence at the contact boundary, live stop-readiness, no retry, no chaining, and admitted result evidence. The alternative is an explicit human/GPT manual-maintenance refactor packet, which is safe to do separately because it does not rely on the guarded/worker path. Direct HTTP remains design/canary/planning only under FP-MCP-291. Steering docs were updated in commit 4b704f6. No execution, refactor, OpenCode start, runner-start contact, approval consumption, or disable-switch change is authorized.",
+  "caveats": [
+    "This decision does not run FP-027.",
+    "This decision does not authorize the server.ts refactor.",
+    "This decision does not choose manual maintenance; it only defines manual maintenance as the only immediate refactor path before FP-027.",
+    "If the project wants open-weight model execution for the refactor, FP-027 canary must come first.",
+    "Direct HTTP remains unavailable for implementation execution authority."
+  ],
+  "boundaries": [
+    "decision-only packet",
+    "no MCP bridge source changes",
+    "no server.ts refactor",
+    "no OpenCode session created",
+    "no prompt submitted",
+    "no runner start endpoint contact",
+    "no approval consumed",
+    "no disable switch cleared",
+    "no FP-027 canary run",
+    "no model execution authorized"
+  ],
+  "structuredRecord": {
+    "selectedOrdering": "FP_027_CANARY_BEFORE_MODEL_EXECUTED_REFACTOR",
+    "validPaths": [
+      {
+        "path": "model_executed_observed_workload",
+        "requirement": "complete and admit minimal FP-027 guarded/worker canary first",
+        "refactorPosition": "second real use of guarded/worker path"
+      },
+      {
+        "path": "human_gpt_manual_maintenance",
+        "requirement": "explicit manual-maintenance packet; not guarded/worker model execution; not direct HTTP execution authority",
+        "refactorPosition": "allowed before FP-027 only if explicitly chosen"
+      }
+    ],
+    "invalidPath": "real server.ts refactor as first live proof of guarded/worker safety chain",
+    "minimalCanaryRequirements": [
+      "one worker",
+      "DESIGN_ONLY",
+      "boring non-refactor task",
+      "no source edits",
+      "process/state evidence at contact boundary",
+      "live stop-readiness",
+      "no retry",
+      "no chaining",
+      "admitted result evidence"
+    ],
+    "directHttpStatus": "design_canary_planning_only_per_FP_MCP_291",
+    "docsCommit": "4b704f6",
+    "updatedDocs": [
+      "docs/forgepilot-master-plan.md",
+      "docs/forgepilot-progress-checklist.md"
+    ],
+    "nextRecommendedWork": "prepare minimal FP-027 guarded/worker canary on a boring non-refactor task"
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-292 decides that the MCP bridge server.ts registration-extraction refactor must not be the first real test of the guarded/worker execution safety chain: if model-executed, a minimal FP-027 guarded/worker canary on a boring non-refactor task must be completed and admitted first; if done before FP-027, the refactor must be explicitly packetized as human/GPT manual maintenance, not model execution and not direct-HTTP execution authority."
+}
