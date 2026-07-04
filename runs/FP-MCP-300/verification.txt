@@ -1,0 +1,15 @@
+FP-MCP-300 verification
+
+Checkpoint type:
+- HUMAN_APPROVAL_RENEWAL_RESULT
+
+Claim:
+- FP-MCP-300 records a fresh scoped approval renewal for the FP-MCP-295 minimal FP-027 guarded/worker canary after the prior FP-MCP-296 approval expired: approval APPROVAL-20260704T144127519Z-2d1b4456 was created, committed, and validated with approvalUsableForExecution true, scopeMatchesExpected true, artifactCommitted true, and notConsumed true; no approval was consumed, no clearance was created, no disable switch was cleared, no runner start endpoint was contacted, no OpenCode worker/session was started, and FP-027 did not run.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
