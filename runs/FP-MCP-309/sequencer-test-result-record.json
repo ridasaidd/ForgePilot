@@ -1,0 +1,40 @@
+{
+  "packetId": "FP-MCP-309",
+  "title": "Sequencer First Read",
+  "checkpointType": "SEQUENCER_TEST_RESULT",
+  "claim": "FP-MCP-309 tested the FP-MCP-308 sequencer logic. The sequencer returned RECORD_APPROVAL as the next required gate for the stale FP-MCP-295 path.",
+  "summary": "The new sequencer action is not visible in the current chat action list, so the committed bridge module was tested directly from dist. The result was nextRequiredGate RECORD_APPROVAL, nextToolName forgepilot_record_real_human_approval_evidence, and reason APPROVAL_EXPIRED_OR_INVALID. This matched the expected stale-state behavior.",
+  "caveats": [
+    "The sequencer action still needs action-surface refresh before normal chat use.",
+    "This was a direct module test.",
+    "No new gate artifact was created."
+  ],
+  "boundaries": [
+    "read-only test",
+    "no artifact created",
+    "no state transition performed"
+  ],
+  "structuredRecord": {
+    "sequencerActionVisibleInChat": false,
+    "bridgeHead": "6b6fcc3",
+    "testMethod": "direct dist module invocation",
+    "result": {
+      "nextRequiredGate": "RECORD_APPROVAL",
+      "nextToolName": "forgepilot_record_real_human_approval_evidence",
+      "reasons": [
+        "APPROVAL_EXPIRED_OR_INVALID"
+      ],
+      "expectedBehaviorConfirmed": true
+    },
+    "nextRecommendedAction": "Refresh actions until forgepilot_get_guarded_canary_next_gate is visible."
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-309 tested the FP-MCP-308 sequencer logic. The sequencer returned RECORD_APPROVAL as the next required gate for the stale FP-MCP-295 path."
+}

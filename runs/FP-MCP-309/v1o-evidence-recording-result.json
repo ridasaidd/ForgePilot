@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-309",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 186,
+  "run_id": "FP-MCP-309-SEQUENCER-TEST-RESULT",
+  "generic_admission_event_id": 186,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP-MCP-309 tested the FP-MCP-308 sequencer logic. The sequencer returned RECORD_APPROVAL as the next required gate for the stale FP-MCP-295 path.",
+  "artifact_paths": [
+    "packets/FP-MCP-309.md",
+    "runs/FP-MCP-309/sequencer-test-result-record.json",
+    "runs/FP-MCP-309/result-summary.md",
+    "runs/FP-MCP-309/verification.txt"
+  ]
+}

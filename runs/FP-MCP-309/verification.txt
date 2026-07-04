@@ -1,0 +1,15 @@
+FP-MCP-309 verification
+
+Checkpoint type:
+- SEQUENCER_TEST_RESULT
+
+Claim:
+- FP-MCP-309 tested the FP-MCP-308 sequencer logic. The sequencer returned RECORD_APPROVAL as the next required gate for the stale FP-MCP-295 path.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
