@@ -7,11 +7,11 @@ import { recordEvidenceAdmission, getAdmissionEvents } from "../../src/db/eviden
 import { getCanonicalEvidenceRecordAdmission } from "../../src/db/validation-admission.js";
 
 const packetPath = "packets/FP-MCP-316.md";
-const runId = "FP-MCP-316-SESSION-HANDOFF";
-const admittedClaim = "After admitting FP-MCP-315 as the guarded clearance-gate result and FP-MCP-316 as the scoped-enablement-only extension proposal, the next session should implement FP-MCP-316 in the MCP bridge by extending forgepilot_apply_guarded_canary_next_gate to handle the sequencer-selected scoped enablement preview/create gate only, then stop before runner start.";
+const runId = "FP-MCP-316-FINAL-STATE-OBSERVATION";
+const admittedClaim = "FP-MCP-316 session work ended with evidence-only checkpointing and proposal/handoff admission; no execution authorization, approval consumption, runner contact, OpenCode start, or canary execution occurred.";
 const artifacts = [
   "packets/FP-MCP-316.md",
-  "runs/FP-MCP-316/session-handoff-record.json",
+  "runs/FP-MCP-316/final-state-observation-record.json",
   "runs/FP-MCP-316/result-summary.md",
   "runs/FP-MCP-316/verification.txt"
 ];
@@ -37,12 +37,12 @@ if (!evidence) {
     model_id: "none",
     model_role: "packet_checkpoint_recorder",
     branch: "main",
-    commit_sha: "8d9d818",
+    commit_sha: "87a4cff",
     executor_result: admittedClaim,
     verification_result: "PACKET_CHECKPOINT_RECORDED;NON_EXECUTING_BOUNDARY_PRESERVED",
     audit_result: "NOT_APPLICABLE_PACKET_CHECKPOINT",
     comparison_result: "NOT_APPLICABLE_PACKET_CHECKPOINT",
-    metrics_path: "runs/FP-MCP-316/session-handoff-record.json",
+    metrics_path: "runs/FP-MCP-316/final-state-observation-record.json",
     artifact_paths: artifacts,
     trust_tier: "TIER_2_VERIFIED_ARTIFACT",
     validation_state: "VALID",

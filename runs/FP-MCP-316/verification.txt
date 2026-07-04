@@ -1,10 +1,10 @@
 FP-MCP-316 verification
 
 Checkpoint type:
-- SESSION_HANDOFF
+- FINAL_STATE_OBSERVATION
 
 Claim:
-- After admitting FP-MCP-315 as the guarded clearance-gate result and FP-MCP-316 as the scoped-enablement-only extension proposal, the next session should implement FP-MCP-316 in the MCP bridge by extending forgepilot_apply_guarded_canary_next_gate to handle the sequencer-selected scoped enablement preview/create gate only, then stop before runner start.
+- FP-MCP-316 session work ended with evidence-only checkpointing and proposal/handoff admission; no execution authorization, approval consumption, runner contact, OpenCode start, or canary execution occurred.
 
 Boundaries:
 - execution authorized: false
