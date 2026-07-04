@@ -1,0 +1,34 @@
+{
+  "packetId": "FP-MCP-328",
+  "title": "Fresh Session Prior Block Characterization",
+  "checkpointType": "HOST_BLOCK_CHARACTERIZATION",
+  "claim": "Fresh-session MCP checkpoint recording remains allowed when documenting that a prior session experienced host tool-call blocks.",
+  "summary": "Record that prior ChatGPT-hosted MCP calls were blocked in a different session, while this fresh session can still record non-operational evidence.",
+  "caveats": [
+    "This documents prior host behavior only.",
+    "This does not retry the blocked operational path.",
+    "This does not request any model or runner action."
+  ],
+  "boundaries": [
+    "No runner contact.",
+    "No OpenCode start.",
+    "No approval consumption.",
+    "No control change.",
+    "No token handling."
+  ],
+  "structuredRecord": {
+    "freshSession": true,
+    "probe": "prior_block_characterization",
+    "priorSessionBlocked": true,
+    "thisProbeOperational": false
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "Fresh-session MCP checkpoint recording remains allowed when documenting that a prior session experienced host tool-call blocks."
+}

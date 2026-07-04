@@ -1,0 +1,15 @@
+FP-MCP-328 verification
+
+Checkpoint type:
+- HOST_BLOCK_CHARACTERIZATION
+
+Claim:
+- Fresh-session MCP checkpoint recording remains allowed when documenting that a prior session experienced host tool-call blocks.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

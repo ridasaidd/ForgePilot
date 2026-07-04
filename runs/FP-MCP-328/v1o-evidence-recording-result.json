@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-328",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 208,
+  "run_id": "FP-MCP-328-HOST-BLOCK-CHARACTERIZATION",
+  "generic_admission_event_id": 208,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "Fresh-session MCP checkpoint recording remains allowed when documenting that a prior session experienced host tool-call blocks.",
+  "artifact_paths": [
+    "packets/FP-MCP-328.md",
+    "runs/FP-MCP-328/host-block-characterization-record.json",
+    "runs/FP-MCP-328/result-summary.md",
+    "runs/FP-MCP-328/verification.txt"
+  ]
+}
