@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-262",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 134,
+  "run_id": "FP-MCP-262-UI-COMPATIBILITY-RESULT",
+  "generic_admission_event_id": 134,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "The existing OpenCode HTTP lifecycle invocation attempt dry-run recorder is callable through the ChatGPT MCP UI and records schema-shaped blocked-before-action artifacts without invoking lifecycle execution.",
+  "artifact_paths": [
+    "packets/FP-MCP-262.md",
+    "runs/FP-MCP-262/ui-compatibility-result-record.json",
+    "runs/FP-MCP-262/result-summary.md",
+    "runs/FP-MCP-262/verification.txt"
+  ]
+}

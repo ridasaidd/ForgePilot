@@ -1,0 +1,60 @@
+{
+  "packetId": "FP-MCP-262",
+  "title": "HTTP invocation recorder UI compatibility result",
+  "checkpointType": "UI_COMPATIBILITY_RESULT",
+  "claim": "The existing OpenCode HTTP lifecycle invocation attempt dry-run recorder is callable through the ChatGPT MCP UI and records schema-shaped blocked-before-action artifacts without invoking lifecycle execution.",
+  "summary": "A controlled UI call to the existing non-executing OpenCode HTTP lifecycle invocation attempt dry-run recorder succeeded for source packet FP-MCP-254 and plan HTTPPLAN-20260703T233517042Z-9242deff. The recorder wrote preflight/result artifacts for attempt HTTPINVOCATION-20260704T003648390Z-f653b8f8. The result remained blocked before action and did not create a session, submit a prompt, invoke lifecycle execution, consume approval, start OpenCode, call wait, delete sessions, or contact the runner start endpoint.",
+  "caveats": [
+    "FP-MCP-261 previously observed platform safety blocking for the same recorder path before reaching the MCP server; this checkpoint supersedes that compatibility observation only for the successful UI call made at attempt HTTPINVOCATION-20260704T003648390Z-f653b8f8.",
+    "This checkpoint does not authorize or implement the real single-shot lifecycle invocation gate.",
+    "The committed artifacts are schema-shaped dry-run attempt artifacts, not model execution evidence."
+  ],
+  "boundaries": [
+    "single-shot baseline migration only",
+    "no retained sessions",
+    "no correction loops",
+    "no multi-turn repair mode",
+    "no OpenCode process start from terminal",
+    "no runner start endpoint contact",
+    "no lifecycle invocation",
+    "no approval consumption",
+    "no session creation",
+    "no prompt submission"
+  ],
+  "structuredRecord": {
+    "sourcePacketId": "FP-MCP-254",
+    "sourceRequestId": "REQ-20260703T231957999Z-32fcb25f",
+    "planId": "HTTPPLAN-20260703T233517042Z-9242deff",
+    "attemptId": "HTTPINVOCATION-20260704T003648390Z-f653b8f8",
+    "artifactCommit": "5ef2dc5",
+    "attemptDirectory": "runs/FP-MCP-254/opencode-http-lifecycle-invocations/HTTPINVOCATION-20260704T003648390Z-f653b8f8",
+    "preflightArtifactPath": "runs/FP-MCP-254/opencode-http-lifecycle-invocations/HTTPINVOCATION-20260704T003648390Z-f653b8f8/preflight.json",
+    "resultArtifactPath": "runs/FP-MCP-254/opencode-http-lifecycle-invocations/HTTPINVOCATION-20260704T003648390Z-f653b8f8/result.json",
+    "terminalState": "BLOCKED_BEFORE_ACTION",
+    "completionState": "NOT_STARTED",
+    "invocationDecision": "WOULD_BE_ELIGIBLE",
+    "uiCallReachedMcpServer": true,
+    "attemptRecorded": true,
+    "sessionCreated": false,
+    "promptAsyncSubmitted": false,
+    "assistantCompletionObserved": false,
+    "expectedTextObservedInAssistant": false,
+    "cleanupAttempted": false,
+    "sessionDeleted": false,
+    "waitEndpointCalled": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "approvalConsumed": false,
+    "lifecycleInvoked": false,
+    "recommendedNextPacket": "FP-MCP-263 — real single-shot HTTP lifecycle invocation gate, gated and artifact-centric"
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "The existing OpenCode HTTP lifecycle invocation attempt dry-run recorder is callable through the ChatGPT MCP UI and records schema-shaped blocked-before-action artifacts without invoking lifecycle execution."
+}

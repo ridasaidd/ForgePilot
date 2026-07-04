@@ -1,0 +1,15 @@
+FP-MCP-262 verification
+
+Checkpoint type:
+- UI_COMPATIBILITY_RESULT
+
+Claim:
+- The existing OpenCode HTTP lifecycle invocation attempt dry-run recorder is callable through the ChatGPT MCP UI and records schema-shaped blocked-before-action artifacts without invoking lifecycle execution.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
