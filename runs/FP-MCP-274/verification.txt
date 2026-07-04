@@ -1,0 +1,15 @@
+FP-MCP-274 verification
+
+Checkpoint type:
+- LIVE_TOOL_SURFACING_RESULT
+
+Claim:
+- After MCP bridge reload, the clearance review manifest preview tool is visible in ChatGPT MCP and one live read-only preview call succeeded without creating clearance, consuming approval, contacting the runner, starting OpenCode, submitting a prompt, or calling wait.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
