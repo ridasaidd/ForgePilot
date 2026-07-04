@@ -1,0 +1,15 @@
+FP-MCP-277 verification
+
+Checkpoint type:
+- MASTER_CHECKLIST_RECONCILIATION_RESULT
+
+Claim:
+- FP-MCP-277 reconstructs the FP-027 master checklist from admitted evidence, preserves the FP-MCP-268 standing rule verbatim, and restores the checklist as the steering artifact: plan orients, ledger proves, checklist steers.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

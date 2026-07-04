@@ -1,0 +1,76 @@
+{
+  "packetId": "FP-MCP-277",
+  "title": "FP-027 Master Checklist Reconciliation",
+  "checkpointType": "MASTER_CHECKLIST_RECONCILIATION_RESULT",
+  "claim": "FP-MCP-277 reconstructs the FP-027 master checklist from admitted evidence, preserves the FP-MCP-268 standing rule verbatim, and restores the checklist as the steering artifact: plan orients, ledger proves, checklist steers.",
+  "summary": "FP-MCP-277 created canonical checklist artifacts at runs/FP-MCP-277/fp027-master-checklist.md and runs/FP-MCP-277/fp027-master-checklist.json. The checklist is derived from admitted evidence, not from memory or the master plan narrative. It carries forward the exact FP-MCP-268 standing rule: Do not declare FP-027 satisfied by resemblance to any OpenCode HTTP execution path. It requires the guarded runner start path with the original boundary evidence present at the moment of runner contact. The checklist status summary is DONE 12, COMPENSATED 1, BLOCKED 2, NOT_STARTED 14, OPEN 1. It records the current prepared tuple from FP-MCP-276 and states that the next allowed action is operator review of the prepared request and manifest followed by explicit approval or hold/denial. It forbids runner start contact, OpenCode start, prompt submission, wait calls, approval consumption, and disable-switch changes before the missing gates are satisfied. It also records that FP-MCP-278 should refresh the master plan as an orientation document that points to the ledger and checklist rather than becoming a competing current-state source.",
+  "caveats": [
+    "This checkpoint does not approve execution.",
+    "This checkpoint does not create or validate a fresh human approval artifact.",
+    "This checkpoint does not create local clearance.",
+    "This checkpoint does not clear the disable switch or enable runner/OpenCode execution.",
+    "This checkpoint does not contact the runner start endpoint or start OpenCode.",
+    "The checklist is current as of ForgePilot commit d84c126 before checkpoint admission; future evidence commits may update the requestArtifactCommit needed for preview/clearance."
+  ],
+  "boundaries": [
+    "human approval not recorded",
+    "local clearance not created",
+    "approval not consumed",
+    "disable switch not cleared",
+    "runner start endpoint not contacted",
+    "OpenCode not started",
+    "OpenCode session not created",
+    "prompt not submitted",
+    "wait not called",
+    "canary not run"
+  ],
+  "structuredRecord": {
+    "schema": "FP_MCP_277_MASTER_CHECKLIST_RECONCILIATION_RESULT_V1",
+    "checklistArtifacts": {
+      "markdown": "runs/FP-MCP-277/fp027-master-checklist.md",
+      "json": "runs/FP-MCP-277/fp027-master-checklist.json"
+    },
+    "standingRule": "Do not declare FP-027 satisfied by resemblance to any OpenCode HTTP execution path. It requires the guarded runner start path with the original boundary evidence present at the moment of runner contact.",
+    "fp027Status": "OPEN_UNSATISFIED_END_TO_END",
+    "summaryCounts": {
+      "DONE": 12,
+      "COMPENSATED": 1,
+      "BLOCKED": 2,
+      "NOT_STARTED": 14,
+      "OPEN": 1
+    },
+    "currentTuple": {
+      "executionPacketId": "FP-MCP-276",
+      "requestId": "REQ-20260704T115428653Z-fc0b6275",
+      "modelId": "deepseek-v4-pro-high",
+      "runMode": "DESIGN_ONLY",
+      "branch": "main",
+      "executionBaseCommit": "3a62f84",
+      "latestKnownRequestArtifactCommitAtFpMcp276Close": "dd90b96",
+      "targetWorkspaceId": "forgepilot"
+    },
+    "nextAllowedAction": "operator reviews the prepared request and manifest, then explicitly approves or holds/denies",
+    "nextForbiddenActions": [
+      "runner start endpoint contact",
+      "OpenCode start",
+      "prompt submission",
+      "wait call",
+      "approval consumption",
+      "disable-switch change before explicit gate"
+    ],
+    "masterPlanFollowUp": {
+      "nextPacket": "FP-MCP-278",
+      "purpose": "refresh master plan orientation so it points to ledger and checklist instead of becoming a competing source of current-state truth",
+      "knownFutureGap": "minimum admitted-evidence threshold for trustworthy routing per model/task-class remains undetermined"
+    }
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-277 reconstructs the FP-027 master checklist from admitted evidence, preserves the FP-MCP-268 standing rule verbatim, and restores the checklist as the steering artifact: plan orients, ledger proves, checklist steers."
+}
