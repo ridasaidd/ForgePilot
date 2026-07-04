@@ -1,0 +1,15 @@
+FP-MCP-273 verification
+
+Checkpoint type:
+- TOOL_IMPLEMENTATION_RESULT
+
+Claim:
+- Implemented a read-only MCP bridge preview tool for operator review before local clearance creation; source commit, build, tests, lint, and direct built-module validation passed, while live MCP surfacing remains pending bridge reload.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
