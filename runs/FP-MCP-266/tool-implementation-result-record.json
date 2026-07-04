@@ -1,0 +1,103 @@
+{
+  "packetId": "FP-MCP-266",
+  "title": "Operator Workflow Trace Recording",
+  "checkpointType": "TOOL_IMPLEMENTATION_RESULT",
+  "claim": "FP-MCP-266 implemented append-only operator workflow trace recording and read-only trace summarization in the MCP bridge without invoking live OpenCode actions.",
+  "summary": "Added MCP bridge support for OPERATOR_WORKFLOW_TRACE_V1. The writer records intended action versus actual tool call, phase, step index, approval literal, workflow advancement, deviation taxonomy, side effects, notes, recovery action, and safety boundaries under runs/<packetId>/operator-workflow-traces/. The summarizer reads trace artifacts, counts deviations and side effects, lists tool mismatches, and recommends review focus. Bridge build passed and pnpm test passed after removing hardcoded packet-id examples.",
+  "caveats": [
+    "The new tools were implemented and committed in the MCP bridge, but this checkpoint does not prove post-reload ChatGPT UI surfacing of the new tools.",
+    "A preceding OPERATOR telemetry recovery commit c96cd8f recorded control-plane mismatches observed during this session before implementation continued.",
+    "No live OpenCode lifecycle invocation was performed for FP-MCP-266."
+  ],
+  "boundaries": [
+    "No OpenCode process was started.",
+    "No OpenCode HTTP session was created by FP-MCP-266 implementation verification.",
+    "No prompt was submitted.",
+    "No wait endpoint was called.",
+    "No ForgePilot runner start endpoint was contacted.",
+    "No execution approval was consumed.",
+    "No disable switch was cleared.",
+    "No secrets or .env files were read.",
+    "Terminal was used only for repo inspection, source edits, build/test, and commit scaffolding."
+  ],
+  "structuredRecord": {
+    "schema": "FP_MCP_266_OPERATOR_WORKFLOW_TRACE_IMPLEMENTATION_RESULT_V1",
+    "bridge": {
+      "repo": "/home/ridasaidd/forgepilot-chatgpt-mcp",
+      "branch": "feature/oauth-auth0",
+      "implementationCommit": "269c658",
+      "commitMessage": "Add operator workflow trace tools",
+      "workingTreeCleanAfterCommit": true
+    },
+    "forgepilot": {
+      "preCheckpointHead": "c96cd8f",
+      "operatorTelemetryRecoveryCommit": "c96cd8f"
+    },
+    "implementedTools": [
+      "forgepilot_record_operator_workflow_trace",
+      "forgepilot_summarize_operator_workflow_traces"
+    ],
+    "implementedSchema": "OPERATOR_WORKFLOW_TRACE_V1",
+    "writerArtifactDirectory": "runs/<packetId>/operator-workflow-traces/",
+    "workflowPhases": [
+      "ORIENTATION",
+      "PLAN_VALIDATION",
+      "DRY_RUN_GATE",
+      "FAIL_CLOSED_VALIDATION",
+      "POSITIVE_SINGLE_SHOT_INVOKE",
+      "ARTIFACT_COMMIT",
+      "CHECKPOINT_ADMISSION",
+      "CLEAN_STATE_VERIFICATION"
+    ],
+    "deviationTaxonomy": [
+      "NONE",
+      "WRONG_ADJACENT_TOOL_CALLED",
+      "TOOL_RESOURCE_STALE",
+      "PLATFORM_SAFETY_BLOCK",
+      "UNEXPECTED_SIDE_EFFECT",
+      "MISSING_REQUIRED_ARTIFACT",
+      "RECOVERY_ACTION_REQUIRED"
+    ],
+    "sideEffectVocabularyExamples": [
+      "session_created",
+      "session_deleted",
+      "prompt_submitted",
+      "artifact_written",
+      "artifact_committed",
+      "checkpoint_admitted",
+      "wait_endpoint_called",
+      "runner_start_contacted",
+      "opencode_process_started",
+      "approval_consumed"
+    ],
+    "verification": {
+      "pnpmBuild": "PASS",
+      "pnpmTest": "PASS",
+      "hardcodedPacketIdLint": "PASS_AFTER_FIX",
+      "testFailureObservedBeforeFix": "Hardcoded packet-id lint rejected FP-MCP-266 examples in two server.ts descriptions."
+    },
+    "sourceFiles": [
+      "src/operator-workflow-trace.ts",
+      "src/server.ts"
+    ],
+    "safetyBoundaries": {
+      "opencodeStarted": false,
+      "runnerStartEndpointContacted": false,
+      "waitEndpointCalled": false,
+      "sessionCreated": false,
+      "promptSubmitted": false,
+      "approvalConsumed": false,
+      "disableSwitchCleared": false,
+      "secretsRead": false
+    }
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-266 implemented append-only operator workflow trace recording and read-only trace summarization in the MCP bridge without invoking live OpenCode actions."
+}
