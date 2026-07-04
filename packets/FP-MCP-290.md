@@ -1,0 +1,53 @@
+# FP-MCP-290 — Architecture Steering Document Currency Refresh
+
+## Checkpoint Type
+
+```text
+MASTER_PLAN_CURRENCY_REFRESH
+```
+
+## Summary
+
+FP-MCP-290 verifies FP-MCP-279 did incorporate the prior master-plan orientation fixes, then records the subsequent currency refresh required by FP-MCP-289. The docs now state that session deletion is not an admitted abort primitive, direct HTTP lacks process/state evidence, live abort-readiness, no-retry/no-chaining, approval-consumption coupling, post-start evidence, and FP-027 admission criteria, and the prompt boundary remains a soft heuristic until structurally proven. The progress checklist now adds a master-plan currency rule requiring architecture-level packets to trigger an orientation update check. Documentation refresh commit 007e85a updated docs/forgepilot-master-plan.md and docs/forgepilot-progress-checklist.md. No execution or refactor work was authorized.
+
+## Claim
+
+```text
+FP-MCP-290 refreshed the master plan and progress checklist after the accepted FP-MCP-289 reconciliation: direct OpenCode HTTP is now documented as provisional design/canary only, not safety-equivalent to FP-027 guarded-runner execution; FP-027 remains open; the direct-HTTP parity-versus-narrow-scope fork is an explicit required decision before implementation execution authority.
+```
+
+## Caveats
+
+- This is a documentation-currency checkpoint, not a direct-HTTP safety proof.
+- The direct-HTTP fork decision is named but not resolved by this packet.
+- FP-027 remains open and unsatisfied.
+- The MCP bridge server.ts refactor remains deferred until the safety path decision and related gates are admitted.
+
+## Boundaries
+
+- non-executing documentation checkpoint only
+- no MCP bridge source changes
+- no OpenCode session created
+- no prompt submitted
+- no runner start endpoint contact
+- no approval consumed
+- no disable switch cleared
+- no server.ts refactor
+- no direct-HTTP execution authority granted
+
+## Non-Execution Boundary
+
+```text
+execution authorized: false
+approval consumed: false
+disable switch cleared: false
+runner start endpoint contacted: false
+OpenCode started: false
+FP-027 canary run: false
+```
+
+## Expected Result
+
+```text
+FP-MCP-290 refreshed the master plan and progress checklist after the accepted FP-MCP-289 reconciliation: direct OpenCode HTTP is now documented as provisional design/canary only, not safety-equivalent to FP-027 guarded-runner execution; FP-027 remains open; the direct-HTTP parity-versus-narrow-scope fork is an explicit required decision before implementation execution authority.
+```

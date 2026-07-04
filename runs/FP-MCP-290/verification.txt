@@ -1,0 +1,15 @@
+FP-MCP-290 verification
+
+Checkpoint type:
+- MASTER_PLAN_CURRENCY_REFRESH
+
+Claim:
+- FP-MCP-290 refreshed the master plan and progress checklist after the accepted FP-MCP-289 reconciliation: direct OpenCode HTTP is now documented as provisional design/canary only, not safety-equivalent to FP-027 guarded-runner execution; FP-027 remains open; the direct-HTTP parity-versus-narrow-scope fork is an explicit required decision before implementation execution authority.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

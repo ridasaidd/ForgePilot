@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-290",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 167,
+  "run_id": "FP-MCP-290-MASTER-PLAN-CURRENCY-REFRESH",
+  "generic_admission_event_id": 167,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP-MCP-290 refreshed the master plan and progress checklist after the accepted FP-MCP-289 reconciliation: direct OpenCode HTTP is now documented as provisional design/canary only, not safety-equivalent to FP-027 guarded-runner execution; FP-027 remains open; the direct-HTTP parity-versus-narrow-scope fork is an explicit required decision before implementation execution authority.",
+  "artifact_paths": [
+    "packets/FP-MCP-290.md",
+    "runs/FP-MCP-290/master-plan-currency-refresh-record.json",
+    "runs/FP-MCP-290/result-summary.md",
+    "runs/FP-MCP-290/verification.txt"
+  ]
+}
