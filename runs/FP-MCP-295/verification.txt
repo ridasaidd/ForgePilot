@@ -1,0 +1,15 @@
+FP-MCP-295 verification
+
+Checkpoint type:
+- REQUEST_ARTIFACT_PREPARATION_BOUNDARY
+
+Claim:
+- FP-MCP-295 opens the fresh minimal FP-027 guarded/worker canary request-artifact preparation boundary for the boring docs/forgepilot-master-plan.md structure-summary task selected by FP-MCP-294; this boundary exists so a fresh non-executing request artifact can be created against a current clean ForgePilot HEAD rather than reusing stale FP-MCP-276 artifacts.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

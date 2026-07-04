@@ -1,0 +1,58 @@
+{
+  "packetId": "FP-MCP-295",
+  "title": "Fresh Minimal FP-027 Request Artifact Preparation Boundary",
+  "checkpointType": "REQUEST_ARTIFACT_PREPARATION_BOUNDARY",
+  "claim": "FP-MCP-295 opens the fresh minimal FP-027 guarded/worker canary request-artifact preparation boundary for the boring docs/forgepilot-master-plan.md structure-summary task selected by FP-MCP-294; this boundary exists so a fresh non-executing request artifact can be created against a current clean ForgePilot HEAD rather than reusing stale FP-MCP-276 artifacts.",
+  "summary": "FP-MCP-295 establishes the packet boundary required before recording a fresh non-executing OpenCode request artifact. The future request remains restricted to one worker, DESIGN_ONLY, deepseek-v4-pro-high, a boring non-refactor document-structure summary task against docs/forgepilot-master-plan.md, no source edits, no src/server.ts or MCP bridge source contact, no shell/git/workspace mutation, no retry, and no chaining. This checkpoint itself does not create the request artifact, record approval, create clearance, clear disable switches, contact the runner start endpoint, start OpenCode, submit prompts, or run FP-027. After this checkpoint is committed, the next step inside FP-MCP-295 is to record a fresh non-executing request artifact bound to the new clean HEAD.",
+  "caveats": [
+    "The request artifact is not created by this checkpoint; it must be recorded after this packet boundary commit.",
+    "The canary must not reuse FP-MCP-276 or any expired approval.",
+    "This packet does not authorize execution.",
+    "This packet does not satisfy any FP-027 runtime checklist item beyond opening a fresh preparation boundary."
+  ],
+  "boundaries": [
+    "non-executing packet boundary only",
+    "no request artifact created by this checkpoint",
+    "no human approval recorded",
+    "no clearance created",
+    "no approval consumed",
+    "no disable switch cleared",
+    "no runner start endpoint contact",
+    "no OpenCode session or worker started",
+    "no prompt submitted",
+    "no FP-027 canary run",
+    "no source edits",
+    "no MCP bridge source inspection or refactor"
+  ],
+  "structuredRecord": {
+    "intendedNextAction": "record fresh non-executing request artifact for FP-MCP-295 after this checkpoint commit",
+    "selectedModel": "deepseek-v4-pro-high",
+    "runMode": "DESIGN_ONLY",
+    "targetWorkspace": "forgepilot",
+    "selectedCanaryTask": "read docs/forgepilot-master-plan.md and summarize high-level document structure only",
+    "forbiddenTargets": [
+      "src/server.ts",
+      "forgepilot-chatgpt-mcp source files",
+      "MCP bridge refactor target"
+    ],
+    "forbiddenActions": [
+      "source edits",
+      "workspace mutation",
+      "shell commands",
+      "git operations",
+      "retry",
+      "chaining",
+      "runner start before all gates"
+    ],
+    "staleTuplePolicy": "do not reuse FP-MCP-276 request or approval artifacts"
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-295 opens the fresh minimal FP-027 guarded/worker canary request-artifact preparation boundary for the boring docs/forgepilot-master-plan.md structure-summary task selected by FP-MCP-294; this boundary exists so a fresh non-executing request artifact can be created against a current clean ForgePilot HEAD rather than reusing stale FP-MCP-276 artifacts."
+}

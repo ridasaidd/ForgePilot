@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-295",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 172,
+  "run_id": "FP-MCP-295-REQUEST-ARTIFACT-PREPARATION-BOUNDARY",
+  "generic_admission_event_id": 172,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP-MCP-295 opens the fresh minimal FP-027 guarded/worker canary request-artifact preparation boundary for the boring docs/forgepilot-master-plan.md structure-summary task selected by FP-MCP-294; this boundary exists so a fresh non-executing request artifact can be created against a current clean ForgePilot HEAD rather than reusing stale FP-MCP-276 artifacts.",
+  "artifact_paths": [
+    "packets/FP-MCP-295.md",
+    "runs/FP-MCP-295/request-artifact-preparation-boundary-record.json",
+    "runs/FP-MCP-295/result-summary.md",
+    "runs/FP-MCP-295/verification.txt"
+  ]
+}
