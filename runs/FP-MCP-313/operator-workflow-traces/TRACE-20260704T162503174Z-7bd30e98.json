@@ -1,0 +1,36 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T162503174Z-7bd30e98",
+  "recordedAt": "2026-07-04T16:25:03.174Z",
+  "packetId": "FP-MCP-313",
+  "workflowId": "FP-MCP-313-enforced-executor-attempt",
+  "phase": "FAIL_CLOSED_VALIDATION",
+  "stepIndex": 1,
+  "intendedAction": "Use enforced executor after approval validation.",
+  "intendedToolName": "forgepilot_apply_guarded_canary_next_gate",
+  "actualToolName": "forgepilot_get_guarded_start_preflight_report",
+  "toolMatchedIntent": false,
+  "approvalLiteral": null,
+  "workflowAdvanced": false,
+  "deviationType": "WRONG_ADJACENT_TOOL_CALLED",
+  "sideEffects": [
+    "read_only_preflight_report"
+  ],
+  "notes": [
+    "Approval was created, committed, and validated usable.",
+    "Wrong adjacent read-only observer was selected instead of the executor.",
+    "No execution side effects occurred."
+  ],
+  "recoveryAction": "Stop and record hold.",
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}
