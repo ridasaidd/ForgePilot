@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-272",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 146,
+  "run_id": "FP-MCP-272-OPERATOR-DOCTRINE-REQUIREMENT",
+  "generic_admission_event_id": 146,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP-MCP-272 records that ForgePilot assumes competent domain operators; the approval popup is a final brake after review, not the review itself, and persistent approval is inappropriate only for fresh-scoped high-significance actions whose safety depends on current execution state.",
+  "artifact_paths": [
+    "packets/FP-MCP-272.md",
+    "runs/FP-MCP-272/operator-doctrine-requirement-record.json",
+    "runs/FP-MCP-272/result-summary.md",
+    "runs/FP-MCP-272/verification.txt"
+  ]
+}

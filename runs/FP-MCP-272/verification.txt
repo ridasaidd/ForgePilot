@@ -1,0 +1,15 @@
+FP-MCP-272 verification
+
+Checkpoint type:
+- OPERATOR_DOCTRINE_REQUIREMENT
+
+Claim:
+- FP-MCP-272 records that ForgePilot assumes competent domain operators; the approval popup is a final brake after review, not the review itself, and persistent approval is inappropriate only for fresh-scoped high-significance actions whose safety depends on current execution state.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

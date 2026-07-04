@@ -1,0 +1,136 @@
+{
+  "packetId": "FP-MCP-272",
+  "title": "Operator Review Manifest and Final-Brake Approval Doctrine",
+  "checkpointType": "OPERATOR_DOCTRINE_REQUIREMENT",
+  "claim": "FP-MCP-272 records that ForgePilot assumes competent domain operators; the approval popup is a final brake after review, not the review itself, and persistent approval is inappropriate only for fresh-scoped high-significance actions whose safety depends on current execution state.",
+  "summary": "This checkpoint refines the FP-MCP-269/270/271 popup discussion. ForgePilot is not a consumer hand-holding wrapper or magical black box. It is an operator system intended for competent domain operators across fields, including but not limited to software development. No UI can prevent ignorant decisions. ForgePilot's safety responsibility is to prevent hidden scope, ambiguous authority, stale evidence, silent escalation, and unrecorded decisions, not to substitute for domain judgment. Human approval is meaningful only after the operator has reviewed the relevant packet, request, approval, artifact, workspace, commit, model, run mode, expiry, and side-effect evidence. The popup is the final confirmation boundary, analogous to a file-deletion or deploy confirmation: if the operator approves, the bounded action proceeds. Therefore, a popup is not itself the review process; it is a brake in case the AI selected or prepared the wrong action. Always allow is not universally bad and may be acceptable for stable low-risk observers, but it is forbidden by operator rule for fresh-scoped high-significance actions such as clearance creation, approval consumption, disable-switch changes, runner start, OpenCode start, prompt submission, and wait-endpoint calls, because those actions require fresh review of current state each time. Future clearance/execution workflows should present a review manifest before invoking the final popup so the operator knows exactly which files/artifacts and fields must be inspected before choosing Deny or Allow once.",
+  "caveats": [
+    "This is a doctrine and requirements checkpoint, not an implementation of a new preview tool or UI override.",
+    "ForgePilot cannot make approval by an unqualified or inattentive person safe; it can only expose scope, evidence, and consequences for a competent operator.",
+    "The platform popup may still expose Always allow. FP-MCP-272 records an operator rule against using it for fresh-scoped high-significance actions; it does not prove the platform can suppress the button.",
+    "A review manifest must not become ritualized boilerplate. It must point to concrete files/artifacts/fields that the operator is responsible for checking.",
+    "This doctrine applies beyond software development: any domain-specific ForgePilot usage assumes competent operators in that domain."
+  ],
+  "boundaries": [
+    "execution authorized: false",
+    "local clearance created: false",
+    "approval consumed: false",
+    "disable switch cleared: false",
+    "runner start endpoint contacted: false",
+    "OpenCode started: false",
+    "OpenCode HTTP session created: false",
+    "prompt submitted: false",
+    "wait endpoint called: false",
+    "FP-027 canary run: false",
+    "implementation changed: false",
+    "UI changed: false"
+  ],
+  "structuredRecord": {
+    "schema": "FP_MCP_272_OPERATOR_REVIEW_FINAL_BRAKE_DOCTRINE_V1",
+    "doctrine": {
+      "forgePilotClass": "operator_system_not_consumer_black_box",
+      "competencePrecondition": "ForgePilot assumes a competent domain operator; it does not attempt to make execution safe for unqualified use.",
+      "systemResponsibility": [
+        "prevent hidden scope",
+        "prevent ambiguous authority",
+        "prevent stale evidence masquerading as current authority",
+        "prevent silent escalation",
+        "prevent unrecorded decisions",
+        "present inspectable evidence and consequences"
+      ],
+      "notSystemResponsibility": [
+        "prevent all ignorant decisions",
+        "replace domain judgment",
+        "make dangerous actions safe merely by adding UI friction",
+        "turn approval popups into training or hand-holding"
+      ],
+      "approvalPopupRole": "final_brake_after_review",
+      "reviewRole": "operator_review_happens_before_popup",
+      "fileDeletionAnalogy": "The popup is like file deletion confirmation: it marks the point where the operator accepts that the bounded action will occur if approved."
+    },
+    "operatorRule": {
+      "approvalChoices": [
+        "Deny",
+        "Allow once"
+      ],
+      "persistentApprovalAllowedFor": [
+        "stable low-risk read-only observers",
+        "repetitive non-mutating diagnostics whose safety does not depend on current execution tuple"
+      ],
+      "persistentApprovalForbiddenFor": [
+        "clearance creation",
+        "approval consumption",
+        "disable-switch changes",
+        "runner start",
+        "OpenCode process start",
+        "OpenCode HTTP session creation when coupled to execution",
+        "prompt submission",
+        "wait endpoint calls",
+        "destructive filesystem operations",
+        "actions whose safety depends on current packet/request/commit/model/runMode/approval/clearance state"
+      ],
+      "reason": "Fresh-scoped high-significance actions require current operator judgment each time; persistent approval bypasses the final-brake semantics."
+    },
+    "reviewManifestRequirement": {
+      "principle": "Before invoking a clearance-creating or execution-bearing popup, ForgePilot should present a concrete review manifest identifying the exact artifacts and fields the competent operator must inspect.",
+      "requiredArtifactsForClearanceApproval": [
+        "target packet",
+        "execution request artifact",
+        "human approval artifact",
+        "current git branch and HEAD",
+        "execution base commit",
+        "request artifact commit",
+        "target execution commit or equivalent bounded commit",
+        "model ID",
+        "run mode",
+        "target workspace ID",
+        "approval expiry",
+        "clearance expiry",
+        "side-effect declaration",
+        "eligibility/block result"
+      ],
+      "requiredSideEffectFields": [
+        "whether a clearance file will be written",
+        "whether approval will be consumed",
+        "whether disable switch will be cleared",
+        "whether runner start endpoint will be contacted",
+        "whether OpenCode will be started",
+        "whether OpenCode HTTP session will be created",
+        "whether a prompt will be submitted",
+        "whether wait endpoint will be called",
+        "whether action is single-use",
+        "whether action is bounded to exact tuple"
+      ],
+      "operatorAcknowledgementModel": "The operator reviews the manifest and artifacts, then treats the popup as final confirmation; Deny means stop, Allow once means proceed with the bounded action."
+    },
+    "relationshipToPriorPackets": {
+      "FP-MCP-269": "Human-attention requirements remain valid but are reframed as support for competent operator review, not consumer hand-holding.",
+      "FP-MCP-270": "Popup surface compliance was unresolved and required implementation or limitation handling.",
+      "FP-MCP-271": "Actual clearance popup was observed and found partially informative but not compliant by itself; FP-MCP-272 clarifies that the popup is only the final brake and must be preceded by review.",
+      "FP-027": "Still deferred until review-manifest or risk-exception handling is explicit enough for a guarded runner start canary."
+    },
+    "nextImplementationCandidate": {
+      "packetId": "FP-MCP-273",
+      "title": "Clearance Review Manifest Preview Tool",
+      "purpose": "Implement a non-mutating tool that renders the concrete clearance/execution review manifest before invoking the clearance popup.",
+      "successCriteria": [
+        "no clearance creation",
+        "no approval consumption",
+        "no runner contact",
+        "no OpenCode start",
+        "shows exact artifacts and fields to review",
+        "classifies whether Always allow is forbidden for the upcoming tool class",
+        "records preview evidence if admitted"
+      ]
+    }
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-272 records that ForgePilot assumes competent domain operators; the approval popup is a final brake after review, not the review itself, and persistent approval is inappropriate only for fresh-scoped high-significance actions whose safety depends on current execution state."
+}
