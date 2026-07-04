@@ -1,0 +1,36 @@
+{
+  "schema": "OPERATOR_WORKFLOW_TRACE_V1",
+  "traceId": "TRACE-20260704T153336492Z-4040f962",
+  "recordedAt": "2026-07-04T15:33:36.492Z",
+  "packetId": "FP-MCP-307",
+  "workflowId": "FP-MCP-307-positive-path",
+  "phase": "FAIL_CLOSED_VALIDATION",
+  "stepIndex": 1,
+  "intendedAction": "Invoke scoped execution enablement preview after fresh approval, fresh clearance, and fresh runner capability observation.",
+  "intendedToolName": "forgepilot_preview_operator_local_scoped_execution_enablement_review_manifest",
+  "actualToolName": "forgepilot_preview_operator_local_execution_clearance_review_manifest",
+  "toolMatchedIntent": false,
+  "approvalLiteral": "PREVIEW_OPERATOR_LOCAL_CLEARANCE_REVIEW_MANIFEST",
+  "workflowAdvanced": false,
+  "deviationType": "WRONG_ADJACENT_TOOL_CALLED",
+  "sideEffects": [
+    "read_only_preview"
+  ],
+  "notes": [
+    "Multiple adjacent clearance preview calls were made instead of the scoped enablement preview tool.",
+    "All observed calls were read-only and did not create clearance, create enablement, consume approval, contact runner start, start OpenCode, submit prompts, or run the guarded canary.",
+    "Operator stopped rather than continuing under an expiry window with tool-selection drift."
+  ],
+  "recoveryAction": "Record fail-closed hold and restart the positive path later from fresh approval or from still-valid gates if validation proves them current.",
+  "boundary": {
+    "appendOnlyArtifactWritten": true,
+    "openCodeInvoked": false,
+    "runnerStartEndpointContacted": false,
+    "waitEndpointCalled": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "opencodeProcessStarted": false,
+    "secretsRead": false
+  },
+  "observationSemantics": "operator workflow trace is control-plane evidence, not model-performance evidence"
+}
