@@ -1,0 +1,77 @@
+{
+  "packetId": "FP-MCP-350",
+  "title": "Clearance preview evidence-head alignment",
+  "checkpointType": "TOOL_IMPLEMENTATION_RESULT",
+  "claim": "FP-MCP-350 patched the capability-separated preview and clearance-intent surfaces to bind committed evidence HEAD separately from the target execution commit, resolving the FP-MCP-349 head-mismatch condition in built-code validation.",
+  "summary": "The bridge implementation now passes requestArtifactCommit as the current committed ForgePilot evidence HEAD into previewOperatorLocalExecutionClearanceReviewManifest while preserving targetExecutionCommit and executionBaseCommit as the original scoped execution base. This fixes the mismatch where committed approval evidence advanced HEAD and made preview ineligible. The bridge build and full test script passed. A direct read-only built-code probe returned eligible=true, reasons=[], currentHead=84814b9, expectedHead=84814b9, executionBaseAncestorOfRequestArtifact=true, and no side effects.",
+  "caveats": [
+    "The running MCP process was observed as node dist/server.js and may need restart/action refresh before the tool server uses the newly built dist code.",
+    "The live MCP tool was not used to create clearance or record clearance intent after this patch.",
+    "The approval used for validation expires at 2026-07-05T10:20:00.000Z, so a new approval may be needed after restart or later testing.",
+    "This patch keeps target execution commit bound to 5c0ab8b and only separates the committed evidence head used for repository cleanliness/current-head validation."
+  ],
+  "boundaries": [
+    "Did not call deprecated forgepilot_apply_guarded_canary_next_gate.",
+    "Did not create clearance.",
+    "Did not record clearance intent.",
+    "Did not create enablement.",
+    "Did not consume approval.",
+    "Did not clear the disable switch.",
+    "Did not contact runner start.",
+    "Did not start OpenCode.",
+    "Did not run FP-027 canary."
+  ],
+  "structuredRecord": {
+    "bridgeCommit": "f52c2e7",
+    "bridgeBranch": "feature/oauth-auth0",
+    "changedFiles": [
+      "src/server.ts",
+      "src/gate-intent-recorder.ts"
+    ],
+    "verification": {
+      "pnpmBuild": "PASS",
+      "pnpmTest": "PASS",
+      "hardcodedPacketIdLint": "PASS"
+    },
+    "directBuiltCodeProbe": {
+      "checkedAt": "2026-07-05T10:13:50.121Z",
+      "eligible": true,
+      "reasons": [],
+      "currentHead": "84814b9",
+      "expectedHead": "84814b9",
+      "executionBaseAncestorOfRequestArtifact": true,
+      "boundary": {
+        "readOnly": true,
+        "clearanceCreated": false,
+        "clearanceMutated": false,
+        "clearanceDeleted": false,
+        "filesWritten": false,
+        "approvalConsumed": false,
+        "disableSwitchCleared": false,
+        "runnerStartEndpointContacted": false,
+        "opencodeStarted": false,
+        "fp027CanaryRun": false
+      }
+    },
+    "executionBinding": {
+      "executionPacketId": "FP-MCP-295",
+      "requestId": "REQ-20260704T142232816Z-a82a42b6",
+      "approvalPacketId": "FP-MCP-346",
+      "approvalId": "APPROVAL-20260705T100333649Z-b4102a11",
+      "targetExecutionCommit": "5c0ab8b",
+      "executionBaseCommit": "5c0ab8b",
+      "requestArtifactCommit": "84814b9",
+      "branch": "main",
+      "targetWorkspaceId": "forgepilot"
+    }
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-350 patched the capability-separated preview and clearance-intent surfaces to bind committed evidence HEAD separately from the target execution commit, resolving the FP-MCP-349 head-mismatch condition in built-code validation."
+}

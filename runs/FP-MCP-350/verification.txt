@@ -1,0 +1,15 @@
+FP-MCP-350 verification
+
+Checkpoint type:
+- TOOL_IMPLEMENTATION_RESULT
+
+Claim:
+- FP-MCP-350 patched the capability-separated preview and clearance-intent surfaces to bind committed evidence HEAD separately from the target execution commit, resolving the FP-MCP-349 head-mismatch condition in built-code validation.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
