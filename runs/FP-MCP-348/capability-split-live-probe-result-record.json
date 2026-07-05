@@ -1,0 +1,58 @@
+{
+  "packetId": "FP-MCP-348",
+  "title": "FP-MCP-345 committed approval observe result",
+  "checkpointType": "CAPABILITY_SPLIT_LIVE_PROBE_RESULT",
+  "claim": "Committed fresh-session approval artifact was observed safely but was expired, so the next gate remained RECORD_APPROVAL and no clearance preview was attempted.",
+  "summary": "After core and bridge clean-state verification, ChatGPT called forgepilot_observe_next_gate for FP-MCP-295 with approval APPROVAL-20260705T090508444Z-662c8664. The approval artifact was tracked and committed, but the observer reported valid=false with reason APPROVAL_EXPIRED_OR_INVALID because expiresAt was 2026-07-05T09:50:00.000Z and checkedAt was 2026-07-05T09:59:30.068Z. The capability-separated observer remained read-only and reported no files written, no approval consumed, no runner start endpoint contact, no OpenCode start, and no guarded canary run.",
+  "caveats": [
+    "This does not invalidate FP-MCP-345; it confirms the committed-artifact path and expiry gate behavior.",
+    "The clearance preview was intentionally not called because the approval was not eligible.",
+    "A fresh structured approval with a later expiry is required before retrying PREVIEW_CLEARANCE."
+  ],
+  "boundaries": [
+    "Did not call deprecated forgepilot_apply_guarded_canary_next_gate.",
+    "Did not create clearance.",
+    "Did not create enablement.",
+    "Did not consume approval.",
+    "Did not clear the disable switch.",
+    "Did not contact runner start.",
+    "Did not start OpenCode."
+  ],
+  "structuredRecord": {
+    "observedCoreHead": "e27b1be",
+    "observedCoreClean": true,
+    "observedBridgeHead": "83d0906",
+    "observedBridgeBranch": "feature/oauth-auth0",
+    "observedBridgeClean": true,
+    "executionPacketId": "FP-MCP-295",
+    "requestId": "REQ-20260704T142232816Z-a82a42b6",
+    "approvalPacketId": "FP-MCP-346",
+    "approvalId": "APPROVAL-20260705T090508444Z-662c8664",
+    "approvalCommitted": true,
+    "approvalValid": false,
+    "approvalExpiresAt": "2026-07-05T09:50:00.000Z",
+    "observeCheckedAt": "2026-07-05T09:59:30.068Z",
+    "nextRequiredGate": "RECORD_APPROVAL",
+    "nextToolName": "forgepilot_record_real_human_approval_evidence",
+    "observerReasons": [
+      "APPROVAL_EXPIRED_OR_INVALID"
+    ],
+    "boundary": {
+      "readOnly": true,
+      "filesWritten": false,
+      "approvalConsumed": false,
+      "runnerStartEndpointContacted": false,
+      "opencodeStarted": false,
+      "guardedCanaryRun": false
+    }
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "Committed fresh-session approval artifact was observed safely but was expired, so the next gate remained RECORD_APPROVAL and no clearance preview was attempted."
+}

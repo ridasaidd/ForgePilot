@@ -1,0 +1,15 @@
+FP-MCP-348 verification
+
+Checkpoint type:
+- CAPABILITY_SPLIT_LIVE_PROBE_RESULT
+
+Claim:
+- Committed fresh-session approval artifact was observed safely but was expired, so the next gate remained RECORD_APPROVAL and no clearance preview was attempted.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
