@@ -8,7 +8,7 @@ import { getCanonicalEvidenceRecordAdmission } from "../../src/db/validation-adm
 
 const packetPath = "packets/FP-MCP-352.md";
 const runId = "FP-MCP-352-IMPLEMENTATION-PHASE-RESULT";
-const admittedClaim = "FP-MCP-352 Phase 2 completed a behavior-preserving extraction of four read-only validation/preflight MCP tools from src/server.ts into a validation tool group without changing the registered tool surface.";
+const admittedClaim = "FP-MCP-352 Phase 3 completed a behavior-preserving extraction of two read-only OpenCode request-artifact reader MCP tools from src/server.ts into a request-artifact tool group without changing the registered tool surface.";
 const artifacts = [
   "packets/FP-MCP-352.md",
   "runs/FP-MCP-352/implementation-phase-result-record.json",
@@ -37,7 +37,7 @@ if (!evidence) {
     model_id: "none",
     model_role: "packet_checkpoint_recorder",
     branch: "main",
-    commit_sha: "62e675f",
+    commit_sha: "d8070cc",
     executor_result: admittedClaim,
     verification_result: "PACKET_CHECKPOINT_RECORDED;NON_EXECUTING_BOUNDARY_PRESERVED",
     audit_result: "NOT_APPLICABLE_PACKET_CHECKPOINT",

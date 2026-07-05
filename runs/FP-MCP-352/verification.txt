@@ -4,7 +4,7 @@ Checkpoint type:
 - IMPLEMENTATION_PHASE_RESULT
 
 Claim:
-- FP-MCP-352 Phase 2 completed a behavior-preserving extraction of four read-only validation/preflight MCP tools from src/server.ts into a validation tool group without changing the registered tool surface.
+- FP-MCP-352 Phase 3 completed a behavior-preserving extraction of two read-only OpenCode request-artifact reader MCP tools from src/server.ts into a request-artifact tool group without changing the registered tool surface.
 
 Boundaries:
 - execution authorized: false

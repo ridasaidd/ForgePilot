@@ -3,12 +3,12 @@
 ## Result
 
 ```text
-FP-MCP-352 Phase 2 completed a behavior-preserving extraction of four read-only validation/preflight MCP tools from src/server.ts into a validation tool group without changing the registered tool surface.
+FP-MCP-352 Phase 3 completed a behavior-preserving extraction of two read-only OpenCode request-artifact reader MCP tools from src/server.ts into a request-artifact tool group without changing the registered tool surface.
 ```
 
 ## Summary
 
-Copilot performed the second bounded MCP bridge refactor phase in /home/ridasaidd/forgepilot-chatgpt-mcp only. The phase moved forgepilot_validate_opencode_run_request, forgepilot_validate_remote_runner_request, forgepilot_validate_scoped_execution_clearance, and forgepilot_validate_execution_preflight into src/tool-groups/validation-tools.ts and updated src/tool-registry/index.ts plus src/server.ts delegation. Verification showed pnpm test passed and full selected tool-registration parity remained 68 -> 68 with identical sorted names, no additions, no removals, and no duplicates. Bridge commit f3a9063 records the implementation.
+Copilot performed the third bounded MCP bridge refactor phase in /home/ridasaidd/forgepilot-chatgpt-mcp only. The phase moved forgepilot_list_opencode_run_requests and forgepilot_read_opencode_run_request into src/tool-groups/request-artifact-tools.ts and updated src/tool-registry/index.ts plus src/server.ts delegation. Verification showed pnpm test passed and full selected tool-registration parity remained 68 -> 68 with identical sorted names, no additions, no removals, and no duplicates. Bridge commit 779eed2 records the implementation.
 
 ## Boundary
 
