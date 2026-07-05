@@ -1,4 +1,4 @@
-# FP-MCP-352 — Server tool-group extraction Phase 1
+# FP-MCP-352 — Server tool-group extraction Phase 2
 
 ## Checkpoint Type
 
@@ -8,27 +8,29 @@ IMPLEMENTATION_PHASE_RESULT
 
 ## Summary
 
-Copilot performed the first bounded MCP bridge refactor phase in /home/ridasaidd/forgepilot-chatgpt-mcp only. The phase moved forgepilot_status, forgepilot_get_opencode_status, forgepilot_get_opencode_capabilities, forgepilot_list_packets, forgepilot_list_runs, forgepilot_read_file, and forgepilot_get_mcp_runtime_diagnostics into src/tool-groups/status-tools.ts, src/tool-groups/read-tools.ts, src/tool-groups/diagnostic-tools.ts, and src/tool-registry/index.ts. Verification showed pnpm test passed and tool registration parity remained 68 -> 68 with identical sorted names, no additions, no removals, and no duplicates. Bridge commit e768e44 records the implementation.
+Copilot performed the second bounded MCP bridge refactor phase in /home/ridasaidd/forgepilot-chatgpt-mcp only. The phase moved forgepilot_validate_opencode_run_request, forgepilot_validate_remote_runner_request, forgepilot_validate_scoped_execution_clearance, and forgepilot_validate_execution_preflight into src/tool-groups/validation-tools.ts and updated src/tool-registry/index.ts plus src/server.ts delegation. Verification showed pnpm test passed and full selected tool-registration parity remained 68 -> 68 with identical sorted names, no additions, no removals, and no duplicates. Bridge commit f3a9063 records the implementation.
 
 ## Claim
 
 ```text
-FP-MCP-352 Phase 1 completed a behavior-preserving extraction of seven low-risk read-only/status/list/diagnostic MCP tools from src/server.ts into grouped registrars without changing the registered tool surface.
+FP-MCP-352 Phase 2 completed a behavior-preserving extraction of four read-only validation/preflight MCP tools from src/server.ts into a validation tool group without changing the registered tool surface.
 ```
 
 ## Caveats
 
-- This was Phase 1 only, not a complete server.ts normalization.
-- Runtime registration order was not treated as the proof criterion because the audit concatenation order differed; the sorted tool surface and absence of additions/removals/duplicates were preserved.
-- No high-risk tools were moved in this phase.
-- The bridge branch remains ahead of origin until pushed manually if host push tooling remains blocked.
+- This was Phase 2 only, not a complete server.ts normalization.
+- forgepilot_validate_remote_runner_endpoint_request intentionally remained in server.ts because it is external-contact/openWorld validation.
+- forgepilot_evaluate_consuming_action_no_contact intentionally remained in server.ts because it is not read-only and may write a readiness artifact.
+- The running MCP service may still be using old loaded code until the service is restarted/refreshed; this checkpoint records source-level implementation and verification only.
+- The bridge branch remains ahead of origin until pushed manually.
 
 ## Boundaries
 
 - Did not modify /home/ridasaidd/forgepilot during Copilot implementation.
 - Did not change MCP tool names.
 - Did not change tool descriptions, input schemas, output schemas, annotations, approval literals, or intended handler behavior.
-- Did not move runner-start, OpenCode session-creating, approval, clearance, enablement, terminal, or deprecated/legacy tools.
+- Did not move external-contact endpoint validation or no-contact consuming action tools.
+- Did not move approval, clearance creation/intent, enablement, runner-start, OpenCode session/canary/delete/wait, terminal, or deprecated/legacy tools.
 - Did not start OpenCode.
 - Did not contact runner start.
 - Did not create clearance.
@@ -50,5 +52,5 @@ FP-027 canary run: false
 ## Expected Result
 
 ```text
-FP-MCP-352 Phase 1 completed a behavior-preserving extraction of seven low-risk read-only/status/list/diagnostic MCP tools from src/server.ts into grouped registrars without changing the registered tool surface.
+FP-MCP-352 Phase 2 completed a behavior-preserving extraction of four read-only validation/preflight MCP tools from src/server.ts into a validation tool group without changing the registered tool surface.
 ```

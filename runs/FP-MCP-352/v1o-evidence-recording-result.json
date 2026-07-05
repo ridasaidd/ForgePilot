@@ -7,7 +7,7 @@
   "canonical_status": "GENERIC_EVENT_CANONICAL",
   "canonical_surface": "evidence_admission_events",
   "canonical_state": "ADMITTED",
-  "admitted_claim": "FP-MCP-352 Phase 1 completed a behavior-preserving extraction of seven low-risk read-only/status/list/diagnostic MCP tools from src/server.ts into grouped registrars without changing the registered tool surface.",
+  "admitted_claim": "FP-MCP-352 Phase 2 completed a behavior-preserving extraction of four read-only validation/preflight MCP tools from src/server.ts into a validation tool group without changing the registered tool surface.",
   "artifact_paths": [
     "packets/FP-MCP-352.md",
     "runs/FP-MCP-352/implementation-phase-result-record.json",
