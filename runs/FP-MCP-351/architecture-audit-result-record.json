@@ -1,0 +1,70 @@
+{
+  "packetId": "FP-MCP-351",
+  "title": "MCP server normalization audit package",
+  "checkpointType": "ARCHITECTURE_AUDIT_RESULT",
+  "claim": "FP-MCP-351 created a research-backed MCP server normalization audit, tool inventory, risk matrix, refactor plan, and executor recommendation for reducing src/server.ts ambiguity before further operational execution work.",
+  "summary": "The MCP bridge now contains five audit/planning documents: docs/mcp-server-normalization-audit.md, docs/mcp-tool-risk-matrix.md, docs/mcp-tool-surface-inventory.json, docs/server-ts-refactor-plan.md, and docs/refactor-executor-recommendation.md. The audit measured src/server.ts at 18,640 lines and 68 registered MCP tools, classified the tool surface into ChatGPT-safe, gated-visible, and dev/hidden groups, and recommended behavior-preserving extraction plus contract/surface-profile work before additional runner operations. The bridge docs were committed at 5e08d9d after pnpm test passed.",
+  "caveats": [
+    "The tool classification is an initial static inventory and should be regenerated after tool registration changes.",
+    "The audit documents do not change runtime tool behavior.",
+    "The bridge branch remains ahead of origin until pushed manually because prior push attempts were blocked by host safety checks.",
+    "The recommendation is to use Copilot/Codex/Claude for the first mechanical extraction, not DeepSeek/Qwen through OpenCode until the bridge is normalized."
+  ],
+  "boundaries": [
+    "Did not refactor server.ts in this packet.",
+    "Did not change any MCP runtime behavior.",
+    "Did not start OpenCode.",
+    "Did not contact runner start.",
+    "Did not create clearance.",
+    "Did not record clearance intent.",
+    "Did not consume approval.",
+    "Did not clear the disable switch."
+  ],
+  "structuredRecord": {
+    "bridgeCommit": "5e08d9d",
+    "bridgeBranch": "feature/oauth-auth0",
+    "documents": [
+      "docs/mcp-server-normalization-audit.md",
+      "docs/mcp-tool-risk-matrix.md",
+      "docs/mcp-tool-surface-inventory.json",
+      "docs/server-ts-refactor-plan.md",
+      "docs/refactor-executor-recommendation.md"
+    ],
+    "measuredServerTs": {
+      "lines": 18640,
+      "registeredTools": 68,
+      "readOnlyHintTrue": 38,
+      "readOnlyHintFalseOrMissing": 30,
+      "recommendedChatgptSafeDefault": 34,
+      "recommendedGatedVisibleWhenNeeded": 8,
+      "recommendedDevOnlyOrHidden": 26
+    },
+    "verification": {
+      "pnpmTest": "PASS",
+      "pnpmBuild": "PASS",
+      "hardcodedPacketIdLint": "PASS"
+    },
+    "executorRecommendation": {
+      "immediate": "Copilot/Codex/Claude in IDE for FP-MCP-352 behavior-preserving extraction",
+      "notYet": "DeepSeek/Qwen through OpenCode for broad bridge refactor",
+      "later": "DeepSeek/Qwen after tool contracts, surface profiles, and smaller server.ts exist"
+    },
+    "nextPackets": [
+      "FP-MCP-352 behavior-preserving tool-registration extraction",
+      "FP-MCP-353 tool contract manifest",
+      "FP-MCP-354 surface profiles",
+      "FP-MCP-355 metadata normalization",
+      "FP-MCP-356 legacy quarantine",
+      "FP-MCP-357 runner script audit"
+    ]
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-351 created a research-backed MCP server normalization audit, tool inventory, risk matrix, refactor plan, and executor recommendation for reducing src/server.ts ambiguity before further operational execution work."
+}
