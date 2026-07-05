@@ -1,0 +1,95 @@
+{
+  "packetId": "FP-MCP-349",
+  "title": "FP-MCP-345 clearance preview head mismatch finding",
+  "checkpointType": "CAPABILITY_SPLIT_LIVE_PROBE_RESULT",
+  "claim": "With a fresh committed approval, observe advanced to PREVIEW_CLEARANCE, but clearance preview remained ineligible because current repository head no longer matched executionBaseCommit after committing approval evidence.",
+  "summary": "A fresh structured approval was recorded under FP-MCP-346, committed at 46642ae, and then supplied to forgepilot_observe_next_gate. The observer reported approval valid and advanced nextRequiredGate to PREVIEW_CLEARANCE. The follow-on read-only forgepilot_preview_clearance_creation call returned previewOnly=true and preserved all non-execution boundaries, but preflight.eligibleToInvokeClearancePopup was false because currentCommitMatches failed: expected head 5c0ab8b while current head was 46642ae. No clearance intent was recorded.",
+  "caveats": [
+    "This appears to expose a coordination issue between committed approval evidence and clearance preview current-head validation.",
+    "The approval artifact must be committed for validation, but committing it advances repository head away from the executionBaseCommit 5c0ab8b required by preview currentCommitMatches.",
+    "The observer advanced to PREVIEW_CLEARANCE while preview rejected eligibility, so observe and preview eligibility predicates may not yet be fully aligned.",
+    "No conclusion should be drawn about clearance creation or runner behavior because the probe stopped at read-only preview ineligibility."
+  ],
+  "boundaries": [
+    "Did not call deprecated forgepilot_apply_guarded_canary_next_gate.",
+    "Did not create clearance.",
+    "Did not record clearance intent.",
+    "Did not create enablement.",
+    "Did not consume approval.",
+    "Did not clear the disable switch.",
+    "Did not contact runner start.",
+    "Did not start OpenCode.",
+    "Did not run FP-027 canary."
+  ],
+  "structuredRecord": {
+    "freshApproval": {
+      "approvalPacketId": "FP-MCP-346",
+      "approvalId": "APPROVAL-20260705T100333649Z-b4102a11",
+      "expiresAt": "2026-07-05T10:20:00.000Z",
+      "commitSha": "46642ae",
+      "validationAfterCommit": true
+    },
+    "observe": {
+      "checkedAt": "2026-07-05T10:04:00.951Z",
+      "repositoryHead": "46642ae",
+      "repositoryClean": true,
+      "requestValid": true,
+      "approvalValid": true,
+      "nextRequiredGate": "PREVIEW_CLEARANCE",
+      "nextToolName": "forgepilot_preview_operator_local_execution_clearance_review_manifest",
+      "boundary": {
+        "readOnly": true,
+        "filesWritten": false,
+        "approvalConsumed": false,
+        "runnerStartEndpointContacted": false,
+        "opencodeStarted": false,
+        "guardedCanaryRun": false
+      }
+    },
+    "preview": {
+      "checkedAt": "2026-07-05T10:04:09.972Z",
+      "previewOnly": true,
+      "eligibleToInvokeClearancePopup": false,
+      "reason": "CURRENT_COMMIT_MATCHES_FAILED",
+      "expectedHead": "5c0ab8b",
+      "currentHead": "46642ae",
+      "currentBranchMatches": true,
+      "currentWorkspaceClean": true,
+      "executionBaseAncestorOfRequestArtifact": true,
+      "expiryWithinOperatorLocalLimit": true,
+      "sideEffectReview": {
+        "followOnToolWouldWriteClearanceFile": true,
+        "followOnToolWouldMutateExistingClearanceFile": true,
+        "followOnToolWouldConsumeApproval": false,
+        "followOnToolWouldClearDisableSwitch": false,
+        "followOnToolWouldContactRunnerStartEndpoint": false,
+        "followOnToolWouldStartOpenCode": false,
+        "followOnToolWouldCreateOpenCodeHttpSession": false,
+        "followOnToolWouldSubmitPrompt": false,
+        "followOnToolWouldCallWaitEndpoint": false,
+        "followOnToolWouldRunFp027Canary": false
+      },
+      "boundary": {
+        "readOnly": true,
+        "clearanceCreated": false,
+        "clearanceMutated": false,
+        "clearanceDeleted": false,
+        "filesWritten": false,
+        "approvalConsumed": false,
+        "disableSwitchCleared": false,
+        "runnerStartEndpointContacted": false,
+        "opencodeStarted": false,
+        "fp027CanaryRun": false
+      }
+    }
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "With a fresh committed approval, observe advanced to PREVIEW_CLEARANCE, but clearance preview remained ineligible because current repository head no longer matched executionBaseCommit after committing approval evidence."
+}
