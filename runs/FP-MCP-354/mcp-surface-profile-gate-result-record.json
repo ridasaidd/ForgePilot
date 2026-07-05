@@ -1,0 +1,72 @@
+{
+  "packetId": "FP-MCP-354",
+  "title": "Default safe MCP surface profile",
+  "checkpointType": "MCP_SURFACE_PROFILE_GATE_RESULT",
+  "claim": "FP-MCP-354 implemented a manifest-backed MCP surface profile gate in the bridge. The default profile exposes 11 safe tools, the dev profile exposes 76 non-legacy tools, and the all profile exposes the full corrected 78-tool surface.",
+  "summary": "Bridge commit 533b590 added a centralized surface-profile helper, wired one registration wrapper into server creation before tool registration, and extended the contract checker to validate profile-visible counts. The checker reported 78 registered tools, 78 contracts, 11 default-safe contracts, default visible count 11, explicit safe visible count 11, dev visible count 76, all visible count 78, exact safe set match true, and no duplicate, missing, or extra contracts. Direct local TypeScript and packet-id lint checks passed after package-manager command forms were blocked by platform checks.",
+  "caveats": [
+    "Package-manager build/test command forms were blocked by platform checks during final verification, but equivalent direct local commands passed.",
+    "The running service may still be using old loaded code until restart/action refresh.",
+    "Runtime-visible surface has not yet been validated after restart/action refresh.",
+    "The bridge branch remains ahead of origin until pushed manually."
+  ],
+  "boundaries": [
+    "Did not change tool handlers, names, descriptions, schemas, annotations, or approval literals.",
+    "Did not move registrations.",
+    "Did not remove tools from the explicit all profile.",
+    "Did not perform operational runtime actions.",
+    "Did not restart or refresh the service.",
+    "Did not modify local runtime state files."
+  ],
+  "structuredRecord": {
+    "bridgeCommit": "533b590",
+    "bridgeBranch": "feature/oauth-auth0",
+    "modifiedFiles": [
+      "src/server.ts",
+      "scripts/check-tool-contracts.mjs"
+    ],
+    "createdFiles": [
+      "src/tool-registry/surface-profile.ts"
+    ],
+    "environmentVariable": "FORGEPILOT_MCP_SURFACE",
+    "profileSemantics": {
+      "unset": "chatgpt-safe",
+      "invalid": "chatgpt-safe",
+      "chatgpt-safe": "safe contracts only",
+      "dev": "all non-legacy contracts",
+      "all": "all contracted tools"
+    },
+    "counts": {
+      "registeredToolCount": 78,
+      "contractCount": 78,
+      "defaultVisibleCount": 11,
+      "chatgptSafeVisibleCount": 11,
+      "devVisibleCount": 76,
+      "allVisibleCount": 78
+    },
+    "checkerResult": {
+      "chatgptSafeExactMatch": true,
+      "nonSafeVisibleInChatgptSafe": [],
+      "duplicateRegisteredTools": [],
+      "duplicateContracts": [],
+      "missingContracts": [],
+      "extraContracts": []
+    },
+    "verification": {
+      "contractChecker": "PASS",
+      "typescript": "PASS via local tsc binary",
+      "packetIdLint": "PASS",
+      "packageManagerBuildTestForm": "BLOCKED_BY_PLATFORM_CHECKS; equivalent direct checks passed"
+    },
+    "nextRecommendation": "Push FP-MCP-354, then perform controlled service refresh and visible-surface validation."
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-354 implemented a manifest-backed MCP surface profile gate in the bridge. The default profile exposes 11 safe tools, the dev profile exposes 76 non-legacy tools, and the all profile exposes the full corrected 78-tool surface."
+}

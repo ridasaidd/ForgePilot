@@ -1,0 +1,15 @@
+FP-MCP-354 verification
+
+Checkpoint type:
+- MCP_SURFACE_PROFILE_GATE_RESULT
+
+Claim:
+- FP-MCP-354 implemented a manifest-backed MCP surface profile gate in the bridge. The default profile exposes 11 safe tools, the dev profile exposes 76 non-legacy tools, and the all profile exposes the full corrected 78-tool surface.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false
