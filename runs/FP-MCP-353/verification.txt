@@ -1,0 +1,15 @@
+FP-MCP-353 verification
+
+Checkpoint type:
+- TOOL_CONTRACT_MANIFEST_RESULT
+
+Claim:
+- FP-MCP-353 added a machine-readable MCP tool contract manifest covering all 68 registered bridge tools, with validation proving exact parity between registered tool names and contract names without changing runtime behavior.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

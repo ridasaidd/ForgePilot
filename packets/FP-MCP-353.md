@@ -1,0 +1,59 @@
+# FP-MCP-353 — MCP tool contract manifest
+
+## Checkpoint Type
+
+```text
+TOOL_CONTRACT_MANIFEST_RESULT
+```
+
+## Summary
+
+The MCP bridge now contains src/tool-registry/tool-contract.ts, src/tool-registry/tool-contracts.ts, and scripts/check-tool-contracts.mjs. The manifest classifies every registered MCP tool by lifecycle, side-effect class, recommended surface, and safety-relevant behavior flags. Verification after bridge commit 5edc9d4 showed pnpm build passed, pnpm test passed, and the contract checker reported 68 registered tools, 68 contracts, no duplicate registered tools, no duplicate contracts, no missing contracts, and no extra contracts.
+
+## Claim
+
+```text
+FP-MCP-353 added a machine-readable MCP tool contract manifest covering all 68 registered bridge tools, with validation proving exact parity between registered tool names and contract names without changing runtime behavior.
+```
+
+## Caveats
+
+- FP-MCP-353 creates a source-of-truth contract manifest only; it does not implement runtime surface filtering.
+- The running MCP service may still be using old loaded code until service restart/action refresh.
+- Tool contracts are conservative classifications intended to support FP-MCP-354 surface filtering.
+- The bridge branch remains ahead of origin until pushed manually.
+
+## Boundaries
+
+- Did not modify MCP tool runtime behavior.
+- Did not move tool registrations.
+- Did not add MCP tools.
+- Did not remove MCP tools.
+- Did not change tool names, descriptions, input schemas, output schemas, annotations, approval literals, or handlers.
+- Did not implement surface filtering.
+- Did not hide tools.
+- Did not restart MCP.
+- Did not start OpenCode.
+- Did not contact runner start.
+- Did not create clearance.
+- Did not create enablement.
+- Did not consume approval.
+- Did not clear the disable switch.
+- Did not modify .local/forgepilot/*.
+
+## Non-Execution Boundary
+
+```text
+execution authorized: false
+approval consumed: false
+disable switch cleared: false
+runner start endpoint contacted: false
+OpenCode started: false
+FP-027 canary run: false
+```
+
+## Expected Result
+
+```text
+FP-MCP-353 added a machine-readable MCP tool contract manifest covering all 68 registered bridge tools, with validation proving exact parity between registered tool names and contract names without changing runtime behavior.
+```
