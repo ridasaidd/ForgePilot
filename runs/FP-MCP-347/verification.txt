@@ -1,0 +1,15 @@
+FP-MCP-347 verification
+
+Checkpoint type:
+- HOST_BLOCK_OBSERVATION
+
+Claim:
+- After FP-MCP-345 capability-separated tools were deployed and FP-MCP-346 was admitted, ChatGPT allowed read-only observe and packet checkpoint recording but blocked a structured approval recorder call for the real FP-MCP-295 execution tuple.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

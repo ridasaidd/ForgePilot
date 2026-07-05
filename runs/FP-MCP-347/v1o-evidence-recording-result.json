@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-347",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 220,
+  "run_id": "FP-MCP-347-HOST-BLOCK-OBSERVATION",
+  "generic_admission_event_id": 220,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "After FP-MCP-345 capability-separated tools were deployed and FP-MCP-346 was admitted, ChatGPT allowed read-only observe and packet checkpoint recording but blocked a structured approval recorder call for the real FP-MCP-295 execution tuple.",
+  "artifact_paths": [
+    "packets/FP-MCP-347.md",
+    "runs/FP-MCP-347/host-block-observation-record.json",
+    "runs/FP-MCP-347/result-summary.md",
+    "runs/FP-MCP-347/verification.txt"
+  ]
+}
