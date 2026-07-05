@@ -1,0 +1,15 @@
+FP-MCP-353A verification
+
+Checkpoint type:
+- TOOL_CONTRACT_MANIFEST_CORRECTION
+
+Claim:
+- FP-MCP-353A corrected the MCP tool contract manifest and checker to include the 10 additional tools registered through src/tool-registrations/recent-tools.ts, establishing exact coverage of all 78 actual registered bridge tools while keeping the ChatGPT-safe surface at 11 tools.
+
+Boundaries:
+- execution authorized: false
+- approval consumed: false
+- disable switch cleared: false
+- runner start endpoint contacted: false
+- OpenCode started: false
+- FP-027 canary run: false

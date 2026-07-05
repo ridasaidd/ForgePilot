@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-353A",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 227,
+  "run_id": "FP-MCP-353A-TOOL-CONTRACT-MANIFEST-CORRECTION",
+  "generic_admission_event_id": 227,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP-MCP-353A corrected the MCP tool contract manifest and checker to include the 10 additional tools registered through src/tool-registrations/recent-tools.ts, establishing exact coverage of all 78 actual registered bridge tools while keeping the ChatGPT-safe surface at 11 tools.",
+  "artifact_paths": [
+    "packets/FP-MCP-353A.md",
+    "runs/FP-MCP-353A/tool-contract-manifest-correction-record.json",
+    "runs/FP-MCP-353A/result-summary.md",
+    "runs/FP-MCP-353A/verification.txt"
+  ]
+}
