@@ -1,0 +1,44 @@
+{
+  "packetId": "FP-MCP-346",
+  "title": "Capability-Separated Clearance Live Probe",
+  "checkpointType": "LIVE_PROBE_PACKET",
+  "claim": "FP-MCP-346 establishes a non-executing live probe packet for testing the capability-separated clearance MCP surface.",
+  "summary": "Create a packet checkpoint so structured approval and intent artifacts can be recorded under a known packet id during live probing of observe, preview, and clearance intent tools.",
+  "caveats": [
+    "This packet does not create clearance.",
+    "This packet does not enable execution.",
+    "This packet does not call the deprecated guarded apply wrapper.",
+    "This packet does not contact runner start or start OpenCode."
+  ],
+  "boundaries": [
+    "Non-executing live probe only.",
+    "No approval consumption.",
+    "No clearance creation.",
+    "No enablement.",
+    "No runner contact.",
+    "No OpenCode start."
+  ],
+  "structuredRecord": {
+    "purpose": "live_probe_capability_separated_clearance_surface",
+    "bridgeCommits": [
+      "f4de231",
+      "83d0906"
+    ],
+    "targetExecutionPacketId": "FP-MCP-295",
+    "targetRequestId": "REQ-20260704T142232816Z-a82a42b6",
+    "newTools": [
+      "forgepilot_observe_next_gate",
+      "forgepilot_preview_clearance_creation",
+      "forgepilot_record_clearance_intent"
+    ]
+  },
+  "boundary": {
+    "executionAuthorized": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "fp027CanaryRun": false
+  },
+  "observedResult": "FP-MCP-346 establishes a non-executing live probe packet for testing the capability-separated clearance MCP surface."
+}

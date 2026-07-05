@@ -1,0 +1,17 @@
+{
+  "packet_id": "FP-MCP-346",
+  "result": "PACKET_CHECKPOINT_RECORDED_THROUGH_V1O_PATH",
+  "evidence_id": 219,
+  "run_id": "FP-MCP-346-LIVE-PROBE-PACKET",
+  "generic_admission_event_id": 219,
+  "canonical_status": "GENERIC_EVENT_CANONICAL",
+  "canonical_surface": "evidence_admission_events",
+  "canonical_state": "ADMITTED",
+  "admitted_claim": "FP-MCP-346 establishes a non-executing live probe packet for testing the capability-separated clearance MCP surface.",
+  "artifact_paths": [
+    "packets/FP-MCP-346.md",
+    "runs/FP-MCP-346/live-probe-packet-record.json",
+    "runs/FP-MCP-346/result-summary.md",
+    "runs/FP-MCP-346/verification.txt"
+  ]
+}
