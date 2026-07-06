@@ -1,0 +1,47 @@
+# FP-MCP-384 Approved bwrap Version Invocation Raw Capture
+
+approvalId: APPROVAL-FP-MCP-383-BWRAP-VERSION-001
+approvedRequestPacket: FP-MCP-382
+approvalPacket: FP-MCP-383
+executionPacket: FP-MCP-384
+host: rpsrv
+cwd: /home/ridasaidd/forgepilot
+uid: 1000
+gid: 1000
+argvCanonicalJson: ["/usr/bin/bwrap","--version"]
+argvSha256: 5121fbf01f6c634ada5d36090c07fe18239eb4ca38298381fd80bb3cb774044c
+argvHashMatchesApproval: True
+binaryPathExists: True
+
+## Boundary Before Invocation
+bwrapSandboxStartupAllowed: false
+sandboxCommandExecutionAllowed: false
+shellExecutionAllowed: false
+runnerStartAllowed: false
+opencodeStartAllowed: false
+disableSwitchClearingAllowed: false
+fp027CanaryAllowed: false
+
+startTimestamp: 2026-07-06T11:25:42.254875+00:00
+endTimestamp: 2026-07-06T11:25:42.256474+00:00
+durationMs: 1.572
+exitCode: 0
+timeoutOccurred: false
+stdoutTruncated: false
+stderrTruncated: false
+
+## STDOUT
+bubblewrap 0.8.0
+
+## STDERR
+
+
+## Boundary After Invocation
+bwrapBinaryInvoked: true
+bwrapSandboxStarted: false
+sandboxCommandExecuted: false
+runnerStartEndpointContacted: false
+opencodeStarted: false
+approvalConsumed: true
+disableSwitchCleared: false
+fp027CanaryRun: false
