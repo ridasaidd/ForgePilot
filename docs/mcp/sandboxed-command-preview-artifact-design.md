@@ -508,3 +508,43 @@ This design does not:
 After auditor review, a later packet may implement a preview artifact writer.
 
 That later packet must still be non-executing unless separately authorized.
+
+## FP-MCP-371A Auditor Addendum: Redaction Failure Handling
+
+The auditor accepted the FP-MCP-371 schema for a later non-executing preview artifact writer implementation, with one requested schema improvement.
+
+The Output Policy must include a field for what happens if redaction is later found to have failed after storage.
+
+Required additional outputPolicy field:
+
+    onRedactionFailureDiscovered
+
+Allowed v1 value:
+
+    MANUAL_INCIDENT_REVIEW_REQUIRED
+
+Required semantics:
+
+- Redaction is attempted but not guaranteed.
+- If a redaction failure is later discovered, the result must be treated as an incident.
+- The affected artifact must not be silently reused.
+- The affected artifact must not be admitted as evidence.
+- A manual review must decide whether to quarantine, redact, delete, supersede, or otherwise restrict the artifact.
+- Any later implementation must preserve the distinction between attempted redaction and guaranteed secrecy.
+
+Updated required outputPolicy fields:
+
+    captureStdout: true
+    captureStderr: true
+    truncateOutput: true
+    includeTruncationMarkers: true
+    redactKnownSecretPatterns: true
+    onRedactionFailureDiscovered: MANUAL_INCIDENT_REVIEW_REQUIRED
+    storeRawOutput: false
+    storeExcerpt: true
+
+A preview artifact is invalid if:
+
+- redactKnownSecretPatterns is absent
+- onRedactionFailureDiscovered is absent
+- onRedactionFailureDiscovered does not require manual incident review
