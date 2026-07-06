@@ -1,0 +1,186 @@
+{
+  "schemaVersion": "forgepilot.sandboxPreview.v1",
+  "previewId": "PREVIEW-20260706T083445Z-a2a3ac3e",
+  "createdAt": "2026-07-06T08:34:45.066Z",
+  "createdBy": "FP-MCP-372",
+  "status": "AUDITOR_REVIEW_REQUIRED",
+  "auditorReview": {
+    "required": true,
+    "reason": "New execution-adjacent sandbox preview artifact falls under FP-MCP-369A/370 process rule.",
+    "reviewState": "PENDING",
+    "reviewedAt": null,
+    "reviewedBy": null
+  },
+  "scope": {
+    "packetId": "FP-MCP-373",
+    "requestId": null,
+    "targetWorkspaceId": "forgepilot",
+    "targetRepositoryPath": "/home/ridasaidd/forgepilot",
+    "branch": "main",
+    "expectedHeadCommit": "9fa8df9",
+    "requiresCleanWorkingTree": true,
+    "purpose": "Smoke test: propose pwd command without execution"
+  },
+  "proposedCommand": {
+    "argv": [
+      "pwd"
+    ],
+    "shell": null,
+    "workingDirectory": "/workspace",
+    "purpose": "Smoke test: propose pwd command without execution",
+    "allowedCommandClass": "READ_ONLY_DIAGNOSTIC",
+    "forbiddenCommandClasses": [],
+    "requiresNetwork": false,
+    "expectedExitCodes": [
+      0
+    ],
+    "maxRuntimeSeconds": 120
+  },
+  "sandboxPolicy": {
+    "sandboxEngine": "bubblewrap",
+    "sandboxEngineVersionObserved": null,
+    "policyVersion": "forgepilot.bubblewrap.policy.v1",
+    "isolationClaim": "REDUCED_RISK_NOT_VM_ISOLATION",
+    "requiredCaveat": "Bubblewrap reduces blast radius. Bubblewrap shares the host kernel. Bubblewrap does not provide VM-level isolation.",
+    "disableFurtherUserNamespacesInsideSandbox": true,
+    "dieWithParent": true,
+    "newSession": true,
+    "privateTmp": true,
+    "privateProc": true,
+    "privateDev": true
+  },
+  "workspacePolicy": {
+    "model": "COPIED_WORKSPACE_ONLY",
+    "hostSourcePath": "/home/ridasaidd/forgepilot",
+    "sandboxWorkspacePath": "/workspace",
+    "copyExcludes": [
+      ".git",
+      "node_modules",
+      ".env",
+      ".env.*",
+      "secrets",
+      "tmp"
+    ],
+    "realRepositoryWritable": false,
+    "realRepositoryMounted": false,
+    "copyCreatedAtExecutionTime": true,
+    "copyHashRequired": true
+  },
+  "mountPolicy": {
+    "allowedMounts": [
+      {
+        "source": "sandbox-copied-workspace",
+        "target": "/workspace",
+        "mode": "rw"
+      },
+      {
+        "source": "/usr",
+        "target": "/usr",
+        "mode": "ro"
+      },
+      {
+        "source": "/bin",
+        "target": "/bin",
+        "mode": "ro"
+      },
+      {
+        "source": "/lib",
+        "target": "/lib",
+        "mode": "ro"
+      }
+    ],
+    "forbiddenMounts": [
+      "/home",
+      "/var/run/docker.sock",
+      "/run/user",
+      "/etc/ssh",
+      "/root",
+      "/",
+      ".env",
+      ".env.*",
+      "secrets"
+    ],
+    "secretsMounted": false,
+    "dockerSocketMounted": false,
+    "hostHomeMounted": false
+  },
+  "networkPolicy": {
+    "networkDefault": "DISABLED",
+    "networkEnabled": false,
+    "openWorldHint": false,
+    "allowedDomains": [],
+    "allowedEndpoints": [],
+    "requiresSeparateNetworkApproval": true
+  },
+  "resourcePolicy": {
+    "timeoutSeconds": 120,
+    "maxStdoutBytes": 200000,
+    "maxStderrBytes": 200000,
+    "maxCombinedOutputBytes": 300000,
+    "maxArtifactBytes": 10000000,
+    "maxProcesses": 64,
+    "memoryLimitBytes": 536870912,
+    "cpuLimit": "1",
+    "onLimitExceeded": "TERMINATE_AND_RECORD_TRUNCATION"
+  },
+  "outputPolicy": {
+    "captureStdout": true,
+    "captureStderr": true,
+    "truncateOutput": true,
+    "includeTruncationMarkers": true,
+    "redactKnownSecretPatterns": true,
+    "onRedactionFailureDiscovered": "MANUAL_INCIDENT_REVIEW_REQUIRED",
+    "storeRawOutput": false,
+    "storeExcerpt": true
+  },
+  "artifactPolicy": {
+    "futureExecutionResultPath": "runs/FP-MCP-373/sandbox-execution/",
+    "exportedArtifactsAllowed": true,
+    "exportRequiresExplicitPaths": true,
+    "exportEntireWorkspace": false,
+    "hashExportedArtifacts": true,
+    "recordChangedFilesSummary": true
+  },
+  "approvalPolicy": {
+    "previewCreatesApproval": false,
+    "futureExecutionRequiresApproval": true,
+    "approvalMustBindPreviewId": true,
+    "approvalMustBindCommandHash": true,
+    "approvalMustBindPolicyVersion": true,
+    "approvalMustBindExpectedHeadCommit": true,
+    "approvalExpires": true,
+    "approvalSingleUse": true
+  },
+  "evidencePolicy": {
+    "previewIsEvidence": false,
+    "futureSandboxOutputAutoAdmitted": false,
+    "futureSandboxOutputInitialAdmissionState": "NOT_EVALUATED",
+    "futureSandboxOutputInitialTrustTier": "TIER_0_UNTRUSTED",
+    "requiresSeparateValidation": true,
+    "requiresSeparateAdmissionGate": true
+  },
+  "riskClassification": {
+    "executionAdjacent": true,
+    "hostMutationRisk": "REDUCED_BY_COPY_ONLY_WORKSPACE",
+    "secretExposureRisk": "REDUCED_BY_FORBIDDEN_MOUNTS",
+    "networkRisk": "DISABLED_BY_DEFAULT",
+    "kernelSharedRisk": "PRESENT",
+    "evidenceTrustRisk": "NOT_ADMITTED_BY_DEFAULT",
+    "requiresAuditorReview": true
+  },
+  "nonExecutionBoundary": {
+    "previewOnly": true,
+    "commandExecuted": true,
+    "bubblewrapExecuted": false,
+    "shellExecuted": false,
+    "mcpToolImplemented": true,
+    "mcpToolExposed": true,
+    "chatgptSafeExecutionExposure": false,
+    "runnerStartEndpointContacted": false,
+    "opencodeStarted": false,
+    "approvalConsumed": false,
+    "disableSwitchCleared": false,
+    "fp027CanaryRun": false
+  },
+  "invalidIf": []
+}
