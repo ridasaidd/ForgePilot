@@ -1,0 +1,82 @@
+packet	packet_file	run_dir	title	fp027_canary_run_false	runner_start_contact_false	opencode_started_false	approval_consumed_false	disable_switch_cleared_false	mentions_runner_start_attempt	mentions_platform_block	mentions_sequencer	mentions_fp027
+FP-MCP-297	True	True	# FP-MCP-297 — Pre-Start Evidence Sequencing Hold	True	True	True	True	True	False	False	False	True
+FP-MCP-298	True	True	# FP-MCP-298 — FP-027 Canary Sequence Guard	True	True	True	True	True	False	False	False	True
+FP-MCP-299	True	True	# FP-MCP-299 — FP-027 Pre-Start and Snapshot Evidence Result	True	True	True	True	True	False	False	False	True
+FP-MCP-300	True	True	# FP-MCP-300 — Fresh Scoped Canary Approval Renewal Result	True	True	True	True	True	False	False	False	True
+FP-MCP-301	True	True	# FP-MCP-301 — Operator-Local Clearance Preview Result	True	True	True	True	True	False	False	False	True
+FP-MCP-302	False	True	(no packet file)	False	False	False	False	False	False	False	False	False
+FP-MCP-303	True	True	# FP-MCP-303 — Guarded Canary Blocked at Execution Enablement	True	True	True	True	True	True	True	False	True
+FP-MCP-304	True	True	# FP-MCP-304 — Scoped Execution Enablement Gate Design	True	True	True	True	True	False	False	False	True
+FP-MCP-305	True	True	# FP-MCP-305 — Scoped Execution Enablement Tool Implementation	True	True	True	True	True	False	False	False	True
+FP-MCP-306	True	True	# FP-MCP-306 — Scoped Enablement Tool Discovery and Negative Checks	True	True	True	True	True	False	False	False	True
+FP-MCP-307	True	True	# FP-MCP-307 — Fresh Positive Path Fail-Closed Hold	True	True	True	True	True	False	False	False	True
+FP-MCP-308	True	True	# FP-MCP-308 — Gate Sequencer Implementation	True	True	True	True	True	False	False	True	True
+FP-MCP-309	True	True	# FP-MCP-309 — Sequencer First Read	True	True	True	True	True	False	False	True	True
+FP-MCP-310	True	True	# FP-MCP-310 — Fresh Approval and Sequencer Follow Hold	True	True	True	True	True	False	False	True	True
+FP-MCP-311	True	True	# FP-MCP-311 — Sequencer Follow-On Mismatch	True	True	True	True	True	False	False	False	True
+FP-MCP-312	True	True	# FP-MCP-312 — Sequencer-Enforced Gate Executor V1	True	True	True	True	True	False	True	True	True
+FP-MCP-313	True	True	# FP-MCP-313 — Fresh Approval and Executor Selection Hold	True	True	True	True	True	False	False	True	True
+FP-MCP-314	True	True	# FP-MCP-314 — Canary Action Surface Narrowing	True	True	True	True	True	False	False	True	True
+FP-MCP-315	True	True	# FP-MCP-315 — Guarded Canary V1 Clearance Gate Checkpoint	True	True	True	True	True	False	False	True	True
+FP-MCP-316	True	True	# FP-MCP-316 — Guarded Canary Scoped Enablement Executor Implementation Result	True	True	True	True	True	True	False	True	True
+FP-MCP-317	True	True	# FP-MCP-317 — FP-MCP-316 Functional Test Result	True	True	True	True	True	True	False	True	True
+FP-MCP-318	True	True	# FP-MCP-318 — Guarded Canary Runner Start Executor Implementation Result	True	True	True	True	True	True	False	True	True
+FP-MCP-319	True	True	# FP-MCP-319 — Guarded Runner Start Final Test Platform Block	True	True	True	True	True	True	True	True	True
+FP-MCP-320	False	True	(no packet file)	False	False	False	False	False	False	False	False	False
+FP-MCP-321	True	True	# FP-MCP-321 — Local Operator Final Gate Handoff	False	False	False	False	False	False	True	False	False
+FP-MCP-322	True	True	# FP-MCP-322 — Local Client Script Implementation Result	True	True	True	True	True	True	False	True	True
+FP-MCP-323	True	True	# FP-MCP-323 — Local Client Preparation Plan	True	True	True	True	True	False	False	False	True
+FP-MCP-324	True	True	# FP-MCP-324 — Fresh Local Attempt Materials	False	False	False	False	False	False	False	False	False
+FP-MCP-325	True	True	# FP-MCP-325 — ChatGPT Tool Boundary Characterization	False	False	False	True	False	True	True	False	False
+FP-MCP-326	True	True	# FP-MCP-326 — Fresh Session MCP Neutral Checkpoint	True	True	True	True	True	False	False	False	True
+FP-MCP-327	True	True	# FP-MCP-327 — Fresh Session Host Boundary Checkpoint	True	True	True	True	True	False	False	False	True
+FP-MCP-328	True	True	# FP-MCP-328 — Fresh Session Prior Block Characterization	True	True	True	True	True	False	True	False	True
+FP-MCP-329	True	True	# FP-MCP-329 — Fresh Session Real Tuple Readonly Sequencer	True	True	True	True	True	False	True	True	True
+FP-MCP-330	True	True	# FP-MCP-330 — Fresh Session Boundary Characterization Summary	True	True	True	True	True	False	True	True	True
+FP-MCP-331	False	True	(no packet file)	False	False	True	False	False	False	False	False	False
+FP-MCP-332	True	True	# FP-MCP-332 — Fresh Session Approval Validation Probe	True	True	True	True	True	False	True	False	True
+FP-MCP-333	True	True	# FP-MCP-333 — Fresh Session Clearance Preview Exposure Boundary	True	True	True	True	True	False	True	True	True
+FP-MCP-334	True	True	# FP-MCP-334 — Fresh Session Guarded Wrapper Expired Approval Probe	True	True	True	True	True	False	False	True	True
+FP-MCP-335	False	True	(no packet file)	False	False	True	False	False	False	False	False	False
+FP-MCP-336	True	True	# FP-MCP-336 — Fresh Approval Wrapper Clearance Preview	True	True	True	True	True	False	True	True	True
+FP-MCP-337	True	True	# FP-MCP-337 — Fresh Approval Wrapper Clearance Creation Expired	True	True	True	True	True	False	False	False	True
+FP-MCP-338	False	True	(no packet file)	False	False	True	False	False	False	False	False	False
+FP-MCP-339	True	True	# FP-MCP-339 — Guarded Wrapper Repeats Clearance Preview	True	True	True	True	True	False	True	True	True
+FP-MCP-340	True	True	# FP-MCP-340 — Guarded Wrapper Preview Follow-On Contract	True	True	True	True	True	False	True	True	True
+FP-MCP-341	False	True	(no packet file)	False	False	True	False	False	False	False	False	False
+FP-MCP-342	True	True	# FP-MCP-342 — Host Block Recurs After Late-Gate Progression	False	True	True	True	False	False	True	False	False
+FP-MCP-343	True	True	# FP-MCP-343 — Host Block at Guarded Wrapper After Approval Validation	False	True	True	True	False	False	True	True	False
+FP-MCP-344	True	True	# FP-MCP-344 — Guarded Wrapper Follow-On Flag Isolation	True	True	True	True	True	False	True	True	True
+FP-MCP-345	True	True	# FP-MCP-345 — Capability-Separated Clearance Tool Surface Probe	False	False	False	False	False	False	False	True	False
+FP-MCP-346	True	True	# FP-MCP-346 — Capability-Separated Clearance Live Probe	True	True	True	True	True	False	False	True	True
+FP-MCP-347	True	True	# FP-MCP-347 — Structured Approval Host Block After Capability Split	True	True	True	True	True	False	True	True	True
+FP-MCP-348	True	True	# FP-MCP-348 — FP-MCP-345 committed approval observe result	True	True	True	True	True	False	False	True	True
+FP-MCP-349	True	True	# FP-MCP-349 — FP-MCP-345 clearance preview head mismatch finding	True	True	True	True	True	False	False	True	True
+FP-MCP-350	True	True	# FP-MCP-350 — Clearance preview evidence-head alignment	True	True	True	True	True	False	False	True	True
+FP-MCP-351	True	True	# FP-MCP-351 — MCP server normalization audit package	True	True	True	True	True	False	False	False	True
+FP-MCP-352	True	True	# FP-MCP-352 — Server tool-group extraction Phase 3	True	True	True	True	True	False	False	False	True
+FP-MCP-353	True	True	# FP-MCP-353 — MCP tool contract manifest	True	True	True	True	True	False	False	False	True
+FP-MCP-353A	True	True	# FP-MCP-353A — Correct MCP tool contract manifest coverage	True	True	True	True	True	False	False	False	True
+FP-MCP-354	True	True	# FP-MCP-354 — Default safe MCP surface profile	True	True	True	True	True	False	True	False	True
+FP-MCP-355	True	True	# FP-MCP-355 — Runtime safe surface validation	True	True	True	True	True	False	False	False	True
+FP-MCP-356	True	True	# FP-MCP-356 — MCP registration orchestration extraction	True	True	True	True	True	False	False	False	True
+FP-MCP-356A	True	True	# FP-MCP-356A — Runtime validation after registration orchestration extraction	True	True	True	True	True	False	False	False	True
+FP-MCP-357	True	True	# FP-MCP-357 — Extract and remove first inline registration block	True	True	True	True	True	False	False	False	True
+FP-MCP-357A	True	True	# FP-MCP-357A — Runtime validation after first inline registration extraction	True	True	True	True	True	False	False	False	True
+FP-MCP-358	True	True	# FP-MCP-358 — Extract second inline MCP registration block	True	True	True	True	True	False	False	False	True
+FP-MCP-358A	True	True	# FP-MCP-358A — Runtime validation after second inline registration extraction	True	True	True	True	True	False	False	False	True
+FP-MCP-359	True	True	# FP-MCP-359 — Extract third inline MCP registration block	True	True	True	True	True	False	False	False	True
+FP-MCP-359A	True	True	# FP-MCP-359A — Runtime validation after third inline registration extraction	True	True	True	True	True	False	False	False	True
+FP-MCP-360	True	True	# FP-MCP-360 — Extract fourth inline MCP registration block	True	True	True	True	True	False	False	False	True
+FP-MCP-360A	True	True	# FP-MCP-360A — Runtime validation after fourth inline registration extraction	True	True	True	True	True	False	False	False	True
+FP-MCP-361	True	True	# FP-MCP-361 — Extract final inline MCP registration block	True	True	True	True	True	False	False	True	True
+FP-MCP-361A	True	True	# FP-MCP-361A — Runtime validation after final inline registration extraction	True	True	True	True	True	False	False	False	True
+FP-MCP-362	True	True	# FP-MCP-362 — Guarded sequencer refactor and MCP conformance plan	True	True	True	False	False	False	False	True	False
+FP-MCP-363	True	True	# FP-MCP-363 — Diagnose guarded sequencer false-positive next-gate behavior	True	True	True	True	True	False	False	True	True
+FP-MCP-364	True	True	# FP-MCP-364 — Correct guarded sequencer false-positive next-gate behavior	True	True	True	True	True	False	False	True	True
+FP-MCP-364A	True	True	# FP-MCP-364A — Runtime validation after guarded sequencer correction	True	True	True	True	True	False	False	True	True
+FP-MCP-365	True	True	# FP-MCP-365 — Audit guarded sequencer observer safe-surface eligibility	True	True	True	False	False	False	False	True	True
+FP-MCP-366	True	True	# FP-MCP-366 — Expose sanitized guarded sequencer observer to safe surface	True	True	True	True	True	False	False	True	True
+FP-MCP-366A	True	True	# FP-MCP-366A — Runtime validation for sanitized observer safe-surface exposure	True	True	True	True	True	False	False	True	True
+FP-MCP-367	True	True	# FP-MCP-367 — Bubblewrap sandboxed command execution design	True	True	True	True	True	False	False	False	True
+FP-MCP-368	True	True	# FP-MCP-368 — Bubblewrap availability and capability diagnostic	True	True	True	True	True	False	False	False	True

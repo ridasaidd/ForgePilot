@@ -1,0 +1,177 @@
+packet	evidence_id	admitted	claim
+FP-MCP-160	22		STRUCTURED_APPROVAL_POPUP_PATTERN_SAFE_BUT_EXISTING_FIXTURE_NOT_MIGRATION_READY
+FP-MCP-161	23		STRUCTURED_SCOPED_APPROVAL_TOOL_CONTRACT_DEFINED
+FP-MCP-162	24		STRUCTURED_SCOPED_APPROVAL_TOOL_IMPLEMENTED_SOURCE_VERIFIED_ACTION_REFRESH_PENDING
+FP-MCP-163	25		STRUCTURED_APPROVAL_PRE_EXECUTION_INTEGRATION_SOURCE_VERIFIED_REFRESH_PENDING
+FP-MCP-164	28		SCOPED_EXECUTION_ENABLEMENT_BOUNDARY_CONTRACT_DEFINED
+FP-MCP-165	29		SCOPED_EXECUTION_BOOTSTRAP_EXCEPTION_AND_RETRY_FRICTION_DECISION_RECORDED
+FP-MCP-166	30		SCOPED_CLEARANCE_IMPLEMENTATION_SOURCE_VERIFIED_EXECUTION_STILL_DISABLED
+FP-MCP-167	32		CONSUMING_CLEARANCE_MECHANISM_CONTRACT_DEFINED
+FP-MCP-169	36		PRE_CONTACT_LEDGER_REVIEW_PASSED_READY_FOR_NO_CONTACT_CONSUMING_ACTION_IMPLEMENTATION
+FP-MCP-171	41		PRE_CANARY_SEQUENCE_VIOLATION_RECORDED_CANARY_NOT_RUN
+FP-MCP-172	42		FP_027_CANARY_RESTART_HALTED_BY_GUARDED_PREFLIGHT_BEFORE_RUNNER_CONTACT
+FP-MCP-173	43		OPENCODE_NOT_CONFIGURED_CLASSIFIED_AS_READINESS_LABEL_FALSE_NEGATIVE_NO_FALSE_OPEN_CONSUMER_FOUND
+FP-MCP-175	46		OPENCODE_LIVENESS_ONLY_PROBE_CONFIRMED_PROCESS_LISTENER_AND_TCP_CONNECT_NO_EXECUTION
+FP-MCP-176	47		OPENCODE_HTTP_HEALTH_ENDPOINT_NOT_PROVEN_NO_HTTP_PROBE_ATTEMPTED
+FP-MCP-177	48		FP_027_CANARY_BLOCKED_BEFORE_RUNNER_CONTACT
+FP-MCP-178	49		FP_027_CANARY_BLOCKED_BEFORE_RUNNER_CONTACT
+FP-MCP-179	50		RUNNER_CAPABILITY_PREDICATE_MISMATCH_CLASSIFIED_FAILS_CLOSED_FIX_REQUIRED_BEFORE_ENABLEMENT
+FP-MCP-181	52		FP_MCP_180_LIVE_CONFIRMATION_NOT_PROVEN_RUNTIME_STILL_STALE_APPROVAL_PAYLOAD_BLOCKED
+FP-MCP-182	53		RUNNER_CAPABILITY_PREDICATE_LIVE_CONFIRMED_COMPOSITE_ONLY_DISABLE_BLOCKERS_REMAIN
+FP-MCP-184	54		VALIDATE_EXECUTION_PREFLIGHT_DISABLED_REASON_PROVENANCE_NORMALIZED_SOURCE_VERIFIED_ENABLEMENT_STILL_NOT_AUTHORIZED
+FP-MCP-185	55		VALIDATE_EXECUTION_PREFLIGHT_DISABLED_REASON_NORMALIZATION_NOT_PROVEN_RUNTIME_STILL_EMITS_LEGACY_EXECUTION_DISABLED
+FP-MCP-186	56		VALIDATE_EXECUTION_PREFLIGHT_DISABLED_REASON_NORMALIZATION_LIVE_CONFIRMED_NO_LEGACY_EXECUTION_DISABLED
+FP-MCP-187	57		FP_MCP_187_FPMCP183_FRESH_TUPLE_REQUEST_CREATION_BLOCKED_BEFORE_FORGEPILOT_NO_ENABLEMENT
+FP-MCP-188	58		FP_MCP_188_ENABLEMENT_ADJACENT_PLATFORM_BLOCK_CATEGORY_DOCUMENTED_NO_RETRY_NO_BYPASS
+FP-MCP-189	59		FP_MCP_189_PLATFORM_BLOCK_CADENCE_MULTI_COMMAND_TRIGGER_HYPOTHESIS_DOCUMENTED
+FP-MCP-190	60		FP_MCP_190_ENABLEMENT_ADJACENT_PLATFORM_BLOCK_DIAGNOSED_UNRESOLVED_SAFETY_RELEVANT_NO_RETRY_NO_BYPASS
+FP-MCP-191	61		FP_MCP_191_REQUEST_ARTIFACT_TOOL_CONTRACT_SAFETY_ALIGNED_SOURCE_VERIFIED_NO_LIVE_RETRY
+FP-MCP-192	62		FP_MCP_192_NON_EXECUTING_REQUEST_ARTIFACT_TOOL_SURFACE_LIVE_CONFIRMED_NO_EXECUTION
+FP-MCP-193	63		FP_MCP_193_SOURCE_BACKED_MCP_SERVER_DESIGN_GUIDANCE_RECORDED
+FP-MCP-194	64		FP_MCP_194_ALIAS_EQUIVALENCE_RECONCILED_STANDING_RULE_RECORDED_SAFETY_TRIGGER_UNRESOLVED
+FP-MCP-195	65		FP_MCP_195_CONSERVATIVE_MCP_INVOCATION_CADENCE_POLICY_RECORDED
+FP-MCP-196	66		FP_MCP_196_OPENAI_PLATFORM_BLOCK_FEEDBACK_REPORT_PACKAGE_ASSEMBLED_NOT_SUBMITTED
+FP-MCP-197	67		FP_MCP_197_PROCEED_WITH_PLATFORM_TRIGGER_OPERATIONALLY_UNDERSTOOD_INTERNAL_CAUSE_UNCONFIRMED
+FP-MCP-198	68		FP_MCP_198_PLATFORM_TRIGGER_RECLASSIFIED_OPERATIONALLY_CHARACTERIZED_INTERNAL_CAUSE_UNCONFIRMED
+FP-MCP-199	69		FP_MCP_199_DEDICATED_PACKET_CHECKPOINT_TOOL_IMPLEMENTED
+FP-MCP-200	70		FP_MCP_200_PACKET_CHECKPOINT_TOOL_REFACTORED_AND_HARDENED
+FP-MCP-201	71		FP_MCP_201_PACKET_CHECKPOINT_TOOL_SMOKE_TEST_FAILED_PNPM_ENOENT
+FP-MCP-202	72		FP_MCP_202_CHECKPOINT_TOOL_RUNTIME_COMMAND_RESOLUTION_FIXED
+FP-MCP-205	73		FP_MCP_205_PACKET_CHECKPOINT_TOOL_PATH_CONFIGURED_RUNTIME_LIVE_RETEST_PASSED
+FP-MCP-206	74		FP_MCP_206_POST_CHECKPOINT_TOOL_EXECUTION_GATE_ORIENTATION_RECORDED
+FP-MCP-207	75		FP_MCP_207_RUNTIME_DIAGNOSTICS_AND_GATE_ORIENTATION_TOOLS_IMPLEMENTED
+FP-MCP-208	76		FP_MCP_208_WORKSPACE_CHANGE_INSPECTION_TOOL_IMPLEMENTED
+FP-MCP-209	77		FP_MCP_209_FRESH_GUARDED_REQUEST_PATH_PREPARATION_RECORDED
+FP-MCP-210	78		FP_MCP_210_FRESH_REQUEST_ARTIFACT_VALIDATION_CHECKPOINT_RECORDED
+FP-MCP-211	79		FP_MCP_211_FRESH_SCOPED_HUMAN_APPROVAL_EVIDENCE_PREPARATION_RECORDED
+FP-MCP-212	80		FP_MCP_212_FRESH_APPROVAL_VALIDATION_CHECKPOINT_RECORDED
+FP-MCP-213	81		FP_MCP_213_RETROACTIVE_TOOL_SURFACE_EQUIVALENCE_AUDIT_RECORDED
+FP-MCP-214	82		FP_MCP_214_DELIBERATE_EXECUTION_GRANT_DEFERRED
+FP-MCP-215	83		FP_MCP_215_RESUME_FRESHNESS_VERIFICATION_RECORDED
+FP-MCP-216	84		FP_MCP_216_FRESH_SCOPED_APPROVAL_EVIDENCE_RENEWAL_PREPARATION_RECORDED
+FP-MCP-217	85		FP_MCP_217_EXECUTION_CLEARANCE_SURFACE_DESIGN_DECISION_RECORDED
+FP-MCP-218	86		FP_MCP_218_RESUME_OBSERVATION_BLOCKED_BY_LOCAL_CLEARANCE_ABSENT_RECORDED
+FP-MCP-219	87		FP_MCP_219_OPERATOR_LOCAL_EXECUTION_CLEARANCE_MECHANISM_DESIGN_RECORDED
+FP-MCP-220	88		FP_MCP_220_OPERATOR_LOCAL_CLEARANCE_OBSERVER_IMPLEMENTED
+FP-MCP-221	89		FP_MCP_221_OPERATOR_CLEARANCE_OBSERVER_DISCOVERY_MISMATCH_RECORDED
+FP-MCP-222	90		FP_MCP_222_OPERATOR_CLEARANCE_OBSERVER_CALLABLE_FAIL_CLOSED_RECORDED
+FP-MCP-223	91		FP_MCP_223_FRESH_REQUEST_TUPLE_PREPARATION_RECORDED
+FP-MCP-224	92		FP_MCP_224_FRESH_REQUEST_ARTIFACT_COMMIT_BINDING_GAP_RECORDED
+FP-MCP-225	93		FP_MCP_225_OPERATOR_LOCAL_CLEARANCE_COMMIT_BINDING_POLICY_CLARIFIED
+FP-MCP-226	94		FP_MCP_226_OPERATOR_LOCAL_CLEARANCE_TWO_COMMIT_BINDING_IMPLEMENTED
+FP-MCP-227	95		FP_MCP_227_FRESH_SCOPED_APPROVAL_PREPARATION_RECORDED
+FP-MCP-228	96		FP_MCP_228_ONE_SHOT_DISABLE_CLEARANCE_POLICY_RECORDED
+FP-MCP-229	97		FP_MCP_229_ONE_SHOT_TUPLE_BOUND_START_CLEARANCE_GATE_IMPLEMENTED
+FP-MCP-230	98		FP_MCP_230_FRESH_ONE_SHOT_CANARY_CLEARANCE_PREPARATION_RECORDED
+FP-MCP-231	99		FP_MCP_231_GUARDED_START_EVIDENCE_ORDERING_FIXED
+FP-MCP-232	100		FP_MCP_232_POPUP_APPROVED_LOCAL_CLEARANCE_TOOL_IMPLEMENTED
+FP-MCP-233	102		FP_MCP_233_POPUP_CLEARANCE_GUARDED_START_ACCEPTED_AND_DESIGN_ONLY_OUTPUTS_RECORDED
+FP-MCP-235	103		FP_MCP_235_FP_MCP_217_POPUP_CLEARANCE_RECONCILIATION_RECORDED
+FP-MCP-236	104		FP_MCP_236_POPUP_MEDIATED_LOCAL_CLEARANCE_POLICY_ADOPTED
+FP-MCP-237	105		FP_MCP_237_FP_MCP_233_GUARDED_START_INTEGRITY_REVIEW_RECORDED
+FP-MCP-238	107		FP_MCP_238_APPROVAL_CONSUMPTION_SCOPE_FIX_ACTIVE_OLD_APPROVAL_UNUSABLE
+FP-MCP-239	108		FP_MCP_239_HARDCODED_PACKET_ID_LINT_IMPLEMENTED
+FP-MCP-240	109		FP_MCP_240_PRE_CONTACT_CANARY_DISCIPLINE_GATE_IMPLEMENTED
+FP-MCP-241	113		FP_MCP_241_FRESH_GUARDED_START_FULL_LIFECYCLE_CLOSED
+FP-MCP-242	112		FP_MCP_242_APPROVED_PRE_START_EVIDENCE_RECORDER_IMPLEMENTED
+FP-MCP-243	114		FP_MCP_243_OPENCODE_HTTP_API_DISCOVERED
+FP-MCP-244	115		FP_MCP_244_OPENCODE_HTTP_SESSION_STATUS_TOOL_LIVE_VERIFIED
+FP-MCP-245	117		FP_MCP_245_OPENCODE_HTTP_SESSION_STATUS_SHAPE_READER_DIRECTLY_VERIFIED
+FP-MCP-246	118		FP_MCP_246_OPENCODE_HTTP_MINIMAL_SESSION_CANARY_SUCCEEDED_WITH_EMPTY_STATUS_MAP
+FP-MCP-247	119		FP_MCP_247_OPENCODE_HTTP_ASYNC_PROMPT_CANARY_SUCCEEDED_MESSAGE_COMPLETION_OBSERVED
+FP-MCP-248	120		FP_MCP_248_OPENCODE_HTTP_WAIT_ENDPOINT_RETURNED_503_MESSAGE_ENDPOINT_REMAINED_REACHABLE
+FP-MCP-249	121		FP_MCP_249_OPENCODE_HTTP_MESSAGE_SHAPE_PROBE_OBSERVED_USER_TEXT_PATH_AND_EMPTY_ASSISTANT_PARTS
+FP-MCP-250	122		FP_MCP_250_OPENCODE_HTTP_ROLE_AWARE_ASSISTANT_COMPLETION_OBSERVED
+FP-MCP-251	123		FP_MCP_251_OPENCODE_HTTP_ASSISTANT_COMPLETION_READER_CLASSIFIED_EXISTING_SESSION_COMPLETED
+FP-MCP-252	124		FP_MCP_252_HTTP_FIRST_MCP_TOOL_BOUNDARY_REVIEW_COMPLETED
+FP-MCP-253	125		FP_MCP_253_OPENCODE_HTTP_EXPLICIT_SESSION_CLEANUP_SUCCEEDED
+FP-MCP-254	126		FP_MCP_254_OPENCODE_HTTP_LIFECYCLE_ORCHESTRATOR_COMPLETED_CANARY_WITH_CLEANUP
+FP-MCP-255	127		FP_MCP_255_HTTP_LIFECYCLE_REQUEST_ADAPTER_PLANNED_VALID_REQUEST_WITHOUT_LIFECYCLE_INVOCATION
+FP-MCP-256	128		FP_MCP_256_HTTP_LIFECYCLE_PLAN_ARTIFACT_RECORDED_WITHOUT_INVOCATION
+FP-MCP-257	129		FP_MCP_257_HTTP_LIFECYCLE_PLAN_VALIDATED_AGAINST_SOURCE_REQUEST
+FP-MCP-258	130		FP_MCP_258_HTTP_LIFECYCLE_PLAN_INVOCATION_DRY_RUN_ELIGIBLE_WITHOUT_INVOCATION
+FP-MCP-259	131		FP_MCP_259_HTTP_LIFECYCLE_INVOCATION_EXECUTION_GATE_CONTRACT_DEFINED_WITHOUT_IMPLEMENTATION
+FP-MCP-260	132		FP_MCP_260_HTTP_LIFECYCLE_INVOCATION_ATTEMPT_ARTIFACT_SCHEMA_DEFINED_WITHOUT_IMPLEMENTATION
+FP-MCP-261	133		FP_MCP_261_DRY_RUN_ATTEMPT_ARTIFACTS_RECORDED
+FP-MCP-262	134		The existing OpenCode HTTP lifecycle invocation attempt dry-run recorder is callable through the ChatGPT MCP UI and records schema-shaped blocked-before-action artifacts without in
+FP-MCP-263	135		The MCP bridge now implements a gated OpenCode HTTP lifecycle single-shot tool that validates an existing lifecycle plan, requires caller-supplied prompt and expected text hashes t
+FP-MCP-264	136		The surfaced OpenCode HTTP lifecycle single-shot gate fails closed when caller-supplied prompt and expected text hashes do not match the validated lifecycle plan, without creating 
+FP-MCP-265	137		The surfaced OpenCode HTTP lifecycle single-shot gate successfully invoked a hash-matching single-shot lifecycle from the validated FP-MCP-254 plan, created one OpenCode HTTP sessi
+FP-MCP-266	139		FP-MCP-266 operator workflow trace tools surfaced after MCP reload and executed through ChatGPT MCP: the V1 writer wrote trace artifacts and the read-only summarizer summarized the
+FP-MCP-267	141		FP-MCP-267 legacy/manual trace normalization is now visible through the live ChatGPT MCP summarizer: older V0 OPERATOR traces summarize as event-level deviations instead of UNKNOWN
+FP-MCP-268	142		FP-MCP-268 records a coherent reconciliation of evidence IDs 103 through 141, explicitly confirming that FP-MCP-217 was revised by FP-MCP-236, the FP-MCP-233 approval reuse window 
+FP-MCP-269	143		FP-MCP-269 defines human-attention display and friction requirements for popup-mediated local clearance so FP-MCP-236's weaker popup posture is not treated as a reflexive one-tap a
+FP-MCP-270	144		FP-MCP-270 confirms that FP-MCP-269's popup human-attention requirements are not yet proven satisfied by the current ChatGPT/MCP approval surface: the clearance tool contract expos
+FP-MCP-271	145		FP-MCP-271 records direct operator screenshot evidence of the actual popup-mediated clearance approval modal and finds it partially informative but not compliant with FP-MCP-269: i
+FP-MCP-272	146		FP-MCP-272 records that ForgePilot assumes competent domain operators; the approval popup is a final brake after review, not the review itself, and persistent approval is inappropr
+FP-MCP-273	147		Implemented a read-only MCP bridge preview tool for operator review before local clearance creation; source commit, build, tests, lint, and direct built-module validation passed, w
+FP-MCP-274	148		After MCP bridge reload, the clearance review manifest preview tool is visible in ChatGPT MCP and one live read-only preview call succeeded without creating clearance, consuming ap
+FP-MCP-275	149		Guarded runner start remains blocked after FP-MCP-274: the preview tool is live, but execution is not ready because global execution disable is active, runner/OpenCode execution ar
+FP-MCP-276	151		FP-MCP-276 prepared a fresh non-executing guarded-start request and approval path, but did not record human approval, create clearance, clear the disable switch, contact the runner
+FP-MCP-277	152		FP-MCP-277 reconstructs the FP-027 master checklist from admitted evidence, preserves the FP-MCP-268 standing rule verbatim, and restores the checklist as the steering artifact: pl
+FP-MCP-278	153		FP-MCP-278 records that the MCP bridge server refactor should become an observed open-weight model workload, not silent GPT/operator maintenance before observation; GPT/operator sh
+FP-MCP-279	154		FP-MCP-279 updates the master plan so it orients rather than competes with the ledger: it points to FP-MCP-277 checklist artifacts for current FP-027 steering, preserves the FP-MCP
+FP-MCP-280	156		FP-MCP-280 records that operator responsibility remains the approval authority, but structured human approval evidence was not recorded: the full approval payload was platform-bloc
+FP-MCP-281	157		FP-MCP-281 simplifies the human approval model: for scoped ForgePilot approvals, the human operator's clear chat statement may serve as semantic approval evidence, while MCP/tool a
+FP-MCP-282	159		FP-MCP-282 records that the operator approved the scoped FP-MCP-276 request in chat, but no validation-usable approval artifact was created; the request remains blocked before clea
+FP-MCP-283	160		FP-MCP-283 fixes the MCP bridge real-human approval recorder bug: approval scope is no longer hardcoded to FP-MCP-036, executionPacketId can bind approval scope separately from the
+FP-MCP-284	161		FP-MCP-284 opens a clean approval-recording packet for the operator's fresh scoped approval of FP-MCP-276 request REQ-20260704T115428653Z-fc0b6275; this boundary does not itself re
+FP-MCP-285	162		FP-MCP-285 fixes the MCP bridge human approval validator so explicit scoped operator approval text accepted by the recorder is also accepted by validation; the existing approval ar
+FP-MCP-286	163		FP-MCP-286 saves the current approval-validation state for continuation in a fresh ChatGPT session: approval evidence exists and is committed, the recorder fix and validator fix ar
+FP-MCP-287	164		ForgePilot MCP should treat the remote runner as legacy optional infrastructure for now; the preferred near-term path for OpenCode model lifecycle work is the direct OpenCode HTTP 
+FP-MCP-288	165		The MCP bridge successfully used the direct OpenCode HTTP lifecycle path for a bounded design-only model interaction, without contacting the remote runner start endpoint, starting 
+FP-MCP-289	166		FP-MCP-289 accepts the auditor finding that FP-MCP-287/288 constituted an architectural policy revision, not merely a status update; direct OpenCode HTTP is reclassified as a provi
+FP-MCP-290	167		FP-MCP-290 refreshed the master plan and progress checklist after the accepted FP-MCP-289 reconciliation: direct OpenCode HTTP is now documented as provisional design/canary only, 
+FP-MCP-291	168		FP-MCP-291 chooses the lower-risk Option B: direct OpenCode HTTP is permanently narrower-scoped as a design, canary, endpoint-shape, assistant-completion, and planning tool, and mu
+FP-MCP-292	169		FP-MCP-292 decides that the MCP bridge server.ts registration-extraction refactor must not be the first real test of the guarded/worker execution safety chain: if model-executed, a
+FP-MCP-293	170		FP-MCP-293 selects Path A after the auditor accepted FP-MCP-292: the next real work should be a minimal FP-027 guarded/worker canary on a boring non-refactor task before any model-
+FP-MCP-294	171		FP-MCP-294 prepares the minimal FP-027 guarded/worker canary as a fresh, boring, non-refactor task and explicitly forbids reusing stale FP-MCP-276 request/approval artifacts: the f
+FP-MCP-295	173		FP-MCP-295 created and committed a fresh non-executing request artifact for the minimal FP-027 guarded/worker canary: request REQ-20260704T142232816Z-a82a42b6, model deepseek-v4-pr
+FP-MCP-296	174		FP-MCP-296 recorded and validated fresh scoped human approval evidence for the FP-MCP-295 minimal FP-027 guarded/worker canary request: approval APPROVAL-20260704T142523179Z-10b0b6
+FP-MCP-297	175		FP-MCP-297 records that the FP-MCP-295 minimal canary did not advance past approval into pre-start evidence or state snapshots: repeated non-executing state-snapshot dry-run attemp
+FP-MCP-298	176		FP-MCP-298 turns the FP-027 canary order from operator memory into an explicit mechanical sequencing guard: state snapshot recording is forbidden until approved pre-start evidence 
+FP-MCP-299	177		FP-MCP-299 records that the FP-MCP-298 sequence guard prevented the prior ordering mistake: approved pre-start evidence for FP-MCP-295 / REQ-20260704T142232816Z-a82a42b6 was record
+FP-MCP-300	178		FP-MCP-300 records a fresh scoped approval renewal for the FP-MCP-295 minimal FP-027 guarded/worker canary after the prior FP-MCP-296 approval expired: approval APPROVAL-20260704T1
+FP-MCP-301	179		FP-MCP-301 records that the FP-MCP-295 minimal FP-027 guarded/worker canary advanced only through the clearance preview/review gate: the operator-local clearance review manifest fo
+FP-MCP-303	180		FP-MCP-303 records that the FP-MCP-295 minimal FP-027 guarded/worker canary advanced through fresh approval, refreshed clearance preview, local clearance creation, and independent 
+FP-MCP-304	181		FP-MCP-304 defines the missing scoped execution enablement gate needed after local clearance and before any guarded runner start: execution enablement must be represented as a shor
+FP-MCP-305	182		FP-MCP-305 implemented the MCP bridge scoped execution enablement tool surface: preview, create, and status tools for a short-lived exact-tuple local enablement artifact. The imple
+FP-MCP-306	183		FP-MCP-306 verified that the FP-MCP-305 scoped enablement tools are discoverable after bridge restart and that stale inputs fail closed: preview was read-only and ineligible, creat
+FP-MCP-307	184		FP-MCP-307 advanced the fresh positive path through a committed and validated approval plus a fresh valid local clearance, but stopped before scoped enablement and before runner st
+FP-MCP-308	185		FP-MCP-308 added a read-only next-gate sequencer tool in the MCP bridge. Bridge commit 6b6fcc3 contains the implementation and tests pass.
+FP-MCP-309	186		FP-MCP-309 tested the FP-MCP-308 sequencer logic. The sequencer returned RECORD_APPROVAL as the next required gate for the stale FP-MCP-295 path.
+FP-MCP-310	187		FP-MCP-310 recorded, committed, and validated a fresh approval, then stopped before clearance because the operator selected the guarded preflight report tool instead of the sequenc
+FP-MCP-311	188		FP-MCP-311 confirmed the sequencer and clearance preview worked, then recorded that the wrong follow-on tool was selected. The wrong call refused and made no usable artifact.
+FP-MCP-312	189		FP-MCP-312 implemented a V1 enforced next-gate executor in the MCP bridge. The new executor calls the sequencer internally and supports the clearance preview/create segment without
+FP-MCP-313	190		FP-MCP-313 recorded and validated a fresh approval, but stopped before clearance because the operator selected the adjacent preflight observer instead of the enforced executor. No 
+FP-MCP-314	192		FP-MCP-314 narrowed the default MCP bridge canary action surface so adjacent manual guarded canary tools are hidden unless FORGEPILOT_CANARY_ACTION_SURFACE_NARROWED=0. The enforced
+FP-MCP-315	193		FP-MCP-315 recorded and validated a fresh scoped approval for the FP-MCP-295 canary tuple, then the narrowed guarded executor successfully performed the V1 clearance preview/create
+FP-MCP-316	198		FP-MCP-316 was implemented in the MCP bridge by extending forgepilot_apply_guarded_canary_next_gate to support the sequencer-selected scoped enablement preview/create gate only, wh
+FP-MCP-317	199		The live FP-MCP-316 guarded executor successfully advanced the FP-MCP-295 canary tuple through fresh approval, fresh operator-local clearance, fresh runner capability observation, 
+FP-MCP-318	201		FP-MCP-318 was implemented in the MCP bridge by extending forgepilot_apply_guarded_canary_next_gate to support the sequencer-selected final runner-start attempt stage through the e
+FP-MCP-319	202		FP-MCP-319 successfully prepared the FP-MCP-295 canary tuple through fresh approval, fresh operator-local clearance, fresh runner capability observation, and fresh scoped execution
+FP-MCP-322	204		FP-MCP-322 added a local-only MCP client script in the bridge repo that reads a JSON input file, calls exactly one allowed guarded executor tool through the running MCP server, and
+FP-MCP-323	205		FP-MCP-323 will prepare local-operator artifacts for the next guarded handoff step using the committed FP-MCP-322 local client script, while keeping ChatGPT on non-executing prepar
+FP-MCP-326	206		A fresh ChatGPT session can record a neutral ForgePilot MCP checkpoint.
+FP-MCP-327	207		A fresh ChatGPT session can record a host-boundary debugging checkpoint without requesting operational action.
+FP-MCP-328	208		Fresh-session MCP checkpoint recording remains allowed when documenting that a prior session experienced host tool-call blocks.
+FP-MCP-329	209		A fresh ChatGPT session can call the read-only guarded sequencer with the real FP-MCP-295 request tuple and receive RECORD_APPROVAL without host blocking.
+FP-MCP-330	210		Fresh-session characterization indicates the prior ChatGPT MCP block was not caused by the real request tuple, checkpoint recording, OpenCode read-only probes, or the read-only gua
+FP-MCP-332	211		A fresh ChatGPT session can record and validate a real human approval artifact for the FP-MCP-295 request tuple without host blocking.
+FP-MCP-333	212		The fresh ChatGPT session reached PREVIEW_CLEARANCE through the read-only guarded sequencer, but the named clearance-preview tool was not exposed in the available ForgePilot MCP to
+FP-MCP-334	213		A fresh ChatGPT session could invoke the exposed guarded next-gate wrapper, and ForgePilot safely blocked progression because the approval had expired.
+FP-MCP-336	214		A fresh ChatGPT session could invoke the exposed guarded next-gate wrapper with a fresh valid approval and receive a clearance-preview manifest without host blocking or operational
+FP-MCP-337	215		A fresh ChatGPT session could invoke the exposed guarded next-gate wrapper for clearance creation, and ForgePilot safely blocked progression because the approval had expired.
+FP-MCP-339	216		The exposed guarded next-gate wrapper was allowed by the ChatGPT host with a fresh valid approval, but repeated calls returned PREVIEW_CLEARANCE and did not create clearance.
+FP-MCP-340	217		The guarded next-gate wrapper intentionally returns clearance preview only unless applyPreviewFollowOn is true.
+FP-MCP-344	218		The applyPreviewFollowOn flag alone does not trigger a ChatGPT host block when used with debug context.
+FP-MCP-346	219		FP-MCP-346 establishes a non-executing live probe packet for testing the capability-separated clearance MCP surface.
+FP-MCP-347	220		After FP-MCP-345 capability-separated tools were deployed and FP-MCP-346 was admitted, ChatGPT allowed read-only observe and packet checkpoint recording but blocked a structured ap
+FP-MCP-348	221		Committed fresh-session approval artifact was observed safely but was expired, so the next gate remained RECORD_APPROVAL and no clearance preview was attempted.
+FP-MCP-349	222		With a fresh committed approval, observe advanced to PREVIEW_CLEARANCE, but clearance preview remained ineligible because current repository head no longer matched executionBaseCom
+FP-MCP-350	223		FP-MCP-350 patched the capability-separated preview and clearance-intent surfaces to bind committed evidence HEAD separately from the target execution commit, resolving the FP-MCP-
+FP-MCP-351	224		FP-MCP-351 created a research-backed MCP server normalization audit, tool inventory, risk matrix, refactor plan, and executor recommendation for reducing src/server.ts ambiguity be
+FP-MCP-352	225		FP-MCP-352 Phase 3 completed a behavior-preserving extraction of two read-only OpenCode request-artifact reader MCP tools from src/server.ts into a request-artifact tool group with
+FP-MCP-353	226		FP-MCP-353 added a machine-readable MCP tool contract manifest covering all 68 registered bridge tools, with validation proving exact parity between registered tool names and contr
+FP-MCP-353A	227		FP-MCP-353A corrected the MCP tool contract manifest and checker to include the 10 additional tools registered through src/tool-registrations/recent-tools.ts, establishing exact co
+FP-MCP-354	228		FP-MCP-354 implemented a manifest-backed MCP surface profile gate in the bridge. The default profile exposes 11 safe tools, the dev profile exposes 76 non-legacy tools, and the all
