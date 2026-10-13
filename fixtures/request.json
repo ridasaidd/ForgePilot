@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "forgepilot-github-request.v1",
+  "requestId": "c3-fixture-request-001",
+  "projectRepository": "ridasaidd/ForgePilot",
+  "masterPlan": {
+    "repository": "ridasaidd/ForgePilot",
+    "path": "fixtures/master-plan.json",
+    "commitSha": "578818b98d4352fc83cfbdd975e1fd3bdfd51d26",
+    "contentHash": "sha256:404276c9248d0fe4737a6dacbb43252bfe45675a7a64877a8c143ee84c636c7b"
+  },
+  "projectExecutionPacket": {
+    "repository": "ridasaidd/ForgePilot",
+    "path": "fixtures/execution-packet.json",
+    "commitSha": "578818b98d4352fc83cfbdd975e1fd3bdfd51d26",
+    "contentHash": "sha256:c5331eeeb8416f96015f804f02bf1944bd80cc732f3bad3d7c259c179113a374"
+  },
+  "packetSpecification": {
+    "repository": "ridasaidd/ForgePilot",
+    "path": "fixtures/packet-specification.json",
+    "commitSha": "578818b98d4352fc83cfbdd975e1fd3bdfd51d26",
+    "contentHash": "sha256:c647b003b4eceee1500d13bf0b5a6a9f769d1db30216834d5191dc3b53bec778"
+  },
+  "sourceBase": {
+    "repository": "ridasaidd/ForgePilot",
+    "commitSha": "578818b98d4352fc83cfbdd975e1fd3bdfd51d26"
+  },
+  "auditBranch": "c3-evidence-canary",
+  "orchestratorModelId": "c3-canary-model",
+  "executionMode": "supervised",
+  "workspaceId": "c3-fixture",
+  "runtimeLimitSeconds": 120,
+  "outputLimitBytes": 1024,
+  "telemetrySource": "fixture",
+  "verificationCommandClass": "read-only",
+  "ciRequired": false,
+  "reviewArtifactRequired": false,
+  "createdAt": "2026-10-13T08:00:00.000Z",
+  "expiresAt": "2027-10-13T08:00:00.000Z"
+}
