@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "forgepilot-github-request-policy-profile.v1",
+  "policyId": "c3-canary",
+  "policyVersion": "1",
+  "allowedProjectRepositories": [
+    "ridasaidd/ForgePilot"
+  ],
+  "allowedPacketSpecificationRepositories": [
+    "ridasaidd/ForgePilot"
+  ],
+  "allowedOrchestratorModelIds": [
+    "c3-canary-model"
+  ],
+  "allowedExecutionModes": [
+    "supervised"
+  ],
+  "allowedWorkspaceIds": [
+    "c3-fixture"
+  ],
+  "allowedTelemetrySources": [
+    "fixture"
+  ],
+  "allowedVerificationCommandClasses": [
+    "read-only"
+  ],
+  "allowedAuditBranchPatterns": [
+    "c3-evidence-canary"
+  ],
+  "protectedBranchPatterns": [
+    "main"
+  ],
+  "maxRuntimeLimitSeconds": 600,
+  "maxOutputLimitBytes": 1048576,
+  "requireCi": false,
+  "requireReviewArtifact": false
+}

@@ -1,0 +1,5 @@
+{
+  "schemaVersion": "c3-canary-execution-packet.example.v1",
+  "objective": "Read-only verification",
+  "steps": []
+}
